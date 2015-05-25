@@ -1,0 +1,11 @@
+$comment
+ this is a comment
+$end
+
+$rem
+ jobtype = nmr
+EXCHANGE hf
+         correlation   ccsd(t)
+ mem_static = 2000
+  method = pbe1pbe
+$end

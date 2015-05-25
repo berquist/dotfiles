@@ -1,0 +1,12 @@
+# What are these?
+.saves*
+elpa
+url
+
+# Emacs
+.emacs.d/ac-comphist.dat
+.emacs.d/ede-projects.el
+.emacs.d/eshell
+.emacs.d/ido.last
+.emacs.d/semanticdb
+.emacs.d/srecode-map.el
