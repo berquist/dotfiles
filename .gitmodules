@@ -1,3 +1,3 @@
 [submodule "dotfiles-private"]
 	path = dotfiles-private
-	url = https://bitbucket.org/berquist/dotfiles-private
+	url = git@bitbucket.org:berquist/dotfiles-private
