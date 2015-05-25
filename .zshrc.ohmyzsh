@@ -1,7 +1,7 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -50,8 +50,8 @@ ZSH_THEME="berky"
 #plugins=(emacs mosh python pylint lol nyan brew git-extras git-remote-branch)
 plugins=(mosh python pylint lol nyan brew git-extras git-remote-branch)
 
-source $ZSH/oh-my-zsh.sh
+source ${ZSH}/oh-my-zsh.sh
 
 # Customize to your needs...
 
-source ~/dotfiles/.zshrc
+source ${HOME}/dotfiles/dotfiles-private/.zshrc
