@@ -1,19 +1,26 @@
 ;;; -*- Mode: Emacs-Lisp -*-
 
+(setq user-full-name "Eric Berquist")
+(setq user-mail-address "eric.berquist@gmail.com")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; General configuration
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-;; turn off mouse interface early in startup to avoid momentary display
-(if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
-(setq inhibit-start-screen t)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-echo-area-message t)
-(setq inhibit-startup-message t)
+;; turn off mouse interface early in startup to avoid momentary display
+(menu-bar-mode 1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+(setq inhibit-start-screen t
+      inhibit-splash-screen t
+      inhibit-startup-echo-area-message t
+      inhibit-startup-message t
+      initial-scratch-message nil
+      initial-major-mode 'markdown-mode)
 
 (setq transient-mark-mode t)   ;; visually show region
 (setq line-number-mode t)      ;; show line numbers
@@ -72,7 +79,8 @@
 ;; Guarantee all packages are installed on start
 (defvar packages-list
   '(
-    exec-path-from-shell
+    ;; exec-path-from-shell
+    ;; minimap
     mic-paren
     rainbow-mode
     cmake-mode
@@ -80,6 +88,10 @@
     auctex-latexmk
     ;; flycheck
     markdown-mode
+    pandoc-mode
+    pkgbuild-mode
+    ;;; themes
+    plan9-theme
     )
   "List of packages needs to be installed at launch")
 
@@ -155,12 +167,13 @@
 ;;; Theming
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'wombat2 t)
+;; (load-theme 'wombat2 t)
+(load-theme 'plan9 t)
 
 (when window-system
   (if (eq system-type 'gnu/linux)
-      (and (set-face-attribute 'default nil :font "Inconsolata-11")
-           (set-frame-font "Inconsolata-11")))
+      (and (set-face-attribute 'default nil :font "DejaVu Sans Mono-11")
+           (set-frame-font "DejaVu Sans Mono-11")))
   (if (eq system-type 'darwin)
       (and (set-face-attribute 'default nil :font "Panic Sans-11")
            (set-frame-font "Panic Sans-11"))))
@@ -171,6 +184,11 @@
 ;; Usage: (set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 (add-to-list 'default-frame-alist '(alpha 100 100))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; minimap
+
+;; (require 'minimap)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Spelling
@@ -208,6 +226,11 @@
 ;;; Flycheck
 
 ;;(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Pandoc
+
+(require 'pandoc-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CSS
@@ -273,9 +296,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; PKGBUILDs
 
-(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBULD mode." t)
+(require 'pkgbuild-mode)
 (setq auto-mode-alist
-      (append '(("/PKGBUILD$" . pkgbuild-mode)
+      (append '(("/PKGBUILD/" . pkgbuild-mode)
                 ) auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -311,6 +334,7 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; docview
@@ -332,8 +356,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   [(\, wombat-bg)
+    (\, wombat-red)
+    (\, wombat-green)
+    (\, wombat-green+1)
+    (\, wombat-blue)
+    "#333366" "#ccaa8f"
+    (\, wombat-fg)])
+ '(custom-safe-themes
+   (quote
+    ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
  '(global-whitespace-mode t)
  '(ido-mode (quote both) nil (ido))
+ '(markdown-command "multimarkdown")
+ '(markdown-enable-math t)
  '(paren-delay nil)
  '(paren-highlight-at-point t)
  '(paren-highlight-offscreen t)
