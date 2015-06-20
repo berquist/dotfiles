@@ -15,12 +15,11 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(setq inhibit-start-screen t
-      inhibit-splash-screen t
+(setq inhibit-splash-screen t
       inhibit-startup-echo-area-message t
       inhibit-startup-message t
       initial-scratch-message nil
-      initial-major-mode 'markdown-mode)
+      initial-major-mode 'gfm-mode)
 
 (setq transient-mark-mode t)   ;; visually show region
 (setq line-number-mode t)      ;; show line numbers
@@ -68,7 +67,7 @@
 ;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Packages
+;;; Packages: packages.el
 
 (require 'package)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
@@ -86,8 +85,11 @@
     cmake-mode
     auctex
     auctex-latexmk
-    ;; flycheck
+    flycheck
+    flycheck-pyflakes
     markdown-mode
+    ;;; needed for markdown-preview-mode
+    websocket
     pandoc-mode
     pkgbuild-mode
     ;;; themes
@@ -111,7 +113,7 @@
 
 ;; Set the path properly on OS X.
 (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Parens and whitespace
@@ -160,7 +162,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Keybindings
 
-(global-set-key "\C-x\C-b" 'switch-to-buffer) ;; To reduce errors. Was: 'buffer-menu
+;; To reduce errors. Was: 'buffer-menu
+(global-set-key "\C-x\C-b" 'switch-to-buffer)
+;; Was: 'ido-switch-buffer
+(global-set-key "\C-x\b" 'list-buffers)
 (global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -184,11 +189,6 @@
 ;; Usage: (set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 (add-to-list 'default-frame-alist '(alpha 100 100))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; minimap
-
-;; (require 'minimap)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Spelling
@@ -225,12 +225,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Flycheck
 
-;;(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (add-hook 'python-mode-hook 'flycheck-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Pandoc
 
 (require 'pandoc-mode)
+(load "pandoc-mode")
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+(add-hook 'latex-mode-hook 'pandoc-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CSS
@@ -257,18 +263,6 @@
                ("\\.hh$" . c++-mode)
                ("\\.hpp$" . c++-mode)
                ) auto-mode-alist))
-
-;; turn on Semantic
-;; (semantic-mode 1)
-;; let's define a function which adds semantic as a suggestion backend
-;; to auto complete and hook this function to c-mode-common-hook
-;; (defun my:add-semantic-to-autocomplete ()
-;;   (add-to-list 'ac-sources 'ac-source-semantic)
-;;   )
-;; (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-;; turn on ede mode
-;; (global-ede-mode 1)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Makefiles
@@ -322,19 +316,26 @@
 ;;; Python
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
-;; (require 'pycheck-pyflakes)
+(require 'flycheck-pyflakes)
+;; Don't disable these, since pyflakes might not be available.
 ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
 ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Markdown
 
+(require 'markdown-mode)
+
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.mdown\\'" . gfm-mode))
+
+(add-to-list 'load-path "~/.emacs.d/markdown-preview-mode")
+(require 'markdown-preview-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; docview
@@ -364,13 +365,21 @@
     (\, wombat-blue)
     "#333366" "#ccaa8f"
     (\, wombat-fg)])
+ '(browse-url-browser-function (quote browse-url-firefox))
  '(custom-safe-themes
    (quote
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
+ '(flycheck-pylintrc "~/.pylintrc")
+ '(global-flycheck-mode t)
  '(global-whitespace-mode t)
  '(ido-mode (quote both) nil (ido))
  '(markdown-command "multimarkdown")
+ '(markdown-css-path
+   "https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css")
  '(markdown-enable-math t)
+ '(markdown-link-space-sub-char "-")
+ '(markdown-preview-style
+   "https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css")
  '(paren-delay nil)
  '(paren-highlight-at-point t)
  '(paren-highlight-offscreen t)
