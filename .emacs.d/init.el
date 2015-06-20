@@ -1,7 +1,7 @@
 ;;; -*- Mode: Emacs-Lisp -*-
 
-(setq user-full-name "Eric Berquist")
-(setq user-mail-address "eric.berquist@gmail.com")
+(setq user-full-name "Eric Berquist"
+      user-mail-address "eric.berquist@gmail.com")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; General configuration
@@ -14,33 +14,34 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; What's the difference between setq and setq-default?
+
+;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
+
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message t
       inhibit-startup-message t
       initial-scratch-message nil
       initial-major-mode 'gfm-mode)
 
-(setq transient-mark-mode t)   ;; visually show region
-(setq line-number-mode t)      ;; show line numbers
-(setq column-number-mode t)    ;; show column numbers
-(setq-default transient-mark-mode t)
-(setq-default line-number-mode t)
-(setq-default column-number-mode t)
-;; What's the difference between setq and setq-default?
-(setq global-font-lock-mode t) ;; everything should use fonts
-(setq font-lock-maximum-decoration t)
+(setq-default transient-mark-mode t
+              line-number-mode t
+              column-number-mode t
+              cursor-type '(hbar . 2))
+
+(setq global-font-lock-mode t
+      font-lock-maximum-decoration t)
 
 ;; bells are annoying, stop ringing!
-(setq-default visible-bell nil)
-(setq-default audible-bell nil)
-(setq ring-bell-function 'ignore)
+(setq-default visible-bell nil
+              audible-bell nil
+              ring-bell-function 'ignore)
 
-(setq-default cursor-type '(hbar . 2))
-
-(fset 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; death to tabs, tabs are evil
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil
+              tab-width 4)
 
 (require 'ido)
 (ido-mode t)
@@ -167,6 +168,13 @@
 (global-set-key "\C-x\b" 'list-buffers)
 (global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
 
+(global-set-key (kbd "C-'") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-?") 'comment-region)
+(global-set-key (kbd "C-/") 'uncomment-region)
+
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Theming
 
@@ -189,8 +197,14 @@
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 (add-to-list 'default-frame-alist '(alpha 100 100))
 
+(setq-default indicate-empty-lines t)
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Spelling
+
+(setq flyspell-issue-welcome-flag nil)
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
@@ -389,7 +403,8 @@
  '(global-flycheck-mode t)
  '(global-whitespace-mode t)
  '(ido-mode (quote both) nil (ido))
- '(markdown-command "multimarkdown")
+ ;; '(markdown-command "multimarkdown")
+ '(markdown-command "pandoc --smart -f markdown -t html")
  '(markdown-css-path
    "https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css")
  '(markdown-enable-math t)
