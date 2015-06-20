@@ -10,8 +10,7 @@
 
 ;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
-;; turn off mouse interface early in startup to avoid momentary display
-(menu-bar-mode 1)
+(menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
@@ -195,15 +194,16 @@
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
-(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+(dolist (hook '(change-log-mode-hook
+                log-edit-mode-hook))
   (add-hook hook (lambda () (flyspell-mode -1))))
 
-;(dolist (mode '(emacs-lisp-mode-hook
-;                inferior-lisp-mode-hook
-;                python-mode-hook))
-;  (add-hook mode
-;            '(lambda ()
-;               (flyspell-prog-mode))))
+(dolist (mode '(emacs-lisp-mode-hook
+                inferior-lisp-mode-hook
+                python-mode-hook))
+  (add-hook mode
+            '(lambda ()
+               (flyspell-prog-mode))))
 
 (global-set-key (kbd "<f8>") 'ispell-word) ;; built-in binding is M-$
 (global-set-key (kbd "C-S-<f8>") 'flyspell-mode)
@@ -232,7 +232,7 @@
 ;;; Pandoc
 
 (require 'pandoc-mode)
-(load "pandoc-mode")
+;; (load "pandoc-mode")
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
 (add-hook 'markdown-mode-hook 'pandoc-mode)
@@ -305,6 +305,21 @@
                 ("\\.cmake\\'" . cmake-mode)
                 ) auto-mode-alist))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; systemd
+
+ (add-to-list 'auto-mode-alist '("\\.service\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.timer\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.target\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.mount\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.automount\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.slice\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.socket\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.path\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.netdev\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.network\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.link\\'" . conf-unix-mode))
+ (add-to-list 'auto-mode-alist '("\\.automount\\'" . conf-unix-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; LaTeX
@@ -370,6 +385,7 @@
    (quote
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
  '(flycheck-pylintrc "~/.pylintrc")
+ '(flyspell-mode-line-string " FlyS")
  '(global-flycheck-mode t)
  '(global-whitespace-mode t)
  '(ido-mode (quote both) nil (ido))

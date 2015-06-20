@@ -10,5 +10,6 @@ url
 .emacs.d/ido.last
 .emacs.d/semanticdb
 .emacs.d/srecode-map.el
+.emacs.d/tramp
+
 .emacs.d/markdown-preview-mode/.gitignore
-.emacs.d/markdown-preview-mode/preview.html
