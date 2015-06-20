@@ -1,0 +1,14 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Markdown Preview",
+		"MarkdownEditing",
+		"Package Control",
+		"sublemacspro",
+		"Wombat Color Scheme",
+		"Wombat Theme"
+	]
+}
