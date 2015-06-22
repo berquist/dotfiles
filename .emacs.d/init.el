@@ -10,7 +10,7 @@
 
 ;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
-(menu-bar-mode -1)
+(menu-bar-mode 1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
@@ -69,16 +69,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Packages: packages.el
 
+(require 'cl)
+
 (require 'package)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
-(require 'cl)
 ;; Guarantee all packages are installed on start
 (defvar packages-list
   '(
-    ;; exec-path-from-shell
+    exec-path-from-shell
     ;; minimap
     mic-paren
     rainbow-mode
@@ -132,9 +133,13 @@
       '(face
         trailing
         tabs
-        lines-tail
+        tab-mark
+        ;; spaces
+        ;; space-mark
+        ;; lines-tail
         newline
-        empty
+        newline-mark
+        ;; empty
         indentation::tab
         indentation::space
         indentation
@@ -143,9 +148,9 @@
         space-after-tab
         space-before-tab::tab
         space-before-tab::space
-        space-before-tab
-        tab-mark))
-;; currently ignoring space-mark and newline-mark until I can enable them selectively
+        space-before-tab))
+
+(setq global-whitespace-mode nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Disable popup boxes
@@ -179,8 +184,8 @@
 ;;; Theming
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;; (load-theme 'wombat2 t)
-(load-theme 'plan9 t)
+(load-theme 'wombat2 t)
+;; (load-theme 'plan9 t)
 
 (when window-system
   (if (eq system-type 'gnu/linux)
@@ -205,6 +210,7 @@
 ;;; Spelling
 
 (setq flyspell-issue-welcome-flag nil)
+(setq flyspell-mode-line-string " FlyS")
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
@@ -239,14 +245,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Flycheck
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
-;; (add-hook 'python-mode-hook 'flycheck-mode)
+(require 'flycheck)
+;; Don't start Flycheck willy-nilly all over the place...
+(setq-default global-flycheck-mode nil)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+
+(setq flycheck-check-syntax-automatically
+      '(mode-enabled
+        new-line
+        save))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Pandoc
 
 (require 'pandoc-mode)
-;; (load "pandoc-mode")
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
 (add-hook 'markdown-mode-hook 'pandoc-mode)
@@ -285,6 +297,8 @@
       (append '(("Makefile*\\'" . makefile-mode)
                 ("makefile*\\'" . makefile-mode)
                 ) auto-mode-alist))
+
+(add-hook 'makefile-mode-hook 'whitespace-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; FORTRAN
@@ -341,14 +355,28 @@
 ;; (require 'auctex-latexmk)
 ;; (auctex-latexmk-setup)
 
+(add-hook 'latex-mode-hook 'flycheck-mode)
+(add-hook 'latex-mode-hook 'whitespace-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; shell
+
+(add-hook 'sh-mode-hook 'flycheck-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Python
+
+(add-hook 'python-mode-hook 'flycheck-mode)
+(add-hook 'python-mode-hook 'whitespace-mode)
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
 (require 'flycheck-pyflakes)
 ;; Don't disable these, since pyflakes might not be available.
 ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
 ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
+
+(setq flycheck-pylintrc "~/.pylintrc")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Markdown
@@ -398,10 +426,6 @@
  '(custom-safe-themes
    (quote
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
- '(flycheck-pylintrc "~/.pylintrc")
- '(flyspell-mode-line-string " FlyS")
- '(global-flycheck-mode t)
- '(global-whitespace-mode t)
  '(ido-mode (quote both) nil (ido))
  ;; '(markdown-command "multimarkdown")
  '(markdown-command "pandoc --smart -f markdown -t html")
