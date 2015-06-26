@@ -50,6 +50,8 @@
 (defvar system-type-as-string (prin1-to-string system-type))
 (defun sys () system-type-as-string)
 
+;; (setq-default 'case-fold-search t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Backups/autosaving
 
@@ -133,12 +135,12 @@
       '(face
         trailing
         tabs
-        tab-mark
+        ;; tab-mark
         ;; spaces
         ;; space-mark
         ;; lines-tail
-        newline
-        newline-mark
+        ;; newline
+        ;; newline-mark
         ;; empty
         indentation::tab
         indentation::space
@@ -168,17 +170,19 @@
 ;;; Keybindings
 
 ;; To reduce errors. Was: 'buffer-menu
-(global-set-key "\C-x\C-b" 'switch-to-buffer)
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 ;; Was: 'ido-switch-buffer
-(global-set-key "\C-x\b" 'list-buffers)
+(global-set-key (kbd "C-x b") 'list-buffers)
 (global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
 
-(global-set-key (kbd "C-'") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-?") 'comment-region)
-(global-set-key (kbd "C-/") 'uncomment-region)
+;; (global-set-key (kbd "C-'") 'comment-or-uncomment-region)
+;; (global-set-key (kbd "C-?") 'comment-region)
+;; (global-set-key (kbd "C-/") 'uncomment-region)
 
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
+
+(global-set-key (kbd "C-x C-h") 'replace-string)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Theming
@@ -253,7 +257,10 @@
 (setq flycheck-check-syntax-automatically
       '(mode-enabled
         new-line
-        save))
+        save
+        idle-change))
+
+(setq flycheck-idle-change-delay 0.3)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Pandoc
@@ -263,6 +270,7 @@
 
 (add-hook 'markdown-mode-hook 'pandoc-mode)
 (add-hook 'latex-mode-hook 'pandoc-mode)
+(add-hook 'LaTeX-mode-hook 'pandoc-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CSS
@@ -357,6 +365,8 @@
 
 (add-hook 'latex-mode-hook 'flycheck-mode)
 (add-hook 'latex-mode-hook 'whitespace-mode)
+(add-hook 'LaTeX-mode-hook 'flycheck-mode)
+(add-hook 'LaTeX-mode-hook 'whitespace-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; shell
@@ -371,7 +381,7 @@
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
 (require 'flycheck-pyflakes)
-;; Don't disable these, since pyflakes might not be available.
+;; Don't disable these, in case pyflakes isn't available.
 ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
 ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
 ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)

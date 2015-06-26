@@ -5,6 +5,8 @@
 # *.[oa]
 # *~
 
+TAGS
+
 code_gitignore
 
 build_qchem.sh
