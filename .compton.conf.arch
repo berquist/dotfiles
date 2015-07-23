@@ -13,13 +13,13 @@ vsync = "opengl-swc";
 # https://github.com/chjj/compton/wiki/vsync-guide
 
 # Shadow
-shadow = true;			# Enabled client-side shadows on windows.
-no-dock-shadow = true;		# Avoid drawing shadows on dock/panel windows.
-no-dnd-shadow = true;		# Don't draw shadows on DND windows.
-clear-shadow = true;		# Zero the part of the shadow's mask behind the window (experimental).
-shadow-radius = 7;		# The blur radius for shadows. (default 12)
-shadow-offset-x = -7;		# The left offset for shadows. (default -15)
-shadow-offset-y = -7;		# The top offset for shadows. (default -15)
+shadow = false;             # Enable/disable client-side shadows on windows.
+no-dock-shadow = true;      # Avoid drawing shadows on dock/panel windows.
+no-dnd-shadow = true;       # Don't draw shadows on DND windows.
+clear-shadow = true;        # Zero the part of the shadow's mask behind the window (experimental).
+shadow-radius = 7;          # The blur radius for shadows. (default 12)
+shadow-offset-x = -7;       # The left offset for shadows. (default -15)
+shadow-offset-y = -7;       # The top offset for shadows. (default -15)
 shadow-exclude = [
  "! name~=''",
  "n:e:Notification",
