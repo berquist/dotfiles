@@ -47,8 +47,21 @@ ZSH_THEME="berky"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(emacs mosh python pylint lol nyan brew git-extras git-remote-branch)
-plugins=(mosh python pylint lol nyan brew git-extras git-remote-branch)
+# (Leave out emacs for now...)
+plugins=(
+    archlinux
+    brew
+    git-extras
+    git-remote-branch
+    lol
+    mosh
+    nyan
+    pylint
+    python
+    sprunge
+    tmux
+    tmuxinator
+)
 
 source ${ZSH}/oh-my-zsh.sh
 
