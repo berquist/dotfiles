@@ -1,19 +1,19 @@
 $rem
-         symmetry = false
-       sym_ignore = true
-      cc_symmetry = false
-  scf_convergence = 8
-           thresh = 14
-        varthresh = 0
-           incdft = 0
-          xc_grid = 000100000302 ! (100,302)
- integrals_buffer = 3000
-       mem_static = 1000
-        mem_total = 4000
-        cc_memory = 4000
-       ao2mo_disk = 4000
-    n_frozen_core = fc
-    molden_format = true
-   scf_print_frgm = true
-           chelpg = true
+             symmetry = false
+           sym_ignore = true
+          cc_symmetry = false
+      scf_convergence = 8
+               thresh = 12
+            varthresh = 0
+               incdft = 0
+              xc_grid = 000100000302 ! (100,302)
+     integrals_buffer = 3000
+           mem_static = 1000
+            mem_total = 4000
+            cc_memory = 4000
+           ao2mo_disk = 4000
+        n_frozen_core = fc
+        molden_format = true
+       scf_print_frgm = true
+ diis_separate_errvec = true
 $end
