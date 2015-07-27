@@ -90,6 +90,7 @@
     auctex-latexmk
     flycheck
     flycheck-pyflakes
+    yaml-mode
     markdown-mode
     ;;; needed for markdown-preview-mode
     websocket
