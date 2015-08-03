@@ -417,6 +417,18 @@
 ;; always refresh when the contents change
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
+;;; Macros
+
+(fset 'manip-xyz-line-from-pdf
+      (lambda
+        (&optional arg)
+        "Keyboard macro."
+        (interactive "p")
+        (kmacro-exec-ring-item
+         (quote
+          ("   " 0 "%d")) arg)))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Other
 
