@@ -284,7 +284,7 @@
 (define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
   (lambda () (rainbow-mode 1)))
 
-(my-global-rainbow-mode 1)
+;; (my-global-rainbow-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; C/C++
@@ -446,11 +446,15 @@
     "#333366" "#ccaa8f"
     (\, wombat-fg)])
  '(browse-url-browser-function (quote browse-url-firefox))
+ '(c-default-style
+   (quote
+    ((java-mode . "java")
+     (awk-mode . "awk")
+     (other . "k&r"))))
  '(custom-safe-themes
    (quote
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
  '(ido-mode (quote both) nil (ido))
- ;; '(markdown-command "multimarkdown")
  '(markdown-command "pandoc --smart -f markdown -t html")
  '(markdown-css-path
    "https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css")
@@ -458,6 +462,7 @@
  '(markdown-link-space-sub-char "-")
  '(markdown-preview-style
    "https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css")
+ '(my-global-rainbow-mode nil)
  '(paren-delay nil)
  '(paren-highlight-at-point t)
  '(paren-highlight-offscreen t)
