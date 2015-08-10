@@ -1,0 +1,25 @@
+display antialias on
+display depthcue off
+display culling off
+display rendermode GLSL
+display projection orthographic
+display resize 1050 1050
+axes location off
+
+menu main on
+menu graphics on
+
+color Axes Labels black
+color Display Background white
+
+color Element C gray
+color Element Cl green
+color Element Cr orange
+color Element Cu orange
+color Element F iceblue
+color Element Ni green
+color Element P orange2
+
+mol modcolor 0 0 Element
+mol modmaterial 0 0 HardPlastic
+mol modstyle 0 0 CPK 1.000000 0.300000 100.000000 100.000000
