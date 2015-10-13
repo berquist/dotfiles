@@ -454,6 +454,7 @@
  '(custom-safe-themes
    (quote
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
+ '(fortran-comment-region "cccc")
  '(ido-mode (quote both) nil (ido))
  '(markdown-command "pandoc --smart -f markdown -t html")
  '(markdown-css-path
