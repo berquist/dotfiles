@@ -84,12 +84,14 @@
     exec-path-from-shell
     ;; minimap
     mic-paren
+    dtrt-indent
     rainbow-mode
     cmake-mode
     auctex
     auctex-latexmk
     flycheck
     flycheck-pyflakes
+    cython-mode
     yaml-mode
     markdown-mode
     ;;; needed for markdown-preview-mode
@@ -446,14 +448,21 @@
     "#333366" "#ccaa8f"
     (\, wombat-fg)])
  '(browse-url-browser-function (quote browse-url-firefox))
+ '(c-basic-offset 2)
  '(c-default-style
    (quote
     ((java-mode . "java")
      (awk-mode . "awk")
      (other . "k&r"))))
+ '(c-doc-comment-style
+   (quote
+    ((c-mode . javadoc)
+     (java-mode . javadoc)
+     (pike-mode . autodoc))))
  '(custom-safe-themes
    (quote
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
+ '(dtrt-indent-mode t nil (dtrt-indent))
  '(fortran-comment-region "cccc")
  '(ido-mode (quote both) nil (ido))
  '(indicate-buffer-boundaries (quote right))
