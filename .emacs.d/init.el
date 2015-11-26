@@ -335,16 +335,6 @@
                 ) auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; CMAKE
-
-(require 'cmake-mode)
-(setq auto-mode-alist
-      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-                ("CMakeCache\\.txt\\'" . cmake-mode)
-                ("\\.cmake\\'" . cmake-mode)
-                ) auto-mode-alist))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; systemd
 
  (add-to-list 'auto-mode-alist '("\\.service\\'" . conf-unix-mode))
@@ -408,6 +398,19 @@
 (require 'markdown-preview-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; CMAKE
+
+;; This sections needs to come after the Markdown section so that
+;; CMake files get recognized properly.
+
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+                ("CMakeCache\\.txt\\'" . cmake-mode)
+                ("\\.cmake\\'" . cmake-mode)
+                ) auto-mode-alist))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; docview
 
 ;; paging up and down globally
@@ -466,13 +469,13 @@
  '(fortran-comment-region "cccc")
  '(ido-mode (quote both) nil (ido))
  '(indicate-buffer-boundaries (quote right))
- '(markdown-command "pandoc --smart -f markdown -t html")
+ '(markdown-command "pandoc -c file://${HOME}/.emacs.d/github-pandoc.css -f markdown_github -t html5 --smart --mathjax --highlight-style pygments --standalone")
  '(markdown-css-path
-   "https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css")
+   "file://${HOME}/.emacs.d/github-markdown.css")
  '(markdown-enable-math t)
  '(markdown-link-space-sub-char "-")
  '(markdown-preview-style
-   "https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css")
+   "file://${HOME}/.emacs.d/github-markdown.css")
  '(my-global-rainbow-mode nil)
  '(paren-delay nil)
  '(paren-highlight-at-point t)
