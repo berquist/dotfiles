@@ -99,7 +99,7 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
       (ido-mode t)))
 #+end_src
 
-* Parens and whitespace
+* Parens/whitespace/indentation
   :PROPERTIES:
   :all-set:  false
   :END:
@@ -140,6 +140,12 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
             space-before-tab::tab
             space-before-tab::space
             space-before-tab))
+    )
+
+  (use-package dtrt-indent
+    :config
+    (progn
+      (dtrt-indent-mode 1))
     )
 #+end_src
 

@@ -70,7 +70,6 @@
  '(custom-safe-themes
    (quote
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
- '(dtrt-indent-mode t nil (dtrt-indent))
  '(fortran-comment-region "cccc")
  '(indicate-buffer-boundaries (quote right))
  '(markdown-coding-system (quote utf-8))
