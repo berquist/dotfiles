@@ -21,8 +21,7 @@
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message t
       inhibit-startup-message t
-      initial-scratch-message nil
-      initial-major-mode 'gfm-mode)
+      initial-scratch-message nil)
 
 ;; transient-mark-mode: ...
 ;; visual-line-mode: ...
@@ -32,10 +31,11 @@
               column-number-mode t
               cursor-type '(hbar . 2))
 
+;; Enable maximum syntax highlighting wherever possible.
 (setq global-font-lock-mode t
       font-lock-maximum-decoration t)
 
-;; bells are annoying, stop ringing!
+;; Bells are annoying, stop ringing!
 (setq-default visible-bell nil
               audible-bell nil
               ring-bell-function 'ignore)
@@ -53,59 +53,17 @@
 ;; What does this do?
 ;; (setq-default 'case-fold-search t)
 
+;; Set the path properly on OS X.
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Packages: packages.el
-
-(require 'cl)
 
 (require 'package)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
-
-;; Guarantee all packages are installed on start
-(defvar packages-list
-  '(
-    exec-path-from-shell
-    ;; minimap
-    mic-paren
-    dtrt-indent
-    rainbow-mode
-    cmake-mode
-    auctex
-    auctex-latexmk
-    flycheck
-    flycheck-pyflakes
-    cython-mode
-    yaml-mode
-    markdown-mode
-    ;;; needed for markdown-preview-mode
-    websocket
-    pandoc-mode
-    pkgbuild-mode
-    ein
-    ;;; themes
-    plan9-theme
-    )
-  "List of packages needs to be installed at launch")
-
-(defun has-package-not-installed ()
-  (loop for p in packages-list
-        when (not (package-installed-p p)) do (return t)
-        finally (return nil)))
-(when (has-package-not-installed)
-  ;; Check for new packages (package versions)
-  (message "%s" "Get latest versions of all packages...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  ;; Install the missing packages
-  (dolist (p packages-list)
-    (when (not (package-installed-p p))
-      (package-install p))))
-
-;; Set the path properly on OS X.
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
 
 ;;; Bootstrap use-package
 ;; Install use-package if it's not already installed.
@@ -124,8 +82,8 @@
 ;;; Backups/autosaving
 
 ;; let's live on the edge and disable backup and autosave
-(setq backup-inhibited t)
-(setq auto-save-default nil)
+(setq backup-inhibited t
+      auto-save-default nil)
 
 ;; (setq backup-directory-alist `(("." . "~/.saves")))
 ;; (setq backup-by-copying t)
@@ -135,48 +93,6 @@
 ;; (custom-set-variables
 ;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
 ;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; ido
-
-(use-package ido)
-(ido-mode t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Parens and whitespace
-
-(use-package mic-paren)
-(paren-activate)
-
-(use-package whitespace)
-(setq whitespace-display-mappings
-      '((space-mark   ?\ [?\u00B7] [?.])
-        (space-mark   ?\xA0 [?\u00A4] [?_])
-        (newline-mark ?\n [?\u21B5 ?\n]
-                      [172 10] [?\u00AF ?\n]) ;; downwards arrow, ..., overscore
-        (tab-mark     ?\t [9655 9])))
-(setq whitespace-style
-      '(face
-        trailing
-        tabs
-        ;; tab-mark
-        ;; spaces
-        ;; space-mark
-        ;; lines-tail
-        ;; newline
-        ;; newline-mark
-        ;; empty
-        indentation::tab
-        indentation::space
-        indentation
-        space-after-tab::tab
-        space-after-tab::space
-        space-after-tab
-        space-before-tab::tab
-        space-before-tab::space
-        space-before-tab))
-
-(setq global-whitespace-mode nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Disable popup boxes
@@ -189,6 +105,56 @@
   "Prevent y-or-n-p from activating a dialog"
   (let ((use-dialog-box nil))
     ad-do-it))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ido
+
+(use-package ido
+  :init
+  (progn
+    (setq ido-enable-flex-matching t)
+    (setq ido-everywhere t)
+    (ido-mode t)
+    )
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Parens and whitespace
+
+(use-package mic-paren)
+(paren-activate)
+
+(use-package whitespace
+  :init
+  (setq global-whitespace-mode nil)
+  :config
+  (setq whitespace-display-mappings
+        '((space-mark   ?\ [?\u00B7] [?.])
+          (space-mark   ?\xA0 [?\u00A4] [?_])
+          (newline-mark ?\n [?\u21B5 ?\n]
+                        [172 10] [?\u00AF ?\n]) ;; downwards arrow, ..., overscore
+          (tab-mark     ?\t [9655 9])))
+  (setq whitespace-style
+        '(face
+          trailing
+          tabs
+          ;; tab-mark
+          ;; spaces
+          ;; space-mark
+          ;; lines-tail
+          ;; newline
+          ;; newline-mark
+          ;; empty
+          indentation::tab
+          indentation::space
+          indentation
+          space-after-tab::tab
+          space-after-tab::space
+          space-after-tab
+          space-before-tab::tab
+          space-before-tab::space
+          space-before-tab))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Keybindings
@@ -213,7 +179,6 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'wombat2 t)
-;; (load-theme 'plan9 t)
 
 (when window-system
   (if (eq system-type 'gnu/linux)
@@ -227,8 +192,8 @@
 
 ;; If we're windowed, set the transparency
 ;; Usage: (set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
-(set-frame-parameter (selected-frame) 'alpha '(100 100))
-(add-to-list 'default-frame-alist '(alpha 100 100))
+;; (set-frame-parameter (selected-frame) 'alpha '(100 100))
+;; (add-to-list 'default-frame-alist '(alpha 100 100))
 
 ;; If we're windowed, set the frame size.
 (when (display-graphic-p)
@@ -537,7 +502,6 @@
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
  '(dtrt-indent-mode t nil (dtrt-indent))
  '(fortran-comment-region "cccc")
- '(ido-mode (quote both) nil (ido))
  '(indicate-buffer-boundaries (quote right))
  '(markdown-coding-system (quote utf-8))
  '(markdown-command
