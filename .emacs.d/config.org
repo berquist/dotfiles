@@ -1,9 +1,8 @@
+* General configuration
+
 #+begin_src emacs-lisp
 (setq user-full-name "Eric J. Berquist"
       user-mail-address "eric.berquist@gmail.com")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; General configuration
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
@@ -45,10 +44,11 @@
 ;; Set the path properly on OS X.
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Backups/autosaving
+* Backups/autosaving
 
+#+begin_src emacs-lisp
 ;; let's live on the edge and disable backup and autosave
 (setq backup-inhibited t
       auto-save-default nil)
@@ -61,10 +61,11 @@
 ;; (custom-set-variables
 ;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
 ;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Disable popup boxes
+* Disable popup boxes
 
+#+begin_src emacs-lisp
 (defadvice yes-or-no-p (around prevent-dialog activate)
   "Prevent yes-or-no-p from activating a dialog"
   (let ((use-dialog-box nil))
@@ -73,10 +74,11 @@
   "Prevent y-or-n-p from activating a dialog"
   (let ((use-dialog-box nil))
     ad-do-it))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; ido
+* ido
 
+#+begin_src emacs-lisp
 (use-package ido
   :init
   (progn
@@ -85,10 +87,11 @@
     (ido-mode t)
     )
   )
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Parens and whitespace
+* Parens and whitespace
 
+#+begin_src emacs-lisp
 (use-package mic-paren)
 (paren-activate)
 
@@ -123,10 +126,11 @@
           space-before-tab::space
           space-before-tab))
   )
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Keybindings
+* Keybindings
 
+#+begin_src emacs-lisp
 ;; To reduce errors. Was: 'buffer-menu
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 ;; Was: 'ido-switch-buffer
@@ -141,10 +145,11 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
 (global-set-key (kbd "C-x C-h") 'replace-string)
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Theming and window shaping
+* Theming and window shaping
 
+#+begin_src emacs-lisp
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'wombat2 t)
 
@@ -172,10 +177,11 @@
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Spelling
+* Spelling
 
+#+begin_src emacs-lisp
 (setq flyspell-issue-welcome-flag nil)
 (setq flyspell-mode-line-string " FlyS")
 
@@ -209,10 +215,11 @@
 ;; (when (executable-find "hunspell")
 ;;   (setq-default ispell-program-name "hunspell")
 ;;   (setq ispell-really-hunspell t))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Flycheck
+* Flycheck
 
+#+begin_src emacs-lisp
 (use-package flycheck)
 ;; Don't start Flycheck willy-nilly all over the place...
 (setq-default global-flycheck-mode nil)
@@ -225,20 +232,22 @@
         idle-change))
 
 (setq flycheck-idle-change-delay 0.3)
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Pandoc
+* Pandoc
 
+#+begin_src emacs-lisp
 (use-package pandoc-mode)
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
 (add-hook 'markdown-mode-hook 'pandoc-mode)
 (add-hook 'latex-mode-hook 'pandoc-mode)
 (add-hook 'LaTeX-mode-hook 'pandoc-mode)
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Org
+* Org
 
+#+begin_src emacs-lisp
 ;; (add-hook 'org-mode-hook 'pandoc-mode)
 
 (org-babel-do-load-languages
@@ -253,10 +262,11 @@
 ;; (add-hook 'org-mode-hook
 ;;           (lambda ()
 ;;             (add-hook 'after-save-hook 'org-export-dispatch)))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; CSS
+* CSS
 
+#+begin_src emacs-lisp
 (use-package rainbow-mode)
 (defun my-css-mode-hook ()
   (rainbow-mode t))
@@ -266,10 +276,11 @@
   (lambda () (rainbow-mode 1)))
 
 ;; (my-global-rainbow-mode 1)
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; C/C++
+* C/C++
 
+#+begin_src emacs-lisp
 (setq auto-mode-alist
      (append '(("\\.C$" . c++-mode)
                ("\\.cc$" . c++-mode)
@@ -279,20 +290,22 @@
                ("\\.hh$" . c++-mode)
                ("\\.hpp$" . c++-mode)
                ) auto-mode-alist))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Makefiles
+* Makefiles
 
+#+begin_src emacs-lisp
 (setq auto-mode-alist
       (append '(("Makefile*\\'" . makefile-mode)
                 ("makefile*\\'" . makefile-mode)
                 ) auto-mode-alist))
 
 (add-hook 'makefile-mode-hook 'whitespace-mode)
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; FORTRAN
+* FORTRAN
 
+#+begin_src emacs-lisp
 ;; These might already be defaults, but it doesn't hurt.
 (setq auto-mode-alist
       (append '(("\\.f\\'"   . fortran-mode)
@@ -304,18 +317,21 @@
                 ("\\.f03\\'" . f90-mode)
                 ("\\.f08\\'" . f90-mode)
                 ) auto-mode-alist))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; PKGBUILDs
+* PKGBUILDs
 
+#+begin_src emacs-lisp
 (use-package pkgbuild-mode
   :mode
   (("/PKGBUILD/" . pkgbuild-mode))
   )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; systemd
+#+end_src
 
+* systemd
+
+#+begin_src emacs-lisp
  (add-to-list 'auto-mode-alist '("\\.service\\'" . conf-unix-mode))
  (add-to-list 'auto-mode-alist '("\\.timer\\'" . conf-unix-mode))
  (add-to-list 'auto-mode-alist '("\\.target\\'" . conf-unix-mode))
@@ -328,10 +344,11 @@
  (add-to-list 'auto-mode-alist '("\\.network\\'" . conf-unix-mode))
  (add-to-list 'auto-mode-alist '("\\.link\\'" . conf-unix-mode))
  (add-to-list 'auto-mode-alist '("\\.automount\\'" . conf-unix-mode))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; LaTeX
+* LaTeX
 
+#+begin_src emacs-lisp
 ;; (use-package auctex-latexmk)
 ;; (auctex-latexmk-setup)
 
@@ -340,15 +357,17 @@
 (add-hook 'latex-mode-hook 'whitespace-mode)
 (add-hook 'LaTeX-mode-hook 'flycheck-mode)
 (add-hook 'LaTeX-mode-hook 'whitespace-mode)
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Shell
+* Shell
 
+#+begin_src emacs-lisp
 (add-hook 'sh-mode-hook 'flycheck-mode)
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Python
+* Python
 
+#+begin_src emacs-lisp
 (setq
  python-shell-interpreter "ipython"
  )
@@ -364,10 +383,11 @@
 ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
 
 (setq flycheck-pylintrc "~/.pylintrc")
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Markdown
+* Markdown
 
+#+begin_src emacs-lisp
 (use-package markdown-mode
   :mode
   (("\\.text\\'" . markdown-mode)
@@ -380,23 +400,25 @@
 (add-hook 'markdown-mode-hook
           (lambda ()
             (add-hook 'after-save-hook 'markdown-export t :local)))
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; CMAKE
+* CMAKE
 
-;; This sections needs to come after the Markdown section so that
-;; CMake files get recognized properly.
+This sections needs to come after the Markdown section so that CMake
+files get recognized properly.
 
+#+begin_src emacs-lisp
 (use-package cmake-mode
   :mode
   (("CMakeLists\\.txt\\'" . cmake-mode)
    ("CMakeCache\\.txt\\'" . cmake-mode)
    ("\\.cmake\\'" . cmake-mode))
   )
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; docview
+* docview
 
+#+begin_src emacs-lisp
 (use-package doc-view
   :config
   ;; paging up and down globally
@@ -409,24 +431,27 @@
   ;; always refresh when the contents change
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; scratch buffers
+* scratch buffers
 
+#+begin_src emacs-lisp
 (use-package scratch)
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; yasnippet
+* yasnippet
 
+#+begin_src emacs-lisp
 (use-package yasnippet
   :config
   (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
   (yas-global-mode)
   )
+#+end_src
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Macros
+* Macros
 
+#+begin_src emacs-lisp
 (fset 'manip-xyz-line-from-pdf
       (lambda
         (&optional arg)
@@ -435,11 +460,11 @@
         (kmacro-exec-ring-item
          (quote
           ("   " 0 "%d")) arg)))
+#+end_src
 
+* Other
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Other
-
+#+begin_src emacs-lisp
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
