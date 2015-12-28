@@ -47,44 +47,42 @@
 * Backups/autosaving
 
 #+begin_src emacs-lisp
-;; let's live on the edge and disable backup and autosave
-(setq backup-inhibited t
-      auto-save-default nil)
+  ;; let's live on the edge and disable backup and autosave
+  (setq backup-inhibited t
+        auto-save-default nil)
 
-;; (setq backup-directory-alist `(("." . "~/.saves")))
-;; (setq backup-by-copying t)
-;; (setq tramp-auto-save-directory "~/.saves")
+  ;; (setq backup-directory-alist `(("." . "~/.saves")))
+  ;; (setq backup-by-copying t)
+  ;; (setq tramp-auto-save-directory "~/.saves")
 
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-;; (custom-set-variables
-;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
-;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
+  ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+  ;; (custom-set-variables
+  ;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
+  ;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
 #+end_src
 
 * Disable popup boxes
 
 #+begin_src emacs-lisp
-(defadvice yes-or-no-p (around prevent-dialog activate)
-  "Prevent yes-or-no-p from activating a dialog"
-  (let ((use-dialog-box nil))
-    ad-do-it))
-(defadvice y-or-n-p (around prevent-dialog-yorn activate)
-  "Prevent y-or-n-p from activating a dialog"
-  (let ((use-dialog-box nil))
-    ad-do-it))
+  (defadvice yes-or-no-p (around prevent-dialog activate)
+    "Prevent yes-or-no-p from activating a dialog"
+    (let ((use-dialog-box nil))
+      ad-do-it))
+  (defadvice y-or-n-p (around prevent-dialog-yorn activate)
+    "Prevent y-or-n-p from activating a dialog"
+    (let ((use-dialog-box nil))
+      ad-do-it))
 #+end_src
 
 * ido
 
 #+begin_src emacs-lisp
-(use-package ido
-  :init
-  (progn
-    (setq ido-enable-flex-matching t)
-    (setq ido-everywhere t)
-    (ido-mode t)
-    )
-  )
+  (use-package ido
+    :init
+    (progn
+      (setq ido-enable-flex-matching t)
+      (setq ido-everywhere t)
+      (ido-mode t)))
 #+end_src
 
 * Parens and whitespace
