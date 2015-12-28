@@ -1,6 +1,6 @@
 ;;; -*- Mode: Emacs-Lisp -*-
 
-(setq user-full-name "Eric Berquist"
+(setq user-full-name "Eric J. Berquist"
       user-mail-address "eric.berquist@gmail.com")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -10,12 +10,12 @@
 
 ;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
-(menu-bar-mode 1)
+(menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(when window-system (menu-bar-mode 1))
 
 ;; What's the difference between setq and setq-default?
-
 ;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
 (setq inhibit-splash-screen t
@@ -24,7 +24,10 @@
       initial-scratch-message nil
       initial-major-mode 'gfm-mode)
 
+;; transient-mark-mode: ...
+;; visual-line-mode: ...
 (setq-default transient-mark-mode t
+              visual-line-mode t
               line-number-mode t
               column-number-mode t
               cursor-type '(hbar . 2))
@@ -43,30 +46,12 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
-(require 'ido)
-(ido-mode t)
-
 ;; What platform are we on? darwin, gnu/linux
 (defvar system-type-as-string (prin1-to-string system-type))
 (defun sys () system-type-as-string)
 
+;; What does this do?
 ;; (setq-default 'case-fold-search t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Backups/autosaving
-
-;; let's live on the edge and disable backup and autosave
-(setq backup-inhibited t)
-(setq auto-save-default nil)
-
-;; (setq backup-directory-alist `(("." . "~/.saves")))
-;; (setq backup-by-copying t)
-;; (setq tramp-auto-save-directory "~/.saves")
-
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-;; (custom-set-variables
-;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
-;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Packages: packages.el
@@ -98,6 +83,7 @@
     websocket
     pandoc-mode
     pkgbuild-mode
+    ein
     ;;; themes
     plan9-theme
     )
@@ -121,13 +107,48 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+;;; Bootstrap use-package
+;; Install use-package if it's not already installed.
+;; use-package is used to configure the rest of the packages.
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(setq use-package-always-ensure t
+      use-package-verbose t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Backups/autosaving
+
+;; let's live on the edge and disable backup and autosave
+(setq backup-inhibited t)
+(setq auto-save-default nil)
+
+;; (setq backup-directory-alist `(("." . "~/.saves")))
+;; (setq backup-by-copying t)
+;; (setq tramp-auto-save-directory "~/.saves")
+
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+;; (custom-set-variables
+;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
+;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ido
+
+(use-package ido)
+(ido-mode t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Parens and whitespace
 
-(require 'mic-paren)
+(use-package mic-paren)
 (paren-activate)
 
-(require 'whitespace)
+(use-package whitespace)
 (setq whitespace-display-mappings
       '((space-mark   ?\ [?\u00B7] [?.])
         (space-mark   ?\xA0 [?\u00A4] [?_])
@@ -188,7 +209,7 @@
 (global-set-key (kbd "C-x C-h") 'replace-string)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Theming
+;;; Theming and window shaping
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'wombat2 t)
@@ -209,6 +230,12 @@
 (set-frame-parameter (selected-frame) 'alpha '(100 100))
 (add-to-list 'default-frame-alist '(alpha 100 100))
 
+;; If we're windowed, set the frame size.
+(when (display-graphic-p)
+  ;; 11-inch MacBook Air
+  (if (eq system-type 'darwin)
+      (set-frame-size (selected-frame) 191 55)))
+
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
@@ -219,6 +246,7 @@
 (setq flyspell-issue-welcome-flag nil)
 (setq flyspell-mode-line-string " FlyS")
 
+;; These are the modes flyspell should be enabled for.
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
 (dolist (hook '(change-log-mode-hook
@@ -232,7 +260,7 @@
             '(lambda ()
                (flyspell-prog-mode))))
 
-(global-set-key (kbd "<f8>") 'ispell-word) ;; built-in binding is M-$
+(global-set-key (kbd "<f8>") 'ispell-word) ;; built-in binding is M-$, ew
 (global-set-key (kbd "C-S-<f8>") 'flyspell-mode)
 (global-set-key (kbd "C-M-<f8>") 'flyspell-buffer)
 (global-set-key (kbd "C-<f8>") 'flyspell-check-previous-highlighted-word)
@@ -252,7 +280,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Flycheck
 
-(require 'flycheck)
+(use-package flycheck)
 ;; Don't start Flycheck willy-nilly all over the place...
 (setq-default global-flycheck-mode nil)
 ;; (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -268,7 +296,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Pandoc
 
-(require 'pandoc-mode)
+(use-package pandoc-mode)
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
 (add-hook 'markdown-mode-hook 'pandoc-mode)
@@ -276,9 +304,27 @@
 (add-hook 'LaTeX-mode-hook 'pandoc-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Org
+
+;; (add-hook 'org-mode-hook 'pandoc-mode)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (C . t)
+   ;; How to handle C++?
+   ;; (C++ . t)
+   (latex . t)
+   (python . t)))
+
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (add-hook 'after-save-hook 'org-export-dispatch)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CSS
 
-(require 'rainbow-mode)
+(use-package rainbow-mode)
 (defun my-css-mode-hook ()
   (rainbow-mode t))
 (add-hook 'css-mode-hook 'my-css-mode-hook)
@@ -329,10 +375,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; PKGBUILDs
 
-(require 'pkgbuild-mode)
-(setq auto-mode-alist
-      (append '(("/PKGBUILD/" . pkgbuild-mode)
-                ) auto-mode-alist))
+(use-package pkgbuild-mode
+  :mode
+  (("/PKGBUILD/" . pkgbuild-mode))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; systemd
@@ -353,27 +399,32 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; LaTeX
 
-;; (require 'auctex-latexmk)
+;; (use-package auctex-latexmk)
 ;; (auctex-latexmk-setup)
 
+;; grrrrrr what's with the capitalization
 (add-hook 'latex-mode-hook 'flycheck-mode)
 (add-hook 'latex-mode-hook 'whitespace-mode)
 (add-hook 'LaTeX-mode-hook 'flycheck-mode)
 (add-hook 'LaTeX-mode-hook 'whitespace-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; shell
+;;; Shell
 
 (add-hook 'sh-mode-hook 'flycheck-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Python
 
+(setq
+ python-shell-interpreter "ipython"
+ )
+
 (add-hook 'python-mode-hook 'flycheck-mode)
 (add-hook 'python-mode-hook 'whitespace-mode)
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
-(require 'flycheck-pyflakes)
+(use-package flycheck-pyflakes)
 ;; Don't disable these, in case pyflakes isn't available.
 ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
 ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
@@ -384,18 +435,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Markdown
 
-(require 'markdown-mode)
+(use-package markdown-mode
+  :mode
+  (("\\.text\\'" . markdown-mode)
+   ("\\.txt\\'" . markdown-mode)
+   ("\\.markdown\\'" . markdown-mode)
+   ("\\.mdown\\'" . markdown-mode)
+   ("\\.md\\'" . gfm-mode))
+  )
 
-(autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.mdown\\'" . gfm-mode))
-
-(add-to-list 'load-path "~/.emacs.d/markdown-preview-mode")
-(require 'markdown-preview-mode)
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (add-hook 'after-save-hook 'markdown-export t :local)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CMAKE
@@ -403,25 +454,44 @@
 ;; This sections needs to come after the Markdown section so that
 ;; CMake files get recognized properly.
 
-(require 'cmake-mode)
-(setq auto-mode-alist
-      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-                ("CMakeCache\\.txt\\'" . cmake-mode)
-                ("\\.cmake\\'" . cmake-mode)
-                ) auto-mode-alist))
+(use-package cmake-mode
+  :mode
+  (("CMakeLists\\.txt\\'" . cmake-mode)
+   ("CMakeCache\\.txt\\'" . cmake-mode)
+   ("\\.cmake\\'" . cmake-mode))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; docview
 
-;; paging up and down globally
-(fset 'doc-prev "\C-xo\C-x[\C-xo")
-(fset 'doc-next "\C-xo\C-x]\C-xo")
-(global-set-key (kbd "M-[") 'doc-prev)
-(global-set-key (kbd "M-]") 'doc-next)
+(use-package doc-view
+  :config
+  ;; paging up and down globally
+  ;; (fset 'doc-prev "\C-xo\C-x[\C-xo")
+  ;; (fset 'doc-next "\C-xo\C-x]\C-xo")
+  ;; (global-set-key (kbd "M-[") 'doc-prev)
+  ;; (global-set-key (kbd "M-]") 'doc-next)
+  (define-key doc-view-mode-map (kbd "M-[") 'doc-view-previous-page)
+  (define-key doc-view-mode-map (kbd "M-]") 'doc-view-next-page)
+  ;; always refresh when the contents change
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+  )
 
-;; always refresh when the contents change
-(add-hook 'doc-view-mode-hook 'auto-revert-mode)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; scratch buffers
 
+(use-package scratch)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; yasnippet
+
+(use-package yasnippet
+  :config
+  (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
+  (yas-global-mode)
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Macros
 
 (fset 'manip-xyz-line-from-pdf
@@ -469,14 +539,18 @@
  '(fortran-comment-region "cccc")
  '(ido-mode (quote both) nil (ido))
  '(indicate-buffer-boundaries (quote right))
- '(markdown-command "pandoc -c file://${HOME}/.emacs.d/github-pandoc.css -f markdown_github -t html5 --smart --mathjax --highlight-style pygments --standalone")
- '(markdown-css-path
-   "file://${HOME}/.emacs.d/github-markdown.css")
+ '(markdown-coding-system (quote utf-8))
+ '(markdown-command
+   "pandoc -c file://${HOME}/.emacs.d/github-pandoc.css -f markdown_github -t html5 --smart --mathjax --highlight-style pygments --standalone")
+ '(markdown-css-path "file://${HOME}/.emacs.d/github-pandoc.css")
  '(markdown-enable-math t)
  '(markdown-link-space-sub-char "-")
- '(markdown-preview-style
-   "file://${HOME}/.emacs.d/github-markdown.css")
+ '(markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css")
  '(my-global-rainbow-mode nil)
+ '(org-babel-python-command "ipython")
+ '(org-export-backends (quote (ascii html icalendar latex md)))
+ '(org-export-dispatch-use-expert-ui t)
+ '(org-src-fontify-natively t)
  '(paren-delay nil)
  '(paren-highlight-at-point t)
  '(paren-highlight-offscreen t)
