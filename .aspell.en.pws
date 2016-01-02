@@ -1,15 +1,17 @@
-personal_ws-1.1 en 104 
+personal_ws-1.1 en 112 
 perturbative
 Zeeman
 hyperfine
 glutamate
 LDA
 MCSCF
+infographic
 intramolecular
 covalent
 Paramagnetic
 optimizations
 diagonalization
+enantiomers
 observables
 thermochemical
 SORCI
@@ -32,10 +34,12 @@ biradical
 Hexacoordinated
 Saxena
 wavefunctions
+InChI
 erfc
 UPBE
 wavefunction
 ligand
+emacs
 magnetizabilities
 underbinding
 ROHF
@@ -45,6 +49,7 @@ ligands
 MRCI
 Jahn
 Hartree
+timeline
 carbonyl
 GGA
 UKS
@@ -99,7 +104,10 @@ bioinorganic
 Minimodels
 orthonormal
 chromophore
+stereochemical
 overdelocalization
 diethylaminetriamine
+machina
 SCF
+stereocenter
 quadrupole
