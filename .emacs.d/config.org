@@ -44,7 +44,9 @@
 
   ;; Set the path properly on OS X.
   (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize))
+    (use-package exec-path-from-shell
+      :config
+      (exec-path-from-shell-initialize)))
 #+end_src
 
 * Backups/autosaving
@@ -534,6 +536,24 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
     :config
     (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
     (yas-global-mode 1)
+    )
+#+end_src
+
+* View large files (vlf)
+
+Setting ensure to nil is necessary, because the name of the package and how we load it are different.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package vlf-setup
+    :ensure nil)
+#+END_SRC
+
+* Tabbar
+
+#+begin_src emacs-lisp
+  (use-package tabbar
+    :config
+    (tabbar-mode 1)
     )
 #+end_src
 

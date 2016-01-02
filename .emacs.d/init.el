@@ -85,6 +85,7 @@
  '(paren-highlight-offscreen t)
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
+ '(tabbar-use-images nil)
  '(vc-follow-symlinks t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
