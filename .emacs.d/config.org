@@ -506,6 +506,25 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 
 #+end_src
 
+* deft
+
+Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' website]].
+
+#+begin_src emacs-lisp
+  (use-package deft
+    :config
+    (progn
+      (setq
+       ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
+       deft-directory "~/Dropbox/Notes"
+       deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex")
+       deft-time-format " %Y-%m-%d %H:%M:%S"
+       deft-recursive t
+       deft-use-filename-as-title t)
+      (global-set-key [f9] 'deft))
+    )
+#+end_src
+
 * CMAKE
   :PROPERTIES:
   :all-set:  true
