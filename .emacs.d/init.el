@@ -71,6 +71,8 @@
    (quote
     ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
  '(fortran-comment-region "cccc")
+ '(git-gutter:handled-backends (quote (git svn hg bzr)))
+ '(git-gutter:hide-gutter t)
  '(indicate-buffer-boundaries (quote right))
  '(markdown-coding-system (quote utf-8))
  '(markdown-command
@@ -85,6 +87,7 @@
  '(paren-highlight-offscreen t)
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
+ '(tabbar-separator (quote (0.5)))
  '(tabbar-use-images nil)
  '(vc-follow-symlinks t))
 (custom-set-faces

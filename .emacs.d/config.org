@@ -96,9 +96,9 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   (use-package ido
     :init
     (progn
+      (ido-mode t)
       (setq ido-enable-flex-matching t)
-      (setq ido-everywhere t)
-      (ido-mode t)))
+      (setq ido-everywhere t)))
 #+end_src
 
 * Parens/whitespace/indentation
@@ -254,6 +254,8 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   :all-set:  false
   :END:
 
+** General
+
 #+begin_src emacs-lisp
   (use-package flycheck)
   ;; Don't start Flycheck willy-nilly all over the place...
@@ -267,6 +269,30 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
           idle-change))
 
   (setq flycheck-idle-change-delay 0.3)
+
+#+end_src
+
+** checkbashisms
+
+For this to work, =checkbashisms= needs to be available on the =$PATH=:
+
+#+begin_src sh
+  yaourt -S checkbashisms # Arch Linux, from AUR
+  brew install checkbashisms # Mac OS X, from Homebrew
+  sudo apt-get install devscripts # Debian/Ubuntu, official
+  sudo yum install rpmdevtools # Red Hat/CentOS
+  sudo pkg install checkbashisms # FreeBSD
+#+end_src
+
+#+begin_src emacs-lisp
+  (use-package flycheck-checkbashisms
+    :config
+    (progn
+      (flycheck-checkbashisms-setup)
+      (setq
+       ;; Check 'echo -n' usage
+       flycheck-checkbashisms-newline t
+       flycheck-checkbashisms-posix t)))
 #+end_src
 
 * Pandoc
@@ -535,6 +561,7 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   (use-package yasnippet
     :config
     (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
+    ;; (add-to-list 'auto-mode-alist '("\\.snippet\\'" . snippet-mode))
     (yas-global-mode 1)
     )
 #+end_src
@@ -555,6 +582,16 @@ Setting ensure to nil is necessary, because the name of the package and how we l
     :config
     (tabbar-mode 1)
     )
+#+end_src
+
+* git-gutter
+
+#+begin_src emacs-lisp
+  (use-package git-gutter
+    :config
+    (progn
+      (global-git-gutter-mode 1)
+      (git-gutter:linum-setup)))
 #+end_src
 
 * Macros
