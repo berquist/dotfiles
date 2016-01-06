@@ -11,7 +11,7 @@ code_gitignore
 
 build_qchem.sh
 qcrc
-
+configure.sh
 configure.log
 build
 exe
