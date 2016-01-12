@@ -1,4 +1,4 @@
-personal_ws-1.1 en 112 
+personal_ws-1.1 en 117 
 perturbative
 Zeeman
 hyperfine
@@ -8,12 +8,15 @@ MCSCF
 infographic
 intramolecular
 covalent
+paramagnetic
 Paramagnetic
 optimizations
+polarizability
 diagonalization
 enantiomers
 observables
 thermochemical
+magnetizability
 SORCI
 BLYP
 parameterized
@@ -48,6 +51,7 @@ LRC
 ligands
 MRCI
 Jahn
+shieldings
 Hartree
 timeline
 carbonyl
@@ -90,6 +94,7 @@ amino
 endonuclease
 hexacoordinate
 functionals
+extensibility
 unphysical
 unscaled
 tetraammine
