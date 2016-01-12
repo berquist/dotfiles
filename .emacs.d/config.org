@@ -577,12 +577,12 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
   :END:
 
 #+begin_src emacs-lisp
-  (use-package yasnippet
-    :config
-    (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
-    ;; (add-to-list 'auto-mode-alist '("\\.snippet\\'" . snippet-mode))
-    (yas-global-mode 1)
-    )
+  ;; (use-package yasnippet
+  ;;   :config
+  ;;   (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
+  ;;   ;; (add-to-list 'auto-mode-alist '("\\.snippet\\'" . snippet-mode))
+  ;;   (yas-global-mode 1)
+  ;;   )
 #+end_src
 
 * View large files (vlf)
@@ -590,27 +590,27 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 Setting ensure to nil is necessary, because the name of the package and how we load it are different.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package vlf-setup
-    :ensure nil)
+  ;; (use-package vlf-setup
+  ;;   :ensure nil)
 #+END_SRC
 
 * Tabbar
 
 #+begin_src emacs-lisp
-  (use-package tabbar
-    :config
-    (tabbar-mode 1)
-    )
+  ;; (use-package tabbar
+  ;;   :config
+  ;;   (tabbar-mode 1)
+  ;;   )
 #+end_src
 
 * git-gutter
 
 #+begin_src emacs-lisp
-  (use-package git-gutter
-    :config
-    (progn
-      (global-git-gutter-mode 1)
-      (git-gutter:linum-setup)))
+  ;; (use-package git-gutter
+  ;;   :config
+  ;;   (progn
+  ;;     (global-git-gutter-mode 1)
+  ;;     (git-gutter:linum-setup)))
 #+end_src
 
 * Macros

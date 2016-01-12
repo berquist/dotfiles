@@ -82,9 +82,6 @@
  '(markdown-link-space-sub-char "-")
  '(markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css")
  '(my-global-rainbow-mode nil)
- '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-velocity)))
  '(paren-delay nil)
  '(paren-highlight-at-point t)
  '(paren-highlight-offscreen t)
