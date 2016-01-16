@@ -1,15 +1,22 @@
+# -*- mode: conf; -*-
+
 [user]
         name = Eric Berquist
         email = eric.berquist@gmail.com
+
 [core]
         editor = emacs -nw
+
 [color]
         ui = true
+
 [push]
         default = simple
+
 [merge]
         conflictstyle = diff3
         verbosity = 3
+
 [alias]
         # The basics.
         aa = add --all
@@ -30,3 +37,12 @@
         rhu = reset --hard @{u}
         amend = commit --amend -C HEAD
         undo = reset --soft HEAD^
+
+        ## Useful for LaTeX.
+        # git wdiff HEAD~1
+        wdiff = diff --color-words --ignore-all-space
+        # git ldiff HEAD~1 > diff.tex
+        ldiff = difftool -y -t latex
+
+[difftool.latex]
+        cmd = latexdiff -t CFONT "$LOCAL" "$REMOTE"
