@@ -1,4 +1,4 @@
-personal_ws-1.1 en 117 
+personal_ws-1.1 en 121 
 perturbative
 Zeeman
 hyperfine
@@ -9,7 +9,6 @@ infographic
 intramolecular
 covalent
 paramagnetic
-Paramagnetic
 optimizations
 polarizability
 diagonalization
@@ -32,6 +31,7 @@ perchlorate
 imidazole
 solvation
 delocalized
+parallelized
 Hamiltonians
 biradical
 Hexacoordinated
@@ -50,13 +50,14 @@ CCSD
 LRC
 ligands
 MRCI
-Jahn
 shieldings
+Jahn
 Hartree
 timeline
 carbonyl
 GGA
 UKS
+nanoparticles
 th
 interelectronic
 Fock
@@ -80,11 +81,13 @@ multireference
 parametrized
 semiempirical
 Blumberg
+NMR
 initio
 perturbatively
 overbinding
 metalloproteins
 histidine
+computable
 LYP
 parametrization
 overlocalization
@@ -109,6 +112,7 @@ bioinorganic
 Minimodels
 orthonormal
 chromophore
+hyperpolarizabilities
 stereochemical
 overdelocalization
 diethylaminetriamine
