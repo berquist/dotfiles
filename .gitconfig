@@ -39,10 +39,12 @@
         undo = reset --soft HEAD^
 
         ## Useful for LaTeX.
+        ## Taken from https://wiki.math.cmu.edu/iki/wiki/tips/20140301-git-latexdiff.html
         # git wdiff HEAD~1
         wdiff = diff --color-words --ignore-all-space
-        # git ldiff HEAD~1 > diff.tex
+        wdc = diff --color-words --ignore-all-space --cached
+        # git ldiff HEAD~1
         ldiff = difftool -y -t latex
 
 [difftool.latex]
-        cmd = latexdiff -t CFONT "$LOCAL" "$REMOTE"
+        cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
