@@ -62,3 +62,7 @@ test/es_2_ctnum_atomic.om
 test/es_3_ctnum_atomic.om
 
 test/QMMM_ZEO-force.qcin
+
+# This is because git-svn doesn't work properly.
+libqints
+libposthf
