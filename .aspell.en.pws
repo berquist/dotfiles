@@ -1,8 +1,8 @@
-personal_ws-1.1 en 128 
+personal_ws-1.1 en 131 
 perturbative
+Zeeman
 hyperfine
 glutamate
-Zeeman
 LDA
 MCSCF
 infographic
@@ -14,15 +14,16 @@ polarizability
 diagonalization
 enantiomers
 observables
-magnetizability
 thermochemical
-BLYP
+magnetizability
 SORCI
+BLYP
 libtensor
 parameterized
 DFT
 multiconfigurational
 TPSS
+lookups
 Neese
 parametrize
 vibrational
@@ -30,15 +31,15 @@ Dunning's
 Berquist
 perchlorate
 imidazole
-delocalized
 solvation
+delocalized
 parallelized
 Hamiltonians
 biradical
 Hexacoordinated
 Saxena
-InChI
 wavefunctions
+InChI
 erfc
 UPBE
 wavefunction
@@ -52,12 +53,13 @@ mopropman
 LRC
 ligands
 MRCI
-Jahn
 shieldings
+Jahn
 Hartree
 timeline
 carbonyl
 GGA
+autocorrelation
 UKS
 modularity
 nanoparticles
@@ -82,10 +84,11 @@ degeneracies
 Hirao
 multireference
 parametrized
+ACF
+codebase
+semiempirical
 Blumberg
 NMR
-semiempirical
-codebase
 initio
 perturbatively
 overbinding
