@@ -1,6 +1,6 @@
 ;;; wombatmod-theme.el --- Custom face theme for Emacs  -*-coding: utf-8 -*-
 
-;; Copyright (C) 2011-2013 Free Software Foundation, Inc.
+;; Copyright (C) 2011-2015 Free Software Foundation, Inc.
 
 ;; Author: Kristoffer Grönlund <krig@koru.se>
 
@@ -27,77 +27,89 @@ Adapted, with permission, from a Vim color scheme by Lars H. Nielsen.
 Basic, Font Lock, Isearch, Gnus, Message, and Ansi-Color faces
 are included.")
 
-(let ((class '((class color) (min-colors 89))))
+(let ((class '((class color) (min-colors 89)))
+
+      ;; These have names corresponding to the ANSI spots, *not* the
+      ;; actual colors they contain.
+      (wombat/black "#242424")
+      (wombat/red "#e5786d")
+      (wombat/green "#95e454")
+      (wombat/yellow "#cae682")
+      (wombat/blue "#8ac6f2")
+      (wombat/magenta "#333366")
+      (wombat/cyan "#ccaa8f")
+      (wombat/white "#f6f3e8"))
+
   (custom-theme-set-faces
    'wombatmod
-   `(default ((,class (:background "#242424" :foreground "#f6f3e8"))))
+   `(default ((,class (:background ,wombat/black :foreground ,wombat/white))))
    `(cursor ((,class (:background "#656565"))))
    ;; Highlighting faces
    `(fringe ((,class (:background "#303030"))))
    `(highlight ((,class (:background "#454545" :foreground "#ffffff"
 			 :underline t))))
-   `(region ((,class (:background "#444444" :foreground "#f6f3e8"))))
-   `(secondary-selection ((,class (:background "#333366" :foreground "#f6f3e8"))))
+   `(region ((,class (:background "#444444" :foreground ,wombat/white))))
+   `(secondary-selection ((,class (:background ,wombat/magenta :foreground ,wombat/white))))
    `(isearch ((,class (:background "#343434" :foreground "#857b6f"))))
    `(lazy-highlight ((,class (:background "#384048" :foreground "#a0a8b0"))))
    ;; Mode line faces
-   `(mode-line ((,class (:background "#444444" :foreground "#f6f3e8"))))
+   `(mode-line ((,class (:background "#444444" :foreground ,wombat/white))))
    `(mode-line-inactive ((,class (:background "#444444" :foreground "#857b6f"))))
    ;; Escape and prompt faces
-   `(minibuffer-prompt ((,class (:foreground "#e5786d"))))
+   `(minibuffer-prompt ((,class (:foreground ,wombat/red))))
    `(escape-glyph ((,class (:foreground "#ddaa6f" :weight bold))))
    ;; Font lock faces
-   `(font-lock-builtin-face ((,class (:foreground "#e5786d"))))
+   `(font-lock-builtin-face ((,class (:foreground ,wombat/red))))
    `(font-lock-comment-face ((,class (:foreground "#99968b"))))
-   `(font-lock-constant-face ((,class (:foreground "#e5786d"))))
-   `(font-lock-function-name-face ((,class (:foreground "#cae682"))))
-   `(font-lock-keyword-face ((,class (:foreground "#8ac6f2" :weight bold))))
-   `(font-lock-string-face ((,class (:foreground "#95e454"))))
+   `(font-lock-constant-face ((,class (:foreground ,wombat/red))))
+   `(font-lock-function-name-face ((,class (:foreground ,wombat/yellow))))
+   `(font-lock-keyword-face ((,class (:foreground ,wombat/blue :weight bold))))
+   `(font-lock-string-face ((,class (:foreground ,wombat/green))))
    `(font-lock-type-face ((,class (:foreground "#92a65e" :weight bold))))
-   `(font-lock-variable-name-face ((,class (:foreground "#cae682"))))
-   `(font-lock-warning-face ((,class (:foreground "#ccaa8f"))))
+   `(font-lock-variable-name-face ((,class (:foreground ,wombat/yellow))))
+   `(font-lock-warning-face ((,class (:foreground ,wombat/cyan))))
    ;; Button and link faces
-   `(link ((,class (:foreground "#8ac6f2" :underline t))))
-   `(link-visited ((,class (:foreground "#e5786d" :underline t))))
-   `(button ((,class (:background "#333333" :foreground "#f6f3e8"))))
+   `(link ((,class (:foreground ,wombat/blue :underline t))))
+   `(link-visited ((,class (:foreground ,wombat/red :underline t))))
+   `(button ((,class (:background "#333333" :foreground ,wombat/white))))
    `(header-line ((,class (:background "#303030" :foreground "#e7f6da"))))
    ;; Gnus faces
-   `(gnus-group-news-1 ((,class (:weight bold :foreground "#95e454"))))
-   `(gnus-group-news-1-low ((,class (:foreground "#95e454"))))
-   `(gnus-group-news-2 ((,class (:weight bold :foreground "#cae682"))))
-   `(gnus-group-news-2-low ((,class (:foreground "#cae682"))))
-   `(gnus-group-news-3 ((,class (:weight bold :foreground "#ccaa8f"))))
-   `(gnus-group-news-3-low ((,class (:foreground "#ccaa8f"))))
+   `(gnus-group-news-1 ((,class (:weight bold :foreground ,wombat/green))))
+   `(gnus-group-news-1-low ((,class (:foreground ,wombat/green))))
+   `(gnus-group-news-2 ((,class (:weight bold :foreground ,wombat/yellow))))
+   `(gnus-group-news-2-low ((,class (:foreground ,wombat/yellow))))
+   `(gnus-group-news-3 ((,class (:weight bold :foreground ,wombat/cyan))))
+   `(gnus-group-news-3-low ((,class (:foreground ,wombat/cyan))))
    `(gnus-group-news-4 ((,class (:weight bold :foreground "#99968b"))))
    `(gnus-group-news-4-low ((,class (:foreground "#99968b"))))
-   `(gnus-group-news-5 ((,class (:weight bold :foreground "#cae682"))))
-   `(gnus-group-news-5-low ((,class (:foreground "#cae682"))))
+   `(gnus-group-news-5 ((,class (:weight bold :foreground ,wombat/yellow))))
+   `(gnus-group-news-5-low ((,class (:foreground ,wombat/yellow))))
    `(gnus-group-news-low ((,class (:foreground "#99968b"))))
-   `(gnus-group-mail-1 ((,class (:weight bold :foreground "#95e454"))))
-   `(gnus-group-mail-1-low ((,class (:foreground "#95e454"))))
-   `(gnus-group-mail-2 ((,class (:weight bold :foreground "#cae682"))))
-   `(gnus-group-mail-2-low ((,class (:foreground "#cae682"))))
-   `(gnus-group-mail-3 ((,class (:weight bold :foreground "#ccaa8f"))))
-   `(gnus-group-mail-3-low ((,class (:foreground "#ccaa8f"))))
+   `(gnus-group-mail-1 ((,class (:weight bold :foreground ,wombat/green))))
+   `(gnus-group-mail-1-low ((,class (:foreground ,wombat/green))))
+   `(gnus-group-mail-2 ((,class (:weight bold :foreground ,wombat/yellow))))
+   `(gnus-group-mail-2-low ((,class (:foreground ,wombat/yellow))))
+   `(gnus-group-mail-3 ((,class (:weight bold :foreground ,wombat/cyan))))
+   `(gnus-group-mail-3-low ((,class (:foreground ,wombat/cyan))))
    `(gnus-group-mail-low ((,class (:foreground "#99968b"))))
-   `(gnus-header-content ((,class (:foreground "#8ac6f2"))))
-   `(gnus-header-from ((,class (:weight bold :foreground "#95e454"))))
-   `(gnus-header-subject ((,class (:foreground "#cae682"))))
-   `(gnus-header-name ((,class (:foreground "#8ac6f2"))))
-   `(gnus-header-newsgroups ((,class (:foreground "#cae682"))))
+   `(gnus-header-content ((,class (:foreground ,wombat/blue))))
+   `(gnus-header-from ((,class (:weight bold :foreground ,wombat/green))))
+   `(gnus-header-subject ((,class (:foreground ,wombat/yellow))))
+   `(gnus-header-name ((,class (:foreground ,wombat/blue))))
+   `(gnus-header-newsgroups ((,class (:foreground ,wombat/yellow))))
    ;; Message faces
-   `(message-header-name ((,class (:foreground "#8ac6f2" :weight bold))))
-   `(message-header-cc ((,class (:foreground "#95e454"))))
-   `(message-header-other ((,class (:foreground "#95e454"))))
-   `(message-header-subject ((,class (:foreground "#cae682"))))
-   `(message-header-to ((,class (:foreground "#cae682"))))
+   `(message-header-name ((,class (:foreground ,wombat/blue :weight bold))))
+   `(message-header-cc ((,class (:foreground ,wombat/green))))
+   `(message-header-other ((,class (:foreground ,wombat/green))))
+   `(message-header-subject ((,class (:foreground ,wombat/yellow))))
+   `(message-header-to ((,class (:foreground ,wombat/yellow))))
    `(message-cited-text ((,class (:foreground "#99968b"))))
-   `(message-separator ((,class (:foreground "#e5786d" :weight bold))))))
+   `(message-separator ((,class (:foreground ,wombat/red :weight bold))))))
 
 (custom-theme-set-variables
  'wombatmod
- '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682"
-			    "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"]))
+ '(ansi-color-names-vector [,wombat/black ,wombat/red ,wombat/green ,wombat/yellow
+                            ,wombat/blue ,wombat/magenta ,wombat/cyan ,wombat/white]))
 
 (provide-theme 'wombatmod)
 

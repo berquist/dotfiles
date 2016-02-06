@@ -1,4 +1,4 @@
-;;; color-theme-wombat.el --- The wombat color theme for Emacs.
+;;; wombat2-theme.el --- The wombat color theme for Emacs.   -*-coding: utf-8 -*-
 ;; Copyright (C) 2009 Jesus Alvarez
 
 ;; Author: Jesus Alvarez <demizer.one@gmail.com>
@@ -7,20 +7,20 @@
 ;; Package-Requires: ((color-theme "6.6.1"))
 
 
-;; This file is free software; you can redistribute it and/or
-;; modify it under the terms of the GNU General Public License as
-;; published by the Free Software Foundation; either version 2 of
-;; the License, or (at your option) any later version.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published
+;; by the Free Software Foundation; either version 2 of the License,
+;; or (at your option) any later version.
 
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty
-;; of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-;; See the GNU General Public License for more details.
+;; This file is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
 
-;; You should have received a copy of the GNU General Public
-;; License along with GNU Emacs; if not, write to the Free
-;; Software Foundation, 51 Franklin Street, Fifth Floor,
-;; Boston, MA 02110-1301, USA.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; if not, write to the Free Software
+;; Foundation, 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+;; USA.
 
 ;;; Commentary:
 
@@ -28,10 +28,15 @@
 ;; file is automatically extracted from a LaTeX master file.
 
 ;;; Code:
+
 (deftheme wombat2
-  "")
+  "Medium-contrast faces with a dark gray background.
+Adapted, with permission, from a Vim color scheme by Lars
+H. Nielsen.  Basic, Font Lock, Isearch, Gnus, Message, and
+Ansi-Color faces are included.")
 
 (let ((class '((class color) (min-colors 89)))
+
       ;; Wombat (?) palette colors.
       ;; -x are darker, +x are lighter.
       (wombat-fg "#f6f3e8")
@@ -123,6 +128,7 @@
 
 ;; These are entries from the original translation used for the color-theme
 ;; package. I haven't organized them yet.
+
 ;; `(fixed-pitch ((t (:family "Bitstream Vera Sans Mono"))))
 ;; `(variable-pitch ((t (nil))))
 ;; `(shadow ((t (:foreground "grey70"))))
