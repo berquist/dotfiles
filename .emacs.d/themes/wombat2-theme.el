@@ -30,85 +30,143 @@
 ;;; Code:
 
 (deftheme wombat2
-  "Medium-contrast faces with a dark gray background.
+  "Medium-contrast faces with a dark gray background (custom).
 Adapted, with permission, from a Vim color scheme by Lars
 H. Nielsen.  Basic, Font Lock, Isearch, Gnus, Message, and
 Ansi-Color faces are included.")
 
 (let ((class '((class color) (min-colors 89)))
 
-      ;; Wombat (?) palette colors.
+      ;; Variables with '/' correspond to the ANSI spots, *not* the
+      ;; actual colors they contain.
       ;; -x are darker, +x are lighter.
-      (wombat-fg "#f6f3e8")
-      (wombat-bg "#242424")
-      (wombat-green "#95e454")
-      (wombat-green+1 "#cae682")
-      (wombat-green+2 "#4bc98a")
-      (wombat-red-1 "#bb3322")
-      (wombat-red "#e5786d")
-      (wombat-blue-2 "#006689")
-      (wombat-blue-1 "#64a8d8")
-      (wombat-blue "#8ac6f2")
+      (wombat-red-1    "red")
+      (wombat/red      "#e5786d")
       (wombat-orange-1 "#f57900")
-      (wombat-orange "#e65c00")
+      (wombat-orange   "#e65c00")
       (wombat-orange+1 "#e9b96e")
       (wombat-orange+2 "#ffc125")
+      (wombat/green    "#95e454")
+      (wombat/yellow   "#cae682")
+      (wombat-blue-2   "#006689")
+      (wombat-blue-1   "#64a8d8")
+      (wombat/blue     "#8ac6f2")
+      (wombat/cyan     "#ccaa8f")
+      (wombat/magenta  "#333366")
       (wombat-purple-1 "#ad7fa8")
-      (wombat-purple "#cc99cc")
-      (wombat-magenta "#cc99cc")
-      (wombat-pink-1 "#f283b6")
-      (wombat-pink "#f6b3df")
-      (wombat-gray-1 "#303030")
-      (wombat-gray "#424242")
-      (wombat-gray+1 "#99968b"))
+      (wombat-purple   "#cc99cc")
+      (wombat-pink-1   "#f283b6")
+      (wombat-pink     "#f6b3df")
+      (wombat/white    "#f6f3e8")
+      (wombat-gray+2   "#a0a8b0")
+      (wombat-gray+1   "#99968b")
+      (wombat-gray     "#656565")
+      (wombat-gray-1   "#454545")
+      (wombat-gray-2   "#444444")
+      (wombat-gray-3   "#343434")
+      (wombat-gray-4   "#333333")
+      (wombat-gray-5   "#303030")
+      (wombat/black    "#242424")
 
+
+      )
+  
   (custom-theme-set-faces
    'wombat2
-   `(default ((,class (:foreground ,wombat-fg :background ,wombat-bg))))
-   `(cursor ((,class (:background ,wombat-blue-1)))) ;; background: 656565 -> 64a8d8
+   `(default ((,class (:background ,wombat/black :foreground ,wombat/white))))
+   `(cursor ((,class (:background ,wombat-blue-1)))) ;; ,wombat-gray; background: #656565 -> #64a8d8
+
    ;; Highlighting faces
-   `(fringe ((,class (:background ,wombat-gray-1))))
-   `(highlight ((,class (:background "#454545" :foreground "#ffffff" :underline t))))
-   `(region ((,class (:background "#343434" :foreground ,wombat-fg))))
-   `(secondary-selection ((,class (:background ,wombat-blue-1 :foreground ,wombat-fg :bold t)))) ;; background: 333366 -> 64a8d8
-   `(isearch ((,class (:background "#343434" :foreground "#857b6f"))))
-   `(isearch-lazy-highlight-face ((,class (:foreground ,wombat-blue-2 :background ,wombat-orange+1))))
+   `(fringe ((,class (:background ,wombat-gray-5))))
+   `(highlight ((,class (:background ,wombat-gray-1 :foreground "#ffffff"
+                                     :underline t))))
+   `(region ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
+   `(secondary-selection ((,class (:background ,wombat-blue-1 :foreground ,wombat/white :bold t)))) ;; background: ,wombat/magenta
+   `(isearch ((,class (:background ,wombat-gray-3 :foreground "#857b6f"))))
+   ; `(isearch-lazy-highlight-face ((,class (:foreground ,wombat-blue-2 :background ,wombat-orange+1))))
    `(isearch-fail ((,class (:background ,wombat-red-1))))
-   `(lazy-highlight ((,class (:italic t :background ,wombat-orange+2 :foreground ,wombat-gray-1)))) ;; background: 384048 -> ffc125, foreground: a0a8b0 -> 303030
-   `(trailing-whitespace ((,class (:background ,wombat-red))))
+   `(lazy-highlight ((,class (:italic t :background "#384048" :foreground ,wombat-gray+2))))
+   ; `(trailing-whitespace ((,class (:background ,wombat/red))))
+   ; `(whitespace-empty ((,class (:background "firebrick4" :foreground "firebrick"))))
+   ; `(whitespace-newline ((,class (:foreground ,wombat-gray+1 :weight normal))))
+   ; `(whitespace-space ((,class (:background ,wombat-gray-5 :foreground "#424242"))))
+   ; `(whitespace-tab ((,class (:background ,wombat-gray-5 :foreground "#424242")))))
+
    ;; Mode line faces
-   `(mode-line ((,class (:background "#444444" :foreground ,wombat-fg))))
+   `(mode-line ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
+   `(mode-line-inactive ((,class (:background ,wombat-gray-2 :box (:line-width 1 :color "#857b6f" :style nil)))))
    ; `(mode-line-emphasis ((,class (:bold t))))
    ; `(mode-line-highlight ((,class (:background ,wombat-orange :box nil))))
-   `(mode-line-inactive ((,class (:background "#444444" :box (:line-width 1 :color "#857b6f" :style nil)))))
    ; `(mode-line-buffer-id ((,class (:bold t :background "#424242" :weight bold))))
+
    ;; Escape and prompt faces
-   `(minibuffer-prompt ((,class (:foreground ,wombat-red))))
-   `(escape-glyph ((,class (:foreground ,wombat-blue-2)))) ;; ddaa64 -> 006689
+   `(minibuffer-prompt ((,class (:foreground ,wombat/red))))
+   `(escape-glyph ((,class (:foreground "#ddaa6f"))))
+
    ;; Font lock faces
-   `(font-lock-builtin-face ((,class (:foreground ,wombat-blue)))) ;; wombat-red
+   `(font-lock-builtin-face ((,class (:foreground ,wombat/red))))
    `(font-lock-comment-face ((,class (:italic t :slant italic :foreground ,wombat-gray+1))))
-   `(font-lock-comment-delimiter-face ((,class (:italic t :slant italic :foreground ,wombat-gray+1))))
-   `(font-lock-constant-face ((,class (:foreground ,wombat-red-1)))) ;; wombat-red
-   `(font-lock-doc-face ((,class (:foreground ,wombat-pink-1))))
-   `(font-lock-function-name-face ((,class (:foreground ,wombat-purple-1 :bold nil :italic t)))) ;; wombat-green+1
-   `(font-lock-keyword-face ((,class (:foreground ,wombat-blue :bold t))))
-   `(font-lock-negation-char-face ((,class (:foreground ,wombat-red))))
-   `(font-lock-preprocessor-face ((,class (:foreground ,wombat-red-1))))
-   `(font-lock-regexp-grouping-backslash ((,class (:bold t :weight bold))))
-   `(font-lock-regexp-grouping-construct ((,class (:bold t ,wombat-green))))
-   `(font-lock-string-face ((,class (:foreground ,wombat-green))))
-   `(font-lock-type-face ((,class (:foreground ,wombat-green+1 :bold t))))
-   `(font-lock-variable-name-face ((,class (:foreground ,wombat-blue)))) ;; wombat-green+1
-   `(font-lock-warning-face ((,class (:bold t :foreground ,wombat-red)))) ;; ccaa84 -> e5786d
+   ; `(font-lock-comment-delimiter-face ((,class (:italic t :slant italic :foreground ,wombat-gray+1))))
+   `(font-lock-constant-face ((,class (:foreground ,wombat/red))))
+   ; `(font-lock-doc-face ((,class (:foreground ,wombat-pink-1))))
+   `(font-lock-function-name-face ((,class (:foreground ,wombat/yellow :italic t))))
+   `(font-lock-keyword-face ((,class (:foreground ,wombat/blue :weight bold))))
+   ; `(font-lock-negation-char-face ((,class (:foreground ,wombat/red))))
+   ; `(font-lock-preprocessor-face ((,class (:foreground ,wombat-red-1))))
+   ; `(font-lock-regexp-grouping-backslash ((,class (:bold t :weight bold))))
+   ; `(font-lock-regexp-grouping-construct ((,class (:bold t ,wombat/green))))
+   `(font-lock-string-face ((,class (:foreground ,wombat/green))))
+   `(font-lock-type-face ((,class (:foreground "#92a65e" :weight bold))))
+   `(font-lock-variable-name-face ((,class (:foreground ,wombat-pink-1)))) ;; ,wombat/yellow
+   `(font-lock-warning-face ((,class (:bold t :foreground ,wombat/red)))) ;; ,wombat/cyan
+
    ;; Button and link faces
-   `(link ((,class (:foreground ,wombat-blue :underline t))))
-   `(link-visited ((,class (:foreground ,wombat-magenta :underline t))))
-   `(button ((,class (:underline t))))
-   `(header-line ((,class (:box (:line-width -1 :style released-button) :background ,wombat-gray-1 :foreground ,wombat-fg :box nil))))
+   `(link ((,class (:foreground ,wombat/blue :underline t))))
+   `(link-visited ((,class (:foreground ,wombat/red :underline t))))
+   `(button ((,class (:background ,wombat-gray-4 :foreground ,wombat/white))))
+   `(header-line ((,class (:background ,wombat-gray-5 :foreground "#e7f6da"))))
+
+   ;; Gnus faces
+   `(gnus-group-news-1 ((,class (:weight bold :foreground ,wombat/green))))
+   `(gnus-group-news-1-low ((,class (:foreground ,wombat/green))))
+   `(gnus-group-news-2 ((,class (:weight bold :foreground ,wombat/yellow))))
+   `(gnus-group-news-2-low ((,class (:foreground ,wombat/yellow))))
+   `(gnus-group-news-3 ((,class (:weight bold :foreground ,wombat/cyan))))
+   `(gnus-group-news-3-low ((,class (:foreground ,wombat/cyan))))
+   `(gnus-group-news-4 ((,class (:weight bold :foreground ,wombat-gray+1))))
+   `(gnus-group-news-4-low ((,class (:foreground ,wombat-gray+1))))
+   `(gnus-group-news-5 ((,class (:weight bold :foreground ,wombat/yellow))))
+   `(gnus-group-news-5-low ((,class (:foreground ,wombat/yellow))))
+   `(gnus-group-news-low ((,class (:foreground ,wombat-gray+1))))
+   `(gnus-group-mail-1 ((,class (:weight bold :foreground ,wombat/green))))
+   `(gnus-group-mail-1-low ((,class (:foreground ,wombat/green))))
+   `(gnus-group-mail-2 ((,class (:weight bold :foreground ,wombat/yellow))))
+   `(gnus-group-mail-2-low ((,class (:foreground ,wombat/yellow))))
+   `(gnus-group-mail-3 ((,class (:weight bold :foreground ,wombat/cyan))))
+   `(gnus-group-mail-3-low ((,class (:foreground ,wombat/cyan))))
+   `(gnus-group-mail-low ((,class (:foreground ,wombat-gray+1))))
+   `(gnus-header-content ((,class (:foreground ,wombat/blue))))
+   `(gnus-header-from ((,class (:weight bold :foreground ,wombat/green))))
+   `(gnus-header-subject ((,class (:foreground ,wombat/yellow))))
+   `(gnus-header-name ((,class (:foreground ,wombat/blue))))
+   `(gnus-header-newsgroups ((,class (:foreground ,wombat/yellow))))
+
+   ;; Message faces
+   `(message-header-name ((,class (:foreground ,wombat/blue :weight bold))))
+   `(message-header-cc ((,class (:foreground ,wombat/green))))
+   `(message-header-other ((,class (:foreground ,wombat/green))))
+   `(message-header-subject ((,class (:foreground ,wombat/yellow))))
+   `(message-header-to ((,class (:foreground ,wombat/yellow))))
+   `(message-cited-text ((,class (:foreground ,wombat-gray+1))))
+   `(message-separator ((,class (:foreground ,wombat/red :weight bold))))
+
    ;; Parens
-   '(paren-face-match ((t (:background "#165dc1")))) ;; DodgerBlue3
-   '(paren-face-no-match ((t (:background "#e8bf08" :foreground "#000000")))) ;; gold2
+   ; `(show-paren-match-face ((t (:background ,wombat-orange :foreground "white" :bold t))))
+   ; `(show-paren-mismatch-face ((t (:background ,wombat-purple-1 :foreground ,wombat-blue-2))))
+   ; `(paren-face-match ((t (:inherit show-paren-match-face))))
+   ; `(paren-face-match-light ((t (:inherit show-paren-match-face))))
+   ; `(paren-face-mismatch ((t (:inherit show-paren-mismatch-face))))
+
    ;; LaTeX
    '(font-latex-bold-face ((t (:foreground "#4bc98a"))))
    '(font-latex-italic-face ((t (:inherit italic :foreground "#4bc98a"))))
@@ -119,12 +177,21 @@ Ansi-Color faces are included.")
    '(font-latex-superscript-face ((t (:height 0.9))))
    '(font-latex-verbatim-face ((t (:inherit fixed-pitch :foreground "#91a5c1")))) ;; LightSteelBlue3
    '(font-latex-warning-face ((t (:inherit font-lock-warning-face))))
+
    ))
 
 (custom-theme-set-variables
  'wombat2
- '(ansi-color-names-vector [,wombat-bg ,wombat-red ,wombat-green ,wombat-green+1
-                            ,wombat-blue "#333366" "#ccaa8f" ,wombat-fg]))
+ '(ansi-color-names-vector [,wombat/black ,wombat/red ,wombat/green ,wombat/yellow,
+                            ,wombat/blue ,wombat/magenta ,wombat/cyan ,wombat/white]))
+
+(provide-theme 'wombat2)
+
+;; Local Variables:
+;; no-byte-compile: t
+;; End:
+
+;;; wombat2-theme.el ends here
 
 ;; These are entries from the original translation used for the color-theme
 ;; package. I haven't organized them yet.
@@ -135,22 +202,17 @@ Ansi-Color faces are included.")
 ;; `(query-replace ((t (:foreground "#e65c00" :background "palevioletred2"))))
 
 ;; `(border ((,class (:background "#888a85"))))
-;; `(border ((,class (:background ,wombat-bg))))
+;; `(border ((,class (:background ,wombat/black))))
 ;; `(highlight-changes-delete-face ((t (:foreground "red" :underline t))))
 ;; `(highlight-changes-face ((t (:foreground "red"))))
 ;; `(hl-line ((t (:background ,wombat-gray-1))))
 ;; `(comint-highlight-input ((t (:italic t :bold t))))
 ;; `(comint-highlight-prompt ((t (:foreground "#8ae234"))))
-;; `(paren-face-match ((t (:inherit show-paren-match-face))))
-;; `(paren-face-match-light ((t (:inherit show-paren-match-face))))
-;; `(paren-face-mismatch ((t (:inherit show-paren-mismatch-face))))
-;; `(show-paren-match-face ((t (:background ,wombat-orange :foreground "white" :bold t))))
-;; `(show-paren-mismatch-face ((t (:background ,wombat-purple-1 :foreground ,wombat-blue-2))))
+
 ;; `(persp-selected-face ((t (:foreground ,wombat-blue-2))))
-;; `(info-xref ((t (:foreground ,wombat-blue))))
+;; `(info-xref ((t (:foreground ,wombat/blue))))
 ;; `(info-xref-visited ((t (:foreground ,wombat-purple-1))))
 
-;; `(mouse ((t (:background "black"))))
 ;; `(buffer-menu-buffer ((t (:bold t :weight bold))))
 ;; `(minibuffer-prompt ((t (:bold t :background "#242424" :foreground "#8ac6f2"))))
 ;; `(tooltip ((t (:family "helv" :background "lightyellow" :foreground "black"))))
@@ -289,8 +351,6 @@ Ansi-Color faces are included.")
 ;; (senator-intangible-face ((t (:foreground "gray75"))))
 ;; (senator-momentary-highlight-face ((t (:background "gray30"))))
 ;; (senator-read-only-face ((t (:background "#664444"))))
-;; (show-paren-match-face ((t (:bold t :background "#857b6f" :foreground "#f6f3e8"))))
-;; (show-paren-mismatch-face ((t (:background "red" :foreground "white"))))
 ;; (show-tabs-space ((t (:background "#e65c00"))))
 ;; (show-tabs-tab ((t (:background "#e65c00"))))
 ;; (speedbar-button-face ((t (:foreground "green3"))))
@@ -307,35 +367,3 @@ Ansi-Color faces are included.")
 ;; (tabbar-selected ((t (:background "#f2f2f6" :foreground "black" :box nil))))
 ;; (tabbar-separator ((t (:height 0.7))))
 ;; (tabbar-unselected ((t (:foreground "grey30" :background "grey85" :box nil))))
-;; (term-black ((t (:foreground "black"))))
-;; (term-blackbg ((t (:background "black"))))
-;; (term-blue ((t (:foreground "#4186be"))))
-;; (term-bluebg ((t (:background "#4186be"))))
-;; (term-bold ((t (:bold t :weight bold))))
-;; (term-cyan ((t (:foreground "#71bebe"))))
-;; (term-cyanbg ((t (:background "#71bebe"))))
-;; (term-default-bg ((t (nil))))
-;; (term-default-bg-inv ((t (nil))))
-;; (term-default-fg ((t (nil))))
-;; (term-default-fg-inv ((t (nil))))
-;; (term-green ((t (:foreground "#e5f779"))))
-;; (term-greenbg ((t (:background "#e5f779"))))
-;; (term-invisible ((t (nil))))
-;; (term-invisible-inv ((t (nil))))
-;; (term-magenta ((t (:foreground "#ef9ebe"))))
-;; (term-magentabg ((t (:background "#ef9ebe"))))
-;; (term-red ((t (:foreground "#ef8171"))))
-;; (term-redbg ((t (:background "#ef8171"))))
-;; (term-underline ((t (:underline t))))
-;; (term-white ((t (:foreground "#c0c0c0"))))
-;; (term-whitebg ((t (:background "#c0c0c0"))))
-;; (term-yellow ((t (:foreground "#fff796"))))
-;; (term-yellowbg ((t (:background "#fff796"))))
-
-(provide-theme 'wombat2)
-
-;; Local Variables:
-;; no-byte-compile: t
-;; End:
-
-;;; wombat2-theme.el ends here

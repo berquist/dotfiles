@@ -57,7 +57,7 @@ are included.")
    ;; Highlighting faces
    `(fringe ((,class (:background ,wombat-gray-5))))
    `(highlight ((,class (:background ,wombat-gray-1 :foreground "#ffffff"
-			 :underline t))))
+                                     :underline t))))
    `(region ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
    `(secondary-selection ((,class (:background ,wombat/magenta :foreground ,wombat/white))))
    `(isearch ((,class (:background ,wombat-gray-3 :foreground "#857b6f"))))
