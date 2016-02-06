@@ -47,6 +47,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   [(\, wombat/black)
+    (\, wombat/red)
+    (\, wombat/green)
+    (\, wombat/yellow)
+    (\,
+     (\, wombat/blue))
+    (\, wombat/magenta)
+    (\, wombat/cyan)
+    (\, wombat/white)])
  '(browse-url-browser-function (quote browse-url-firefox))
  '(c-basic-offset 2)
  '(c-default-style
@@ -59,6 +69,9 @@
     ((c-mode . javadoc)
      (java-mode . javadoc)
      (pike-mode . autodoc))))
+ '(custom-safe-themes
+   (quote
+    ("59ee922af44ffccea18ba4aa311bffedc06fe66dfe957bf62d046164eec30d2d" "67b5fb678e7669c3272b3e6333e7f728682bc2a45d8598938c48796745cd246a" "66df3ea9d31e26883f5b3cba46363418910b11101ad9bbcb65b7b459c8fdaf6f" "e9a57f29be1e80518313ee1994a9a46113462b6af1e97340a5943008b2c1be82" "75ca64e5e4005637575c27f0c1d43ad59f94873ee52356508380adcee99e5bd7" default)))
  '(fortran-comment-region "cccc")
  '(git-gutter:handled-backends (quote (git svn hg bzr)))
  '(git-gutter:hide-gutter t)
@@ -81,3 +94,9 @@
  '(vc-follow-symlinks t))
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

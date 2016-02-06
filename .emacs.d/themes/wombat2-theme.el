@@ -2,10 +2,8 @@
 ;; Copyright (C) 2009 Jesus Alvarez
 
 ;; Author: Jesus Alvarez <demizer.one@gmail.com>
+;; Modified by: Eric Berquist <eric DOT berquist AT gmail DOT com>
 ;; URL: https://github.com/demizer/color-theme-wombat
-;; Version: 0.0.1
-;; Package-Requires: ((color-theme "6.6.1"))
-
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published
@@ -38,7 +36,9 @@ Ansi-Color faces are included.")
 (let ((class '((class color) (min-colors 89)))
 
       ;; Variables with '/' correspond to the ANSI spots, *not* the
-      ;; actual colors they contain.
+      ;; actual colors they contain. Unless noted or commented out,
+      ;; they are the original Wombat colors.
+
       ;; -x are darker, +x are lighter.
       (wombat-red-1    "red")
       (wombat/red      "#e5786d")
@@ -46,15 +46,17 @@ Ansi-Color faces are included.")
       (wombat-orange   "#e65c00")
       (wombat-orange+1 "#e9b96e")
       (wombat-orange+2 "#ffc125")
+      (wombat-green-1  "#4bc98a")
       (wombat/green    "#95e454")
       (wombat/yellow   "#cae682")
       (wombat-blue-2   "#006689")
       (wombat-blue-1   "#64a8d8")
       (wombat/blue     "#8ac6f2")
-      (wombat/cyan     "#ccaa8f")
+      ;; (wombat/cyan     "#ccaa8f")
+      (wombat/cyan     "#00b7eb")
       (wombat/magenta  "#333366")
-      (wombat-purple-1 "#ad7fa8")
-      (wombat-purple   "#cc99cc")
+      (wombat-purple-1 "#cc99cc")
+      (wombat-purple   "#663399")
       (wombat-pink-1   "#f283b6")
       (wombat-pink     "#f6b3df")
       (wombat/white    "#f6f3e8")
@@ -82,10 +84,10 @@ Ansi-Color faces are included.")
                                      :underline t))))
    `(region ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
    `(secondary-selection ((,class (:background ,wombat-blue-1 :foreground ,wombat/white :bold t)))) ;; background: ,wombat/magenta
-   `(isearch ((,class (:background ,wombat-gray-3 :foreground "#857b6f"))))
-   ; `(isearch-lazy-highlight-face ((,class (:foreground ,wombat-blue-2 :background ,wombat-orange+1))))
+   `(isearch ((,class (:background ,wombat-gray :foreground ,wombat/white)))) ;; background: ,wombat-gray-3, foreground: #857b6f
    `(isearch-fail ((,class (:background ,wombat-red-1))))
-   `(lazy-highlight ((,class (:italic t :background "#384048" :foreground ,wombat-gray+2))))
+   `(lazy-highlight ((,class (:italic t :background ,wombat-purple :foreground ,wombat-gray+2)))) ;; background: "#384048"
+   ; `(lazy-highlight-face ((,class (:foreground ,wombat-blue-2 :background ,wombat-orange+1))))
    ; `(trailing-whitespace ((,class (:background ,wombat/red))))
    ; `(whitespace-empty ((,class (:background "firebrick4" :foreground "firebrick"))))
    ; `(whitespace-newline ((,class (:foreground ,wombat-gray+1 :weight normal))))
@@ -116,7 +118,7 @@ Ansi-Color faces are included.")
    ; `(font-lock-regexp-grouping-backslash ((,class (:bold t :weight bold))))
    ; `(font-lock-regexp-grouping-construct ((,class (:bold t ,wombat/green))))
    `(font-lock-string-face ((,class (:foreground ,wombat/green))))
-   `(font-lock-type-face ((,class (:foreground "#92a65e" :weight bold))))
+   `(font-lock-type-face ((,class (:foreground ,wombat-green-1 :weight bold)))) ;; foreground: #92a65e
    `(font-lock-variable-name-face ((,class (:foreground ,wombat-pink-1)))) ;; ,wombat/yellow
    `(font-lock-warning-face ((,class (:bold t :foreground ,wombat/red)))) ;; ,wombat/cyan
 
@@ -161,17 +163,17 @@ Ansi-Color faces are included.")
    `(message-separator ((,class (:foreground ,wombat/red :weight bold))))
 
    ;; Parens
-   ; `(show-paren-match-face ((t (:background ,wombat-orange :foreground "white" :bold t))))
+   ; `(show-paren-match-face ((t (:background ,wombat-orange :foreground ,wombat/white :bold t))))
    ; `(show-paren-mismatch-face ((t (:background ,wombat-purple-1 :foreground ,wombat-blue-2))))
    ; `(paren-face-match ((t (:inherit show-paren-match-face))))
    ; `(paren-face-match-light ((t (:inherit show-paren-match-face))))
    ; `(paren-face-mismatch ((t (:inherit show-paren-mismatch-face))))
 
    ;; LaTeX
-   '(font-latex-bold-face ((t (:foreground "#4bc98a"))))
-   '(font-latex-italic-face ((t (:inherit italic :foreground "#4bc98a"))))
+   '(font-latex-bold-face ((t (:foreground ,wombat-green-1))))
+   '(font-latex-italic-face ((t (:inherit italic :foreground ,wombat-green-1))))
    '(font-latex-math-face ((t (:inherit font-lock-builtin-face))))
-   '(font-latex-sectioning-5-face ((t (:inherit variable-pitch :foreground "#165dc1" :weight bold))))
+   '(font-latex-sectioning-5-face ((t (:inherit variable-pitch :foreground ,wombat-blue-2 :weight bold))))
    '(font-latex-string-face ((t (:inherit font-lock-string-face))))
    '(font-latex-subscript-face ((t (:height 0.9))))
    '(font-latex-superscript-face ((t (:height 0.9))))
