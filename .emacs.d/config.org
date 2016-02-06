@@ -315,26 +315,66 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
   :END:
 
 #+begin_src emacs-lisp
-  ;; (add-hook 'org-mode-hook 'pandoc-mode)
+;; (add-hook 'org-mode-hook 'pandoc-mode)
 
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (C . t)
-     ;; How to handle C++?
-     ;; (C++ . t)
-     (latex . t)
-     (python . t)))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (sh . t)
+   (C . t)
+   ;; How to handle C++?
+   ;; (C++ . t)
+   (latex . t)
+   (python . t)))
 
-  ;; (add-hook 'org-mode-hook
-  ;;           (lambda ()
-  ;;             (add-hook 'after-save-hook 'org-export-dispatch)))
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (add-hook 'after-save-hook 'org-export-dispatch)))
 
-  (setq org-src-tab-acts-natively t
-        org-babel-python-command "ipython"
-        org-export-backends (quote (ascii html icalendar latex md))
-        org-export-dispatch-use-expert-ui t
-        org-src-fontify-natively t)
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (local-set-key (kbd "M-I") 'org-toggle-iimage-in-org)))
+
+(setq org-src-tab-acts-natively t
+      org-babel-python-command "ipython"
+      org-export-backends (quote (ascii html icalendar latex md))
+      org-export-dispatch-use-expert-ui t
+      org-export-with-smart-quotes t
+      org-edit-src-content-indentation 0
+      org-src-fontify-natively t
+      org-src-tab-acts-natively t
+      ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
+      org-highlight-latex-and-relatex '(latex script entities)
+      )
+
+;; Taken from https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org
+;; (setcar (nthcdr 2 org-emphasis-regexp-components) " \t\n\r")
+;; (custom-set-variables `(org-emphasis-alist ',org-emphasis-alist))
+;; (org-element--set-regexps)
+
+;; code snippet comes from
+;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
+;; Include the latex-exporter
+;; check whether org-mode 8.x is available
+(when (require 'ox-latex nil 'noerror)
+  ;; You need to install pygments to use minted
+  (when (executable-find "pygmentize")
+    ;; Add minted to the defaults packages to include when exporting.
+    (add-to-list 'org-latex-packages-alist '("" "minted"))
+    ;; Tell the latex export to use the minted package for source
+    ;; code coloration.
+    (setq org-latex-listings 'minted)
+    ;; Let the exporter use the -shell-escape option to let latex
+    ;; execute external programs.
+    ;; This obviously and can be dangerous to activate!
+    (setq org-latex-minted-options
+          '(("mathescape" "true")
+            ("linenos" "true")
+            ("numbersep" "5pt")
+            ("frame" "lines")
+            ("framesep" "2mm")))
+    (setq org-latex-pdf-process
+          '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
 #+end_src
 
 * CSS
@@ -369,6 +409,29 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
                  ("\\.hh$" . c++-mode)
                  ("\\.hpp$" . c++-mode)
                  ) auto-mode-alist))
+#+end_src
+
+** ISPC
+
+Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
+
+#+begin_src emacs-lisp
+  (defun add-ispc-keywords()
+    "adds uniform and varying keywords for c and c++ modes"
+                                          ;
+    (font-lock-add-keywords nil
+                            '(
+                              ("\\<\\(uniform\\)" . 'font-lock-keyword-face)
+                              ("\\<\\(varying\\)" . 'font-lock-keyword-face)
+                                          ; more go here
+                              )
+                            )
+    )
+
+  (add-hook 'c++-mode-hook 'add-ispc-keywords)
+  (add-to-list 'auto-mode-alist '("\\.ispc$" . c++-mode))
+  (add-to-list 'auto-mode-alist '("\\.isph$" . c++-mode))
+
 #+end_src
 
 * Makefiles
