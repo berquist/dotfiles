@@ -48,13 +48,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   [(\, wombat-bg)
-    (\, wombat-red)
-    (\, wombat-green)
-    (\, wombat-green+1)
-    (\, wombat-blue)
-    "#333366" "#ccaa8f"
-    (\, wombat-fg)])
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(browse-url-browser-function (quote browse-url-firefox))
  '(c-basic-offset 2)
  '(c-default-style
@@ -70,13 +64,10 @@
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
    (quote
-    ("48a84c0a889c0abf30255217b99361e05741ae97d04f37dfb641ea538207f5f6" "165464cd89e4407a38d47fa6ca727ce672d69ac7a044732b3ef028234a1637db" "40c66989886b3f05b0c4f80952f128c6c4600f85b1f0996caa1fa1479e20c082" "c58382b9c4fff1aa94b8e3f0f81b0212bb554e83f76957bab735f960a4c441b1" default)))
- ;; '(fci-rule-color "#f8fce8")
+    ("f5b363d71091cd5e68b2e6397fa10f84cdfa1ff41691406936c97ef4eb6fd3cd" "48a84c0a889c0abf30255217b99361e05741ae97d04f37dfb641ea538207f5f6" "165464cd89e4407a38d47fa6ca727ce672d69ac7a044732b3ef028234a1637db" "40c66989886b3f05b0c4f80952f128c6c4600f85b1f0996caa1fa1479e20c082" "c58382b9c4fff1aa94b8e3f0f81b0212bb554e83f76957bab735f960a4c441b1" default)))
  '(fortran-comment-region "cccc")
  '(git-gutter:handled-backends (quote (git svn hg bzr)))
  '(git-gutter:hide-gutter t)
- ;; '(hl-paren-background-colors (quote ("#e8fce8" "#c1e7f8" "#f8e8e8")))
- ;; '(hl-paren-colors (quote ("#40883f" "#0287c8" "#b85c57")))
  '(indicate-buffer-boundaries (quote right))
  '(markdown-coding-system (quote utf-8))
  '(markdown-command
@@ -91,10 +82,6 @@
  '(paren-highlight-offscreen t)
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
- ;; '(sml/active-background-color "#98ece8")
- ;; '(sml/active-foreground-color "#424242")
- ;; '(sml/inactive-background-color "#4fa8a8")
- ;; '(sml/inactive-foreground-color "#424242")
  '(tabbar-separator (quote (0.5)))
  '(tabbar-use-images nil)
  '(vc-follow-symlinks t))
