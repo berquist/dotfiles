@@ -67,12 +67,16 @@
     ((c-mode . javadoc)
      (java-mode . javadoc)
      (pike-mode . autodoc))))
+ '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
    (quote
-    ("6eaebdc2426b0edfff9fd9a7610f2fe7ddc70e01ceb869aaaf88b5ebe326a0cd" "2d7e4feac4eeef3f0610bf6b155f613f372b056a2caae30a361947eab5074716" default)))
+    ("48a84c0a889c0abf30255217b99361e05741ae97d04f37dfb641ea538207f5f6" "165464cd89e4407a38d47fa6ca727ce672d69ac7a044732b3ef028234a1637db" "40c66989886b3f05b0c4f80952f128c6c4600f85b1f0996caa1fa1479e20c082" "c58382b9c4fff1aa94b8e3f0f81b0212bb554e83f76957bab735f960a4c441b1" default)))
+ ;; '(fci-rule-color "#f8fce8")
  '(fortran-comment-region "cccc")
  '(git-gutter:handled-backends (quote (git svn hg bzr)))
  '(git-gutter:hide-gutter t)
+ ;; '(hl-paren-background-colors (quote ("#e8fce8" "#c1e7f8" "#f8e8e8")))
+ ;; '(hl-paren-colors (quote ("#40883f" "#0287c8" "#b85c57")))
  '(indicate-buffer-boundaries (quote right))
  '(markdown-coding-system (quote utf-8))
  '(markdown-command
@@ -87,6 +91,10 @@
  '(paren-highlight-offscreen t)
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
+ ;; '(sml/active-background-color "#98ece8")
+ ;; '(sml/active-foreground-color "#424242")
+ ;; '(sml/inactive-background-color "#4fa8a8")
+ ;; '(sml/inactive-foreground-color "#424242")
  '(tabbar-separator (quote (0.5)))
  '(tabbar-use-images nil)
  '(vc-follow-symlinks t))
