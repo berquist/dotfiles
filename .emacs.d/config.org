@@ -1,52 +1,52 @@
 * General configuration
-  :PROPERTIES:
-  :all-set:  true
-  :END:
 
 #+begin_src emacs-lisp
-  (setq user-full-name "Eric J. Berquist"
-        user-mail-address "eric.berquist@gmail.com")
+(setq user-full-name "Eric J. Berquist"
+      user-mail-address "eric.berquist@gmail.com")
 
-  (add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
-  ;; took some tricks from http://www.aaronbedra.com/emacs.d/
+;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
-  ;; What's the difference between setq and setq-default?
-  ;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
+;; What's the difference between setq and setq-default?
+;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
-  ;; transient-mark-mode: ...
-  ;; visual-line-mode: ...
-  (setq-default transient-mark-mode t
-                visual-line-mode t
-                line-number-mode t
-                column-number-mode t
-                cursor-type '(hbar . 2))
+;; transient-mark-mode: ...
+;; visual-line-mode: ...
+;; http://stackoverflow.com/questions/3281581/how-to-word-wrap-in-emacs
+;; ...but still wrap words rather than continue past the boundary
+(setq-default transient-mark-mode t
+              visual-line-mode nil
+              word-wrap t
+              line-number-mode t
+              column-number-mode t
+              cursor-type '(hbar . 2))
 
-  ;; Enable maximum syntax highlighting wherever possible.
-  (setq global-font-lock-mode t
-        font-lock-maximum-decoration t)
+;; Enable maximum syntax highlighting wherever possible.
+(setq global-font-lock-mode t
+      font-lock-maximum-decoration t)
 
-  ;; Bells are annoying, stop ringing!
-  (setq-default visible-bell nil
-                audible-bell nil
-                ring-bell-function 'ignore)
+;; Bells are annoying, stop ringing!
+(setq-default visible-bell nil
+              audible-bell nil
+              ring-bell-function 'ignore)
 
-  (defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
-  ;; death to tabs, tabs are evil
-  (setq-default indent-tabs-mode nil
-                tab-width 4)
+;; death to tabs, tabs are evil
+(setq-default indent-tabs-mode nil
+              tab-width 4)
 
-  ;; What platform are we on? darwin, gnu/linux are the most likely
-  ;; answers.
-  (defvar system-type-as-string (prin1-to-string system-type))
-  (defun sys () system-type-as-string)
+;; What platform are we on? darwin, gnu/linux are the most likely
+;; answers.
+(defvar system-type-as-string (prin1-to-string system-type))
+(defun sys () system-type-as-string)
 
-  ;; Set the path properly on OS X.
-  (when (memq window-system '(mac ns))
-    (use-package exec-path-from-shell
-      :config
-      (exec-path-from-shell-initialize)))
+;; Set the path properly on OS X.
+(when (memq window-system '(mac ns))
+  (use-package exec-path-from-shell
+    :config
+    (exec-path-from-shell-initialize)))
 #+end_src
 
 * Backups/autosaving
