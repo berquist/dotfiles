@@ -47,16 +47,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   [(\, wombat/black)
-    (\, wombat/red)
-    (\, wombat/green)
-    (\, wombat/yellow)
-    (\,
-     (\, wombat/blue))
-    (\, wombat/magenta)
-    (\, wombat/cyan)
-    (\, wombat/white)])
  '(browse-url-browser-function (quote browse-url-firefox))
  '(c-basic-offset 2)
  '(c-default-style

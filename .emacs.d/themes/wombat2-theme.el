@@ -170,15 +170,15 @@ Ansi-Color faces are included.")
    ; `(paren-face-mismatch ((t (:inherit show-paren-mismatch-face))))
 
    ;; LaTeX
-   '(font-latex-bold-face ((t (:foreground ,wombat-green-1))))
-   '(font-latex-italic-face ((t (:inherit italic :foreground ,wombat-green-1))))
-   '(font-latex-math-face ((t (:inherit font-lock-builtin-face))))
-   '(font-latex-sectioning-5-face ((t (:inherit variable-pitch :foreground ,wombat-blue-2 :weight bold))))
-   '(font-latex-string-face ((t (:inherit font-lock-string-face))))
-   '(font-latex-subscript-face ((t (:height 0.9))))
-   '(font-latex-superscript-face ((t (:height 0.9))))
-   '(font-latex-verbatim-face ((t (:inherit fixed-pitch :foreground "#91a5c1")))) ;; LightSteelBlue3
-   '(font-latex-warning-face ((t (:inherit font-lock-warning-face))))
+   `(font-latex-bold-face ((t (:foreground ,wombat-green-1))))
+   `(font-latex-italic-face ((t (:inherit italic :foreground ,wombat-green-1))))
+   `(font-latex-math-face ((t (:inherit font-lock-builtin-face))))
+   `(font-latex-sectioning-5-face ((t (:inherit variable-pitch :foreground ,wombat-blue-2 :weight bold))))
+   `(font-latex-string-face ((t (:inherit font-lock-string-face))))
+   `(font-latex-subscript-face ((t (:height 0.9))))
+   `(font-latex-superscript-face ((t (:height 0.9))))
+   `(font-latex-verbatim-face ((t (:inherit fixed-pitch :foreground "#91a5c1")))) ;; LightSteelBlue3
+   `(font-latex-warning-face ((t (:inherit font-lock-warning-face))))
 
    ))
 
