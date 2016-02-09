@@ -214,39 +214,39 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   :END:
 
 #+begin_src emacs-lisp
-  (setq flyspell-issue-welcome-flag nil)
-  (setq flyspell-mode-line-string " FlyS")
+(setq flyspell-issue-welcome-flag nil)
+(setq flyspell-mode-line-string " FlyS")
 
-  ;; These are the modes flyspell should be enabled for.
-  (dolist (hook '(text-mode-hook))
-    (add-hook hook (lambda () (flyspell-mode 1))))
-  (dolist (hook '(change-log-mode-hook
-                  log-edit-mode-hook))
-    (add-hook hook (lambda () (flyspell-mode -1))))
+;; These are the modes flyspell should be enabled for.
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook
+                log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
 
-  (dolist (mode '(emacs-lisp-mode-hook
-                  inferior-lisp-mode-hook
-                  python-mode-hook))
-    (add-hook mode
-              '(lambda ()
-                 (flyspell-prog-mode))))
+;; (dolist (mode '(emacs-lisp-mode-hook
+;;                 inferior-lisp-mode-hook
+;;                 python-mode-hook))
+;;   (add-hook mode
+;;             '(lambda ()
+;;                (flyspell-prog-mode))))
 
-  (global-set-key (kbd "<f8>") 'ispell-word) ;; built-in binding is M-$, ew
-  (global-set-key (kbd "C-S-<f8>") 'flyspell-mode)
-  (global-set-key (kbd "C-M-<f8>") 'flyspell-buffer)
-  (global-set-key (kbd "C-<f8>") 'flyspell-check-previous-highlighted-word)
-  (defun flyspell-check-next-highlighted-word ()
-    "Custom function to spell check next highlighted word"
-    (interactive)
-    (flyspell-goto-next-error)
-    (ispell-word)
-    )
-  (global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
+(global-set-key (kbd "<f8>") 'ispell-word) ;; built-in binding is M-$, ew
+(global-set-key (kbd "C-S-<f8>") 'flyspell-mode)
+(global-set-key (kbd "C-M-<f8>") 'flyspell-buffer)
+(global-set-key (kbd "C-<f8>") 'flyspell-check-previous-highlighted-word)
+(defun flyspell-check-next-highlighted-word ()
+  "Custom function to spell check next highlighted word"
+  (interactive)
+  (flyspell-goto-next-error)
+  (ispell-word)
+  )
+(global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
 
-  ;; use hunspell when possible
-  ;; (when (executable-find "hunspell")
-  ;;   (setq-default ispell-program-name "hunspell")
-  ;;   (setq ispell-really-hunspell t))
+;; use hunspell when possible
+;; (when (executable-find "hunspell")
+;;   (setq-default ispell-program-name "hunspell")
+;;   (setq ispell-really-hunspell t))
 #+end_src
 
 * Flycheck
@@ -535,7 +535,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
     :interpreter ("ipython" . python-mode)
     )
 
-  (add-hook 'python-mode-hook 'flycheck-mode)
+  ;; (add-hook 'python-mode-hook 'flycheck-mode)
   (add-hook 'python-mode-hook 'whitespace-mode)
 
   ;; Use pyflakes instead of flake8 or pylint for syntax checking.
@@ -554,18 +554,20 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :END:
 
 #+begin_src emacs-lisp
-  (use-package markdown-mode
-    :mode
-    (("\\.text\\'" . markdown-mode)
-     ("\\.txt\\'" . markdown-mode)
-     ("\\.markdown\\'" . markdown-mode)
-     ("\\.mdown\\'" . markdown-mode)
-     ("\\.md\\'" . gfm-mode))
-    :config
-    (add-hook 'markdown-mode-hook
-              (lambda ()
-                (add-hook 'after-save-hook 'markdown-export t :local)))
-    )
+(use-package markdown-mode
+  :mode
+  (
+   ;; ("\\.text\\'" . markdown-mode)
+   ;; ("\\.txt\\'" . markdown-mode)
+   ("\\.markdown\\'" . markdown-mode)
+   ("\\.mdown\\'" . markdown-mode)
+   ("\\.md\\'" . gfm-mode)
+   )
+  :config
+  (add-hook 'markdown-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook 'markdown-export t :local)))
+  )
 
 #+end_src
 
