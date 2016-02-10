@@ -50,9 +50,6 @@
 #+end_src
 
 * Backups/autosaving
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   ;; let's live on the edge and disable backup and autosave
@@ -70,9 +67,6 @@
 #+end_src
 
 * Disable popup boxes
-  :PROPERTIES:
-  :all-set:  true
-  :END:
 
 #+begin_src emacs-lisp
   (defadvice yes-or-no-p (around prevent-dialog activate)
@@ -86,9 +80,6 @@
 #+end_src
 
 * Ido
-  :PROPERTIES:
-  :all-set:  true
-  :END:
 
 Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
 
@@ -107,54 +98,56 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   :END:
 
 #+begin_src emacs-lisp
-  (use-package mic-paren
-    :config
-    (paren-activate)
-    )
+(use-package mic-paren
+  :config
+  (paren-activate)
+  )
 
-  (use-package whitespace
-    :init
-    (setq global-whitespace-mode nil)
-    :config
-    (setq whitespace-display-mappings
-          '((space-mark   ?\ [?\u00B7] [?.])
-            (space-mark   ?\xA0 [?\u00A4] [?_])
-            (newline-mark ?\n [?\u21B5 ?\n]
-                          [172 10] [?\u00AF ?\n]) ;; downwards arrow, ..., overscore
-            (tab-mark     ?\t [9655 9])))
-    (setq whitespace-style
-          '(face
-            trailing
-            tabs
-            ;; tab-mark
-            ;; spaces
-            ;; space-mark
-            ;; lines-tail
-            ;; newline
-            ;; newline-mark
-            ;; empty
-            indentation::tab
-            indentation::space
-            indentation
-            space-after-tab::tab
-            space-after-tab::space
-            space-after-tab
-            space-before-tab::tab
-            space-before-tab::space
-            space-before-tab))
-    )
+;; http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
+(use-package whitespace
+  :bind (("C-c T w" . whitespace-mode))
+  :init
+  (setq global-whitespace-mode nil)
+  :config
+  (setq
+   ;; use the fill-column value
+   whitespace-line-column nil
+   whitespace-display-mappings
+   '((space-mark   ?\ [?\u00B7] [?.])
+     (space-mark   ?\xA0 [?\u00A4] [?_])
+     (newline-mark ?\n [?\u21B5 ?\n]
+                   [172 10] [?\u00AF ?\n]) ;; downwards arrow, ..., overscore
+     (tab-mark     ?\t [9655 9]))
+   whitespace-style
+   '(face
+     trailing
+     tabs
+     ;; tab-mark
+     ;; spaces
+     ;; space-mark
+     ;; lines-tail
+     ;; newline
+     ;; newline-mark
+     ;; empty
+     indentation::tab
+     indentation::space
+     indentation
+     space-after-tab::tab
+     space-after-tab::space
+     space-after-tab
+     space-before-tab::tab
+     space-before-tab::space
+     space-before-tab))
+  )
 
-  (use-package dtrt-indent
-    :config
-    (progn
-      (dtrt-indent-mode 1))
-    )
+(use-package dtrt-indent
+  :config
+  (progn
+    (dtrt-indent-mode 1))
+  )
 #+end_src
 
 * Keybindings
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   ;; To reduce errors. Was: 'buffer-menu
@@ -174,9 +167,6 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
 #+end_src
 
 * Theming and window shaping
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -209,9 +199,6 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
 #+end_src
 
 * Spelling
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
 (setq flyspell-issue-welcome-flag nil)
@@ -250,9 +237,6 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
 #+end_src
 
 * Flycheck
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 ** General
 
@@ -296,9 +280,6 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 #+end_src
 
 * Pandoc
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (use-package pandoc-mode)
@@ -315,7 +296,42 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
   :END:
 
 #+begin_src emacs-lisp
-;; (add-hook 'org-mode-hook 'pandoc-mode)
+(use-package org
+  :init
+  (setq org-src-tab-acts-natively t
+        org-babel-python-command "ipython"
+        org-export-backends (quote (ascii html icalendar latex md))
+        org-export-dispatch-use-expert-ui t
+        org-export-with-smart-quotes t
+        org-edit-src-content-indentation 0
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t
+        org-latex-create-formula-image-program 'imagemagick
+        ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
+        org-highlight-latex-and-relatex '(latex script entities)
+        )
+  :config
+  (progn
+    ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
+    ;; How to add (use-package htmlize)?
+    ;; You need to install pygments to use minted.
+    (when (executable-find "pygmentize")
+      ;; Add minted to the defaults packages to include when exporting.
+      (add-to-list 'org-latex-packages-alist '("" "minted" nil))
+      ;; Tell the latex export to use the minted package for source code
+      ;; coloration.
+      (setq org-latex-listings 'minted)
+      ;; Let the exporter use the -shell-escape option to let latex
+      ;; execute external programs.  This obviously and can be
+      ;; dangerous to activate!
+      (setq org-latex-minted-options
+            '(("mathescape" "true")
+              ("linenos" "true")
+              ("numbersep" "5pt")
+              ("frame" "lines")
+              ("framesep" "2mm")))
+      (setq org-latex-pdf-process
+            '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -327,6 +343,8 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
    (latex . t)
    (python . t)))
 
+;; (add-hook 'org-mode-hook 'pandoc-mode)
+
 ;; (add-hook 'org-mode-hook
 ;;           (lambda ()
 ;;             (add-hook 'after-save-hook 'org-export-dispatch)))
@@ -335,52 +353,14 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 ;;           (lambda ()
 ;;             (local-set-key (kbd "M-I") 'org-toggle-iimage-in-org)))
 
-(setq org-src-tab-acts-natively t
-      org-babel-python-command "ipython"
-      org-export-backends (quote (ascii html icalendar latex md))
-      org-export-dispatch-use-expert-ui t
-      org-export-with-smart-quotes t
-      org-edit-src-content-indentation 0
-      org-src-fontify-natively t
-      org-src-tab-acts-natively t
-      ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
-      org-highlight-latex-and-relatex '(latex script entities)
-      )
-
 ;; Taken from https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org
 ;; (setcar (nthcdr 2 org-emphasis-regexp-components) " \t\n\r")
 ;; (custom-set-variables `(org-emphasis-alist ',org-emphasis-alist))
 ;; (org-element--set-regexps)
 
-;; code snippet comes from
-;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
-;; Include the latex-exporter
-;; check whether org-mode 8.x is available
-(when (require 'ox-latex nil 'noerror)
-  ;; You need to install pygments to use minted
-  (when (executable-find "pygmentize")
-    ;; Add minted to the defaults packages to include when exporting.
-    (add-to-list 'org-latex-packages-alist '("" "minted"))
-    ;; Tell the latex export to use the minted package for source
-    ;; code coloration.
-    (setq org-latex-listings 'minted)
-    ;; Let the exporter use the -shell-escape option to let latex
-    ;; execute external programs.
-    ;; This obviously and can be dangerous to activate!
-    (setq org-latex-minted-options
-          '(("mathescape" "true")
-            ("linenos" "true")
-            ("numbersep" "5pt")
-            ("frame" "lines")
-            ("framesep" "2mm")))
-    (setq org-latex-pdf-process
-          '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
 #+end_src
 
 * CSS
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (use-package rainbow-mode)
@@ -395,9 +375,6 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 #+end_src
 
 * C/C++
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (setq auto-mode-alist
@@ -435,9 +412,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+end_src
 
 * Makefiles
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (setq auto-mode-alist
@@ -449,9 +423,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+end_src
 
 * FORTRAN
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   ;; These might already be defaults, but it doesn't hurt.
@@ -468,9 +439,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+end_src
 
 * PKGBUILDs
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (use-package pkgbuild-mode
@@ -481,9 +449,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+end_src
 
 * systemd
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
  (add-to-list 'auto-mode-alist '("\\.service\\'" . conf-unix-mode))
@@ -501,9 +466,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+end_src
 
 * LaTeX
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   ;; (use-package auctex-latexmk) 
@@ -517,18 +479,12 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+end_src
 
 * Shell
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (add-hook 'sh-mode-hook 'flycheck-mode)
 #+end_src
 
 * Python
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (use-package python
@@ -591,9 +547,6 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 #+end_src
 
 * CMAKE
-  :PROPERTIES:
-  :all-set:  true
-  :END:
 
   This sections needs to come after the Markdown section so that CMake
   files get recognized properly.
@@ -608,9 +561,6 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 #+end_src
 
 * docview
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   (use-package doc-view
@@ -628,18 +578,12 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 #+end_src
 
 * scratch buffers
-  :PROPERTIES:
-  :all-set:  true
-  :END:
 
 #+begin_src emacs-lisp
   (use-package scratch)
 #+end_src
 
 * yasnippet
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
   ;; (use-package yasnippet
@@ -679,9 +623,6 @@ Setting ensure to nil is necessary, because the name of the package and how we l
 #+end_src
 
 * Macros
-  :PROPERTIES:
-  :all-set:  true
-  :END:
 
 #+begin_src emacs-lisp
   (fset 'manip-xyz-line-from-pdf
