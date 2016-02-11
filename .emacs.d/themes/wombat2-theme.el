@@ -96,7 +96,7 @@ Ansi-Color faces are included.")
 
    ;; Mode line faces
    `(mode-line ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
-   `(mode-line-inactive ((,class (:background ,wombat-gray-2 :box (:line-width 1 :color "#857b6f" :style nil)))))
+   `(mode-line-inactive ((,class (:background ,wombat-gray-3 :box (:line-width 1 :color "#857b6f" :style nil)))))
    ; `(mode-line-emphasis ((,class (:bold t))))
    ; `(mode-line-highlight ((,class (:background ,wombat-orange :box nil))))
    ; `(mode-line-buffer-id ((,class (:bold t :background "#424242" :weight bold))))

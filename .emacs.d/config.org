@@ -1,4 +1,4 @@
-* General configuration
+\* General configuration
 
 #+begin_src emacs-lisp
 (setq user-full-name "Eric J. Berquist"
@@ -11,13 +11,9 @@
 ;; What's the difference between setq and setq-default?
 ;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
-;; transient-mark-mode: ...
-;; visual-line-mode: ...
 ;; http://stackoverflow.com/questions/3281581/how-to-word-wrap-in-emacs
-;; ...but still wrap words rather than continue past the boundary
 (setq-default transient-mark-mode t
-              visual-line-mode nil
-              word-wrap t
+              visual-line-mode t
               line-number-mode t
               column-number-mode t
               cursor-type '(hbar . 2))
@@ -197,6 +193,39 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   (when (not indicate-empty-lines)
     (toggle-indicate-empty-lines))
 #+end_src
+
+** line numbers
+
+Taken from https://www.emacswiki.org/emacs/LineNumbers:
+
+#+BEGIN_QUOTE
+Here’s a better approach. Every buffer has it’s own format variable
+and the separator use the mode-line face.
+#+END_QUOTE
+
+#+BEGIN_SRC emacs-lisp
+(use-package linum
+  :init
+  (global-linum-mode t)
+  )
+
+(unless window-system
+  (add-hook 'linum-before-numbering-hook
+            (lambda ()
+              (setq-local linum-format-fmt
+                          (let ((w (length (number-to-string
+                                            (count-lines (point-min) (point-max))))))
+                            (concat "%" (number-to-string w) "d"))))))
+
+(defun linum-format-func (line)
+  (concat
+   (propertize (format linum-format-fmt line) 'face 'linum)
+   (propertize " " 'face 'mode-line)))
+
+(unless window-system
+  (setq linum-format 'linum-format-func))
+
+#+END_SRC
 
 * Spelling
 
