@@ -62,8 +62,8 @@
  '(completions-format (quote vertical))
  '(custom-safe-themes
    (quote
-    ("40c66989886b3f05b0c4f80952f128c6c4600f85b1f0996caa1fa1479e20c082" "59ee922af44ffccea18ba4aa311bffedc06fe66dfe957bf62d046164eec30d2d" "67b5fb678e7669c3272b3e6333e7f728682bc2a45d8598938c48796745cd246a" "66df3ea9d31e26883f5b3cba46363418910b11101ad9bbcb65b7b459c8fdaf6f" "e9a57f29be1e80518313ee1994a9a46113462b6af1e97340a5943008b2c1be82" "75ca64e5e4005637575c27f0c1d43ad59f94873ee52356508380adcee99e5bd7" default)))
- '(fortran-comment-region "cccc")
+    ("1f2673f43c0315d7cbf860bfead8e32b0dfbfa55662db2813e462da9d95ec14c" "40c66989886b3f05b0c4f80952f128c6c4600f85b1f0996caa1fa1479e20c082" "59ee922af44ffccea18ba4aa311bffedc06fe66dfe957bf62d046164eec30d2d" "67b5fb678e7669c3272b3e6333e7f728682bc2a45d8598938c48796745cd246a" "66df3ea9d31e26883f5b3cba46363418910b11101ad9bbcb65b7b459c8fdaf6f" "e9a57f29be1e80518313ee1994a9a46113462b6af1e97340a5943008b2c1be82" "75ca64e5e4005637575c27f0c1d43ad59f94873ee52356508380adcee99e5bd7" default)))
+ '(fortran-comment-region "C")
  '(git-gutter:handled-backends (quote (git svn hg bzr)))
  '(git-gutter:hide-gutter t)
  '(indicate-buffer-boundaries (quote right))

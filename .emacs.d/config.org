@@ -1,4 +1,4 @@
-\* General configuration
+* General configuration
 
 #+begin_src emacs-lisp
 (setq user-full-name "Eric J. Berquist"
@@ -12,8 +12,10 @@
 ;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
 ;; http://stackoverflow.com/questions/3281581/how-to-word-wrap-in-emacs
+;; http://stackoverflow.com/questions/12989072/showing-continuation-lines-in-emacs-in-a-text-terminal
 (setq-default transient-mark-mode t
               visual-line-mode t
+              truncate-lines nil
               line-number-mode t
               column-number-mode t
               cursor-type '(hbar . 2))
@@ -80,18 +82,19 @@
 Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
 
 #+begin_src emacs-lisp
-  (use-package ido
-    :init
-    (progn
-      (ido-mode t)
-      (setq ido-enable-flex-matching t)
-      (setq ido-everywhere t)))
+(use-package ido
+  :init
+  (progn
+    (ido-mode t)
+    (setq ido-enable-flex-matching t
+          ido-everywhere t
+          ;; wow, that *is* annoying!
+          ido-use-filename-at-point nil
+          ido-use-url-at-point nil)))
+
 #+end_src
 
 * Parens/whitespace/indentation
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
 (use-package mic-paren
@@ -101,7 +104,6 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
 
 ;; http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
 (use-package whitespace
-  :bind (("C-c T w" . whitespace-mode))
   :init
   (setq global-whitespace-mode nil)
   :config
@@ -204,10 +206,7 @@ and the separator use the mode-line face.
 #+END_QUOTE
 
 #+BEGIN_SRC emacs-lisp
-(use-package linum
-  :init
-  (global-linum-mode t)
-  )
+(use-package linum)
 
 (unless window-system
   (add-hook 'linum-before-numbering-hook
@@ -320,14 +319,20 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 #+end_src
 
 * Org
-  :PROPERTIES:
-  :all-set:  false
-  :END:
 
 #+begin_src emacs-lisp
 (use-package org
+  :bind (("C-c l" . org-store-link)
+         ("C-c a" . org-agenda)
+         ("C-c c" . org-capture)
+         ("C-c b" . org-iswitchb))
   :init
-  (setq org-src-tab-acts-natively t
+  (setq org-directory "~/Dropbox/Notes"
+        org-agenda-files '("~/Dropbox/Notes"
+                           "~/Dropbox/Notes/research")
+        org-log-done 'time
+        org-log-done-with-time t
+        org-src-tab-acts-natively t
         org-babel-python-command "ipython"
         org-export-backends (quote (ascii html icalendar latex md))
         org-export-dispatch-use-expert-ui t
@@ -422,21 +427,20 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 #+begin_src emacs-lisp
-  (defun add-ispc-keywords()
-    "adds uniform and varying keywords for c and c++ modes"
-                                          ;
-    (font-lock-add-keywords nil
-                            '(
-                              ("\\<\\(uniform\\)" . 'font-lock-keyword-face)
-                              ("\\<\\(varying\\)" . 'font-lock-keyword-face)
-                                          ; more go here
-                              )
+(defun add-ispc-keywords()
+  "adds uniform and varying keywords for c and c++ modes"
+  (font-lock-add-keywords nil
+                          '(
+                            ("\\<\\(uniform\\)" . 'font-lock-keyword-face)
+                            ("\\<\\(varying\\)" . 'font-lock-keyword-face)
+                            ("\\<\\(export\\)" . 'font-lock-keyword-face)
                             )
-    )
+                          )
+  )
 
-  (add-hook 'c++-mode-hook 'add-ispc-keywords)
-  (add-to-list 'auto-mode-alist '("\\.ispc$" . c++-mode))
-  (add-to-list 'auto-mode-alist '("\\.isph$" . c++-mode))
+(add-hook 'c++-mode-hook 'add-ispc-keywords)
+(add-to-list 'auto-mode-alist '("\\.ispc$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.isph$" . c++-mode))
 
 #+end_src
 
@@ -534,9 +538,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+end_src
 
 * Markdown
-  :PROPERTIES:
-  :all-set:  true
-  :END:
 
 #+begin_src emacs-lisp
 (use-package markdown-mode
