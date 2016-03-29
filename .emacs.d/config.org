@@ -343,6 +343,7 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
         org-latex-create-formula-image-program 'imagemagick
         ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
         org-highlight-latex-and-relatex '(latex script entities)
+        org-html-with-latex (quote mathjax)
         )
   :config
   (progn
