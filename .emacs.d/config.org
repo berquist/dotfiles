@@ -590,6 +590,24 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
     )
 #+end_src
 
+* Chapel
+
+#+BEGIN_SRC emacs-lisp
+(use-package chapel-mode)
+#+END_SRC
+
+* YAML
+
+#+BEGIN_SRC emacs-lisp
+(use-package yaml-mode)
+#+END_SRC
+
+* MATLAB
+
+#+BEGIN_SRC emacs-lisp
+(use-package matlab-mode)
+#+END_SRC
+
 * docview
 
 #+begin_src emacs-lisp
