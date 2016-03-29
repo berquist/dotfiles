@@ -538,6 +538,15 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   (setq flycheck-pylintrc "~/.pylintrc")
 #+end_src
 
+** Cython
+
+#+BEGIN_SRC emacs-lisp
+(use-package cython-mode)
+
+(use-package flycheck-cython)
+(add-hook 'cython-mode-hook 'flycheck-mode)
+#+END_SRC
+
 * Markdown
 
 #+begin_src emacs-lisp
