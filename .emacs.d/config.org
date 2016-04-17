@@ -310,17 +310,21 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 * Pandoc
 
 #+begin_src emacs-lisp
-  (use-package pandoc-mode)
-  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+(use-package pandoc-mode)
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
-  (add-hook 'markdown-mode-hook 'pandoc-mode)
-  (add-hook 'latex-mode-hook 'pandoc-mode)
-  (add-hook 'LaTeX-mode-hook 'pandoc-mode)
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+(add-hook 'latex-mode-hook 'pandoc-mode)
+(add-hook 'LaTeX-mode-hook 'pandoc-mode)
 #+end_src
 
 * Org
 
 #+begin_src emacs-lisp
+;; http://orgmode.org/manual/Code-evaluation-security.html
+(defun my-org-confirm-babel-evaluate (lang body)
+  (not (string= lang "latex")))
+
 (use-package org
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
@@ -329,9 +333,12 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
   :init
   (setq org-directory "~/Dropbox/Notes"
         org-agenda-files '("~/Dropbox/Notes"
-                           "~/Dropbox/Notes/research")
+                           "~/Dropbox/Notes/research"
+                           "~/Dropbox/research/lab_notebook")
         org-log-done 'time
         org-log-done-with-time t
+        ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
+        org-startup-truncated nil
         org-src-tab-acts-natively t
         org-babel-python-command "ipython"
         org-export-backends (quote (ascii html icalendar latex md))
@@ -344,9 +351,20 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
         ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
         org-highlight-latex-and-relatex '(latex script entities)
         org-html-with-latex (quote mathjax)
+        org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
         )
   :config
   (progn
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (sh . t)
+       (C . t)
+       ;; How to handle C++?
+       ;; (C++ . t)
+       (latex . t)
+       (python . t)))
+    (add-to-list 'org-latex-packages-alist '("" "braket" t))
     ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
     ;; How to add (use-package htmlize)?
     ;; You need to install pygments to use minted.
@@ -367,16 +385,6 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
               ("framesep" "2mm")))
       (setq org-latex-pdf-process
             '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))))
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (sh . t)
-   (C . t)
-   ;; How to handle C++?
-   ;; (C++ . t)
-   (latex . t)
-   (python . t)))
 
 ;; (add-hook 'org-mode-hook 'pandoc-mode)
 

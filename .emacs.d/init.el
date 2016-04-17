@@ -66,6 +66,7 @@
  '(fortran-comment-region "C")
  '(git-gutter:handled-backends (quote (git svn hg bzr)))
  '(git-gutter:hide-gutter t)
+ '(global-auto-revert-mode t)
  '(indicate-buffer-boundaries (quote right))
  '(markdown-coding-system (quote utf-8))
  '(markdown-command
