@@ -652,8 +652,37 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 * scratch buffers
 
 #+begin_src emacs-lisp
-  (use-package scratch)
+(use-package scratch)
 #+end_src
+
+* IRC
+
+#+BEGIN_SRC emacs-lisp
+;; (setq my-credentials-file "~/dotfiles/dotfiles-private/private.el")
+(load-file "~/dotfiles/dotfiles-private/private.el")
+
+;; (defun my-nickserv-password (_)
+;;   (with-temp-buffer
+;;     (insert-file-contents-literally my-credentials-file)
+;;     (plist-get (read (buffer-string)) :nickserv-password)))
+
+(setq circe-default-nick "eric"
+      circe-default-user "speckledlemon"
+      circe-use-cycle-completion t)
+
+(setq circe-network-options
+      `(("Slack"
+         :host "ericscarchat.irc.slack.com"
+         :port (6667 . 6697)
+         :use-tls t
+         :nick "eric"
+         :user "eric"
+         :realname "Eric Berquist"
+         :pass ,slack-password)))
+
+(load "lui-logging" nil t)
+(enable-lui-logging-globally)
+#+END_SRC
 
 * yasnippet
 
