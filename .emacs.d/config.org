@@ -618,6 +618,12 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 (use-package matlab-mode)
 #+END_SRC
 
+* CUDA
+
+#+BEGIN_SRC emacs-lisp
+(use-package cuda-mode)
+#+END_SRC
+
 * docview
 
 #+begin_src emacs-lisp
