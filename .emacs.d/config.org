@@ -257,11 +257,6 @@ and the separator use the mode-line face.
   (ispell-word)
   )
 (global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
-
-;; use hunspell when possible
-;; (when (executable-find "hunspell")
-;;   (setq-default ispell-program-name "hunspell")
-;;   (setq ispell-really-hunspell t))
 #+end_src
 
 * Flycheck
@@ -510,40 +505,40 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 * LaTeX
 
 #+begin_src emacs-lisp
-  ;; (use-package auctex-latexmk) 
-  ;; (auctex-latexmk-setup)
+;; (use-package auctex-latexmk) 
+;; (auctex-latexmk-setup)
 
-  ;; grrrrrr what's with the capitalization
-  (add-hook 'latex-mode-hook 'flycheck-mode)
-  (add-hook 'latex-mode-hook 'whitespace-mode)
-  (add-hook 'LaTeX-mode-hook 'flycheck-mode)
-  (add-hook 'LaTeX-mode-hook 'whitespace-mode)
+;; grrrrrr what's with the capitalization
+(add-hook 'latex-mode-hook 'flycheck-mode)
+(add-hook 'latex-mode-hook 'whitespace-mode)
+(add-hook 'LaTeX-mode-hook 'flycheck-mode)
+(add-hook 'LaTeX-mode-hook 'whitespace-mode)
 #+end_src
 
 * Shell
 
 #+begin_src emacs-lisp
-  (add-hook 'sh-mode-hook 'flycheck-mode)
+(add-hook 'sh-mode-hook 'flycheck-mode)
 #+end_src
 
 * Python
 
 #+begin_src emacs-lisp
-  (use-package python
-    :interpreter ("ipython" . python-mode)
-    )
+(use-package python
+  :interpreter ("ipython" . python-mode)
+  )
 
-  ;; (add-hook 'python-mode-hook 'flycheck-mode)
-  (add-hook 'python-mode-hook 'whitespace-mode)
+;; (add-hook 'python-mode-hook 'flycheck-mode)
+(add-hook 'python-mode-hook 'whitespace-mode)
 
-  ;; Use pyflakes instead of flake8 or pylint for syntax checking.
-  (use-package flycheck-pyflakes)
-  ;; Don't disable these, in case pyflakes isn't available.
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
+;; Use pyflakes instead of flake8 or pylint for syntax checking.
+(use-package flycheck-pyflakes)
+;; Don't disable these, in case pyflakes isn't available.
+;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
+;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
 
-  (setq flycheck-pylintrc "~/.pylintrc")
+(setq flycheck-pylintrc "~/.pylintrc")
 #+end_src
 
 ** Cython
@@ -568,6 +563,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
    ("\\.md\\'" . gfm-mode)
    )
   :config
+  ;; This currently creates a buffer with the *.html contents. How to
+  ;; fix?
   (add-hook 'markdown-mode-hook
             (lambda ()
               (add-hook 'after-save-hook 'markdown-export t :local)))
@@ -580,18 +577,18 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' website]].
 
 #+begin_src emacs-lisp
-  (use-package deft
-    :config
-    (progn
-      (setq
-       ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
-       deft-directory "~/Dropbox/Notes"
-       deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex")
-       deft-time-format " %Y-%m-%d %H:%M:%S"
-       deft-recursive t
-       deft-use-filename-as-title t)
-      (global-set-key [f9] 'deft))
-    )
+(use-package deft
+  :config
+  (progn
+    (setq
+     ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
+     deft-directory "~/Dropbox/Notes"
+     deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex")
+     deft-time-format " %Y-%m-%d %H:%M:%S"
+     deft-recursive t
+     deft-use-filename-as-title t)
+    (global-set-key [f9] 'deft))
+  )
 #+end_src
 
 * CMAKE
@@ -635,64 +632,88 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 * docview
 
 #+begin_src emacs-lisp
-  (use-package doc-view
-    :config
-    ;; paging up and down globally
-    ;; (fset 'doc-prev "\C-xo\C-x[\C-xo")
-    ;; (fset 'doc-next "\C-xo\C-x]\C-xo")
-    ;; (global-set-key (kbd "M-[") 'doc-prev)
-    ;; (global-set-key (kbd "M-]") 'doc-next)
-    (define-key doc-view-mode-map (kbd "M-[") 'doc-view-previous-page)
-    (define-key doc-view-mode-map (kbd "M-]") 'doc-view-next-page)
-    ;; always refresh when the contents change
-    (add-hook 'doc-view-mode-hook 'auto-revert-mode)
-    )
+(use-package doc-view
+  :config
+  ;; paging up and down globally
+  ;; (fset 'doc-prev "\C-xo\C-x[\C-xo")
+  ;; (fset 'doc-next "\C-xo\C-x]\C-xo")
+  ;; (global-set-key (kbd "M-[") 'doc-prev)
+  ;; (global-set-key (kbd "M-]") 'doc-next)
+  (define-key doc-view-mode-map (kbd "M-[") 'doc-view-previous-page)
+  (define-key doc-view-mode-map (kbd "M-]") 'doc-view-next-page)
+  ;; always refresh when the contents change
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+  )
 #+end_src
 
 * scratch buffers
 
 #+begin_src emacs-lisp
-(use-package scratch)
+;; (use-package scratch)
 #+end_src
 
 * IRC
 
 #+BEGIN_SRC emacs-lisp
-;; (setq my-credentials-file "~/dotfiles/dotfiles-private/private.el")
-(load-file "~/dotfiles/dotfiles-private/private.el")
+;; (load-file "~/dotfiles/dotfiles-private/private.el")
 
 ;; (defun my-nickserv-password (_)
 ;;   (with-temp-buffer
 ;;     (insert-file-contents-literally my-credentials-file)
 ;;     (plist-get (read (buffer-string)) :nickserv-password)))
 
-(setq circe-default-nick "eric"
-      circe-default-user "speckledlemon"
-      circe-use-cycle-completion t)
+;; (setq circe-default-nick "eric"
+;;       circe-default-user "speckledlemon"
+;;       circe-use-cycle-completion t)
 
-(setq circe-network-options
-      `(("Slack"
-         :host "ericscarchat.irc.slack.com"
-         :port (6667 . 6697)
-         :use-tls t
-         :nick "eric"
-         :user "eric"
-         :realname "Eric Berquist"
-         :pass ,slack-password)))
+;; (setq circe-network-options
+;;       `(("Slack"
+;;          :host "ericscarchat.irc.slack.com"
+;;          :port (6667 . 6697)
+;;          :use-tls t
+;;          :nick "eric"
+;;          :user "eric"
+;;          :realname "Eric Berquist"
+;;          :pass ,slack-password)))
 
-;; (load "lui-logging" nil t)
-;; (enable-lui-logging-globally)
+;; ;; (load "lui-logging" nil t)
+;; ;; (enable-lui-logging-globally)
+
+;; (use-package rcirc
+;;   :config
+;;   (progn
+;;     (setq rcirc-server-alist '())
+;;     (add-to-list 'rcirc-server-alist
+;;                  '("ericscarchat.irc.slack.com"
+;;                    :channels ("#general" "#random")
+;;                    :nick "eric"
+;;                    :password ,slack-password
+;;                    :full-name "Eric Berquist"
+;;                    :port 6667
+;;                    :encryption tls)
+;;                  )
+;;     (add-to-list 'rcirc-server-alist
+;;                  '("198.211.102.41"
+;;                    :nick "speckledlemon"
+;;                    :user "eric"
+;;                    :password ,znc-password
+;;                    :full-name "Eric Berquist"
+;;                    :port 5000
+;;                    :encryption tls)
+;;                  )
+;;     ))
+
 #+END_SRC
 
 * yasnippet
 
 #+begin_src emacs-lisp
-  ;; (use-package yasnippet
-  ;;   :config
-  ;;   (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
-  ;;   ;; (add-to-list 'auto-mode-alist '("\\.snippet\\'" . snippet-mode))
-  ;;   (yas-global-mode 1)
-  ;;   )
+;; (use-package yasnippet
+;;   :config
+;;   (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
+;;   ;; (add-to-list 'auto-mode-alist '("\\.snippet\\'" . snippet-mode))
+;;   (yas-global-mode 1)
+;;   )
 #+end_src
 
 * View large files (vlf)
@@ -700,39 +721,39 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 Setting ensure to nil is necessary, because the name of the package and how we load it are different.
 
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package vlf-setup
-  ;;   :ensure nil)
+;; (use-package vlf-setup
+;;   :ensure nil)
 #+END_SRC
 
 * Tabbar
 
 #+begin_src emacs-lisp
-  ;; (use-package tabbar
-  ;;   :config
-  ;;   (tabbar-mode 1)
-  ;;   )
+;; (use-package tabbar
+;;   :config
+;;   (tabbar-mode 1)
+;;   )
 #+end_src
 
 * git-gutter
 
 #+begin_src emacs-lisp
-  ;; (use-package git-gutter
-  ;;   :config
-  ;;   (progn
-  ;;     (global-git-gutter-mode 1)
-  ;;     (git-gutter:linum-setup)))
+;; (use-package git-gutter
+;;   :config
+;;   (progn
+;;     (global-git-gutter-mode 1)
+;;     (git-gutter:linum-setup)))
 #+end_src
 
 * Macros
 
 #+begin_src emacs-lisp
-  (fset 'manip-xyz-line-from-pdf
-        (lambda
-          (&optional arg)
-          "Keyboard macro."
-          (interactive "p")
-          (kmacro-exec-ring-item
-           (quote
-            ("   " 0 "%d")) arg)))
+(fset 'manip-xyz-line-from-pdf
+      (lambda
+        (&optional arg)
+        "Keyboard macro."
+        (interactive "p")
+        (kmacro-exec-ring-item
+         (quote
+          ("   " 0 "%d")) arg)))
 #+end_src
 
