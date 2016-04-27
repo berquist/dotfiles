@@ -680,8 +680,8 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
          :realname "Eric Berquist"
          :pass ,slack-password)))
 
-(load "lui-logging" nil t)
-(enable-lui-logging-globally)
+;; (load "lui-logging" nil t)
+;; (enable-lui-logging-globally)
 #+END_SRC
 
 * yasnippet
