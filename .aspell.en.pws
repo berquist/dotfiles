@@ -1,4 +1,4 @@
-personal_ws-1.1 en 163 
+personal_ws-1.1 en 169 
 IPython
 perturbative
 sorbents
@@ -34,6 +34,7 @@ EasySpin
 TPSS
 lookups
 Neese
+nonlocal
 parametrize
 scalable
 vibrational
@@ -47,6 +48,8 @@ parallelized
 amyloid
 Hamiltonians
 biradical
+sorption
+experimentalists
 Hexacoordinated
 functionalized
 Saxena
@@ -58,6 +61,7 @@ UPBE
 wavefunction
 Budil
 ligand
+reactivity
 emacs
 magnetizabilities
 underbinding
@@ -126,6 +130,7 @@ overlocalization
 Plesset
 eigenfunctions
 amino
+energetics
 endonuclease
 hexacoordinate
 functionals
@@ -157,6 +162,7 @@ overdelocalization
 drvman
 diethylaminetriamine
 PQI
+inconcrete
 machina
 SCF
 stereocenter
