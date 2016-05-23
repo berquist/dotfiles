@@ -223,7 +223,6 @@ and the separator use the mode-line face.
 
 (unless window-system
   (setq linum-format 'linum-format-func))
-
 #+END_SRC
 
 * Spelling
@@ -264,19 +263,18 @@ and the separator use the mode-line face.
 ** General
 
 #+begin_src emacs-lisp
-  (use-package flycheck)
-  ;; Don't start Flycheck willy-nilly all over the place...
-  (setq-default global-flycheck-mode nil)
-  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck)
+;; Don't start Flycheck willy-nilly all over the place...
+(setq-default global-flycheck-mode nil)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
-  (setq flycheck-check-syntax-automatically
-        '(mode-enabled
-          new-line
-          save
-          idle-change))
+(setq flycheck-check-syntax-automatically
+      '(mode-enabled
+        new-line
+        save
+        idle-change))
 
-  (setq flycheck-idle-change-delay 0.3)
-
+(setq flycheck-idle-change-delay 0.5)
 #+end_src
 
 ** checkbashisms
@@ -326,30 +324,29 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
          ("C-c c" . org-capture)
          ("C-c b" . org-iswitchb))
   :init
-  (setq org-directory "~/Dropbox/Notes"
-        org-agenda-files '("~/Dropbox/Notes"
-                           "~/Dropbox/Notes/research"
-                           "~/Dropbox/research/lab_notebook")
-        org-log-done 'time
-        org-log-done-with-time t
-        ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
-        org-startup-truncated nil
-        org-src-tab-acts-natively t
-        org-babel-python-command "ipython"
-        org-export-backends (quote (ascii html icalendar latex md))
-        org-export-dispatch-use-expert-ui t
-        org-export-with-smart-quotes t
-        org-edit-src-content-indentation 0
-        org-src-fontify-natively t
-        org-src-tab-acts-natively t
-        org-latex-create-formula-image-program 'imagemagick
-        ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
-        org-highlight-latex-and-relatex '(latex script entities)
-        org-html-with-latex (quote mathjax)
-        org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
-        )
   :config
   (progn
+    (setq org-directory "~/Dropbox/Notes"
+          org-agenda-files '("~/Dropbox/Notes"
+                             "~/Dropbox/research/lab_notebook")
+          org-log-done 'time
+          org-log-done-with-time t
+          ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
+          org-startup-truncated nil
+          org-src-tab-acts-natively t
+          org-babel-python-command "ipython"
+          org-export-backends (quote (ascii html icalendar latex md))
+          org-export-dispatch-use-expert-ui t
+          org-export-with-smart-quotes t
+          org-edit-src-content-indentation 0
+          org-src-fontify-natively t
+          org-src-tab-acts-natively t
+          org-latex-create-formula-image-program 'imagemagick
+          ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
+          org-highlight-latex-and-relatex '(latex script entities)
+          org-html-with-latex (quote mathjax)
+          org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
+          )
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((emacs-lisp . t)
@@ -359,6 +356,9 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
        ;; (C++ . t)
        (latex . t)
        (python . t)))
+    (use-package ox-gfm)
+    (use-package ox-pandoc)
+    (use-package ox-twbs)
     (add-to-list 'org-latex-packages-alist '("" "braket" t))
     ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
     ;; How to add (use-package htmlize)?
@@ -380,36 +380,44 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
               ("framesep" "2mm")))
       (setq org-latex-pdf-process
             '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))))
-
-;; (add-hook 'org-mode-hook 'pandoc-mode)
-
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (add-hook 'after-save-hook 'org-export-dispatch)))
-
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (local-set-key (kbd "M-I") 'org-toggle-iimage-in-org)))
-
-;; Taken from https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org
-;; (setcar (nthcdr 2 org-emphasis-regexp-components) " \t\n\r")
-;; (custom-set-variables `(org-emphasis-alist ',org-emphasis-alist))
-;; (org-element--set-regexps)
-
 #+end_src
+
+Additional things of interest might be found in https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org.
+
+Every time and Org buffer is saved, automatically export it to HTML. Taken from https://www.reddit.com/r/emacs/comments/4golh1/how_to_auto_export_html_when_saving_in_orgmode/.
+
+#+BEGIN_SRC emacs-lisp
+(defun org-mode-export-hook ()
+  (add-hook 'after-save-hook 'org-html-export-to-html t t))
+(add-hook 'org-mode-hook #'org-mode-export-hook)
+#+END_SRC
+
+A function to toggle this auto-HTML-export behavior. Does this play nice with the function above?
+
+#+BEGIN_SRC emacs-lisp
+(defun toggle-org-html-export-on-save ()
+  (interactive)
+  (if (memq 'org-html-export-to-html after-save-hook)
+      (progn
+        (remove-hook 'after-save-hook 'org-html-export-to-html t)
+        (message "Disabled org html export on save for current buffer..."))
+    (add-hook 'after-save-hook 'org-html-export-to-html nil t)
+    (message "Enabled org html export on save for current buffer...")))
+#+END_SRC
 
 * CSS
 
 #+begin_src emacs-lisp
-  (use-package rainbow-mode)
-  (defun my-css-mode-hook ()
-    (rainbow-mode t))
-  (add-hook 'css-mode-hook 'my-css-mode-hook)
+(use-package rainbow-mode
+  :disabled t)
+;; (defun my-css-mode-hook ()
+;;   (rainbow-mode t))
+;; (add-hook 'css-mode-hook 'my-css-mode-hook)
 
-  (define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
-    (lambda () (rainbow-mode 1)))
+;; (define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
+;;   (lambda () (rainbow-mode 1)))
 
-  ;; (my-global-rainbow-mode 1)
+;; (my-global-rainbow-mode 1)
 #+end_src
 
 * C/C++

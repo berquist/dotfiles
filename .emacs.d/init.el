@@ -31,8 +31,10 @@
 (eval-when-compile
   (require 'use-package))
 
-(setq use-package-always-ensure t
-      use-package-verbose t)
+(setq
+ use-package-always-defer t
+ use-package-always-ensure t
+ use-package-verbose t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Load configuration
