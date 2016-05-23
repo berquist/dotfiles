@@ -558,6 +558,12 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (add-hook 'cython-mode-hook 'flycheck-mode)
 #+END_SRC
 
+* Julia
+
+#+BEGIN_SRC emacs-lisp
+(use-package julia-mode)
+#+END_SRC
+
 * Markdown
 
 #+begin_src emacs-lisp
