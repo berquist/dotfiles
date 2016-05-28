@@ -1,53 +1,52 @@
 # -*- mode: conf; -*-
 
 [user]
-        name = Eric Berquist
-        email = eric.berquist@gmail.com
+    name = Eric Berquist
+    email = eric.berquist@gmail.com
 
 [core]
-        editor = emacs -nw
+    editor = emacs -nw
 
 [color]
-        ui = true
+    ui = true
 
 [push]
-        default = simple
+    default = simple
 
 [merge]
-        conflictstyle = diff3
-        verbosity = 3
+    conflictstyle = diff3
+    verbosity = 3
 
 [alias]
-        # The basics.
-        aa = add --all
-        bav = branch -a -v
-        co = checkout
-        di = diff
-        # These do the same thing.
-        dc = diff --cached
-        ds = diff --staged
-        rv = remote -v
-        st = status -sb
+    branches = branch -a -v
+    # These do the same thing (--cached and --staged, that is).
+    dc = diff --cached
+    ds = diff --staged
+    remotes = remote -v
+    st = status -sb
 
-        # Log stuff.
-        l = log --color --decorate --abbrev-commit --date=iso
-        lg = !git l --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
+    l = log --color --decorate --abbrev-commit --date=iso
+    lg = !git l --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
 
-        # Let's do some destructive stuff.
-        rhu = reset --hard @{u}
-        amend = commit --amend -C HEAD
-        undo = reset --soft HEAD^
+    ## Let's do some destructive stuff.
+    # What does this do?
+    rhu = reset --hard @{u}
+    # Add more things to the last commit on the current head.
+    amend = commit --amend -C HEAD
+    # What does this do?
+    undo = reset --soft HEAD^
 
-        ## Useful for LaTeX.
-        ## Taken from https://wiki.math.cmu.edu/iki/wiki/tips/20140301-git-latexdiff.html
-        # git wdiff HEAD~1
-        wdiff = diff --color-words --ignore-all-space
-        wdc = diff --color-words --ignore-all-space --cached
-        # git ldiff HEAD~1
-        ldiff = difftool -y -t latex
+    ## Useful for LaTeX.
+    ## Taken from https://wiki.math.cmu.edu/iki/wiki/tips/20140301-git-latexdiff.html
+    # git wdiff HEAD~1
+    wdiff = diff --color-words --ignore-all-space
+    # git ldiff HEAD~1
+    ldiff = difftool -y -t latex
 
 [difftool.latex]
-        cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
+    cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
+
+# Where did this come from?
 [filter "lfs"]
 	smudge = git-lfs smudge %f
 	required = true
