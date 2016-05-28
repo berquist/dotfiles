@@ -1,3 +1,5 @@
+# -*- mode: conf -*-
+
 ## Sample initialization file for GNU nano.
 ##
 ## Please note that you must have configured nano with --enable-nanorc
@@ -58,7 +60,7 @@
 # set fill -8
 
 ## Remember the used search/replace strings for the next session.
-# set historylog
+set historylog
 
 ## Have the justify command kill whitespace at the end of lines
 # set justifytrim
@@ -96,7 +98,7 @@
 # set nonewlines
 
 ## Don't wrap text at all.
-# set nowrap
+set nowrap
 
 ## Set operating directory.  nano will not read or write files outside
 ## this directory and its subdirectories.  Also, the current directory
@@ -136,7 +138,7 @@
 # set rebindkeypad
 
 ## Do extended regular expression searches by default.
-# set regexp
+set regexp
 
 ## Make the Home key smarter.  When Home is pressed anywhere but at the
 ## very beginning of non-whitespace characters on a line, the cursor
@@ -149,20 +151,20 @@
 # set smooth
 
 ## Enable soft line wrapping (AKA full-line display).
-# set softwrap
+set softwrap
 
 ## Use this spelling checker instead of the internal one.  This option
 ## does not properly have a default value.
 # set speller "aspell -x -c"
 
 ## Allow nano to be suspended.
-# set suspend
+set suspend
 
 ## Use this tab size instead of the default; it must be greater than 0.
-# set tabsize 8
+set tabsize 4
 
 ## Convert typed tabs to spaces.
-# set tabstospaces
+set tabstospaces
 
 ## Save automatically on exit; don't prompt.
 # set tempfile
@@ -233,7 +235,10 @@
 ## them easier to remember and faster to type using nano's -Y option.
 ##
 ## To include all existing syntax definitions, you can do:
-include "/usr/share/nano/*.nanorc"
+# include "/usr/share/nano/*.nanorc"
+
+# How to handle this based on OS?
+include "/usr/local/share/nano/*.nanorc"
 
 
 ## Key bindings.
