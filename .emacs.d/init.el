@@ -77,6 +77,7 @@
  '(markdown-enable-math t)
  '(markdown-link-space-sub-char "-")
  '(markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css")
+ '(max-specpdl-size 5)
  '(my-global-rainbow-mode nil)
  '(paren-delay nil)
  '(paren-highlight-at-point t)

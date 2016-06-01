@@ -356,12 +356,12 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
        ;; (C++ . t)
        (latex . t)
        (python . t)))
+    (use-package htmlize)
     (use-package ox-gfm)
     (use-package ox-pandoc)
     (use-package ox-twbs)
     (add-to-list 'org-latex-packages-alist '("" "braket" t))
     ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
-    ;; How to add (use-package htmlize)?
     ;; You need to install pygments to use minted.
     (when (executable-find "pygmentize")
       ;; Add minted to the defaults packages to include when exporting.
