@@ -98,7 +98,7 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
 
 #+begin_src emacs-lisp
 (use-package mic-paren
-  :config
+  :init
   (paren-activate)
   )
 
@@ -647,6 +647,7 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 
 #+begin_src emacs-lisp
 (use-package doc-view
+  :disabled t
   :config
   ;; paging up and down globally
   ;; (fset 'doc-prev "\C-xo\C-x[\C-xo")
