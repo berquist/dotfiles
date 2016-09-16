@@ -50,7 +50,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote browse-url-firefox))
- '(c-basic-offset 2)
+ '(c-basic-offset 4)
  '(c-default-style
    (quote
     ((java-mode . "java")
@@ -83,6 +83,7 @@
  '(paren-highlight-offscreen t)
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
+ '(ruby-indent-level 4)
  '(tabbar-separator (quote (0.5)))
  '(tabbar-use-images nil)
  '(vc-follow-symlinks t))

@@ -517,9 +517,9 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 ;; (auctex-latexmk-setup)
 
 ;; grrrrrr what's with the capitalization
-(add-hook 'latex-mode-hook 'flycheck-mode)
+;; (add-hook 'latex-mode-hook 'flycheck-mode)
 (add-hook 'latex-mode-hook 'whitespace-mode)
-(add-hook 'LaTeX-mode-hook 'flycheck-mode)
+;; (add-hook 'LaTeX-mode-hook 'flycheck-mode)
 (add-hook 'LaTeX-mode-hook 'whitespace-mode)
 #+end_src
 
@@ -611,12 +611,14 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
   files get recognized properly.
 
 #+begin_src emacs-lisp
-  (use-package cmake-mode
-    :mode
-    (("CMakeLists\\.txt\\'" . cmake-mode)
-     ("CMakeCache\\.txt\\'" . cmake-mode)
-     ("\\.cmake\\'" . cmake-mode))
-    )
+(use-package cmake-mode
+  :mode
+  (("CMakeLists\\.txt\\'" . cmake-mode)
+   ("CMakeCache\\.txt\\'" . cmake-mode)
+   ("\\.cmake\\'" . cmake-mode))
+  :config
+  (setq cmake-tab-width 4)
+  )
 #+end_src
 
 * Chapel
