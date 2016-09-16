@@ -6,6 +6,8 @@
 
 [core]
     editor = emacs -nw
+    autocrlf = input
+    safecrlf = warn
 
 [color]
     ui = true
@@ -25,14 +27,17 @@
     remotes = remote -v
     st = status -sb
 
+    # Similar to the default, but with some labels.
     l = log --color --decorate --abbrev-commit --date=iso
+    # gitk style, very pretty mhmmmm
     lg = !git l --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
 
     ## Let's do some destructive stuff.
     # What does this do?
     rhu = reset --hard @{u}
-    # Add more things to the last commit on the current head.
-    amend = commit --amend -C HEAD
+    # Add more things to the last commit on the current head, with the
+    # ability to rewrite the commit message.
+    amend = commit --amend -c HEAD
     # What does this do?
     undo = reset --soft HEAD^
 
@@ -48,6 +53,6 @@
 
 # Where did this come from?
 [filter "lfs"]
-	smudge = git-lfs smudge %f
-	required = true
-	clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+    clean = git-lfs clean %f
