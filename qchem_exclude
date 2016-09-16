@@ -66,3 +66,6 @@ test/QMMM_ZEO-force.qcin
 # This is because git-svn doesn't work properly.
 libqints
 libposthf
+libcc
+libfock
+ccman2
