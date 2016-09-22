@@ -96,13 +96,14 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
 
 * Parens/whitespace/indentation
 
+See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html.
+
 #+begin_src emacs-lisp
 (use-package mic-paren
   :init
   (paren-activate)
   )
 
-;; http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
 (use-package whitespace
   :init
   (setq global-whitespace-mode nil)
@@ -139,7 +140,7 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   )
 
 (use-package dtrt-indent
-  :config
+  :init
   (progn
     (dtrt-indent-mode 1))
   )
@@ -299,6 +300,13 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
        flycheck-checkbashisms-newline t
        flycheck-checkbashisms-posix t)))
 #+end_src
+
+* Git
+
+#+BEGIN_SRC emacs-lisp
+(use-package gitconfig-mode)
+(use-package gitignore-mode)
+#+END_SRC
 
 * Pandoc
 
@@ -558,12 +566,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (add-hook 'cython-mode-hook 'flycheck-mode)
 #+END_SRC
 
-* Julia
-
-#+BEGIN_SRC emacs-lisp
-(use-package julia-mode)
-#+END_SRC
-
 * Markdown
 
 #+begin_src emacs-lisp
@@ -621,6 +623,23 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
   )
 #+end_src
 
+* EditorConfig
+
+http://editorconfig.org/
+
+#+BEGIN_SRC emacs-lisp
+(use-package editorconfig
+  :init
+  (add-hook 'prog-mode-hook (editorconfig-mode 1))
+  (add-hook 'text-mode-hook (editorconfig-mode 1)))
+#+END_SRC
+
+* Julia
+
+#+BEGIN_SRC emacs-lisp
+(use-package julia-mode)
+#+END_SRC
+
 * Chapel
 
 #+BEGIN_SRC emacs-lisp
@@ -661,12 +680,6 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
   ;; always refresh when the contents change
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
-#+end_src
-
-* scratch buffers
-
-#+begin_src emacs-lisp
-;; (use-package scratch)
 #+end_src
 
 * IRC
@@ -722,44 +735,16 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 
 #+END_SRC
 
-* yasnippet
+# * yasnippet
 
-#+begin_src emacs-lisp
-;; (use-package yasnippet
-;;   :config
-;;   (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
-;;   ;; (add-to-list 'auto-mode-alist '("\\.snippet\\'" . snippet-mode))
-;;   (yas-global-mode 1)
-;;   )
-#+end_src
-
-* View large files (vlf)
-
-Setting ensure to nil is necessary, because the name of the package and how we load it are different.
-
-#+BEGIN_SRC emacs-lisp
-;; (use-package vlf-setup
-;;   :ensure nil)
-#+END_SRC
-
-* Tabbar
-
-#+begin_src emacs-lisp
-;; (use-package tabbar
-;;   :config
-;;   (tabbar-mode 1)
-;;   )
-#+end_src
-
-* git-gutter
-
-#+begin_src emacs-lisp
-;; (use-package git-gutter
-;;   :config
-;;   (progn
-;;     (global-git-gutter-mode 1)
-;;     (git-gutter:linum-setup)))
-#+end_src
+# #+begin_src emacs-lisp
+# (use-package yasnippet
+#   :config
+#   (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
+#   ;; (add-to-list 'auto-mode-alist '("\\.snippet\\'" . snippet-mode))
+#   (yas-global-mode 1)
+#   )
+# #+end_src
 
 * Macros
 

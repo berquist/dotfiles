@@ -78,6 +78,9 @@
  '(markdown-link-space-sub-char "-")
  '(markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css")
  '(my-global-rainbow-mode nil)
+ '(package-selected-packages
+   (quote
+    (yaml-mode use-package pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren matlab-mode markdown-mode julia-mode htmlize flycheck-pyflakes flycheck-cython flycheck-checkbashisms editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode chapel-mode)))
  '(paren-delay nil)
  '(paren-highlight-at-point t)
  '(paren-highlight-offscreen t)
