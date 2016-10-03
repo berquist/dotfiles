@@ -339,6 +339,7 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
                              "~/Dropbox/research/lab_notebook")
           org-log-done 'time
           org-log-done-with-time t
+          org-closed-keep-when-no-todo t
           ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
           org-startup-truncated nil
           org-src-tab-acts-natively t
@@ -346,9 +347,6 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
           org-export-backends (quote (ascii html icalendar latex md))
           org-export-dispatch-use-expert-ui t
           org-export-with-smart-quotes t
-          ;; org-export-html-style-include-scripts nil
-          ;; org-export-html-style-include-default nil
-          ;; org-export-html-style "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" />"
           org-edit-src-content-indentation 0
           org-src-fontify-natively t
           org-src-tab-acts-natively t
@@ -684,70 +682,6 @@ http://editorconfig.org/
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
 #+end_src
-
-* IRC
-
-#+BEGIN_SRC emacs-lisp
-;; (load-file "~/dotfiles/dotfiles-private/private.el")
-
-;; (defun my-nickserv-password (_)
-;;   (with-temp-buffer
-;;     (insert-file-contents-literally my-credentials-file)
-;;     (plist-get (read (buffer-string)) :nickserv-password)))
-
-;; (setq circe-default-nick "eric"
-;;       circe-default-user "speckledlemon"
-;;       circe-use-cycle-completion t)
-
-;; (setq circe-network-options
-;;       `(("Slack"
-;;          :host "ericscarchat.irc.slack.com"
-;;          :port (6667 . 6697)
-;;          :use-tls t
-;;          :nick "eric"
-;;          :user "eric"
-;;          :realname "Eric Berquist"
-;;          :pass ,slack-password)))
-
-;; ;; (load "lui-logging" nil t)
-;; ;; (enable-lui-logging-globally)
-
-;; (use-package rcirc
-;;   :config
-;;   (progn
-;;     (setq rcirc-server-alist '())
-;;     (add-to-list 'rcirc-server-alist
-;;                  '("ericscarchat.irc.slack.com"
-;;                    :channels ("#general" "#random")
-;;                    :nick "eric"
-;;                    :password ,slack-password
-;;                    :full-name "Eric Berquist"
-;;                    :port 6667
-;;                    :encryption tls)
-;;                  )
-;;     (add-to-list 'rcirc-server-alist
-;;                  '("198.211.102.41"
-;;                    :nick "speckledlemon"
-;;                    :user "eric"
-;;                    :password ,znc-password
-;;                    :full-name "Eric Berquist"
-;;                    :port 5000
-;;                    :encryption tls)
-;;                  )
-;;     ))
-
-#+END_SRC
-
-# * yasnippet
-
-# #+begin_src emacs-lisp
-# (use-package yasnippet
-#   :config
-#   (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
-#   ;; (add-to-list 'auto-mode-alist '("\\.snippet\\'" . snippet-mode))
-#   (yas-global-mode 1)
-#   )
-# #+end_src
 
 * Macros
 
