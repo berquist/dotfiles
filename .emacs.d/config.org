@@ -346,6 +346,9 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
           org-export-backends (quote (ascii html icalendar latex md))
           org-export-dispatch-use-expert-ui t
           org-export-with-smart-quotes t
+          ;; org-export-html-style-include-scripts nil
+          ;; org-export-html-style-include-default nil
+          ;; org-export-html-style "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" />"
           org-edit-src-content-indentation 0
           org-src-fontify-natively t
           org-src-tab-acts-natively t

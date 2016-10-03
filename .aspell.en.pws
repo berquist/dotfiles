@@ -1,4 +1,4 @@
-personal_ws-1.1 en 175 
+personal_ws-1.1 en 178
 IPython
 perturbative
 sorbents
@@ -62,6 +62,8 @@ InChI
 erfc
 UPBE
 wavefunction
+antisymmetrized
+supersystem
 Budil
 ligand
 reactivity
@@ -97,6 +99,7 @@ pVXZ
 PBE
 excitations
 CASSCF
+antisymmetric
 EPR
 ROKS
 Giard

@@ -1,9 +1,11 @@
+# -*- mode: tcl -*-
+
 display antialias on
 display depthcue off
 display culling off
 display rendermode GLSL
 display projection orthographic
-display resize 1050 1050
+display resize 1500 1500
 axes location off
 
 menu main on
