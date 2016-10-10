@@ -1,4 +1,4 @@
-personal_ws-1.1 en 178
+personal_ws-1.1 en 180 
 IPython
 perturbative
 sorbents
@@ -39,12 +39,13 @@ nonlocal
 parametrize
 scalable
 vibrational
+magneton
 polarizabilities
 Dunning's
 Berquist
+octupole
 perchlorate
 imidazole
-octupole
 solvation
 delocalized
 parallelized
@@ -62,8 +63,8 @@ InChI
 erfc
 UPBE
 wavefunction
-antisymmetrized
 supersystem
+antisymmetrized
 Budil
 ligand
 reactivity
@@ -133,6 +134,7 @@ LYP
 parametrization
 Sunil
 Orca
+overbar
 overlocalization
 Plesset
 eigenfunctions
