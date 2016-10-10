@@ -80,7 +80,7 @@
  '(my-global-rainbow-mode nil)
  '(package-selected-packages
    (quote
-    (yaml-mode use-package scratch rainbow-mode pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren matlab-mode markdown-mode julia-mode htmlize gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode circe chapel-mode)))
+    (unfill yaml-mode use-package scratch rainbow-mode pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren matlab-mode markdown-mode julia-mode htmlize gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode circe chapel-mode)))
  '(paren-delay nil)
  '(paren-highlight-at-point t)
  '(paren-highlight-offscreen t)
