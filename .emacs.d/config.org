@@ -649,6 +649,12 @@ http://editorconfig.org/
 (use-package chapel-mode)
 #+END_SRC
 
+* Lua
+
+#+BEGIN_SRC emacs-lisp
+(use-package lua-mode)
+#+END_SRC
+
 * YAML
 
 #+BEGIN_SRC emacs-lisp
