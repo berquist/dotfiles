@@ -4,6 +4,7 @@
 [user]
     name = Eric Berquist
     email = eric.berquist@gmail.com
+    # signingkey = BAFD205D
 
 [core]
     # When using the emacs daemon, just `emacs` is a problem;
@@ -52,6 +53,9 @@
     dc = diff --cached
     ds = diff --staged
 
+    # http://stackoverflow.com/questions/6017987/how-can-i-list-all-the-deleted-files-in-a-git-repository
+    show-deleted = log --diff-filter=D --summary
+    show-deleted2 = !git log --all --pretty=format: --name-only --diff-filter=D | sort -u
     # Similar to the default, but with some labels.
     l = log --color --decorate --abbrev-commit --date=iso
     # gitk style, very pretty mhmmmm
@@ -80,3 +84,5 @@
     smudge = git-lfs smudge %f
     required = true
     clean = git-lfs clean %f
+# [commit]
+# 	gpgsign = true
