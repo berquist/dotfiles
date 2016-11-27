@@ -8,7 +8,8 @@
 
 ;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
-;; What's the difference between setq and setq-default?
+;; What's the difference between setq and setq-default? Seems usage
+;; here is rather inconsistent. TODO
 ;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
 ;; http://stackoverflow.com/questions/3281581/how-to-word-wrap-in-emacs
@@ -37,7 +38,7 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
-;; Automaticall eload buffers when their files change.
+;; Automaticall reload buffers when their files change.
 (global-auto-revert-mode t)
 
 ;; What platform are we on? darwin, gnu/linux are the most likely
@@ -55,18 +56,21 @@
 * Backups/autosaving
 
 #+begin_src emacs-lisp
-  ;; let's live on the edge and disable backup and autosave
-  (setq backup-inhibited t
-        auto-save-default nil)
+;; let's live on the edge and disable backup and autosave
+(setq backup-inhibited t
+      auto-save-default nil
+      create-lockfiles nil
+      make-backup-files nil
+      )
 
-  ;; (setq backup-directory-alist `(("." . "~/.saves")))
-  ;; (setq backup-by-copying t)
-  ;; (setq tramp-auto-save-directory "~/.saves")
+;; (setq backup-directory-alist `(("." . "~/.saves")))
+;; (setq backup-by-copying t)
+;; (setq tramp-auto-save-directory "~/.saves")
 
-  ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-  ;; (custom-set-variables
-  ;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
-  ;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+;; (custom-set-variables
+;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
+;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
 #+end_src
 
 * Disable popup boxes
@@ -151,6 +155,10 @@ See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.
   )
 
 (use-package unfill)
+
+;; Always place a newline at the end of files, like nano does by
+;; default.
+(setq require-final-newline t)
 #+end_src
 
 Other paren settings; which package(s) do they belong to?
@@ -317,11 +325,27 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
        flycheck-checkbashisms-posix t)))
 #+end_src
 
-* Git
+* Git/version control
+
+** General
+
+#+BEGIN_SRC emacs-lisp
+;; Even though VC systems (at least git) commit the symbolic link
+;; pointer itself, and not the file it's pointing to, I want to edit
+;; the file.
+(setq vc-follow-symlinks t)
+#+END_SRC
+
+** Git
 
 #+BEGIN_SRC emacs-lisp
 (use-package gitconfig-mode)
 (use-package gitignore-mode)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq git-gutter:handled-backends (quote (git svn hg bzr)))
+(setq git-gutter:hide-gutter t)
 #+END_SRC
 
 * Pandoc
@@ -443,6 +467,7 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
 ;;   (lambda () (rainbow-mode 1)))
 
 ;; (my-global-rainbow-mode 1)
+(setq my-global-rainbow-mode nil)
 #+end_src
 
 * C/C++
@@ -617,13 +642,23 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
    )
   :config
   ;; This currently creates a buffer with the *.html contents. How to
-  ;; fix?
+  ;; fix? TODO
   (add-hook 'markdown-mode-hook
             (lambda ()
               (add-hook 'after-save-hook 'markdown-export t :local)))
   )
 
 #+end_src
+
+#+BEGIN_SRC emacs-lisp
+(setq markdown-coding-system (quote utf-8))
+(setq markdown-command
+   "pandoc -c file://${HOME}/.emacs.d/github-pandoc.css -f markdown_github -t html5 --smart --mathjax --highlight-style pygments --standalone")
+(setq markdown-css-path "file://${HOME}/.emacs.d/github-pandoc.css")
+(setq markdown-enable-math t)
+(setq markdown-link-space-sub-char "-")
+(setq markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css")
+#+END_SRC
 
 * deft
 
@@ -687,6 +722,12 @@ http://editorconfig.org/
 
 #+BEGIN_SRC emacs-lisp
 (use-package lua-mode)
+#+END_SRC
+
+* Ruby
+
+#+BEGIN_SRC emacs-lisp
+(setq ruby-indent-level 4)
 #+END_SRC
 
 * YAML

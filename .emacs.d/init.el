@@ -36,7 +36,8 @@
 (setq
  use-package-always-defer t
  use-package-always-ensure t
- use-package-verbose t)
+ use-package-verbose t
+ )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Load configuration
