@@ -150,21 +150,19 @@ See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.
 
 * Keybindings
 
+Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='uncomment-region= here, but =M-;= calls ='comment-dwim=, which is what you really want.
+
 #+begin_src emacs-lisp
-  ;; To reduce errors. Was: 'buffer-menu
-  (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
-  ;; Was: 'ido-switch-buffer
-  (global-set-key (kbd "C-x b") 'list-buffers)
-  (global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
+;; To reduce errors. Was: 'buffer-menu
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+;; Was: 'ido-switch-buffer
+(global-set-key (kbd "C-x b") 'list-buffers)
+(global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
 
-  ;; (global-set-key (kbd "C-'") 'comment-or-uncomment-region)
-  ;; (global-set-key (kbd "C-?") 'comment-region)
-  ;; (global-set-key (kbd "C-/") 'uncomment-region)
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 
-  (global-set-key (kbd "C-+") 'text-scale-increase)
-  (global-set-key (kbd "C--") 'text-scale-decrease)
-
-  (global-set-key (kbd "C-x C-h") 'replace-string)
+(global-set-key (kbd "C-x C-h") 'replace-string)
 #+end_src
 
 * Theming and window shaping
@@ -230,6 +228,8 @@ and the separator use the mode-line face.
 
 * Spelling
 
+=C-;= to try and correct a misspelled word on a line.
+
 #+begin_src emacs-lisp
 (setq flyspell-issue-welcome-flag nil)
 (setq flyspell-mode-line-string " FlyS")
@@ -241,6 +241,7 @@ and the separator use the mode-line face.
                 log-edit-mode-hook))
   (add-hook hook (lambda () (flyspell-mode -1))))
 
+;; Don't enable flyspell for programming-type modes.
 ;; (dolist (mode '(emacs-lisp-mode-hook
 ;;                 inferior-lisp-mode-hook
 ;;                 python-mode-hook))
@@ -395,7 +396,7 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 
 Additional things of interest might be found in https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org.
 
-Every time and Org buffer is saved, automatically export it to HTML. Taken from https://www.reddit.com/r/emacs/comments/4golh1/how_to_auto_export_html_when_saving_in_orgmode/.
+Every time an Org buffer is saved, automatically export it to HTML. Taken from https://www.reddit.com/r/emacs/comments/4golh1/how_to_auto_export_html_when_saving_in_orgmode/.
 
 #+BEGIN_SRC emacs-lisp
 (defun org-mode-export-hook ()
