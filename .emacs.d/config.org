@@ -29,11 +29,16 @@
               audible-bell nil
               ring-bell-function 'ignore)
 
+;; 'y' is two characters less than 'yes'.
+;; 'defalias' or 'fset'?
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; death to tabs, tabs are evil
 (setq-default indent-tabs-mode nil
               tab-width 4)
+
+;; Automaticall eload buffers when their files change.
+(global-auto-revert-mode t)
 
 ;; What platform are we on? darwin, gnu/linux are the most likely
 ;; answers.
@@ -147,6 +152,14 @@ See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.
 
 (use-package unfill)
 #+end_src
+
+Other paren settings; which package(s) do they belong to?
+
+#+BEGIN_SRC emacs-lisp
+(setq paren-delay nil)
+(setq paren-highlight-at-point t)
+(setq paren-highlight-offscreen t)
+#+END_SRC
 
 * Keybindings
 
@@ -446,6 +459,24 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
                  ) auto-mode-alist))
 #+end_src
 
+These are valid for all C-style modes (I think).
+
+#+BEGIN_SRC emacs-lisp
+(setq c-basic-offset 4)
+(setq c-default-style
+      (quote
+       ((java-mode . "java")
+        (awk-mode . "awk")
+        (other . "k&r"))))
+(setq c-doc-comment-style
+      (quote
+       ((c-mode . javadoc)
+        (java-mode . javadoc)
+        (pike-mode . autodoc))))
+#+END_SRC
+
+** TODO What's the difference between =c++-mode= and =cc-mode=?
+
 ** ISPC
 
 Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
@@ -482,17 +513,19 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 * FORTRAN
 
 #+begin_src emacs-lisp
-  ;; These might already be defaults, but it doesn't hurt.
-  (setq auto-mode-alist
-        (append '(("\\.f\\'"   . fortran-mode)
-                  ("\\.F\\'"   . fortran-mode)
-                  ("\\.for\\'" . fortran-mode)
-                  ("\\.f90\\'" . f90-mode)
-                  ("\\.F90\\'" . f90-mode)
-                  ("\\.f95\\'" . f90-mode)
-                  ("\\.f03\\'" . f90-mode)
-                  ("\\.f08\\'" . f90-mode)
-                  ) auto-mode-alist))
+;; These might already be defaults, but it doesn't hurt.
+(setq auto-mode-alist
+      (append '(("\\.f\\'"   . fortran-mode)
+                ("\\.F\\'"   . fortran-mode)
+                ("\\.for\\'" . fortran-mode)
+                ("\\.f90\\'" . f90-mode)
+                ("\\.F90\\'" . f90-mode)
+                ("\\.f95\\'" . f90-mode)
+                ("\\.f03\\'" . f90-mode)
+                ("\\.f08\\'" . f90-mode)
+                ) auto-mode-alist))
+
+(setq fortran-comment-region "C")
 #+end_src
 
 * PKGBUILDs
