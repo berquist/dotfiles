@@ -1,4 +1,4 @@
-personal_ws-1.1 en 182 
+personal_ws-1.1 en 186 
 IPython
 perturbative
 sorbents
@@ -21,6 +21,7 @@ parallelization
 diagonalization
 Blacksburg
 MATLAB
+monomeric
 enantiomers
 observables
 thermochemical
@@ -129,6 +130,7 @@ overbinding
 metalloproteins
 organometallic
 Pleasanton
+dimerization
 histidine
 computable
 LYP
@@ -181,3 +183,5 @@ SCF
 stereocenter
 quadrupole
 ILs
+SCS-MP2
+MP2

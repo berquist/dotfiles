@@ -7,3 +7,4 @@ fi
 
 compton -b --config=~/.compton.conf
 exec startxfce4
+thunar --daemon

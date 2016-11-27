@@ -79,10 +79,11 @@
     # Needs the `ldiff` script.
     cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
 
-# Where did this come from?
-[filter "lfs"]
-    smudge = git-lfs smudge %f
-    required = true
-    clean = git-lfs clean %f
 # [commit]
 # 	gpgsign = true
+
+# Where did this come from?
+[filter "lfs"]
+    required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
