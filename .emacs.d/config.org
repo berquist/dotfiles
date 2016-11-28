@@ -86,13 +86,12 @@
     ad-do-it))
 #+end_src
 
-* Ido
+* Ido and searching
 
 Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
 
 #+begin_src emacs-lisp
 (use-package ido
-  :disabled nil
   :config
   (setq ido-enable-flex-matching t
         ido-everywhere t
@@ -119,6 +118,21 @@ We don't need to =(use-package swiper)= thanks to the ivy one? This is a confusi
   )
 
 ;; (global-set-key (kbd "C-s") 'swiper)
+#+END_SRC
+
+Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
+
+#+BEGIN_SRC emacs-lisp
+(use-package anzu
+  ;; Unncessary since anzu comes with a variable!
+  ;; :diminish ""
+  :config
+  (setq
+   anzu-mode-lighter ""
+   )
+  :init
+  (global-anzu-mode 1)
+  )
 #+END_SRC
 
 * Parens/whitespace/indentation
@@ -242,8 +256,7 @@ Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='
 Taken from https://www.emacswiki.org/emacs/LineNumbers:
 
 #+BEGIN_QUOTE
-Here’s a better approach. Every buffer has it’s own format variable
-and the separator use the mode-line face.
+Here’s a better approach. Every buffer has it’s own format variable and the separator use the mode-line face.
 #+END_QUOTE
 
 #+BEGIN_SRC emacs-lisp
@@ -264,6 +277,14 @@ and the separator use the mode-line face.
 
 (unless window-system
   (setq linum-format 'linum-format-func))
+
+(use-package hlinum
+  :disabled t
+  :config
+  (setq linum-highlight-in-all-buffersp t)
+  :init
+  (hlinum-activate)
+  )
 #+END_SRC
 
 * Spelling
