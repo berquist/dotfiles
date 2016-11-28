@@ -76,14 +76,14 @@
 * Disable popup boxes
 
 #+begin_src emacs-lisp
-  (defadvice yes-or-no-p (around prevent-dialog activate)
-    "Prevent yes-or-no-p from activating a dialog"
-    (let ((use-dialog-box nil))
-      ad-do-it))
-  (defadvice y-or-n-p (around prevent-dialog-yorn activate)
-    "Prevent y-or-n-p from activating a dialog"
-    (let ((use-dialog-box nil))
-      ad-do-it))
+(defadvice yes-or-no-p (around prevent-dialog activate)
+  "Prevent yes-or-no-p from activating a dialog"
+  (let ((use-dialog-box nil))
+    ad-do-it))
+(defadvice y-or-n-p (around prevent-dialog-yorn activate)
+  "Prevent y-or-n-p from activating a dialog"
+  (let ((use-dialog-box nil))
+    ad-do-it))
 #+end_src
 
 * Ido
@@ -92,16 +92,34 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
 
 #+begin_src emacs-lisp
 (use-package ido
+  :disabled nil
+  :config
+  (setq ido-enable-flex-matching t
+        ido-everywhere t
+        ;; wow, that *is* annoying!
+        ido-use-filename-at-point nil
+        ido-use-url-at-point nil)
   :init
-  (progn
-    (ido-mode t)
-    (setq ido-enable-flex-matching t
-          ido-everywhere t
-          ;; wow, that *is* annoying!
-          ido-use-filename-at-point nil
-          ido-use-url-at-point nil)))
-
+  (ido-mode t)
+  )
 #+end_src
+
+We don't need to =(use-package swiper)= thanks to the ivy one? This is a confusing mess.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ivy
+  :disabled t
+  :config
+  (setq 
+   ivy-use-virtual-buffers t
+   ivy-count-format "(%d/%d) "
+   )
+  :init
+  (ivy-mode 1)
+  )
+
+;; (global-set-key (kbd "C-s") 'swiper)
+#+END_SRC
 
 * Parens/whitespace/indentation
 
@@ -189,33 +207,34 @@ Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='
 * Theming and window shaping
 
 #+begin_src emacs-lisp
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-  (load-theme 'wombat2 t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'wombat2 t)
+;; (load-theme 'abyss t)
 
-  (when window-system
-    (if (eq system-type 'gnu/linux)
-        (and (set-face-attribute 'default nil :font "DejaVu Sans Mono-11")
-             (set-frame-font "DejaVu Sans Mono-11")))
-    (if (eq system-type 'darwin)
-        (and (set-face-attribute 'default nil :font "Panic Sans-11")
-             (set-frame-font "Panic Sans-11"))))
-  ;; How can I set fallback fonts if these aren't installed?
-  ;; Or just try from a list?
+(when window-system
+  (if (eq system-type 'gnu/linux)
+      (and (set-face-attribute 'default nil :font "DejaVu Sans Mono-11")
+           (set-frame-font "DejaVu Sans Mono-11")))
+  (if (eq system-type 'darwin)
+      (and (set-face-attribute 'default nil :font "Panic Sans-11")
+           (set-frame-font "Panic Sans-11"))))
+;; How can I set fallback fonts if these aren't installed?
+;; Or just try from a list?
 
-  ;; If we're windowed, set the transparency
-  ;; Usage: (set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
-  ;; (set-frame-parameter (selected-frame) 'alpha '(100 100))
-  ;; (add-to-list 'default-frame-alist '(alpha 100 100))
+;; If we're windowed, set the transparency
+;; Usage: (set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
+;; (set-frame-parameter (selected-frame) 'alpha '(100 100))
+;; (add-to-list 'default-frame-alist '(alpha 100 100))
 
-  ;; If we're windowed, set the frame size.
-  (when (display-graphic-p)
-    ;; 11-inch MacBook Air
-    (if (eq system-type 'darwin)
-        (set-frame-size (selected-frame) 191 55)))
+;; If we're windowed, set the frame size.
+(when (display-graphic-p)
+  ;; 11-inch MacBook Air
+  (if (eq system-type 'darwin)
+      (set-frame-size (selected-frame) 191 55)))
 
-  (setq-default indicate-empty-lines t)
-  (when (not indicate-empty-lines)
-    (toggle-indicate-empty-lines))
+(setq-default indicate-empty-lines t)
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
 #+end_src
 
 ** line numbers
@@ -307,22 +326,22 @@ and the separator use the mode-line face.
 For this to work, =checkbashisms= needs to be available on the =$PATH=:
 
 #+begin_src sh
-  yaourt -S checkbashisms # Arch Linux, from AUR
-  brew install checkbashisms # Mac OS X, from Homebrew
-  sudo apt-get install devscripts # Debian/Ubuntu, official
-  sudo yum install rpmdevtools # Red Hat/CentOS
-  sudo pkg install checkbashisms # FreeBSD
+yaourt -S checkbashisms # Arch Linux, from AUR
+brew install checkbashisms # Mac OS X, from Homebrew
+sudo apt-get install devscripts # Debian/Ubuntu, official
+sudo yum install rpmdevtools # Red Hat/CentOS
+sudo pkg install checkbashisms # FreeBSD
 #+end_src
 
 #+begin_src emacs-lisp
-  (use-package flycheck-checkbashisms
-    :config
-    (progn
-      (flycheck-checkbashisms-setup)
-      (setq
-       ;; Check 'echo -n' usage
-       flycheck-checkbashisms-newline t
-       flycheck-checkbashisms-posix t)))
+(use-package flycheck-checkbashisms
+  :config
+  (progn
+    (flycheck-checkbashisms-setup)
+    (setq
+     ;; Check 'echo -n' usage
+     flycheck-checkbashisms-newline t
+     flycheck-checkbashisms-posix t)))
 #+end_src
 
 * Git/version control
@@ -338,9 +357,15 @@ For this to work, =checkbashisms= needs to be available on the =$PATH=:
 
 ** Git
 
+- [[https://magit.vc/manual/magit/Getting-started.html][magit: Getting Started]]
+
 #+BEGIN_SRC emacs-lisp
 (use-package gitconfig-mode)
 (use-package gitignore-mode)
+(use-package magit
+  ;; "Getting started" uses C-x g, which is also undefined.
+  :bind (("C-c m" . magit-status))
+  )
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
@@ -473,15 +498,15 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
 * C/C++
 
 #+begin_src emacs-lisp
-  (setq auto-mode-alist
-       (append '(("\\.C$" . c++-mode)
-                 ("\\.cc$" . c++-mode)
-                 ("\\.cpp$" . c++-mode)
-                 ("\\.c$" . c-mode)
-                 ("\\.h$" . c++-mode)
-                 ("\\.hh$" . c++-mode)
-                 ("\\.hpp$" . c++-mode)
-                 ) auto-mode-alist))
+(setq auto-mode-alist
+     (append '(("\\.C$" . c++-mode)
+               ("\\.cc$" . c++-mode)
+               ("\\.cpp$" . c++-mode)
+               ("\\.c$" . c-mode)
+               ("\\.h$" . c++-mode)
+               ("\\.hh$" . c++-mode)
+               ("\\.hpp$" . c++-mode)
+               ) auto-mode-alist))
 #+end_src
 
 These are valid for all C-style modes (I think).
@@ -527,12 +552,12 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 * Makefiles
 
 #+begin_src emacs-lisp
-  (setq auto-mode-alist
-        (append '(("Makefile*\\'" . makefile-mode)
-                  ("makefile*\\'" . makefile-mode)
-                  ) auto-mode-alist))
+(setq auto-mode-alist
+      (append '(("Makefile*\\'" . makefile-mode)
+                ("makefile*\\'" . makefile-mode)
+                ) auto-mode-alist))
 
-  (add-hook 'makefile-mode-hook 'whitespace-mode)
+(add-hook 'makefile-mode-hook 'whitespace-mode)
 #+end_src
 
 * FORTRAN
@@ -556,28 +581,16 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 * PKGBUILDs
 
 #+begin_src emacs-lisp
-  (use-package pkgbuild-mode
-    :mode
-    (("/PKGBUILD/" . pkgbuild-mode))
-    )
-
+(use-package pkgbuild-mode
+  :mode
+  (("/PKGBUILD/" . pkgbuild-mode))
+  )
 #+end_src
 
 * systemd
 
 #+begin_src emacs-lisp
- (add-to-list 'auto-mode-alist '("\\.service\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.timer\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.target\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.mount\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.automount\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.slice\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.socket\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.path\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.netdev\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.network\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.link\\'" . conf-unix-mode))
- (add-to-list 'auto-mode-alist '("\\.automount\\'" . conf-unix-mode))
+(use-package systemd)
 #+end_src
 
 * LaTeX
@@ -701,6 +714,7 @@ http://editorconfig.org/
 
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
+  :diminish ""
   :init
   (add-hook 'prog-mode-hook (editorconfig-mode 1))
   (add-hook 'text-mode-hook (editorconfig-mode 1)))
@@ -762,7 +776,6 @@ http://editorconfig.org/
   (define-key doc-view-mode-map (kbd "M-[") 'doc-view-previous-page)
   (define-key doc-view-mode-map (kbd "M-]") 'doc-view-next-page)
   ;; always refresh when the contents change
-  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
 #+end_src
 
