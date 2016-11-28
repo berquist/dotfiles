@@ -88,16 +88,34 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
 
 #+begin_src emacs-lisp
 (use-package ido
+  :disabled nil
+  :config
+  (setq ido-enable-flex-matching t
+        ido-everywhere t
+        ;; wow, that *is* annoying!
+        ido-use-filename-at-point nil
+        ido-use-url-at-point nil)
   :init
-  (progn
-    (ido-mode t)
-    (setq ido-enable-flex-matching t
-          ido-everywhere t
-          ;; wow, that *is* annoying!
-          ido-use-filename-at-point nil
-          ido-use-url-at-point nil)))
-
+  (ido-mode t)
+  )
 #+end_src
+
+We don't need to =(use-package swiper)= thanks to the ivy one? This is a confusing mess.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ivy
+  :disabled t
+  :config
+  (setq 
+   ivy-use-virtual-buffers t
+   ivy-count-format "(%d/%d) "
+   )
+  :init
+  (ivy-mode 1)
+  )
+
+;; (global-set-key (kbd "C-s") 'swiper)
+#+END_SRC
 
 * Parens/whitespace/indentation
 
