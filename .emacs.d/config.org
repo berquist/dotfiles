@@ -320,10 +320,15 @@ sudo pkg install checkbashisms # FreeBSD
 
 * Git
 
+- [[https://magit.vc/manual/magit/Getting-started.html][magit: Getting Started]]
+
 #+BEGIN_SRC emacs-lisp
 (use-package gitconfig-mode)
 (use-package gitignore-mode)
-(use-package magit)
+(use-package magit
+  ;; "Getting started" uses C-x g, which is also undefined.
+  :bind (("C-c m" . magit-status))
+  )
 #+END_SRC
 
 * Pandoc
