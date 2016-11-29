@@ -1,4 +1,4 @@
-personal_ws-1.1 en 185
+personal_ws-1.1 en 187
 IPython
 perturbative
 sorbents
@@ -71,6 +71,7 @@ Budil
 ligand
 reactivity
 emacs
+interpretable
 magnetizabilities
 underbinding
 ROHF
@@ -104,6 +105,7 @@ excitations
 CASSCF
 antisymmetric
 EPR
+interpretible
 ROKS
 Giard
 Breit
