@@ -8,7 +8,7 @@
  '(indicate-buffer-boundaries (quote right))
  '(package-selected-packages
    (quote
-    (anzu ivy abyss-theme yaml-mode use-package unfill pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren matlab-mode markdown-mode magit lua-mode julia-mode htmlize go-mode gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode chapel-mode)))
+    (yaml-mode use-package unfill systemd swiper ripgrep pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren matlab-mode markdown-mode magit-svn lua-mode julia-mode htmlize hlinum go-mode gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu abyss-theme)))
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
  '(safe-local-variable-values (quote ((dtrt-indent-mode . 0))))

@@ -73,6 +73,12 @@
 ;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
 #+end_src
 
+However, I would like to save my loaded buffers.
+
+#+BEGIN_SRC emacs-lisp
+;; (desktop-save-mode 1)
+#+END_SRC
+
 * Disable popup boxes
 
 #+begin_src emacs-lisp
@@ -133,6 +139,12 @@ Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
   :init
   (global-anzu-mode 1)
   )
+#+END_SRC
+
+Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed. Use =M-x ripgrep-regexp= to activate.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ripgrep)
 #+END_SRC
 
 * Parens/whitespace/indentation
@@ -381,11 +393,19 @@ sudo pkg install checkbashisms # FreeBSD
 - [[https://magit.vc/manual/magit/Getting-started.html][magit: Getting Started]]
 
 #+BEGIN_SRC emacs-lisp
+(use-package git-commit
+  :init
+  (global-git-commit-mode)
+  )
 (use-package gitconfig-mode)
 (use-package gitignore-mode)
 (use-package magit
   ;; "Getting started" uses C-x g, which is also undefined.
   :bind (("C-c m" . magit-status))
+  )
+(use-package magit-svn
+  :config
+  (add-hook 'magit-mode-hook 'magit-svn-mode)
   )
 #+END_SRC
 
@@ -546,6 +566,12 @@ These are valid for all C-style modes (I think).
         (pike-mode . autodoc))))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(use-package clang-format
+  :bind (("C-M-<tab>" . clang-format-region))
+  )
+#+END_SRC
+
 ** TODO What's the difference between =c++-mode= and =cc-mode=?
 
 ** ISPC
@@ -688,7 +714,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (setq markdown-coding-system (quote utf-8))
 (setq markdown-command
    "pandoc -c file://${HOME}/.emacs.d/github-pandoc.css -f markdown_github -t html5 --smart --mathjax --highlight-style pygments --standalone")
-(setq markdown-css-path "file://${HOME}/.emacs.d/github-pandoc.css")
+(setq markdown-css-paths '("file://${HOME}/.emacs.d/github-pandoc.css"))
 (setq markdown-enable-math t)
 (setq markdown-link-space-sub-char "-")
 (setq markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css")
