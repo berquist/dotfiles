@@ -1,8 +1,9 @@
-personal_ws-1.1 en 187
+personal_ws-1.1 en 190
 IPython
 perturbative
 sorbents
 anharmonic
+SCS
 Zeeman
 hyperfine
 Corcelli
@@ -35,6 +36,7 @@ multiconfigurational
 EasySpin
 TPSS
 lookups
+ALMO
 Neese
 nonlocal
 parametrize
@@ -95,6 +97,7 @@ modularity
 ferrocene
 nanoparticles
 th
+idempotency
 interelectronic
 Fock
 benchmarking
@@ -104,6 +107,7 @@ PBE
 excitations
 CASSCF
 antisymmetric
+libfock
 EPR
 interpretible
 ROKS
@@ -128,6 +132,7 @@ NMR
 antiestrogenic
 initio
 perturbatively
+DIIS
 overbinding
 metalloproteins
 organometallic
@@ -185,4 +190,3 @@ SCF
 stereocenter
 quadrupole
 ILs
-SCS
