@@ -6,6 +6,23 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(completions-format (quote vertical))
  '(indicate-buffer-boundaries (quote right))
+ '(org-latex-default-packages-alist
+   (quote
+    (("AUTO" "inputenc" t
+      ("pdflatex"))
+     ("T1" "fontenc" t
+      ("pdflatex"))
+     ("" "graphicx" t)
+     ("" "grffile" t)
+     ("" "longtable" nil)
+     ("" "wrapfig" nil)
+     ("" "rotating" nil)
+     ("normalem" "ulem" t)
+     ("" "amsmath" t)
+     ("" "textcomp" t)
+     ("" "amssymb" t)
+     ("" "capt-of" nil)
+     ("colorlinks=true" "hyperref" nil))))
  '(package-selected-packages
    (quote
     (yaml-mode use-package unfill systemd swiper ripgrep pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren matlab-mode markdown-mode magit-svn lua-mode julia-mode htmlize hlinum go-mode gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu abyss-theme)))
