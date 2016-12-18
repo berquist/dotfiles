@@ -189,13 +189,15 @@ See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.
      space-after-tab
      space-before-tab::tab
      space-before-tab::space
-     space-before-tab))
+     space-before-tab)
+   )
+  (add-hook 'makefile-mode-hook 'whitespace-mode)
+  (add-hook 'python-mode-hook 'whitespace-mode)
   )
 
 (use-package dtrt-indent
   :init
-  (progn
-    (dtrt-indent-mode 1))
+  (dtrt-indent-mode 1)
   )
 
 (use-package unfill)
@@ -339,19 +341,20 @@ Here’s a better approach. Every buffer has it’s own format variable and the 
 
 ** General
 
+TODO add LaTex
+
 #+begin_src emacs-lisp
-(use-package flycheck)
-;; Don't start Flycheck willy-nilly all over the place...
-(setq-default global-flycheck-mode nil)
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
-
-(setq flycheck-check-syntax-automatically
-      '(mode-enabled
-        new-line
-        save
-        idle-change))
-
-(setq flycheck-idle-change-delay 0.5)
+(use-package flycheck
+  :init
+  (setq flycheck-check-syntax-automatically
+        '(mode-enabled
+          new-line
+          save
+          idle-change)
+        flycheck-idle-change-delay 0.5)
+  (add-hook 'cython-mode-hook 'flycheck-mode)
+  (add-hook 'sh-mode-hook 'flycheck-mode)
+  )
 #+end_src
 
 ** checkbashisms
@@ -369,12 +372,12 @@ sudo pkg install checkbashisms # FreeBSD
 #+begin_src emacs-lisp
 (use-package flycheck-checkbashisms
   :config
-  (progn
-    (flycheck-checkbashisms-setup)
-    (setq
-     ;; Check 'echo -n' usage
-     flycheck-checkbashisms-newline t
-     flycheck-checkbashisms-posix t)))
+  (flycheck-checkbashisms-setup)
+  (setq
+   ;; Check 'echo -n' usage
+   flycheck-checkbashisms-newline t
+   flycheck-checkbashisms-posix t
+   ))
 #+end_src
 
 * Git/version control
@@ -409,6 +412,8 @@ sudo pkg install checkbashisms # FreeBSD
   )
 #+END_SRC
 
+Not using =git-gutter= right now, but if I did...
+
 #+BEGIN_SRC emacs-lisp
 (setq git-gutter:handled-backends (quote (git svn hg bzr)))
 (setq git-gutter:hide-gutter t)
@@ -417,12 +422,13 @@ sudo pkg install checkbashisms # FreeBSD
 * Pandoc
 
 #+begin_src emacs-lisp
-(use-package pandoc-mode)
-(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-
-(add-hook 'markdown-mode-hook 'pandoc-mode)
-(add-hook 'latex-mode-hook 'pandoc-mode)
-(add-hook 'LaTeX-mode-hook 'pandoc-mode)
+(use-package pandoc-mode
+  :config
+  (add-hook 'markdown-mode-hook 'pandoc-mode)
+  (add-hook 'latex-mode-hook 'pandoc-mode)
+  (add-hook 'LaTeX-mode-hook 'pandoc-mode)
+  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+  )
 #+end_src
 
 * Org
@@ -437,64 +443,62 @@ sudo pkg install checkbashisms # FreeBSD
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture)
          ("C-c b" . org-iswitchb))
-  :init
   :config
-  (progn
-    (setq org-directory "~/Dropbox/Notes"
-          org-agenda-files '("~/Dropbox/Notes"
-                             "~/Dropbox/research/lab_notebook")
-          org-log-done 'time
-          org-log-done-with-time t
-          org-closed-keep-when-no-todo t
-          ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
-          org-startup-truncated nil
-          org-src-tab-acts-natively t
-          org-babel-python-command "ipython"
-          org-export-backends (quote (ascii html icalendar latex md))
-          org-export-dispatch-use-expert-ui t
-          org-export-with-smart-quotes t
-          org-edit-src-content-indentation 0
-          org-src-fontify-natively t
-          org-src-tab-acts-natively t
-          org-latex-create-formula-image-program 'imagemagick
-          ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
-          org-highlight-latex-and-relatex '(latex script entities)
-          org-html-with-latex (quote mathjax)
-          org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
-          )
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (sh . t)
-       (C . t)
-       ;; How to handle C++?
-       ;; (C++ . t)
-       (latex . t)
-       (python . t)))
-    (use-package htmlize)
-    (use-package ox-gfm)
-    (use-package ox-pandoc)
-    (use-package ox-twbs)
-    (add-to-list 'org-latex-packages-alist '("" "braket" t))
-    ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
-    ;; You need to install pygments to use minted.
-    (when (executable-find "pygmentize")
-      ;; Add minted to the defaults packages to include when exporting.
-      (add-to-list 'org-latex-packages-alist '("" "minted" nil))
-      ;; Tell the latex export to use the minted package for source code
-      ;; coloration.
-      (setq org-latex-listings 'minted)
-      ;; Let the exporter use the -shell-escape option to let latex
-      ;; execute external programs.  This obviously and can be
-      ;; dangerous to activate!
-      (setq org-latex-minted-options
-            '(("mathescape" "true")
-              ("linenos" "true")
-              ("numbersep" "5pt")
-              ("frame" "lines")
-              ("framesep" "2mm")))
-      (setq org-latex-pdf-process
-            '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f")))))
+  (setq org-directory "~/Dropbox/Notes"
+        org-agenda-files '("~/Dropbox/Notes"
+                           "~/Dropbox/research/lab_notebook")
+        org-log-done 'time
+        org-log-done-with-time t
+        org-closed-keep-when-no-todo t
+        ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
+        org-startup-truncated nil
+        org-src-tab-acts-natively t
+        org-babel-python-command "ipython"
+        org-export-backends (quote (ascii html icalendar latex md))
+        org-export-dispatch-use-expert-ui t
+        org-export-with-smart-quotes t
+        org-edit-src-content-indentation 0
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t
+        org-latex-create-formula-image-program 'imagemagick
+        ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
+        org-highlight-latex-and-relatex '(latex script entities)
+        org-html-with-latex (quote mathjax)
+        org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
+        )
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (sh . t)
+     (C . t)
+     ;; How to handle C++?
+     ;; (C++ . t)
+     (latex . t)
+     (python . t)))
+  (use-package htmlize)
+  (use-package ox-gfm)
+  (use-package ox-pandoc)
+  (use-package ox-twbs)
+  (add-to-list 'org-latex-packages-alist '("" "braket" t))
+  ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
+  ;; You need to install pygments to use minted.
+  (when (executable-find "pygmentize")
+    ;; Add minted to the defaults packages to include when exporting.
+    (add-to-list 'org-latex-packages-alist '("" "minted" nil))
+    ;; Tell the latex export to use the minted package for source code
+    ;; coloration.
+    (setq org-latex-listings 'minted)
+    ;; Let the exporter use the -shell-escape option to let latex
+    ;; execute external programs.  This obviously and can be
+    ;; dangerous to activate!
+    (setq org-latex-minted-options
+          '(("mathescape" "true")
+            ("linenos" "true")
+            ("numbersep" "5pt")
+            ("frame" "lines")
+            ("framesep" "2mm")))
+    (setq org-latex-pdf-process
+          '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
 #+end_src
 
 Additional things of interest might be found in https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org.
@@ -603,8 +607,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
       (append '(("Makefile*\\'" . makefile-mode)
                 ("makefile*\\'" . makefile-mode)
                 ) auto-mode-alist))
-
-(add-hook 'makefile-mode-hook 'whitespace-mode)
 #+end_src
 
 * FORTRAN
@@ -645,18 +647,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+begin_src emacs-lisp
 ;; (use-package auctex-latexmk) 
 ;; (auctex-latexmk-setup)
-
-;; grrrrrr what's with the capitalization
-;; (add-hook 'latex-mode-hook 'flycheck-mode)
-(add-hook 'latex-mode-hook 'whitespace-mode)
-;; (add-hook 'LaTeX-mode-hook 'flycheck-mode)
-(add-hook 'LaTeX-mode-hook 'whitespace-mode)
-#+end_src
-
-* Shell
-
-#+begin_src emacs-lisp
-(add-hook 'sh-mode-hook 'flycheck-mode)
 #+end_src
 
 * Python
@@ -666,26 +656,23 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :interpreter ("ipython" . python-mode)
   )
 
-;; (add-hook 'python-mode-hook 'flycheck-mode)
-(add-hook 'python-mode-hook 'whitespace-mode)
-
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
-(use-package flycheck-pyflakes)
-;; Don't disable these, in case pyflakes isn't available.
-;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
-;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
-;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
-
-(setq flycheck-pylintrc "~/.pylintrc")
+;; I think stuffing the setq under config activates this for Python.
+(use-package flycheck-pyflakes
+  :config
+  ;; Don't disable these, in case pyflakes isn't available.
+  ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
+  ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+  ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
+  (setq flycheck-pylintrc "~/.pylintrc")
+)
 #+end_src
 
 ** Cython
 
 #+BEGIN_SRC emacs-lisp
 (use-package cython-mode)
-
 (use-package flycheck-cython)
-(add-hook 'cython-mode-hook 'flycheck-mode)
 #+END_SRC
 
 * Markdown
@@ -739,10 +726,9 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
   )
 #+end_src
 
-* CMAKE
+* CMake
 
-  This sections needs to come after the Markdown section so that CMake
-  files get recognized properly.
+This section needs to come after the Markdown section so that CMake files get recognized properly.
 
 #+begin_src emacs-lisp
 (use-package cmake-mode
@@ -825,17 +811,3 @@ http://editorconfig.org/
   ;; always refresh when the contents change
   )
 #+end_src
-
-* Macros
-
-#+begin_src emacs-lisp
-(fset 'manip-xyz-line-from-pdf
-      (lambda
-        (&optional arg)
-        "Keyboard macro."
-        (interactive "p")
-        (kmacro-exec-ring-item
-         (quote
-          ("   " 0 "%d")) arg)))
-#+end_src
-
