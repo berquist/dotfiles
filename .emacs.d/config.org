@@ -783,10 +783,15 @@ http://editorconfig.org/
 (use-package yaml-mode)
 #+END_SRC
 
-* MATLAB
+* MATLAB/Octave
 
 #+BEGIN_SRC emacs-lisp
-(use-package matlab-mode)
+;; Don't use matlab-mode.
+;; (use-package matlab-mode)
+;; I don't write Objective-C.
+(assq-delete-all "\\.m\\'" auto-mode-alist)
+(setq auto-mode-alist 
+      (cons '("\\.m\\'" . octave-mode) auto-mode-alist))
 #+END_SRC
 
 * CUDA
