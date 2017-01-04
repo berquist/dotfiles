@@ -2,6 +2,7 @@ personal_ws-1.1 en 193
 IPython
 perturbative
 sorbents
+OpenMP
 anharmonic
 SCS
 Zeeman
@@ -109,6 +110,7 @@ excitations
 CASSCF
 antisymmetric
 libfock
+BLAS
 EPR
 interpretible
 ROKS
