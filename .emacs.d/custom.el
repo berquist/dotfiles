@@ -6,6 +6,7 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(completions-format (quote vertical))
  '(indicate-buffer-boundaries (quote right))
+ '(octave-block-offset 4)
  '(org-latex-default-packages-alist
    (quote
     (("AUTO" "inputenc" t
