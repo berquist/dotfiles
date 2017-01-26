@@ -32,6 +32,7 @@ test/*.amps
 test/*.dat
 test/*.mo
 test/*.om
+test/*.plots/
 test/*.txt
 test/*.wfn
 test/Amp_L2
@@ -57,15 +58,10 @@ test/t3termCC1To6
 test/t4termCC1To6
 test/warning
 
-test/es_1_ctnum_atomic.om
-test/es_2_ctnum_atomic.om
-test/es_3_ctnum_atomic.om
-
-test/QMMM_ZEO-force.qcin
-
 # This is because git-svn doesn't work properly.
-libqints
-libposthf
-libcc
-libfock
-ccman2
+ccman2/
+libcc/
+libfock/
+libgscf/
+libposthf/
+libqints/
