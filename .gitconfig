@@ -75,6 +75,11 @@
     # use like: git ldiff HEAD~1
     ldiff = difftool -y -t latex
 
+    # Perform a "character" diff.
+    # http://stackoverflow.com/questions/1721738/using-diff-or-anything-else-to-get-character-level-diff-between-text-files
+    # Changing --word-diff to plain helps to make things more obvious.
+    cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
+
 [difftool.latex]
     # Needs the `ldiff` script.
     cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"

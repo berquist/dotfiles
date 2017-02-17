@@ -6,6 +6,7 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(completions-format (quote vertical))
  '(indicate-buffer-boundaries (quote right))
+ '(magit-commit-arguments (quote ("--verbose")))
  '(octave-block-offset 4)
  '(org-latex-default-packages-alist
    (quote
@@ -26,7 +27,7 @@
      ("colorlinks=true" "hyperref" nil))))
  '(package-selected-packages
    (quote
-    (yaml-mode use-package unfill systemd swiper ripgrep pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren markdown-mode magit-svn lua-mode julia-mode htmlize hlinum go-mode gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu abyss-theme)))
+    (json-mode yaml-mode use-package unfill systemd swiper ripgrep pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren markdown-mode magit-svn lua-mode julia-mode htmlize hlinum go-mode gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu abyss-theme)))
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
  '(safe-local-variable-values (quote ((dtrt-indent-mode . 0))))

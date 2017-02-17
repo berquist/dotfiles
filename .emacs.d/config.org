@@ -38,8 +38,10 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
-;; Automaticall reload buffers when their files change.
+;; Automatically reload buffers when their files change, and make sure
+;; to check on the version control status every now and then.
 (global-auto-revert-mode t)
+(setq-default auto-revert-check-vc-info t)
 
 ;; What platform are we on? darwin, gnu/linux are the most likely
 ;; answers.
@@ -745,6 +747,8 @@ This section needs to come after the Markdown section so that CMake files get re
 
 http://editorconfig.org/
 
+TODO How to make this take precedence over =dtrt-indent=?
+
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
   :diminish ""
@@ -781,6 +785,12 @@ http://editorconfig.org/
 
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode)
+#+END_SRC
+
+* JSON
+
+#+BEGIN_SRC emacs-lisp
+(use-package json-mode)
 #+END_SRC
 
 * MATLAB/Octave
