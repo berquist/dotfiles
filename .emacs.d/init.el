@@ -57,3 +57,4 @@
 ;; https://www.reddit.com/r/emacs/comments/53zpv9/how_do_i_get_emacs_to_stop_adding_custom_fields/
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+(put 'downcase-region 'disabled nil)
