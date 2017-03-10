@@ -339,6 +339,14 @@ Here’s a better approach. Every buffer has it’s own format variable and the 
 (global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
 #+end_src
 
+** word count
+
+#+BEGIN_SRC emacs-lisp
+(use-package wc-mode
+  :bind (("C-c w" . wc-mode))
+  )
+#+END_SRC
+
 * Flycheck
 
 ** General
