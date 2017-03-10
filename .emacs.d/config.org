@@ -41,7 +41,9 @@
 ;; Automatically reload buffers when their files change, and make sure
 ;; to check on the version control status every now and then.
 (global-auto-revert-mode t)
-(setq-default auto-revert-check-vc-info t)
+;; TODO Turns out this is *extremely* irritating and moves the mark
+;; every time the buffer refreshes!
+;; (setq-default auto-revert-check-vc-info t)
 
 ;; What platform are we on? darwin, gnu/linux are the most likely
 ;; answers.
