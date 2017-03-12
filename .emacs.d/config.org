@@ -51,10 +51,12 @@
 (defun sys () system-type-as-string)
 
 ;; Set the path properly on OS X.
+(use-package exec-path-from-shell)
 (when (memq window-system '(mac ns))
-  (use-package exec-path-from-shell
-    :config
-    (exec-path-from-shell-initialize)))
+  (exec-path-from-shell-initialize))
+  ;; (use-package exec-path-from-shell
+  ;;   :config
+  ;;   (exec-path-from-shell-initialize)))
 #+end_src
 
 * Backups/autosaving
@@ -436,7 +438,6 @@ Not using =git-gutter= right now, but if I did...
 #+begin_src emacs-lisp
 (use-package pandoc-mode
   :config
-  (add-hook 'markdown-mode-hook 'pandoc-mode)
   (add-hook 'latex-mode-hook 'pandoc-mode)
   (add-hook 'LaTeX-mode-hook 'pandoc-mode)
   (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
@@ -700,6 +701,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
    ("\\.md\\'" . gfm-mode)
    )
   :config
+  (add-hook 'markdown-mode-hook 'pandoc-mode)
   ;; This currently creates a buffer with the *.html contents. How to
   ;; fix? TODO
   (add-hook 'markdown-mode-hook
