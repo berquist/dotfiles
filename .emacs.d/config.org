@@ -19,7 +19,7 @@
               truncate-lines nil
               line-number-mode t
               column-number-mode t
-              cursor-type '(hbar . 2))
+              cursor-type 'box)
 
 ;; Enable maximum syntax highlighting wherever possible.
 (setq global-font-lock-mode t
