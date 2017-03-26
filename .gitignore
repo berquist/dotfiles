@@ -13,3 +13,6 @@ url
 .emacs.d/tramp
 
 .emacs.d/markdown-preview-mode/.gitignore
+
+# tmux
+.tmux/plugins
