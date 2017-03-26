@@ -238,7 +238,7 @@ set tabstospaces
 # include "/usr/share/nano/*.nanorc"
 
 # How to handle this based on OS?
-include "/usr/local/share/nano/*.nanorc"
+include "/usr/share/nano/*.nanorc"
 
 
 ## Key bindings.
