@@ -1,0 +1,5 @@
+channels:
+  - https://conda.anaconda.org/bmooreii
+  - http://conda.anaconda.org/psi4
+  - conda-forge
+  - defaults
