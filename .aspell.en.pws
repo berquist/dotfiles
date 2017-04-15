@@ -1,4 +1,4 @@
-personal_ws-1.1 en 202 
+personal_ws-1.1 en 205 
 Koseki
 planarity
 InChI
@@ -27,7 +27,9 @@ interelectronic
 perchlorate
 sorption
 parametrize
+hyperparameter
 diethylaminetriamine
+cheminformatics
 eigenfunction
 infographic
 bioinorganic
@@ -74,6 +76,7 @@ machina
 erfc
 chromophore
 delocalized
+pretraining
 ROHF
 IPython
 representable
