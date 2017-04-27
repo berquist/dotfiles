@@ -25,9 +25,6 @@
      ("" "amssymb" t)
      ("" "capt-of" nil)
      ("colorlinks=true" "hyperref" nil))))
- '(package-selected-packages
-   (quote
-    (yaml-mode wc-mode use-package unfill systemd ripgrep pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm mic-paren markdown-mode magit-svn lua-mode julia-mode json-mode htmlize gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu)))
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
  '(safe-local-variable-values (quote ((dtrt-indent-mode . 0))))
