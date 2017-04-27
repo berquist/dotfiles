@@ -516,9 +516,9 @@ Not using =git-gutter= right now, but if I did...
             ("linenos" "true")
             ("numbersep" "5pt")
             ("frame" "lines")
-            ("framesep" "2mm")))
-    (setq org-latex-pdf-process
-          '("latexmk -xelatex -shell-escape -interaction=nonstopmode -output-directory=%o %f"))))
+            ("framesep" "2mm"))))
+  (setq org-latex-pdf-process
+        '("latexmk -xelatex -shell-escape -interaction=nonstopmode -output-directory=%o %f")))
 #+end_src
 
 Additional things of interest might be found in https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org.
