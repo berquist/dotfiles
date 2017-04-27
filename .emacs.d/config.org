@@ -244,6 +244,13 @@ Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'wombat2 t)
 ;; (load-theme 'abyss t)
+;; (load-theme 'punpun-dark t)
+;; (load-theme 'quasi-monochrome t)
+;; (load-theme 'gotham t)
+
+;; Other themes I like to have installed: monochrome-theme plan9-theme
+;; abyss-theme lush-theme punpun-theme (punpun-light, punpun-dark)
+;; gotham-theme quasi-monochrome-theme
 
 (when window-system
   (if (eq system-type 'gnu/linux)
