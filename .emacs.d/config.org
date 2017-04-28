@@ -485,6 +485,7 @@ Not using =git-gutter= right now, but if I did...
         org-highlight-latex-and-relatex '(latex script entities)
         org-html-with-latex (quote mathjax)
         org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
+        org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
         )
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -500,6 +501,7 @@ Not using =git-gutter= right now, but if I did...
   (use-package ox-pandoc)
   (use-package ox-twbs)
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
+  (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames" "xcolor" nil))
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
   ;; You need to install pygments to use minted.
   (when (executable-find "pygmentize")
