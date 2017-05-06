@@ -54,12 +54,10 @@ ZSH_THEME="berky"
 # (Leave out emacs for now...)
 plugins=(
     archlinux
-    brew
     git
     git-extras
     git-remote-branch
-    lol
-    nyan
+    git-prompt
     pylint
     python
     sprunge
