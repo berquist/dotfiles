@@ -80,6 +80,9 @@
     # Changing --word-diff to plain helps to make things more obvious.
     cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
 
+[diff]
+    renameLimit = 1011
+
 [difftool.latex]
     # Needs the `ldiff` script.
     cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
