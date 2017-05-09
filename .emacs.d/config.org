@@ -484,6 +484,7 @@ Not using =git-gutter= right now, but if I did...
         ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
         org-highlight-latex-and-relatex '(latex script entities)
         org-html-with-latex (quote mathjax)
+        org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
         org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
         org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
         )
@@ -520,7 +521,7 @@ Not using =git-gutter= right now, but if I did...
             ("frame" "lines")
             ("framesep" "2mm"))))
   (setq org-latex-pdf-process
-        '("latexmk -xelatex -shell-escape -interaction=nonstopmode -output-directory=%o %f")))
+        '("latexmk -xelatex -shell-escape -interaction=batchmode -output-directory=%o %f")))
 #+end_src
 
 Additional things of interest might be found in https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org.
