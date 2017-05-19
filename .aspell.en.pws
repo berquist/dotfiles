@@ -1,4 +1,4 @@
-personal_ws-1.1 en 210 
+personal_ws-1.1 en 216 
 Koseki
 planarity
 InChI
@@ -90,6 +90,7 @@ VTZ
 GSR
 dopants
 Saxena
+learnable
 imidazole
 Neese
 magnetizabilities
@@ -106,16 +107,18 @@ multireference
 libfock
 LDA
 multipole
+dataset
 stereochemical
 parameterized
 Jupyter
 TPSSh
 scalable
+combinatorial
 timeline
 inconcrete
 reproducibility
-thermochemistry
 backpropagation
+thermochemistry
 Orca
 wavefunctions
 orthonormal
@@ -135,14 +138,17 @@ interpretible
 biomolecules
 EasySpin
 perovskite
+softmax
 reactivity
 ferrocene
 deliverables
 LRC
 foundational
 unphysical
+perceptron
 computable
 Blumberg
+dimensionality
 monomeric
 Hirao
 biradical
