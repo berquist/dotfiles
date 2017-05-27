@@ -1,4 +1,4 @@
-personal_ws-1.1 en 216 
+personal_ws-1.1 en 222 
 Koseki
 planarity
 InChI
@@ -30,12 +30,15 @@ functionalization
 hyperparameter
 parametrize
 diethylaminetriamine
+convolutional
 cheminformatics
 eigenfunction
+tunable
 infographic
 bioinorganic
 hyperpolarizabilities
 autocorrelation
+activations
 excitations
 organometallic
 Giard
@@ -51,8 +54,10 @@ MATLAB
 overbinding
 erf
 EPR
+relevances
 Breit
 multiconfigurational
+TensorFlow
 overbar
 metalloproteins
 Berquist
@@ -188,6 +193,7 @@ octahedral
 ligands
 libtensor
 MCSCF
+composable
 OpenMP
 dimerization
 MRCI
