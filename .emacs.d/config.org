@@ -488,7 +488,7 @@ Not using =git-gutter= right now, but if I did...
         org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
         org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
         org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
-        )
+ )
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
@@ -701,6 +701,14 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 * Markdown
 
+#+BEGIN_SRC emacs-lisp
+(defun get-string-from-file (file-path)
+  "Return file-path's file content."
+  (with-temp-buffer
+    (insert-file-contents file-path)
+    (buffer-string)))
+#+END_SRC
+
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :mode
@@ -713,24 +721,40 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
    )
   :config
   (add-hook 'markdown-mode-hook 'pandoc-mode)
+  ;; (add-hook 'markdown-mode-hook 'markdown-preview-mode)
   ;; This currently creates a buffer with the *.html contents. How to
   ;; fix? TODO
   (add-hook 'markdown-mode-hook
             (lambda ()
               (add-hook 'after-save-hook 'markdown-export t :local)))
+  :init
+  (setq
+   ;; my-markdown-header-string (get-string-from-file (expand-file-name "file://${HOME}/.emacs.d/mathjax.html"))
+   markdown-content-type "application/xhtml+xml"
+   markdown-coding-system "utf-8"
+   markdown-command "pandoc --css=file://${HOME}/.emacs.d/github-pandoc.css --from=markdown_github --to=html5 --smart --mathjax='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML-full' --highlight-style=pygments --standalone"
+   ;; markdown-css-paths '("file://${HOME}/.emacs.d/github-pandoc.css")
+   markdown-enable-math t
+   markdown-fontify-code-blocks-natively t
+   markdown-link-space-sub-char "-"
+   ;; markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css"
+   ;; markdown-xhtml-header-content (format "%s" my-markdown-header-string)
+   )
   )
-
 #+end_src
 
-#+BEGIN_SRC emacs-lisp
-(setq markdown-coding-system (quote utf-8))
-(setq markdown-command
-   "pandoc -c file://${HOME}/.emacs.d/github-pandoc.css -f markdown_github -t html5 --smart --mathjax --highlight-style pygments --standalone")
-(setq markdown-css-paths '("file://${HOME}/.emacs.d/github-pandoc.css"))
-(setq markdown-enable-math t)
-(setq markdown-link-space-sub-char "-")
-(setq markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css")
-#+END_SRC
+# ** Markdown Preview
+
+# #+BEGIN_SRC emacs-lisp
+# (use-package markdown-preview-mode
+#   :config
+#   ;; The MathJax CDN is no longer active. Use the one that Stack Exchange calls.
+#   ;; (add-to-list 'markdown-preview-javascript 
+#   ;;              '("http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" . async))
+#   (add-to-list 'markdown-preview-javascript
+#                '("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML-full" . async))
+#   )
+# #+END_SRC
 
 * deft
 
