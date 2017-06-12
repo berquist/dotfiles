@@ -488,7 +488,7 @@ Not using =git-gutter= right now, but if I did...
         org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
         org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
         org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
- )
+        )
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
@@ -498,10 +498,6 @@ Not using =git-gutter= right now, but if I did...
      ;; (C++ . t)
      (latex . t)
      (python . t)))
-  (use-package htmlize)
-  (use-package ox-gfm)
-  (use-package ox-pandoc)
-  (use-package ox-twbs)
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
   (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames" "xcolor" nil))
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
@@ -522,7 +518,13 @@ Not using =git-gutter= right now, but if I did...
             ("frame" "lines")
             ("framesep" "2mm"))))
   (setq org-latex-pdf-process
-        '("latexmk -xelatex -shell-escape -interaction=batchmode -output-directory=%o %f")))
+        '("latexmk -xelatex -shell-escape -interaction=batchmode -output-directory=%o %f"))
+  :init
+  )
+(use-package htmlize)
+(use-package ox-gfm)
+(use-package ox-pandoc)
+(use-package ox-twbs)
 #+end_src
 
 Additional things of interest might be found in https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org.
@@ -747,6 +749,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
    ;; markdown-css-paths '("file://${HOME}/.emacs.d/github-pandoc.css")
    markdown-enable-math t
    markdown-fontify-code-blocks-natively t
+   markdown-hide-markup nil
+   markdown-hide-urls nil
    markdown-link-space-sub-char "-"
    ;; markdown-preview-style "file://${HOME}/.emacs.d/github-markdown.css"
    ;; markdown-xhtml-header-content (format "%s" my-markdown-header-string)
