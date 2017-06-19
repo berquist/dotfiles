@@ -81,6 +81,7 @@
     cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
 
 [diff]
+    # Why this number?
     renameLimit = 1011
 
 [difftool.latex]
