@@ -689,7 +689,9 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 * Python
 
 #+begin_src emacs-lisp
+;; The package is "python" but the mode is "python-mode":
 (use-package python
+  :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   )
 
