@@ -40,6 +40,7 @@ bioinorganic
 hyperpolarizabilities
 autocorrelation
 activations
+dimensioning
 excitations
 organometallic
 Giard
@@ -169,6 +170,8 @@ Hirao
 configurational
 biradical
 polarizability
+configurational
+hydrogens
 unscaled
 amyloid
 solvation
