@@ -56,7 +56,7 @@
  (toc-depth)
  (no-highlight)
  (highlight-style)
- (include-in-header . "${HOME}/.emacs.d/mathjax.html")
+ (include-in-header . "~/.emacs.d/mathjax.html")
  (include-before-body)
  (include-after-body)
  (verbose)
