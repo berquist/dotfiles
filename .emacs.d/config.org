@@ -54,9 +54,6 @@
 (use-package exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
-  ;; (use-package exec-path-from-shell
-  ;;   :config
-  ;;   (exec-path-from-shell-initialize)))
 #+end_src
 
 * Backups/autosaving
@@ -68,22 +65,7 @@
       create-lockfiles nil
       make-backup-files nil
       )
-
-;; (setq backup-directory-alist `(("." . "~/.saves")))
-;; (setq backup-by-copying t)
-;; (setq tramp-auto-save-directory "~/.saves")
-
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-;; (custom-set-variables
-;;  ‘(auto-save-file-name-transforms ‘((“.*” “~/.saves/\\1″ t)))
-;;   ‘(backup-directory-alist ‘((“.*” . “~/.saves/”))))
 #+end_src
-
-However, I would like to save my loaded buffers.
-
-#+BEGIN_SRC emacs-lisp
-;; (desktop-save-mode 1)
-#+END_SRC
 
 * Disable popup boxes
 
@@ -161,6 +143,12 @@ See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.
 (use-package mic-paren
   :init
   (paren-activate)
+  :config
+  (setq 
+   paren-delay nil
+   paren-highlight-at-point t
+   paren-highlight-offscreen t
+   )
   )
 
 (use-package whitespace
@@ -213,14 +201,6 @@ See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.
 (setq require-final-newline t)
 #+end_src
 
-Other paren settings; which package(s) do they belong to?
-
-#+BEGIN_SRC emacs-lisp
-(setq paren-delay nil)
-(setq paren-highlight-at-point t)
-(setq paren-highlight-offscreen t)
-#+END_SRC
-
 * Keybindings
 
 Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='uncomment-region= here, but =M-;= calls ='comment-dwim=, which is what you really want.
@@ -243,10 +223,6 @@ Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='
 #+begin_src emacs-lisp
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'wombat2 t)
-;; (load-theme 'abyss t)
-;; (load-theme 'punpun-dark t)
-;; (load-theme 'quasi-monochrome t)
-;; (load-theme 'gotham t)
 
 ;; Other themes I like to have installed: monochrome-theme plan9-theme
 ;; abyss-theme lush-theme punpun-theme (punpun-light, punpun-dark)
@@ -287,7 +263,8 @@ Here’s a better approach. Every buffer has it’s own format variable and the 
 #+END_QUOTE
 
 #+BEGIN_SRC emacs-lisp
-(use-package linum)
+(use-package linum
+  :disabled t)
 
 (unless window-system
   (add-hook 'linum-before-numbering-hook
@@ -317,6 +294,8 @@ Here’s a better approach. Every buffer has it’s own format variable and the 
 * Spelling
 
 =C-;= to try and correct a misspelled word on a line.
+
+TODO clean this up, figure out LaTeX
 
 #+begin_src emacs-lisp
 (setq flyspell-issue-welcome-flag nil)
@@ -610,7 +589,7 @@ These are valid for all C-style modes (I think).
   )
 #+END_SRC
 
-** TODO What's the difference between =c++-mode= and =cc-mode=?
+TODO What's the difference between =c++-mode= and =cc-mode=?
 
 ** ISPC
 
@@ -677,6 +656,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+end_src
 
 * LaTeX
+
+TODO
 
 #+begin_src emacs-lisp
 ;; (use-package auctex-latexmk) 
