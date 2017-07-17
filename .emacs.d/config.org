@@ -713,13 +713,11 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 * Markdown
 
-#+BEGIN_SRC emacs-lisp
-(defun get-string-from-file (file-path)
-  "Return file-path's file content."
-  (with-temp-buffer
-    (insert-file-contents file-path)
-    (buffer-string)))
-#+END_SRC
+Rather than use =--mathjax== with a URL argument, =--include-in-header= allows the insertion of arbitrary HTML into Pandoc's output. The =mathjax.html= file contains Chemistry Stack Exchange's header scripts for first configuring the MathJax extension to load =mhchem=, then loads MathJax.
+
+See https://stackoverflow.com/questions/25410701/how-do-i-include-meta-tags-in-pandoc-generated-html for an example of how including arbitrary HTML works.
+
+See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-formatting-features-are-available-to-mathjax-possibly-via-requ for more information about what can be done with the MathJax extension.
 
 #+begin_src emacs-lisp
 (use-package markdown-mode
@@ -740,7 +738,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   (setq
    markdown-content-type "application/xhtml+xml"
    markdown-coding-system "utf-8"
-   markdown-command "pandoc --from=markdown_github+tex_math_dollars+tex_math_single_backslash --to=html5 --smart --mathjax='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML-full' --highlight-style=pygments --standalone"
+   markdown-command "pandoc --from=markdown_github+tex_math_dollars+tex_math_single_backslash --to=html5 --smart --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html"
    markdown-enable-math t
    markdown-fontify-code-blocks-natively t
    markdown-hide-markup nil

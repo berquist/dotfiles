@@ -1,12 +1,12 @@
 ;; -*- mode: emacs-lisp -*-
 
 ;; pandoc-mode global settings file
-;; saved on 2017.07.16 18:16
+;; saved on 2017.07.17 11:14
 
 ((latexmathml)
  (mathml)
  (jsmath)
- (mathjax . "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML-full")
+ (mathjax)
  (gladtex)
  (mimetex)
  (webtex)
@@ -56,7 +56,7 @@
  (toc-depth)
  (no-highlight)
  (highlight-style)
- (include-in-header)
+ (include-in-header . "${HOME}/.emacs.d/mathjax.html")
  (include-before-body)
  (include-after-body)
  (verbose)
