@@ -137,7 +137,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 
 * Parens/whitespace/indentation
 
-See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html.
+See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 #+begin_src emacs-lisp
 (use-package mic-paren
@@ -152,6 +152,7 @@ See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.
   )
 
 (use-package whitespace
+  :bind (("C-c t" . whitespace-mode))
   :init
   (setq global-whitespace-mode nil)
   :config
@@ -167,26 +168,28 @@ See http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.
    whitespace-style
    '(face
      trailing
-     tabs
-     ;; tab-mark
+     ;; tabs
      ;; spaces
-     ;; space-mark
+     ;; lines
      ;; lines-tail
      ;; newline
-     ;; newline-mark
      ;; empty
-     indentation::tab
-     indentation::space
-     indentation
-     space-after-tab::tab
-     space-after-tab::space
-     space-after-tab
-     space-before-tab::tab
-     space-before-tab::space
-     space-before-tab)
-   )
-  (add-hook 'makefile-mode-hook 'whitespace-mode)
-  (add-hook 'python-mode-hook 'whitespace-mode)
+     ;; indentation::tab
+     ;; indentation::space
+     ;; indentation
+     ;; big-indent
+     ;; space-after-tab::tab
+     ;; space-after-tab::space
+     ;; space-after-tab
+     ;; space-before-tab::tab
+     ;; space-before-tab::space
+     ;; space-before-tab
+     ;; space-mark
+     ;; tab-mark
+     ;; newline-mark
+     ))
+  (add-hook 'prog-mode-hook 'whitespace-mode)
+  (add-hook 'text-mode-hook 'whitespace-mode)
   )
 
 (use-package dtrt-indent
