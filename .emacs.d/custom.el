@@ -28,6 +28,18 @@
  '(package-selected-packages
    (quote
     (yaml-mode wc-mode use-package unfill systemd ripgrep quasi-monochrome-theme punpun-theme plan9-theme pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm monochrome-theme mic-paren markdown-preview-mode markdown-preview-eww magit-svn lush-theme lua-mode julia-mode json-mode htmlize gotham-theme gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu abyss-theme)))
+ '(pandoc-major-modes
+   (quote
+    ((text-mode . "markdown")
+     (markdown-mode . "markdown")
+     (org-mode . "org")
+     (gfm-mode . "markdown_github")
+     (mediawiki-mode . "mediawiki")
+     (textile-mode . "textile")
+     (rst-mode . "rst")
+     (html-mode . "html")
+     (latex-mode . "latex")
+     (json-mode . "json"))))
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
  '(safe-local-variable-values (quote ((dtrt-indent-mode . 0))))
