@@ -25,9 +25,6 @@
      ("" "amssymb" t)
      ("" "capt-of" nil)
      ("colorlinks=true" "hyperref" nil))))
- '(package-selected-packages
-   (quote
-    (yaml-mode wc-mode use-package unfill systemd ripgrep quasi-monochrome-theme punpun-theme plan9-theme pkgbuild-mode pandoc-mode ox-twbs ox-pandoc ox-gfm monochrome-theme mic-paren markdown-preview-mode markdown-preview-eww magit-svn lush-theme lua-mode julia-mode json-mode htmlize gotham-theme gitignore-mode gitconfig-mode flycheck-pyflakes flycheck-cython flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu abyss-theme)))
  '(pandoc-major-modes
    (quote
     ((text-mode . "markdown")

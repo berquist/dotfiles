@@ -453,7 +453,6 @@ Not using =git-gutter= right now, but if I did...
         ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
         org-startup-truncated nil
         org-src-tab-acts-natively t
-        org-babel-python-command "ipython"
         org-export-backends (quote (ascii html icalendar latex md))
         org-export-dispatch-use-expert-ui t
         org-export-with-smart-quotes t
@@ -469,17 +468,10 @@ Not using =git-gutter= right now, but if I did...
         org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
         org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
         )
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (sh . t)
-     (C . t)
-     ;; How to handle C++?
-     ;; (C++ . t)
-     (latex . t)
-     (python . t)))
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
   (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames" "xcolor" nil))
+  (setq org-latex-pdf-process
+        '("latexmk -xelatex -shell-escape -interaction=batchmode -output-directory=%o %f"))
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
   ;; You need to install pygments to use minted.
   (when (executable-find "pygmentize")
@@ -497,14 +489,24 @@ Not using =git-gutter= right now, but if I did...
             ("numbersep" "5pt")
             ("frame" "lines")
             ("framesep" "2mm"))))
-  (setq org-latex-pdf-process
-        '("latexmk -xelatex -shell-escape -interaction=batchmode -output-directory=%o %f"))
   :init
   )
 (use-package htmlize)
 (use-package ox-gfm)
 (use-package ox-pandoc)
 #+end_src
+
+From https://emacs.stackexchange.com/questions/20577/org-babel-load-all-languages-on-demand.
+
+#+BEGIN_SRC emacs-lisp
+(defadvice org-babel-execute-src-block (around load-language nil activate)
+  "Load language if needed"
+  (let ((language (org-element-property :language (org-element-at-point))))
+    (unless (cdr (assoc (intern language) org-babel-load-languages))
+      (add-to-list 'org-babel-load-languages (cons (intern language) t))
+      (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
+    ad-do-it))
+#+END_SRC
 
 Additional things of interest might be found in https://github.com/xiaohanyu/oh-my-emacs/blob/master/core/ome-org.org.
 
