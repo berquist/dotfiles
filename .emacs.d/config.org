@@ -725,11 +725,9 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
    )
   :config
   (add-hook 'markdown-mode-hook 'pandoc-mode)
-  ;; TODO This currently creates a buffer with the *.html contents. How to
-  ;; fix?
   (add-hook 'markdown-mode-hook
             (lambda ()
-              (add-hook 'after-save-hook 'markdown-export t :local)))
+              (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
   :init
   (setq
    markdown-content-type "application/xhtml+xml"
