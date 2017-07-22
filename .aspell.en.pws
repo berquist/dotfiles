@@ -1,4 +1,4 @@
-personal_ws-1.1 en 238 
+personal_ws-1.1 en 241 
 Koseki
 planarity
 InChI
@@ -152,6 +152,7 @@ interpretible
 biomolecules
 EasySpin
 perovskite
+localizations
 softmax
 reactivity
 ferrocene
@@ -170,7 +171,6 @@ Hirao
 configurational
 biradical
 polarizability
-configurational
 hydrogens
 unscaled
 amyloid
