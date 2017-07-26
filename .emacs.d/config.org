@@ -103,7 +103,7 @@ We don't need to =(use-package swiper)= thanks to the ivy one? This is a confusi
 (use-package ivy
   :disabled t
   :config
-  (setq 
+  (setq
    ivy-use-virtual-buffers t
    ivy-count-format "(%d/%d) "
    )
@@ -141,20 +141,18 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 #+begin_src emacs-lisp
 (use-package mic-paren
-  :init
-  (paren-activate)
   :config
-  (setq 
+  (setq
    paren-delay nil
    paren-highlight-at-point t
    paren-highlight-offscreen t
    )
+  :init
+  (paren-activate)
   )
 
 (use-package whitespace
   :bind (("C-c t" . whitespace-mode))
-  :init
-  (setq global-whitespace-mode nil)
   :config
   (setq
    ;; use the fill-column value
@@ -190,6 +188,8 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
      ))
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (add-hook 'text-mode-hook 'whitespace-mode)
+  :init
+  (setq global-whitespace-mode nil)
   )
 
 (use-package dtrt-indent
@@ -348,16 +348,12 @@ TODO add LaTex
 
 #+begin_src emacs-lisp
 (use-package flycheck
+  :config
+  (setq
+   flycheck-check-syntax-automatically '(mode-enabled save)
+   flycheck-pylintrc "~/.pylintrc")
   :init
-  (setq flycheck-check-syntax-automatically
-        '(mode-enabled
-          new-line
-          save
-          idle-change)
-        flycheck-idle-change-delay 0.5)
-  (add-hook 'cython-mode-hook 'flycheck-mode)
-  (add-hook 'sh-mode-hook 'flycheck-mode)
-  )
+  (global-flycheck-mode))
 #+end_src
 
 ** checkbashisms
@@ -374,13 +370,13 @@ sudo pkg install checkbashisms # FreeBSD
 
 #+begin_src emacs-lisp
 (use-package flycheck-checkbashisms
-  :config
-  (flycheck-checkbashisms-setup)
+  :init
   (setq
    ;; Check 'echo -n' usage
    flycheck-checkbashisms-newline t
    flycheck-checkbashisms-posix t
-   ))
+   )
+  (flycheck-checkbashisms-setup))
 #+end_src
 
 * Git/version control
@@ -489,7 +485,6 @@ Not using =git-gutter= right now, but if I did...
             ("numbersep" "5pt")
             ("frame" "lines")
             ("framesep" "2mm"))))
-  :init
   )
 (use-package htmlize)
 (use-package ox-gfm)
@@ -677,7 +672,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 TODO
 
 #+begin_src emacs-lisp
-;; (use-package auctex-latexmk) 
+;; (use-package auctex-latexmk)
 ;; (auctex-latexmk-setup)
 #+end_src
 
@@ -692,21 +687,27 @@ TODO
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
 ;; I think stuffing the setq under config activates this for Python.
-(use-package flycheck-pyflakes
-  :config
-  ;; Don't disable these, in case pyflakes isn't available.
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
-  (setq flycheck-pylintrc "~/.pylintrc")
-)
+;; (use-package flycheck-pyflakes
+;;   :config
+;;   ;; Don't disable these, in case pyflakes isn't available.
+;;   ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
+;;   ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+;;   ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
+;;   )
+;; TODO I don't know why the above isn't working.
+(require 'flycheck-pyflakes)
+;; Enable the use of both pyflakes and pylint.
+;; https://github.com/flycheck/flycheck/issues/186
+(flycheck-add-next-checker 'python-pyflakes 'python-pylint)
 #+end_src
 
 ** Cython
 
 #+BEGIN_SRC emacs-lisp
 (use-package cython-mode)
-(use-package flycheck-cython)
+;; TODO what's going on here
+(require 'flycheck-cython)
+(add-hook 'cython-mode-hook 'flycheck-mode)
 #+END_SRC
 
 * Markdown
@@ -835,7 +836,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 ;; (use-package matlab-mode)
 ;; I don't write Objective-C.
 (assq-delete-all "\\.m\\'" auto-mode-alist)
-(setq auto-mode-alist 
+(setq auto-mode-alist
       (cons '("\\.m\\'" . octave-mode) auto-mode-alist))
 #+END_SRC
 

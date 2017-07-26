@@ -74,7 +74,7 @@ Ansi-Color faces are included.")
 
 
       )
-  
+
   (custom-theme-set-faces
    'wombat2
    `(default ((,class (:background ,wombat/black :foreground ,wombat/white))))
