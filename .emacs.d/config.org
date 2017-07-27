@@ -348,6 +348,7 @@ TODO add LaTex
 
 #+begin_src emacs-lisp
 (use-package flycheck
+  :bind (("C-c f" . flycheck-mode))
   :config
   (setq
    flycheck-check-syntax-automatically '(mode-enabled save)
@@ -826,7 +827,9 @@ TODO How to make this take precedence over =dtrt-indent=?
 * JSON
 
 #+BEGIN_SRC emacs-lisp
-(use-package json-mode)
+(use-package json-mode
+  :mode (("\\.json\\'" . json-mode)
+         ("\\.cjson\\'" . json-mode)))
 #+END_SRC
 
 * MATLAB/Octave
