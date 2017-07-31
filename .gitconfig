@@ -4,6 +4,7 @@
 [user]
     name = Eric Berquist
     email = eric.berquist@gmail.com
+    # TODO
     # signingkey = BAFD205D
 
 [core]
@@ -81,18 +82,20 @@
     cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
 
 [diff]
-    # Why this number?
+    # TODO Why this number?
     renameLimit = 1011
 
 [difftool.latex]
     # Needs the `ldiff` script.
     cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
 
+# TODO?
 # [commit]
 # 	gpgsign = true
 
 # Where did this come from?
 [filter "lfs"]
-    required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
