@@ -357,9 +357,7 @@ TODO add LaTex
   :config
   (setq
    flycheck-check-syntax-automatically '(mode-enabled save)
-   flycheck-pylintrc "~/.pylintrc")
-  :init
-  (global-flycheck-mode))
+   flycheck-pylintrc "~/.pylintrc"))
 #+end_src
 
 ** checkbashisms
