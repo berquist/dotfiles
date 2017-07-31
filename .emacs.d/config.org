@@ -45,6 +45,11 @@
 ;; every time the buffer refreshes!
 ;; (setq-default auto-revert-check-vc-info t)
 
+;; Set up the initial scratch buffer.
+;; http://emacsredux.com/blog/2014/07/25/configure-the-scratch-buffers-mode/
+(setq initial-major-mode 'fundamental-mode
+      initial-scratch-message nil)
+
 ;; What platform are we on? darwin, gnu/linux are the most likely
 ;; answers.
 (defvar system-type-as-string (prin1-to-string system-type))
