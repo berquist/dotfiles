@@ -102,6 +102,10 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   )
 #+end_src
 
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'completion-ignored-extensions ".html")
+#+END_SRC
+
 We don't need to =(use-package swiper)= thanks to the ivy one? This is a confusing mess.
 
 #+BEGIN_SRC emacs-lisp
