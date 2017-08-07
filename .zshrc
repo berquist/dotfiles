@@ -158,4 +158,4 @@ svn() {
 ### selective sourcing
 ########################################
 
-source "${HOME}/dotfiles/dotfiles-private/.zshrc.$(hname)"
+source "${HOME}/dotfiles/.zshrc.$(hname)"

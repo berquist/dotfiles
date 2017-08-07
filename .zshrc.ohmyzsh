@@ -67,4 +67,4 @@ source "${ZSH}"/oh-my-zsh.sh
 
 # User configuration
 
-source "${HOME}"/dotfiles/dotfiles-private/.zshrc
+source "${HOME}"/dotfiles/.zshrc
