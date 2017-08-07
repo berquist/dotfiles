@@ -1,0 +1,93 @@
+#!/usr/bin/env zsh
+
+# laptop
+
+########################################
+### sodium-specific things
+########################################
+
+# brew install keychain
+eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
+
+## #####################
+## ## Setting Mac OS X
+## ## Terminal.app name.
+## ## This code goes to
+## ## all your ~/.bashrc or
+## ## ~/.bash_profile files.
+## ## Now you can jump from
+## ## machine to machine and
+## ## never get lost.
+## #####################
+
+## -----------------------------
+## -- this runs when you get new
+## -- you get new interactive bash
+## -- shell - the condition is needed
+## -- so it will not interrupt the scp command
+
+if [[ "$-" =~ "i" ]]; then
+    echo -n -e "\033]0;${USER}@${HOSTNAME%%.*}\007";
+fi;
+
+## -----------------------------
+## -- this runs when you logoff
+## -- from a ssh session - it puts
+## -- back previous terminal name;
+
+function ssh() {
+    /usr/bin/ssh "$@";
+    echo -n -e "\033]0;${USER}@${HOSTNAME%%.*}\007";
+}
+
+unalias ls
+unalias l
+unalias la
+unalias top
+
+alias ls='ls -G'      # enable colorized output
+alias l='pwd; ls -hl' # list format and human-readable sizes
+alias la='l -a'       # hidden files
+alias top='top -u'
+
+# Quick way to rebuild the Launch Services database and get rid
+# of duplicates in the Open With submenu.
+alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
+
+alias doupgrade='brew update && brew upgrade && brew cleanup'
+
+########################################
+### MATLAB
+########################################
+
+# export MATLAB_ROOT='/Applications/MATLAB_R2012a.app'
+# export MATLAB_BIN="${MATLAB_ROOT}/bin"
+# export PATH="${PATH}:${MATLAB_BIN}"
+
+########################################
+### RACKET
+########################################
+
+# export RACKET_PATH="/Applications/Racket v5.3.6"
+# export PATH="${RACKET_PATH}/bin:${PATH}"
+
+########################################
+### RUBY
+########################################
+
+export PATH="${HOME}/.gem/ruby/2.0.0/bin:${PATH}"
+
+########################################
+### MODULES
+########################################
+
+source /usr/local/Cellar/lmod/7.5.2_1/lmod/init/zsh
+module use $HOME/modules/sodium
+
+########################################
+### FUNCTIONS
+########################################
+
+function pman () {
+  man -t "${@}" | ps2pdf - - | open -g -f -a /Applications/Skim.app
+}

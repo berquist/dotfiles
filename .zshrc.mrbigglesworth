@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+# work undergrad desktop
+
+########################################
+### mrbigglesworth-specific things
+########################################
+
+eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
+
+alias doupgrade='sudo apt-get update && sudo apt-get upgrade'
+
+export PATH="${HOME}"/repositories/pacapt:"${PATH}"
+
+########################################
+### MODULES
+########################################
+
+source /etc/profile.d/modules.sh
+module use "${HOME}/modules/mrbigglesworth"
+
+module load git/2.13.3
+module load emacs/25.1
+module load qchem/qchem_branches_libresponse

@@ -1,0 +1,130 @@
+#!/bin/bash
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+########################################
+### BASH-SPECIFIC
+########################################
+
+export PS1="[\u@\h \w]\$ "
+
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+shopt -s histappend
+export HISTCONTROL=
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %X] "
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
+
+GIT_PROMPT_ONLY_IN_REPO=0
+GIT_PROMPT_FETCH_REMOTE_STATUS=0
+GIT_PROMPT_SHOW_UPSTREAM=1
+GIT_PROMPT_SHOW_UNTRACKED_FILES=all
+# source "${HOME}"/repositories/bash-git-prompt/gitprompt.sh
+
+########################################
+### GENERAL
+########################################
+
+export EDITOR="emacs -nw"
+
+########################################
+### PATHS
+########################################
+
+PYTHONPATH="${HOME}:${PYTHONPATH}"
+PYTHONPATH="${HOME}/scripts:${PYTHONPATH}"
+pythonpathdirs=($(find "$HOME"/pythonpath -maxdepth 1 -type d))
+# https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
+for d in ${pythonpathdirs[@]:1}; do
+    PYTHONPATH="${d}:$PYTHONPATH"
+done
+export PYTHONPATH
+
+LD_LIBRARY_PATH="${LD_LIBRARY_PATH}":"${HOME}"/opt/lib
+export LD_LIBRARY_PATH
+
+PATH="${HOME}"/repositories/rmsd:"${PATH}"
+PATH="${HOME}"/scripts:"${PATH}"
+PATH="${HOME}"/buildscripts:"${PATH}"
+PATH="${HOME}"/opt/bin:"${PATH}"
+PATH="${HOME}"/.local/bin:"${PATH}"
+export PATH
+
+PATH="${HOME}"/scripts:"${PATH}"
+if [ "${hname2}" == "frank" ]; then
+    PATH="${HOME}"/scripts/clusters/frank:"${PATH}"
+fi
+if [[ "${hname2}" =~ (crc|mpi) ]]; then
+    PATH="${HOME}"/scripts/clusters/haswell:"${PATH}"
+fi
+export PATH
+
+export MOBY="/mnt/mobydisk/groupshares/dlambrecht/${USER}"
+alias mobycd="cd ${MOBY}"
+
+export QCPROGS="${HOME}"/opt/apps
+export apps="${HOME}"/opt/apps
+export SCRATCH="${HOME}"/scratch
+export scratch="${HOME}"/scratch
+
+# Ruby, automatically added
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+########################################
+### MODULES
+########################################
+
+# If we're on Frank...
+if [[ "${hname2}" =~ (frank|n[0-9]*) ]]; then
+    module use /ihome/dlambrecht/software/modules
+
+    # These are user-defined modules in /ihome/dlambrecht/software/modules
+    # to load group software stored in /ihome/dlambrecht/software.
+    # module load scripts
+    # module load samtools
+
+    module use "${HOME}"/modules/frank
+
+    # These are user-defined modules in ${HOME}/modules/frank to load
+    # software stored in ${HOME}/opt/apps. These should work on both
+    # Frank and the newer SMP cluster.
+    module load cuby4
+    module load pbstools
+
+    # These are user-defined modules in
+    # /home/dlambrecht/software/modules to load group software stored
+    # in /home/dlambrecht/software.
+    module load python/anaconda3
+
+    # These are from ~/modules.
+    module load emacs/25.1
+
+    # Use the latest versions of the default modules.
+    module unload intel mkl openmpi
+    module load intel/2013.0
+    module load mkl/2013.0/icc-st
+    module load mpi/openmpi/1.6.5-i2013.0
+    module unload gcc
+    module load gcc/5.2.0-rhel
+    module load git/2.6.1
+fi
+
+# If we're on one of the new clusters...
+if [[ "${hname2}" =~ (crc|mpi) ]]; then
+    # modules that don't load conflicting Frank-only ones
+    module use "${HOME}"/modules/haswell
+
+    # These are from ~/modules.
+    module load emacs/25.2
+    module load git/2.11.0-rc2
+
+    # Use the latest versions of the default modules.
+    if [ "${hname2}" == "crc" ]; then
+        module load cmake/3.7.1
+    fi
+    module load intel/2017.1.132
+    module load mkl/2017.1.132
+fi

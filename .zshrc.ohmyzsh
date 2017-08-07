@@ -61,7 +61,6 @@ plugins=(
     pylint
     python
     sprunge
-    tmux
 )
 
 source "${ZSH}"/oh-my-zsh.sh

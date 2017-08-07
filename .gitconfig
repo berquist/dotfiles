@@ -2,8 +2,8 @@
 # https://git-scm.com/docs/git-config
 
 [user]
-    name = Eric Berquist
-    email = eric.berquist@gmail.com
+	name = Eric Berquist
+	email = eric.berquist@gmail.com
     # TODO
     # signingkey = BAFD205D
 

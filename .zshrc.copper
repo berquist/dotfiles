@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+# work desktop
+
+########################################
+### copper-specific things
+########################################
+
+eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
+
+alias doupgrade='yaourt -Syyua --devel'
+
+export apps_ext=/media/Backup/opt/apps
+
+pythonpathdirs=($(find /media/Backup/pythonpath -maxdepth 1 -type d))
+# https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
+for d in ${pythonpathdirs[@]:1}; do
+    PYTHONPATH="${d}:$PYTHONPATH"
+done
+export PYTHONPATH
+
+########################################
+### MODULES
+########################################
+
+source /etc/profile.d/modules.zsh
+module use "${HOME}/modules/copper"

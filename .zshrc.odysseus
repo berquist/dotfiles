@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# work "server"
+
+########################################
+### odysseus-specific things
+########################################
+
+# eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
+
+export PATH="${HOME}"/repositories/pacapt:"${PATH}"
+
+# alias doupgrade="sudo $(which pacapt) -Syyu"
+
+########################################
+### MODULES
+########################################
+
+source /etc/profile.d/modules.sh
+module use "${HOME}/modules/odysseus"
+
+module load emacs/25.1
+module load python
