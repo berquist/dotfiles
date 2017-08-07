@@ -695,27 +695,23 @@ TODO
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
 ;; I think stuffing the setq under config activates this for Python.
-;; (use-package flycheck-pyflakes
-;;   :config
-;;   ;; Don't disable these, in case pyflakes isn't available.
-;;   ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
-;;   ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
-;;   ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
-;;   )
-;; TODO I don't know why the above isn't working.
-(require 'flycheck-pyflakes)
+(use-package flycheck-pyflakes
+  :config
+  ;; Don't disable these, in case pyflakes isn't available.
+  ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
+  ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+  ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
+  )
 ;; Enable the use of both pyflakes and pylint.
 ;; https://github.com/flycheck/flycheck/issues/186
-(flycheck-add-next-checker 'python-pyflakes 'python-pylint)
+;; (flycheck-add-next-checker 'python-pyflakes 'python-pylint)
 #+end_src
 
 ** Cython
 
 #+BEGIN_SRC emacs-lisp
 (use-package cython-mode)
-;; TODO what's going on here
-(require 'flycheck-cython)
-(add-hook 'cython-mode-hook 'flycheck-mode)
+(use-package flycheck-cython)
 #+END_SRC
 
 * Markdown
@@ -854,6 +850,12 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package cuda-mode)
+#+END_SRC
+
+* Rust
+
+#+BEGIN_SRC emacs-lisp
+(use-package rust-mode)
 #+END_SRC
 
 * docview
