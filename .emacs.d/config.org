@@ -89,6 +89,8 @@
 
 Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
 
+http://oremacs.com/2015/02/09/ido-vertical/
+
 #+begin_src emacs-lisp
 (use-package ido
   :config
@@ -100,13 +102,18 @@ Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido
   :init
   (ido-mode t)
   )
+(use-package ido-vertical-mode
+  :disabled t
+  :config
+  (setq ido-vertical-show-count t)
+  :init
+  (ido-vertical-mode 1)
+  )
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'completion-ignored-extensions ".html")
 #+END_SRC
-
-We don't need to =(use-package swiper)= thanks to the ivy one? This is a confusing mess.
 
 #+BEGIN_SRC emacs-lisp
 (use-package ivy
@@ -115,12 +122,22 @@ We don't need to =(use-package swiper)= thanks to the ivy one? This is a confusi
   (setq
    ivy-use-virtual-buffers t
    ivy-count-format "(%d/%d) "
+   ivy-re-builders-alist '((t . ivy--regex-fuzzy))
    )
   :init
   (ivy-mode 1)
   )
-
-;; (global-set-key (kbd "C-s") 'swiper)
+(use-package counsel
+  :disabled t
+  :config
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  )
+(use-package swiper
+  :disabled t
+  :config
+  (global-set-key (kbd "C-s") 'swiper)
+  )
 #+END_SRC
 
 Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
@@ -133,6 +150,9 @@ Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
   (setq
    anzu-mode-lighter ""
    )
+  ;; M-% and C-M-% are the original query-replace(-regexp) shortcuts
+  (global-set-key (kbd "C-x C-g") 'anzu-query-replace)
+  (global-set-key (kbd "C-x C-a") 'anzu-query-replace-regexp)
   :init
   (global-anzu-mode 1)
   )
@@ -456,7 +476,6 @@ Not using =git-gutter= right now, but if I did...
         org-closed-keep-when-no-todo t
         ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
         org-startup-truncated nil
-        org-src-tab-acts-natively t
         org-export-backends (quote (ascii html icalendar latex md))
         org-export-dispatch-use-expert-ui t
         org-export-with-smart-quotes t
@@ -469,7 +488,7 @@ Not using =git-gutter= right now, but if I did...
         org-highlight-latex-and-relatex '(latex script entities)
         org-html-with-latex (quote mathjax)
         org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
-        org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate
+        org-confirm-babel-evaluate nil
         org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
         )
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
