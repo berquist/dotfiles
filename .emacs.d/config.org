@@ -770,22 +770,40 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
 
 * deft
 
-Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' website]].
+Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' website]] and http://pragmaticemacs.com/emacs/make-quick-notes-with-deft/.
 
 #+begin_src emacs-lisp
 (use-package deft
+  :bind (("C-c d" . deft))
   :config
-  (progn
-    (setq
-     ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
-     deft-directory "~/Dropbox/Notes"
-     deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex")
-     deft-time-format " %Y-%m-%d %H:%M:%S"
-     deft-recursive t
-     deft-use-filename-as-title t)
-    (global-set-key [f9] 'deft))
+  (setq
+   ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
+   deft-directory "~/Dropbox/Notes"
+   deft-default-extension "md"
+   deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex")
+   deft-recursive t
+   deft-text-mode 'gfm-mode
+   deft-time-format " %Y-%m-%d %H:%M:%S"
+   deft-use-filename-as-title t
+   deft-use-filter-string-as-filename t)
   )
 #+end_src
+
+https://stackoverflow.com/a/35450025/3249688
+
+#+BEGIN_SRC emacs-lisp
+(defun yashi/new-scratch-buffer-in-org-mode ()
+  (interactive)
+  (switch-to-buffer (generate-new-buffer-name "*temp*"))
+  (org-mode))
+(bind-key "<f7>" 'yashi/new-scratch-buffer-in-org-mode)
+
+(defun yashi/deft-new-file ()
+  (interactive)
+  (let ((deft-filter-regexp nil))
+    (deft-new-file)))
+(bind-key "<f6>" 'yashi/deft-new-file)
+#+END_SRC
 
 * CMake
 
