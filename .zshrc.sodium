@@ -56,6 +56,9 @@ alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/
 
 alias doupgrade='brew update && brew upgrade && brew cleanup'
 
+# `brew install lesspipe`
+export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+
 ########################################
 ### MATLAB
 ########################################
