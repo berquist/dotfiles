@@ -119,7 +119,7 @@ if [[ "${hname2}" =~ (crc|mpi) ]]; then
 
     # These are from ~/modules.
     module load emacs/25.2
-    module load git/2.11.0-rc2
+    module load git/github
 
     # Use the latest versions of the default modules.
     if [ "${hname2}" == "crc" ]; then
