@@ -1,4 +1,4 @@
-personal_ws-1.1 en 248 
+personal_ws-1.1 en 253 
 Koseki
 planarity
 InChI
@@ -12,6 +12,7 @@ DFT
 optimizations
 interpretable
 parallelized
+zwitterionic
 enantiomers
 Sunil
 vibrational
@@ -42,6 +43,7 @@ tunable
 infographic
 bioinorganic
 hyperpolarizabilities
+guanidine
 autocorrelation
 activations
 dimensioning
@@ -80,6 +82,7 @@ Pleasanton
 quadrupole
 decrypt
 denoising
+protonated
 Lambrecht
 SORCI
 ligand
@@ -114,6 +117,7 @@ ROKS
 functionalized
 wavefunction
 intermolecular
+prefactors
 Fock
 featurization
 mopropman
@@ -144,7 +148,7 @@ DIIS
 overdelocalization
 Plesset
 Hexacoordinated
-Iteratively
+iteratively
 nanoparticles
 thermochemical
 perturbative
@@ -171,6 +175,7 @@ Blumberg
 dimensionality
 monomeric
 outliers
+Mineola
 Hirao
 configurational
 biradical
