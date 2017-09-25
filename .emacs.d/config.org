@@ -481,6 +481,7 @@ Not using =git-gutter= right now, but if I did...
         org-export-with-smart-quotes t
         org-image-actual-width nil
         org-edit-src-content-indentation 0
+        org-list-allow-alphabetical t
         org-src-fontify-natively t
         org-src-tab-acts-natively t
         org-latex-create-formula-image-program 'imagemagick
