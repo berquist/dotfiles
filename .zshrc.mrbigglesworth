@@ -19,6 +19,6 @@ export PATH="${HOME}"/repositories/pacapt:"${PATH}"
 source /etc/profile.d/modules.sh
 module use "${HOME}/modules/mrbigglesworth"
 
-module load git/2.13.3
+module load git/github
 module load emacs/25.1
 module load qchem/qchem_branches_libresponse
