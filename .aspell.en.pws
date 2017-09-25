@@ -1,4 +1,4 @@
-personal_ws-1.1 en 244 
+personal_ws-1.1 en 248 
 Koseki
 planarity
 InChI
@@ -18,9 +18,11 @@ vibrational
 magneton
 spectroscopies
 initio
+rotatable
 autoencoding
 Hamiltonians
 modularity
+tautomerization
 emacs
 Budil
 covariant
@@ -179,6 +181,7 @@ amyloid
 solvation
 paramagnetic
 PBE
+librational
 antisymmetrized
 overlocalization
 lookups
@@ -226,6 +229,7 @@ octupole
 Jahn
 polarizabilities
 anharmonic
+conformational
 PQI
 parallelization
 SCF

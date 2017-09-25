@@ -73,6 +73,8 @@ alias 2to3='2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma'
 # These have to be run from $QC.
 alias etags_qchem='find -L $PWD -not \( -path "./build" -prune \) -not \( -path "./.git" -prune \) -not \( -path "./.svn" -prune \) -not \( -path "./doc/html" -prune \) -name "*\.[chfpCHF]*" -print | etags --class-qualify --declarations -'
 alias ctags_qchem='ctags -e --languages=-HTML,-JavaScript --links --verbose --totals -R'
+alias qchem_cppcheck='find . -type f -name "*.[hC]" | xargs cppcheck --enable=all --language=c++ --std=c++03'
+alias qchem_cpplint='find . -type f -name "*.[hC]" | xargs cpplint --root=. --extensions=C --headers=h'
 
 export MANWIDTH=78
 export EDITOR='emacs -nw'
