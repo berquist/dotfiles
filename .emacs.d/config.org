@@ -912,3 +912,58 @@ TODO How to make this take precedence over =dtrt-indent=?
   ;; always refresh when the contents change
   )
 #+end_src
+
+* Scheme/Lisp
+
+** Racket
+
+#+BEGIN_SRC emacs-lisp
+(use-package racket-mode
+  ;; TODO the top one doesn't work?
+  :mode (("\\.rkt[dl]?\\'" . racket-mode)
+         ("\\.rkt\\'" . racket-mode)
+         ("\\.ss\\'" . racket-mode))
+  )
+#+END_SRC
+
+** Hy
+
+#+BEGIN_SRC emacs-lisp
+(use-package hy-mode
+  :mode (("\\.hy\\'" . hy-mode)))
+#+END_SRC
+
+** General
+
+Modified to remove/disable Racket.
+
+#+BEGIN_SRC emacs-lisp
+(use-package geiser
+  :config
+ (setq geiser-active-implementations (quote (guile chicken chez mit chibi)))
+ (setq geiser-implementations-alist
+   (quote
+    (((regexp "\\.scm$")
+      guile)
+     ((regexp "\\.scm$")
+      chicken)
+     ((regexp "\\.release-info$")
+      chicken)
+     ((regexp "\\.meta$")
+      chicken)
+     ((regexp "\\.setup$")
+      chicken)
+     ((regexp "\\.ss$")
+      chez)
+     ((regexp "\\.def$")
+      chez)
+     ((regexp "\\.scm$")
+      mit)
+     ((regexp "\\.pkg$")
+      mit)
+     ((regexp "\\.scm$")
+      chibi)
+     ((regexp "\\.sld$")
+      chibi))))
+ )
+#+END_SRC
