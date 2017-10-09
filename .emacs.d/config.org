@@ -734,6 +734,12 @@ TODO
 (use-package flycheck-cython)
 #+END_SRC
 
+* Mediawiki
+
+#+BEGIN_SRC emacs-lisp
+(use-package mediawiki)
+#+END_SRC
+
 * Markdown
 
 Rather than use =--mathjax== with a URL argument, =--include-in-header= allows the insertion of arbitrary HTML into Pandoc's output. The =mathjax.html= file contains Chemistry Stack Exchange's header scripts for first configuring the MathJax extension to load =mhchem=, then loads MathJax.
@@ -851,6 +857,12 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package lua-mode)
+#+END_SRC
+
+* Scala
+
+#+BEGIN_SRC emacs-lisp
+(use-package scala-mode)
 #+END_SRC
 
 * Ruby
