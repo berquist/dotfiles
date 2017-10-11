@@ -241,7 +241,7 @@ Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='
 ;; To reduce errors. Was: 'buffer-menu
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 ;; Was: 'ido-switch-buffer
-(global-set-key (kbd "C-x b") 'list-buffers)
+(global-set-key (kbd "C-x b") 'ibuffer)
 (global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
 
 (global-set-key (kbd "C-+") 'text-scale-increase)
