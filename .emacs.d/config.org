@@ -554,6 +554,17 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
     (message "Enabled org html export on save for current buffer...")))
 #+END_SRC
 
+** org-ref
+
+#+BEGIN_SRC emacs-lisp
+(use-package org-ref)
+(setq reftex-default-bibliography '("~/Dropbox/_bibliography/references.bib"))
+
+(setq org-ref-bibliography-notes "~/Dropbox/_bibliography/notes.org"
+      org-ref-default-bibliography '("~/Dropbox/_bibliography/references.bib")
+      org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs")
+#+END_SRC
+
 * CSS
 
 #+begin_src emacs-lisp
@@ -697,11 +708,10 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 * LaTeX
 
-TODO
-
 #+begin_src emacs-lisp
-;; (use-package auctex-latexmk)
-;; (auctex-latexmk-setup)
+(use-package auctex)
+(use-package auctex-latexmk)
+(auctex-latexmk-setup)
 #+end_src
 
 * Python
