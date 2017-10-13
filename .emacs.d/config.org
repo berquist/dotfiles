@@ -562,7 +562,8 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
 
 (setq org-ref-bibliography-notes "~/Dropbox/_bibliography/notes.org"
       org-ref-default-bibliography '("~/Dropbox/_bibliography/references.bib")
-      org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs")
+      org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs"
+      bibtex-dialect 'biblatex)
 #+END_SRC
 
 * CSS
@@ -712,6 +713,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package auctex)
 (use-package auctex-latexmk)
 (auctex-latexmk-setup)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+;; (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 #+end_src
 
 * Python
