@@ -47,6 +47,8 @@
     verbosity = 3
 
 [alias]
+    # git git git git git git git git git ...
+    git = !exec git
     branches = branch -a -v
     commit = commit --verbose
     remotes = remote -v

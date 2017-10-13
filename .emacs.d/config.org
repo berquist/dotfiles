@@ -258,7 +258,7 @@ Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='
 
 ;; Other themes I like to have installed: monochrome-theme plan9-theme
 ;; abyss-theme lush-theme punpun-theme (punpun-light, punpun-dark)
-;; gotham-theme quasi-monochrome-theme
+;; gotham-theme rebecca-theme quasi-monochrome-theme
 
 (when window-system
   (if (eq system-type 'gnu/linux)
