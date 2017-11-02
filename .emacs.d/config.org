@@ -226,7 +226,8 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   (dtrt-indent-mode 1)
   )
 
-(use-package unfill)
+(use-package unfill
+  :bind (("C-M-q" . unfill-paragraph)))
 
 ;; Always place a newline at the end of files, like nano does by
 ;; default.
