@@ -122,9 +122,7 @@ if [[ "${hname2}" =~ (crc|mpi) ]]; then
     module load git/github
 
     # Use the latest versions of the default modules.
-    if [ "${hname2}" == "crc" ]; then
-        module load cmake/3.7.1
-    fi
+    module load cmake
     module load intel/2017.1.132
     module load mkl/2017.1.132
 fi
