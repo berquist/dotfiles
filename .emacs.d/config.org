@@ -500,7 +500,7 @@ Not using =git-gutter= right now, but if I did...
         org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
         )
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
-  (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames" "xcolor" nil))
+  (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
   (setq org-latex-pdf-process
         '("latexmk -xelatex -shell-escape -interaction=batchmode -output-directory=%o %f"))
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
