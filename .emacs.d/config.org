@@ -785,7 +785,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   (setq
    markdown-content-type "application/xhtml+xml"
    markdown-coding-system "utf-8"
-   markdown-command "pandoc --from=markdown_github+tex_math_dollars+tex_math_single_backslash --to=html5 --smart --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html"
+   markdown-command "pandoc --from=gfm+tex_math_dollars+tex_math_single_backslash --to=html5 --smart --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html"
    markdown-enable-math t
    markdown-fontify-code-blocks-natively t
    markdown-hide-markup nil

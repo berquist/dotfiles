@@ -72,7 +72,7 @@
  (preserve-tabs)
  (tab-stop)
  (track-changes)
- (read . "markdown_github")
+ (read . "gfm")
  (read-lhs)
  (read-extensions
   ("abbreviations")

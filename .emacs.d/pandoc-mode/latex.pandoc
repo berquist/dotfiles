@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp -*-
 
 ;; pandoc-mode global settings file
-;; saved on 2017.07.16 18:15
+;; saved on 2017.12.21 15:22
 
 ((latexmathml)
  (mathml)
@@ -96,7 +96,7 @@
   ("inline_code_attributes")
   ("inline_notes")
   ("intraword_underscores")
-  ("latex_macros")
+  ("latex_macros" . +)
   ("line_blocks")
   ("link_attributes")
   ("lists_without_preceding_blankline")
@@ -116,7 +116,7 @@
   ("subscript")
   ("superscript")
   ("table_captions")
-  ("tex_math_dollars")
+  ("tex_math_dollars" . +)
   ("tex_math_double_backslash")
   ("tex_math_single_backslash")
   ("yaml_metadata_block"))
