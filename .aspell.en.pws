@@ -1,4 +1,5 @@
-personal_ws-1.1 en 287 
+personal_ws-1.1 en 291 
+solvated
 Koseki
 planarity
 InChI
@@ -35,8 +36,8 @@ cytotoxic
 antisymmetrization
 interelectronic
 contravariant
-perchlorate
 anthropogenic
+perchlorate
 sorption
 functionalization
 hyperparameter
@@ -97,8 +98,8 @@ decrypt
 denoising
 protonated
 Lambrecht
-SORCI
 incrementing
+SORCI
 ligand
 UPBE
 adsorbate
@@ -219,6 +220,7 @@ Szabo
 Kirss
 carbonyl
 th
+linewidth
 Mathematica
 NMR
 ACF
@@ -257,6 +259,7 @@ OpenMP
 dimerization
 MRCI
 variationally
+monochromator
 semiempirical
 stereocenter
 chirality
@@ -279,6 +282,7 @@ degeneracies
 covalent
 SCS
 underbinding
+absorptivity
 BLAS
 extensibility
 adjoint
