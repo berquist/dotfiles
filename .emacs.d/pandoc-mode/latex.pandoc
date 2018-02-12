@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp -*-
 
 ;; pandoc-mode global settings file
-;; saved on 2017.12.21 15:22
+;; saved on 2018.02.12 16:51
 
 ((latexmathml)
  (mathml)
@@ -24,7 +24,7 @@
  (epub-chapter-level)
  (chapters)
  (no-tex-ligatures)
- (listings)
+ (listings . t)
  (latex-engine)
  (latex-engine-opt)
  (self-contained)
@@ -46,6 +46,7 @@
  (standalone . t)
  (template)
  (variable)
+ (wrap . "preserve")
  (no-wrap)
  (columns)
  (table-of-contents)
@@ -68,7 +69,7 @@
  (preserve-tabs)
  (tab-stop)
  (track-changes)
- (read . "markdown_github")
+ (read . "markdown")
  (read-lhs)
  (read-extensions
   ("abbreviations")
@@ -96,7 +97,7 @@
   ("inline_code_attributes")
   ("inline_notes")
   ("intraword_underscores")
-  ("latex_macros" . +)
+  ("latex_macros")
   ("line_blocks")
   ("link_attributes")
   ("lists_without_preceding_blankline")

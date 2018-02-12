@@ -780,7 +780,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   (
    ("\\.markdown\\'" . markdown-mode)
    ("\\.mdown\\'" . markdown-mode)
-   ("\\.md\\'" . gfm-mode)
+   ("\\.md\\'" . markdown-mode)
    )
   :config
   (add-hook 'markdown-mode-hook 'pandoc-mode)
@@ -791,7 +791,10 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   (setq
    markdown-content-type "application/xhtml+xml"
    markdown-coding-system "utf-8"
-   markdown-command "pandoc --from=gfm+tex_math_dollars+tex_math_single_backslash --to=html5 --smart --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html"
+   ;; This isn't super necessary since I have pandoc run a similar
+   ;; command every time I save with these default arguments, but this
+   ;; always produces HTML where pandoc-mode might not.
+   markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html"
    markdown-enable-math t
    markdown-fontify-code-blocks-natively t
    markdown-hide-markup nil

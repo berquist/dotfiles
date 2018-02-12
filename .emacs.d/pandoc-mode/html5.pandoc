@@ -49,7 +49,7 @@
  (template)
  (variable)
  (dpi)
- (wrap)
+ (wrap . "preserve")
  (no-wrap)
  (columns)
  (table-of-contents)
