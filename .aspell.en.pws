@@ -1,4 +1,4 @@
-personal_ws-1.1 en 298 
+personal_ws-1.1 en 308 
 solvated
 Koseki
 planarity
@@ -25,6 +25,7 @@ initio
 rotatable
 interatomic
 autoencoding
+anisotropy
 unconverged
 Hamiltonians
 modularity
@@ -59,6 +60,7 @@ activations
 dimensioning
 excitations
 organometallic
+stereochemistry
 diagonalize
 Giard
 Corcelli
@@ -66,6 +68,7 @@ UKS
 benchmarking
 GGA
 idempotency
+diagonalizes
 nonlocal
 sorbents
 libsolve
@@ -136,11 +139,13 @@ intermolecular
 prefactors
 Fock
 featurization
+anisotropic
 mopropman
 multireference
 libfock
 LDA
 multipole
+cancelling
 dataset
 stereochemical
 parameterized
@@ -163,6 +168,7 @@ histidine
 autoencoder
 interoperability
 DIIS
+hermiticity
 overdelocalization
 Plesset
 dephasing
@@ -170,6 +176,7 @@ Hexacoordinated
 iteratively
 nanoparticles
 thermochemical
+carbocation
 perturbative
 GAMESS
 featurizations
@@ -184,6 +191,7 @@ perovskite
 softmax
 reactivity
 ferrocene
+lipophilic
 deliverables
 Ostlund
 LRC
@@ -212,6 +220,7 @@ PBE
 librational
 symmetrized
 antisymmetrized
+proteomics
 overlocalization
 lookups
 approximators
@@ -279,6 +288,7 @@ PQI
 parallelization
 SCF
 MacLaurin
+maclaurin
 algorithmically
 Dunning's
 Hartree
