@@ -114,6 +114,8 @@ fi
 
 # If we're on one of the new clusters...
 if [[ "${hname2}" =~ (crc|mpi) ]]; then
+    module use /ihome/dlambrecht/software/modules
+
     # modules that don't load conflicting Frank-only ones
     module use "${HOME}"/modules/haswell
 
@@ -121,7 +123,7 @@ if [[ "${hname2}" =~ (crc|mpi) ]]; then
     module load emacs/25.2
     module load git/github
 
-    # Use the latest versions of the default modules.
+    # These are from default modules.
     module load cmake
     module load intel/2017.1.132
     module load mkl/2017.1.132
