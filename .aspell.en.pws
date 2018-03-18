@@ -1,4 +1,4 @@
-personal_ws-1.1 en 308 
+personal_ws-1.1 en 333 
 solvated
 Koseki
 planarity
@@ -19,6 +19,7 @@ zwitterionic
 enantiomers
 Sunil
 vibrational
+chromophores
 magneton
 spectroscopies
 initio
@@ -62,13 +63,15 @@ excitations
 organometallic
 stereochemistry
 diagonalize
+superoperators
 Giard
+summand
 Corcelli
 UKS
 benchmarking
 GGA
-idempotency
 diagonalizes
+idempotency
 nonlocal
 sorbents
 libsolve
@@ -98,12 +101,14 @@ BLYP
 Pleasanton
 quadrupole
 variational
+nitrile
 decrypt
 denoising
 protonated
 Lambrecht
 incrementing
 SORCI
+integrand
 ligand
 UPBE
 adsorbate
@@ -111,6 +116,7 @@ ferrocifen
 amino
 codebase
 Zeeman
+cooperativity
 machina
 erfc
 chromophore
@@ -128,11 +134,14 @@ dopants
 Saxena
 learnable
 imidazole
+electronegativity
 Neese
 magnetizabilities
 pVXZ
 ILs
+diagonalizing
 ROKS
+solvatochromic
 functionalized
 wavefunction
 intermolecular
@@ -180,6 +189,7 @@ carbocation
 perturbative
 GAMESS
 featurizations
+adiabatically
 quantizing
 subfields
 counterions
@@ -200,13 +210,17 @@ overfitting
 dissociative
 unphysical
 perceptron
+dinitrogen
+unimodular
 computable
 Blumberg
 dimensionality
 monomeric
 outliers
+deexcitation
 Mineola
 unprojected
+deexcitations
 Hirao
 configurational
 biradical
@@ -226,6 +240,7 @@ lookups
 approximators
 Blacksburg
 nondegenerate
+experimentalist
 Minimodel
 shieldings
 Szabo
@@ -234,12 +249,15 @@ carbonyl
 th
 linewidth
 Mathematica
+oligomeric
 NMR
 ACF
 diagonalization
+Hermitian
 inhomogeneous
 orthonormality
 LYP
+chloromethane
 DropOut
 observables
 glutamate
@@ -252,6 +270,7 @@ repositioning
 decompositions
 orthonormalization
 transferability
+overbinds
 libresponse
 tetraammine
 dichroism
@@ -270,6 +289,7 @@ ligands
 libtensor
 MCSCF
 composable
+Raman
 OpenMP
 dimerization
 MRCI
@@ -291,6 +311,7 @@ MacLaurin
 maclaurin
 algorithmically
 Dunning's
+unfactored
 Hartree
 Mulliken
 quantization
@@ -298,9 +319,13 @@ drvman
 degeneracies
 covalent
 SCS
+fluoromethane
 underbinding
 absorptivity
+Ansatz
+invertible
 BLAS
+superoperator
 extensibility
 adjoint
 eigenfunctions
