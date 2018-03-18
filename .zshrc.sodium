@@ -77,7 +77,7 @@ export PATH="${HOME}/.gem/ruby/2.0.0/bin:${PATH}"
 ### MODULES
 ########################################
 
-source /usr/local/Cellar/lmod/7.6.11/lmod/init/zsh
+source /usr/local/opt/lmod/init/zsh
 module use $HOME/modules/sodium
 
 ########################################
