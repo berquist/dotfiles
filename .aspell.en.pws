@@ -1,4 +1,5 @@
-personal_ws-1.1 en 333 
+personal_ws-1.1 en 340
+Q-Chem
 solvated
 Koseki
 planarity
@@ -114,6 +115,7 @@ UPBE
 adsorbate
 ferrocifen
 amino
+acceptor
 codebase
 Zeeman
 cooperativity
@@ -131,6 +133,7 @@ orthogonalization
 VTZ
 GSR
 dopants
+electrocatalysis
 Saxena
 learnable
 imidazole
@@ -182,6 +185,7 @@ overdelocalization
 Plesset
 dephasing
 Hexacoordinated
+unnormalized
 iteratively
 nanoparticles
 thermochemical
@@ -244,8 +248,10 @@ experimentalist
 Minimodel
 shieldings
 Szabo
+electrophilic
 Kirss
 carbonyl
+antisymmetry
 th
 linewidth
 Mathematica
@@ -292,6 +298,7 @@ composable
 Raman
 OpenMP
 dimerization
+electrophile
 MRCI
 variationally
 monochromator
