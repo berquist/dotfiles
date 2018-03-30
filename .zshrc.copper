@@ -6,7 +6,7 @@
 ### copper-specific things
 ########################################
 
-eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
+eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
 
 alias doupgrade='yaourt -Syyua --devel'
 

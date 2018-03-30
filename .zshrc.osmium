@@ -12,7 +12,7 @@ export apps="${QCPROGS}"
 
 export LD_LIBRARY_PATH="${HOME}"/data/opt/lib:"${LD_LIBRARY_PATH}"
 
-eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
+eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
 
 alias doupgrade='yaourt -Syyua --devel'
 
