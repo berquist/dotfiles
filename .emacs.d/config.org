@@ -337,7 +337,13 @@ Here’s a better approach. Every buffer has it’s own format variable and the 
 #+BEGIN_SRC emacs-lisp
 (use-package langtool
   :config
-  (setq langtool-mother-tongue "en"))
+  (setq langtool-mother-tongue "en"
+        langtool-default-language "en-US")
+  (if (eq system-type 'darwin)
+      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-server.jar"))
+  (if (eq system-type 'darwin)
+      (setq langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
+  )
 #+END_SRC
 
 TODO clean this up, figure out LaTeX
@@ -728,6 +734,9 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (auctex-latexmk-setup)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 ;; (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+;; (setq font-latex-math-environments
+;;       (append '("dmath")
+;;               font-latex-math-environments))
 #+end_src
 
 * Python
