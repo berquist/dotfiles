@@ -1,4 +1,4 @@
-personal_ws-1.1 en 339
+personal_ws-1.1 en 342 
 solvated
 Koseki
 planarity
@@ -11,6 +11,7 @@ Minimodels
 CASSCF
 DFT
 Pulay
+Pockels
 optimizations
 interpretable
 parallelized
@@ -78,6 +79,7 @@ libsolve
 MATLAB
 notational
 overbinding
+quasienergy
 erf
 EPR
 orthogonalizations
@@ -164,6 +166,7 @@ purgeable
 Jupyter
 TPSSh
 scalable
+Helgaker
 eigenvectors
 hyperpolarizability
 combinatorial
@@ -313,8 +316,8 @@ conformational
 PQI
 parallelization
 SCF
-MacLaurin
 maclaurin
+MacLaurin
 algorithmically
 Dunning's
 unfactored
