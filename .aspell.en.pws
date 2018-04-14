@@ -1,4 +1,4 @@
-personal_ws-1.1 en 342 
+personal_ws-1.1 en 343 
 solvated
 Koseki
 planarity
@@ -309,6 +309,7 @@ stereocenter
 chirality
 CCSD
 octupole
+translational
 Jahn
 polarizabilities
 anharmonic
