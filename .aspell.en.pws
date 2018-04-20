@@ -1,4 +1,4 @@
-personal_ws-1.1 en 343 
+personal_ws-1.1 en 344 
 solvated
 Koseki
 planarity
@@ -60,6 +60,7 @@ guanidine
 autocorrelation
 activations
 dimensioning
+programmatically
 excitations
 organometallic
 stereochemistry
@@ -165,8 +166,8 @@ parameterized
 purgeable
 Jupyter
 TPSSh
-scalable
 Helgaker
+scalable
 eigenvectors
 hyperpolarizability
 combinatorial
@@ -317,8 +318,8 @@ conformational
 PQI
 parallelization
 SCF
-maclaurin
 MacLaurin
+maclaurin
 algorithmically
 Dunning's
 unfactored
