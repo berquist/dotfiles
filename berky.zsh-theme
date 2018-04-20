@@ -17,19 +17,3 @@ RPROMPT=''
 
 PROMPT='%{$fg[yellow]%}%d%{$reset_color%} $(git_super_status)$(virtualenv_prompt_info)
 [%{$fg[blue]%}%n%{$reset_color%}@%{$fg[cyan]%}$(hname)%{$reset_color%}]%(!.#.$) '
-
-# modified slightly from the bureau theme
-# _PATH="%{$fg[yellow]%}%~%{$reset_color%}"
-
-# if [[ $EUID -eq 0 ]]; then
-#   _USERNAME="%{$fg_bold[red]%}%n"
-#   _LIBERTY="%{$fg_bold[red]%}#"
-# else
-#   _USERNAME="%{$fg[blue]%}%n"
-#   _LIBERTY="%{$fg[white]%}$"
-# fi
-
-# _USERNAME="[$_USERNAME%{$reset_color%}@$fg[cyan]%m$reset_color]"
-# _LIBERTY="$_LIBERTY%{$reset_color%}"
-
-# PROMPT='$_USERNAME $_PATH$(virtualenv_prompt_info) $_LIBERTY '
