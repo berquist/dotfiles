@@ -98,7 +98,7 @@ LD_LIBRARY_PATH="${HOME}/opt/lib:${LD_LIBRARY_PATH}"
 export LD_LIBRARY_PATH
 
 PATH="${HOME}/repositories/rmsd/rmsd:${PATH}"
-PATH="${HOME}/scripts:${PATH}"
+PATH="${HOME}/personal_scripts:${PATH}"
 PATH="${HOME}/opt/bin/scripts:${PATH}"
 PATH="${HOME}/opt/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
