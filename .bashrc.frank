@@ -2,9 +2,6 @@
 
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
-export hname1=$(hostname | cut -d "." -f 1 -)
-export hname2=$(hostname | cut -d "." -f 2 -)
-
 ########################################
 ### ALIASES
 ########################################
@@ -26,50 +23,16 @@ alias cp="cp -i -v"
 alias mv="mv -i -v"
 alias rm="rm -i -v"
 
-if [ "${hname2}" == "frank" ]; then
-
-    alias q="qstat.py -u ${USER}"
-    alias qf="qfull.py -u ${USER}"
-    alias qfil="qfilter.py vriesjk"
-    alias qa="qstat -a"
-    alias qq="qstat -Q"
-
-    alias f="frank-avail"
-    alias s="showstart"
-    alias c="checkjob"
-    alias cdp="cd ${PBS_O_WORKDIR}"
-    alias wa="watch --interval=10 qstat -u ${USER}"
-    alias sq="showquota.2015-9-16"
-
-    # I should really have a function that allows me to control
-    # walltime/nodes/ppn and such...
-    alias qt1="qsub -I -q test -l walltime=01:00:00 -l qos=low -l nodes=1:ppn=1"
-    alias qt2="qsub -I -q test -l walltime=01:00:00 -l qos=low -l nodes=1:ppn=2"
-    alias qt4="qsub -I -q test -l walltime=01:00:00 -l qos=low -l nodes=1:ppn=4"
-    alias qt8="qsub -I -q test -l walltime=01:00:00 -l qos=low -l nodes=2:ppn=4"
-    alias q2t1="qsub -I -q test -l walltime=02:00:00 -l qos=low -l nodes=1:ppn=1"
-
-    alias qt1ib="qsub -I -q ib -l walltime=01:00:00 -l qos=low -l nodes=1:ppn=1"
-    alias qt2ib="qsub -I -q ib -l walltime=01:00:00 -l qos=low -l nodes=1:ppn=2"
-    alias qt4ib="qsub -I -q ib -l walltime=01:00:00 -l qos=low -l nodes=1:ppn=4"
-    alias qt8ib="qsub -I -q ib -l walltime=01:00:00 -l qos=low -l nodes=1:ppn=8"
-
-fi
-
-if [[ "${hname2}" =~ (crc|mpi) ]]; then
-
-    # format="\"%7i %3P %35j %2t %.12M %.6D %.4C %.R\""
-    # format="\"%6i %10g %10u %3P %35j %2t %12M %6D %4C %R\""
-    format="\"%8i %9g %9u %5P %35j %2t %12M %12l %5D %3C %R\""
-    flags="-S +i -o ${format}"
-    alias q="squeue -u $USER ${flags} -M all"
-    alias qa="squeue -a ${flags}"
-    alias c="scontrol show jobid -dd"
-    alias qdel="scancel"
-    alias qsub="sbatch"
-    alias walltimes='sacctmgr show qos'
-
-fi
+# format="\"%7i %3P %35j %2t %.12M %.6D %.4C %.R\""
+# format="\"%6i %10g %10u %3P %35j %2t %12M %6D %4C %R\""
+format="\"%8i %9g %9u %5P %35j %2t %12M %12l %5D %3C %R\""
+flags="-S +i -o ${format}"
+alias q="squeue -u $USER ${flags} -M all"
+alias qa="squeue -a ${flags}"
+alias c="scontrol show jobid -dd"
+alias qdel="scancel"
+alias qsub="sbatch"
+alias walltimes='sacctmgr show qos'
 
 alias mobyquota="lfs quota -g dlambrecht /mnt/mobydisk"
 

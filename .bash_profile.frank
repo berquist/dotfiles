@@ -54,12 +54,7 @@ PATH="${HOME}"/.local/bin:"${PATH}"
 export PATH
 
 PATH="${HOME}"/scripts:"${PATH}"
-if [ "${hname2}" == "frank" ]; then
-    PATH="${HOME}"/scripts/clusters/frank:"${PATH}"
-fi
-if [[ "${hname2}" =~ (crc|mpi) ]]; then
-    PATH="${HOME}"/scripts/clusters/haswell:"${PATH}"
-fi
+PATH="${HOME}"/scripts/clusters/haswell:"${PATH}"
 export PATH
 
 export MOBY="/mnt/mobydisk/groupshares/dlambrecht/${USER}"
@@ -77,54 +72,16 @@ export scratch="${HOME}"/scratch
 ### MODULES
 ########################################
 
-# If we're on Frank...
-if [[ "${hname2}" =~ (frank|n[0-9]*) ]]; then
-    module use /ihome/dlambrecht/software/modules
+module use /ihome/dlambrecht/software/modules
 
-    # These are user-defined modules in /ihome/dlambrecht/software/modules
-    # to load group software stored in /ihome/dlambrecht/software.
-    # module load scripts
-    # module load samtools
+# modules that don't load conflicting Frank-only ones
+module use "${HOME}"/modules/haswell
 
-    module use "${HOME}"/modules/frank
+# These are from ~/modules.
+module load emacs/25.2
+module load git/github
 
-    # These are user-defined modules in ${HOME}/modules/frank to load
-    # software stored in ${HOME}/opt/apps. These should work on both
-    # Frank and the newer SMP cluster.
-    module load cuby4
-    module load pbstools
-
-    # These are user-defined modules in
-    # /home/dlambrecht/software/modules to load group software stored
-    # in /home/dlambrecht/software.
-    module load python/anaconda3
-
-    # These are from ~/modules.
-    module load emacs/25.1
-
-    # Use the latest versions of the default modules.
-    module unload intel mkl openmpi
-    module load intel/2013.0
-    module load mkl/2013.0/icc-st
-    module load mpi/openmpi/1.6.5-i2013.0
-    module unload gcc
-    module load gcc/5.2.0-rhel
-    module load git/2.6.1
-fi
-
-# If we're on one of the new clusters...
-if [[ "${hname2}" =~ (crc|mpi) ]]; then
-    module use /ihome/dlambrecht/software/modules
-
-    # modules that don't load conflicting Frank-only ones
-    module use "${HOME}"/modules/haswell
-
-    # These are from ~/modules.
-    module load emacs/25.2
-    module load git/github
-
-    # These are from default modules.
-    module load cmake
-    module load intel/2017.1.132
-    module load mkl/2017.1.132
-fi
+# These are from default modules.
+module load cmake
+module load intel/2017.1.132
+module load mkl/2017.1.132
