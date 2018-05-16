@@ -1,4 +1,4 @@
-personal_ws-1.1 en 344 
+personal_ws-1.1 en 348 
 solvated
 Koseki
 planarity
@@ -59,8 +59,8 @@ hyperpolarizabilities
 guanidine
 autocorrelation
 activations
-dimensioning
 programmatically
+dimensioning
 excitations
 organometallic
 stereochemistry
@@ -155,6 +155,7 @@ Fock
 featurization
 anisotropic
 mopropman
+glycine
 multireference
 libfock
 LDA
@@ -183,6 +184,7 @@ histidine
 autoencoder
 interoperability
 DIIS
+phosphonate
 hermiticity
 overdelocalization
 Plesset
@@ -260,6 +262,7 @@ linewidth
 Mathematica
 oligomeric
 NMR
+permutational
 ACF
 diagonalization
 Hermitian
@@ -318,8 +321,8 @@ conformational
 PQI
 parallelization
 SCF
-MacLaurin
 maclaurin
+MacLaurin
 algorithmically
 Dunning's
 unfactored
@@ -331,6 +334,7 @@ degeneracies
 covalent
 SCS
 fluoromethane
+electrochemical
 underbinding
 absorptivity
 Ansatz
