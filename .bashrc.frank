@@ -23,8 +23,6 @@ alias cp="cp -i -v"
 alias mv="mv -i -v"
 alias rm="rm -i -v"
 
-# format="\"%7i %3P %35j %2t %.12M %.6D %.4C %.R\""
-# format="\"%6i %10g %10u %3P %35j %2t %12M %6D %4C %R\""
 format="\"%8i %9g %9u %5P %35j %2t %12M %12l %5D %3C %R\""
 flags="-S +i -o ${format}"
 alias q="squeue -u $USER ${flags} -M all"

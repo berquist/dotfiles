@@ -35,7 +35,7 @@ export EDITOR="emacs -nw"
 ########################################
 
 PYTHONPATH="${HOME}:${PYTHONPATH}"
-PYTHONPATH="${HOME}/scripts:${PYTHONPATH}"
+PYTHONPATH="${HOME}/personal_scripts:${PYTHONPATH}"
 pythonpathdirs=($(find "$HOME"/pythonpath -maxdepth 1 -type d))
 # https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
 for d in ${pythonpathdirs[@]:1}; do
@@ -47,14 +47,14 @@ LD_LIBRARY_PATH="${LD_LIBRARY_PATH}":"${HOME}"/opt/lib
 export LD_LIBRARY_PATH
 
 PATH="${HOME}"/repositories/rmsd:"${PATH}"
-PATH="${HOME}"/scripts:"${PATH}"
+PATH="${HOME}"/personal_scripts:"${PATH}"
 PATH="${HOME}"/buildscripts:"${PATH}"
 PATH="${HOME}"/opt/bin:"${PATH}"
 PATH="${HOME}"/.local/bin:"${PATH}"
 export PATH
 
-PATH="${HOME}"/scripts:"${PATH}"
-PATH="${HOME}"/scripts/clusters/haswell:"${PATH}"
+PATH="${HOME}"/personal_scripts:"${PATH}"
+PATH="${HOME}"/personal_scripts/clusters/haswell:"${PATH}"
 export PATH
 
 export MOBY="/mnt/mobydisk/groupshares/dlambrecht/${USER}"
@@ -68,8 +68,6 @@ export scratch="${HOME}"/scratch
 ########################################
 ### MODULES
 ########################################
-
-# module use /ihome/dlambrecht/software/modules
 
 # modules that don't load conflicting Frank-only ones
 module use "${HOME}"/modules/haswell
