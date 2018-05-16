@@ -42,10 +42,3 @@ alias cdqm="cd ${HOME}/calc.ecoRI/qmmm/amber/solvateoct"
 
 # Use this to clean up detritus from failed snapshot jobs.
 alias rms="rm -r *snap.*.nvt*"
-
-########################################
-### OTHER
-########################################
-
-# Ruby, automatically added
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

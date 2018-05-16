@@ -65,14 +65,11 @@ export apps="${HOME}"/opt/apps
 export SCRATCH="${HOME}"/scratch
 export scratch="${HOME}"/scratch
 
-# Ruby, automatically added
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 ########################################
 ### MODULES
 ########################################
 
-module use /ihome/dlambrecht/software/modules
+# module use /ihome/dlambrecht/software/modules
 
 # modules that don't load conflicting Frank-only ones
 module use "${HOME}"/modules/haswell
