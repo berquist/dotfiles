@@ -12,13 +12,6 @@ alias doupgrade='yaourt -Syyua --devel'
 
 export apps_ext=/media/Backup/opt/apps
 
-pythonpathdirs=($(find /media/Backup/pythonpath -maxdepth 1 -type d))
-# https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
-for d in ${pythonpathdirs[@]:1}; do
-    PYTHONPATH="${d}:$PYTHONPATH"
-done
-export PYTHONPATH
-
 ########################################
 ### MODULES
 ########################################
