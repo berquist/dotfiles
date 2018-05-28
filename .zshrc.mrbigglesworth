@@ -8,8 +8,6 @@
 
 eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
-alias doupgrade='sudo apt-get update && sudo apt-get upgrade'
-
 export PATH="${HOME}"/repositories/pacapt:"${PATH}"
 
 ########################################

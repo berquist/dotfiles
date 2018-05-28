@@ -10,8 +10,6 @@
 
 export PATH="${HOME}"/repositories/pacapt:"${PATH}"
 
-# alias doupgrade="sudo $(which pacapt) -Syyu"
-
 ########################################
 ### MODULES
 ########################################
