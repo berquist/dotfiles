@@ -86,7 +86,7 @@ export EDITOR='emacs -nw'
 ########################################
 
 PYTHONPATH="${HOME}:${PYTHONPATH}"
-PYTHONPATH="${HOME}/scripts:${PYTHONPATH}"
+PYTHONPATH="${HOME}/personal_scripts:${PYTHONPATH}"
 pythonpathdirs=($(find "$HOME"/pythonpath -maxdepth 1 -type d))
 # https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
 for d in ${pythonpathdirs[@]:1}; do

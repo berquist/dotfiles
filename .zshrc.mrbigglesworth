@@ -6,6 +6,7 @@
 ### mrbigglesworth-specific things
 ########################################
 
+# unlock SSH and GPG keys
 eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
 export PATH="${HOME}"/repositories/pacapt:"${PATH}"
