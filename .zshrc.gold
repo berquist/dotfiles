@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+# home laptop (Linux)
+
+########################################
+### gold-specific things
+########################################
+
+eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
+
+export WORKON_HOME=$HOME/virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
+########################################
+### MODULES
+########################################
+
+source /etc/profile.d/modules.zsh
+module use "${HOME}/modules/gold"
