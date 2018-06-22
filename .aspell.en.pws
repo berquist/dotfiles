@@ -1,4 +1,4 @@
-personal_ws-1.1 en 348 
+personal_ws-1.1 en 357 
 solvated
 Koseki
 planarity
@@ -10,6 +10,7 @@ perturbatively
 Minimodels
 CASSCF
 DFT
+vectorization
 Pulay
 Pockels
 optimizations
@@ -28,6 +29,7 @@ rotatable
 interatomic
 autoencoding
 anisotropy
+isosurface
 unconverged
 Hamiltonians
 modularity
@@ -102,6 +104,7 @@ supersystem
 endonuclease
 BLYP
 Pleasanton
+vectorize
 quadrupole
 variational
 nitrile
@@ -164,6 +167,7 @@ cancelling
 dataset
 stereochemical
 parameterized
+RMSprop
 purgeable
 Jupyter
 TPSSh
@@ -183,8 +187,8 @@ orthonormal
 histidine
 autoencoder
 interoperability
-DIIS
 phosphonate
+DIIS
 hermiticity
 overdelocalization
 Plesset
@@ -207,6 +211,7 @@ biomolecules
 EasySpin
 localizations
 perovskite
+discoverability
 softmax
 reactivity
 ferrocene
@@ -221,6 +226,7 @@ unphysical
 perceptron
 dinitrogen
 unimodular
+vectorized
 computable
 Blumberg
 dimensionality
@@ -304,9 +310,11 @@ composable
 Raman
 OpenMP
 dimerization
+stoichiometry
 electrophile
 MRCI
 variationally
+hyperparameters
 monochromator
 semiempirical
 stereocenter
@@ -341,6 +349,7 @@ Ansatz
 invertible
 BLAS
 superoperator
+sigmoid
 extensibility
 adjoint
 eigenfunctions
