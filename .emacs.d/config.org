@@ -923,6 +923,13 @@ TODO How to make this take precedence over =dtrt-indent=?
          ("\\.cjson\\'" . json-mode)))
 #+END_SRC
 
+* XML
+
+#+BEGIN_SRC emacs-lisp
+(setq auto-mode-alist
+      (cons '("\\.xmp\\'" . nxml-mode) auto-mode-alist))
+#+END_SRC
+
 * MATLAB/Octave
 
 #+BEGIN_SRC emacs-lisp
