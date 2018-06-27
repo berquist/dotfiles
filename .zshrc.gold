@@ -9,6 +9,13 @@
 # unlock SSH and GPG keys
 eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
 
+if [ "$TMUX" != "" ]
+then
+    # TODO a more general solution would be to grab whatever
+    # $VIRTUALENVWRAPPER_PYTHON was before entering tmux.
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+fi
+
 export WORKON_HOME=$HOME/virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
