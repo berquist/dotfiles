@@ -923,6 +923,12 @@ TODO How to make this take precedence over =dtrt-indent=?
          ("\\.cjson\\'" . json-mode)))
 #+END_SRC
 
+* HTML
+
+#+BEGIN_SRC emacs-lisp
+(use-package web-mode)
+#+END_SRC
+
 * XML
 
 #+BEGIN_SRC emacs-lisp
