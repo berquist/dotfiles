@@ -58,6 +58,7 @@ plugins=(
     git-extras
     git-remote-branch
     git-prompt
+    gpg-agent
     pylint
     python
     sprunge
