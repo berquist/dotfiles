@@ -681,7 +681,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (add-hook 'c++-mode-hook 'add-ispc-keywords)
 (add-to-list 'auto-mode-alist '("\\.ispc$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.isph$" . c++-mode))
-
 #+end_src
 
 * Makefiles
@@ -912,6 +911,10 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode)
+(use-package flycheck-yamllint
+  :init
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup)))
 #+END_SRC
 
 * JSON
