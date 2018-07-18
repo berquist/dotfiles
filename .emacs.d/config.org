@@ -400,6 +400,7 @@ TODO add LaTex
   :config
   (setq
    flycheck-check-syntax-automatically '(mode-enabled save)
+   flycheck-markdown-mdl-style "$HOME/.mdlrc"
    flycheck-pylintrc "~/.pylintrc"))
 #+end_src
 
