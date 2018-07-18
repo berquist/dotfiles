@@ -1,1 +1,2 @@
-rules "~MD013"
+# -*- mode: ruby -*-
+style "#{Dir.home}/dotfiles/.mdl.rb"
