@@ -1,4 +1,4 @@
-personal_ws-1.1 en 362 
+personal_ws-1.1 en 365 
 solvated
 Koseki
 planarity
@@ -12,6 +12,7 @@ Minimodels
 CASSCF
 DFT
 vectorization
+customizable
 Pulay
 Pockels
 optimizations
@@ -294,6 +295,7 @@ orthonormalization
 transferability
 overbinds
 libresponse
+selectable
 tetraammine
 dichroism
 parametrization
@@ -303,6 +305,7 @@ antisymmetric
 MolSSI
 delocalization
 supermolecular
+destructor
 univariate
 exciton
 parametrized
@@ -333,8 +336,8 @@ conformational
 PQI
 parallelization
 SCF
-maclaurin
 MacLaurin
+maclaurin
 algorithmically
 Dunning's
 unfactored
