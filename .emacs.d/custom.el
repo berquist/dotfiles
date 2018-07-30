@@ -9,6 +9,7 @@
    (quote
     ("2a14752b82660cf074d5e910fdd6933b1df2ec992a00e38aa53c9471a9f823dc" default)))
  '(deft-auto-save-interval 60.0)
+ '(flycheck-markdown-mdl-style "$HOME/.mdlrc")
  '(font-latex-math-environments
    (quote
     ("display" "displaymath" "equation" "eqnarray" "gather" "math" "multline" "align" "alignat" "xalignat" "xxalignat" "flalign" "dmath")))
@@ -39,7 +40,7 @@
      ("colorlinks=true" "hyperref" nil))))
  '(package-selected-packages
    (quote
-    (flycheck-yamllint langtool auctex org-ref mediawiki geiser rainbow-mode racket-mode ahungry-theme edit-indirect flycheck-cython flycheck-pyflakes yaml-mode wc-mode use-package unfill systemd rust-mode ripgrep pkgbuild-mode pandoc-mode ox-pandoc ox-gfm mic-paren markdown-mode magit-svn lua-mode julia-mode json-mode htmlize gitignore-mode gitconfig-mode flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu)))
+    (jinja2-mode pip-requirements flycheck-yamllint langtool auctex org-ref mediawiki geiser rainbow-mode racket-mode ahungry-theme edit-indirect flycheck-cython flycheck-pyflakes yaml-mode wc-mode use-package unfill systemd rust-mode ripgrep pkgbuild-mode pandoc-mode ox-pandoc ox-gfm mic-paren markdown-mode magit-svn lua-mode julia-mode json-mode htmlize gitignore-mode gitconfig-mode flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu)))
  '(pandoc-major-modes
    (quote
     ((text-mode . "markdown")
