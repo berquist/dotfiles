@@ -20,6 +20,12 @@ export WORKON_HOME=$HOME/virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 ########################################
+### Rust
+########################################
+
+source $HOME/.cargo/env
+
+########################################
 ### MODULES
 ########################################
 
