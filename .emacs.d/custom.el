@@ -40,7 +40,7 @@
      ("colorlinks=true" "hyperref" nil))))
  '(package-selected-packages
    (quote
-    (jinja2-mode pip-requirements flycheck-yamllint langtool auctex org-ref mediawiki geiser rainbow-mode racket-mode ahungry-theme edit-indirect flycheck-cython flycheck-pyflakes yaml-mode wc-mode use-package unfill systemd rust-mode ripgrep pkgbuild-mode pandoc-mode ox-pandoc ox-gfm mic-paren markdown-mode magit-svn lua-mode julia-mode json-mode htmlize gitignore-mode gitconfig-mode flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu)))
+    (caml csharp-mode flycheck-julia jinja2-mode pip-requirements flycheck-yamllint langtool auctex org-ref mediawiki geiser rainbow-mode racket-mode ahungry-theme edit-indirect flycheck-cython flycheck-pyflakes yaml-mode wc-mode use-package unfill systemd rust-mode ripgrep pkgbuild-mode pandoc-mode ox-pandoc ox-gfm mic-paren markdown-mode magit-svn lua-mode julia-mode json-mode htmlize gitignore-mode gitconfig-mode flycheck-checkbashisms exec-path-from-shell editorconfig dtrt-indent deft cython-mode cuda-mode cmake-mode clang-format chapel-mode anzu)))
  '(pandoc-major-modes
    (quote
     ((text-mode . "markdown")
@@ -64,4 +64,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(fixed-pitch ((t (:family "Fira Code"))))
  '(racket-selfeval-face ((t (:foreground "#4bc98a")))))
