@@ -951,6 +951,11 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package rust-mode)
+(use-package cargo)
+(use-package flycheck-rust
+  :init
+  (with-eval-after-load 'rust-mode
+    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 #+END_SRC
 
 * docview
