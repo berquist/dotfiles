@@ -887,24 +887,6 @@ TODO How to make this take precedence over =dtrt-indent=?
 (use-package flycheck-julia)
 #+END_SRC
 
-* Chapel
-
-#+BEGIN_SRC emacs-lisp
-(use-package chapel-mode)
-#+END_SRC
-
-* Lua
-
-#+BEGIN_SRC emacs-lisp
-(use-package lua-mode)
-#+END_SRC
-
-* Scala
-
-#+BEGIN_SRC emacs-lisp
-(use-package scala-mode)
-#+END_SRC
-
 * Ruby
 
 #+BEGIN_SRC emacs-lisp
@@ -1041,4 +1023,20 @@ Modified to remove/disable Racket.
      ((regexp "\\.sld$")
       chibi))))
  )
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package slime)
+#+END_SRC
+
+* Other languages
+
+#+BEGIN_SRC emacs-lisp
+(use-package chapel-mode)
+(use-package crystal-mode)
+(use-package csharp-mode)
+(use-package go-mode)
+(use-package lua-mode)
+(use-package scala-mode)
+(use-package swift-mode)
 #+END_SRC
