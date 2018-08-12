@@ -547,17 +547,17 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
     (message "Enabled org html export on save for current buffer...")))
 #+END_SRC
 
-** org-ref
+# ** org-ref
 
-#+BEGIN_SRC emacs-lisp
-(use-package org-ref
-  :config
-  (setq reftex-default-bibliography '("~/Dropbox/_bibliography/references.bib")
-        org-ref-bibliography-notes "~/Dropbox/_bibliography/notes.org"
-        org-ref-default-bibliography '("~/Dropbox/_bibliography/references.bib")
-        org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs"
-        bibtex-dialect 'biblatex))
-#+END_SRC
+# #+BEGIN_SRC emacs-lisp
+# (use-package org-ref
+#   :config
+#   (setq reftex-default-bibliography '("~/Dropbox/_bibliography/references.bib")
+#         org-ref-bibliography-notes "~/Dropbox/_bibliography/notes.org"
+#         org-ref-default-bibliography '("~/Dropbox/_bibliography/references.bib")
+#         org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs"
+#         bibtex-dialect 'biblatex))
+# #+END_SRC
 
 * CSS
 
