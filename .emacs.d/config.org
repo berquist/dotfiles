@@ -963,7 +963,12 @@ Modified to remove/disable Racket.
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(use-package slime)
+(use-package slime
+  :config
+  (setq inferior-lisp-program "clisp")
+  :init
+  (require 'slime-autoloads)
+  (add-to-list 'slime-contribs 'slime-fancy))
 #+END_SRC
 
 * Other languages
