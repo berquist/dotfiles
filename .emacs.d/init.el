@@ -4,7 +4,7 @@
 (menu-bar-mode -1)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
-(when (  fboundp 'scroll-bar-mode)
+(when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 (tooltip-mode -1)
 ;; Sometimes I get lazy...
@@ -33,14 +33,10 @@
 
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
 
-(setq
- use-package-always-defer t
- use-package-always-ensure t
- use-package-verbose t
- )
+(setq use-package-always-defer t
+      use-package-always-ensure t
+      use-package-verbose t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Load configuration
