@@ -983,4 +983,5 @@ Modified to remove/disable Racket.
 (use-package mediawiki)
 (use-package scala-mode)
 (use-package swift-mode)
+(use-package tuareg) ; OCaml
 #+END_SRC
