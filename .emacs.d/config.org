@@ -148,8 +148,8 @@ Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
   :config
   (setq anzu-mode-lighter "")
   ;; M-% and C-M-% are the original query-replace(-regexp) shortcuts
-  (global-set-key (kbd "C-x C-g") 'anzu-query-replace)
-  (global-set-key (kbd "C-x C-a") 'anzu-query-replace-regexp)
+  ;; (global-set-key (kbd "C-x C-g") 'anzu-query-replace)
+  ;; (global-set-key (kbd "C-x C-a") 'anzu-query-replace-regexp)
   :init
   (global-anzu-mode 1))
 #+END_SRC
