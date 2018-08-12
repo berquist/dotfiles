@@ -74,8 +74,7 @@
 (setq backup-inhibited t
       auto-save-default nil
       create-lockfiles nil
-      make-backup-files nil
-      )
+      make-backup-files nil)
 #+end_src
 
 * Disable popup boxes
@@ -106,15 +105,13 @@ http://oremacs.com/2015/02/09/ido-vertical/
         ido-use-filename-at-point nil
         ido-use-url-at-point nil)
   :init
-  (ido-mode t)
-  )
+  (ido-mode t))
 (use-package ido-vertical-mode
   :disabled t
   :config
   (setq ido-vertical-show-count t)
   :init
-  (ido-vertical-mode 1)
-  )
+  (ido-vertical-mode 1))
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
@@ -128,22 +125,18 @@ http://oremacs.com/2015/02/09/ido-vertical/
   (setq
    ivy-use-virtual-buffers t
    ivy-count-format "(%d/%d) "
-   ivy-re-builders-alist '((t . ivy--regex-fuzzy))
-   )
+   ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   :init
-  (ivy-mode 1)
-  )
+  (ivy-mode 1))
 (use-package counsel
   :disabled t
   :config
   (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  )
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file))
 (use-package swiper
   :disabled t
   :config
-  (global-set-key (kbd "C-s") 'swiper)
-  )
+  (global-set-key (kbd "C-s") 'swiper))
 #+END_SRC
 
 Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
@@ -153,15 +146,12 @@ Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
   ;; Unncessary since anzu comes with a variable!
   ;; :diminish ""
   :config
-  (setq
-   anzu-mode-lighter ""
-   )
+  (setq anzu-mode-lighter "")
   ;; M-% and C-M-% are the original query-replace(-regexp) shortcuts
   (global-set-key (kbd "C-x C-g") 'anzu-query-replace)
   (global-set-key (kbd "C-x C-a") 'anzu-query-replace-regexp)
   :init
-  (global-anzu-mode 1)
-  )
+  (global-anzu-mode 1))
 #+END_SRC
 
 Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed. Use =M-x ripgrep-regexp= to activate.
@@ -180,11 +170,9 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   (setq
    paren-delay nil
    paren-highlight-at-point t
-   paren-highlight-offscreen t
-   )
+   paren-highlight-offscreen t)
   :init
-  (paren-activate)
-  )
+  (paren-activate))
 
 (use-package whitespace
   :bind (("C-c t" . whitespace-mode))
@@ -224,13 +212,11 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (add-hook 'text-mode-hook 'whitespace-mode)
   :init
-  (setq global-whitespace-mode nil)
-  )
+  (setq global-whitespace-mode nil))
 
 (use-package dtrt-indent
   :init
-  (dtrt-indent-mode 1)
-  )
+  (dtrt-indent-mode 1))
 
 (use-package unfill
   :bind (("C-M-q" . unfill-paragraph)))
@@ -322,8 +308,7 @@ Here’s a better approach. Every buffer has it’s own format variable and the 
   :config
   (setq linum-highlight-in-all-buffersp t)
   :init
-  (hlinum-activate)
-  )
+  (hlinum-activate))
 #+END_SRC
 
 * Spelling
@@ -336,10 +321,8 @@ Here’s a better approach. Every buffer has it’s own format variable and the 
   (setq langtool-mother-tongue "en"
         langtool-default-language "en-US")
   (if (eq system-type 'darwin)
-      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-server.jar"))
-  (if (eq system-type 'darwin)
-      (setq langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
-  )
+      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-server.jar"
+            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar")))
 #+END_SRC
 
 TODO clean this up, figure out LaTeX
@@ -380,8 +363,7 @@ TODO clean this up, figure out LaTeX
 
 #+BEGIN_SRC emacs-lisp
 (use-package wc-mode
-  :bind (("C-c w" . wc-mode))
-  )
+  :bind (("C-c w" . wc-mode)))
 #+END_SRC
 
 * Flycheck
@@ -414,12 +396,12 @@ sudo pkg install checkbashisms # FreeBSD
 
 #+begin_src emacs-lisp
 (use-package flycheck-checkbashisms
-  :init
+  :config
   (setq
    ;; Check 'echo -n' usage
    flycheck-checkbashisms-newline t
-   flycheck-checkbashisms-posix t
-   )
+   flycheck-checkbashisms-posix t)
+  :init
   (flycheck-checkbashisms-setup))
 #+end_src
 
@@ -441,24 +423,21 @@ sudo pkg install checkbashisms # FreeBSD
 #+BEGIN_SRC emacs-lisp
 (use-package git-commit
   :init
-  (global-git-commit-mode)
-  )
+  (global-git-commit-mode))
 (use-package gitconfig-mode)
 (use-package gitignore-mode)
 (use-package magit
   ;; "Getting started" uses C-x g, which is also undefined.
-  :bind (("C-c m" . magit-status))
-  )
+  :bind (("C-c m" . magit-status)))
 (use-package magit-svn
   :config
-  (add-hook 'magit-mode-hook 'magit-svn-mode)
-  )
+  (add-hook 'magit-mode-hook 'magit-svn-mode))
 #+END_SRC
 
 Not using =git-gutter= right now, but if I did...
 
 #+BEGIN_SRC emacs-lisp
-(setq git-gutter:handled-backends (quote (git svn hg bzr)))
+(setq git-gutter:handled-backends '(git svn hg bzr))
 (setq git-gutter:hide-gutter t)
 #+END_SRC
 
@@ -467,8 +446,7 @@ Not using =git-gutter= right now, but if I did...
 #+begin_src emacs-lisp
 (use-package pandoc-mode
   :config
-  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-  )
+  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings))
 #+end_src
 
 * Org
@@ -476,7 +454,7 @@ Not using =git-gutter= right now, but if I did...
 #+begin_src emacs-lisp
 ;; http://orgmode.org/manual/Code-evaluation-security.html
 (defun my-org-confirm-babel-evaluate (lang body)
-  (not (string= lang "latex")))
+  (not (equal lang "latex")))
 
 (use-package org
   :bind (("C-c l" . org-store-link)
@@ -492,7 +470,7 @@ Not using =git-gutter= right now, but if I did...
         org-closed-keep-when-no-todo t
         ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
         org-startup-truncated nil
-        org-export-backends (quote (ascii html icalendar latex md))
+        org-export-backends '(ascii html icalendar latex md)
         org-export-dispatch-use-expert-ui t
         org-export-with-smart-quotes t
         org-image-actual-width nil
@@ -503,7 +481,7 @@ Not using =git-gutter= right now, but if I did...
         org-latex-create-formula-image-program 'imagemagick
         ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
         org-highlight-latex-and-relatex '(latex script entities)
-        org-html-with-latex (quote mathjax)
+        org-html-with-latex '(mathjax)
         org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
         org-confirm-babel-evaluate nil
         org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
@@ -528,8 +506,7 @@ Not using =git-gutter= right now, but if I did...
             ("linenos" "true")
             ("numbersep" "5pt")
             ("frame" "lines")
-            ("framesep" "2mm"))))
-  )
+            ("framesep" "2mm")))))
 (use-package htmlize)
 (use-package ox-gfm)
 (use-package ox-pandoc)
@@ -573,13 +550,13 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
 ** org-ref
 
 #+BEGIN_SRC emacs-lisp
-(use-package org-ref)
-(setq reftex-default-bibliography '("~/Dropbox/_bibliography/references.bib"))
-
-(setq org-ref-bibliography-notes "~/Dropbox/_bibliography/notes.org"
-      org-ref-default-bibliography '("~/Dropbox/_bibliography/references.bib")
-      org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs"
-      bibtex-dialect 'biblatex)
+(use-package org-ref
+  :config
+  (setq reftex-default-bibliography '("~/Dropbox/_bibliography/references.bib")
+        org-ref-bibliography-notes "~/Dropbox/_bibliography/notes.org"
+        org-ref-default-bibliography '("~/Dropbox/_bibliography/references.bib")
+        org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs"
+        bibtex-dialect 'biblatex))
 #+END_SRC
 
 * CSS
@@ -621,8 +598,8 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
                ("\\.c$" . c-mode)
                ("\\.h$" . c++-mode)
                ("\\.hh$" . c++-mode)
-               ("\\.hpp$" . c++-mode)
-               ) auto-mode-alist))
+               ("\\.hpp$" . c++-mode))
+               auto-mode-alist))
 #+end_src
 
 These are valid for all C-style modes (I think).
@@ -630,15 +607,13 @@ These are valid for all C-style modes (I think).
 #+BEGIN_SRC emacs-lisp
 (setq c-basic-offset 4)
 (setq c-default-style
-      (quote
-       ((java-mode . "java")
+      '((java-mode . "java")
         (awk-mode . "awk")
-        (other . "k&r"))))
+        (other . "k&r")))
 (setq c-doc-comment-style
-      (quote
-       ((c-mode . javadoc)
+      '((c-mode . javadoc)
         (java-mode . javadoc)
-        (pike-mode . autodoc))))
+        (pike-mode . autodoc)))
 #+END_SRC
 
 This only makes sense for c++-mode.
@@ -653,8 +628,7 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 
 #+BEGIN_SRC emacs-lisp
 (use-package clang-format
-  :bind (("C-M-<tab>" . clang-format-region))
-  )
+  :bind (("C-M-<tab>" . clang-format-region)))
 #+END_SRC
 
 TODO What's the difference between =c++-mode= and =cc-mode=?
@@ -666,15 +640,11 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+begin_src emacs-lisp
 (defun add-ispc-keywords()
   "adds uniform and varying keywords for c and c++ modes"
-  (font-lock-add-keywords nil
-                          '(
-                            ("\\<\\(uniform\\)" . 'font-lock-keyword-face)
-                            ("\\<\\(varying\\)" . 'font-lock-keyword-face)
-                            ("\\<\\(export\\)" . 'font-lock-keyword-face)
-                            )
-                          )
-  )
-
+  (font-lock-add-keywords
+   nil
+   '(("\\<\\(uniform\\)" . 'font-lock-keyword-face)
+     ("\\<\\(varying\\)" . 'font-lock-keyword-face)
+     ("\\<\\(export\\)" . 'font-lock-keyword-face))))
 (add-hook 'c++-mode-hook 'add-ispc-keywords)
 (add-to-list 'auto-mode-alist '("\\.ispc$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.isph$" . c++-mode))
@@ -685,8 +655,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+begin_src emacs-lisp
 (setq auto-mode-alist
       (append '(("Makefile*\\'" . makefile-mode)
-                ("makefile*\\'" . makefile-mode)
-                ) auto-mode-alist))
+                ("makefile*\\'" . makefile-mode))
+              auto-mode-alist))
 #+end_src
 
 * FORTRAN
@@ -701,8 +671,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
                 ("\\.F90\\'" . f90-mode)
                 ("\\.f95\\'" . f90-mode)
                 ("\\.f03\\'" . f90-mode)
-                ("\\.f08\\'" . f90-mode)
-                ) auto-mode-alist))
+                ("\\.f08\\'" . f90-mode))
+              auto-mode-alist))
 
 (setq fortran-comment-region "C")
 #+end_src
@@ -712,8 +682,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+begin_src emacs-lisp
 (use-package pkgbuild-mode
   :mode
-  (("/PKGBUILD/" . pkgbuild-mode))
-  )
+  (("/PKGBUILD/" . pkgbuild-mode)))
 #+end_src
 
 * systemd
@@ -741,18 +710,17 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
   :mode (("\\.ipy\\'" . python-mode))
-  :interpreter ("ipython" . python-mode)
-  )
+  :interpreter ("ipython" . python-mode))
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
 ;; I think stuffing the setq under config activates this for Python.
-(use-package flycheck-pyflakes
-  :config
+(use-package flycheck-pyflakes)
+  ;; :config
   ;; Don't disable these, in case pyflakes isn't available.
   ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
   ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
   ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
-  )
+  ;; )
 ;; Enable the use of both pyflakes and pylint.
 ;; https://github.com/flycheck/flycheck/issues/186
 ;; (flycheck-add-next-checker 'python-pyflakes 'python-pylint)
@@ -771,12 +739,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package pip-requirements)
 #+END_SRC
 
-* Mediawiki
-
-#+BEGIN_SRC emacs-lisp
-(use-package mediawiki)
-#+END_SRC
-
 * Markdown
 
 Rather than use =--mathjax== with a URL argument, =--include-in-header= allows the insertion of arbitrary HTML into Pandoc's output. The =mathjax.html= file contains Chemistry Stack Exchange's header scripts for first configuring the MathJax extension to load =mhchem=, then loads MathJax.
@@ -788,11 +750,9 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :mode
-  (
-   ("\\.markdown\\'" . markdown-mode)
+  (("\\.markdown\\'" . markdown-mode)
    ("\\.mdown\\'" . markdown-mode)
-   ("\\.md\\'" . markdown-mode)
-   )
+   ("\\.md\\'" . markdown-mode))
   :config
   (add-hook 'markdown-mode-hook 'pandoc-mode)
   (add-hook 'markdown-mode-hook
@@ -810,9 +770,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
    markdown-fontify-code-blocks-natively t
    markdown-hide-markup nil
    markdown-hide-urls nil
-   markdown-link-space-sub-char "-"
-   )
-  )
+   markdown-link-space-sub-char "-"))
 #+end_src
 
 * deft
@@ -832,8 +790,7 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
    deft-text-mode 'gfm-mode
    deft-time-format " %Y-%m-%d %H:%M:%S"
    deft-use-filename-as-title t
-   deft-use-filter-string-as-filename t)
-  )
+   deft-use-filter-string-as-filename t))
 #+end_src
 
 https://stackoverflow.com/a/35450025/3249688
@@ -863,8 +820,7 @@ This section needs to come after the Markdown section so that CMake files get re
    ("CMakeCache\\.txt\\'" . cmake-mode)
    ("\\.cmake\\'" . cmake-mode))
   :config
-  (setq cmake-tab-width 4)
-  )
+  (setq cmake-tab-width 4))
 #+end_src
 
 * EditorConfig
@@ -915,9 +871,6 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package web-mode)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
 (use-package jinja2-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode)))
@@ -939,12 +892,6 @@ TODO How to make this take precedence over =dtrt-indent=?
 (assq-delete-all "\\.m\\'" auto-mode-alist)
 (setq auto-mode-alist
       (cons '("\\.m\\'" . octave-mode) auto-mode-alist))
-#+END_SRC
-
-* CUDA
-
-#+BEGIN_SRC emacs-lisp
-(use-package cuda-mode)
 #+END_SRC
 
 * Rust
@@ -970,9 +917,7 @@ TODO How to make this take precedence over =dtrt-indent=?
   ;; (global-set-key (kbd "M-[") 'doc-prev)
   ;; (global-set-key (kbd "M-]") 'doc-next)
   (define-key doc-view-mode-map (kbd "M-[") 'doc-view-previous-page)
-  (define-key doc-view-mode-map (kbd "M-]") 'doc-view-next-page)
-  ;; always refresh when the contents change
-  )
+  (define-key doc-view-mode-map (kbd "M-]") 'doc-view-next-page))
 #+end_src
 
 * Scheme/Lisp
@@ -984,8 +929,7 @@ TODO How to make this take precedence over =dtrt-indent=?
   ;; TODO the top one doesn't work?
   :mode (("\\.rkt[dl]?\\'" . racket-mode)
          ("\\.rkt\\'" . racket-mode)
-         ("\\.ss\\'" . racket-mode))
-  )
+         ("\\.ss\\'" . racket-mode)))
 #+END_SRC
 
 ** Hy
@@ -1002,32 +946,19 @@ Modified to remove/disable Racket.
 #+BEGIN_SRC emacs-lisp
 (use-package geiser
   :config
- (setq geiser-active-implementations (quote (guile chicken chez mit chibi)))
- (setq geiser-implementations-alist
-   (quote
-    (((regexp "\\.scm$")
-      guile)
-     ((regexp "\\.scm$")
-      chicken)
-     ((regexp "\\.release-info$")
-      chicken)
-     ((regexp "\\.meta$")
-      chicken)
-     ((regexp "\\.setup$")
-      chicken)
-     ((regexp "\\.ss$")
-      chez)
-     ((regexp "\\.def$")
-      chez)
-     ((regexp "\\.scm$")
-      mit)
-     ((regexp "\\.pkg$")
-      mit)
-     ((regexp "\\.scm$")
-      chibi)
-     ((regexp "\\.sld$")
-      chibi))))
- )
+  (setq
+   geiser-active-implementations '(guile chicken chez mit chibi)
+   geiser-implementations-alist '(((regexp "\\.scm$") guile)
+                                  ((regexp "\\.scm$") chicken)
+                                  ((regexp "\\.release-info$") chicken)
+                                  ((regexp "\\.meta$") chicken)
+                                  ((regexp "\\.setup$") chicken)
+                                  ((regexp "\\.ss$") chez)
+                                  ((regexp "\\.def$") chez)
+                                  ((regexp "\\.scm$") mit)
+                                  ((regexp "\\.pkg$") mit)
+                                  ((regexp "\\.scm$") chibi)
+                                  ((regexp "\\.sld$") chibi))))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
@@ -1040,8 +971,10 @@ Modified to remove/disable Racket.
 (use-package chapel-mode)
 (use-package crystal-mode)
 (use-package csharp-mode)
+(use-package cuda-mode)
 (use-package go-mode)
 (use-package lua-mode)
+(use-package mediawiki)
 (use-package scala-mode)
 (use-package swift-mode)
 #+END_SRC
