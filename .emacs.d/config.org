@@ -378,7 +378,7 @@ TODO add LaTex
   :config
   (setq
    flycheck-check-syntax-automatically '(mode-enabled save)
-   flycheck-markdown-mdl-style "$HOME/.mdlrc"
+   flycheck-markdown-mdl-style "~/.mdlrc"
    flycheck-pylintrc "~/.pylintrc"))
 #+end_src
 
@@ -782,6 +782,7 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
   :bind (("C-c d" . deft))
   :config
   (setq
+   deft-auto-save-interval 60.0
    ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
    deft-directory "~/Dropbox/Notes"
    deft-default-extension "md"
