@@ -721,6 +721,23 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 ;; Enable the use of both pyflakes and pylint.
 ;; https://github.com/flycheck/flycheck/issues/186
 ;; (flycheck-add-next-checker 'python-pyflakes 'python-pylint)
+
+(use-package flycheck-pycheckers
+  :config
+  (setq flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
+  :init
+  (with-eval-after-load 'flycheck
+    (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
+
+(use-package blacken
+  :disabled t
+  :config
+  (add-hook 'python-mode-hook 'blacken-mode))
+
+(use-package yapfify
+  :disabled t
+  :config
+  (add-hook 'python-mode-hook 'yapf-mode))
 #+end_src
 
 ** Cython
