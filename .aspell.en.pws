@@ -1,4 +1,4 @@
-personal_ws-1.1 en 365 
+personal_ws-1.1 en 366 
 solvated
 Koseki
 planarity
@@ -11,8 +11,8 @@ perturbatively
 Minimodels
 CASSCF
 DFT
-vectorization
 customizable
+vectorization
 Pulay
 Pockels
 optimizations
@@ -84,6 +84,7 @@ nonlocal
 sorbents
 libsolve
 MATLAB
+memoization
 notational
 overbinding
 quasienergy
@@ -336,8 +337,8 @@ conformational
 PQI
 parallelization
 SCF
-MacLaurin
 maclaurin
+MacLaurin
 algorithmically
 Dunning's
 unfactored
