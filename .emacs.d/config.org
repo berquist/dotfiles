@@ -894,8 +894,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 * XML
 
 #+BEGIN_SRC emacs-lisp
-(setq auto-mode-alist
-      (cons '("\\.xmp\\'" . nxml-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.xmp\\'" . nxml-mode))
 #+END_SRC
 
 * MATLAB/Octave
