@@ -402,7 +402,8 @@ sudo pkg install checkbashisms # FreeBSD
    flycheck-checkbashisms-newline t
    flycheck-checkbashisms-posix t)
   :init
-  (flycheck-checkbashisms-setup))
+  (with-eval-after-load 'flycheck
+    (add-hook 'flycheck-mode-hook #'flycheck-checkbashisms-setup)))
 #+end_src
 
 * Git/version control
