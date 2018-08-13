@@ -428,7 +428,9 @@ sudo pkg install checkbashisms # FreeBSD
 (use-package gitignore-mode)
 (use-package magit
   ;; "Getting started" uses C-x g, which is also undefined.
-  :bind (("C-c m" . magit-status)))
+  :bind (("C-c m" . magit-status))
+  :config
+  (setq magit-commit-arguments '("--verbose")))
 (use-package magit-svn
   :config
   (add-hook 'magit-mode-hook 'magit-svn-mode))
@@ -885,8 +887,8 @@ TODO How to make this take precedence over =dtrt-indent=?
 ;; (use-package matlab-mode)
 ;; I don't write Objective-C.
 (assq-delete-all "\\.m\\'" auto-mode-alist)
-(setq auto-mode-alist
-      (cons '("\\.m\\'" . octave-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
+(setq octave-block-offset 4)
 #+END_SRC
 
 * Rust

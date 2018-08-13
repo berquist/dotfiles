@@ -12,8 +12,6 @@
    (quote
     ("display" "displaymath" "equation" "eqnarray" "gather" "math" "multline" "align" "alignat" "xalignat" "xxalignat" "flalign" "dmath")))
  '(indicate-buffer-boundaries (quote right))
- '(magit-commit-arguments (quote ("--verbose")))
- '(octave-block-offset 4)
  '(org-babel-tangle-lang-exts
    (quote
     (("python" . "py")
