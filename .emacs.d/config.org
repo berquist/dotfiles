@@ -985,3 +985,11 @@ Modified to remove/disable Racket.
 (use-package swift-mode)
 (use-package tuareg) ; OCaml
 #+END_SRC
+
+* Discord
+
+#+BEGIN_SRC emacs-lisp
+(use-package elcord
+  :init
+  (elcord-mode))
+#+END_SRC
