@@ -389,7 +389,7 @@ TODO add LaTex
    flycheck-pylintrc "~/.pylintrc"))
 #+end_src
 
-** checkbashisms
+** Shell
 
 For this to work, =checkbashisms= needs to be available on the =$PATH=:
 
@@ -412,6 +412,17 @@ sudo pkg install checkbashisms # FreeBSD
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-checkbashisms-setup)))
 #+end_src
+
+** Prose
+
+Integration with [[https://github.com/errata-ai/vale][vale]].
+
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck-vale
+  :init
+  (with-eval-after-load 'flycheck
+    (add-hook 'flycheck-mode-hook #'flycheck-vale-setup)))
+#+END_SRC
 
 * Git/version control
 
@@ -478,6 +489,7 @@ Not using =git-gutter= right now, but if I did...
         org-log-done 'time
         org-log-done-with-time t
         org-closed-keep-when-no-todo t
+        org-startup-folded nil
         ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
         org-startup-truncated nil
         org-export-backends '(ascii html icalendar latex md)
