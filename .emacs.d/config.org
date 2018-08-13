@@ -685,12 +685,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   (("/PKGBUILD/" . pkgbuild-mode)))
 #+end_src
 
-* systemd
-
-#+begin_src emacs-lisp
-(use-package systemd)
-#+end_src
-
 * LaTeX
 
 #+begin_src emacs-lisp
@@ -983,6 +977,7 @@ Modified to remove/disable Racket.
 (use-package mediawiki)
 (use-package scala-mode)
 (use-package swift-mode)
+(use-package systemd)
 (use-package tuareg) ; OCaml
 #+END_SRC
 
