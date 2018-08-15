@@ -251,7 +251,7 @@ Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='
 
 ;; Other themes I like to have installed:
 (use-package abyss-theme)
-(use-package dracula)
+(use-package dracula-theme)
 (use-package gotham-theme)
 (use-package lush-theme)
 (use-package monochrome-theme)
