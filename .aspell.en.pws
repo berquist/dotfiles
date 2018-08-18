@@ -1,6 +1,11 @@
-personal_ws-1.1 en 366 
+personal_ws-1.1 en 375 
+pseudopotential
+pseudopotentials
+unicode
+enthalpy
 solvated
 Koseki
+Yamaguchi
 planarity
 mentorship
 InChI
@@ -83,8 +88,8 @@ idempotency
 nonlocal
 sorbents
 libsolve
-MATLAB
 memoization
+MATLAB
 notational
 overbinding
 quasienergy
@@ -102,6 +107,7 @@ Berquist
 VMD
 Advisors
 TPSS
+anharmonicities
 hexacoordinate
 nanoelectronics
 antiestrogenic
@@ -148,6 +154,7 @@ electrocatalysis
 Saxena
 learnable
 imidazole
+cclib
 electronegativity
 Neese
 magnetizabilities
@@ -305,6 +312,8 @@ energetics
 antisymmetric
 MolSSI
 delocalization
+visualisation
+hypermagnetizability
 supermolecular
 destructor
 univariate
