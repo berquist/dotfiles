@@ -103,6 +103,7 @@ PATH="${HOME}/opt/bin/scripts:${PATH}"
 PATH="${HOME}/opt/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 PATH="/usr/local/bin:${PATH}"
+PATH="${HOME}/.node_modules/bin:${PATH}"
 export PATH
 
 export QCPROGS="${HOME}"/opt/apps
@@ -119,6 +120,12 @@ export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
 # MROOT="${HOME}/Dropbox/MATLAB"
 # export MATLABPATH="${MROOT}:${MROOT}/easyspin-4.5.5/easyspin:${MATLABPATH}"
 # export MATLAB_USE_USERWORK=1
+
+########################################
+### NODE
+########################################
+
+export npm_config_prefix="${HOME}"/.node_modules
 
 ########################################
 ### FUNCTIONS
