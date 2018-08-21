@@ -745,8 +745,13 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+begin_src emacs-lisp
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
-  :mode (("\\.ipy\\'" . python-mode))
-  :interpreter ("ipython" . python-mode))
+  :mode (("\\.ipy\\'" . python-mode)n)
+  :interpreter ("ipython" . python-mode)
+  :config
+  (setq python-fill-docstring-style 'pep-257-nn))
+
+(use-package pydoc)
+(use-package pydoc-info)
 
 (use-package anaconda-mode
   :init
