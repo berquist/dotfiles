@@ -1,15 +1,12 @@
 * General configuration
 
 #+begin_src emacs-lisp
-(setq user-full-name "Eric J. Berquist"
-      user-mail-address "eric.berquist@gmail.com")
-
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(setq-default user-full-name "Eric J. Berquist"
+              user-mail-address "eric.berquist@gmail.com")
 
 ;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
-;; What's the difference between setq and setq-default? Seems usage
-;; here is rather inconsistent. TODO
+;; What's the difference between setq and setq-default?
 ;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
 ;; http://stackoverflow.com/questions/3281581/how-to-word-wrap-in-emacs
@@ -22,8 +19,8 @@
               cursor-type 'box)
 
 ;; Enable maximum syntax highlighting wherever possible.
-(setq global-font-lock-mode t
-      font-lock-maximum-decoration t)
+(setq-default global-font-lock-mode t
+              font-lock-maximum-decoration t)
 
 ;; Bells are annoying, stop ringing!
 (setq-default visible-bell nil
@@ -71,10 +68,10 @@
 
 #+begin_src emacs-lisp
 ;; let's live on the edge and disable backup and autosave
-(setq backup-inhibited t
-      auto-save-default nil
-      create-lockfiles nil
-      make-backup-files nil)
+(setq-default backup-inhibited t
+              auto-save-default nil
+              create-lockfiles nil
+              make-backup-files nil)
 #+end_src
 
 * Disable popup boxes
@@ -122,10 +119,9 @@ http://oremacs.com/2015/02/09/ido-vertical/
 (use-package ivy
   :disabled t
   :config
-  (setq
-   ivy-use-virtual-buffers t
-   ivy-count-format "(%d/%d) "
-   ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "(%d/%d) "
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   :init
   (ivy-mode 1))
 (use-package counsel
@@ -167,10 +163,9 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 #+begin_src emacs-lisp
 (use-package mic-paren
   :config
-  (setq
-   paren-delay nil
-   paren-highlight-at-point t
-   paren-highlight-offscreen t)
+  (setq paren-delay nil
+        paren-highlight-at-point t
+        paren-highlight-offscreen t)
   :init
   (paren-activate))
 
@@ -280,6 +275,7 @@ Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
+(setq-default indicate-buffer-boundaries 'right)
 #+end_src
 
 ** line numbers
@@ -329,7 +325,10 @@ Here’s a better approach. Every buffer has it’s own format variable and the 
         langtool-default-language "en-US")
   (if (eq system-type 'darwin)
       (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-server.jar"
-            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar")))
+            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
+  (if (eq system-type 'gnu/linux)
+      (setq langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
+            langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar")))
 #+END_SRC
 
 TODO clean this up, figure out LaTeX
@@ -361,8 +360,7 @@ TODO clean this up, figure out LaTeX
   "Custom function to spell check next highlighted word"
   (interactive)
   (flyspell-goto-next-error)
-  (ispell-word)
-  )
+  (ispell-word))
 (global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
 #+end_src
 
@@ -371,6 +369,12 @@ TODO clean this up, figure out LaTeX
 #+BEGIN_SRC emacs-lisp
 (use-package wc-mode
   :bind (("C-c w" . wc-mode)))
+#+END_SRC
+
+* Completion
+
+#+BEGIN_SRC emacs-lisp
+(use-package company)
 #+END_SRC
 
 * Flycheck
@@ -467,6 +471,19 @@ Not using =git-gutter= right now, but if I did...
 #+begin_src emacs-lisp
 (use-package pandoc-mode
   :config
+  (setq pandoc-major-modes
+        '((gfm-mode . "gfm")
+          (haskell-mode . "native")
+          (html-mode . "html")
+          (json-mode . "json")
+          (latex-mode . "latex")
+          (markdown-mode . "markdown")
+          (mediawiki-mode . "mediawiki")
+          (muse-mode . "muse")
+          (org-mode . "org")
+          (rst-mode . "rst")
+          (text-mode . "markdown") ; this is the only difference from default
+          (textile-mode . "textile")))
   (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings))
 #+end_src
 
@@ -506,8 +523,10 @@ Not using =git-gutter= right now, but if I did...
         org-html-with-latex '(mathjax)
         org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
         org-confirm-babel-evaluate nil
-        org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n"
-        )
+        org-babel-tangle-lang-exts '(("python" . "py")
+                                     ("emacs-lisp" . "el")
+                                     ("elisp" . "el"))
+        org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n")
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
   (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
   (setq org-latex-pdf-process
@@ -711,9 +730,10 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 #+begin_src emacs-lisp
 (use-package auctex)
-(use-package auctex-latexmk)
-(auctex-latexmk-setup)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+(use-package auctex-latexmk
+  :init
+  (auctex-latexmk-setup))
+;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 ;; (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 ;; (setq font-latex-math-environments
 ;;       (append '("dmath")
@@ -727,6 +747,15 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package python
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode))
+
+(use-package anaconda-mode
+  :init
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+(use-package company-anaconda
+  :init
+  (eval-after-load "company"
+    '(add-to-list 'company-backends 'company-anaconda)))
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
 ;; I think stuffing the setq under config activates this for Python.
@@ -908,6 +937,16 @@ TODO How to make this take precedence over =dtrt-indent=?
 (use-package jinja2-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode)))
+(use-package web-beautify
+  :config
+  (eval-after-load 'js2-mode
+    '(define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
+  (eval-after-load 'json-mode
+    '(define-key json-mode-map (kbd "C-c b") 'web-beautify-js))
+  (eval-after-load 'sgml-mode
+    '(define-key html-mode-map (kbd "C-c b") 'web-beautify-html))
+  (eval-after-load 'css-mode
+    '(define-key css-mode-map (kbd "C-c b") 'web-beautify-css)))
 #+END_SRC
 
 * XML
@@ -924,7 +963,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 ;; I don't write Objective-C.
 (assq-delete-all "\\.m\\'" auto-mode-alist)
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
-(setq octave-block-offset 4)
+;; (setq octave-block-offset 4)
 #+END_SRC
 
 * Rust
@@ -955,14 +994,16 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 * Scheme/Lisp
 
-** Racket
+** Lisp
 
 #+BEGIN_SRC emacs-lisp
-(use-package racket-mode
-  ;; TODO the top one doesn't work?
-  :mode (("\\.rkt[dl]?\\'" . racket-mode)
-         ("\\.rkt\\'" . racket-mode)
-         ("\\.ss\\'" . racket-mode)))
+(setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/clhs/HyperSpec/"))
+(use-package slime
+  :config
+  (setq inferior-lisp-program "clisp")
+  :init
+  (require 'slime-autoloads)
+  (add-to-list 'slime-contribs 'slime-fancy))
 #+END_SRC
 
 ** Hy
@@ -972,7 +1013,7 @@ TODO How to make this take precedence over =dtrt-indent=?
   :mode (("\\.hy\\'" . hy-mode)))
 #+END_SRC
 
-** General
+** Scheme
 
 Modified to remove/disable Racket.
 
@@ -994,13 +1035,13 @@ Modified to remove/disable Racket.
                                   ((regexp "\\.sld$") chibi))))
 #+END_SRC
 
+** Racket
+
 #+BEGIN_SRC emacs-lisp
-(use-package slime
-  :config
-  (setq inferior-lisp-program "clisp")
-  :init
-  (require 'slime-autoloads)
-  (add-to-list 'slime-contribs 'slime-fancy))
+(use-package racket-mode
+  ;; TODO the top one doesn't work?
+  :mode (("\\.rkt[dl]?\\'" . racket-mode)
+         ("\\.rkt\\'" . racket-mode)))
 #+END_SRC
 
 * Other languages
@@ -1011,9 +1052,12 @@ Modified to remove/disable Racket.
 (use-package csharp-mode)
 (use-package cuda-mode)
 (use-package go-mode)
+(use-package graphviz-dot-mode)
 (use-package lua-mode)
 (use-package mediawiki)
+(use-package nim-mode)
 (use-package scala-mode)
+(use-package ssass-mode)
 (use-package swift-mode)
 (use-package systemd)
 (use-package tuareg) ; OCaml
