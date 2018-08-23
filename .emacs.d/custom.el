@@ -12,23 +12,6 @@
    (quote
     ("display" "displaymath" "equation" "eqnarray" "gather" "math" "multline" "align" "alignat" "xalignat" "xxalignat" "flalign" "dmath")))
  '(octave-block-offset 4 t)
- '(org-latex-default-packages-alist
-   (quote
-    (("AUTO" "inputenc" t
-      ("pdflatex"))
-     ("T1" "fontenc" t
-      ("pdflatex"))
-     ("" "graphicx" t)
-     ("" "grffile" t)
-     ("" "longtable" nil)
-     ("" "wrapfig" nil)
-     ("" "rotating" nil)
-     ("normalem" "ulem" t)
-     ("" "amsmath" t)
-     ("" "textcomp" t)
-     ("" "amssymb" t)
-     ("" "capt-of" nil)
-     ("colorlinks=true" "hyperref" nil))))
  '(package-selected-packages
    (quote
     (pydoc-info pydoc company-anaconda anaconda-mode graphviz-dot-mode web-beautify ssass-mode flycheck-pycheckers dracula-theme dracula swift-mode scala-mode mediawiki lua-mode go-mode cuda-mode csharp-mode crystal-mode chapel-mode slime geiser hy-mode racket-mode flycheck-rust cargo rust-mode jinja2-mode web-mode json-mode flycheck-yamllint yaml-mode flycheck-julia julia-mode editorconfig cmake-mode deft markdown-mode pip-requirements flycheck-cython cython-mode flycheck-pyflakes auctex-latexmk auctex systemd pkgbuild-mode clang-format ox-pandoc ox-gfm htmlize pandoc-mode magit-svn magit gitignore-mode gitconfig-mode git-commit flycheck-checkbashisms flycheck wc-mode langtool unfill dtrt-indent mic-paren ripgrep anzu exec-path-from-shell use-package)))

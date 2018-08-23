@@ -528,6 +528,7 @@ Not using =git-gutter= right now, but if I did...
                                      ("elisp" . "el"))
         org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
+  (add-to-list 'org-latex-packages-alist '("final" "microtype" nil))
   (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
   (setq org-latex-pdf-process
         '("latexmk -xelatex -shell-escape -interaction=batchmode -output-directory=%o %f"))
@@ -543,11 +544,7 @@ Not using =git-gutter= right now, but if I did...
     ;; execute external programs.  This obviously and can be
     ;; dangerous to activate!
     (setq org-latex-minted-options
-          '(("mathescape" "true")
-            ("linenos" "true")
-            ("numbersep" "5pt")
-            ("frame" "lines")
-            ("framesep" "2mm")))))
+          '(("framesep" "2mm")))))
 (use-package htmlize)
 (use-package ox-gfm)
 (use-package ox-pandoc)
