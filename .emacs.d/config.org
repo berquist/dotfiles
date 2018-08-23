@@ -526,7 +526,7 @@ Not using =git-gutter= right now, but if I did...
         org-babel-tangle-lang-exts '(("python" . "py")
                                      ("emacs-lisp" . "el")
                                      ("elisp" . "el"))
-        org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n colorlinks=true, \n linkcolor=MidnightBlue, \n citecolor=MidnightBlue, \n urlcolor=MidnightBlue}\n")
+        org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
   (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
   (setq org-latex-pdf-process
@@ -745,7 +745,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+begin_src emacs-lisp
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
-  :mode (("\\.ipy\\'" . python-mode)n)
+  :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :config
   (setq python-fill-docstring-style 'pep-257-nn))
