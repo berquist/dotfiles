@@ -5,6 +5,7 @@ url
 
 # Emacs
 .emacs.d/ac-comphist.dat
+.emacs.d/anaconda-mode/
 .emacs.d/ede-projects.el
 .emacs.d/eshell
 .emacs.d/ido.last

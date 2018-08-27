@@ -38,7 +38,7 @@
 ;; Line length when executing `fill-paragraph`. Default is 70. See
 ;; https://www.emacswiki.org/emacs/FillParagraph and
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html.
-;; (setq-default fill-column 80)
+(setq-default fill-column 78)
 ;; (setq-default sentence-end-double-space nil)
 
 ;; Automatically reload buffers when their files change, and make sure
@@ -337,7 +337,8 @@ TODO clean this up, figure out LaTeX
 (setq flyspell-issue-welcome-flag nil)
 (setq flyspell-mode-line-string " FlyS")
 
-;; These are the modes flyspell should be enabled for.
+;; These are the modes flyspell should be enabled/disabled for
+;; (https://www.emacswiki.org/emacs/FlySpell#toc1).
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
 (dolist (hook '(change-log-mode-hook
