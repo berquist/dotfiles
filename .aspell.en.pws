@@ -1,4 +1,4 @@
-personal_ws-1.1 en 376 
+personal_ws-1.1 en 377 
 solvated
 Koseki
 Yamaguchi
@@ -58,6 +58,7 @@ convolutional
 cheminformatics
 eigenfunction
 tunable
+serializable
 infographic
 pseudopotential
 bioinorganic
@@ -347,8 +348,8 @@ conformational
 PQI
 parallelization
 SCF
-MacLaurin
 maclaurin
+MacLaurin
 algorithmically
 Dunning's
 unfactored
