@@ -625,12 +625,18 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
 Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#110.
 
 #+BEGIN_SRC emacs-lisp
-(add-hook 'compilation-finish-functions
-          (lambda (buf strg)
-            ;; https://stackoverflow.com/a/16245593/3249688
-            (when (not (derived-mode-p 'ripgrep-search-mode))
-              (let ((win (get-buffer-window buf 'visible)))
-                (when win (delete-window win))))))
+;; No longer automatically hide the compilation window.
+;; (add-hook 'compilation-finish-functions
+;;           (lambda (buf strg)
+;;             ;; https://stackoverflow.com/a/16245593/3249688
+;;             (when (not (derived-mode-p 'ripgrep-search-mode))
+;;               (let ((win (get-buffer-window buf 'visible)))
+;;                 (when win (delete-window win))))))
+(defun ejb/comint-clear ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+(bind-key (kbd "C-c l") 'ejb/comint-clear comint-mode-map)
 #+END_SRC
 
 * C/C++
