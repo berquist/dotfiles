@@ -127,12 +127,12 @@ http://oremacs.com/2015/02/09/ido-vertical/
 (use-package counsel
   :disabled t
   :config
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file))
+  (bind-key (kbd "M-x") 'counsel-M-x)
+  (bind-key (kbd "C-x C-f") 'counsel-find-file))
 (use-package swiper
   :disabled t
   :config
-  (global-set-key (kbd "C-s") 'swiper))
+  (bind-key (kbd "C-s") 'swiper))
 #+END_SRC
 
 Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
@@ -144,8 +144,8 @@ Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
   :config
   (setq anzu-mode-lighter "")
   ;; M-% and C-M-% are the original query-replace(-regexp) shortcuts
-  ;; (global-set-key (kbd "C-x C-g") 'anzu-query-replace)
-  ;; (global-set-key (kbd "C-x C-a") 'anzu-query-replace-regexp)
+  ;; (bind-key (kbd "C-x C-g") 'anzu-query-replace)
+  ;; (bind-key (kbd "C-x C-a") 'anzu-query-replace-regexp)
   :init
   (global-anzu-mode 1))
 #+END_SRC
@@ -223,19 +223,19 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 * Keybindings
 
-Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='uncomment-region= here, but =M-;= calls ='comment-dwim=, which is what you really want.
+- To view all current keybindings, =C-h b=.
+- To view all personal keybindings, =M-x describe-personal-keybindings=.
+- Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='uncomment-region= here, but =M-;= calls ='comment-dwim=, which is what you really want.
 
 #+begin_src emacs-lisp
-;; To reduce errors. Was: 'buffer-menu
-(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
-;; Was: 'ido-switch-buffer
-(global-set-key (kbd "C-x b") 'ibuffer)
-(global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
+(bind-key (kbd "C-x C-b") 'switch-to-buffer)
+(bind-key (kbd "C-x b") 'ibuffer)
+(bind-key (kbd "C-c b") 'switch-to-previous-buffer)
 
-(global-set-key (kbd "C-+") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
+(bind-key (kbd "C-+") 'text-scale-increase)
+(bind-key (kbd "C--") 'text-scale-decrease)
 
-(global-set-key (kbd "C-x C-h") 'replace-string)
+(bind-key (kbd "C-x C-h") 'replace-string)
 #+end_src
 
 * Theming and window shaping
@@ -353,16 +353,16 @@ TODO clean this up, figure out LaTeX
 ;;             '(lambda ()
 ;;                (flyspell-prog-mode))))
 
-(global-set-key (kbd "<f8>") 'ispell-word) ;; built-in binding is M-$, ew
-(global-set-key (kbd "C-S-<f8>") 'flyspell-mode)
-(global-set-key (kbd "C-M-<f8>") 'flyspell-buffer)
-(global-set-key (kbd "C-<f8>") 'flyspell-check-previous-highlighted-word)
+(bind-key (kbd "<f8>") 'ispell-word) ;; built-in binding is M-$, ew
+(bind-key (kbd "C-S-<f8>") 'flyspell-mode)
+(bind-key (kbd "C-M-<f8>") 'flyspell-buffer)
+(bind-key (kbd "C-<f8>") 'flyspell-check-previous-highlighted-word)
 (defun flyspell-check-next-highlighted-word ()
   "Custom function to spell check next highlighted word"
   (interactive)
   (flyspell-goto-next-error)
   (ispell-word))
-(global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
+(bind-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
 #+end_src
 
 ** word count
@@ -498,8 +498,7 @@ Not using =git-gutter= right now, but if I did...
 (use-package org
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
-         ("C-c c" . org-capture)
-         ("C-c b" . org-iswitchb))
+         ("C-c c" . org-capture))
   :config
   (setq org-directory "~/Dropbox/Notes"
         org-agenda-files '("~/Dropbox/Notes"
@@ -996,10 +995,11 @@ TODO How to make this take precedence over =dtrt-indent=?
   ;; paging up and down globally
   ;; (fset 'doc-prev "\C-xo\C-x[\C-xo")
   ;; (fset 'doc-next "\C-xo\C-x]\C-xo")
-  ;; (global-set-key (kbd "M-[") 'doc-prev)
-  ;; (global-set-key (kbd "M-]") 'doc-next)
-  (define-key doc-view-mode-map (kbd "M-[") 'doc-view-previous-page)
-  (define-key doc-view-mode-map (kbd "M-]") 'doc-view-next-page))
+  ;; (bind-key (kbd "M-[") 'doc-prev)
+  ;; (bind-key (kbd "M-]") 'doc-next)
+  (bind-keys :map doc-view-mode-map
+             ((kbd "M-[") . doc-view-previous-page)
+             ((kbd "M-]") . doc-view-next-page)))
 #+end_src
 
 * Scheme/Lisp
