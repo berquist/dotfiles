@@ -758,7 +758,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :config
-  (setq python-fill-docstring-style 'pep-257-nn))
+  (setq python-fill-docstring-style 'pep-257-nn
+        python-shell-interpreter "ipython"))
 
 (use-package pydoc)
 (use-package pydoc-info)
