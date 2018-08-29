@@ -902,6 +902,35 @@ This section needs to come after the Markdown section so that CMake files get re
   (setq cmake-tab-width 4))
 #+end_src
 
+* Shell Scripts
+
+https://www.reddit.com/r/emacs/comments/5tzub2/improving_shellscriptmode_highlight/
+
+#+BEGIN_SRC emacs-lisp
+(defconst sh-mode--string-interpolated-variable-regexp
+  "{\\$[^}\n\\\\]*\\(?:\\\\.[^}\n\\\\]*\\)*}\\|\\${\\sw+}\\|\\$\\sw+")
+
+(defun sh-mode--string-interpolated-variable-font-lock-find (limit)
+  (while (re-search-forward sh-mode--string-interpolated-variable-regexp limit t)
+    (let ((quoted-stuff (nth 3 (syntax-ppss))))
+      (when (and quoted-stuff (member quoted-stuff '(?\" ?`)))
+        (put-text-property (match-beginning 0) (match-end 0)
+                           'face 'font-lock-variable-name-face))))
+  nil)
+
+;; TODO I'm not sure why this doesn't work.
+;; (with-eval-after-load 'sh-mode
+;;   (font-lock-add-keywords 'sh-mode
+;;                           `(sh-mode--string-interpolated-variable-font-lock-find)
+;;                           'append))
+(font-lock-add-keywords 'sh-mode
+                        `((sh-mode--string-interpolated-variable-font-lock-find))
+                        'append)
+
+;; This doesn't work because it only finds the first instance.
+;; (font-lock-add-keywords 'sh-mode '(("\".*?\\(\\${.*?}\\).*?\"" 1 font-lock-variable-name-face prepend)))
+#+END_SRC
+
 * EditorConfig
 
 http://editorconfig.org/
