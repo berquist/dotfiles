@@ -240,6 +240,14 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 * Theming and window shaping
 
+** modeline
+
+#+BEGIN_SRC emacs-lisp
+(use-package delight)
+#+END_SRC
+
+** Themes
+
 #+begin_src emacs-lisp
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'wombat2 t)
@@ -254,7 +262,11 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 (use-package punpun-theme) ; (punpun-light, punpun-dark)
 (use-package quasi-monochrome-theme)
 (use-package rebecca-theme)
+#+end_src
 
+** Windows
+
+#+begin_src emacs-lisp
 (when window-system
   (set-face-attribute 'default nil :font "Panic Sans-11")
   (set-frame-font "Panic Sans-11"))
@@ -939,6 +951,19 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
+  :config
+  (defun ejb/editorconfig-has-editorconfig ()
+    "If there is an .editorconfig file associated with the
+current buffer, return its path, otherwise nil."
+    (let* ((directory (file-name-directory buffer-file-name))
+           (file (editorconfig-core-get-nearest-editorconfig directory)))
+      file))
+  (defun ejb/editorconfig-mode-lighter ()
+    "Only display the lighter if an .editorconfig file has been found."
+    (if (ejb/editorconfig-has-editorconfig)
+        " EditorConfig"
+      ""))
+  :delight '(:eval (ejb/editorconfig-mode-lighter))
   :init
   (add-hook 'prog-mode-hook (editorconfig-mode 1))
   (add-hook 'text-mode-hook (editorconfig-mode 1)))
