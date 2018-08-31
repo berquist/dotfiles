@@ -1115,6 +1115,15 @@ Modified to remove/disable Racket.
          ("\\.rkt\\'" . racket-mode)))
 #+END_SRC
 
+* Kotlin
+
+#+BEGIN_SRC emacs-lisp
+(use-package kotlin-mode)
+(use-package flycheck-kotlin
+  :init
+  (add-hook 'kotlin-mode-hook 'flycheck-mode))
+#+END_SRC
+
 * Other languages
 
 #+BEGIN_SRC emacs-lisp
@@ -1138,6 +1147,7 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package elcord
+  :disabled t
   :init
   (elcord-mode))
 #+END_SRC
