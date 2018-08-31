@@ -1121,7 +1121,8 @@ Modified to remove/disable Racket.
 (use-package kotlin-mode)
 (use-package flycheck-kotlin
   :init
-  (add-hook 'kotlin-mode-hook 'flycheck-mode))
+  (with-eval-after-load 'flycheck
+    (flycheck-kotlin-setup)))
 #+END_SRC
 
 * Other languages
