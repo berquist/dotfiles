@@ -998,7 +998,8 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (use-package json-mode
   :mode (("\\.json\\'" . json-mode)
-         ("\\.cjson\\'" . json-mode)))
+         ("\\.cjson\\'" . json-mode)
+         ("\\.qcjson\\'" . json-mode)))
 #+END_SRC
 
 * HTML
