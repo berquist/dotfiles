@@ -850,6 +850,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
               (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
   :init
   (setq
+   markdown-asymmetric-header t
    markdown-content-type "application/xhtml+xml"
    markdown-coding-system "utf-8"
    ;; This isn't super necessary since I have pandoc run a similar
@@ -860,6 +861,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
    markdown-fontify-code-blocks-natively t
    markdown-hide-markup nil
    markdown-hide-urls nil
+   markdown-italic-underscore t
    markdown-link-space-sub-char "-"))
 #+end_src
 
