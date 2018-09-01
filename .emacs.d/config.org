@@ -955,9 +955,10 @@ TODO How to make this take precedence over =dtrt-indent=?
   (defun ejb/editorconfig-has-editorconfig ()
     "If there is an .editorconfig file associated with the
 current buffer, return its path, otherwise nil."
-    (let* ((directory (file-name-directory buffer-file-name))
-           (file (editorconfig-core-get-nearest-editorconfig directory)))
-      file))
+    (if buffer-file-name
+        (let* ((directory (file-name-directory buffer-file-name))
+               (file (editorconfig-core-get-nearest-editorconfig directory)))
+          file)))
   (defun ejb/editorconfig-mode-lighter ()
     "Only display the lighter if an .editorconfig file has been found."
     (if (ejb/editorconfig-has-editorconfig)
