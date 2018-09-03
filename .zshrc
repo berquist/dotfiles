@@ -44,8 +44,8 @@ alias ed='emacs --daemon'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 alias es='\emacs -nw'
-# For use of git diff inside working trees. TODO Shell completion
-# doesn't work with it though?
+# For use of git diff inside working trees. TODO Shell completion doesn't work
+# with it though?
 alias gdiff='git wdiff --no-index'
 alias grep='grep --color -n'
 alias tmux='tmux -2'
@@ -54,7 +54,7 @@ alias ls='ls --color=auto'
 alias l='pwd; ls -hFl'
 alias la='l -a'
 alias lh='l -t | head'
-alias m='make -j4'
+alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
 alias sw='telnet towel.blinkenlights.nl'
@@ -141,11 +141,17 @@ function hname {
 }
 
 function pip2-locations {
-    for i in $( pip2 freeze | cut -d'=' -f1) ; do echo -n " $i " ; pip2 show $i | grep Location | cut -d':' -f3 ; done
+    for i in $(pip2 freeze | cut -d'=' -f1); do
+        echo -n " $i "
+        pip2 show $i | grep Location | cut -d':' -f3
+    done
 }
 
 function pip3-locations {
-    for i in $( pip3 freeze | cut -d'=' -f1) ; do echo -n " $i " ; pip3 show $i | grep Location | cut -d':' -f3 ; done
+    for i in $(pip3 freeze | cut -d'=' -f1); do
+        echo -n " $i "
+        pip3 show $i | grep Location | cut -d':' -f3
+    done
 }
 
 svn() {
