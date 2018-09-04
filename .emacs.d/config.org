@@ -1026,6 +1026,7 @@ current buffer, return its path, otherwise nil."
 * XML
 
 #+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.rdf\\'" . nxml-mode))
 (add-to-list 'auto-mode-alist '("\\.xmp\\'" . nxml-mode))
 #+END_SRC
 
@@ -1127,6 +1128,22 @@ Modified to remove/disable Racket.
   :init
   (with-eval-after-load 'flycheck
     (flycheck-kotlin-setup)))
+#+END_SRC
+
+* SPARQL
+
+#+BEGIN_SRC emacs-lisp
+(use-package sparql-mode
+  :mode (("\\.sparql$" . sparql-mode)
+         ("\\.rq$" . sparql-mode)))
+#+END_SRC
+
+* Turtle
+
+#+BEGIN_SRC emacs-lisp
+(use-package ttl-mode
+  :mode (("\\.n3" . ttl-mode)
+         ("\\.ttl" . ttl-mode)))
 #+END_SRC
 
 * Other languages
