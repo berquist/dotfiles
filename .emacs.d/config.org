@@ -1142,8 +1142,9 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package ttl-mode
-  :mode (("\\.n3" . ttl-mode)
-         ("\\.ttl" . ttl-mode)))
+  :mode (("\\.n3" . ttl-mode)    ; Notation3
+         ("\\.nt" . ttl-mode)    ; N-Triples
+         ("\\.ttl" . ttl-mode))) ; Turtle (Terse RDF Triple Language)
 #+END_SRC
 
 * Other languages
