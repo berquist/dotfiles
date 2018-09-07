@@ -11,11 +11,14 @@ packages=(
     dos2unix
     editorconfig
     emacs
+    fuseki
     git
     gpg
     ispell
+    jena
     keychain
     kotlin
+    lftp
     nano
     pandoc
     ripgrep
@@ -30,11 +33,13 @@ packages_ext=(
 packages_cask=(
     1password
     anaconda
+    basecamp
     divvy
     dropbox
     emacs
     firefox
     intellij-idea-ce
+    java
     pycharm-ce
     slack
 )
