@@ -460,8 +460,12 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package git-commit
   :init
   (global-git-commit-mode))
-(use-package gitconfig-mode)
-(use-package gitignore-mode)
+(use-package gitattributes-mode
+  :mode (("\\.gitattributes$" . gitattributes-mode)))
+(use-package gitconfig-mode
+  :mode (("\\.gitconfig$" . gitconfig-mode)))
+(use-package gitignore-mode
+  :mode (("\\.gitignore$" . gitignore-mode)))
 (use-package magit
   ;; "Getting started" uses C-x g, which is also undefined.
   :bind (("C-c m" . magit-status))
@@ -1142,9 +1146,10 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package ttl-mode
-  :mode (("\\.n3" . ttl-mode)    ; Notation3
-         ("\\.nt" . ttl-mode)    ; N-Triples
-         ("\\.ttl" . ttl-mode))) ; Turtle (Terse RDF Triple Language)
+  :mode (("\\.n3$" . ttl-mode)    ; Notation3
+         ("\\.nt$" . ttl-mode)    ; N-Triples
+         ("\\.shacl$" . ttl-mode) ; SHACL (not a graph, but constraints; looks similar)
+         ("\\.ttl$" . ttl-mode))) ; Turtle (Terse RDF Triple Language)
 #+END_SRC
 
 * Other languages
