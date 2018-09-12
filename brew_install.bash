@@ -18,9 +18,13 @@ packages=(
     jena
     keychain
     kotlin
+    less
+    lesspipe
     lftp
+    maven
     nano
     pandoc
+    reattach-to-user-namespace
     ripgrep
     tmux
     wget
@@ -31,13 +35,16 @@ packages_ext=(
 )
 
 packages_cask=(
-    1password
+    # 1password
     anaconda
     basecamp
+    blue-jeans
+    caffeine
+    dash
     divvy
     dropbox
     emacs
-    firefox
+    # firefox
     intellij-idea-ce
     java
     pycharm-ce
