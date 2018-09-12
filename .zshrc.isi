@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+# brew install keychain
+# unlock SSH and GPG keys
+eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
+
+unalias ls
+unalias l
+unalias la
+unalias top
+
+alias ls='ls -G'      # enable colorized output
+alias l='pwd; ls -hl' # list format and human-readable sizes
+alias la='l -a'       # hidden files
+alias top='top -u'
+
+export PATH=/usr/local/anaconda3/bin:"$PATH"
+
+export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
+export LESS_ADVANCED_PREPROCESSOR=1
