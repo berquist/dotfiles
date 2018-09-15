@@ -1,4 +1,4 @@
-personal_ws-1.1 en 377 
+personal_ws-1.1 en 378 
 solvated
 Koseki
 Yamaguchi
@@ -33,6 +33,7 @@ interatomic
 autoencoding
 pseudopotentials
 anisotropy
+NumPy
 isosurface
 unconverged
 Hamiltonians
@@ -348,8 +349,8 @@ conformational
 PQI
 parallelization
 SCF
-maclaurin
 MacLaurin
+maclaurin
 algorithmically
 Dunning's
 unfactored
