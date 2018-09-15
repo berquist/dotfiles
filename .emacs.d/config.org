@@ -980,7 +980,10 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package julia-mode)
-(use-package flycheck-julia)
+(use-package flycheck-julia
+  :init
+  (with-eval-after-load 'flycheck
+    (add-hook 'flycheck-mode-hook #'flycheck-julia-setup)))
 #+END_SRC
 
 * Ruby
