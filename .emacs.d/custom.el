@@ -11,6 +11,8 @@
  '(font-latex-math-environments
    (quote
     ("display" "displaymath" "equation" "eqnarray" "gather" "math" "multline" "align" "alignat" "xalignat" "xxalignat" "flalign" "dmath")))
+ '(nxml-child-indent 4)
+ '(nxml-outline-child-indent 4)
  '(octave-block-offset 4 t)
  '(org-latex-default-packages-alist
    (quote
