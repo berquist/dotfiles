@@ -14,6 +14,8 @@ packages=(
     fuseki
     git
     gpg
+    "gradle --with-all"
+    hub
     ispell
     jena
     keychain
@@ -39,16 +41,16 @@ packages_cask=(
     anaconda
     basecamp
     blue-jeans
-    caffeine
+    # caffeine
     dash
-    divvy
-    dropbox
+    # divvy
+    # dropbox
     emacs
     # firefox
-    intellij-idea-ce
+    # intellij-idea-ce
     java
-    pycharm-ce
-    slack
+    # pycharm-ce
+    # slack
 )
 
 for package in ${packages[@]}; do
