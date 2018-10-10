@@ -554,7 +554,7 @@ Not using =git-gutter= right now, but if I did...
                                       ("\\paragraph{%s}" . "\\paragraph*{%s}")
                                       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
   (setq org-latex-pdf-process
-        '("latexmk -xelatex -shell-escape -interaction=batchmode -output-directory=%o %f"))
+        '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
   ;; You need to install pygments to use minted.
   (when (executable-find "pygmentize")
