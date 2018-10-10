@@ -1165,6 +1165,7 @@ Modified to remove/disable Racket.
 (use-package chapel-mode)
 (use-package crystal-mode)
 (use-package csharp-mode)
+(use-package dockerfile-mode)
 (use-package cuda-mode)
 (use-package go-mode)
 (use-package graphviz-dot-mode)
