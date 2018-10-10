@@ -18,3 +18,4 @@ url
 
 # tmux
 .tmux/plugins
+.tmux/resurrect
