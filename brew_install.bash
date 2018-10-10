@@ -8,6 +8,12 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 packages=(
+    autoconf
+    automake
+    cmake
+    colordiff
+    docker
+    docker-machine
     dos2unix
     editorconfig
     emacs
@@ -15,6 +21,7 @@ packages=(
     git
     gpg
     "gradle --with-all"
+    htop
     hub
     ispell
     jena
@@ -23,12 +30,15 @@ packages=(
     less
     lesspipe
     lftp
+    libtool
     maven
     nano
     pandoc
     reattach-to-user-namespace
     ripgrep
+    "sox --with-libao --with-libsndfile --with-opencore-amr --with-opusfile"
     tmux
+    util-linux
     wget
 )
 
@@ -48,9 +58,14 @@ packages_cask=(
     emacs
     # firefox
     # intellij-idea-ce
+    iterm2
     java
+    kitty
+    mactex
+    meld
     # pycharm-ce
     # slack
+    visualvm
 )
 
 for package in ${packages[@]}; do
