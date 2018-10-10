@@ -7,14 +7,18 @@ eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
 unalias ls
 unalias l
 unalias la
+unalias t
 unalias top
 
 alias ls='ls -G'      # enable colorized output
 alias l='pwd; ls -hl' # list format and human-readable sizes
 alias la='l -a'       # hidden files
+alias t='tail -F -n 100' # no sleep interval on BSD tail?
 alias top='top -u'
 
 export PATH=/usr/local/anaconda3/bin:"$PATH"
 
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
 export LESS_ADVANCED_PREPROCESSOR=1
+
+alias make_ttl_list='\rm list.dat; for f in $(ls *.ttl); do echo $(pwd)/${f}; echo $(pwd)/${f} >> list.dat; done'
