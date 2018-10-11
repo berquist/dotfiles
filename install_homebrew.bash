@@ -36,6 +36,7 @@ packages=(
     pandoc
     reattach-to-user-namespace
     ripgrep
+    shellcheck
     "sox --with-libao --with-libsndfile --with-opencore-amr --with-opusfile"
     tmux
     util-linux
@@ -47,8 +48,9 @@ packages_ext=(
 )
 
 packages_cask=(
+    # -> problems due to app relocation
     # 1password
-    anaconda
+    # anaconda
     basecamp
     blue-jeans
     # caffeine
@@ -56,13 +58,16 @@ packages_cask=(
     # divvy
     # dropbox
     emacs
+    # -> problems due to app relocation
     # firefox
+    # -> problems due to app relocation
     # intellij-idea-ce
     iterm2
     java
     kitty
     mactex
     meld
+    # -> problems due to app relocation
     # pycharm-ce
     # slack
     visualvm
