@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+[[ -f /etc/bashrc ]] && . /etc/bashrc
+
+alias cath="tail -n +1"
+alias dus="\du -h --max-depth=1"
+alias es="emacs -nw"
+alias gdiff="git wdiff --no-index"
+alias ls="ls --color=auto"
+alias l1="ls -1"
+alias l="pwd; ls -hlF"
+alias la="l -a"
+alias lh="l -t | head"
+alias t="tail -n 100 -F --sleep-interval=0.1"
+alias whcih="which"
+
+# So I don't do stupid things.
+alias cp="cp -i -v"
+alias mv="mv -i -v"
+alias rm="rm -i -v"

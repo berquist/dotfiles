@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+########################################
+### BASH-SPECIFIC
+########################################
+
+GIT_PROMPT_ONLY_IN_REPO=0
+GIT_PROMPT_FETCH_REMOTE_STATUS=0
+GIT_PROMPT_SHOW_UPSTREAM=1
+GIT_PROMPT_SHOW_UNTRACKED_FILES=all
+source "${HOME}"/repositories/bash-git-prompt/gitprompt.sh
+
+########################################
+### GENERAL
+########################################
+
+export EDITOR="emacs -nw"
+
+########################################
+### PATHS
+########################################
+
+# queue niceties
+
+source /nas/uge/sge-root/default/common/settings.sh
+export DRMAA_LIBRARY_PATH=${SGE_ROOT}/lib/lx-amd64/libdrmaa.so.1.0
+export PATH=${PATH}:/nfs/isicvlnas01/share/qstat-pretty/
+
+# personal software
+
+export apps=${HOME}/opt/apps
+export PATH=${apps}/python/miniconda3/bin:${PATH}
+
+source ~/perl5/perlbrew/etc/bashrc
+
+# module use ${HOME}/modules/vista
+# module load emacs/26.1
+# module load git/github
+
+export PATH=${apps}/emacs/26.1/bin:${PATH}
+export PATH=${apps}/sox/14.4.2/bin:${PATH}
+export PATH=${apps}/tmux/git/bin:${PATH}
+export PATH=${apps}/git/github/bin:${PATH}
+# export PATH=${apps}/build/kaldi/src/bin:${PATH}
+
+# export PATH=/nas/material/users/jbilla

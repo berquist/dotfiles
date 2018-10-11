@@ -1,3 +1,7 @@
+# This is the custom theme template for gitprompt.sh
+
+# These are the defaults from the "Default" theme 
+# You just need to override what you want to have changed
 override_git_prompt_colors() {
   GIT_PROMPT_THEME_NAME="berquist"
 
@@ -9,13 +13,14 @@ override_git_prompt_colors() {
   GIT_PROMPT_SEPARATOR="|"              # separates each item
 
   GIT_PROMPT_BRANCH="${Magenta}"        # the git branch that is active in the current directory
+  GIT_PROMPT_MASTER_BRANCH="${GIT_PROMPT_BRANCH}" # used if the git branch that is active in the current directory is $GIT_PROMPT_MASTER_BRANCHES
   GIT_PROMPT_STAGED="${Red}●"           # the number of staged files/directories
-  GIT_PROMPT_CONFLICTS="${Red}✖"        # the number of files in conflict
-  GIT_PROMPT_CHANGED="${Blue}✚"         # the number of changed files
+  GIT_PROMPT_CONFLICTS="${Red}✖ "       # the number of files in conflict
+  GIT_PROMPT_CHANGED="${Blue}✚ "        # the number of changed files
 
   GIT_PROMPT_REMOTE=" "                 # the remote branch name (if any) and the symbols for ahead and behind
   GIT_PROMPT_UNTRACKED="${Cyan}…"       # the number of untracked files/dirs
-  GIT_PROMPT_STASHED="${BoldBlue}⚑"     # the number of stashed files/dir
+  GIT_PROMPT_STASHED="${BoldBlue}⚑ "     # the number of stashed files/dir
   GIT_PROMPT_CLEAN="${BoldGreen}✔"      # a colored flag indicating a "clean" repo
 
   # For the command indicator, the placeholder _LAST_COMMAND_STATE_
@@ -47,6 +52,12 @@ override_git_prompt_colors() {
   GIT_PROMPT_SYMBOLS_BEHIND="↓·"            # The symbol for "n versions behind of origin"
   GIT_PROMPT_SYMBOLS_PREHASH=":"            # Written before hash of commit, if no name could be found
   GIT_PROMPT_SYMBOLS_NO_REMOTE_TRACKING="L" # This symbol is written after the branch, if the branch is not tracked
+
+  # branch name(s) that will use $GIT_PROMPT_MASTER_BRANCH color
+  # To specify multiple branches, use
+  #   shopt -s extglob
+  #   GIT_PROMPT_MASTER_BRANCHES='@(master|production)'
+  GIT_PROMPT_MASTER_BRANCHES="master"
 }
 
 reload_git_prompt_colors "berquist"
