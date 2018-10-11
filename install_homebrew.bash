@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
-# brew_install.bash: These are all packages that should be installed via
+# install_homebrew.bash: These are all packages that should be installed via
 # Homebrew.
-
-# source me!
-
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 packages=(
     autoconf
@@ -31,6 +27,7 @@ packages=(
     lesspipe
     lftp
     libtool
+    lmod
     maven
     nano
     pandoc
@@ -73,16 +70,20 @@ packages_cask=(
     visualvm
 )
 
-for package in ${packages[@]}; do
-    brew install ${package}
-done
+function install() {
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-for package in ${packages_ext[@]}; do
-    brew install ${package}
-done
+    for package in ${packages[@]}; do
+        brew install ${package}
+    done
 
-for package in ${packages_cask[@]}; do
-    brew cask install ${package}
-done
+    for package in ${packages_ext[@]}; do
+        brew install ${package}
+    done
 
-brew cleanup
+    for package in ${packages_cask[@]}; do
+        brew cask install ${package}
+    done
+
+    brew cleanup
+}

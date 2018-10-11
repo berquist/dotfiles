@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# work laptop
+
 # brew install keychain
 # unlock SSH and GPG keys
 eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
@@ -16,9 +18,17 @@ alias la='l -a'       # hidden files
 alias t='tail -F -n 100' # no sleep interval on BSD tail?
 alias top='top -u'
 
-export PATH=/usr/local/anaconda3/bin:"$PATH"
-
+# `brew install lesspipe`
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
 export LESS_ADVANCED_PREPROCESSOR=1
 
 alias make_ttl_list='\rm list.dat; for f in $(ls *.ttl); do echo $(pwd)/${f}; echo $(pwd)/${f} >> list.dat; done'
+
+########################################
+### MODULES
+########################################
+
+source /usr/local/opt/lmod/init/zsh
+module use "${HOME}/modules/isi"
+
+module load python/anaconda
