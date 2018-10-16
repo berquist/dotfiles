@@ -28,6 +28,8 @@ export MATERIAL=/nas/material/users/$(whoami)
 alias mcd="cd ${MATERIAL}"
 alias p="pstat | grep $(whoami)"
 
+export PATH=${HOME}/personal_scripts/isi:${PATH}
+
 ########################################
 ### BASH-SPECIFIC
 ########################################
