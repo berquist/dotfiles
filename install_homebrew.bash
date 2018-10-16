@@ -4,8 +4,10 @@
 # Homebrew.
 
 packages=(
+    ant
     autoconf
     automake
+    blazegraph
     cmake
     colordiff
     docker
@@ -29,7 +31,9 @@ packages=(
     libtool
     lmod
     maven
+    mono
     nano
+    npm
     pandoc
     reattach-to-user-namespace
     ripgrep
@@ -42,6 +46,7 @@ packages=(
 
 packages_ext=(
     shyiko/ktlint/ktlint
+    vale
 )
 
 packages_cask=(
@@ -68,6 +73,7 @@ packages_cask=(
     # pycharm-ce
     # slack
     visualvm
+    zotero
 )
 
 function install() {
@@ -76,6 +82,8 @@ function install() {
     for package in ${packages[@]}; do
         brew install ${package}
     done
+
+    brew tap valelint/vale
 
     for package in ${packages_ext[@]}; do
         brew install ${package}
