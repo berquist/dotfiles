@@ -1202,6 +1202,13 @@ Modified to remove/disable Racket.
          ("\\.turtle$" . ttl-mode)))
 #+END_SRC
 
+* Nim
+
+#+BEGIN_SRC emacs-lisp
+(use-package nim-mode)
+(use-package flycheck-nim)
+#+END_SRC
+
 * Other languages
 
 #+BEGIN_SRC emacs-lisp
@@ -1214,7 +1221,6 @@ Modified to remove/disable Racket.
 (use-package graphviz-dot-mode)
 (use-package lua-mode)
 (use-package mediawiki)
-(use-package nim-mode)
 (use-package scala-mode)
 (use-package ssass-mode)
 (use-package swift-mode)
