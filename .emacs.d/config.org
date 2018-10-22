@@ -401,7 +401,24 @@ TODO clean this up, figure out LaTeX
 * Completion
 
 #+BEGIN_SRC emacs-lisp
-(use-package company)
+(use-package company
+  :config
+  (setq company-idle-delay 0.05)
+  :init
+  (add-hook 'after-init-hook 'global-company-mode))
+(use-package company-lsp
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-lsp)))
+(use-package company-c-headers
+  :disabled t
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-c-headers)))
+(use-package company-irony
+  :disabled t)
+(use-package company-irony-c-headers
+  :disabled t)
 #+END_SRC
 
 * Flycheck
@@ -794,14 +811,24 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package pydoc)
 (use-package pydoc-info)
 
+(use-package company-jedi
+  :disabled t
+  :init
+  (with-eval-after-load 'company
+                       (add-to-list 'company-backends 'company-jedi)))
 (use-package anaconda-mode
   :init
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
 (use-package company-anaconda
   :init
-  (with-eval-after-load "company"
+  (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-anaconda)))
+
+(use-package elpy
+  :disabled t
+  :init
+  (elpy-enable))
 
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
 ;; I think stuffing the setq under config activates this for Python.
@@ -815,6 +842,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 ;; Enable the use of both pyflakes and pylint.
 ;; https://github.com/flycheck/flycheck/issues/186
 ;; (flycheck-add-next-checker 'python-pyflakes 'python-pylint)
+
+(use-package flycheck-mypy)
 
 (use-package flycheck-pycheckers
   :config
@@ -1191,6 +1220,18 @@ Modified to remove/disable Racket.
 (use-package swift-mode)
 (use-package systemd)
 (use-package tuareg) ; OCaml
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-mode)
+(use-package lsp-ui)
+(use-package lsp-python)
+;; (add-hook 'python-mode-hook #'lsp-python-enable)
+(use-package lsp-rust)
+(use-package lsp-clangd)
+(use-package lsp-sh)
+;; (add-hook 'sh-mode-hook #'lsp-sh-enable)
+(use-package eglot)
 #+END_SRC
 
 * Discord
