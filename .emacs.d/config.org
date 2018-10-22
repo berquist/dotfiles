@@ -223,6 +223,10 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   :init
   (dtrt-indent-mode 1))
 
+(use-package aggressive-indent
+  :config
+  (global-aggressive-indent-mode 1))
+
 (use-package unfill
   :bind (("C-M-q" . unfill-paragraph)))
 
