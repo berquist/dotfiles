@@ -39,9 +39,11 @@ packages=(
     ripgrep
     shellcheck
     "sox --with-libao --with-libsndfile --with-opencore-amr --with-opusfile"
+    tidy-html5
     tmux
     util-linux
     wget
+    xmlstarlet
 )
 
 packages_ext=(
@@ -80,17 +82,17 @@ function install() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     for package in ${packages[@]}; do
-        brew install ${package}
+        brew install "${package}"
     done
 
     brew tap valelint/vale
 
     for package in ${packages_ext[@]}; do
-        brew install ${package}
+        brew install "${package}"
     done
 
     for package in ${packages_cask[@]}; do
-        brew cask install ${package}
+        brew cask install "${package}"
     done
 
     brew cleanup
