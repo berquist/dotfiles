@@ -824,12 +824,21 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-anaconda)))
+#+end_src
 
-(use-package elpy
-  :disabled t
-  :init
-  (elpy-enable))
+** Conf
 
+#+BEGIN_SRC emacs-lisp
+(setq auto-mode-alist
+      (append '((".coveragerc" . conf-unix-mode)
+                (".flake8" . conf-unix-mode)
+                (".pylintrc" . conf-unix-mode))
+              auto-mode-alist))
+#+END_SRC
+
+** Linters
+
+#+begin_src emacs-lisp
 ;; Use pyflakes instead of flake8 or pylint for syntax checking.
 ;; I think stuffing the setq under config activates this for Python.
 (use-package flycheck-pyflakes)
