@@ -477,9 +477,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 ** General
 
 #+BEGIN_SRC emacs-lisp
-;; Even though VC systems (at least git) commit the symbolic link
-;; pointer itself, and not the file it's pointing to, I want to edit
-;; the file.
+;; Even though VC systems (at least git) commit the symbolic link pointer
+;; itself, and not the file it's pointing to, I want to edit the file.
 (setq vc-follow-symlinks t)
 #+END_SRC
 
@@ -594,9 +593,8 @@ Not using =git-gutter= right now, but if I did...
     ;; Tell the latex export to use the minted package for source code
     ;; coloration.
     (setq org-latex-listings 'minted)
-    ;; Let the exporter use the -shell-escape option to let latex
-    ;; execute external programs.  This obviously and can be
-    ;; dangerous to activate!
+    ;; Let the exporter use the -shell-escape option to let latex execute
+    ;; external programs.  This obviously and can be dangerous to activate!
     (setq org-latex-minted-options
           '(("framesep" "2mm")))))
 (use-package htmlize)
@@ -909,9 +907,9 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
    markdown-asymmetric-header t
    markdown-content-type "application/xhtml+xml"
    markdown-coding-system "utf-8"
-   ;; This isn't super necessary since I have pandoc run a similar
-   ;; command every time I save with these default arguments, but this
-   ;; always produces HTML where pandoc-mode might not.
+   ;; This isn't super necessary since I have pandoc run a similar command
+   ;; every time I save with these default arguments, but this always produces
+   ;; HTML where pandoc-mode might not.
    markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html"
    markdown-enable-math t
    markdown-fontify-code-blocks-natively t
