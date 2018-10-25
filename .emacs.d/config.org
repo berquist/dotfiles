@@ -435,6 +435,7 @@ TODO add LaTex
    flycheck-check-syntax-automatically '(mode-enabled save)
    flycheck-markdown-mdl-style "~/.mdlrc"
    flycheck-pylintrc "~/.pylintrc"))
+(global-flycheck-mode)
 #+end_src
 
 ** Shell
