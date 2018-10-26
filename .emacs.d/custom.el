@@ -31,9 +31,6 @@
      ("" "amssymb" t)
      ("" "capt-of" nil)
      ("colorlinks=true" "hyperref" nil))))
- '(package-selected-packages
-   (quote
-    (dockerfile-mode gitattributes-mode ttl-mode sparql-mode tawny-mode face-explorer flycheck-kotlin kotlin-mode pydoc-info pydoc company-anaconda anaconda-mode graphviz-dot-mode web-beautify ssass-mode flycheck-pycheckers dracula-theme dracula swift-mode scala-mode mediawiki lua-mode go-mode cuda-mode csharp-mode crystal-mode chapel-mode slime geiser hy-mode racket-mode flycheck-rust cargo rust-mode jinja2-mode web-mode json-mode flycheck-yamllint yaml-mode flycheck-julia julia-mode editorconfig cmake-mode deft markdown-mode pip-requirements flycheck-cython cython-mode flycheck-pyflakes auctex-latexmk auctex systemd pkgbuild-mode clang-format ox-pandoc ox-gfm htmlize pandoc-mode magit-svn magit gitignore-mode gitconfig-mode git-commit flycheck-checkbashisms flycheck wc-mode langtool unfill dtrt-indent mic-paren ripgrep anzu exec-path-from-shell use-package)))
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
  '(safe-local-variable-values (quote ((eval wc-mode t) (dtrt-indent-mode . 0))))
