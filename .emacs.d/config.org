@@ -808,7 +808,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
         python-shell-interpreter "ipython"))
 
 (use-package pydoc)
-(use-package pydoc-info)
 
 (use-package company-jedi
   :disabled t
