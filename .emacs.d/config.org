@@ -518,33 +518,34 @@ Not using =git-gutter= right now, but if I did...
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture))
   :config
-  (setq org-directory "~/Dropbox/Notes"
-        org-agenda-files '("~/Dropbox/Notes"
+  (setq org-agenda-files '("~/Dropbox/Notes"
                            "~/Dropbox/research/lab_notebook")
-        org-log-done 'time
-        org-log-done-with-time t
-        org-closed-keep-when-no-todo t
-        org-startup-folded nil
-        ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
-        org-startup-truncated nil
-        org-export-backends '(ascii html icalendar latex md)
-        org-export-dispatch-use-expert-ui t
-        org-export-with-smart-quotes t
-        org-image-actual-width nil
-        org-edit-src-content-indentation 0
-        org-list-allow-alphabetical t
-        org-src-fontify-natively t
-        org-src-tab-acts-natively t
-        org-latex-create-formula-image-program 'imagemagick
-        ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
-        org-highlight-latex-and-relatex '(latex script entities)
-        org-html-with-latex '(mathjax)
-        org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
-        org-confirm-babel-evaluate nil
         org-babel-tangle-lang-exts '(("python" . "py")
                                      ("emacs-lisp" . "el")
                                      ("elisp" . "el"))
-        org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
+        org-closed-keep-when-no-todo t
+        org-confirm-babel-evaluate nil
+        org-directory "~/Dropbox/Notes"
+        org-edit-src-content-indentation 0
+        org-export-backends '(ascii html icalendar latex md)
+        org-export-dispatch-use-expert-ui t
+        org-export-with-smart-quotes t
+        ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
+        org-highlight-latex-and-relatex '(latex script entities)
+        org-html-with-latex '(mathjax)
+        org-image-actual-width nil
+        org-latex-create-formula-image-program 'imagemagick
+        org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n"
+        org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
+        org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f")
+        org-list-allow-alphabetical t
+        org-log-done 'time
+        org-log-done-with-time t
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t
+        org-startup-folded nil
+        ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
+        org-startup-truncated nil)
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
   (add-to-list 'org-latex-packages-alist '("final" "microtype" nil))
   (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
@@ -555,8 +556,6 @@ Not using =git-gutter= right now, but if I did...
                                       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                                       ("\\paragraph{%s}" . "\\paragraph*{%s}")
                                       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-  (setq org-latex-pdf-process
-        '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
   ;; You need to install pygments to use minted.
   (when (executable-find "pygmentize")
