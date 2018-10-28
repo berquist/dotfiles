@@ -307,8 +307,8 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 ** line numbers
 
 #+BEGIN_SRC emacs-lisp
-(when (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode))
+;; (when (version<= "26.0.50" emacs-version)
+;;   (global-display-line-numbers-mode))
 #+END_SRC
 
 * Spelling
@@ -813,7 +813,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package flycheck-pyflakes)
   ;; :config
   ;; Don't disable these, in case pyflakes isn't available.
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
+  (add-to-list 'flycheck-disabled-checkers 'python-flake8)
   ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
   ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
   ;; )
@@ -824,6 +824,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package flycheck-mypy)
 
 (use-package flycheck-pycheckers
+  :disabled t
   :config
   (setq flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
   :init
