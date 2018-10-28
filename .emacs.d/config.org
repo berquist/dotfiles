@@ -525,6 +525,7 @@ Not using =git-gutter= right now, but if I did...
                                      ("elisp" . "el"))
         org-closed-keep-when-no-todo t
         org-confirm-babel-evaluate nil
+        org-descriptive-links nil
         org-directory "~/Dropbox/Notes"
         org-edit-src-content-indentation 0
         org-export-backends '(ascii html icalendar latex md)
