@@ -53,6 +53,13 @@ GIT_PROMPT_SHOW_UNTRACKED_FILES=all
 source "${HOME}"/repositories/bash-git-prompt/gitprompt.sh
 
 ########################################
+### GIT
+########################################
+
+export GIT_AUTHOR_EMAIL='berquist@isi.edu'
+export GIT_COMMITER_EMAIL='berquist@isi.edu'
+
+########################################
 ### GENERAL
 ########################################
 
