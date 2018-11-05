@@ -30,8 +30,8 @@ fi
 ### ALIASES
 ########################################
 
-source aliases.bash 
-source exports.bash
+source ~/dotfiles/aliases.bash 
+source ~/dotfiles/exports.bash
 
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
@@ -77,7 +77,7 @@ export npm_config_prefix="${HOME}"/.node_modules
 ### FUNCTIONS
 ########################################
 
-source functions.bash
+source ~/dotfiles/functions.bash
 
 ########################################
 ### selective sourcing

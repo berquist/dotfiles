@@ -6,7 +6,7 @@
 ### ALIASES
 ########################################
 
-source aliases.bash
+source ~/dotfiles/aliases.bash
 
 format="\"%8i %9g %9u %5P %35j %2t %12M %12l %5D %3C %R\""
 flags="-S +i -o ${format}"
@@ -30,4 +30,4 @@ alias rms="rm -r *snap.*.nvt*"
 ### FUNCTIONS
 ########################################
 
-source functions.bash
+source ~/dotfiles/functions.bash

@@ -28,7 +28,7 @@ GIT_PROMPT_SHOW_UNTRACKED_FILES=all
 ### GENERAL
 ########################################
 
-source exports.bash
+source ~/dotfiles/exports.bash
 
 ########################################
 ### PATHS

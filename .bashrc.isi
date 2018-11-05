@@ -2,7 +2,7 @@
 
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
-source aliases.bash
+source ~/dotfiles/aliases.bash
 
 ########################################
 ### CLUSTER
@@ -48,7 +48,7 @@ export GIT_COMMITER_EMAIL='berquist@isi.edu'
 ### GENERAL
 ########################################
 
-source exports.bash
+source ~/dotfiles/exports.bash
 
 ########################################
 ### PATHS
@@ -88,4 +88,4 @@ export PATH=${apps}/tree/bin:${PATH}
 ### FUNCTIONS
 ########################################
 
-source functions.bash
+source ~/dotfiles/functions.bash
