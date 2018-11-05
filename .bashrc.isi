@@ -84,8 +84,8 @@ export PATH=${apps}/tree/bin:${PATH}
 # module load python/miniconda3
 # module load tmux/git
 
+########################################
 ### FUNCTIONS
+########################################
 
-function pst() {
-    ps --forest -o pid,tty,stat,time,cmd -g $(ps -o sid= -p $1)
-}
+source functions.bash

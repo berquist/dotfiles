@@ -25,3 +25,9 @@ alias cdqm="cd ${HOME}/calc.ecoRI/qmmm/amber/solvateoct"
 
 # Use this to clean up detritus from failed snapshot jobs.
 alias rms="rm -r *snap.*.nvt*"
+
+########################################
+### FUNCTIONS
+########################################
+
+source functions.bash
