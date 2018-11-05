@@ -26,18 +26,12 @@ if [ "$COLORTERM" = "xfce4-terminal" ] && [ "$TMUX" = "" ] && [ -e /usr/share/te
     export TERM=xterm-256color
 fi
 
-# https://twitter.com/hhulkko/status/114256631419772928
-# http://darrendev.blogspot.com/2011/07/customize-less-less-annoying.html
-export LESS="-FRX"
-
 ########################################
 ### ALIASES
 ########################################
 
 source aliases.bash 
-
-export MANWIDTH=78
-export EDITOR='emacs -nw'
+source exports.bash
 
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
@@ -54,24 +48,16 @@ for d in ${pythonpathdirs[@]:1}; do
 done
 export PYTHONPATH
 
-LD_LIBRARY_PATH="${HOME}/opt/lib:${LD_LIBRARY_PATH}"
-export LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="${HOME}/opt/lib:${LD_LIBRARY_PATH}"
 
 PATH="${HOME}/repositories/rmsd/rmsd:${PATH}"
-PATH="${HOME}/personal_scripts:${PATH}"
 PATH="${HOME}/opt/bin/scripts:${PATH}"
-PATH="${HOME}/opt/bin:${PATH}"
-PATH="${HOME}/.local/bin:${PATH}"
 PATH="/usr/local/bin:${PATH}"
 PATH="${HOME}/.node_modules/bin:${PATH}"
 export PATH
 
-export QCPROGS="${HOME}"/opt/apps
-export apps="${QCPROGS}"
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
-
-export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
 
 ########################################
 ### MATLAB

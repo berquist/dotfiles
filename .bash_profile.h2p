@@ -28,7 +28,7 @@ GIT_PROMPT_SHOW_UNTRACKED_FILES=all
 ### GENERAL
 ########################################
 
-export EDITOR="emacs -nw"
+source exports.bash
 
 ########################################
 ### PATHS
@@ -46,22 +46,12 @@ export PYTHONPATH
 LD_LIBRARY_PATH="${LD_LIBRARY_PATH}":"${HOME}"/opt/lib
 export LD_LIBRARY_PATH
 
-PATH="${HOME}"/repositories/rmsd:"${PATH}"
-PATH="${HOME}"/personal_scripts:"${PATH}"
-PATH="${HOME}"/buildscripts:"${PATH}"
-PATH="${HOME}"/opt/bin:"${PATH}"
-PATH="${HOME}"/.local/bin:"${PATH}"
-export PATH
-
-PATH="${HOME}"/personal_scripts:"${PATH}"
-PATH="${HOME}"/personal_scripts/clusters/haswell:"${PATH}"
-export PATH
+export PATH="${HOME}"/repositories/rmsd:"${PATH}"
+export PATH="${HOME}"/personal_scripts/clusters/haswell:"${PATH}"
 
 export MOBY="/mnt/mobydisk/groupshares/dlambrecht/${USER}"
 alias mobycd="cd ${MOBY}"
 
-export QCPROGS="${HOME}"/opt/apps
-export apps="${HOME}"/opt/apps
 export SCRATCH="${HOME}"/scratch
 export scratch="${HOME}"/scratch
 

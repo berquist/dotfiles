@@ -48,7 +48,7 @@ export GIT_COMMITER_EMAIL='berquist@isi.edu'
 ### GENERAL
 ########################################
 
-export EDITOR="emacs -nw"
+source exports.bash
 
 ########################################
 ### PATHS
