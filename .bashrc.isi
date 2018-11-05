@@ -4,7 +4,9 @@
 
 alias cath="tail -n +1"
 alias dus="\du -h --max-depth=1"
-alias es="emacs -nw"
+alias e="emacsclient -t"
+alias ec="emacsclient -c"
+alias es="\emacs -nw"
 alias gdiff="git wdiff --no-index"
 alias ls="ls --color=auto"
 alias l1="ls -1"
@@ -50,7 +52,7 @@ GIT_PROMPT_ONLY_IN_REPO=0
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
 GIT_PROMPT_SHOW_UPSTREAM=1
 GIT_PROMPT_SHOW_UNTRACKED_FILES=all
-source "${HOME}"/repositories/bash-git-prompt/gitprompt.sh
+# source "${HOME}"/repositories/bash-git-prompt/gitprompt.sh
 
 ########################################
 ### GIT
@@ -90,6 +92,7 @@ export PATH=${apps}/emacs/26.1/bin:${PATH}
 export PATH=${apps}/sox/14.4.2/bin:${PATH}
 export PATH=${apps}/tmux/git/bin:${PATH}
 export PATH=${apps}/git/github/bin:${PATH}
+export PATH=${apps}/tree/bin:${PATH}
 
 # module use ${HOME}/modules/vista
 
@@ -97,3 +100,9 @@ export PATH=${apps}/git/github/bin:${PATH}
 # module load git/github
 # module load python/miniconda3
 # module load tmux/git
+
+### FUNCTIONS
+
+function pst() {
+    ps --forest -o pid,tty,stat,time,cmd -g $(ps -o sid= -p $1)
+}
