@@ -76,6 +76,7 @@ export PATH=${apps}/sox/14.4.2/bin:${PATH}
 export PATH=${apps}/tmux/git/bin:${PATH}
 export PATH=${apps}/git/github/bin:${PATH}
 export PATH=${apps}/tree/bin:${PATH}
+export PATH=${apps}/strace/git/bin:${PATH}
 
 # module use ${HOME}/modules/vista
 
