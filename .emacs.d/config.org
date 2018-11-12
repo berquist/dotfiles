@@ -801,7 +801,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (setq auto-mode-alist
       (append '((".coveragerc" . conf-unix-mode)
                 (".flake8" . conf-unix-mode)
-                (".pylintrc" . conf-unix-mode))
+                (".pylintrc" . conf-unix-mode)
+                (".style.yapf" . conf-unix-mode))
               auto-mode-alist))
 #+END_SRC
 
