@@ -90,3 +90,5 @@ export PATH=${apps}/strace/git/bin:${PATH}
 ########################################
 
 source ~/dotfiles/functions.bash
+
+source ~/dotfiles/dotfiles-private/isi_private.bash
