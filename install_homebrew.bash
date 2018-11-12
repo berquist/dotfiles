@@ -7,6 +7,7 @@ packages=(
     ant
     autoconf
     automake
+    bash # Don't forget to add to /etc/shells
     blazegraph
     cmake
     colordiff
@@ -44,9 +45,11 @@ packages=(
     util-linux
     wget
     xmlstarlet
+    zsh # Don't forget to add to /etc/shells
 )
 
 packages_ext=(
+    holgerbrandl/tap/kscript
     shyiko/ktlint/ktlint
     vale
 )
