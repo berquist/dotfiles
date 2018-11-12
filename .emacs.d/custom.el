@@ -33,7 +33,17 @@
      ("colorlinks=true" "hyperref" nil))))
  '(preview-scale-function 1.0)
  '(py-fontify-shell-buffer-p t)
- '(safe-local-variable-values (quote ((eval wc-mode t) (dtrt-indent-mode . 0))))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+           (interactive)
+           (flycheck-mode nil))
+     (eval progn
+           (flycheck-mode toggle))
+     (eval progn
+           (flycheck-mode nil))
+     (eval wc-mode t)
+     (dtrt-indent-mode . 0))))
  '(save-interprogram-paste-before-kill t)
  '(tabbar-separator (quote (0.5)))
  '(tabbar-use-images nil))
