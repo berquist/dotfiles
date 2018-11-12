@@ -281,7 +281,7 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 ** Windows
 
 #+begin_src emacs-lisp
-(when window-system
+(when (display-graphic-p)
   (set-face-attribute 'default nil :font "Panic Sans-11")
   (set-frame-font "Panic Sans-11"))
 ;; How can I set fallback fonts if these aren't installed?
