@@ -1197,6 +1197,7 @@ Modified to remove/disable Racket.
 (use-package nim-mode)
 (use-package scala-mode)
 (use-package ssass-mode)
+(use-package strace-mode)
 (use-package swift-mode)
 (use-package systemd)
 (use-package tuareg) ; OCaml
