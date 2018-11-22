@@ -79,7 +79,9 @@ export PATH="${HOME}/.gem/ruby/2.0.0/bin:${PATH}"
 ########################################
 
 source /usr/local/opt/lmod/init/zsh
-module use $HOME/modules/sodium
+module use "${HOME}/modules/sodium"
+
+module load python/psi4conda
 
 ########################################
 ### FUNCTIONS
