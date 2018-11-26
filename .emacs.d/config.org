@@ -59,12 +59,13 @@
 (defun sys () system-type-as-string)
 
 ;; Set the path properly on OS X.
-(use-package exec-path-from-shell)
 (when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+  (use-package exec-path-from-shell
+    :config
+    (exec-path-from-shell-initialize)))
 #+end_src
 
-* UTF-8
+* Encoding: Unicode/UTF-8
 
 #+BEGIN_SRC emacs-lisp
 (setq locale-coding-system 'utf-8)
