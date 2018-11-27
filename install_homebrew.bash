@@ -16,7 +16,9 @@ packages=(
     dos2unix
     editorconfig
     # emacs
+    fd
     fuseki
+    fzf
     git
     gpg
     "gradle --with-all"
