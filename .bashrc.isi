@@ -9,9 +9,7 @@ source ~/dotfiles/aliases.bash
 ########################################
 
 export CUDA_CACHE_DISABLE=1
-export MATERIAL=/nas/material/users/$(whoami)
-alias mcd="cd ${MATERIAL}"
-alias p="pstat | grep $(whoami)"
+alias p="pstat | rg $(whoami)"
 
 export PATH=${HOME}/personal_scripts/isi:${PATH}
 
@@ -62,9 +60,13 @@ export PATH=${PATH}:/nfs/isicvlnas01/share/qstat-pretty/
 
 # personal software
 
-export apps=${HOME}/opt/apps
+export apps="${HOME}"/opt/apps
 
-source ${HOME}/perl5/perlbrew/etc/bashrc
+source "${HOME}"/perl5/perlbrew/etc/bashrc
+
+export PATH="${HOME}/.linuxbrew/bin:${PATH}"
+export MANPATH="$(brew --prefix)/share/man:$MANPATH"
+export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
 
 ########################################
 ### MODULES
