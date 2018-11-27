@@ -185,10 +185,9 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   :mode (("\\.csv$" . whitespace-mode)
          ("\\.tsv$" . whitespace-mode))
   :config
-  (setq
    ;; use the fill-column value
-   whitespace-line-column nil
-   whitespace-display-mappings
+  (setq whitespace-line-column nil)
+  (setq whitespace-display-mappings
    '((space-mark   ?\    [?\u00B7]     [?.])                    ; 32 SPACE, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
      ;; (space-mark ?\s [183] [46])
      ;; (space-mark 32 [32] [46]) ; normal space, display nothing
@@ -219,6 +218,12 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
      tab-mark
      newline-mark
      ))
+  ;; By default, `space-before-tab` considers zero or more spaces before a
+  ;; tab, but `space-after-tab` only considers `tab-width` or more
+  ;; spaces. Since my goal is not to look for indentation problems, but find
+  ;; _any_ mixing, consider any number of spaces after a tab. Additionally,
+  ;; apply font locking to the spaces, not the tab.
+  (setq whitespace-space-after-tab-regexp '("\011+\\(\\( \\{0,\\}\\)+\\)" . "\\(\011+\\) \\{0,\\}"))
   :init
   (setq global-whitespace-mode nil))
 
