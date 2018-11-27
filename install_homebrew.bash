@@ -15,7 +15,7 @@ packages=(
     docker-machine
     dos2unix
     editorconfig
-    emacs
+    # emacs
     fuseki
     git
     gpg
@@ -43,6 +43,7 @@ packages=(
     tidy-html5
     tmux
     util-linux
+    watchman
     wget
     xmlstarlet
     zsh # Don't forget to add to /etc/shells
@@ -77,6 +78,7 @@ packages_cask=(
     # -> problems due to app relocation
     # pycharm-ce
     # slack
+    spectacle
     visualvm
     zotero
 )
