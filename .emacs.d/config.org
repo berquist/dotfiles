@@ -217,8 +217,6 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
      tab-mark
      newline-mark
      ))
-  (add-hook 'prog-mode-hook 'whitespace-mode)
-  (add-hook 'text-mode-hook 'whitespace-mode)
   :init
   (setq global-whitespace-mode nil))
 
