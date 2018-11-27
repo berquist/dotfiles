@@ -80,7 +80,7 @@ Ansi-Color faces are included.")
    `(default ((,class (:background ,wombat/black :foreground ,wombat/white))))
    `(cursor ((,class (:background ,wombat-blue-1)))) ;; ,wombat-gray; background: #656565 -> #64a8d8
 
-   ;; Highlighting faces
+   ;;; Highlighting faces
    `(fringe ((,class (:background ,wombat-gray-5))))
    `(highlight ((,class (:background ,wombat-gray-1 :foreground "#ffffff"
                                      :underline t))))
@@ -89,48 +89,60 @@ Ansi-Color faces are included.")
    `(isearch ((,class (:background ,wombat-gray :foreground ,wombat/white)))) ;; background: ,wombat-gray-3, foreground: #857b6f
    `(isearch-fail ((,class (:background ,wombat-red-1))))
    `(lazy-highlight ((,class (:italic t :background ,wombat-purple :foreground ,wombat-gray+2)))) ;; background: "#384048"
-   ; `(lazy-highlight-face ((,class (:foreground ,wombat-blue-2 :background ,wombat-orange+1))))
-   ; `(trailing-whitespace ((,class (:background ,wombat/red))))
-   ; `(whitespace-empty ((,class (:background "firebrick4" :foreground "firebrick"))))
-   ; `(whitespace-newline ((,class (:foreground ,wombat-gray+1 :weight normal))))
-   ; `(whitespace-space ((,class (:background ,wombat-gray-5 :foreground "#424242"))))
-   ; `(whitespace-tab ((,class (:background ,wombat-gray-5 :foreground "#424242")))))
+   ;; `(lazy-highlight-face ((,class (:foreground ,wombat-blue-2 :background ,wombat-orange+1))))
 
-   ;; Mode line faces
+   ;;; whitespace-mode defines the following:
+   ;;;   space, hspace, tab, newline, trailing, line, space-before-tab, indentation, big-indent, empty, space-after-tab
+   ;; `(whitespace-space ((,class (:background ,wombat-gray-5 :foreground "#424242"))))
+   ;; `(whitespace-space ((,class (:background ,wombat/green))))
+   `(whitespace-hspace ((,class (:backgound ,wombat-purple))))
+   `(whitespace-tab ((,class (:foreground ,wombat-blue-1))))
+   `(whitespace-newline ((,class (:foreground "brown"))))
+   `(whitespace-trailing ((,class (:foreground ,wombat/yellow :background ,wombat/red))))
+   ;; `(whitespace-line ((,class ())))
+   ;; This is for _the tab after the space_!
+   `(whitespace-space-before-tab ((,class (:background ,wombat-pink))))
+   ;; `(whitespace-indentation ((,class ())))
+   ;; `(whitespace-big-indent ((,class ())))
+   `(whitespace-empty ((,class (:background ,wombat/white))))
+   ;; This is for _the tab before the space_!
+   `(whitespace-space-after-tab ((,class (:background ,wombat-orange+2))))
+
+   ;;; Mode line faces
    `(mode-line ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
    `(mode-line-inactive ((,class (:background ,wombat-gray-3 :box (:line-width 1 :color "#857b6f" :style nil)))))
-   ; `(mode-line-emphasis ((,class (:bold t))))
-   ; `(mode-line-highlight ((,class (:background ,wombat-orange :box nil))))
-   ; `(mode-line-buffer-id ((,class (:bold t :background "#424242" :weight bold))))
+   ;; `(mode-line-emphasis ((,class (:bold t))))
+   ;; `(mode-line-highlight ((,class (:background ,wombat-orange :box nil))))
+   ;; `(mode-line-buffer-id ((,class (:bold t :background "#424242" :weight bold))))
 
-   ;; Escape and prompt faces
+   ;;; Escape and prompt faces
    `(minibuffer-prompt ((,class (:foreground ,wombat/red))))
    `(escape-glyph ((,class (:foreground "#ddaa6f"))))
 
-   ;; Font lock faces
+   ;;; Font lock faces
    `(font-lock-builtin-face ((,class (:foreground ,wombat/red))))
    `(font-lock-comment-face ((,class (:italic t :slant italic :foreground ,wombat-gray+1))))
-   ; `(font-lock-comment-delimiter-face ((,class (:italic t :slant italic :foreground ,wombat-gray+1))))
+   ;; `(font-lock-comment-delimiter-face ((,class (:italic t :slant italic :foreground ,wombat-gray+1))))
    `(font-lock-constant-face ((,class (:foreground ,wombat/red))))
-   ; `(font-lock-doc-face ((,class (:foreground ,wombat-pink-1))))
+   ;; `(font-lock-doc-face ((,class (:foreground ,wombat-pink-1))))
    `(font-lock-function-name-face ((,class (:foreground ,wombat/yellow :italic t))))
    `(font-lock-keyword-face ((,class (:foreground ,wombat/blue :weight bold))))
-   ; `(font-lock-negation-char-face ((,class (:foreground ,wombat/red))))
-   ; `(font-lock-preprocessor-face ((,class (:foreground ,wombat-red-1))))
-   ; `(font-lock-regexp-grouping-backslash ((,class (:bold t :weight bold))))
-   ; `(font-lock-regexp-grouping-construct ((,class (:bold t ,wombat/green))))
+   ;; `(font-lock-negation-char-face ((,class (:foreground ,wombat/red))))
+   ;; `(font-lock-preprocessor-face ((,class (:foreground ,wombat-red-1))))
+   ;; `(font-lock-regexp-grouping-backslash ((,class (:bold t :weight bold))))
+   ;; `(font-lock-regexp-grouping-construct ((,class (:bold t ,wombat/green))))
    `(font-lock-string-face ((,class (:foreground ,wombat/green))))
    `(font-lock-type-face ((,class (:foreground ,wombat-green-1 :weight bold)))) ;; foreground: #92a65e
    `(font-lock-variable-name-face ((,class (:foreground ,wombat-pink-1)))) ;; ,wombat/yellow
    `(font-lock-warning-face ((,class (:bold t :foreground ,wombat/red)))) ;; ,wombat/cyan
 
-   ;; Button and link faces
+   ;;; Button and link faces
    `(link ((,class (:foreground ,wombat/blue :underline t))))
    `(link-visited ((,class (:foreground ,wombat/red :underline t))))
    `(button ((,class (:background ,wombat-gray-4 :foreground ,wombat/white))))
    `(header-line ((,class (:background ,wombat-gray-5 :foreground "#e7f6da"))))
 
-   ;; Gnus faces
+   ;;; Gnus faces
    `(gnus-group-news-1 ((,class (:weight bold :foreground ,wombat/green))))
    `(gnus-group-news-1-low ((,class (:foreground ,wombat/green))))
    `(gnus-group-news-2 ((,class (:weight bold :foreground ,wombat/yellow))))
@@ -155,7 +167,7 @@ Ansi-Color faces are included.")
    `(gnus-header-name ((,class (:foreground ,wombat/blue))))
    `(gnus-header-newsgroups ((,class (:foreground ,wombat/yellow))))
 
-   ;; Message faces
+   ;;; Message faces
    `(message-header-name ((,class (:foreground ,wombat/blue :weight bold))))
    `(message-header-cc ((,class (:foreground ,wombat/green))))
    `(message-header-other ((,class (:foreground ,wombat/green))))
@@ -164,14 +176,14 @@ Ansi-Color faces are included.")
    `(message-cited-text ((,class (:foreground ,wombat-gray+1))))
    `(message-separator ((,class (:foreground ,wombat/red :weight bold))))
 
-   ;; Parens
-   ; `(show-paren-match-face ((t (:background ,wombat-orange :foreground ,wombat/white :bold t))))
-   ; `(show-paren-mismatch-face ((t (:background ,wombat-purple-1 :foreground ,wombat-blue-2))))
-   ; `(paren-face-match ((t (:inherit show-paren-match-face))))
-   ; `(paren-face-match-light ((t (:inherit show-paren-match-face))))
-   ; `(paren-face-mismatch ((t (:inherit show-paren-mismatch-face))))
+   ;;; Parens
+   ;; `(show-paren-match-face ((t (:background ,wombat-orange :foreground ,wombat/white :bold t))))
+   ;; `(show-paren-mismatch-face ((t (:background ,wombat-purple-1 :foreground ,wombat-blue-2))))
+   ;; `(paren-face-match ((t (:inherit show-paren-match-face))))
+   ;; `(paren-face-match-light ((t (:inherit show-paren-match-face))))
+   ;; `(paren-face-mismatch ((t (:inherit show-paren-mismatch-face))))
 
-   ;; LaTeX
+   ;;; LaTeX
    `(font-latex-bold-face ((t (:foreground ,wombat-green-1))))
    `(font-latex-italic-face ((t (:inherit italic :foreground ,wombat-green-1))))
    `(font-latex-math-face ((t (:inherit font-lock-builtin-face))))

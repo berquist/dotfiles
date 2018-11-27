@@ -187,33 +187,35 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
    ;; use the fill-column value
    whitespace-line-column nil
    whitespace-display-mappings
-   '((space-mark   ?\ [?\u00B7] [?.])
-     (space-mark   ?\xA0 [?\u00A4] [?_])
-     (newline-mark ?\n [?\u21B5 ?\n]
-                   [172 10] [?\u00AF ?\n]) ;; downwards arrow, ..., overscore
-     (tab-mark     ?\t [9655 9]))
+   '((space-mark   ?\    [?\u00B7]     [?.])                    ; 32 SPACE, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+     ;; (space-mark ?\s [183] [46])
+     ;; (space-mark 32 [32] [46]) ; normal space, display nothing
+     (space-mark   ?\xA0 [?\u00A4]     [?_])                    ; hard space: currency sign
+     ;; (newline-mark ?\n [9166 10] [36 10])                    ; 10 LINE FEED, 9166 RETURN SYMBOL 「⏎」, 36 DOLLAR SIGN 「$」
+     (newline-mark ?\n   [?\u21B5 ?\n] [172 10] [?\u00AF ?\n])  ; eol: downwards arrow with corner leftwards, ..., macron
+     (tab-mark     ?\t   [9655 9]      [92 9] ))                ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」, 92 9 CHARACTER TABULATION 「\t」
    whitespace-style
    '(face
      trailing
-     ;; tabs
+     tabs
      ;; spaces
      ;; lines
      ;; lines-tail
-     ;; newline
-     ;; empty
+     newline
+     empty
      ;; indentation::tab
      ;; indentation::space
      ;; indentation
      ;; big-indent
-     ;; space-after-tab::tab
+     space-after-tab::tab
      ;; space-after-tab::space
      ;; space-after-tab
-     ;; space-before-tab::tab
+     space-before-tab::tab
      ;; space-before-tab::space
-     ;; space-before-tab
-     ;; space-mark
-     ;; tab-mark
-     ;; newline-mark
+     space-before-tab
+     space-mark
+     tab-mark
+     newline-mark
      ))
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (add-hook 'text-mode-hook 'whitespace-mode)
@@ -225,7 +227,7 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   (dtrt-indent-mode 1))
 
 (use-package aggressive-indent
-  :config
+  :init
   (global-aggressive-indent-mode 1))
 
 (use-package unfill
@@ -236,7 +238,7 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 (setq require-final-newline t)
 #+end_src
 
-* Keybindings
+* Key bindings
 
 - To view all current keybindings, =C-h b=.
 - To view all personal keybindings, =M-x describe-personal-keybindings=.
@@ -255,7 +257,7 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 * Theming and window shaping
 
-** modeline
+** mode line
 
 #+BEGIN_SRC emacs-lisp
 (use-package delight)
@@ -288,14 +290,8 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 ;; How can I set fallback fonts if these aren't installed?
 ;; Or just try from a list?
 
-;; If we're windowed, set the transparency
-;; Usage: (set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
-;; (set-frame-parameter (selected-frame) 'alpha '(100 100))
-;; (add-to-list 'default-frame-alist '(alpha 100 100))
-
-;; If we're windowed, set the frame size.
+;; TODO set to maximized
 (when (display-graphic-p)
-  ;; 11-inch MacBook Air
   (if (eq system-type 'darwin)
       (set-frame-size (selected-frame) 191 55)))
 
@@ -304,13 +300,6 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   (toggle-indicate-empty-lines))
 (setq-default indicate-buffer-boundaries 'right)
 #+end_src
-
-** line numbers
-
-#+BEGIN_SRC emacs-lisp
-;; (when (version<= "26.0.50" emacs-version)
-;;   (global-display-line-numbers-mode))
-#+END_SRC
 
 * Spelling
 
@@ -321,9 +310,11 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   :config
   (setq langtool-mother-tongue "en"
         langtool-default-language "en-US")
+  ;; TODO update
   (if (eq system-type 'darwin)
       (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-server.jar"
             langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
+  ;; Arch Linux
   (if (eq system-type 'gnu/linux)
       (setq langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
             langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar")))
