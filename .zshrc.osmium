@@ -12,8 +12,7 @@ export apps="${QCPROGS}"
 
 export LD_LIBRARY_PATH="${HOME}"/data/opt/lib:"${LD_LIBRARY_PATH}"
 
-# unlock SSH and GPG keys
-eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
+eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
 export WORKON_HOME=$HOME/data/virtualenvs
 source /usr/bin/virtualenvwrapper.sh

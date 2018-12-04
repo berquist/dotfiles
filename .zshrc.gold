@@ -6,8 +6,7 @@
 ### gold-specific things
 ########################################
 
-# unlock SSH and GPG keys
-eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
+eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
 if [ "$TMUX" != "" ]
 then

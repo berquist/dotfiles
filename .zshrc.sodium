@@ -7,8 +7,7 @@
 ########################################
 
 # brew install keychain
-# unlock SSH and GPG keys
-eval $(keychain --nogui --eval --quiet --agents ssh,gpg id_rsa)
+eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
 ## #####################
 ## ## Setting Mac OS X
