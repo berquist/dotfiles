@@ -4,34 +4,33 @@
 [user]
 	name = Eric Berquist
 	email = eric.berquist@gmail.com
-    # TODO
-    # signingkey = BAFD205D
+	signingkey = AAD43B70A5049675CFC8B101BAFD205D5FA2B329
 
 [core]
-    # When using the emacs daemon, just `emacs` is a problem;
-    # `--no-window-system` forces a separate process and to open in a
-    # terminal, not a GUI.
-    editor = emacs -nw
-    autocrlf = input
-    safecrlf = warn
+	# When using the emacs daemon, just `emacs` is a problem;
+	# `--no-window-system` forces a separate process and to open in a
+	# terminal, not a GUI.
+	editor = emacs -nw
+	autocrlf = input
+	safecrlf = warn
 
 # Available colors are enumerated in
 # http://stackoverflow.com/questions/15458237/git-pretty-format-colors
 [color]
     # `ui` probably sets all of these to auto, but meh
-    ui = auto
     branch = auto
-    diff = auto
-    grep = auto
-    interactive = auto
-    pager = true
-    showBranch = auto
-    status = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	pager = true
+	showBranch = auto
+	status = auto
+	ui = auto
 
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    whitespace = red blink
+	meta = yellow bold
+	frag = magenta bold
+	whitespace = red blink
 
 [color "status"]
     branch = blue
@@ -60,29 +59,28 @@
     # http://stackoverflow.com/questions/6017987/how-can-i-list-all-the-deleted-files-in-a-git-repository
     show-deleted = log --diff-filter=D --summary
     show-deleted2 = !git log --all --pretty=format: --name-only --diff-filter=D | sort -u
-    # Similar to the default, but with some labels.
-    l = log --color --decorate --abbrev-commit --date=iso
-    # gitk style, very pretty mhmmmm
-    lg = !git l --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
+	l = log --graph --pretty=fuller --abbrev-commit --date=format:'%F %r (%a, %d %b %Y %T %z)'
+	# gitk style, very pretty mhmmmm
+	lg = !git l --pretty=format:'%Cred%h%Creset %G? -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
 
-    ## Let's do some destructive stuff.
-    # Add more things to the last commit on the current head, with the
-    # ability to rewrite the commit message.
-    amend = commit --amend -c HEAD
-    # Nicely go back a commit.
-    undo = reset --soft HEAD~1
+	## Let's do some destructive stuff.
+	# Add more things to the last commit on the current head, with the
+	# ability to rewrite the commit message.
+	amend = commit --amend -c HEAD
+	# Nicely go back a commit.
+	undo = reset --soft HEAD~1
 
-    ## Useful for LaTeX.
-    ## Taken from https://wiki.math.cmu.edu/iki/wiki/tips/20140301-git-latexdiff.html
-    # use like: git wdiff HEAD~1
-    wdiff = diff --color-words --ignore-all-space
-    # use like: git ldiff HEAD~1
-    ldiff = difftool -y -t latex
+	## Useful for LaTeX.
+	## Taken from https://wiki.math.cmu.edu/iki/wiki/tips/20140301-git-latexdiff.html
+	# use like: git wdiff HEAD~1
+	wdiff = diff --color-words --ignore-all-space
+	# use like: git ldiff HEAD~1
+	ldiff = difftool -y -t latex
 
-    # Perform a "character" diff.
-    # http://stackoverflow.com/questions/1721738/using-diff-or-anything-else-to-get-character-level-diff-between-text-files
-    # Changing --word-diff to plain helps to make things more obvious.
-    cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
+	# Perform a "character" diff.
+	# http://stackoverflow.com/questions/1721738/using-diff-or-anything-else-to-get-character-level-diff-between-text-files
+	# Changing --word-diff to plain helps to make things more obvious.
+	cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
 
 [diff]
     # TODO Why this number?
@@ -91,10 +89,6 @@
 [difftool.latex]
     # Needs the `ldiff` script.
     cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
-
-# TODO?
-# [commit]
-# 	gpgsign = true
 
 # Where did this come from?
 [filter "lfs"]
