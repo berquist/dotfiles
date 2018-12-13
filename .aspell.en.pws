@@ -1,4 +1,4 @@
-personal_ws-1.1 en 379 
+personal_ws-1.1 en 380 
 solvated
 Koseki
 Yamaguchi
@@ -291,6 +291,7 @@ diagonalization
 Hermitian
 inhomogeneous
 orthonormality
+ADF
 LYP
 chloromethane
 DropOut
@@ -350,8 +351,8 @@ conformational
 PQI
 parallelization
 SCF
-maclaurin
 MacLaurin
+maclaurin
 algorithmically
 Dunning's
 unfactored
