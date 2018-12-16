@@ -1,8 +1,8 @@
 * General configuration
 
 #+begin_src emacs-lisp
-(setq-default user-full-name "Eric J. Berquist"
-              user-mail-address "eric.berquist@gmail.com")
+(setq-default user-full-name "Eric J. Berquist")
+(setq-default user-mail-address "eric.berquist@gmail.com")
 
 ;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
@@ -11,29 +11,29 @@
 
 ;; http://stackoverflow.com/questions/3281581/how-to-word-wrap-in-emacs
 ;; http://stackoverflow.com/questions/12989072/showing-continuation-lines-in-emacs-in-a-text-terminal
-(setq-default transient-mark-mode t
-              visual-line-mode t
-              truncate-lines nil
-              line-number-mode t
-              column-number-mode t
-              cursor-type 'box)
+(setq-default transient-mark-mode t)
+(setq-default visual-line-mode t)
+(setq-default truncate-lines nil)
+(setq-default line-number-mode t)
+(setq-default column-number-mode t)
+(setq-default cursor-type 'box)
 
 ;; Enable maximum syntax highlighting wherever possible.
-(setq-default global-font-lock-mode t
-              font-lock-maximum-decoration t)
+(setq-default global-font-lock-mode t)
+(setq-default font-lock-maximum-decoration t)
 
 ;; Bells are annoying, stop ringing!
-(setq-default visible-bell nil
-              audible-bell nil
-              ring-bell-function 'ignore)
+(setq-default visible-bell nil)
+(setq-default audible-bell nil)
+(setq-default ring-bell-function 'ignore)
 
 ;; 'y' is two characters less than 'yes'.
 ;; 'defalias' or 'fset'?
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; death to tabs, tabs are evil
-(setq-default indent-tabs-mode nil
-              tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 ;; Line length when executing `fill-paragraph`. Default is 70. See
 ;; https://www.emacswiki.org/emacs/FillParagraph and
@@ -50,8 +50,8 @@
 
 ;; Set up the initial scratch buffer.
 ;; http://emacsredux.com/blog/2014/07/25/configure-the-scratch-buffers-mode/
-(setq initial-major-mode 'fundamental-mode
-      initial-scratch-message nil)
+(setq initial-major-mode 'fundamental-mode)
+(setq initial-scratch-message nil)
 
 ;; What platform are we on? darwin, gnu/linux are the most likely
 ;; answers.
@@ -59,10 +59,10 @@
 (defun sys () system-type-as-string)
 
 ;; Set the path properly on OS X.
-(when (memq window-system '(mac ns))
-  (use-package exec-path-from-shell
-    :config
-    (exec-path-from-shell-initialize)))
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :config
+  (exec-path-from-shell-initialize))
 #+end_src
 
 * Encoding: Unicode/UTF-8
@@ -79,10 +79,10 @@
 
 #+begin_src emacs-lisp
 ;; let's live on the edge and disable backup and autosave
-(setq-default backup-inhibited t
-              auto-save-default nil
-              create-lockfiles nil
-              make-backup-files nil)
+(setq-default backup-inhibited t)
+(setq-default auto-save-default nil)
+(setq-default create-lockfiles nil)
+(setq-default make-backup-files nil)
 #+end_src
 
 * Disable popup boxes
@@ -107,11 +107,11 @@ http://oremacs.com/2015/02/09/ido-vertical/
 #+begin_src emacs-lisp
 (use-package ido
   :config
-  (setq ido-enable-flex-matching t
-        ido-everywhere t
-        ;; wow, that *is* annoying!
-        ido-use-filename-at-point nil
-        ido-use-url-at-point nil)
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  ;; wow, that *is* annoying!
+  (setq ido-use-filename-at-point nil)
+  (setq ido-use-url-at-point nil)
   :init
   (ido-mode t))
 (use-package ido-vertical-mode
@@ -169,9 +169,9 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 #+begin_src emacs-lisp
 (use-package mic-paren
   :config
-  (setq paren-delay nil
-        paren-highlight-at-point t
-        paren-highlight-offscreen t)
+  (setq paren-delay nil)
+  (setq paren-highlight-at-point t)
+  (setq paren-highlight-offscreen t)
   :init
   (paren-activate))
 
@@ -308,8 +308,8 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 #+BEGIN_SRC emacs-lisp
 (use-package langtool
   :config
-  (setq langtool-mother-tongue "en"
-        langtool-default-language "en-US")
+  (setq langtool-default-language "en-US")
+  (setq langtool-mother-tongue "en")
   ;; TODO update
   (if (eq system-type 'darwin)
       (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-server.jar"
@@ -323,8 +323,15 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 TODO clean this up, figure out LaTeX
 
 #+begin_src emacs-lisp
-(setq flyspell-issue-welcome-flag nil)
-(setq flyspell-mode-line-string " FlyS")
+(use-package flyspell-mode
+  ;; built-in binding is M-$, ew
+  :bind (("<f8>" . ispell-word)
+         ("C-S-<f8>" . flyspell-mode)
+         ("C-M-<f8>" . flyspell-buffer)
+         ("C-<f8>" . flyspell-check-previous-highlighted-word))
+  :config
+  (setq flyspell-issue-welcome-flag nil)
+  (setq flyspell-mode-line-string " FlyS"))
 
 ;; These are the modes flyspell should be enabled/disabled for
 ;; (https://www.emacswiki.org/emacs/FlySpell#toc1).
@@ -333,7 +340,6 @@ TODO clean this up, figure out LaTeX
 (dolist (hook '(change-log-mode-hook
                 log-edit-mode-hook))
   (add-hook hook (lambda () (flyspell-mode -1))))
-
 ;; Don't enable flyspell for programming-type modes.
 ;; (dolist (mode '(emacs-lisp-mode-hook
 ;;                 inferior-lisp-mode-hook
@@ -341,11 +347,6 @@ TODO clean this up, figure out LaTeX
 ;;   (add-hook mode
 ;;             '(lambda ()
 ;;                (flyspell-prog-mode))))
-
-(bind-key (kbd "<f8>") 'ispell-word) ;; built-in binding is M-$, ew
-(bind-key (kbd "C-S-<f8>") 'flyspell-mode)
-(bind-key (kbd "C-M-<f8>") 'flyspell-buffer)
-(bind-key (kbd "C-<f8>") 'flyspell-check-previous-highlighted-word)
 (defun flyspell-check-next-highlighted-word ()
   "Custom function to spell check next highlighted word"
   (interactive)
@@ -365,8 +366,7 @@ TODO clean this up, figure out LaTeX
 
 #+BEGIN_SRC emacs-lisp
 (use-package company
-  :config
-  (setq company-idle-delay 0.05)
+  :custom (company-idle-delay 0.05)
   :init
   (add-hook 'after-init-hook 'global-company-mode))
 (use-package company-lsp
@@ -394,11 +394,11 @@ TODO add LaTex
 (use-package flycheck
   :bind (("C-c f" . flycheck-mode))
   :config
-  (setq
-   flycheck-check-syntax-automatically '(mode-enabled save)
-   flycheck-markdown-mdl-style "~/.mdlrc"
-   flycheck-pylintrc "~/.pylintrc"))
-(global-flycheck-mode)
+  (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  (setq flycheck-markdown-mdl-style "~/.mdlrc")
+  (setq flycheck-pylintrc "~/.pylintrc")
+  :init
+  (global-flycheck-mode))
 #+end_src
 
 ** Shell
@@ -505,34 +505,34 @@ Not using =git-gutter= right now, but if I did...
          ("C-c c" . org-capture))
   :config
   (setq org-agenda-files '("~/Dropbox/Notes"
-                           "~/Dropbox/research/lab_notebook")
-        org-babel-tangle-lang-exts '(("python" . "py")
+                           "~/Dropbox/research/lab_notebook"))
+  (setq org-babel-tangle-lang-exts '(("python" . "py")
                                      ("emacs-lisp" . "el")
-                                     ("elisp" . "el"))
-        org-closed-keep-when-no-todo t
-        org-confirm-babel-evaluate nil
-        org-descriptive-links nil
-        org-directory "~/Dropbox/Notes"
-        org-edit-src-content-indentation 0
-        org-export-backends '(ascii html icalendar latex md)
-        org-export-dispatch-use-expert-ui t
-        org-export-with-smart-quotes t
-        ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
-        org-highlight-latex-and-relatex '(latex script entities)
-        org-html-with-latex '(mathjax)
-        org-image-actual-width nil
-        org-latex-create-formula-image-program 'imagemagick
-        org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n"
-        org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'"))
-        org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f")
-        org-list-allow-alphabetical t
-        org-log-done 'time
-        org-log-done-with-time t
-        org-src-fontify-natively t
-        org-src-tab-acts-natively t
-        org-startup-folded nil
-        ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
-        org-startup-truncated nil)
+                                     ("elisp" . "el")))
+  (setq org-closed-keep-when-no-todo t)
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-descriptive-links nil)
+  (setq org-directory "~/Dropbox/Notes")
+  (setq org-edit-src-content-indentation 0)
+  (setq org-export-backends '(ascii html icalendar latex md))
+  (setq org-export-dispatch-use-expert-ui t)
+  (setq org-export-with-smart-quotes t)
+  ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
+  (setq org-highlight-latex-and-relatex '(latex script entities))
+  (setq org-html-with-latex '(mathjax))
+  (setq org-image-actual-width nil)
+  (setq org-latex-create-formula-image-program 'imagemagick)
+  (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
+  (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
+  (setq org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
+  (setq org-list-allow-alphabetical t)
+  (setq org-log-done 'time)
+  (setq org-log-done-with-time t)
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-startup-folded nil)
+  ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
+  (setq org-startup-truncated nil)
   (add-to-list 'org-latex-packages-alist '("" "braket" t))
   (add-to-list 'org-latex-packages-alist '("final" "microtype" nil))
   (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
@@ -606,22 +606,6 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
 #         org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs"
 #         bibtex-dialect 'biblatex))
 # #+END_SRC
-
-* CSS
-
-#+begin_src emacs-lisp
-(use-package rainbow-mode
-  :disabled t)
-;; (defun my-css-mode-hook ()
-;;   (rainbow-mode t))
-;; (add-hook 'css-mode-hook 'my-css-mode-hook)
-
-;; (define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
-;;   (lambda () (rainbow-mode 1)))
-
-;; (my-global-rainbow-mode 1)
-(setq my-global-rainbow-mode nil)
-#+end_src
 
 * Compilation
 
@@ -727,7 +711,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
                 ("\\.f03\\'" . f90-mode)
                 ("\\.f08\\'" . f90-mode))
               auto-mode-alist))
-
 (setq fortran-comment-region "C")
 #+end_src
 
@@ -761,8 +744,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :config
-  (setq python-fill-docstring-style 'pep-257-nn
-        python-shell-interpreter "ipython"))
+  (setq python-fill-docstring-style 'pep-257-nn))
 
 (use-package pydoc)
 
@@ -772,9 +754,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   (with-eval-after-load 'company
                        (add-to-list 'company-backends 'company-jedi)))
 (use-package anaconda-mode
-  :init
-  (add-hook 'python-mode-hook 'anaconda-mode)
-  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+  :hook ((python-mode . anaconda-mode)
+         (python-mode . anaconda-eldoc-mode)))
 (use-package company-anaconda
   :init
   (with-eval-after-load 'company
@@ -784,12 +765,11 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 ** Conf
 
 #+BEGIN_SRC emacs-lisp
-(setq auto-mode-alist
-      (append '((".coveragerc" . conf-unix-mode)
-                (".flake8" . conf-unix-mode)
-                (".pylintrc" . conf-unix-mode)
-                (".style.yapf" . conf-unix-mode))
-              auto-mode-alist))
+(use-package conf-mode
+  :mode ((".coveragerc" . conf-unix-mode)
+         (".flake8" . conf-unix-mode)
+         (".pylintrc" . conf-unix-mode)
+         (".style.yapf" . conf-unix-mode)))
 #+END_SRC
 
 ** Linters
@@ -856,20 +836,19 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
             (lambda ()
               (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))  
   :init
-  (setq
-   markdown-asymmetric-header t
-   markdown-content-type "application/xhtml+xml"
-   markdown-coding-system "utf-8"
-   ;; This isn't super necessary since I have pandoc run a similar command
-   ;; every time I save with these default arguments, but this always produces
-   ;; HTML where pandoc-mode might not.
-   markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html"
-   markdown-enable-math t
-   markdown-fontify-code-blocks-natively t
-   markdown-hide-markup nil
-   markdown-hide-urls nil
-   markdown-italic-underscore t
-   markdown-link-space-sub-char "-"))
+  (setq markdown-asymmetric-header t)
+  (setq markdown-content-type "application/xhtml+xml")
+  (setq markdown-coding-system "utf-8")
+  ;; This isn't super necessary since I have pandoc run a similar command
+  ;; every time I save with these default arguments, but this always produces
+  ;; HTML where pandoc-mode might not.
+  (setq markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html")
+  (setq markdown-enable-math t)
+  (setq markdown-fontify-code-blocks-natively t)
+  (setq markdown-hide-markup nil)
+  (setq markdown-hide-urls nil)
+  (setq markdown-italic-underscore t)
+  (setq markdown-link-space-sub-char "-"))
 #+end_src
 
 * deft
@@ -880,17 +859,16 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 (use-package deft
   :bind (("C-c d" . deft))
   :config
-  (setq
-   deft-auto-save-interval 60.0
-   ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
-   deft-directory "~/Dropbox/Notes"
-   deft-default-extension "md"
-   deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex")
-   deft-recursive t
-   deft-text-mode 'gfm-mode
-   deft-time-format " %Y-%m-%d %H:%M:%S"
-   deft-use-filename-as-title t
-   deft-use-filter-string-as-filename t))
+  (setq deft-auto-save-interval 60.0)
+  ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
+  (setq deft-directory "~/Dropbox/Notes")
+  (setq deft-default-extension "md")
+  (setq deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex"))
+  (setq deft-recursive t)
+  (setq deft-text-mode 'gfm-mode)
+  (setq deft-time-format " %Y-%m-%d %H:%M:%S")
+  (setq deft-use-filename-as-title t)
+  (setq deft-use-filter-string-as-filename t))
 #+end_src
 
 https://stackoverflow.com/a/35450025/3249688
@@ -1095,19 +1073,18 @@ Modified to remove/disable Racket.
 #+BEGIN_SRC emacs-lisp
 (use-package geiser
   :config
-  (setq
-   geiser-active-implementations '(guile chicken chez mit chibi)
-   geiser-implementations-alist '(((regexp "\\.scm$") guile)
-                                  ((regexp "\\.scm$") chicken)
-                                  ((regexp "\\.release-info$") chicken)
-                                  ((regexp "\\.meta$") chicken)
-                                  ((regexp "\\.setup$") chicken)
-                                  ((regexp "\\.ss$") chez)
-                                  ((regexp "\\.def$") chez)
-                                  ((regexp "\\.scm$") mit)
-                                  ((regexp "\\.pkg$") mit)
-                                  ((regexp "\\.scm$") chibi)
-                                  ((regexp "\\.sld$") chibi))))
+  (setq geiser-active-implementations '(guile chicken chez mit chibi))
+  (setq geiser-implementations-alist '(((regexp "\\.scm$") guile)
+                                       ((regexp "\\.scm$") chicken)
+                                       ((regexp "\\.release-info$") chicken)
+                                       ((regexp "\\.meta$") chicken)
+                                       ((regexp "\\.setup$") chicken)
+                                       ((regexp "\\.ss$") chez)
+                                       ((regexp "\\.def$") chez)
+                                       ((regexp "\\.scm$") mit)
+                                       ((regexp "\\.pkg$") mit)
+                                       ((regexp "\\.scm$") chibi)
+                                       ((regexp "\\.sld$") chibi))))
 #+END_SRC
 
 ** Racket
