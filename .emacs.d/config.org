@@ -533,16 +533,6 @@ Not using =git-gutter= right now, but if I did...
   (setq org-startup-folded nil)
   ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
   (setq org-startup-truncated nil)
-  (add-to-list 'org-latex-packages-alist '("" "braket" t))
-  (add-to-list 'org-latex-packages-alist '("final" "microtype" nil))
-  (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
-  (with-eval-after-load "ox-latex"
-    (add-to-list 'org-latex-classes '("refsheet" "\\documentclass{refsheet}"
-                                      ("\\section{%s}" . "\\section*{%s}")
-                                      ("\\subsection{%s}" . "\\subsection*{%s}")
-                                      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                                      ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                                      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
   ;; You need to install pygments to use minted.
   (when (executable-find "pygmentize")
@@ -554,7 +544,17 @@ Not using =git-gutter= right now, but if I did...
     ;; Let the exporter use the -shell-escape option to let latex execute
     ;; external programs.  This obviously and can be dangerous to activate!
     (setq org-latex-minted-options
-          '(("framesep" "2mm")))))
+          '(("framesep" "2mm"))))
+  (add-to-list 'org-latex-packages-alist '("" "braket" t))
+  (add-to-list 'org-latex-packages-alist '("final" "microtype" nil))
+  (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
+  (with-eval-after-load "ox-latex"
+    (add-to-list 'org-latex-classes '("refsheet" "\\documentclass{refsheet}"
+                                      ("\\section{%s}" . "\\section*{%s}")
+                                      ("\\subsection{%s}" . "\\subsection*{%s}")
+                                      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                                      ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                                      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))))
 (use-package htmlize)
 (use-package ox-gfm)
 (use-package ox-pandoc)
