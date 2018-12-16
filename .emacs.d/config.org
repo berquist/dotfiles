@@ -323,7 +323,7 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 TODO clean this up, figure out LaTeX
 
 #+begin_src emacs-lisp
-(use-package flyspell-mode
+(use-package flyspell
   ;; built-in binding is M-$, ew
   :bind (("<f8>" . ispell-word)
          ("C-S-<f8>" . flyspell-mode)
@@ -938,7 +938,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
-  :hook (prog-mode text-mode)
+  :hook ((prog-mode text-mode) . (lambda () (editorconfig-mode 1)))
   :config
   (defun ejb/editorconfig-has-editorconfig ()
     "If there is an .editorconfig file associated with the
@@ -1008,7 +1008,7 @@ current buffer, return its path, otherwise nil."
 * XML
 
 #+BEGIN_SRC emacs-lisp
-(use-package nxml-mode
+(use-package nxml
   :mode (("\\.rdf\\'" . nxml-mode)
          ("\\.xmp\\'" . nxml-mode)))
 #+END_SRC
