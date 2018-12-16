@@ -137,26 +137,21 @@ http://oremacs.com/2015/02/09/ido-vertical/
   (ivy-mode 1))
 (use-package counsel
   :disabled t
-  :config
-  (bind-key (kbd "M-x") 'counsel-M-x)
-  (bind-key (kbd "C-x C-f") 'counsel-find-file))
+  :bind (("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)))
 (use-package swiper
   :disabled t
-  :config
-  (bind-key (kbd "C-s") 'swiper))
+  :bind ("C-s" . swiper))
 #+END_SRC
 
 Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
 
 #+BEGIN_SRC emacs-lisp
 (use-package anzu
-  ;; Unncessary since anzu comes with a variable!
-  ;; :diminish ""
-  :config
-  (setq anzu-mode-lighter "")
+  :diminish ""
   ;; M-% and C-M-% are the original query-replace(-regexp) shortcuts
-  ;; (bind-key (kbd "C-x C-g") 'anzu-query-replace)
-  ;; (bind-key (kbd "C-x C-a") 'anzu-query-replace-regexp)
+  ;; :bind (("C-x C-g" . anzu-query-replace)
+  ;;        ("C-x C-a" . anzu-query-replace-regexp))
   :init
   (global-anzu-mode 1))
 #+END_SRC
@@ -420,14 +415,11 @@ sudo pkg install checkbashisms # FreeBSD
 
 #+begin_src emacs-lisp
 (use-package flycheck-checkbashisms
+  :hook (flycheck-mode . flycheck-checkbashisms-setup)
   :config
-  (setq
-   ;; Check 'echo -n' usage
-   flycheck-checkbashisms-newline t
-   flycheck-checkbashisms-posix t)
-  :init
-  (with-eval-after-load 'flycheck
-    (add-hook 'flycheck-mode-hook #'flycheck-checkbashisms-setup)))
+  ;; Check 'echo -n' usage
+  (setq flycheck-checkbashisms-newline t)
+  (setq flycheck-checkbashisms-posix t))
 #+end_src
 
 ** Prose
@@ -436,9 +428,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck-vale
-  :init
-  (with-eval-after-load 'flycheck
-    (add-hook 'flycheck-mode-hook #'flycheck-vale-setup)))
+  :hook (flycheck-mode . flycheck-vale-setup))
 #+END_SRC
 
 * Git/version control
@@ -471,8 +461,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   :config
   (setq magit-commit-arguments '("--verbose")))
 (use-package magit-svn
-  :config
-  (add-hook 'magit-mode-hook 'magit-svn-mode))
+  :hook magit-mode)
 #+END_SRC
 
 Not using =git-gutter= right now, but if I did...
@@ -486,6 +475,7 @@ Not using =git-gutter= right now, but if I did...
 
 #+begin_src emacs-lisp
 (use-package pandoc-mode
+  :hook pandoc-load-default-settings
   :config
   (setq pandoc-major-modes
         '((gfm-mode . "gfm")
@@ -499,8 +489,7 @@ Not using =git-gutter= right now, but if I did...
           (org-mode . "org")
           (rst-mode . "rst")
           (text-mode . "markdown") ; this is the only difference from default
-          (textile-mode . "textile")))
-  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings))
+          (textile-mode . "textile"))))
 #+end_src
 
 * Org
@@ -823,21 +812,16 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 (use-package flycheck-pycheckers
   :disabled t
-  :config
-  (setq flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
-  :init
-  (with-eval-after-load 'flycheck
-    (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
+  :custom (flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
+  :hook (flycheck-mode . flycheck-pycheckers-setup))
 
 (use-package blacken
   :disabled t
-  :config
-  (add-hook 'python-mode-hook 'blacken-mode))
+  :hook python-mode)
 
 (use-package yapfify
   :disabled t
-  :config
-  (add-hook 'python-mode-hook 'yapf-mode))
+  :hook (python-mode . yapf-mode))
 #+end_src
 
 ** Cython
@@ -863,15 +847,14 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
 
 #+begin_src emacs-lisp
 (use-package markdown-mode
-  :mode
-  (("\\.markdown\\'" . markdown-mode)
-   ("\\.mdown\\'" . markdown-mode)
-   ("\\.md\\'" . markdown-mode))
+  :mode (("\\.markdown\\'" . markdown-mode)
+         ("\\.mdown\\'" . markdown-mode)
+         ("\\.md\\'" . markdown-mode))
+  :hook pandoc-mode
   :config
-  (add-hook 'markdown-mode-hook 'pandoc-mode)
   (add-hook 'markdown-mode-hook
             (lambda ()
-              (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
+              (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))  
   :init
   (setq
    markdown-asymmetric-header t
@@ -977,6 +960,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
+  :hook (prog-mode text-mode)
   :config
   (defun ejb/editorconfig-has-editorconfig ()
     "If there is an .editorconfig file associated with the
@@ -990,10 +974,7 @@ current buffer, return its path, otherwise nil."
     (if (ejb/editorconfig-has-editorconfig)
         " EditorConfig"
       ""))
-  :delight '(:eval (ejb/editorconfig-mode-lighter))
-  :init
-  (add-hook 'prog-mode-hook (editorconfig-mode 1))
-  (add-hook 'text-mode-hook (editorconfig-mode 1)))
+  :delight '(:eval (ejb/editorconfig-mode-lighter)))
 #+END_SRC
 
 * Julia
@@ -1001,9 +982,7 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (use-package julia-mode)
 (use-package flycheck-julia
-  :init
-  (with-eval-after-load 'flycheck
-    (add-hook 'flycheck-mode-hook #'flycheck-julia-setup)))
+  :hook (flycheck-mode . flycheck-julia-setup))
 #+END_SRC
 
 * Ruby
@@ -1017,9 +996,7 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode)
 (use-package flycheck-yamllint
-  :init
-  (eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup)))
+  :hook (flycheck-mode . flycheck-yamllint-setup))
 #+END_SRC
 
 * JSON
@@ -1053,8 +1030,9 @@ current buffer, return its path, otherwise nil."
 * XML
 
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'auto-mode-alist '("\\.rdf\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.xmp\\'" . nxml-mode))
+(use-package nxml-mode
+  :mode (("\\.rdf\\'" . nxml-mode)
+         ("\\.xmp\\'" . nxml-mode)))
 #+END_SRC
 
 * MATLAB/Octave
@@ -1084,15 +1062,9 @@ current buffer, return its path, otherwise nil."
 #+begin_src emacs-lisp
 (use-package doc-view
   :disabled t
-  :config
-  ;; paging up and down globally
-  ;; (fset 'doc-prev "\C-xo\C-x[\C-xo")
-  ;; (fset 'doc-next "\C-xo\C-x]\C-xo")
-  ;; (bind-key (kbd "M-[") 'doc-prev)
-  ;; (bind-key (kbd "M-]") 'doc-next)
-  (bind-keys :map doc-view-mode-map
-             ((kbd "M-[") . doc-view-previous-page)
-             ((kbd "M-]") . doc-view-next-page)))
+  :bind (:map doc-view-mode-map
+              ("M-[" . doc-view-previous-page)
+              ("M-]" . doc-view-next-page)))
 #+end_src
 
 * Scheme/Lisp
