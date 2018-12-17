@@ -856,6 +856,12 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   (setq markdown-link-space-sub-char "-"))
 #+end_src
 
+** polymode
+
+#+BEGIN_SRC emacs-lisp
+(use-package poly-markdown)
+#+END_SRC
+
 * deft
 
 Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' website]] and http://pragmaticemacs.com/emacs/make-quick-notes-with-deft/.
@@ -1152,6 +1158,7 @@ Modified to remove/disable Racket.
 (use-package swift-mode)
 (use-package systemd)
 (use-package tuareg) ; OCaml
+(use-package typescript-mode)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
