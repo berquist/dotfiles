@@ -98,6 +98,25 @@
     ad-do-it))
 #+end_src
 
+* Key bindings
+
+- To view all current keybindings, =C-h b=.
+- To view all personal keybindings, =M-x describe-personal-keybindings=.
+- Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='uncomment-region= here, but =M-;= calls ='comment-dwim=, which is what you really want.
+
+#+begin_src emacs-lisp
+(bind-key (kbd "C-x C-b") 'switch-to-buffer)
+(bind-key (kbd "C-x b") 'ibuffer)
+(bind-key (kbd "C-c b") 'switch-to-previous-buffer)
+
+(bind-key (kbd "C-+") 'text-scale-increase)
+(bind-key (kbd "C--") 'text-scale-decrease)
+
+(bind-key (kbd "C-x C-h") 'replace-string)
+
+(bind-key (kbd "C-c p") 'pwd)
+#+end_src
+
 * Parens/whitespace/indentation
 
 See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
@@ -172,23 +191,6 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 ;; Always place a newline at the end of files, like nano does by
 ;; default.
 (setq require-final-newline t)
-#+end_src
-
-* Key bindings
-
-- To view all current keybindings, =C-h b=.
-- To view all personal keybindings, =M-x describe-personal-keybindings=.
-- Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='uncomment-region= here, but =M-;= calls ='comment-dwim=, which is what you really want.
-
-#+begin_src emacs-lisp
-(bind-key (kbd "C-x C-b") 'switch-to-buffer)
-(bind-key (kbd "C-x b") 'ibuffer)
-(bind-key (kbd "C-c b") 'switch-to-previous-buffer)
-
-(bind-key (kbd "C-+") 'text-scale-increase)
-(bind-key (kbd "C--") 'text-scale-decrease)
-
-(bind-key (kbd "C-x C-h") 'replace-string)
 #+end_src
 
 * Theming and window shaping
