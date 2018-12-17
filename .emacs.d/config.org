@@ -98,70 +98,6 @@
     ad-do-it))
 #+end_src
 
-* Ido and searching
-
-Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
-
-http://oremacs.com/2015/02/09/ido-vertical/
-
-#+begin_src emacs-lisp
-(use-package ido
-  :config
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  ;; wow, that *is* annoying!
-  (setq ido-use-filename-at-point nil)
-  (setq ido-use-url-at-point nil)
-  :init
-  (ido-mode t))
-(use-package ido-vertical-mode
-  :disabled t
-  :config
-  (setq ido-vertical-show-count t)
-  :init
-  (ido-vertical-mode 1))
-#+end_src
-
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'completion-ignored-extensions ".html")
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(use-package ivy
-  :disabled t
-  :config
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format "(%d/%d) "
-        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
-  :init
-  (ivy-mode 1))
-(use-package counsel
-  :disabled t
-  :bind (("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file)))
-(use-package swiper
-  :disabled t
-  :bind ("C-s" . swiper))
-#+END_SRC
-
-Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
-
-#+BEGIN_SRC emacs-lisp
-(use-package anzu
-  :diminish ""
-  ;; M-% and C-M-% are the original query-replace(-regexp) shortcuts
-  ;; :bind (("C-x C-g" . anzu-query-replace)
-  ;;        ("C-x C-a" . anzu-query-replace-regexp))
-  :init
-  (global-anzu-mode 1))
-#+END_SRC
-
-Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed. Use =M-x ripgrep-regexp= to activate.
-
-#+BEGIN_SRC emacs-lisp
-(use-package ripgrep)
-#+END_SRC
-
 * Parens/whitespace/indentation
 
 See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
@@ -300,6 +236,70 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   (toggle-indicate-empty-lines))
 (setq-default indicate-buffer-boundaries 'right)
 #+end_src
+
+* Ido and searching
+
+Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
+
+http://oremacs.com/2015/02/09/ido-vertical/
+
+#+begin_src emacs-lisp
+(use-package ido
+  :config
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  ;; wow, that *is* annoying!
+  (setq ido-use-filename-at-point nil)
+  (setq ido-use-url-at-point nil)
+  :init
+  (ido-mode t))
+(use-package ido-vertical-mode
+  :disabled t
+  :config
+  (setq ido-vertical-show-count t)
+  :init
+  (ido-vertical-mode 1))
+#+end_src
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'completion-ignored-extensions ".html")
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package ivy
+  :disabled t
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "(%d/%d) "
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  :init
+  (ivy-mode 1))
+(use-package counsel
+  :disabled t
+  :bind (("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)))
+(use-package swiper
+  :disabled t
+  :bind ("C-s" . swiper))
+#+END_SRC
+
+Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
+
+#+BEGIN_SRC emacs-lisp
+(use-package anzu
+  :delight ""
+  ;; M-% and C-M-% are the original query-replace(-regexp) shortcuts
+  ;; :bind (("C-x C-g" . anzu-query-replace)
+  ;;        ("C-x C-a" . anzu-query-replace-regexp))
+  :init
+  (global-anzu-mode 1))
+#+END_SRC
+
+Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed. Use =M-x ripgrep-regexp= to activate.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ripgrep)
+#+END_SRC
 
 * Spelling
 
