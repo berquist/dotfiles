@@ -368,10 +368,12 @@ TODO clean this up, figure out LaTeX
 
 #+BEGIN_SRC emacs-lisp
 (use-package company
+  :disabled t
   :custom (company-idle-delay 0.05)
   :init
   (add-hook 'after-init-hook 'global-company-mode))
 (use-package company-lsp
+  :disabled t
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-lsp)))
@@ -759,6 +761,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
 (use-package company-anaconda
+  :disabled t
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-anaconda)))
