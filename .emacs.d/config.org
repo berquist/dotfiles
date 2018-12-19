@@ -58,9 +58,9 @@
 (defvar system-type-as-string (prin1-to-string system-type))
 (defun sys () system-type-as-string)
 
-;; Set the path properly on OS X.
+;; Set the path properly on macOS/Linux.
 (use-package exec-path-from-shell
-  :if (memq window-system '(mac ns))
+  :if (memq window-system '(mac ns x))
   :config
   (exec-path-from-shell-initialize))
 #+end_src
