@@ -132,8 +132,8 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 (use-package whitespace
   :bind (("C-c t" . whitespace-mode))
-  :mode (("\\.csv$" . whitespace-mode)
-         ("\\.tsv$" . whitespace-mode))
+  :mode (("\\.csv\\'" . whitespace-mode)
+         ("\\.tsv\\'" . whitespace-mode))
   :config
    ;; use the fill-column value
   (setq whitespace-line-column nil)
@@ -454,11 +454,11 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   :init
   (global-git-commit-mode))
 (use-package gitattributes-mode
-  :mode (("\\.gitattributes$" . gitattributes-mode)))
+  :mode (("\\.gitattributes\\'" . gitattributes-mode)))
 (use-package gitconfig-mode
-  :mode (("\\.gitconfig$" . gitconfig-mode)))
+  :mode (("\\.gitconfig\\'" . gitconfig-mode)))
 (use-package gitignore-mode
-  :mode (("\\.gitignore$" . gitignore-mode)))
+  :mode (("\\.gitignore\\'" . gitignore-mode)))
 (use-package magit
   ;; "Getting started" uses C-x g, which is also undefined.
   :bind (("C-c m" . magit-status))
@@ -634,13 +634,13 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
 
 #+begin_src emacs-lisp
 (setq auto-mode-alist
-     (append '(("\\.C$" . c++-mode)
-               ("\\.cc$" . c++-mode)
-               ("\\.cpp$" . c++-mode)
-               ("\\.c$" . c-mode)
-               ("\\.h$" . c++-mode)
-               ("\\.hh$" . c++-mode)
-               ("\\.hpp$" . c++-mode))
+     (append '(("\\.C\\'" . c++-mode)
+               ("\\.cc\\'" . c++-mode)
+               ("\\.cpp\\'" . c++-mode)
+               ("\\.c\\'" . c-mode)
+               ("\\.h\\'" . c++-mode)
+               ("\\.hh\\'" . c++-mode)
+               ("\\.hpp\\'" . c++-mode))
                auto-mode-alist))
 #+end_src
 
@@ -680,16 +680,11 @@ TODO What's the difference between =c++-mode= and =cc-mode=?
 Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 #+begin_src emacs-lisp
-(defun add-ispc-keywords()
-  "adds uniform and varying keywords for c and c++ modes"
-  (font-lock-add-keywords
-   nil
-   '(("\\<\\(uniform\\)" . 'font-lock-keyword-face)
-     ("\\<\\(varying\\)" . 'font-lock-keyword-face)
-     ("\\<\\(export\\)" . 'font-lock-keyword-face))))
-(add-hook 'c++-mode-hook 'add-ispc-keywords)
-(add-to-list 'auto-mode-alist '("\\.ispc$" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.isph$" . c++-mode))
+(font-lock-add-keywords 'c++-mode '(("\\<\\(uniform\\)" . 'font-lock-keyword-face)
+                                    ("\\<\\(varying\\)" . 'font-lock-keyword-face)
+                                    ("\\<\\(export\\)" . 'font-lock-keyword-face)))
+(add-to-list 'auto-mode-alist '("\\.ispc\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.isph\\'" . c++-mode))
 #+end_src
 
 * Makefiles
@@ -1002,8 +997,7 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (use-package web-mode)
 (use-package jinja2-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode)))
+  :mode (("\\.j2\\'" . jinja2-mode)))
 (use-package web-beautify
   :config
   (eval-after-load 'js2-mode
@@ -1085,17 +1079,17 @@ Modified to remove/disable Racket.
 (use-package geiser
   :config
   (setq geiser-active-implementations '(guile chicken chez mit chibi))
-  (setq geiser-implementations-alist '(((regexp "\\.scm$") guile)
-                                       ((regexp "\\.scm$") chicken)
-                                       ((regexp "\\.release-info$") chicken)
-                                       ((regexp "\\.meta$") chicken)
-                                       ((regexp "\\.setup$") chicken)
-                                       ((regexp "\\.ss$") chez)
-                                       ((regexp "\\.def$") chez)
-                                       ((regexp "\\.scm$") mit)
-                                       ((regexp "\\.pkg$") mit)
-                                       ((regexp "\\.scm$") chibi)
-                                       ((regexp "\\.sld$") chibi))))
+  (setq geiser-implementations-alist '(((regexp "\\.scm\\'") guile)
+                                       ((regexp "\\.scm\\'") chicken)
+                                       ((regexp "\\.release-info\\'") chicken)
+                                       ((regexp "\\.meta\\'") chicken)
+                                       ((regexp "\\.setup\\'") chicken)
+                                       ((regexp "\\.ss\\'") chez)
+                                       ((regexp "\\.def\\'") chez)
+                                       ((regexp "\\.scm\\'") mit)
+                                       ((regexp "\\.pkg\\'") mit)
+                                       ((regexp "\\.scm\\'") chibi)
+                                       ((regexp "\\.sld\\'") chibi))))
 #+END_SRC
 
 ** Racket
@@ -1111,8 +1105,8 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package kotlin-mode
-  :mode (("\\.kt$" . kotlin-mode)
-         ("\\.kts$" . kotlin-mode))) ; Kotlin script
+  :mode (("\\.kt\\'" . kotlin-mode)
+         ("\\.kts\\'" . kotlin-mode))) ; Kotlin script
 (use-package flycheck-kotlin
   :init
   (with-eval-after-load 'flycheck
@@ -1123,8 +1117,8 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package sparql-mode
-  :mode (("\\.sparql$" . sparql-mode)
-         ("\\.rq$" . sparql-mode)))
+  :mode (("\\.sparql\\'" . sparql-mode)
+         ("\\.rq\\'" . sparql-mode)))
 #+END_SRC
 
 * Turtle
@@ -1132,11 +1126,11 @@ Modified to remove/disable Racket.
 #+BEGIN_SRC emacs-lisp
 (use-package ttl-mode
   :delight "N3/Turtle"
-  :mode (("\\.n3$" . ttl-mode)    ; Notation3
-         ("\\.nt$" . ttl-mode)    ; N-Triples
-         ("\\.shacl$" . ttl-mode) ; SHACL (not a graph, but constraints; looks similar)
-         ("\\.ttl$" . ttl-mode)   ; Turtle (Terse RDF Triple Language)
-         ("\\.turtle$" . ttl-mode)))
+  :mode (("\\.n3\\'" . ttl-mode)    ; Notation3
+         ("\\.nt\\'" . ttl-mode)    ; N-Triples
+         ("\\.shacl\\'" . ttl-mode) ; SHACL (not a graph, but constraints; looks similar)
+         ("\\.ttl\\'" . ttl-mode)   ; Turtle (Terse RDF Triple Language)
+         ("\\.turtle\\'" . ttl-mode)))
 #+END_SRC
 
 * Other languages
