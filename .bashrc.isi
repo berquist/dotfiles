@@ -68,24 +68,25 @@ export PATH="${HOME}/.linuxbrew/bin:${PATH}"
 export MANPATH="$(brew --prefix)/share/man:$MANPATH"
 export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
 
+pythonpathdirs=($(find "$HOME"/pythonpath -maxdepth 1 -type d))
+# https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
+for d in ${pythonpathdirs[@]:1}; do
+    PYTHONPATH="${d}:$PYTHONPATH"
+done
+export PYTHONPATH
+
 ########################################
 ### MODULES
 ########################################
 
 export PATH=${apps}/python/miniconda3/bin:${PATH}
+
 export PATH=${apps}/emacs/26.1/bin:${PATH}
-export PATH=${apps}/sox/14.4.2/bin:${PATH}
-export PATH=${apps}/tmux/git/bin:${PATH}
 export PATH=${apps}/git/github/bin:${PATH}
-export PATH=${apps}/tree/bin:${PATH}
+export PATH=${apps}/sox/14.4.2/bin:${PATH}
 export PATH=${apps}/strace/git/bin:${PATH}
-
-# module use ${HOME}/modules/vista
-
-# module load emacs/26.1
-# module load git/github
-# module load python/miniconda3
-# module load tmux/git
+export PATH=${apps}/tmux/git/bin:${PATH}
+export PATH=${apps}/tree/bin:${PATH}
 
 ########################################
 ### FUNCTIONS
