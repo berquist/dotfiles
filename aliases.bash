@@ -7,10 +7,11 @@ alias dus='\du -h --max-depth=1'
 alias dus2='du | sort -nr | cut -f2- | xargs du -hs'
 alias f='finger'
 alias top='top -d 1'
-alias ed='emacs --daemon'
+alias edk='emacsclient -e "(kill-emacs)"'
+alias eds='emacs --daemon'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
-alias es='\emacs -nw'
+alias es='emacs -nw'
 # For use of git diff inside working trees. TODO Shell completion doesn't work
 # with it though?
 alias gdiff='git wdiff --no-index'
