@@ -1,18 +1,10 @@
 #!/usr/bin/env zsh
 
-# work undergrad desktop
-
-########################################
-### mrbigglesworth-specific things
-########################################
+## work undergrad desktop
 
 eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
 export PATH="${HOME}"/repositories/pacapt:"${PATH}"
-
-########################################
-### MODULES
-########################################
 
 source /etc/profile.d/modules.sh
 module use "${HOME}/modules/mrbigglesworth"

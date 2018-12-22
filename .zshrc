@@ -26,18 +26,10 @@ if [ "$COLORTERM" = "xfce4-terminal" ] && [ "$TMUX" = "" ] && [ -e /usr/share/te
     export TERM=xterm-256color
 fi
 
-########################################
-### ALIASES
-########################################
-
 source ~/dotfiles/aliases.bash 
 source ~/dotfiles/exports.bash
 
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-
-########################################
-### PATHS
-########################################
 
 # PYTHONPATH="${HOME}:${PYTHONPATH}"
 # PYTHONPATH="${HOME}/personal_scripts:${PYTHONPATH}"
@@ -59,28 +51,12 @@ export PATH
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
 
-########################################
-### MATLAB
-########################################
-
 # MROOT="${HOME}/Dropbox/MATLAB"
 # export MATLABPATH="${MROOT}:${MROOT}/easyspin-4.5.5/easyspin:${MATLABPATH}"
 # export MATLAB_USE_USERWORK=1
 
-########################################
-### NODE
-########################################
-
 export npm_config_prefix="${HOME}"/.node_modules
 
-########################################
-### FUNCTIONS
-########################################
-
 source ~/dotfiles/functions.bash
-
-########################################
-### selective sourcing
-########################################
 
 source "${HOME}/dotfiles/.zshrc.$(hname)"

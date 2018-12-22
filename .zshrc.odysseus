@@ -1,18 +1,10 @@
 #!/usr/bin/env zsh
 
-# work "server"
-
-########################################
-### odysseus-specific things
-########################################
+## work "server"
 
 # eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
 export PATH="${HOME}"/repositories/pacapt:"${PATH}"
-
-########################################
-### MODULES
-########################################
 
 source /etc/profile.d/modules.sh
 module use "${HOME}/modules/odysseus"

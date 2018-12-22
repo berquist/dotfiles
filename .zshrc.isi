@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# work laptop
+## work laptop
 
 # brew install keychain
 eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
@@ -22,16 +22,8 @@ export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
 
 alias make_ttl_list='\rm list.dat; for f in $(ls *.ttl); do echo $(pwd)/${f}; echo $(pwd)/${f} >> list.dat; done'
 
-########################################
-### GIT
-########################################
-
 export GIT_AUTHOR_EMAIL='berquist@isi.edu'
 export GIT_COMMITER_EMAIL='berquist@isi.edu'
-
-########################################
-### MODULES
-########################################
 
 source /usr/local/opt/lmod/init/zsh
 module use "${HOME}/modules/isi"
