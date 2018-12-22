@@ -763,16 +763,6 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
     (add-to-list 'company-backends 'company-anaconda)))
 #+end_src
 
-** Conf
-
-#+BEGIN_SRC emacs-lisp
-(use-package conf-mode
-  :mode ((".coveragerc" . conf-unix-mode)
-         (".flake8" . conf-unix-mode)
-         (".pylintrc" . conf-unix-mode)
-         (".style.yapf" . conf-unix-mode)))
-#+END_SRC
-
 ** Linters
 
 #+begin_src emacs-lisp
@@ -835,7 +825,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   :config
   (add-hook 'markdown-mode-hook
             (lambda ()
-              (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))  
+              (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
   :init
   (setq markdown-asymmetric-header t)
   (setq markdown-content-type "application/xhtml+xml")
@@ -982,6 +972,20 @@ current buffer, return its path, otherwise nil."
 (use-package yaml-mode)
 (use-package flycheck-yamllint
   :hook (flycheck-mode . flycheck-yamllint-setup))
+#+END_SRC
+
+* Conf (builtin)
+
+#+BEGIN_SRC emacs-lisp
+(use-package conf-mode
+  :mode
+  ; generic
+  ((".nanorc" . conf-space-mode)
+   (".coveragerc" . conf-unix-mode)
+   ; Python tools (linter config)
+   (".flake8" . conf-unix-mode)
+   (".pylintrc" . conf-unix-mode)
+   (".style.yapf" . conf-unix-mode)))
 #+END_SRC
 
 * JSON
