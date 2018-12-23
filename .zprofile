@@ -14,26 +14,21 @@ if [ "$COLORTERM" = "xfce4-terminal" ] && [ "$TMUX" = "" ] && [ -e /usr/share/te
     export TERM=xterm-256color
 fi
 
-source ~/dotfiles/exports.bash
+source "${HOME}"/dotfiles/exports.bash
 
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
-# PYTHONPATH="${HOME}:${PYTHONPATH}"
-# PYTHONPATH="${HOME}/personal_scripts:${PYTHONPATH}"
-pythonpathdirs=($(find "$HOME"/pythonpath -maxdepth 1 -type d))
+pythonpathdirs=($(find "${HOME}"/pythonpath -maxdepth 1 -type d))
 # https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
 for d in ${pythonpathdirs[@]:1}; do
-    PYTHONPATH="${d}:$PYTHONPATH"
+    export PYTHONPATH="${d}:$PYTHONPATH"
 done
-export PYTHONPATH
 
 export LD_LIBRARY_PATH="${HOME}/opt/lib:${LD_LIBRARY_PATH}"
 
-PATH="${HOME}/repositories/rmsd/rmsd:${PATH}"
-PATH="${HOME}/opt/bin/scripts:${PATH}"
-PATH="/usr/local/bin:${PATH}"
-PATH="${HOME}/.node_modules/bin:${PATH}"
-export PATH
+export PATH="${HOME}/repositories/rmsd/rmsd:${PATH}"
+export PATH="${HOME}/opt/bin/scripts:${PATH}"
+export PATH="${HOME}/.node_modules/bin:${PATH}"
 
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
@@ -43,3 +38,7 @@ export scratch="${SCRATCH}"
 # export MATLAB_USE_USERWORK=1
 
 export npm_config_prefix="${HOME}"/.node_modules
+
+if [[ $(uname) == "Darwin" ]]; then
+    source ${HOME}/dotfiles/.zprofile.macos
+fi
