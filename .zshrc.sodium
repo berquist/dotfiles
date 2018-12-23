@@ -36,30 +36,11 @@ function ssh() {
     echo -n -e "\033]0;${USER}@${HOSTNAME%%.*}\007";
 }
 
-unalias ls
-unalias l
-unalias la
-unalias top
-
-alias ls='ls -G'      # enable colorized output
-alias l='pwd; ls -hl' # list format and human-readable sizes
-alias la='l -a'       # hidden files
-alias top='top -u'
-
-# Quick way to rebuild the Launch Services database and get rid
-# of duplicates in the Open With submenu.
-alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
-
-alias doupgrade='brew update && brew upgrade && brew cleanup'
-
-# `brew install lesspipe`
-export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
+source ~/dotfiles/aliases_macos.bash
 
 # export MATLAB_ROOT='/Applications/MATLAB_R2012a.app'
 # export MATLAB_BIN="${MATLAB_ROOT}/bin"
 # export PATH="${PATH}:${MATLAB_BIN}"
-
-export PATH="${HOME}/.gem/ruby/2.0.0/bin:${PATH}"
 
 source /usr/local/opt/lmod/init/zsh
 module use "${HOME}/modules/sodium"
