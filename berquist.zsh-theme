@@ -5,8 +5,8 @@
 function virtualenv_prompt_info() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
         name=$(basename "$VIRTUAL_ENV")
-        pythonver=$($(which python) -c 'import sys; print(sys.version)' | head -n 1 | cut -f 1 -d ' ')
-        print " %{$fg_bold[white]%}\(env: %{$fg[green]%}$name%{$fg_bold[white]%} $pythonver\)%{$reset_color%}"
+        pythonver=$($(command -v python) -c 'import sys; print(sys.version)' | head -n 1 | cut -f 1 -d ' ')
+        print " %{$fg_bold[white]%}\(env: %{$fg[green]%}$name%{$fg_bold[white]%} ${pythonver}\)%{$reset_color%}"
     fi
 }
 
