@@ -11,12 +11,6 @@ export LESSOPEN="|$(command -v lesspipe.sh) %s"
 
 export MANWIDTH=78
 
-export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
-
-export PATH="${HOME}"/personal_scripts:"${PATH}"
-export PATH="${HOME}"/buildscripts:"${PATH}"
-export PATH="${HOME}"/opt/bin:"${PATH}"
-export PATH="${HOME}"/.local/bin:"${PATH}"
-
-export QCPROGS="${HOME}"/opt/apps
-export apps="${QCPROGS}"
+if [[ "$COLORTERM" == "xfce4-terminal" ]] && [[ "$TMUX" == "" ]] && [[ -e /usr/share/terminfo/x/xterm-256color ]]; then
+    export TERM=xterm-256color
+fi

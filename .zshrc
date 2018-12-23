@@ -11,7 +11,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source ~/dotfiles/aliases.bash 
-source ~/dotfiles/functions.bash
+source "${HOME}"/dotfiles/history.zsh
+source "${HOME}"/dotfiles/interactive_exports.bash
+source "${HOME}"/dotfiles/aliases.bash 
+source "${HOME}"/dotfiles/functions.bash
 
-source "${HOME}/dotfiles/.zshrc.$(hname)"
+source "${HOME}"/dotfiles/.zshrc."$(hname)"
