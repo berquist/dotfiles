@@ -38,6 +38,7 @@ packages=(
     nano
     npm
     pandoc
+    proselint
     reattach-to-user-namespace
     ripgrep
     shellcheck
