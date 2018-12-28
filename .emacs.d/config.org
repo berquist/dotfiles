@@ -365,7 +365,7 @@ TODO clean this up, figure out LaTeX
   :bind (("C-c w" . wc-mode)))
 #+END_SRC
 
-* Completion
+* Completion and language servers
 
 #+BEGIN_SRC emacs-lisp
 (use-package company
@@ -373,11 +373,6 @@ TODO clean this up, figure out LaTeX
   :custom (company-idle-delay 0.05)
   :init
   (add-hook 'after-init-hook 'global-company-mode))
-(use-package company-lsp
-  :disabled t
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-lsp)))
 (use-package company-c-headers
   :disabled t
   :init
@@ -386,6 +381,20 @@ TODO clean this up, figure out LaTeX
 (use-package company-irony
   :disabled t)
 (use-package company-irony-c-headers
+  :disabled t)
+(use-package lsp-mode
+  :disabled t
+  :commands lsp)
+(use-package lsp-ui
+  :disabled t
+  :commands lsp-ui-mode)
+(use-package company-lsp
+  :disabled t
+  :commands company-lsp
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-lsp)))
+(use-package eglot
   :disabled t)
 #+END_SRC
 
@@ -1143,19 +1152,7 @@ Modified to remove/disable Racket.
 (use-package swift-mode)
 (use-package systemd)
 (use-package tuareg) ; OCaml
-;; (use-package typescript-mode)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(use-package lsp-mode)
-(use-package lsp-ui)
-(use-package lsp-python)
-;; (add-hook 'python-mode-hook #'lsp-python-enable)
-(use-package lsp-rust)
-(use-package lsp-clangd)
-(use-package lsp-sh)
-;; (add-hook 'sh-mode-hook #'lsp-sh-enable)
-(use-package eglot)
+(use-package typescript-mode)
 #+END_SRC
 
 * Discord
