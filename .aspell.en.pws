@@ -1,4 +1,4 @@
-personal_ws-1.1 en 380 
+personal_ws-1.1 en 381 
 solvated
 Koseki
 Yamaguchi
@@ -351,8 +351,8 @@ conformational
 PQI
 parallelization
 SCF
-MacLaurin
 maclaurin
+MacLaurin
 algorithmically
 Dunning's
 unfactored
@@ -370,6 +370,7 @@ underbinding
 absorptivity
 Ansatz
 invertible
+musicalization
 BLAS
 superoperator
 sigmoid
