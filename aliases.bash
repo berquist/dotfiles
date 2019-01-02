@@ -27,8 +27,6 @@ alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
 alias sw='telnet towel.blinkenlights.nl'
 alias t='tail -F -n 100 --sleep-interval=0.1'
-# While I attempt to remove myself from this bad habit..
-alias which='type'
 alias whcih='which'
 
 # So I don't do stupid things.

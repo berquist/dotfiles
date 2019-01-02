@@ -39,6 +39,9 @@ packages=(
     npm
     pandoc
     proselint
+    pyenv
+    pyenv-virtualenv
+    pyenv-virtualenvwrapper
     reattach-to-user-namespace
     ripgrep
     shellcheck
@@ -49,6 +52,7 @@ packages=(
     watchman
     wget
     xmlstarlet
+    zlib
     zsh # Don't forget to add to /etc/shells
 )
 
@@ -105,3 +109,6 @@ function install() {
 
     brew cleanup
 }
+
+# really???
+# sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /

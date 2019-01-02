@@ -46,7 +46,3 @@ source /usr/local/opt/lmod/init/zsh
 module use "${HOME}/modules/sodium"
 
 module load python/psi4conda
-
-function pman () {
-  man -t "${@}" | ps2pdf - - | open -g -f -a /Applications/Skim.app
-}

@@ -9,6 +9,9 @@ done
 export LD_LIBRARY_PATH="${HOME}"/opt/lib:"${LD_LIBRARY_PATH}"
 
 export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
+export PIP_REQUIRE_VIRTUALENV=1
+
+export PYENV_ROOT="${HOME}"/.pyenv
 
 export PATH="${HOME}"/personal_scripts:"${PATH}"
 export PATH="${HOME}"/buildscripts:"${PATH}"
