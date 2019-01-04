@@ -824,7 +824,6 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   :init
   (setq markdown-asymmetric-header t)
   (setq markdown-content-type "application/xhtml+xml")
-  (setq markdown-coding-system "utf-8")
   ;; This isn't super necessary since I have pandoc run a similar command
   ;; every time I save with these default arguments, but this always produces
   ;; HTML where pandoc-mode might not.
