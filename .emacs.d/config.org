@@ -805,6 +805,9 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 (use-package flycheck-mypy)
 
+(use-package flycheck-pyre
+  :hook (flycheck-mode . flycheck-pyre-setup))
+
 (use-package flycheck-pycheckers
   :disabled t
   :custom (flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
