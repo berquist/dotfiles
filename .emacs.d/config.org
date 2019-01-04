@@ -489,7 +489,7 @@ Not using =git-gutter= right now, but if I did...
 
 #+begin_src emacs-lisp
 (use-package pandoc-mode
-  :hook pandoc-load-default-settings)
+  :hook (pandoc-mode . pandoc-load-default-settings))
 #+end_src
 
 * Org
