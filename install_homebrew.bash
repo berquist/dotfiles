@@ -26,6 +26,7 @@ packages=(
     hub
     ispell
     jena
+    jq
     keychain
     kotlin
     less
