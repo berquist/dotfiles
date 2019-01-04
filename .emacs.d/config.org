@@ -242,9 +242,8 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 * Ido and searching
 
-Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
-
-http://oremacs.com/2015/02/09/ido-vertical/
+- Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
+- http://oremacs.com/2015/02/09/ido-vertical/
 
 #+begin_src emacs-lisp
 (use-package ido
@@ -1136,22 +1135,15 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package chapel-mode)
-(use-package crystal-mode)
-(use-package csharp-mode)
 (use-package dockerfile-mode)
 (use-package cuda-mode)
-(use-package go-mode)
 (use-package graphviz-dot-mode)
 (use-package lua-mode)
 (use-package mediawiki)
 (use-package nim-mode)
 (use-package scala-mode)
-(use-package ssass-mode)
 (use-package strace-mode)
-(use-package swift-mode)
 (use-package systemd)
-(use-package tuareg) ; OCaml
-(use-package typescript-mode)
 #+END_SRC
 
 * Discord
