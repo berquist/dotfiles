@@ -117,6 +117,36 @@
 (bind-key (kbd "C-c p") 'pwd)
 #+end_src
 
+* dir-locals
+
+Taken from https://emacs.stackexchange.com/a/13096/10950
+
+#+BEGIN_SRC emacs-lisp
+(defun my-reload-dir-locals-for-current-buffer ()
+  "reload dir locals for the current buffer"
+  (interactive)
+  (let ((enable-local-variables :all))
+    (hack-dir-local-variables-non-file-buffer)))
+
+(defun my-reload-dir-locals-for-all-buffer-in-this-directory ()
+  "For every buffer with the same `default-directory` as the 
+current buffer's, reload dir-locals."
+  (interactive)
+  (let ((dir default-directory))
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+        (when (equal default-directory dir))
+        (my-reload-dir-locals-for-current-buffer)))))
+
+;; (add-hook 'emacs-lisp-mode-hook
+;;           (defun enable-autoreload-for-dir-locals ()
+;;             (when (and (buffer-file-name)
+;;                        (equal dir-locals-file
+;;                               (file-name-nondirectory (buffer-file-name))))
+;;               (add-hook (make-variable-buffer-local 'after-save-hook)
+;;                         'my-reload-dir-locals-for-all-buffer-in-this-directory))))
+#+END_SRC
+
 * Parens/whitespace/indentation
 
 See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
