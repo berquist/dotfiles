@@ -14,3 +14,5 @@ export GIT_COMMITER_EMAIL='berquist@isi.edu'
 
 source /usr/local/opt/lmod/init/zsh
 module use "${HOME}/modules/isi"
+
+source ~/dotfiles/dotfiles-private/isi_laptop_private.bash
