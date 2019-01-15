@@ -163,6 +163,7 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 (use-package whitespace
   :bind (("C-c t" . whitespace-mode))
   :mode (("\\.csv\\'" . whitespace-mode)
+         ("\\.tab\\'" . whitespace-mode)
          ("\\.tsv\\'" . whitespace-mode))
   :config
    ;; use the fill-column value
