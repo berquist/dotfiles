@@ -19,6 +19,7 @@
       <w>coreferent</w>
       <w>csvfile</w>
       <w>csvwriter</w>
+      <w>datas</w>
       <w>dataset</w>
       <w>dirname</w>
       <w>doceid</w>
@@ -31,6 +32,7 @@
       <w>entrypoint</w>
       <w>entrypoints</w>
       <w>enttype</w>
+      <w>exponentials</w>
       <w>filenames</w>
       <w>filetype</w>
       <w>flexnlp</w>
@@ -69,6 +71,7 @@
       <w>softmax</w>
       <w>sparql</w>
       <w>stringified</w>
+      <w>subentity</w>
       <w>tensorized</w>
       <w>testdir</w>
       <w>tokenized</w>
