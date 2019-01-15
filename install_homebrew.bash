@@ -32,6 +32,7 @@ packages=(
     less
     lesspipe
     lftp
+    libgit2
     libtool
     lmod
     maven
@@ -44,6 +45,8 @@ packages=(
     pyenv-virtualenv
     pyenv-virtualenvwrapper
     reattach-to-user-namespace
+    r
+    rbenv-bundler
     ripgrep
     shellcheck
     "sox --with-libao --with-libsndfile --with-opencore-amr --with-opusfile"
@@ -85,6 +88,7 @@ packages_cask=(
     meld
     # -> problems due to app relocation
     # pycharm-ce
+    rstudio
     # slack
     spectacle
     visualvm
