@@ -69,8 +69,6 @@ plugins=(
     git-remote-branch
     git-prompt
     gpg-agent
-    # pyenv
-    python
     sprunge
 )
 
