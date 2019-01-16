@@ -996,7 +996,9 @@ current buffer, return its path, otherwise nil."
 * YAML
 
 #+BEGIN_SRC emacs-lisp
-(use-package yaml-mode)
+(use-package yaml-mode
+  ;; A decent assumption
+  :mode (("\\.params\\'" . yaml-mode)))
 (use-package flycheck-yamllint
   :hook (flycheck-mode . flycheck-yamllint-setup))
 #+END_SRC
