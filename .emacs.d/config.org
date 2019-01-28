@@ -872,7 +872,8 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
 ** polymode
 
 #+BEGIN_SRC emacs-lisp
-(use-package poly-markdown)
+(use-package poly-markdown
+  :mode (("\\.markdown\\'" . poly-markdown-mode)))
 #+END_SRC
 
 * deft
