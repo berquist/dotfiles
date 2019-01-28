@@ -11,8 +11,6 @@ packages=(
     blazegraph
     cmake
     colordiff
-    docker
-    docker-machine
     dos2unix
     editorconfig
     # emacs
