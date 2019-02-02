@@ -41,3 +41,13 @@ function svn() {
 function pst() {
     ps --forest -o pid,tty,stat,time,cmd -g $(ps -o sid= -p $1)
 }
+
+# https://stackoverflow.com/a/10169840
+function hub() {
+    if [[ $# -gt 0 ]] && [[ "$1" == "pr" ]] && [[ "$2" == "list" ]]; then
+        shift
+        command hub pr list --format="%sC%>(8)%i%Creset %t %Cblue[%H]%Creset %l %Cgreen%Mt%Creset%n" "$@"
+    else
+        command hub "$@"
+    fi
+}
