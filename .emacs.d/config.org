@@ -873,6 +873,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
 
 #+BEGIN_SRC emacs-lisp
 (use-package poly-markdown
+  :disabled t
   :mode (("\\.markdown\\'" . poly-markdown-mode)))
 #+END_SRC
 
