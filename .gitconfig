@@ -1,6 +1,13 @@
 # For useful information about most of these options, see
 # https://git-scm.com/docs/git-config
 
+# Does this file require tabs or spaces? Answer: doesn't matter, but Emacs
+# seems to want to use tabs:
+#   ;; .gitconfig is indented with tabs only
+#  (conf-mode-initialize "#" gitconfig-mode-font-lock-keywords)
+#  (setq indent-tabs-mode t)
+# https://stackoverflow.com/q/52388331
+
 [user]
 	name = Eric Berquist
 	email = eric.berquist@gmail.com
@@ -17,8 +24,8 @@
 # Available colors are enumerated in
 # http://stackoverflow.com/questions/15458237/git-pretty-format-colors
 [color]
-    # `ui` probably sets all of these to auto, but meh
-    branch = auto
+	# `ui` probably sets all of these to auto, but meh
+	branch = auto
 	diff = auto
 	grep = auto
 	interactive = auto
@@ -33,32 +40,33 @@
 	whitespace = red blink
 
 [color "status"]
-    branch = blue
-    nobranch = normal blink
-    untracked = cyan
-    unmerged = yellow
+	branch = blue
+	nobranch = normal blink
+	untracked = cyan
+	unmerged = yellow
 
 [push]
-    default = simple
+	default = simple
 
 [merge]
-    conflictstyle = diff3
-    verbosity = 3
+	conflictstyle = diff3
+	verbosity = 3
 
 [alias]
-    # git git git git git git git git git ...
-    git = !exec git
-    branches = branch -a -v
-    commit = commit --verbose
-    remotes = remote -v
-    st = status -sb
-    # These do the same thing (--cached and --staged, that is).
-    dc = diff --cached
-    ds = diff --staged
+	# git git git git git git git git git ...
+	git = !exec git
+	branches = branch -a -v
+	ferch = fetch
+	commit = commit --verbose
+	remotes = remote -v
+	st = status -sb
+	# These do the same thing (--cached and --staged, that is).
+	dc = diff --cached
+	ds = diff --staged
 
-    # http://stackoverflow.com/questions/6017987/how-can-i-list-all-the-deleted-files-in-a-git-repository
-    show-deleted = log --diff-filter=D --summary
-    show-deleted2 = !git log --all --pretty=format: --name-only --diff-filter=D | sort -u
+	# http://stackoverflow.com/questions/6017987/how-can-i-list-all-the-deleted-files-in-a-git-repository
+	show-deleted = log --diff-filter=D --summary
+	show-deleted2 = !git log --all --pretty=format: --name-only --diff-filter=D | sort -u
 	l = log --graph --pretty=fuller --abbrev-commit --date=format:'%F %r (%a, %d %b %Y %T %z)'
 	# gitk style, very pretty mhmmmm
 	lg = !git l --pretty=format:'%Cred%h%Creset %G? -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
@@ -83,12 +91,12 @@
 	cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
 
 [diff]
-    # TODO Why this number?
-    renameLimit = 1011
+	# TODO Why this number?
+	renameLimit = 1011
 
 [difftool.latex]
-    # Needs the `ldiff` script.
-    cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
+	# Needs the `ldiff` script.
+	cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
 
 # Where did this come from?
 [filter "lfs"]
