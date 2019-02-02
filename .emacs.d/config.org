@@ -253,17 +253,10 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 ** Windows
 
-#+begin_src emacs-lisp
-(when (display-graphic-p)
-  (set-face-attribute 'default nil :font "Panic Sans-11")
-  (set-frame-font "Panic Sans-11"))
-;; How can I set fallback fonts if these aren't installed?
-;; Or just try from a list?
+TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.html
 
-;; TODO set to maximized
-(when (display-graphic-p)
-  (if (eq system-type 'darwin)
-      (set-frame-size (selected-frame) 191 55)))
+#+begin_src emacs-lisp
+(add-to-list 'default-frame-alist '(font . "Panic Sans-11"))
 
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
