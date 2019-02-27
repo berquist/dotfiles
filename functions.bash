@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-# TODO why is the syntax different here? It's sh, not bash!
-function hname {
-    if [ `uname` = "Darwin" ]; then
-        echo "`hostname -s`"
+function hname() {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        hostname -s
     else
-        echo "`hostname`"
+        hostname
     fi
 }
 
@@ -23,6 +22,7 @@ function pip3-locations() {
     done
 }
 
+# TODO convert to bash
 function svn() {
     if [ "$1" = "diff" -o "$1" = "log" -o "$1" = "blame" ]
     then
