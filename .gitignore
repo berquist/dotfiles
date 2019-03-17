@@ -1,20 +1,6 @@
 # What are these?
 .saves*
-elpa
 url
-
-# Emacs
-.emacs.d/ac-comphist.dat
-.emacs.d/anaconda-mode/
-.emacs.d/ede-projects.el
-.emacs.d/eshell
-.emacs.d/ido.last
-.emacs.d/.org-id-locations
-.emacs.d/semanticdb
-.emacs.d/srecode-map.el
-.emacs.d/tramp
-
-.emacs.d/markdown-preview-mode/.gitignore
 
 # tmux
 .tmux/plugins
