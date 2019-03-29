@@ -843,10 +843,10 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
          ("\\.mdown\\'" . markdown-mode)
          ("\\.md\\'" . markdown-mode))
   :hook (markdown-mode . pandoc-mode)
-  :config
-  (add-hook 'markdown-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
+  ;; :config
+  ;; (add-hook 'markdown-mode-hook
+  ;;           (lambda ()
+  ;;             (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
   :init
   (setq markdown-asymmetric-header t)
   (setq markdown-content-type "application/xhtml+xml")
