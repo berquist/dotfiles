@@ -11,6 +11,7 @@
       <w>bottomrightx</w>
       <w>bottomrighty</w>
       <w>ceafe</w>
+      <w>charstring</w>
       <w>cksum</w>
       <w>classquery</w>
       <w>cmap</w>
@@ -45,6 +46,7 @@
       <w>graphqueries</w>
       <w>graphquery</w>
       <w>graphviz</w>
+      <w>hline</w>
       <w>immutabledict</w>
       <w>ingester</w>
       <w>jinja</w>
@@ -59,6 +61,7 @@
       <w>ment</w>
       <w>miscategorized</w>
       <w>multimodal</w>
+      <w>mypy</w>
       <w>nfiles</w>
       <w>nist</w>
       <w>nodeid</w>
@@ -78,7 +81,10 @@
       <w>softmax</w>
       <w>sparql</w>
       <w>stringified</w>
+      <w>subentities</w>
       <w>subentity</w>
+      <w>subgraph</w>
+      <w>subgraphs</w>
       <w>tensorized</w>
       <w>testdir</w>
       <w>tokenized</w>
