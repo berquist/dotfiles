@@ -18,4 +18,7 @@ if [[ "$COLORTERM" == "xfce4-terminal" ]] && [[ "$TMUX" == "" ]] && [[ -e /usr/s
 fi
 
 # For the Travis Ruby gem
-[ -f "${HOME}"/.travis/travis.sh ] && source "${HOME}"/.travis/travis.sh
+[[ -f "${HOME}"/.travis/travis.sh ]] && source "${HOME}"/.travis/travis.sh
+
+# Rust
+[[ -f "${HOME}"/.cargo/env ]] && source "${HOME}"/.cargo/env
