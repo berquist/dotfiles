@@ -158,15 +158,15 @@ evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / stateme
 
 # Template used to display messages. This is a python new-style format string
 # used to format the message information. See doc for all details.
-# msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}'
+msg-template='{path}:{line}:{column}: [{msg_id}({symbol}), {obj}] {msg}'
 
 # Set the output format. Available formats are text, parseable, colorized, json
 # and msvs (visual studio). You can also give a reporter class, e.g.
 # mypackage.mymodule.MyReporterClass.
-output-format=text
+output-format=colorized
 
 # Tells whether to display a full report or only the messages.
-reports=no
+reports=yes
 
 # Activate the evaluation score.
 score=yes
