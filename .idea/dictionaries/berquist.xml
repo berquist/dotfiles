@@ -5,6 +5,7 @@
       <w>allennlp</w>
       <w>allzip</w>
       <w>apora</w>
+      <w>batcher</w>
       <w>bbnta</w>
       <w>berquist</w>
       <w>bottomright</w>
@@ -12,6 +13,7 @@
       <w>bottomrighty</w>
       <w>ceafe</w>
       <w>charstring</w>
+      <w>ckpt</w>
       <w>cksum</w>
       <w>classquery</w>
       <w>cmap</w>
@@ -19,11 +21,13 @@
       <w>coref</w>
       <w>coreference</w>
       <w>coreferent</w>
+      <w>crossentropy</w>
       <w>csvfile</w>
       <w>csvwriter</w>
       <w>datas</w>
       <w>dataset</w>
       <w>debaltseve</w>
+      <w>detokenized</w>
       <w>dirname</w>
       <w>doceid</w>
       <w>doceids</w>
@@ -37,19 +41,23 @@
       <w>entrypoints</w>
       <w>enttype</w>
       <w>exponentials</w>
+      <w>featurize</w>
       <w>filenames</w>
       <w>filetype</w>
       <w>flexnlp</w>
       <w>framenet</w>
       <w>fuseki</w>
       <w>gaia</w>
+      <w>genericity</w>
       <w>graphqueries</w>
       <w>graphquery</w>
       <w>graphviz</w>
       <w>hline</w>
       <w>immutabledict</w>
+      <w>immutablesetmultidict</w>
       <w>ingester</w>
       <w>jinja</w>
+      <w>jmee</w>
       <w>joinpath</w>
       <w>kentonlee</w>
       <w>keyframeid</w>
@@ -58,6 +66,7 @@
       <w>ldcont</w>
       <w>lemmatised</w>
       <w>lineterminator</w>
+      <w>meep</w>
       <w>ment</w>
       <w>miscategorized</w>
       <w>multimodal</w>
@@ -72,22 +81,34 @@
       <w>otxt</w>
       <w>pathlib</w>
       <w>penwidth</w>
+      <w>pred</w>
       <w>preorder</w>
       <w>preprocessing</w>
+      <w>pretrained</w>
       <w>prng</w>
+      <w>prototypically</w>
       <w>pylint</w>
       <w>readlines</w>
+      <w>relu</w>
       <w>resourcedir</w>
+      <w>rmsprop</w>
+      <w>segmenter</w>
+      <w>simplfied</w>
       <w>softmax</w>
+      <w>spacy</w>
       <w>sparql</w>
       <w>stringified</w>
       <w>subentities</w>
       <w>subentity</w>
       <w>subgraph</w>
       <w>subgraphs</w>
+      <w>succ</w>
       <w>tensorized</w>
       <w>testdir</w>
+      <w>tokenization</w>
       <w>tokenized</w>
+      <w>tokentext</w>
+      <w>toklen</w>
       <w>topleft</w>
       <w>topleftx</w>
       <w>toplefty</w>
@@ -96,6 +117,8 @@
       <w>tsvwriter</w>
       <w>typevars</w>
       <w>uids</w>
+      <w>untokenized</w>
+      <w>wordpiece</w>
       <w>xmlfilename</w>
       <w>zerohop</w>
       <w>zerohopquery</w>
