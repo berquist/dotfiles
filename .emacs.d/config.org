@@ -862,14 +862,6 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   (setq markdown-link-space-sub-char "-"))
 #+end_src
 
-** polymode
-
-#+BEGIN_SRC emacs-lisp
-(use-package poly-markdown
-  :disabled t
-  :mode (("\\.markdown\\'" . poly-markdown-mode)))
-#+END_SRC
-
 * deft
 
 Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' website]] and http://pragmaticemacs.com/emacs/make-quick-notes-with-deft/.
