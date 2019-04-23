@@ -40,6 +40,7 @@
       <w>entrypoint</w>
       <w>entrypoints</w>
       <w>enttype</w>
+      <w>excinfo</w>
       <w>exponentials</w>
       <w>featurize</w>
       <w>filenames</w>
@@ -55,6 +56,7 @@
       <w>hline</w>
       <w>immutabledict</w>
       <w>immutablesetmultidict</w>
+      <w>indegree</w>
       <w>ingester</w>
       <w>jinja</w>
       <w>jmee</w>
@@ -74,6 +76,7 @@
       <w>nfiles</w>
       <w>nist</w>
       <w>nodeid</w>
+      <w>nonoverlapping</w>
       <w>npoints</w>
       <w>ontologies</w>
       <w>ontonotes</w>
@@ -118,6 +121,7 @@
       <w>typevars</w>
       <w>uids</w>
       <w>untokenized</w>
+      <w>vistautils</w>
       <w>wordpiece</w>
       <w>xmlfilename</w>
       <w>zerohop</w>
