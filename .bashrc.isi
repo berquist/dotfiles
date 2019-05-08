@@ -30,3 +30,71 @@ GIT_PROMPT_FETCH_REMOTE_STATUS=0
 GIT_PROMPT_SHOW_UPSTREAM=1
 GIT_PROMPT_SHOW_UNTRACKED_FILES=all
 # source "${HOME}"/repositories/bash-git-prompt/gitprompt.sh
+
+########################################
+### CLUSTER
+########################################
+
+export CUDA_CACHE_DISABLE=1
+alias p="pstat | rg $(whoami)"
+
+export PATH=${HOME}/personal_scripts/isi:${PATH}
+
+########################################
+### PATHS
+########################################
+
+# queue niceties
+
+source /nas/uge/sge-root/default/common/settings.sh
+export DRMAA_LIBRARY_PATH=${SGE_ROOT}/lib/lx-amd64/libdrmaa.so.1.0
+export PATH=${PATH}:/nfs/isicvlnas01/share/qstat-pretty/
+
+# personal software
+
+pythonpathdirs=($(find "${HOME}"/pythonpath -maxdepth 1 -type d))
+# https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
+for d in ${pythonpathdirs[@]:1}; do
+    export PYTHONPATH="${d}:$PYTHONPATH"
+done
+
+export apps="${HOME}"/opt/apps
+
+source "${HOME}"/perl5/perlbrew/etc/bashrc
+
+# export PATH="${HOME}/.linuxbrew/bin:${PATH}"
+# export MANPATH="$(brew --prefix)/share/man:$MANPATH"
+# export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
+# export PATH="${PATH}:${HOME}/.linuxbrew/bin"
+# export MANPATH="${MANPATH}:$(brew --prefix)/share/man"
+# export INFOPATH="${INFOPATH}:$(brew --prefix)/share/info"
+
+########################################
+### MODULES
+########################################
+
+export PATH=${apps}/emacs/26.1/bin:${PATH}
+export PATH=${apps}/git/github/bin:${PATH}
+export PATH=${apps}/sox/14.4.2/bin:${PATH}
+export PATH=${apps}/strace/git/bin:${PATH}
+export PATH=${apps}/tmux/git/bin:${PATH}
+export PATH=${apps}/tree/bin:${PATH}
+
+# source ~/dotfiles/path_exports.bash
+source ~/dotfiles/dotfiles-private/isi_cluster_private.bash
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/nas/home/berquist/opt/apps/python/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/nas/home/berquist/opt/apps/python/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/nas/home/berquist/opt/apps/python/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/nas/home/berquist/opt/apps/python/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
