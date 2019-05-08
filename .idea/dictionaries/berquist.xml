@@ -43,6 +43,7 @@
       <w>excinfo</w>
       <w>exponentials</w>
       <w>featurize</w>
+      <w>featurizer</w>
       <w>filenames</w>
       <w>filetype</w>
       <w>flexnlp</w>
@@ -63,6 +64,7 @@
       <w>joinpath</w>
       <w>kentonlee</w>
       <w>keyframeid</w>
+      <w>labeller</w>
       <w>lctl</w>
       <w>ldcc</w>
       <w>ldcont</w>
@@ -120,6 +122,7 @@
       <w>tsvwriter</w>
       <w>typevars</w>
       <w>uids</w>
+      <w>unfeaturized</w>
       <w>untokenized</w>
       <w>vistautils</w>
       <w>wordpiece</w>
