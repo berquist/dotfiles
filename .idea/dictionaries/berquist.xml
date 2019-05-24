@@ -40,6 +40,8 @@
       <w>entrypoint</w>
       <w>entrypoints</w>
       <w>enttype</w>
+      <w>espan</w>
+      <w>etype</w>
       <w>excinfo</w>
       <w>exponentials</w>
       <w>featurize</w>
@@ -51,10 +53,12 @@
       <w>fuseki</w>
       <w>gaia</w>
       <w>genericity</w>
+      <w>geonames</w>
       <w>graphqueries</w>
       <w>graphquery</w>
       <w>graphviz</w>
       <w>hline</w>
+      <w>hypernyms</w>
       <w>immutabledict</w>
       <w>immutablesetmultidict</w>
       <w>indegree</w>
@@ -73,6 +77,7 @@
       <w>meep</w>
       <w>ment</w>
       <w>miscategorized</w>
+      <w>mtheory</w>
       <w>multimodal</w>
       <w>mypy</w>
       <w>nfiles</w>
@@ -93,6 +98,7 @@
       <w>prng</w>
       <w>prototypically</w>
       <w>pylint</w>
+      <w>rangemap</w>
       <w>readlines</w>
       <w>relu</w>
       <w>resourcedir</w>
@@ -108,12 +114,14 @@
       <w>subgraph</w>
       <w>subgraphs</w>
       <w>succ</w>
+      <w>synsets</w>
       <w>tensorized</w>
       <w>testdir</w>
       <w>tokenization</w>
       <w>tokenized</w>
       <w>tokentext</w>
       <w>toklen</w>
+      <w>toks</w>
       <w>topleft</w>
       <w>topleftx</w>
       <w>toplefty</w>
@@ -124,6 +132,7 @@
       <w>uids</w>
       <w>unfeaturized</w>
       <w>untokenized</w>
+      <w>vectorizer</w>
       <w>vistautils</w>
       <w>wordpiece</w>
       <w>xmlfilename</w>
