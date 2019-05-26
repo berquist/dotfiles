@@ -13,5 +13,5 @@ eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 export WORKON_HOME=$HOME/data/virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
-source /etc/profile.d/modules.zsh
+source /usr/share/lmod/lmod/init/zsh
 module use "${HOME}/modules/osmium"
