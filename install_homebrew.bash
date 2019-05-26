@@ -14,6 +14,7 @@ packages=(
     dos2unix
     editorconfig
     # emacs
+    exa
     fd
     fuseki
     fzf
