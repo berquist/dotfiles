@@ -60,7 +60,7 @@
 
 ;; Set the path properly on macOS/Linux.
 (use-package exec-path-from-shell
-  :if (memq window-system '(mac ns x))
+  :if (memq (display-graphic-p) '(mac ns x))
   :init
   (exec-path-from-shell-initialize))
 #+end_src
@@ -129,7 +129,7 @@ Taken from https://emacs.stackexchange.com/a/13096/10950
     (hack-dir-local-variables-non-file-buffer)))
 
 (defun my-reload-dir-locals-for-all-buffer-in-this-directory ()
-  "For every buffer with the same `default-directory` as the 
+  "For every buffer with the same `default-directory` as the
 current buffer's, reload dir-locals."
   (interactive)
   (let ((dir default-directory))
@@ -392,10 +392,8 @@ TODO clean this up, figure out LaTeX
 
 #+BEGIN_SRC emacs-lisp
 (use-package company
-  :disabled t
-  :custom (company-idle-delay 0.05)
-  :init
-  (add-hook 'after-init-hook 'global-company-mode))
+  :hook (after-init . global-company-mode)
+  :custom (company-idle-delay 0.05))
 (use-package company-c-headers
   :disabled t
   :init
@@ -406,17 +404,22 @@ TODO clean this up, figure out LaTeX
 (use-package company-irony-c-headers
   :disabled t)
 (use-package lsp-mode
-  :disabled t
-  :commands lsp)
+  :commands lsp
+  :hook ((python-mode rust-mode) . lsp)
+  :custom
+  (lsp-auto-guess-root t)
+  (lsp-enable-snippet nil)
+  (lsp-prefer-flymake nil))
 (use-package lsp-ui
-  :disabled t
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :custom (lsp-ui-flycheck-enable t))
 (use-package company-lsp
-  :disabled t
   :commands company-lsp
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-lsp)))
+(use-package lsp-java
+  :hook (java-mode . lsp))
 (use-package eglot
   :disabled t)
 #+END_SRC
