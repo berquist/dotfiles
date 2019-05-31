@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-export PATH="/usr/local/bin:${PATH}"
-export PYENV_ROOT=/usr/local/var/pyenv

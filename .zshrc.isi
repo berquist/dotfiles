@@ -17,6 +17,4 @@ module use "${HOME}/modules/isi"
 
 source ~/dotfiles/dotfiles-private/isi_laptop_private.bash
 
-eval "$(rbenv init -)"
-
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home

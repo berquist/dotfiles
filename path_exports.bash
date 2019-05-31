@@ -10,15 +10,12 @@ export LD_LIBRARY_PATH="${HOME}"/opt/lib:"${LD_LIBRARY_PATH}"
 
 export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
 
-export PYENV_ROOT="${HOME}"/.pyenv
-
-export PATH="${HOME}"/personal_scripts:"${PATH}"
-export PATH="${HOME}"/buildscripts:"${PATH}"
-export PATH="${HOME}"/opt/bin:"${PATH}"
-export PATH="${HOME}"/.local/bin:"${PATH}"
-export PATH="${HOME}"/repositories/rmsd/rmsd:"${PATH}"
-export PATH="${HOME}"/opt/bin/scripts:"${PATH}"
-export PATH="${HOME}"/.node_modules/bin:"${PATH}"
+[[ -d "${HOME}"/personal_scripts ]] && export PATH="${HOME}"/personal_scripts:"${PATH}"
+[[ -d "${HOME}"/opt/bin ]] && export PATH="${HOME}"/opt/bin:"${PATH}"
+[[ -d "${HOME}"/.local/bin ]] && export PATH="${HOME}"/.local/bin:"${PATH}"
+[[ -d "${HOME}"/repositories/rmsd/rmsd ]] && export PATH="${HOME}"/repositories/rmsd/rmsd:"${PATH}"
+[[ -d "${HOME}"/opt/bin/scripts ]] && export PATH="${HOME}"/opt/bin/scripts:"${PATH}"
+[[ -d "${HOME}"/.node_modules/bin ]] && export PATH="${HOME}"/.node_modules/bin:"${PATH}"
 
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
