@@ -1176,7 +1176,6 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package elcord
-  :disabled t
-  :init
-  (elcord-mode))
+  :custom (elcord-use-major-mode-as-main-icon t)
+  :init (elcord-mode))
 #+END_SRC
