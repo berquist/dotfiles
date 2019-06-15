@@ -405,11 +405,16 @@ TODO clean this up, figure out LaTeX
   :disabled t)
 (use-package lsp-mode
   :commands lsp
-  :hook ((python-mode rust-mode) . lsp)
+  :hook ((sh-mode fortran-mode kotlin-mode python-mode rust-mode) . lsp)
   :custom
   (lsp-auto-guess-root t)
   (lsp-enable-snippet nil)
-  (lsp-prefer-flymake nil))
+  (lsp-prefer-flymake nil)
+  :init
+  (with-eval-after-load 'lsp
+    ;; https://github.com/emacs-lsp/lsp-mode/commit/f110a8f0fd316bcd87396fbea2dce3617bca9d5e
+    (add-to-list 'lsp-language-id-configuration '(fortran-mode . "fortran"))
+    (add-to-list 'lsp-language-id-configuration '(sh-mode . "bash"))))
 (use-package lsp-ui
   :commands lsp-ui-mode
   :custom (lsp-ui-flycheck-enable t))
@@ -1160,8 +1165,9 @@ Modified to remove/disable Racket.
 * Other languages
 
 #+BEGIN_SRC emacs-lisp
-(use-package chapel-mode)
 (use-package dockerfile-mode)
+(use-package chapel-mode)
+(use-package clojure-mode)
 (use-package cuda-mode)
 (use-package graphviz-dot-mode)
 (use-package lua-mode)
