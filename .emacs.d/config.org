@@ -58,9 +58,10 @@
 (defvar system-type-as-string (prin1-to-string system-type))
 (defun sys () system-type-as-string)
 
-;; Set the path properly on macOS/Linux.
+;; Set the path properly. Don't have a conditional on using the window system
+;; in order to circumvent
+;; https://emacs.stackexchange.com/questions/27918/why-is-exec-path-different-in-emacsclient-emacsserver-than-in-emacs.
 (use-package exec-path-from-shell
-  :if (memq (display-graphic-p) '(mac ns x))
   :init
   (exec-path-from-shell-initialize))
 #+end_src
