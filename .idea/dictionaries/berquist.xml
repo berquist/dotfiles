@@ -21,6 +21,7 @@
       <w>coref</w>
       <w>coreference</w>
       <w>coreferent</w>
+      <w>corenlp</w>
       <w>crossentropy</w>
       <w>csvfile</w>
       <w>csvwriter</w>
@@ -117,6 +118,10 @@
       <w>synsets</w>
       <w>tensorized</w>
       <w>testdir</w>
+      <w>theoryitem</w>
+      <w>theoryitems</w>
+      <w>timeresolutions</w>
+      <w>timespans</w>
       <w>tokenization</w>
       <w>tokenized</w>
       <w>tokentext</w>
@@ -128,9 +133,11 @@
       <w>tsvfile</w>
       <w>tsvreader</w>
       <w>tsvwriter</w>
+      <w>typeshed</w>
       <w>typevars</w>
       <w>uids</w>
       <w>unfeaturized</w>
+      <w>unpromoted</w>
       <w>untokenized</w>
       <w>vectorizer</w>
       <w>vistautils</w>
