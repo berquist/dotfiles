@@ -44,19 +44,15 @@
 ;; Automatically reload buffers when their files change, and make sure
 ;; to check on the version control status every now and then.
 (global-auto-revert-mode t)
-;; TODO Turns out this is *extremely* irritating and moves the mark
-;; every time the buffer refreshes!
+
+;; Turns out this is *extremely* irritating and moves the mark every time the
+;; buffer refreshes!
 ;; (setq-default auto-revert-check-vc-info t)
 
 ;; Set up the initial scratch buffer.
 ;; http://emacsredux.com/blog/2014/07/25/configure-the-scratch-buffers-mode/
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message nil)
-
-;; What platform are we on? darwin, gnu/linux are the most likely
-;; answers.
-(defvar system-type-as-string (prin1-to-string system-type))
-(defun sys () system-type-as-string)
 
 ;; Set the path properly. Don't have a conditional on using the window system
 ;; in order to circumvent
@@ -289,6 +285,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
+(setq completions-format 'vertical)
 (add-to-list 'completion-ignored-extensions ".html")
 #+END_SRC
 
@@ -339,8 +336,8 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (setq langtool-mother-tongue "en")
   ;; TODO update
   (if (eq system-type 'darwin)
-      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-server.jar"
-            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
+      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.5/libexec/languagetool-server.jar"
+            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.5/libexec/languagetool-commandline.jar"))
   ;; Arch Linux
   (if (eq system-type 'gnu/linux)
       (setq langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
@@ -1056,7 +1053,7 @@ current buffer, return its path, otherwise nil."
 ;; I don't write Objective-C.
 (assq-delete-all "\\.m\\'" auto-mode-alist)
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
-;; (setq octave-block-offset 4)
+(setq octave-block-offset 4)
 #+END_SRC
 
 * Rust
