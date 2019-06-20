@@ -5,6 +5,7 @@
 
 packages=(
     ant
+    aspell
     autoconf
     automake
     bash # Don't forget to add to /etc/shells
@@ -23,11 +24,11 @@ packages=(
     "gradle --with-all"
     htop
     hub
-    ispell
     jena
     jq
     keychain
     kotlin
+    languagetool
     less
     lesspipe
     lftp
