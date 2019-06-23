@@ -231,15 +231,15 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 (load-theme 'wombat2 t)
 
 ;; Other themes I like to have installed:
-(use-package abyss-theme)
-(use-package dracula-theme)
-(use-package gotham-theme)
-(use-package lush-theme)
-(use-package monochrome-theme)
-(use-package plan9-theme)
-(use-package punpun-theme) ; (punpun-light, punpun-dark)
-(use-package quasi-monochrome-theme)
-(use-package rebecca-theme)
+;; (use-package abyss-theme)
+;; (use-package dracula-theme)
+;; (use-package gotham-theme)
+;; (use-package lush-theme)
+;; (use-package monochrome-theme)
+;; (use-package plan9-theme)
+;; (use-package punpun-theme) ; (punpun-light, punpun-dark)
+;; (use-package quasi-monochrome-theme)
+;; (use-package rebecca-theme)
 #+end_src
 
 ** Windows
