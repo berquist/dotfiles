@@ -949,7 +949,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
-  :hook ((prog-mode text-mode) . (lambda () (editorconfig-mode 1)))
+  :hook ((prog-mode text-mode) . editorconfig-mode)
   :config
   (defun ejb/editorconfig-has-editorconfig ()
     "If there is an .editorconfig file associated with the
