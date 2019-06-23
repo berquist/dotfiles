@@ -208,11 +208,6 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   :init
   (dtrt-indent-mode 1))
 
-(use-package aggressive-indent
-  :disabled t
-  :init
-  (global-aggressive-indent-mode 1))
-
 (use-package unfill
   :bind (("C-M-q" . unfill-paragraph)))
 
@@ -422,8 +417,6 @@ TODO clean this up, figure out LaTeX
     (add-to-list 'company-backends 'company-lsp)))
 (use-package lsp-java
   :hook (java-mode . lsp))
-(use-package eglot
-  :disabled t)
 #+END_SRC
 
 * Flycheck
@@ -1060,16 +1053,6 @@ current buffer, return its path, otherwise nil."
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 #+END_SRC
-
-* docview
-
-#+begin_src emacs-lisp
-(use-package doc-view
-  :disabled t
-  :bind (:map doc-view-mode-map
-              ("M-[" . doc-view-previous-page)
-              ("M-]" . doc-view-next-page)))
-#+end_src
 
 * Scheme/Lisp
 
