@@ -416,6 +416,7 @@ TODO clean this up, figure out LaTeX
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-lsp)))
 (use-package lsp-java
+  :disabled t
   :hook (java-mode . lsp))
 #+END_SRC
 
@@ -1156,7 +1157,17 @@ Modified to remove/disable Racket.
 * Discord
 
 #+BEGIN_SRC emacs-lisp
+(setq path-to-discord-socket
+      (expand-file-name
+       "discord-ipc-0"
+       (file-name-as-directory
+        (or (getenv "XDG_RUNTIME_DIR")
+            (getenv "TMPDIR")
+            (getenv "TMP")
+            (getenv "TEMP")
+            "/tmp"))))
 (use-package elcord
+  :if (boundp 'path-to-discord-socket)
   :custom (elcord-use-major-mode-as-main-icon t)
   :init (elcord-mode))
 #+END_SRC
