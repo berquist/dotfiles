@@ -17,6 +17,7 @@
       <w>cksum</w>
       <w>classquery</w>
       <w>cmap</w>
+      <w>confidenceless</w>
       <w>conll</w>
       <w>coref</w>
       <w>coreference</w>
@@ -64,9 +65,11 @@
       <w>immutablesetmultidict</w>
       <w>indegree</w>
       <w>ingester</w>
+      <w>interta</w>
       <w>jinja</w>
       <w>jmee</w>
       <w>joinpath</w>
+      <w>justificationless</w>
       <w>kentonlee</w>
       <w>keyframeid</w>
       <w>labeller</w>
@@ -105,6 +108,7 @@
       <w>resourcedir</w>
       <w>rmsprop</w>
       <w>segmenter</w>
+      <w>shacl</w>
       <w>simplfied</w>
       <w>softmax</w>
       <w>spacy</w>
