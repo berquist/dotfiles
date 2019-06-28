@@ -149,10 +149,10 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 #+begin_src emacs-lisp
 (use-package mic-paren
-  :config
-  (setq paren-delay nil)
-  (setq paren-highlight-at-point t)
-  (setq paren-highlight-offscreen t)
+  :custom
+  (paren-delay nil)
+  (paren-highlight-at-point t)
+  (paren-highlight-offscreen t)
   :init
   (paren-activate))
 
@@ -161,10 +161,10 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   :mode (("\\.csv\\'" . whitespace-mode)
          ("\\.tab\\'" . whitespace-mode)
          ("\\.tsv\\'" . whitespace-mode))
-  :config
-   ;; use the fill-column value
-  (setq whitespace-line-column nil)
-  (setq whitespace-display-mappings
+  :custom
+  ;; use the fill-column value
+  (whitespace-line-column nil)
+  (whitespace-display-mappings
    '((space-mark   ?\    [?\u00B7]     [?.])                    ; 32 SPACE, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
      ;; (space-mark ?\s [183] [46])
      ;; (space-mark 32 [32] [46]) ; normal space, display nothing
@@ -200,7 +200,7 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   ;; spaces. Since my goal is not to look for indentation problems, but find
   ;; _any_ mixing, consider any number of spaces after a tab. Additionally,
   ;; apply font locking to the spaces, not the tab.
-  (setq whitespace-space-after-tab-regexp '("\011+\\(\\( \\{0,\\}\\)+\\)" . "\\(\011+\\) \\{0,\\}"))
+  (whitespace-space-after-tab-regexp '("\011+\\(\\( \\{0,\\}\\)+\\)" . "\\(\011+\\) \\{0,\\}"))
   :init
   (setq global-whitespace-mode nil))
 
@@ -262,18 +262,18 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 
 #+begin_src emacs-lisp
 (use-package ido
-  :config
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
+  :custom
+  (ido-enable-flex-matching t)
+  (ido-everywhere t)
   ;; wow, that *is* annoying!
-  (setq ido-use-filename-at-point nil)
-  (setq ido-use-url-at-point nil)
+  (ido-use-filename-at-point nil)
+  (ido-use-url-at-point nil)
   :init
   (ido-mode t))
 (use-package ido-vertical-mode
   :disabled t
-  :config
-  (setq ido-vertical-show-count t)
+  :custom
+  (ido-vertical-show-count t)
   :init
   (ido-vertical-mode 1))
 #+end_src
@@ -286,10 +286,10 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 #+BEGIN_SRC emacs-lisp
 (use-package ivy
   :disabled t
-  :config
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  :custom
+  (ivy-use-virtual-buffers t)
+  (ivy-count-format "(%d/%d) ")
+  (ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   :init
   (ivy-mode 1))
 (use-package counsel
@@ -347,9 +347,9 @@ TODO clean this up, figure out LaTeX
          ("C-S-<f8>" . flyspell-mode)
          ("C-M-<f8>" . flyspell-buffer)
          ("C-<f8>" . flyspell-check-previous-highlighted-word))
-  :config
-  (setq flyspell-issue-welcome-flag nil)
-  (setq flyspell-mode-line-string " FlyS"))
+  :custom
+  (flyspell-issue-welcome-flag nil)
+  (flyspell-mode-line-string " FlyS"))
 
 ;; These are the modes flyspell should be enabled/disabled for
 ;; (https://www.emacswiki.org/emacs/FlySpell#toc1).
@@ -429,10 +429,10 @@ TODO add LaTex
 #+begin_src emacs-lisp
 (use-package flycheck
   :bind (("C-c f" . flycheck-mode))
-  :config
-  (setq flycheck-check-syntax-automatically '(mode-enabled save))
-  (setq flycheck-markdown-mdl-style "~/.mdlrc")
-  (setq flycheck-pylintrc "~/.pylintrc")
+  :custom
+  (flycheck-check-syntax-automatically '(mode-enabled save))
+  (flycheck-markdown-mdl-style "~/.mdlrc")
+  (flycheck-pylintrc "~/.pylintrc")
   :init
   (global-flycheck-mode))
 #+end_src
@@ -452,10 +452,10 @@ sudo pkg install checkbashisms # FreeBSD
 #+begin_src emacs-lisp
 (use-package flycheck-checkbashisms
   :hook (flycheck-mode . flycheck-checkbashisms-setup)
-  :config
+  :custom
   ;; Check 'echo -n' usage
-  (setq flycheck-checkbashisms-newline t)
-  (setq flycheck-checkbashisms-posix t))
+  (flycheck-checkbashisms-newline t)
+  (flycheck-checkbashisms-posix t))
 #+end_src
 
 ** Prose
@@ -760,8 +760,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package python
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
-  :config
-  (setq python-fill-docstring-style 'pep-257-nn))
+  :custom
+  (python-fill-docstring-style 'pep-257-nn))
 
 (use-package pydoc)
 
@@ -837,23 +837,24 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
          ("\\.mdown\\'" . markdown-mode)
          ("\\.md\\'" . markdown-mode))
   :hook (markdown-mode . pandoc-mode)
+  ;; Don't run pandoc on every save, it gets annoying.
   ;; :config
   ;; (add-hook 'markdown-mode-hook
   ;;           (lambda ()
   ;;             (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
-  :init
-  (setq markdown-asymmetric-header t)
-  (setq markdown-content-type "application/xhtml+xml")
+  :custom
+  (markdown-asymmetric-header t)
+  (markdown-content-type "application/xhtml+xml")
   ;; This isn't super necessary since I have pandoc run a similar command
   ;; every time I save with these default arguments, but this always produces
   ;; HTML where pandoc-mode might not.
-  (setq markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html")
-  (setq markdown-enable-math t)
-  (setq markdown-fontify-code-blocks-natively t)
-  (setq markdown-hide-markup nil)
-  (setq markdown-hide-urls nil)
-  (setq markdown-italic-underscore t)
-  (setq markdown-link-space-sub-char "-"))
+  (markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html")
+  (markdown-enable-math t)
+  (markdown-fontify-code-blocks-natively t)
+  (markdown-hide-markup nil)
+  (markdown-hide-urls nil)
+  (markdown-italic-underscore t)
+  (markdown-link-space-sub-char "-"))
 #+end_src
 
 * deft
@@ -863,17 +864,17 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 #+begin_src emacs-lisp
 (use-package deft
   :bind (("C-c d" . deft))
-  :config
-  (setq deft-auto-save-interval 60.0)
+  :custom
+  (deft-auto-save-interval 60.0)
   ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
-  (setq deft-directory "~/Dropbox/Notes")
-  (setq deft-default-extension "md")
-  (setq deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex"))
-  (setq deft-recursive t)
-  (setq deft-text-mode 'gfm-mode)
-  (setq deft-time-format " %Y-%m-%d %H:%M:%S")
-  (setq deft-use-filename-as-title t)
-  (setq deft-use-filter-string-as-filename t))
+  (deft-directory "~/Dropbox/Notes")
+  (deft-default-extension "md")
+  (deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex"))
+  (deft-recursive t)
+  (deft-text-mode 'gfm-mode)
+  (deft-time-format " %Y-%m-%d %H:%M:%S")
+  (deft-use-filename-as-title t)
+  (deft-use-filter-string-as-filename t))
 #+end_src
 
 https://stackoverflow.com/a/35450025/3249688
@@ -902,8 +903,8 @@ This section needs to come after the Markdown section so that CMake files get re
   (("CMakeLists\\.txt\\'" . cmake-mode)
    ("CMakeCache\\.txt\\'" . cmake-mode)
    ("\\.cmake\\'" . cmake-mode))
-  :config
-  (setq cmake-tab-width 4))
+  :custom
+  (cmake-tab-width 4))
 #+end_src
 
 * Shell Scripts
