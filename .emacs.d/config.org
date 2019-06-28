@@ -1167,7 +1167,7 @@ Modified to remove/disable Racket.
             (getenv "TEMP")
             "/tmp"))))
 (use-package elcord
-  :if (boundp 'path-to-discord-socket)
+  :if (file-exists-p path-to-discord-socket)
   :custom (elcord-use-major-mode-as-main-icon t)
   :init (elcord-mode))
 #+END_SRC
