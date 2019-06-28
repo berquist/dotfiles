@@ -1118,17 +1118,13 @@ Modified to remove/disable Racket.
     (flycheck-kotlin-setup)))
 #+END_SRC
 
-* SPARQL
+* Semantic web: SPARQL/Turtle
 
 #+BEGIN_SRC emacs-lisp
 (use-package sparql-mode
   :mode (("\\.sparql\\'" . sparql-mode)
          ("\\.rq\\'" . sparql-mode)))
-#+END_SRC
 
-* Turtle
-
-#+BEGIN_SRC emacs-lisp
 (use-package ttl-mode
   :delight "N3/Turtle"
   :mode (("\\.n3\\'" . ttl-mode)    ; Notation3
