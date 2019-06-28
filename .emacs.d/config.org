@@ -1063,8 +1063,8 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/clhs/HyperSpec/"))
 (use-package slime
-  :config
-  (setq inferior-lisp-program "clisp")
+  :custom
+  (inferior-lisp-program "clisp")
   :init
   (require 'slime-autoloads)
   (add-to-list 'slime-contribs 'slime-fancy))
@@ -1083,19 +1083,19 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package geiser
-  :config
-  (setq geiser-active-implementations '(guile chicken chez mit chibi))
-  (setq geiser-implementations-alist '(((regexp "\\.scm\\'") guile)
-                                       ((regexp "\\.scm\\'") chicken)
-                                       ((regexp "\\.release-info\\'") chicken)
-                                       ((regexp "\\.meta\\'") chicken)
-                                       ((regexp "\\.setup\\'") chicken)
-                                       ((regexp "\\.ss\\'") chez)
-                                       ((regexp "\\.def\\'") chez)
-                                       ((regexp "\\.scm\\'") mit)
-                                       ((regexp "\\.pkg\\'") mit)
-                                       ((regexp "\\.scm\\'") chibi)
-                                       ((regexp "\\.sld\\'") chibi))))
+  :custom
+  (geiser-active-implementations '(guile chicken chez mit chibi))
+  (geiser-implementations-alist '(((regexp "\\.scm\\'") guile)
+                                  ((regexp "\\.scm\\'") chicken)
+                                  ((regexp "\\.release-info\\'") chicken)
+                                  ((regexp "\\.meta\\'") chicken)
+                                  ((regexp "\\.setup\\'") chicken)
+                                  ((regexp "\\.ss\\'") chez)
+                                  ((regexp "\\.def\\'") chez)
+                                  ((regexp "\\.scm\\'") mit)
+                                  ((regexp "\\.pkg\\'") mit)
+                                  ((regexp "\\.scm\\'") chibi)
+                                  ((regexp "\\.sld\\'") chibi))))
 #+END_SRC
 
 ** Racket
