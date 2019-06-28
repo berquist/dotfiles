@@ -961,28 +961,10 @@ current buffer, return its path, otherwise nil."
   :delight '(:eval (ejb/editorconfig-mode-lighter)))
 #+END_SRC
 
-* Julia
-
-#+BEGIN_SRC emacs-lisp
-(use-package julia-mode)
-(use-package flycheck-julia
-  :hook (flycheck-mode . flycheck-julia-setup))
-#+END_SRC
-
-* Ruby
+* Ruby (builtin)
 
 #+BEGIN_SRC emacs-lisp
 (setq ruby-indent-level 4)
-#+END_SRC
-
-* YAML
-
-#+BEGIN_SRC emacs-lisp
-(use-package yaml-mode
-  ;; A decent assumption
-  :mode (("\\.params\\'" . yaml-mode)))
-(use-package flycheck-yamllint
-  :hook (flycheck-mode . flycheck-yamllint-setup))
 #+END_SRC
 
 * Conf (builtin)
@@ -997,6 +979,43 @@ current buffer, return its path, otherwise nil."
    (".flake8" . conf-unix-mode)
    (".pylintrc" . conf-unix-mode)
    (".style.yapf" . conf-unix-mode)))
+#+END_SRC
+
+* XML (builtin)
+
+#+BEGIN_SRC emacs-lisp
+(use-package nxml
+  :mode (("\\.rdf\\'" . nxml-mode)
+         ("\\.xmp\\'" . nxml-mode)))
+#+END_SRC
+
+* MATLAB/Octave (builtin)
+
+#+BEGIN_SRC emacs-lisp
+;; Don't use matlab-mode.
+;; (use-package matlab-mode)
+;; I don't write Objective-C.
+(assq-delete-all "\\.m\\'" auto-mode-alist)
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
+(setq octave-block-offset 4)
+#+END_SRC
+
+* Julia
+
+#+BEGIN_SRC emacs-lisp
+(use-package julia-mode)
+(use-package flycheck-julia
+  :hook (flycheck-mode . flycheck-julia-setup))
+#+END_SRC
+
+* YAML
+
+#+BEGIN_SRC emacs-lisp
+(use-package yaml-mode
+  ;; A decent assumption
+  :mode (("\\.params\\'" . yaml-mode)))
+(use-package flycheck-yamllint
+  :hook (flycheck-mode . flycheck-yamllint-setup))
 #+END_SRC
 
 * JSON
@@ -1024,25 +1043,6 @@ current buffer, return its path, otherwise nil."
     '(define-key html-mode-map (kbd "C-c b") 'web-beautify-html))
   (eval-after-load 'css-mode
     '(define-key css-mode-map (kbd "C-c b") 'web-beautify-css)))
-#+END_SRC
-
-* XML
-
-#+BEGIN_SRC emacs-lisp
-(use-package nxml
-  :mode (("\\.rdf\\'" . nxml-mode)
-         ("\\.xmp\\'" . nxml-mode)))
-#+END_SRC
-
-* MATLAB/Octave
-
-#+BEGIN_SRC emacs-lisp
-;; Don't use matlab-mode.
-;; (use-package matlab-mode)
-;; I don't write Objective-C.
-(assq-delete-all "\\.m\\'" auto-mode-alist)
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
-(setq octave-block-offset 4)
 #+END_SRC
 
 * Rust
