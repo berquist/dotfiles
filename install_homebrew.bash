@@ -53,6 +53,7 @@ packages=(
     tidy-html5
     tmux
     util-linux
+    wakatime-cli
     watchman
     wget
     xmlstarlet
