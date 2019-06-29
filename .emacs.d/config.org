@@ -1,6 +1,7 @@
 * General configuration
 
 #+begin_src emacs-lisp
+(load-file "~/dotfiles/dotfiles-private/private.el")
 (setq-default user-full-name "Eric J. Berquist")
 (setq-default user-mail-address "eric.berquist@gmail.com")
 
@@ -1151,7 +1152,9 @@ Modified to remove/disable Racket.
 (use-package systemd)
 #+END_SRC
 
-* Discord
+* External services
+
+** Discord
 
 #+BEGIN_SRC emacs-lisp
 (setq path-to-discord-socket
@@ -1167,4 +1170,12 @@ Modified to remove/disable Racket.
   :if (file-exists-p path-to-discord-socket)
   :custom (elcord-use-major-mode-as-main-icon t)
   :init (elcord-mode))
+#+END_SRC
+
+** Wakatime
+
+#+BEGIN_SRC emacs-lisp
+(use-package wakatime-mode
+  :init
+  (global-wakatime-mode))
 #+END_SRC
