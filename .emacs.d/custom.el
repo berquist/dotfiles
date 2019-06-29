@@ -26,7 +26,6 @@
      ("" "amssymb" t)
      ("" "capt-of" nil)
      ("colorlinks=true" "hyperref" nil))))
- '(py-fontify-shell-buffer-p t)
  '(safe-local-variable-values
    (quote
     ((eval progn
