@@ -106,8 +106,8 @@
 (bind-key (kbd "C-x b") 'ibuffer)
 (bind-key (kbd "C-c b") 'switch-to-previous-buffer)
 
-(bind-key (kbd "C-+") 'text-scale-increase)
-(bind-key (kbd "C--") 'text-scale-decrease)
+(bind-key (kbd "C-x C-9") 'text-scale-increase)
+(bind-key (kbd "C-x C-0") 'text-scale-decrease)
 
 (bind-key (kbd "C-x C-h") 'replace-string)
 
