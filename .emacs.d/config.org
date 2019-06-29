@@ -148,12 +148,14 @@ current buffer's, reload dir-locals."
 
 See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
+For both =mic-paren= and =whitespace=, using =:custom= add things to =custom.el= for some reason, so leave them as =:config= with =setq=.
+
 #+begin_src emacs-lisp
 (use-package mic-paren
-  :custom
-  (paren-delay nil)
-  (paren-highlight-at-point t)
-  (paren-highlight-offscreen t)
+  :config
+  (setq paren-delay nil)
+  (setq paren-highlight-at-point t)
+  (setq paren-highlight-offscreen t)
   :init
   (paren-activate))
 
@@ -162,10 +164,10 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   :mode (("\\.csv\\'" . whitespace-mode)
          ("\\.tab\\'" . whitespace-mode)
          ("\\.tsv\\'" . whitespace-mode))
-  :custom
+  :config
   ;; use the fill-column value
-  (whitespace-line-column nil)
-  (whitespace-display-mappings
+  (setq whitespace-line-column nil)
+  (setq whitespace-display-mappings
    '((space-mark   ?\    [?\u00B7]     [?.])                    ; 32 SPACE, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
      ;; (space-mark ?\s [183] [46])
      ;; (space-mark 32 [32] [46]) ; normal space, display nothing
@@ -201,7 +203,7 @@ See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
   ;; spaces. Since my goal is not to look for indentation problems, but find
   ;; _any_ mixing, consider any number of spaces after a tab. Additionally,
   ;; apply font locking to the spaces, not the tab.
-  (whitespace-space-after-tab-regexp '("\011+\\(\\( \\{0,\\}\\)+\\)" . "\\(\011+\\) \\{0,\\}"))
+  (setq whitespace-space-after-tab-regexp '("\011+\\(\\( \\{0,\\}\\)+\\)" . "\\(\011+\\) \\{0,\\}"))
   :init
   (setq global-whitespace-mode nil))
 
