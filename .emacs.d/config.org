@@ -332,10 +332,14 @@ Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]].
   (global-anzu-mode 1))
 #+END_SRC
 
-Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed. Use =M-x ripgrep-regexp= to activate.
+Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed.
+- For =ripgrep=, which has the traditional =grep= interface, use =M-x ripgrep-regexp= to activate.
 
 #+BEGIN_SRC emacs-lisp
 (use-package ripgrep)
+(use-package deadgrep
+  ;; <f5> is suggested, but that is inconvenient on my keyboards...
+  :bind (("C-c g" . deadgrep)))
 #+END_SRC
 
 * Spelling
@@ -357,7 +361,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
             langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar")))
 #+END_SRC
 
-TODO clean this up, figure out LaTeX
+TODO clean this up, figure out LaTeX. Also having the =<f8>= bind is annoying.
 
 #+begin_src emacs-lisp
 (use-package flyspell
