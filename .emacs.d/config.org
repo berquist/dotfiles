@@ -286,13 +286,18 @@ I've decided to stop using =ido= in favor of "better" and "more modern" packages
   (ido-vertical-mode 1))
 #+end_src
 
+TODO how to get these to carry over to Ivy?
+
 #+BEGIN_SRC emacs-lisp
 (setq completions-format 'vertical)
 (add-to-list 'completion-ignored-extensions ".html")
 #+END_SRC
 
+=amx= is used to get =M-x= ordered by frequency, something =ido= has that =ivy= does not.
+
 #+BEGIN_SRC emacs-lisp
 (use-package ivy
+  :delight
   :bind
   (:map ivy-minibuffer-map
         ("<return>" . ivy-alt-done))
@@ -1189,6 +1194,7 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package wakatime-mode
+  :delight
   :config
   (if (eq system-type 'darwin)
       (setq wakatime-cli-path "/usr/local/bin/wakatime"))
