@@ -265,6 +265,8 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 - Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
 - http://oremacs.com/2015/02/09/ido-vertical/
 
+I've decided to stop using =ido= in favor of "better" and "more modern" packages...
+
 #+begin_src emacs-lisp
 (use-package ido
   :disabled t
@@ -301,6 +303,9 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   (setq ivy-wrap t)
   :init
   (ivy-mode))
+(use-package amx
+  :init
+  (amx-mode))
 (use-package counsel
   :disabled t
   :bind (("M-x" . counsel-M-x)

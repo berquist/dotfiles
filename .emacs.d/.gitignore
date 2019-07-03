@@ -1,5 +1,6 @@
 /.lsp-session*
 /ac-comphist.dat
+/amx-items
 /anaconda-mode/
 /config.el
 /config.html
@@ -14,4 +15,5 @@
 /srecode-map.el
 /tramp
 /transient
+/var/
 /workspace
