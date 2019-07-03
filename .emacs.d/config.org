@@ -297,11 +297,10 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   :config
   (setq ivy-action-wrap t)
   (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   (setq ivy-use-virtual-buffers t)
   (setq ivy-wrap t)
   :init
-  (ivy-mode 1))
+  (ivy-mode))
 (use-package counsel
   :disabled t
   :bind (("M-x" . counsel-M-x)
