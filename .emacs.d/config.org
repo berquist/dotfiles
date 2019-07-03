@@ -260,13 +260,14 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setq-default indicate-buffer-boundaries 'right)
 #+end_src
 
-* Ido and searching
+* Searching
 
 - Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
 - http://oremacs.com/2015/02/09/ido-vertical/
 
 #+begin_src emacs-lisp
 (use-package ido
+  :disabled t
   :custom
   (ido-enable-flex-matching t)
   (ido-everywhere t)
@@ -290,11 +291,12 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 
 #+BEGIN_SRC emacs-lisp
 (use-package ivy
-  :disabled t
-  :custom
-  (ivy-use-virtual-buffers t)
-  (ivy-count-format "(%d/%d) ")
-  (ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  :config
+  (setq ivy-action-wrap t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-wrap t)
   :init
   (ivy-mode 1))
 (use-package counsel
