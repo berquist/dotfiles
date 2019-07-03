@@ -291,6 +291,9 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 
 #+BEGIN_SRC emacs-lisp
 (use-package ivy
+  :bind
+  (:map ivy-minibuffer-map
+        ("<return>" . ivy-alt-done))
   :config
   (setq ivy-action-wrap t)
   (setq ivy-count-format "(%d/%d) ")
