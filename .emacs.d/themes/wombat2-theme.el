@@ -70,10 +70,7 @@ Ansi-Color faces are included.")
       (wombat-gray-3   "#343434")
       (wombat-gray-4   "#333333")
       (wombat-gray-5   "#303030")
-      (wombat/black    "#242424")
-
-
-      )
+      (wombat/black    "#242424"))
 
   (custom-theme-set-faces
    'wombat2
@@ -192,9 +189,7 @@ Ansi-Color faces are included.")
    `(font-latex-subscript-face ((t (:height 0.9))))
    `(font-latex-superscript-face ((t (:height 0.9))))
    `(font-latex-verbatim-face ((t (:inherit fixed-pitch :foreground "#91a5c1")))) ;; LightSteelBlue3
-   `(font-latex-warning-face ((t (:inherit font-lock-warning-face))))
-
-   ))
+   `(font-latex-warning-face ((t (:inherit font-lock-warning-face))))))
 
 (custom-theme-set-variables
  'wombat2
