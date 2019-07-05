@@ -1075,7 +1075,9 @@ current buffer, return its path, otherwise nil."
 * Rust
 
 #+BEGIN_SRC emacs-lisp
-(use-package rust-mode)
+(use-package rust-mode
+  :custom
+  (rust-format-on-save t))
 (use-package cargo)
 (use-package flycheck-rust
   :init
