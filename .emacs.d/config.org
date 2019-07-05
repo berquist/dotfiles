@@ -112,8 +112,6 @@
 (bind-key (kbd "C-x C-0") 'text-scale-increase)
 
 (bind-key (kbd "C-x C-h") 'replace-string)
-
-(bind-key (kbd "C-c p") 'pwd)
 #+end_src
 
 * dir-locals
@@ -261,7 +259,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setq-default indicate-buffer-boundaries 'right)
 #+end_src
 
-* Searching
+* Searching and projects
 
 - Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
 - http://oremacs.com/2015/02/09/ido-vertical/
@@ -344,6 +342,16 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 (use-package deadgrep
   ;; <f5> is suggested, but that is inconvenient on my keyboards...
   :bind (("C-c g" . deadgrep)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package projectile
+  :bind ("C-c p" . projectile-command-map)
+  :custom
+  (projectile-completion-system 'ivy)
+  (projectile-enable-caching t)
+  :init
+  (projectile-mode))
 #+END_SRC
 
 * Spelling
