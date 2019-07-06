@@ -350,6 +350,9 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   :custom
   (projectile-completion-system 'ivy)
   (projectile-enable-caching t)
+  (projectile-indexing-method 'hybrid)
+  (projectile-require-project-root t)
+  (projectile-sort-order 'recently-active)
   :init
   (projectile-mode))
 #+END_SRC
