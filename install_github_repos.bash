@@ -6,6 +6,7 @@ repos=(
     chrissimpkins/codeface
     github/gitignore
     mbadolato/iTerm2-Color-Schemes
+    plexus/chemacs
     robbyrussell/oh-my-zsh
 )
 
