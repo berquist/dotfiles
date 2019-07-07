@@ -423,7 +423,16 @@ TODO clean this up, figure out LaTeX. Also having the =<f8>= bind is annoying.
 #+BEGIN_SRC emacs-lisp
 (use-package company
   :hook (after-init . global-company-mode)
-  :custom (company-idle-delay 0.05))
+  :bind
+  ("M-]" . company-complete)
+  (:map company-active-map
+         ("M-/" . company-other-backend)
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous))
+  :custom
+  (company-dabbrev-downcase nil)
+  (company-idle-delay 0.1))
+
 (use-package lsp-mode
   :commands lsp
   :hook ((sh-mode fortran-mode kotlin-mode python-mode rust-mode) . lsp)
