@@ -796,6 +796,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+begin_src emacs-lisp
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
+  :ensure nil
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :custom
@@ -838,15 +839,22 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :disabled t
   :custom (flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
   :hook (flycheck-mode . flycheck-pycheckers-setup))
+#+end_src
 
+** Reformatters
+
+#+BEGIN_SRC emacs-lisp
 (use-package blacken
-  :disabled t
-  :hook python-mode)
+  :bind
+  (:map python-mode-map
+        ("C-c C-b" . blacken-buffer)))
 
 (use-package yapfify
-  :disabled t
-  :hook (python-mode . yapf-mode))
-#+end_src
+  :bind
+  (:map python-mode-map
+        ("C-c C-y b" . yapfify-buffer)
+        ("C-c C-y r" . yapfify-region)))
+#+END_SRC
 
 ** Cython
 
