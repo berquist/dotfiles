@@ -424,15 +424,6 @@ TODO clean this up, figure out LaTeX. Also having the =<f8>= bind is annoying.
 (use-package company
   :hook (after-init . global-company-mode)
   :custom (company-idle-delay 0.05))
-(use-package company-c-headers
-  :disabled t
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-c-headers)))
-(use-package company-irony
-  :disabled t)
-(use-package company-irony-c-headers
-  :disabled t)
 (use-package lsp-mode
   :commands lsp
   :hook ((sh-mode fortran-mode kotlin-mode python-mode rust-mode) . lsp)
@@ -453,9 +444,6 @@ TODO clean this up, figure out LaTeX. Also having the =<f8>= bind is annoying.
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-lsp)))
-(use-package lsp-java
-  :disabled t
-  :hook (java-mode . lsp))
 #+END_SRC
 
 * Flycheck
