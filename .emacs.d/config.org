@@ -433,12 +433,11 @@ TODO clean this up, figure out LaTeX. Also having the =<f8>= bind is annoying.
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous))
   :custom
-  (company-dabbrev-downcase nil)
-  (company-idle-delay 0.1))
+  (company-dabbrev-downcase nil))
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((sh-mode fortran-mode kotlin-mode python-mode rust-mode) . lsp)
+  :hook ((c++-mode fortran-mode kotlin-mode python-mode rust-mode sh-mode) . lsp)
   :custom
   (lsp-auto-guess-root t)
   (lsp-enable-snippet nil)
