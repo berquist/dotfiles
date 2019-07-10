@@ -1,14 +1,13 @@
 * General configuration
 
+What's the difference between setq and setq-default? See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
+
 #+begin_src emacs-lisp
 (load-file "~/dotfiles/dotfiles-private/private.el")
 (setq-default user-full-name "Eric J. Berquist")
 (setq-default user-mail-address "eric.berquist@gmail.com")
 
 ;; took some tricks from http://www.aaronbedra.com/emacs.d/
-
-;; What's the difference between setq and setq-default?
-;; See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
 ;; http://stackoverflow.com/questions/3281581/how-to-word-wrap-in-emacs
 ;; http://stackoverflow.com/questions/12989072/showing-continuation-lines-in-emacs-in-a-text-terminal
