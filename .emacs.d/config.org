@@ -145,6 +145,10 @@ current buffer's, reload dir-locals."
 
 * Parens/whitespace/indentation
 
+#+BEGIN_SRC emacs-lisp
+(electric-pair-mode)
+#+END_SRC
+
 See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
 For both =mic-paren= and =whitespace=, using =:custom= add things to =custom.el= for some reason, so leave them as =:config= with =setq=.
