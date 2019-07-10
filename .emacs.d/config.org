@@ -437,7 +437,7 @@ TODO clean this up, figure out LaTeX. Also having the =<f8>= bind is annoying.
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c++-mode fortran-mode kotlin-mode python-mode rust-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode kotlin-mode python-mode rust-mode sh-mode) . lsp)
   :custom
   (lsp-auto-guess-root t)
   (lsp-enable-snippet nil)
