@@ -321,10 +321,12 @@ TODO how to get these to carry over to Ivy?
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)))
 (use-package swiper
-  :bind ("C-s" . swiper-isearch))
+  :bind (("C-s" . swiper-isearch)))
+;; TODO https://github.com/abo-abo/swiper/pull/2125
+;;         ("C-r" . swiper-isearch-backward)))
 #+END_SRC
 
-Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]]. There isn't a need for anzu when using swiper.
+Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]]. There isn't a need for anzu when using Swiper.
 
 #+BEGIN_SRC emacs-lisp
 (use-package anzu
