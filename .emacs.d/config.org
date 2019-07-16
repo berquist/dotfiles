@@ -1228,6 +1228,7 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package wakatime-mode
+  :if (executable-find "wakatime")
   :delight
   :config
   (if (eq system-type 'darwin)
