@@ -49,4 +49,5 @@
  '(company-scrollbar-fg ((t (:background "IndianRed4"))))
  '(company-template-field ((t (:background "light sea green" :foreground "white"))))
  '(company-tooltip ((t (:background "dark slate gray" :foreground "white"))))
- '(company-tooltip-selection ((t (:background "DarkOrange3")))))
+ '(company-tooltip-selection ((t (:background "DarkOrange3"))))
+ '(fixed-pitch ((t (:family "Fira Mono")))))
