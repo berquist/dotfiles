@@ -379,41 +379,16 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (if (eq system-type 'gnu/linux)
       (setq langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
             langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar")))
-#+END_SRC
 
-TODO clean this up, figure out LaTeX. Also having the =<f8>= bind is annoying.
-
-#+begin_src emacs-lisp
 (use-package flyspell
-  ;; built-in binding is M-$, ew
-  :bind (("<f8>" . ispell-word)
-         ("C-S-<f8>" . flyspell-mode)
-         ("C-M-<f8>" . flyspell-buffer)
-         ("C-<f8>" . flyspell-check-previous-highlighted-word))
+  :ensure nil
+  :hook ((text-mode . flyspell-mode)
+         (prog-mode . flyspell-prog-mode))
+  :bind (("C-'" . flyspell-word)
+         ("C-M-'" . flyspell-buffer))
   :custom
   (flyspell-issue-welcome-flag nil)
   (flyspell-mode-line-string " FlyS"))
-
-;; These are the modes flyspell should be enabled/disabled for
-;; (https://www.emacswiki.org/emacs/FlySpell#toc1).
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-(dolist (hook '(change-log-mode-hook
-                log-edit-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode -1))))
-;; Don't enable flyspell for programming-type modes.
-;; (dolist (mode '(emacs-lisp-mode-hook
-;;                 inferior-lisp-mode-hook
-;;                 python-mode-hook))
-;;   (add-hook mode
-;;             '(lambda ()
-;;                (flyspell-prog-mode))))
-(defun flyspell-check-next-highlighted-word ()
-  "Custom function to spell check next highlighted word"
-  (interactive)
-  (flyspell-goto-next-error)
-  (ispell-word))
-(bind-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
 #+end_src
 
 ** word count
