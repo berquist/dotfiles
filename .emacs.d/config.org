@@ -1207,11 +1207,8 @@ Modified to remove/disable Racket.
 (use-package wakatime-mode
   :if (executable-find "wakatime")
   :delight
-  :config
-  (if (eq system-type 'darwin)
-      (setq wakatime-cli-path "/usr/local/bin/wakatime"))
-  (if (eq system-type 'gnu/linux)
-      (setq wakatime-cli-path "/usr/bin/wakatime"))
+  :custom
+  (wakatime-cli-path (executable-find "wakatime"))
   :init
   (global-wakatime-mode))
 #+END_SRC
