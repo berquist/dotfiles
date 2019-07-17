@@ -50,6 +50,4 @@
  '(company-template-field ((t (:background "light sea green" :foreground "white"))))
  '(company-tooltip ((t (:background "dark slate gray" :foreground "white"))))
  '(company-tooltip-selection ((t (:background "DarkOrange3"))))
- '(fixed-pitch ((t (:family "Fira Mono"))))
- '(ivy-action ((t (:inherit font-lock-builtin-face :foreground "Cyan"))))
- '(ivy-virtual ((t (:inherit font-lock-builtin-face :foreground "magenta")))))
+ '(fixed-pitch ((t (:family "Fira Mono")))))
