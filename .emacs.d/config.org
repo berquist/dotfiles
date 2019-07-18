@@ -789,11 +789,9 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-anaconda)))
 
+(use-package virtualenvwrapper)
 (use-package conda
-  :custom
-  (conda-anaconda-home "/Users/berquist/.anaconda")
   :init
-  (conda-env-initialize-interactive-shells)
   (conda-env-autoactivate-mode))
 #+end_src
 
