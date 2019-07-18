@@ -31,6 +31,9 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; 'defalias' or 'fset'?
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; This is really annoying, yes I want to quit
+(setq confirm-kill-processes nil)
+
 ;; death to tabs, tabs are evil
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
