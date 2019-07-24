@@ -1174,6 +1174,7 @@ Modified to remove/disable Racket.
 (use-package graphviz-dot-mode)
 (use-package lua-mode)
 (use-package mediawiki)
+(use-package meson-mode)
 (use-package nim-mode)
 (use-package scala-mode)
 (use-package strace-mode)
