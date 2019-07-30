@@ -57,6 +57,7 @@ packages=(
     watchman
     wget
     xmlstarlet
+    yamllint
     zlib
     zsh # Don't forget to add to /etc/shells
 )
