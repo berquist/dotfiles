@@ -419,7 +419,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode kotlin-mode python-mode rust-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode kotlin-mode rust-mode sh-mode) . lsp)
   :custom
   (lsp-auto-guess-root t)
   (lsp-enable-snippet nil)
@@ -797,6 +797,12 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package conda
   :init
   (conda-env-autoactivate-mode))
+
+(use-package lsp-python-ms
+  :after lsp-mode
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-python-ms)
+                         (lsp))))
 #+end_src
 
 ** Linters

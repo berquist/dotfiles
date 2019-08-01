@@ -20,4 +20,7 @@ if command -v rbenv 1>/dev/null 2>&1; then eval "$(rbenv init -)"; fi
 [[ -d "${HOME}/.nimble/bin" ]] && export PATH="${HOME}/.nimble/bin:${PATH}"
 
 # conda
-[[ -d "${HOME}/.anaconda/bin" ]] && eval "$(${HOME}/.anaconda/bin/conda shell.zsh hook)"
+if [[ -d "${HOME}/.anaconda" ]]; then
+    eval "$(${HOME}/.anaconda/bin/conda shell.zsh hook)"
+    export ANACONDA_HOME="${HOME}/.anaconda"
+fi
