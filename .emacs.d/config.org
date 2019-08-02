@@ -796,6 +796,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package virtualenvwrapper)
 (use-package conda
   :init
+  (exec-path-from-shell-copy-env "ANACONDA_HOME")
   (conda-env-autoactivate-mode))
 
 (use-package lsp-python-ms
