@@ -1,7 +1,17 @@
 #!/usr/bin/env zsh
 
+# https://superuser.com/a/583502/551499
+#
+# This needs to live here and not in `~/.zprofile`; see that file for an
+# explanation.
+if [[ -f /etc/zprofile ]]; then
+    PATH=""
+    source /etc/zprofile
+fi
+
 source "${HOME}"/dotfiles/path_exports.bash
 
+# Don't use pyenv for now.
 # if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 # if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
