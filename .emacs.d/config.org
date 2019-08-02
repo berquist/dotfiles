@@ -453,7 +453,8 @@ TODO add LaTex
   :custom
   (flycheck-check-syntax-automatically '(mode-enabled save))
   (flycheck-markdown-mdl-style "~/.mdlrc")
-  (flycheck-pylintrc "~/.pylintrc")
+  ;; This interferes with project-specific configurations.
+  ;; (flycheck-pylintrc "~/.pylintrc")
   :init
   (global-flycheck-mode))
 #+end_src
