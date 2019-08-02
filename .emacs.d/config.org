@@ -369,7 +369,8 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 
 * Spelling
 
-=C-;= to try and correct a misspelled word on a line.
+- ispell and flyspell are intentionally intermingled
+- TODO ensure backend is =aspell=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package langtool
@@ -389,9 +390,10 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   :ensure nil
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode))
-  :bind (("C-'" . flyspell-word)
+  :bind (("C-'" . ispell-word)
          ("C-M-'" . flyspell-buffer))
   :custom
+  (ispell-silently-savep t)
   (flyspell-issue-welcome-flag nil)
   (flyspell-mode-line-string " FlyS"))
 #+end_src
