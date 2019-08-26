@@ -6,3 +6,7 @@
 if [[ -f /etc/profile ]] && [[ -f "${HOME}/.zshenv" ]]; then
     source "${HOME}/.zshenv"
 fi
+
+if [[ "$TERM" != "" ]]; then
+    stty -ixon
+fi
