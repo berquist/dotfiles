@@ -733,6 +733,17 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (add-to-list 'auto-mode-alist '("\\.isph\\'" . c++-mode))
 #+end_src
 
+* Java
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-java
+  :hook (java-mode . lsp))
+(use-package gradle-mode)
+(use-package flycheck-gradle
+  :commands (flycheck-gradle-setup)
+  :hook ((java-mode kotlin-mode) . flycheck-gradle-setup))
+#+END_SRC
+
 * Makefiles
 
 #+begin_src emacs-lisp
