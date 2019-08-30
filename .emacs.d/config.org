@@ -3,6 +3,12 @@
 What's the difference between setq and setq-default? See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
 #+begin_src emacs-lisp
+;; Load this as soon as possible
+(use-package no-littering
+  :init
+  ;; It doesn't want to start?
+  (require 'no-littering))
+
 (load-file "~/dotfiles/dotfiles-private/private.el")
 (setq-default user-full-name "Eric J. Berquist")
 (setq-default user-mail-address "eric.berquist@gmail.com")
