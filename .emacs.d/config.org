@@ -1138,11 +1138,15 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/clhs/HyperSpec/"))
 (use-package slime
+  :mode (("\\.cl\\'" . slime)
+         ("\\.lisp\\'" . slime))
   :custom
+  (common-lisp-default-style "modern")
   (inferior-lisp-program "clisp")
+  (lisp-indent-function 'common-lisp-indent-function)
+  (slime-contribs '(slime-cl-indent slime-fancy))
   :init
-  (require 'slime-autoloads)
-  (add-to-list 'slime-contribs 'slime-fancy))
+  (require 'slime-autoloads))
 #+END_SRC
 
 ** Hy
@@ -1171,6 +1175,8 @@ Modified to remove/disable Racket.
                                   ((regexp "\\.pkg\\'") mit)
                                   ((regexp "\\.scm\\'") chibi)
                                   ((regexp "\\.sld\\'") chibi))))
+(use-package scribble-mode
+  :hook (scribble-mode . geiser))
 #+END_SRC
 
 ** Racket
