@@ -432,6 +432,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (lsp-auto-guess-root t)
   (lsp-enable-snippet nil)
   (lsp-prefer-flymake nil)
+  (lsp-rust-clippy-preference "on")
   :init
   (with-eval-after-load 'lsp
     ;; https://github.com/emacs-lsp/lsp-mode/commit/f110a8f0fd316bcd87396fbea2dce3617bca9d5e
