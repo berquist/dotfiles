@@ -1138,8 +1138,6 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/clhs/HyperSpec/"))
 (use-package slime
-  :mode (("\\.cl\\'" . slime)
-         ("\\.lisp\\'" . slime))
   :custom
   (common-lisp-default-style "modern")
   (inferior-lisp-program "clisp")
