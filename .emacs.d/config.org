@@ -1139,7 +1139,7 @@ current buffer, return its path, otherwise nil."
 (setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/clhs/HyperSpec/"))
 (use-package slime
   :custom
-  (common-lisp-default-style "modern")
+  (common-lisp-style-default "modern")
   (inferior-lisp-program "clisp")
   (lisp-indent-function 'common-lisp-indent-function)
   (slime-contribs '(slime-cl-indent slime-fancy))
