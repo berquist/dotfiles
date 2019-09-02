@@ -34,6 +34,17 @@ Includes fundamental third-party packages that don't go anywhere else.
   (exec-path-from-shell-initialize))
 #+END_SRC
 
+* M-x customize
+
+Only package-selected-packages and custom-safe-themes should go in here.
+- https://www.reddit.com/r/emacs/comments/4x655n/packageselectedpackages_always_appear_after/
+- https://www.reddit.com/r/emacs/comments/53zpv9/how_do_i_get_emacs_to_stop_adding_custom_fields/
+
+#+BEGIN_SRC emacs-lisp
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+#+END_SRC
+
 * General configuration
 
 What's the difference between setq and setq-default? See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
@@ -53,7 +64,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
       inhibit-startup-message t
       initial-scratch-message nil)
 
-(load-file "~/dotfiles/dotfiles-private/private.el")
+(load "~/dotfiles/dotfiles-private/private.el")
 (setq-default user-full-name "Eric J. Berquist")
 (setq-default user-mail-address "eric.berquist@gmail.com")
 
@@ -105,6 +116,10 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; http://emacsredux.com/blog/2014/07/25/configure-the-scratch-buffers-mode/
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message nil)
+
+;; Allow making whole regions uppercase or lowercase.
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
 #+end_src
 
 * Encoding: Unicode/UTF-8
