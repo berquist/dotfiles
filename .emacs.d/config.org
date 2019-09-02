@@ -1,13 +1,57 @@
+* use-package
+
+Includes fundamental third-party packages that don't go anywhere else.
+
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(setq package-enable-at-startup nil)
+(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
+;;; Bootstrap use-package
+;; Install use-package if it's not already installed.
+;; use-package is used to configure the rest of the packages.
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(setq use-package-always-defer t
+      use-package-always-ensure t
+      use-package-verbose t)
+
+;; Load this before any other third-party packages.
+(use-package no-littering)
+
+;; Set the path properly. Don't have a conditional on using the window system
+;; in order to circumvent
+;; https://emacs.stackexchange.com/questions/27918/why-is-exec-path-different-in-emacsclient-emacsserver-than-in-emacs.
+(use-package exec-path-from-shell
+  :init
+  (exec-path-from-shell-initialize))
+#+END_SRC
+
 * General configuration
 
 What's the difference between setq and setq-default? See here: http://stackoverflow.com/questions/18172728/the-difference-between-setq-and-setq-default-in-emacs-lisp
 
 #+begin_src emacs-lisp
-;; Load this as soon as possible
-(use-package no-littering
-  :init
-  ;; It doesn't want to start?
-  (require 'no-littering))
+(menu-bar-mode -1)
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
+(tooltip-mode -1)
+;; Sometimes I get lazy...
+(when window-system (menu-bar-mode 1))
+
+(setq inhibit-splash-screen t
+      inhibit-startup-echo-area-message t
+      inhibit-startup-message t
+      initial-scratch-message nil)
 
 (load-file "~/dotfiles/dotfiles-private/private.el")
 (setq-default user-full-name "Eric J. Berquist")
@@ -61,13 +105,6 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; http://emacsredux.com/blog/2014/07/25/configure-the-scratch-buffers-mode/
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message nil)
-
-;; Set the path properly. Don't have a conditional on using the window system
-;; in order to circumvent
-;; https://emacs.stackexchange.com/questions/27918/why-is-exec-path-different-in-emacsclient-emacsserver-than-in-emacs.
-(use-package exec-path-from-shell
-  :init
-  (exec-path-from-shell-initialize))
 #+end_src
 
 * Encoding: Unicode/UTF-8
@@ -1246,6 +1283,8 @@ Modified to remove/disable Racket.
             (getenv "TEMP")
             "/tmp"))))
 (use-package elcord
+  ;; unfortunately, at least on macOS, the socket can hang around even after
+  ;; the app is no longer running
   :if (file-exists-p path-to-discord-socket)
   :custom (elcord-use-major-mode-as-main-icon t)
   :init (elcord-mode))
