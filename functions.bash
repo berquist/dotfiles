@@ -45,8 +45,14 @@ function pst() {
 # https://stackoverflow.com/a/10169840
 function hub() {
     if [[ $# -gt 0 ]] && [[ "$1" == "pr" ]] && [[ "$2" == "list" ]]; then
-        shift
+        shift 2
         command hub pr list --format="%sC%>(8)%i%Creset %t %Cblue[%H]%Creset %l %Cgreen%Mt%Creset%n" "$@"
+    elif [[ $# -gt 0 ]] && [[ "$1" == "pr" ]] && [[ "$2" == "checkout" ]]; then
+        shift 2
+        prnum="$@"
+        # TODO custom branch name based on GitHub username, remote branch
+        # name, and PR number
+        command hub pr checkout "$prnum"
     else
         command hub "$@"
     fi
