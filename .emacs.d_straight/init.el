@@ -38,3 +38,6 @@
   (ido-use-url-at-point nil)
   :init
   (ido-mode t))
+
+(use-package spongebob
+  :straight (:host gitlab :repo "dustyweb/spongebob.el"))
