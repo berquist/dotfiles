@@ -71,6 +71,8 @@
 	# gitk style, very pretty mhmmmm
 	lg = !git l --pretty=format:'%Cred%h%Creset %G? -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
 
+	when = !git log --follow -- "$2"
+
 	## Let's do some destructive stuff.
 	# Add more things to the last commit on the current head, with the
 	# ability to rewrite the commit message.
