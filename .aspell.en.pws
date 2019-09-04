@@ -1,4 +1,4 @@
-personal_ws-1.1 en 419 
+personal_ws-1.1 en 420 
 eigenvectors
 cancelling
 multireference
@@ -328,8 +328,8 @@ orthogonalizations
 interpretable
 dissociative
 memoization
-nitrile
 denoising
+nitrile
 Saxena
 softmax
 dimensionality
@@ -399,6 +399,7 @@ ROHF
 librational
 nanoelectronics
 diagonalized
+featurized
 ligands
 Blacksburg
 anisotropic
