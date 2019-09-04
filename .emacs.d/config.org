@@ -475,7 +475,8 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous))
   :custom
-  (company-dabbrev-downcase nil))
+  (company-dabbrev-downcase nil)
+  (company-tooltip-align-annotations t))
 
 (use-package lsp-mode
   :commands lsp
@@ -484,6 +485,8 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (lsp-auto-guess-root t)
   (lsp-enable-snippet nil)
   (lsp-prefer-flymake nil)
+  (lsp-ui-doc-include-signature t)
+  (lsp-ui-peek-always-show t)
   (lsp-rust-clippy-preference "on")
   :init
   (with-eval-after-load 'lsp
