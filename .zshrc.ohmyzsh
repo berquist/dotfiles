@@ -11,6 +11,7 @@ ZSH="${HOME}"/.oh-my-zsh
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="berquist"
+export ZSH_COLORIZE_STYLE=rrt
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -66,7 +67,6 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     colorize
-    git-remote-branch
     git-prompt
     gpg-agent
     sprunge
