@@ -343,6 +343,7 @@ I've decided to stop using =ido= in favor of "better" and "more modern" packages
   (ido-mode t))
 (use-package ido-vertical-mode
   :disabled t
+  :after ido
   :custom
   (ido-vertical-show-count t)
   :init
@@ -377,14 +378,17 @@ TODO how to get these to carry over to Ivy?
   :init
   (ivy-mode))
 (use-package counsel
+  :after ivy
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)))
 ;; seriously, stop
 (setq ivy-initial-inputs-alist nil)
 (use-package swiper
+  :after ivy
   :bind (("C-s" . swiper-isearch)
          ("C-r" . swiper-isearch-backward)))
 (use-package amx
+  ;; TODO this doesn't work the way I expect
   :init
   (amx-mode))
 #+END_SRC
@@ -437,8 +441,8 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (setq langtool-mother-tongue "en")
   ;; TODO update
   (if (eq system-type 'darwin)
-      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.5/libexec/languagetool-server.jar"
-            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.5/libexec/languagetool-commandline.jar"))
+      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.6/libexec/languagetool-server.jar"
+            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.6/libexec/languagetool-commandline.jar"))
   ;; Arch Linux
   (if (eq system-type 'gnu/linux)
       (setq langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
@@ -662,8 +666,10 @@ Not using =git-gutter= right now, but if I did...
                                       ("\\paragraph{%s}" . "\\paragraph*{%s}")
                                       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))))
 (use-package htmlize)
-(use-package ox-gfm)
-(use-package ox-pandoc)
+(use-package ox-gfm
+  :after org)
+(use-package ox-pandoc
+  :after org)
 #+end_src
 
 From https://emacs.stackexchange.com/questions/20577/org-babel-load-all-languages-on-demand.
@@ -839,6 +845,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 #+begin_src emacs-lisp
 (use-package auctex)
 (use-package auctex-latexmk
+  :after auctex
   :init
   (auctex-latexmk-setup))
 ;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
@@ -859,7 +866,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :custom
   (python-fill-docstring-style 'pep-257-nn))
 
-(use-package pydoc)
+(use-package pydoc
+  :after python)
 
 (use-package anaconda-mode
   :hook ((python-mode . anaconda-mode)
