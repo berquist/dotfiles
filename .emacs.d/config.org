@@ -922,11 +922,15 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 #+BEGIN_SRC emacs-lisp
 (use-package blacken
+  :after python
   :bind
   (:map python-mode-map
-        ("C-c C-b" . blacken-buffer)))
+        ("C-c C-b" . blacken-buffer))
+  :custom
+  (blacken-allow-py36 t))
 
 (use-package yapfify
+  :after python
   :bind
   (:map python-mode-map
         ("C-c C-y b" . yapfify-buffer)
