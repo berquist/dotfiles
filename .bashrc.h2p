@@ -8,15 +8,6 @@
 
 source ~/dotfiles/aliases.bash
 
-format="\"%8i %9g %9u %5P %35j %2t %12M %12l %5D %3C %R\""
-flags="-S +i -o ${format}"
-alias q="squeue -u $USER ${flags} -M all"
-alias qa="squeue -a ${flags}"
-alias c="scontrol show jobid -dd"
-alias qdel="scancel"
-alias qsub="sbatch"
-alias walltimes='sacctmgr show qos'
-
 alias mobyquota="lfs quota -g dlambrecht /mnt/mobydisk"
 
 alias ozk="cd /ihome/dlambrecht/ozk2/amber/"
