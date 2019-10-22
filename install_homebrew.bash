@@ -93,6 +93,8 @@ packages_cask=(
     rstudio
     # slack
     spectacle
+    vagrant
+    vagrant-manager
     visualvm
     zotero
 )
