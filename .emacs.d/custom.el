@@ -29,12 +29,12 @@
  '(safe-local-variable-values
    (quote
     ((eval progn
-           (interactive)
-           (flycheck-mode nil))
+      (interactive)
+      (flycheck-mode nil))
      (eval progn
-           (flycheck-mode toggle))
+      (flycheck-mode toggle))
      (eval progn
-           (flycheck-mode nil))
+      (flycheck-mode nil))
      (eval wc-mode t)
      (dtrt-indent-mode . 0))))
  '(wakatime-python-bin nil))
