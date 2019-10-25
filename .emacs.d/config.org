@@ -1119,7 +1119,9 @@ current buffer, return its path, otherwise nil."
 * Ruby (builtin)
 
 #+BEGIN_SRC emacs-lisp
-(setq ruby-indent-level 4)
+(use-package ruby-mode
+  :ensure nil
+  :mode ("Vagrantfile" . ruby-mode))
 #+END_SRC
 
 * Conf (builtin)
