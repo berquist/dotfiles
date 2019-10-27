@@ -1298,6 +1298,16 @@ Modified to remove/disable Racket.
          ("\\.turtle\\'" . ttl-mode)))
 #+END_SRC
 
+* Nim
+
+TODO both flycheck modes might be obsolete?
+
+#+BEGIN_SRC emacs-lisp
+(use-package nim-mode)
+(use-package flycheck-nim)
+;; (use-package flycheck-nimsuggest)
+#+END_SRC
+
 * Other languages
 
 #+BEGIN_SRC emacs-lisp
@@ -1309,7 +1319,6 @@ Modified to remove/disable Racket.
 (use-package lua-mode)
 (use-package mediawiki)
 (use-package meson-mode)
-(use-package nim-mode)
 (use-package scala-mode)
 (use-package strace-mode)
 (use-package systemd)
