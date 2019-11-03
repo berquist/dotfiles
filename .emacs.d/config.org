@@ -884,7 +884,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :custom
-  (python-fill-docstring-style 'pep-257-nn))
+  (python-fill-docstring-style 'pep-257-nn)
+  (python-indent-guess-indent-offset nil))
 
 (use-package pydoc
   :after python)
