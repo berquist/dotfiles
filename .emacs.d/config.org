@@ -504,7 +504,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode kotlin-mode rust-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode kotlin-mode sh-mode) . lsp)
   :custom
   (lsp-auto-guess-root t)
   (lsp-enable-snippet nil)
@@ -1205,14 +1205,11 @@ current buffer, return its path, otherwise nil."
 * Rust
 
 #+BEGIN_SRC emacs-lisp
-(use-package rust-mode
+(use-package rustic
   :custom
-  (rust-format-on-save t))
-(use-package cargo)
-(use-package flycheck-rust
-  :init
-  (with-eval-after-load 'rust-mode
-    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
+  (rustic-format-on-save t)
+  (rustic-indent-method-chain t)
+  (rustic-lsp-server 'rust-analyzer))
 #+END_SRC
 
 * Scheme/Lisp
