@@ -910,6 +910,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   (exec-path-from-shell-copy-env "WORKON_HOME"))
 
 (use-package conda
+  :after delight
   :commands (conda-env-deactivate
              conda-env-activate
              conda-env-list
@@ -918,7 +919,26 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
              conda-env-initialize-eshell
              conda-env-autoactivate-mode)
   :init
-  (exec-path-from-shell-copy-env "ANACONDA_HOME"))
+  (exec-path-from-shell-copy-env "ANACONDA_HOME")
+  (conda-env-autoactivate-mode)
+  ;; TODO store Python version in variable only when conda env changes
+  ;; (defun ejb/conda-mode-lighter ()
+  ;;   "Only display the lighter if a conda environment is active."
+  ;;   (if (equal conda-env-current-name nil)
+  ;;       ""
+  ;;     (progn
+  ;;       (setq current-python-version
+  ;;             (cadr
+  ;;              (split-string
+  ;;               (shell-command-to-string
+  ;;                (format "%s/bin/python --version" (getenv "CONDA_PREFIX"))))))
+  ;;       (format "conda[%s:%s]" current-python-version conda-env-current-name))))
+  (defun ejb/conda-mode-lighter ()
+    "Only display the lighter if a conda environment is active."
+    (if (equal conda-env-current-name nil)
+        ""
+      (format "conda[%s]" conda-env-current-name)))
+  (delight 'python-mode '(:eval (format "Python %s" (ejb/conda-mode-lighter))) :major))
 
 (use-package lsp-python-ms
   :after lsp-mode
