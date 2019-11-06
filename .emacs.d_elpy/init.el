@@ -39,6 +39,7 @@
   (ido-mode t))
 
 (use-package elpy
+  :hook (elpy-mode . (lambda () (highlight-indentation-mode -1)))
   :init
   (elpy-enable))
 
