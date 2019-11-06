@@ -944,7 +944,10 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :after lsp-mode
   :hook (python-mode . (lambda ()
                          (require 'lsp-python-ms)
-                         (lsp))))
+                         (lsp)))
+  :config
+  (setq lsp-python-ms-cache "Library")
+  (setq lsp-python-ms-nupkg-channel "daily"))
 #+end_src
 
 ** Linters
