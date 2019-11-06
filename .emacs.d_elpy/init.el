@@ -29,12 +29,12 @@
 (load-theme 'monochrome t)
 
 (use-package ido
-  :custom
-  (ido-enable-flex-matching t)
-  (ido-everywhere t)
+  :config
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
   ;; wow, that *is* annoying!
-  (ido-use-filename-at-point nil)
-  (ido-use-url-at-point nil)
+  (setq ido-use-filename-at-point nil)
+  (setq ido-use-url-at-point nil)
   :init
   (ido-mode t))
 
