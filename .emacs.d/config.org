@@ -378,6 +378,7 @@ TODO how to get these to carry over to Ivy?
 ;;   (ivy-wrap t)
 ;;   :init
 ;;   (ivy-mode))
+(use-package ivy)
 (require 'ivy)
 (setq ivy-action-wrap t)
 (setq ivy-count-format "(%d/%d) ")
@@ -397,6 +398,7 @@ TODO how to get these to carry over to Ivy?
 ;;   :custom
 ;;   ;; seriously, stop
 ;;   (ivy-initial-inputs-alist nil))
+(use-package counsel)
 (require 'counsel)
 (bind-key (kbd "M-x") 'counsel-M-x)
 (bind-key (kbd "C-x C-f") 'counsel-find-file)
@@ -406,6 +408,7 @@ TODO how to get these to carry over to Ivy?
 ;;   :after ivy
 ;;   :bind (("C-s" . swiper-isearch)
 ;;          ("C-r" . swiper-isearch-backward)))
+(use-package swiper)
 (require 'swiper)
 (bind-key (kbd "C-s") 'swiper-isearch)
 (bind-key (kbd "C-r") 'swiper-isearch-backward)
