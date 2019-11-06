@@ -1142,7 +1142,7 @@ current buffer, return its path, otherwise nil."
   (defun ejb/editorconfig-mode-lighter ()
     "Only display the lighter if an .editorconfig file has been found."
     (if (ejb/editorconfig-has-editorconfig)
-        " EditorConfig"
+        " EC"
       ""))
   :delight '(:eval (ejb/editorconfig-mode-lighter)))
 #+END_SRC
