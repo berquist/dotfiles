@@ -51,7 +51,11 @@
  '(custom-safe-themes
    (quote
     ("725a0ac226fc6a7372074c8924c18394448bb011916c05a87518ad4563738668" default)))
- '(package-selected-packages (quote (gotham-theme elpy use-package))))
+ '(package-selected-packages (quote (gotham-theme elpy use-package)))
+ '(safe-local-variable-values
+   (quote
+    ((pyvenv-workon . qcelemental)
+     (pyvenv-workon . cclib_berquist)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
