@@ -70,6 +70,9 @@ plugins=(
     git-prompt
     gpg-agent
     sprunge
+    # Rust programming language
+    rust
+    cargo
 )
 
 source "${ZSH}"/oh-my-zsh.sh
