@@ -10,9 +10,6 @@ source ~/dotfiles/aliases_macos.bash
 export GIT_AUTHOR_EMAIL='berquist@isi.edu'
 export GIT_COMMITER_EMAIL='berquist@isi.edu'
 
-source /usr/local/opt/lmod/init/zsh
-module use "${HOME}/modules/isi"
-
 source ~/dotfiles/dotfiles-private/isi_laptop_private.bash
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
