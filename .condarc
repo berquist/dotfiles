@@ -2,3 +2,4 @@ channels:
   - http://conda.anaconda.org/psi4
   - conda-forge
   - defaults
+changeps1: False
