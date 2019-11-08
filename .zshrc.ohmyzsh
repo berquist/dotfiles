@@ -112,9 +112,9 @@ zplugin snippet OMZ::plugins/sprunge/sprunge.plugin.zsh
 zplugin ice svn
 zplugin snippet OMZ::plugins/git-prompt
 # Rust programming language
-zplugin ice as"completion" wait'!2'
+zplugin ice as"completion" wait'!2' silent
 zplugin snippet OMZ::plugins/cargo/_cargo
-zplugin ice as"completion" wait'!2'
+zplugin ice as"completion" wait'!2' silent
 zplugin snippet OMZ::plugins/rust/_rust
 # TODO
 zplugin snippet ~/dotfiles/berquist.zsh-theme
