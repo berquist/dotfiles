@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+spack_root=/nas/gaia/users/berquist/repositories/spack
+if [[ -d "${spack_root}" ]]; then
+    export SPACK_ROOT="${spack_root}"
+    source "${SPACK_ROOT}"/share/spack/setup-env.sh
+fi
+
+export GOCACHE=/nas/gaia/users/berquist/.cache/go-build
+
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
 if [[ "$TERM" != "" ]]; then

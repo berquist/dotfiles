@@ -10,57 +10,30 @@ source ~/dotfiles/functions.bash
 export GIT_AUTHOR_EMAIL='berquist@isi.edu'
 export GIT_COMMITER_EMAIL='berquist@isi.edu'
 
-########################################
-### CLUSTER
-########################################
+export GAIA_HOME=/nas/gaia/users/berquist
 
-export CUDA_CACHE_DISABLE=1
+alias gcd="cd ${GAIA_HOME}"
+alias mongod_start="mongod -v --dbpath=${GAIA_HOME}/fireworks_mongodb_dir --logpath ${GAIA_HOME}/fireworks_mongodb.log --bind_ip_all --fork"
+alias mongod_stop="mongod --dbpath=${GAIA_HOME}/fireworks_mongodb_dir --shutdown"
 alias p="pstat | rg $(whoami)"
 
-export PATH=${HOME}/personal_scripts/isi:${PATH}
+# export PATH=${HOME}/personal_scripts/isi:${PATH}
 
-########################################
-### PATHS
-########################################
+# uge_settings=/nas/uge/sge-root/default/common/settings.sh
+# if [[ -f "${uge_settings}" ]]; then
+#     source "${uge_settings}"
+#     export CUDA_CACHE_DISABLE=1
+#     export DRMAA_LIBRARY_PATH=${SGE_ROOT}/lib/lx-amd64/libdrmaa.so.1.0
+#     export PATH=${PATH}:/nfs/isicvlnas01/share/qstat-pretty/
+# fi
 
-# queue niceties
+# pythonpathdirs=($(find "${HOME}"/pythonpath -maxdepth 1 -type d))
+# # https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
+# for d in ${pythonpathdirs[@]:1}; do
+#     export PYTHONPATH="${d}:$PYTHONPATH"
+# done
 
-source /nas/uge/sge-root/default/common/settings.sh
-export DRMAA_LIBRARY_PATH=${SGE_ROOT}/lib/lx-amd64/libdrmaa.so.1.0
-export PATH=${PATH}:/nfs/isicvlnas01/share/qstat-pretty/
-
-# personal software
-
-pythonpathdirs=($(find "${HOME}"/pythonpath -maxdepth 1 -type d))
-# https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
-for d in ${pythonpathdirs[@]:1}; do
-    export PYTHONPATH="${d}:$PYTHONPATH"
-done
-
-export apps="${HOME}"/opt/apps
-
-source "${HOME}"/perl5/perlbrew/etc/bashrc
-
-# export PATH="${HOME}/.linuxbrew/bin:${PATH}"
-# export MANPATH="$(brew --prefix)/share/man:$MANPATH"
-# export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
-# export PATH="${PATH}:${HOME}/.linuxbrew/bin"
-# export MANPATH="${MANPATH}:$(brew --prefix)/share/man"
-# export INFOPATH="${INFOPATH}:$(brew --prefix)/share/info"
-
-########################################
-### MODULES
-########################################
-
-export PATH=${apps}/emacs/26.1/bin:${PATH}
-export PATH=${apps}/git/github/bin:${PATH}
-export PATH=${apps}/sox/14.4.2/bin:${PATH}
-export PATH=${apps}/strace/git/bin:${PATH}
-export PATH=${apps}/tmux/git/bin:${PATH}
-export PATH=${apps}/tree/bin:${PATH}
-
-# source ~/dotfiles/path_exports.bash
-source ~/dotfiles/dotfiles-private/isi_cluster_private.bash
+# source "${HOME}"/perl5/perlbrew/etc/bashrc
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -76,4 +49,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
