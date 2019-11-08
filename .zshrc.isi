@@ -7,8 +7,6 @@ eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
 source ~/dotfiles/aliases_macos.bash
 
-alias make_ttl_list='\rm list.dat; for f in $(ls *.ttl); do echo $(pwd)/${f}; echo $(pwd)/${f} >> list.dat; done'
-
 export GIT_AUTHOR_EMAIL='berquist@isi.edu'
 export GIT_COMMITER_EMAIL='berquist@isi.edu'
 
