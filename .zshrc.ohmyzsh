@@ -4,14 +4,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH="${HOME}"/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="berquist"
-export ZSH_COLORIZE_STYLE=rrt
+# ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -29,8 +28,14 @@ export ZSH_COLORIZE_STYLE=rrt
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -65,17 +70,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    colorize
-    git-prompt
-    gpg-agent
-    sprunge
-    # Rust programming language
-    rust
-    cargo
-)
+plugins=()
 
-source "${ZSH}"/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -94,9 +91,6 @@ source "${ZSH}"/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -105,5 +99,24 @@ source "${ZSH}"/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+### Added by Zplugin's installer
+source "$HOME/.zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin installer's chunk
+zplugin light sobolevn/wakatime-zsh-plugin
+zplugin snippet OMZ::plugins/colorize/colorize.plugin.zsh
+zplugin snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
+zplugin snippet OMZ::plugins/sprunge/sprunge.plugin.zsh
+zplugin ice svn
+zplugin snippet OMZ::plugins/git-prompt
+# Rust programming language
+zplugin ice as"completion" wait'!2'
+zplugin snippet OMZ::plugins/cargo/_cargo
+zplugin ice as"completion" wait'!2'
+zplugin snippet OMZ::plugins/rust/_rust
+# TODO
+zplugin snippet ~/dotfiles/berquist.zsh-theme
 
 source "${HOME}"/dotfiles/.zshrc
