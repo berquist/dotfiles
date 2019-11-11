@@ -24,7 +24,9 @@ Includes fundamental third-party packages that don't go anywhere else.
       use-package-verbose t)
 
 ;; Load this before any other third-party packages.
-(use-package no-littering)
+(use-package no-littering
+  :init
+  (require 'no-littering))
 
 ;; Set the path properly. Don't have a conditional on using the window system
 ;; in order to circumvent
