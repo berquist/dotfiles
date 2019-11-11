@@ -16,7 +16,10 @@
       use-package-always-ensure t
       use-package-verbose t)
 
-(use-package no-littering)
+;; Load this before any other third-party packages.
+(use-package no-littering
+  :init
+  (require 'no-littering))
 
 (bind-key (kbd "C-x C-b") 'switch-to-buffer)
 (bind-key (kbd "C-x b") 'ibuffer)

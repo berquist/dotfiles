@@ -15,8 +15,11 @@
 
 (straight-use-package 'use-package)
 
+;; Load this before any other third-party packages.
 (use-package no-littering
-  :straight t)
+  :straight t
+  :init
+  (require 'no-littering))
 
 (bind-key (kbd "C-x C-b") 'switch-to-buffer)
 (bind-key (kbd "C-x b") 'ibuffer)
