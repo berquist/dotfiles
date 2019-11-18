@@ -974,6 +974,12 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   (:map python-mode-map
         ("C-c C-y b" . yapfify-buffer)
         ("C-c C-y r" . yapfify-region)))
+
+(use-package isortify
+  :after python
+  :bind
+  (:map python-mode-map
+        ("C-c C-i" . isortify-buffer)))
 #+END_SRC
 
 ** Cython
