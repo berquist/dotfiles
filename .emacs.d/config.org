@@ -447,12 +447,13 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (setq langtool-mother-tongue "en")
   ;; TODO update
   (if (eq system-type 'darwin)
-      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.6/libexec/languagetool-server.jar"
-            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.6/libexec/languagetool-commandline.jar"))
+      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.7/libexec/languagetool-server.jar"
+            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.7/libexec/languagetool-commandline.jar"))
   ;; Arch Linux
   (if (eq system-type 'gnu/linux)
-      (setq langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
-            langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar")))
+      (setq ; langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
+            langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar"
+            langtool-java-classpath "/usr/share/languagetool:/usr/share/java/languagetool/*")))
 
 (use-package flyspell
   :ensure nil
