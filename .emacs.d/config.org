@@ -214,8 +214,6 @@ current buffer's, reload dir-locals."
 
 See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
 
-For both =mic-paren= and =whitespace=, using =:custom= add things to =custom.el= for some reason, so leave them as =:config= with =setq=.
-
 #+begin_src emacs-lisp
 (use-package mic-paren
   :config
@@ -336,19 +334,19 @@ I've decided to stop using =ido= in favor of "better" and "more modern" packages
 #+begin_src emacs-lisp
 (use-package ido
   :disabled t
-  :custom
-  (ido-enable-flex-matching t)
-  (ido-everywhere t)
+  :config
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
   ;; wow, that *is* annoying!
-  (ido-use-filename-at-point nil)
-  (ido-use-url-at-point nil)
+  (setq ido-use-filename-at-point nil)
+  (setq ido-use-url-at-point nil)
   :init
   (ido-mode t))
 (use-package ido-vertical-mode
   :disabled t
   :after ido
-  :custom
-  (ido-vertical-show-count t)
+  :config
+  (setq ido-vertical-show-count t)
   :init
   (ido-vertical-mode 1))
 #+end_src
@@ -372,11 +370,11 @@ TODO how to get these to carry over to Ivy?
         ;; used.
         ("C-r" . ivy-previous-line-or-history)
         ("<return>" . ivy-alt-done))
-  :custom
-  (ivy-action-wrap t)
-  (ivy-count-format "(%d/%d) ")
-  (ivy-use-virtual-buffers t)
-  (ivy-wrap t)
+  :config
+  (setq ivy-action-wrap t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-wrap t)
   :init
   (ivy-mode))
 (use-package counsel
@@ -425,12 +423,12 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
   :bind ("C-c p" . projectile-command-map)
-  :custom
-  (projectile-completion-system 'ivy)
-  (projectile-enable-caching t)
-  (projectile-indexing-method 'hybrid)
-  (projectile-require-project-root t)
-  (projectile-sort-order 'recently-active)
+  :config
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-enable-caching t)
+  (setq projectile-indexing-method 'hybrid)
+  (setq projectile-require-project-root t)
+  (setq projectile-sort-order 'recently-active)
   :init
   (projectile-mode))
 #+END_SRC
@@ -461,10 +459,10 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
          (prog-mode . flyspell-prog-mode))
   :bind (("C-'" . ispell-word)
          ("C-M-'" . flyspell-buffer))
-  :custom
-  (ispell-silently-savep t)
-  (flyspell-issue-welcome-flag nil)
-  (flyspell-mode-line-string " FlyS"))
+  :config
+  (setq ispell-silently-savep t)
+  (setq flyspell-issue-welcome-flag nil)
+  (setq flyspell-mode-line-string " FlyS"))
 #+end_src
 
 ** word count
@@ -485,20 +483,20 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
          ("M-/" . company-other-backend)
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous))
-  :custom
-  (company-dabbrev-downcase nil)
-  (company-tooltip-align-annotations t))
+  :config
+  (setq company-dabbrev-downcase nil)
+  (setq company-tooltip-align-annotations t))
 
 (use-package lsp-mode
   :commands lsp
   :hook ((c-mode c++-mode fortran-mode kotlin-mode sh-mode) . lsp)
-  :custom
-  (lsp-auto-guess-root t)
-  (lsp-enable-snippet nil)
-  (lsp-prefer-flymake nil)
-  (lsp-ui-doc-include-signature t)
-  (lsp-ui-peek-always-show t)
-  (lsp-rust-clippy-preference "on")
+  :config
+  (setq lsp-auto-guess-root t)
+  (setq lsp-enable-snippet nil)
+  (setq lsp-prefer-flymake nil)
+  (setq lsp-ui-doc-include-signature t)
+  (setq lsp-ui-peek-always-show t)
+  (setq lsp-rust-clippy-preference "on")
   :init
   (with-eval-after-load 'lsp
     ;; https://github.com/emacs-lsp/lsp-mode/commit/f110a8f0fd316bcd87396fbea2dce3617bca9d5e
@@ -506,7 +504,8 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
     (add-to-list 'lsp-language-id-configuration '(sh-mode . "bash"))))
 (use-package lsp-ui
   :commands lsp-ui-mode
-  :custom (lsp-ui-flycheck-enable t))
+  :config
+  (setq lsp-ui-flycheck-enable t))
 (use-package company-lsp
   :commands company-lsp
   :init
@@ -523,11 +522,11 @@ TODO add LaTex
 #+begin_src emacs-lisp
 (use-package flycheck
   :bind (("C-c f" . flycheck-mode))
-  :custom
-  (flycheck-check-syntax-automatically '(mode-enabled save))
-  (flycheck-markdown-mdl-style "~/.mdlrc")
+  :config
+  (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  (setq flycheck-markdown-mdl-style "~/.mdlrc")
   ;; This interferes with project-specific configurations.
-  ;; (flycheck-pylintrc "~/.pylintrc")
+  ;; (setq flycheck-pylintrc "~/.pylintrc")
   :init
   (global-flycheck-mode))
 #+end_src
@@ -547,10 +546,10 @@ sudo pkg install checkbashisms # FreeBSD
 #+begin_src emacs-lisp
 (use-package flycheck-checkbashisms
   :hook (flycheck-mode . flycheck-checkbashisms-setup)
-  :custom
+  :config
   ;; Check 'echo -n' usage
-  (flycheck-checkbashisms-newline t)
-  (flycheck-checkbashisms-posix t))
+  (setq flycheck-checkbashisms-newline t)
+  (setq flycheck-checkbashisms-posix t))
 #+end_src
 
 ** Prose
@@ -870,9 +869,9 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :ensure nil
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
-  :custom
-  (python-fill-docstring-style 'pep-257-nn)
-  (python-indent-guess-indent-offset nil))
+  :config
+  (setq python-fill-docstring-style 'pep-257-nn)
+  (setq python-indent-guess-indent-offset nil))
 
 (use-package pydoc
   :after python)
@@ -953,7 +952,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 
 (use-package flycheck-pycheckers
   :disabled t
-  :custom (flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
+  :config
+  (setq flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
   :hook (flycheck-mode . flycheck-pycheckers-setup))
 #+end_src
 
@@ -965,8 +965,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
   :bind
   (:map python-mode-map
         ("C-c C-b" . blacken-buffer))
-  :custom
-  (blacken-allow-py36 t))
+  :config
+  (setq blacken-allow-py36 t))
 
 (use-package yapfify
   :after python
@@ -1008,19 +1008,19 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   ;; (add-hook 'markdown-mode-hook
   ;;           (lambda ()
   ;;             (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
-  :custom
-  (markdown-asymmetric-header t)
-  (markdown-content-type "application/xhtml+xml")
+  :config
+  (setq markdown-asymmetric-header t)
+  (setq markdown-content-type "application/xhtml+xml")
   ;; This isn't super necessary since I have pandoc run a similar command
   ;; every time I save with these default arguments, but this always produces
   ;; HTML where pandoc-mode might not.
-  (markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html")
-  (markdown-enable-math t)
-  (markdown-fontify-code-blocks-natively t)
-  (markdown-hide-markup nil)
-  (markdown-hide-urls nil)
-  (markdown-italic-underscore t)
-  (markdown-link-space-sub-char "-"))
+  (setq markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=${HOME}/.emacs.d/mathjax.html")
+  (setq markdown-enable-math t)
+  (setq markdown-fontify-code-blocks-natively t)
+  (setq markdown-hide-markup nil)
+  (setq markdown-hide-urls nil)
+  (setq markdown-italic-underscore t)
+  (setq markdown-link-space-sub-char "-"))
 #+end_src
 
 * deft
@@ -1030,17 +1030,17 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 #+begin_src emacs-lisp
 (use-package deft
   :bind (("C-c d" . deft))
-  :custom
-  (deft-auto-save-interval 60.0)
+  :config
+  (setq deft-auto-save-interval 60.0)
   ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
-  (deft-directory "~/Dropbox/Notes")
-  (deft-default-extension "md")
-  (deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex"))
-  (deft-recursive t)
-  (deft-text-mode 'gfm-mode)
-  (deft-time-format " %Y-%m-%d %H:%M:%S")
-  (deft-use-filename-as-title t)
-  (deft-use-filter-string-as-filename t))
+  (setq deft-directory "~/Dropbox/Notes")
+  (setq deft-default-extension "md")
+  (setq deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex"))
+  (setq deft-recursive t)
+  (setq deft-text-mode 'gfm-mode)
+  (setq deft-time-format " %Y-%m-%d %H:%M:%S")
+  (setq deft-use-filename-as-title t)
+  (setq deft-use-filter-string-as-filename t))
 #+end_src
 
 https://stackoverflow.com/a/35450025/3249688
@@ -1069,8 +1069,8 @@ This section needs to come after the Markdown section so that CMake files get re
   (("CMakeLists\\.txt\\'" . cmake-mode)
    ("CMakeCache\\.txt\\'" . cmake-mode)
    ("\\.cmake\\'" . cmake-mode))
-  :custom
-  (cmake-tab-width 4))
+  :config
+  (setq cmake-tab-width 4))
 #+end_src
 
 * Shell Scripts
@@ -1217,10 +1217,10 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package rustic
-  :custom
-  (rustic-format-on-save t)
-  (rustic-indent-method-chain t)
-  (rustic-lsp-server 'rust-analyzer))
+  :config
+  (setq rustic-format-on-save t)
+  (setq rustic-indent-method-chain t)
+  (setq rustic-lsp-server 'rust-analyzer))
 #+END_SRC
 
 * Scheme/Lisp
@@ -1230,11 +1230,11 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/clhs/HyperSpec/"))
 (use-package slime
-  :custom
-  (common-lisp-style-default "modern")
-  (inferior-lisp-program "clisp")
-  (lisp-indent-function 'common-lisp-indent-function)
-  (slime-contribs '(slime-cl-indent slime-fancy))
+  :config
+  (setq common-lisp-style-default "modern")
+  (setq inferior-lisp-program "clisp")
+  (setq lisp-indent-function 'common-lisp-indent-function)
+  (setq slime-contribs '(slime-cl-indent slime-fancy))
   :init
   (require 'slime-autoloads))
 #+END_SRC
@@ -1252,19 +1252,19 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package geiser
-  :custom
-  (geiser-active-implementations '(guile chicken chez mit chibi))
-  (geiser-implementations-alist '(((regexp "\\.scm\\'") guile)
-                                  ((regexp "\\.scm\\'") chicken)
-                                  ((regexp "\\.release-info\\'") chicken)
-                                  ((regexp "\\.meta\\'") chicken)
-                                  ((regexp "\\.setup\\'") chicken)
-                                  ((regexp "\\.ss\\'") chez)
-                                  ((regexp "\\.def\\'") chez)
-                                  ((regexp "\\.scm\\'") mit)
-                                  ((regexp "\\.pkg\\'") mit)
-                                  ((regexp "\\.scm\\'") chibi)
-                                  ((regexp "\\.sld\\'") chibi))))
+  :config
+  (setq geiser-active-implementations '(guile chicken chez mit chibi))
+  (setq geiser-implementations-alist '(((regexp "\\.scm\\'") guile)
+                                       ((regexp "\\.scm\\'") chicken)
+                                       ((regexp "\\.release-info\\'") chicken)
+                                       ((regexp "\\.meta\\'") chicken)
+                                       ((regexp "\\.setup\\'") chicken)
+                                       ((regexp "\\.ss\\'") chez)
+                                       ((regexp "\\.def\\'") chez)
+                                       ((regexp "\\.scm\\'") mit)
+                                       ((regexp "\\.pkg\\'") mit)
+                                       ((regexp "\\.scm\\'") chibi)
+                                       ((regexp "\\.sld\\'") chibi))))
 (use-package scribble-mode
   :hook (scribble-mode . geiser))
 #+END_SRC
@@ -1350,7 +1350,8 @@ TODO both flycheck modes might be obsolete?
   ;; unfortunately, at least on macOS, the socket can hang around even after
   ;; the app is no longer running
   :if (file-exists-p path-to-discord-socket)
-  :custom (elcord-use-major-mode-as-main-icon t)
+  :config
+  (setq elcord-use-major-mode-as-main-icon t)
   :init (elcord-mode))
 #+END_SRC
 
@@ -1360,8 +1361,8 @@ TODO both flycheck modes might be obsolete?
 (use-package wakatime-mode
   :if (executable-find "wakatime")
   :delight
-  :custom
-  (wakatime-cli-path (executable-find "wakatime"))
+  :config
+  (setq wakatime-cli-path (executable-find "wakatime"))
   :init
   (global-wakatime-mode))
 #+END_SRC
