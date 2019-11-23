@@ -1314,12 +1314,14 @@ Modified to remove/disable Racket.
 
 * Nim
 
-TODO both flycheck modes might be obsolete?
+=flycheck-nimsuggest=, despite being "old", is required by =nimsuggest-mode=.
 
 #+BEGIN_SRC emacs-lisp
-(use-package nim-mode)
-(use-package flycheck-nim)
-;; (use-package flycheck-nimsuggest)
+(use-package flycheck-nimsuggest)
+(use-package nim-mode
+  :hook (nim-mode . nimsuggest-mode))
+;; TODO I'm not sure what the advantage of this package is.
+;; (use-package flycheck-nim)
 #+END_SRC
 
 * Other languages
