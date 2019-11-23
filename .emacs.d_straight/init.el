@@ -28,9 +28,9 @@
 (bind-key (kbd "C-x C-h") 'replace-string)
 
 (set-frame-font "Panic Sans-11")
-(use-package monochrome-theme
+(use-package dracula-theme
   :straight t)
-(load-theme 'monochrome t)
+(load-theme 'dracula t)
 
 (use-package ido
   :custom
