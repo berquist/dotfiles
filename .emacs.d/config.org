@@ -1199,6 +1199,12 @@ current buffer, return its path, otherwise nil."
 (use-package julia-mode)
 (use-package flycheck-julia
   :hook (flycheck-mode . flycheck-julia-setup))
+(use-package julia-repl)
+(use-package lsp-julia
+  :after lsp-mode
+  :hook (julia-mode . (lambda ()
+                        (require 'lsp-julia)
+                        (lsp))))
 #+END_SRC
 
 * YAML
