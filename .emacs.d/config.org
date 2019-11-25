@@ -638,6 +638,23 @@ Not using =git-gutter= right now, but if I did...
   (setq org-html-with-latex '(mathjax))
   (setq org-image-actual-width nil)
   (setq org-latex-create-formula-image-program 'imagemagick)
+  ;; The only difference from the default is that the `colorlinks` option is
+  ;; passed to hyperref.
+  (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t
+                                            ("pdflatex"))
+                                           ("T1" "fontenc" t
+                                            ("pdflatex"))
+                                           ("" "graphicx" t)
+                                           ("" "grffile" t)
+                                           ("" "longtable" nil)
+                                           ("" "wrapfig" nil)
+                                           ("" "rotating" nil)
+                                           ("normalem" "ulem" t)
+                                           ("" "amsmath" t)
+                                           ("" "textcomp" t)
+                                           ("" "amssymb" t)
+                                           ("" "capt-of" nil)
+                                           ("colorlinks=true" "hyperref" nil)))
   (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
   (setq org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
@@ -849,7 +866,9 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 * LaTeX
 
 #+begin_src emacs-lisp
-(use-package auctex)
+(use-package auctex
+  :config
+  (add-to-list 'font-latex-math-environments "dmath"))
 (use-package auctex-latexmk
   :after auctex
   :init
