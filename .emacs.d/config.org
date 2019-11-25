@@ -1346,8 +1346,11 @@ Modified to remove/disable Racket.
   :hook (nim-mode . nimsuggest-mode))
 ;; TODO I'm not sure what the advantage of this package is.
 ;; (use-package flycheck-nim)
-(load "~/.emacs.d/lsp-nim.el")
-(require 'lsp-nim)
+(use-package lsp-nim
+  :straight (:host github :repo "berquist/lsp-nim")
+  :hook (nim-mode . (lambda ()
+                       (require 'lsp-nim)
+                       (lsp))))
 #+END_SRC
 
 * Other languages
