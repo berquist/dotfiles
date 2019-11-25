@@ -1,28 +1,28 @@
-* use-package
-
-Includes fundamental third-party packages that don't go anywhere else.
+* Straight and other prerequisites
 
 #+BEGIN_SRC emacs-lisp
-(require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize)
-
-;;; Bootstrap use-package
-;; Install use-package if it's not already installed.
-;; use-package is used to configure the rest of the packages.
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile
-  (require 'use-package))
+(setq straight-use-package-by-default t)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
 (setq use-package-always-defer t
-      use-package-always-ensure t
       use-package-verbose t)
+(straight-use-package 'use-package)
+#+END_SRC
 
+Fundamental third-party packages that don't go anywhere else.
+
+#+BEGIN_SRC emacs-lisp
 ;; Load this before any other third-party packages.
 (use-package no-littering
   :init
@@ -453,8 +453,8 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
             langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar"
             langtool-java-classpath "/usr/share/languagetool:/usr/share/java/languagetool/*")))
 
+;; built-in
 (use-package flyspell
-  :ensure nil
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode))
   :bind (("C-'" . ispell-word)
@@ -883,9 +883,9 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 * Python
 
 #+begin_src emacs-lisp
+;; built-in
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
-  :ensure nil
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :config
@@ -1156,7 +1156,6 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package ruby-mode
-  :ensure nil
   :mode ("Vagrantfile" . ruby-mode))
 #+END_SRC
 
@@ -1369,6 +1368,14 @@ Modified to remove/disable Racket.
 
 * External services
 
+#+BEGIN_SRC emacs-lisp
+;; this is very imPorTanT YoU See
+(use-package spongebob
+  :straight (:host gitlab :repo "dustyweb/spongebob.el")
+  :init
+  (require 'spongebob))
+#+END_SRC
+
 ** Discord
 
 #+BEGIN_SRC emacs-lisp
@@ -1387,7 +1394,8 @@ Modified to remove/disable Racket.
   :if (file-exists-p path-to-discord-socket)
   :config
   (setq elcord-use-major-mode-as-main-icon t)
-  :init (elcord-mode))
+  :init
+  (elcord-mode))
 #+END_SRC
 
 ** Wakatime
