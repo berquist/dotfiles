@@ -139,6 +139,15 @@ Ansi-Color faces are included.")
    `(button ((,class (:background ,wombat-gray-4 :foreground ,wombat/white))))
    `(header-line ((,class (:background ,wombat-gray-5 :foreground "#e7f6da"))))
 
+   ;;; Company
+   `(company-preview ((,class (:background "midnight blue" :foreground "wheat"))))
+   `(company-preview-common ((,class (:inherit company-preview :foreground "salmon"))))
+   `(company-scrollbar-bg ((,class (:background "chocolate"))))
+   `(company-scrollbar-fg ((,class (:background "IndianRed4"))))
+   `(company-template-field ((,class (:background "light sea green" :foreground "white"))))
+   `(company-tooltip ((,class (:background "dark slate gray" :foreground "white"))))
+   `(company-tooltip-selection ((,class (:background "DarkOrange3"))))
+
    ;;; Gnus faces
    `(gnus-group-news-1 ((,class (:weight bold :foreground ,wombat/green))))
    `(gnus-group-news-1-low ((,class (:foreground ,wombat/green))))

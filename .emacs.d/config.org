@@ -317,6 +317,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 
 #+begin_src emacs-lisp
 (add-to-list 'default-frame-alist '(font . "Panic Sans-11"))
+(set-face-attribute 'fixed-pitch nil :family "Fira Mono")
 
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
