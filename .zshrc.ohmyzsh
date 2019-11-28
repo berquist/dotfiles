@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ### Added by Zplugin's installer
-source "$HOME/.zplugin/bin/zplugin.zsh"
+. "$HOME/.zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin installer's chunk
@@ -116,6 +116,8 @@ zplugin ice as"completion" wait'!2' silent
 zplugin snippet OMZ::plugins/cargo/_cargo
 zplugin ice as"completion" wait'!2' silent
 zplugin snippet OMZ::plugins/rust/_rust
+zplugin ice as"completion" wait'!2' silent
+zplugin snippet ~/dotfiles/zfunc/_rustup
 # TODO
 zplugin snippet ~/dotfiles/berquist.zsh-theme
 
