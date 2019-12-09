@@ -12,4 +12,8 @@ export GIT_COMMITER_EMAIL='berquist@isi.edu'
 
 source ~/dotfiles/dotfiles-private/isi_laptop_private.bash
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+# jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+# jenv global oracle64-1.8.0.202
+# jenv enable-plugin export
+# jenv add $(/usr/libexec/java_home)

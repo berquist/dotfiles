@@ -17,6 +17,8 @@ if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtual
 
 if command -v rbenv 1>/dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
+if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
+
 [[ -f "${HOME}"/perl5/perlbrew/etc/bashrc ]] && source "${HOME}"/perl5/perlbrew/etc/bashrc
 
 # Rust
