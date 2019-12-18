@@ -10,8 +10,7 @@ for d in ${pythonpathdirs[@]:1}; do
     export PYTHONPATH="${d}:$PYTHONPATH"
 done
 
-export LD_LIBRARY_PATH="${HOME}"/opt/lib:"${LD_LIBRARY_PATH}"
-
+# TODO replace this with a function
 [[ -d "${HOME}"/personal_scripts ]] && export PATH="${HOME}"/personal_scripts:"${PATH}"
 [[ -d "${HOME}"/opt/bin ]] && export PATH="${HOME}"/opt/bin:"${PATH}"
 [[ -d "${HOME}"/.local/bin ]] && export PATH="${HOME}"/.local/bin:"${PATH}"
