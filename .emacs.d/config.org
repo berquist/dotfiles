@@ -944,6 +944,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
       (format "conda[%s]" conda-env-current-name)))
   (delight 'python-mode '(:eval (format "Python %s" (ejb/conda-mode-lighter))) :major))
 
+(use-package pyenv-mode)
+
 (use-package lsp-python-ms
   :after lsp-mode
   :hook (python-mode . (lambda ()
