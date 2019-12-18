@@ -21,11 +21,5 @@ done
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
 
-# MROOT="${HOME}/Dropbox/MATLAB"
-# export MATLABPATH="${MROOT}:${MROOT}/easyspin-4.5.5/easyspin:${MATLABPATH}"
-# export MATLAB_USE_USERWORK=1
-
-# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-
 export QCPROGS="${HOME}"/opt/apps
 export apps="${QCPROGS}"
