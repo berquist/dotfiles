@@ -45,7 +45,7 @@ alias qchem_cpplint='find . -type f -name "*.[hC]" | xargs cpplint --root=. --ex
 ### SLURM
 ############################################################################### 
 
-format="\"%8i %9g %9u %5P %35j %2t %12M %12l %5D %3C %R %H %I %J %z\""
+format="\"%8i %9u %9P %35j %2t %10M %10l %5D %3C %R %H %I %J %z\""
 flags="-S +i -o ${format}"
 alias q="squeue -u $USER ${flags} -M all"
 alias qa="squeue -a ${flags}"

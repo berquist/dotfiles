@@ -15,25 +15,29 @@ export GAIA_HOME=/nas/gaia/users/berquist
 alias gcd="cd ${GAIA_HOME}"
 alias mongod_start="mongod -v --dbpath=${GAIA_HOME}/fireworks_mongodb_dir --logpath ${GAIA_HOME}/fireworks_mongodb.log --bind_ip_all --fork"
 alias mongod_stop="mongod --dbpath=${GAIA_HOME}/fireworks_mongodb_dir --shutdown"
-alias p="pstat | rg $(whoami)"
 
 # export PATH=${HOME}/personal_scripts/isi:${PATH}
 
-# uge_settings=/nas/uge/sge-root/default/common/settings.sh
-# if [[ -f "${uge_settings}" ]]; then
-#     source "${uge_settings}"
-#     export CUDA_CACHE_DISABLE=1
-#     export DRMAA_LIBRARY_PATH=${SGE_ROOT}/lib/lx-amd64/libdrmaa.so.1.0
-#     export PATH=${PATH}:/nfs/isicvlnas01/share/qstat-pretty/
-# fi
-
+# Don't modify PYTHONPATH for now.
 # pythonpathdirs=($(find "${HOME}"/pythonpath -maxdepth 1 -type d))
 # # https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
 # for d in ${pythonpathdirs[@]:1}; do
 #     export PYTHONPATH="${d}:$PYTHONPATH"
 # done
 
-# source "${HOME}"/perl5/perlbrew/etc/bashrc
+# Don't use perlbrew for now.
+# . "${HOME}"/perl5/perlbrew/etc/bashrc
+
+# this needs to be here for tmux to pick it up properly, since tmux doesn't
+# read ~/.bash_profile
+spack_root=/nas/gaia/users/berquist/repositories/spack
+if [[ -d "${spack_root}" ]]; then
+    source "${spack_root}"/share/spack/setup-env.sh
+fi
+
+spack load tmux
+spack load git
+spack load emacs
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
