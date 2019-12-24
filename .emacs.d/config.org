@@ -941,8 +941,8 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
     "Only display the lighter if a conda environment is active."
     (if (equal conda-env-current-name nil)
         ""
-      (format "conda[%s]" conda-env-current-name)))
-  (delight 'python-mode '(:eval (format "Python %s" (ejb/conda-mode-lighter))) :major))
+      (format " conda[%s]" conda-env-current-name)))
+  (delight 'python-mode '(:eval (format "Python%s" (ejb/conda-mode-lighter))) :major))
 
 (use-package pyenv-mode)
 
