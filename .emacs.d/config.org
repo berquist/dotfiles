@@ -1205,9 +1205,12 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 (use-package julia-mode)
 (use-package flycheck-julia
+  :disabled t
   :hook (flycheck-mode . flycheck-julia-setup))
-(use-package julia-repl)
+(use-package julia-repl
+  :disabled t)
 (use-package lsp-julia
+  :disabled t
   :after lsp-mode
   :hook (julia-mode . (lambda ()
                         (require 'lsp-julia)
