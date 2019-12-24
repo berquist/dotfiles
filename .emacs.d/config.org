@@ -179,6 +179,16 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (bind-key (kbd "C-x C-h") 'replace-string)
 #+end_src
 
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  ;; why doesn't this work
+  ;; :delight
+  :config
+  (setq which-key-lighter "")
+  :init
+  (which-key-mode))
+#+END_SRC
+
 * dir-locals
 
 Taken from https://emacs.stackexchange.com/a/13096/10950
