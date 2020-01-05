@@ -444,6 +444,18 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (setq projectile-indexing-method 'hybrid)
   (setq projectile-require-project-root t)
   (setq projectile-sort-order 'recently-active)
+  (setq projectile-project-root-files-top-down-recurring
+        (append
+         '("compile_commands.json" ".ccls")
+         projectile-project-root-files-top-down-recurring))
+  (setq projectile-globally-ignored-directories
+        (append
+         '("build" "CMakeFiles" ".ccls-cache")
+         projectile-globally-ignored-directories))
+  (setq projectile-globally-ignored-files
+        (append
+         '("cmake_install.cmake")
+         projectile-globally-ignored-files))
   :init
   (projectile-mode))
 #+END_SRC
@@ -518,7 +530,6 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
     (add-to-list 'lsp-language-id-configuration '(fortran-mode . "fortran"))
     (add-to-list 'lsp-language-id-configuration '(sh-mode . "bash"))))
 (use-package lsp-ui
-  :disabled t
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-flycheck-enable t))
@@ -540,6 +551,7 @@ TODO add LaTex
   :bind (("C-c f" . flycheck-mode))
   :config
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  (setq flycheck-gcc-openmp t)
   (setq flycheck-markdown-mdl-style "~/.mdlrc")
   ;; This interferes with project-specific configurations.
   ;; (setq flycheck-pylintrc "~/.pylintrc")
@@ -796,6 +808,14 @@ These are valid for all C-style modes (I think).
       '((c-mode . javadoc)
         (java-mode . javadoc)
         (pike-mode . autodoc)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package ccls
+  :after lsp-mode
+  :hook ((c-mode c++-mode) . (lambda ()
+                               (require 'ccls)
+                               (lsp))))
 #+END_SRC
 
 This only makes sense for c++-mode.
