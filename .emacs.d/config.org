@@ -970,6 +970,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 (use-package pyenv-mode)
 
 (use-package lsp-python-ms
+  :disabled t
   :after lsp-mode
   :hook (python-mode . (lambda ()
                          (require 'lsp-python-ms)
