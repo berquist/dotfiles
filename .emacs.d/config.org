@@ -516,7 +516,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode kotlin-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode kotlin-mode nim-mode python-mode sh-mode) . lsp)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
@@ -1380,11 +1380,6 @@ Modified to remove/disable Racket.
   :hook (nim-mode . nimsuggest-mode))
 ;; TODO I'm not sure what the advantage of this package is.
 ;; (use-package flycheck-nim)
-(use-package lsp-nim
-  :straight (:host github :repo "berquist/lsp-nim")
-  :hook (nim-mode . (lambda ()
-                       (require 'lsp-nim)
-                       (lsp))))
 #+END_SRC
 
 * Other languages
