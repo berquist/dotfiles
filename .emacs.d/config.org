@@ -1374,6 +1374,14 @@ Modified to remove/disable Racket.
          ("\\.turtle\\'" . ttl-mode)))
 #+END_SRC
 
+* GraphQL
+
+#+BEGIN_SRC emacs-lisp
+(use-package graphql-mode
+  :mode
+  (("\\.\\(gql\\|graphql\\)\\'" . graphql-mode)))
+#+END_SRC
+
 * Nim
 
 =flycheck-nimsuggest=, despite being "old", is required by =nimsuggest-mode=.
