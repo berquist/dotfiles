@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+## home laptop
+
+eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
+
+source ~/repositories/spack/share/spack/setup-env.sh
