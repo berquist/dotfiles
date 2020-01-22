@@ -620,6 +620,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (setq magit-commit-arguments '("--verbose")))
 (use-package magit-svn
   :hook magit-mode)
+(use-package forge)
 #+END_SRC
 
 Not using =git-gutter= right now, but if I did...
