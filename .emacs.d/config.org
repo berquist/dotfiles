@@ -521,8 +521,6 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
   (setq lsp-prefer-flymake nil)
-  (setq lsp-ui-doc-include-signature t)
-  (setq lsp-ui-peek-always-show t)
   (setq lsp-rust-clippy-preference "on")
   :init
   (with-eval-after-load 'lsp
@@ -532,9 +530,13 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 (use-package lsp-ui
   :commands lsp-ui-mode
   :config
-  (setq lsp-ui-flycheck-enable t))
+  (setq lsp-ui-doc-include-signature t)
+  (setq lsp-ui-flycheck-enable t)
+  (setq lsp-ui-peek-always-show t))
 (use-package company-lsp
   :commands company-lsp
+  :config
+  (setq company-lsp-cache-candidates t)
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-lsp)))
