@@ -919,6 +919,7 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 ;; built-in
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
+  :ensure nil
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :config
