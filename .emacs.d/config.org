@@ -516,7 +516,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode kotlin-mode nim-mode python-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode cmake-mode fortran-mode kotlin-mode nim-mode python-mode sh-mode) . lsp)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
