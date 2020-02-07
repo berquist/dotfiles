@@ -604,6 +604,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 ** Git
 
 - [[https://magit.vc/manual/magit/Getting-started.html][magit: Getting Started]]
+- https://www.youtube.com/watch?v=7ywEgcbaiys&list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj&index=18
 
 #+BEGIN_SRC emacs-lisp
 (use-package git-commit
@@ -616,13 +617,13 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package gitignore-mode
   :mode (("\\.gitignore\\'" . gitignore-mode)))
 (use-package magit
-  ;; "Getting started" uses C-x g, which is also undefined.
-  :bind (("C-c m" . magit-status))
-  :config
-  (setq magit-commit-arguments '("--verbose")))
+  :bind (("C-c m" . magit-status)))
 (use-package magit-svn
+  :disabled t
   :hook magit-mode)
-(use-package forge)
+(use-package forge
+  :disabled t)
+(use-package git-timemachine)
 #+END_SRC
 
 Not using =git-gutter= right now, but if I did...
