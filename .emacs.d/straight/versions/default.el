@@ -35,6 +35,7 @@
  ("emacs-flycheck-mypy" . "12a77ee8ee3f6e774365f63be3cd5aede6462dd5")
  ("emacs-gradle-mode" . "e4d665d5784ecda7ddfba015f07c69be3cfc45f2")
  ("emacs-htmlize" . "86f22f211e9230857197c42a9823d3f05381deed")
+ ("emacs-libvterm" . "af5cb81caf19077b701681df75ec7984a44ae7c8")
  ("emacs-lush-theme" . "645e1959143532df8f7ef90e1184e9556df18af7")
  ("emacs-quasi-monochrome" . "68060dbbc0bbfe4924387392874186c5a29bb434")
  ("emacs-request" . "431d14343c61bc51a86c9a9e1acb6c26fe9a6298")

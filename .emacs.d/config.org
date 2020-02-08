@@ -1414,6 +1414,7 @@ Modified to remove/disable Racket.
 (use-package scala-mode)
 (use-package strace-mode)
 (use-package systemd)
+(use-package vterm)
 #+END_SRC
 
 * External services
