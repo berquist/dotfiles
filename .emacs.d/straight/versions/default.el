@@ -93,6 +93,7 @@
  ("org" . "2fde90aa2e5b8ecfab57fb6203b2e33141ebd1d7")
  ("ox-gfm" . "99f93011b069e02b37c9660b8fcb45dab086a07f")
  ("ox-pandoc" . "aa37dc7e94213d4ebedb85c384c1ba35007da18e")
+ ("pacfiles-mode" . "ff58f387e0f85ca20c4c9f119bf13303bf8b5a76")
  ("pandoc-mode" . "f4f10a329acd354aa7dda52e7f7bc23ca28366d3")
  ("pfuture" . "fbecd1562b34fcd15563b7cc00d98e5af0d7e43d")
  ("pip-requirements.el" . "216cd1690f80cc965d4ae47b8753fc185f778ff6")

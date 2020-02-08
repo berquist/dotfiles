@@ -1411,6 +1411,7 @@ Modified to remove/disable Racket.
 (use-package lua-mode)
 (use-package mediawiki)
 (use-package meson-mode)
+(use-package pacfiles-mode)
 (use-package scala-mode)
 (use-package strace-mode)
 (use-package systemd)
