@@ -34,6 +34,11 @@ Fundamental third-party packages that don't go anywhere else.
 (use-package exec-path-from-shell
   :init
   (exec-path-from-shell-initialize))
+(when (display-graphic-p)
+  ;; Starting the GUI doesn't know anything about the Keychain:
+  ;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
+  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK"))
 #+END_SRC
 
 * M-x customize
@@ -217,6 +222,12 @@ current buffer's, reload dir-locals."
 ;;                               (file-name-nondirectory (buffer-file-name))))
 ;;               (add-hook (make-variable-buffer-local 'after-save-hook)
 ;;                         'my-reload-dir-locals-for-all-buffer-in-this-directory))))
+#+END_SRC
+
+* TRAMP
+
+#+BEGIN_SRC emacs-lisp
+(setq tramp-verbose 8)
 #+END_SRC
 
 * Parens/whitespace/indentation
