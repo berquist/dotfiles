@@ -33,11 +33,15 @@ alias mongod_stop="mongod --dbpath=${GAIA_HOME}/fireworks_mongodb_dir --shutdown
 spack_root=/nas/gaia/users/berquist/repositories/spack
 if [[ -d "${spack_root}" ]]; then
     source "${spack_root}"/share/spack/setup-env.sh
+    source "${spack_root}"/var/spack/environments/interactive/loads
 fi
 
-spack load tmux
-spack load git
-spack load emacs
+sge_settings=/nas/uge/sge-root/default/common/settings.sh
+if [[ -f "${sge_settings}" ]]; then
+    source "${sge_settings}"
+    export DRMAA_LIBRARY_PATH=${SGE_ROOT}/lib/lx-amd64/libdrmaa.so.1.0
+    export PATH=${PATH}:/nfs/isicvlnas01/share/qstat-pretty/
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
