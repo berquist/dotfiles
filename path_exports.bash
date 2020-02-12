@@ -17,6 +17,7 @@ done
 [[ -d "${HOME}"/repositories/rmsd/rmsd ]] && export PATH="${HOME}"/repositories/rmsd/rmsd:"${PATH}"
 [[ -d "${HOME}"/opt/bin/scripts ]] && export PATH="${HOME}"/opt/bin/scripts:"${PATH}"
 [[ -d "${HOME}"/.node_modules/bin ]] && export PATH="${HOME}"/.node_modules/bin:"${PATH}"
+[[ -d "${HOME}"/go/bin ]] && export PATH="${HOME}"/go/bin:"${PATH}"
 
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
