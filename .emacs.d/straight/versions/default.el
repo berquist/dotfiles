@@ -2,7 +2,7 @@
  ("Emacs-langtool" . "a71ed02ce06920ae3cafd6708de1c21811ce14c3")
  ("ace-window" . "7e0777b39a93c68cb5218a30be3e8c2774bc0a3d")
  ("amx" . "3af93ca066aa42dd1342f1ee0ab0d02360075613")
- ("anaconda-mode" . "1bc301b2d2bc336988f4a16a891c275a90136ca5")
+ ("anaconda-mode" . "10299bd9ff38c4f0da1d892905d02ef828e7fdce")
  ("auctex" . "fafa28d54276a73604e696b51c6a1a36d727d3fb")
  ("auctex-latexmk" . "4d353522650d7685acbf1d38f7dbc504f734bd84")
  ("avy" . "cf95ba9582121a1c2249e3c5efdc51acd566d190")
