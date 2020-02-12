@@ -1198,7 +1198,11 @@ current buffer, return its path, otherwise nil."
     (if (ejb/editorconfig-has-editorconfig)
         " EC"
       ""))
-  :delight '(:eval (ejb/editorconfig-mode-lighter)))
+  ;; TODO This is disabled until it can be integrated with Projectile. Doing
+  ;; the naive search with `editorconfig-core-get-nearest-editorconfig` is
+  ;; death over TRAMP.
+  ;; :delight '(:eval (ejb/editorconfig-mode-lighter))
+  :delight)
 #+END_SRC
 
 * Ruby (builtin)
