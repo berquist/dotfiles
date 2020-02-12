@@ -1446,24 +1446,12 @@ Modified to remove/disable Racket.
 
 ** Discord
 
+Don't use ~:init (elcord-mode)~ because there are many machines on which we don't want it to run (like work), and checking for the presence of a socket doesn't indicate whether or not Discord is actually running. It seems to hang around, at least on macOS.
+
 #+BEGIN_SRC emacs-lisp
-(setq path-to-discord-socket
-      (expand-file-name
-       "discord-ipc-0"
-       (file-name-as-directory
-        (or (getenv "XDG_RUNTIME_DIR")
-            (getenv "TMPDIR")
-            (getenv "TMP")
-            (getenv "TEMP")
-            "/tmp"))))
 (use-package elcord
-  ;; unfortunately, at least on macOS, the socket can hang around even after
-  ;; the app is no longer running
-  :if (file-exists-p path-to-discord-socket)
   :config
-  (setq elcord-use-major-mode-as-main-icon t)
-  :init
-  (elcord-mode))
+  (setq elcord-use-major-mode-as-main-icon t))
 #+END_SRC
 
 ** Wakatime
