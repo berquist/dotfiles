@@ -226,8 +226,17 @@ current buffer's, reload dir-locals."
 
 * TRAMP
 
+- Set VC backends here, even though I never use =vc-mode=, because this is one way of speeding up TRAMP while still allowing use of =vc-mode=.
+- Only set =tramp-verbose= while debugging, otherwise you'll think TRAMP is slow for the wrong reason.
+
+Links:
+- https://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
+- https://www.emacswiki.org/emacs/TrampMode
+
 #+BEGIN_SRC emacs-lisp
-(setq tramp-verbose 8)
+(setq tramp-default-method "ssh")
+;; (setq tramp-verbose 8)
+(setq vc-handled-backends '(SVN Git))
 #+END_SRC
 
 * Parens/whitespace/indentation
