@@ -1184,6 +1184,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
+  :if (not (string-match "\.isi\.edu" (shell-command-to-string "hostname -f")))
   :hook ((prog-mode text-mode) . editorconfig-mode)
   :config
   (defun ejb/editorconfig-has-editorconfig ()
