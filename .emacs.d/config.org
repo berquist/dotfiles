@@ -239,6 +239,19 @@ Links:
 (setq vc-handled-backends '(SVN Git))
 #+END_SRC
 
+* Snippets
+
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+  ;; TODO
+  ;; :bind (:map yas-minor-mode-map
+  ;;             ("C-M-/" . yas-expand)
+  ;;             ("TAB" . nil))
+  :init
+  (yas-global-mode 1))
+(use-package yasnippet-snippets)
+#+END_SRC
+
 * Parens/whitespace/indentation
 
 #+BEGIN_SRC emacs-lisp
@@ -557,6 +570,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   :commands company-lsp
   :config
   (setq company-lsp-cache-candidates t)
+  (setq company-lsp-enable-snippet nil)
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-lsp)))
