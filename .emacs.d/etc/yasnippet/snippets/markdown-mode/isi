@@ -1,0 +1,41 @@
+# -*- mode: snippet -*-
+# name: ISI daily standup
+# key: isi
+# --
+# `(format-time-string "%Y-%m-%d")`
+
+## aida-ct-events
+
+### What did you complete yesterday?
+
+$0$1
+
+### What do you plan to work on today?
+
+$2
+
+### How long do you think it will take?
+
+$3
+
+### Any impediments in your way? Are you waiting on anything?
+
+${4:No}
+
+## compute-cluster-for-text
+
+### What did you complete yesterday?
+
+$5
+
+### What do you commit to today?
+
+$6
+
+### When do you think you'll be done with that?
+
+$7
+
+### Any impediments in your way?
+
+${8:No}
