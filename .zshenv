@@ -30,7 +30,8 @@ if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
 [[ -d "${HOME}/.nimble/bin" ]] && export PATH="${HOME}/.nimble/bin:${PATH}"
 
 # conda
-if [[ -d "${HOME}/.anaconda" ]]; then
-    eval "$(${HOME}/.anaconda/bin/conda shell.zsh hook)"
-    export ANACONDA_HOME="${HOME}/.anaconda"
-fi
+# Don't automatically load this if it's available.
+# if [[ -d "${HOME}/.anaconda" ]]; then
+#     eval "$(${HOME}/.anaconda/bin/conda shell.zsh hook)"
+#     export ANACONDA_HOME="${HOME}/.anaconda"
+# fi
