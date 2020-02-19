@@ -16,18 +16,6 @@ alias gcd="cd ${GAIA_HOME}"
 alias mongod_start="mongod -v --dbpath=${GAIA_HOME}/fireworks_mongodb_dir --logpath ${GAIA_HOME}/fireworks_mongodb.log --bind_ip_all --fork"
 alias mongod_stop="mongod --dbpath=${GAIA_HOME}/fireworks_mongodb_dir --shutdown"
 
-# export PATH=${HOME}/personal_scripts/isi:${PATH}
-
-# Don't modify PYTHONPATH for now.
-# pythonpathdirs=($(find "${HOME}"/pythonpath -maxdepth 1 -type d))
-# # https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
-# for d in ${pythonpathdirs[@]:1}; do
-#     export PYTHONPATH="${d}:$PYTHONPATH"
-# done
-
-# Don't use perlbrew for now.
-# . "${HOME}"/perl5/perlbrew/etc/bashrc
-
 # this needs to be here for tmux to pick it up properly, since tmux doesn't
 # read ~/.bash_profile
 spack_root=/nas/gaia/users/berquist/repositories/spack
