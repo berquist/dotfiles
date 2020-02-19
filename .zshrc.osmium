@@ -13,7 +13,4 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 export WORKON_HOME=$HOME/data/virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
-source /usr/share/lmod/lmod/init/zsh
 module use "${HOME}/modules/osmium"
-
-source /opt/spack/share/spack/setup-env.sh
