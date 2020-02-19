@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export PS1="[\u@\h \w]\$ "
+
 export EDITOR="emacs -nw"
 
 # https://twitter.com/hhulkko/status/114256631419772928
