@@ -24,18 +24,20 @@ spack_root=/nas/gaia/users/berquist/repositories/spack
 if [[ -d "${spack_root}" ]]; then
     source "${spack_root}"/share/spack/setup-env.sh
     source "${spack_root}"/var/spack/environments/interactive/loads
+    # TODO figure out best way to get Lmod working
+    # source $(spack location -i lmod)/lmod/lmod/init/bash    
 fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/nas/home/berquist/opt/apps/python/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/nas/gaia/users/berquist/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/nas/home/berquist/opt/apps/python/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/nas/home/berquist/opt/apps/python/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/nas/gaia/users/berquist/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/nas/gaia/users/berquist/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/nas/home/berquist/opt/apps/python/miniconda3/bin:$PATH"
+        export PATH="/nas/gaia/users/berquist/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
