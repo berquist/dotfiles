@@ -561,6 +561,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
     (add-to-list 'lsp-language-id-configuration '(fortran-mode . "fortran"))
     (add-to-list 'lsp-language-id-configuration '(sh-mode . "bash"))))
 (use-package lsp-ui
+  :disabled t
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-include-signature t)
