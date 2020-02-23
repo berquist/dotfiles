@@ -133,5 +133,7 @@
  ("with-editor" . "7e0bf753709f1775d2bbbb6edf4482fca7fd286a")
  ("xterm-color" . "4b21b619841c93c4700039a93eb1881beee9248c")
  ("yaml-mode" . "cecf4b106b0c4236931b14919fdf87ff3546e2c9")
- ("yapfify" . "0b4f20af0b00a86353ddc286df26eade89381269"))
+ ("yapfify" . "0b4f20af0b00a86353ddc286df26eade89381269")
+ ("yasnippet" . "3bf9a3b1af37174a004798b7195826af0123fa6a")
+ ("yasnippet-snippets" . "612be838d2e50c3601c349d7842702d95e17682a"))
 :alpha
