@@ -47,7 +47,7 @@
  ("exec-path-from-shell" . "76fbdf5d01bace97dbabf5a4b56b6d9414a7aea3")
  ("f.el" . "1814209e2ff43cf2e6d38c4cd476218915f550fb")
  ("faceup" . "6c92dad56a133e14e7b27831e1bcf9b3a71ff154")
- ("flycheck" . "269237f6529a4ad7db5bbbc5a40c1f038accf3cd")
+ ("flycheck" . "08345d38e2872a3dcb14228edff796195809266f")
  ("flycheck-checkbashisms" . "2e386775f1a0eb5d80e5d70e98474ee32ecafb24")
  ("flycheck-gradle" . "1ca08bbc343362a923cbdc2010f66e41655e92ab")
  ("flycheck-kotlin" . "5104ee9a3fdb7f0a0a3d3bcfd8dd3c45a9929310")
