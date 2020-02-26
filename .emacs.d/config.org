@@ -610,6 +610,8 @@ sudo pkg install checkbashisms # FreeBSD
 
 #+begin_src emacs-lisp
 (use-package flycheck-checkbashisms
+  ;; We assume that shellcheck can handle this.
+  :disabled t
   :hook (flycheck-mode . flycheck-checkbashisms-setup)
   :config
   ;; Check 'echo -n' usage
