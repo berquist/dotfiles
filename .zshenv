@@ -29,6 +29,16 @@ if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
 # Nim
 [[ -d "${HOME}/.nimble/bin" ]] && export PATH="${HOME}/.nimble/bin:${PATH}"
 
+# Node Version Manager
+NVM_DIR="${HOME}/.nvm"
+if [[ -d "${NVM_DIR}" ]]; then
+    unset npm_config_prefix
+    export NVM_DIR
+    \. "${NVM_DIR}/nvm.sh"
+    \. "${NVM_DIR}/bash_completion"
+fi
+
+
 # conda
 # Don't automatically load this if it's available.
 # if [[ -d "${HOME}/.anaconda" ]]; then
