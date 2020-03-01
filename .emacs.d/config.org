@@ -1335,7 +1335,8 @@ current buffer, return its path, otherwise nil."
 (use-package rustic
   :init
   (setq rustic-format-on-save t)
-  (setq rustic-indent-method-chain t))
+  (setq rustic-indent-method-chain t)
+  (setq rustic-ansi-faces ansi-color-names-vector))
 #+END_SRC
 
 * Scheme/Lisp
