@@ -34,7 +34,6 @@ H. Nielsen.  Basic, Font Lock, Isearch, Gnus, Message, and
 Ansi-Color faces are included.")
 
 (let ((class '((class color) (min-colors 89)))
-
       ;; Variables with '/' correspond to the ANSI spots, *not* the
       ;; actual colors they contain. Unless noted or commented out,
       ;; they are the original Wombat colors.
@@ -198,18 +197,13 @@ Ansi-Color faces are included.")
    `(font-latex-subscript-face ((t (:height 0.9))))
    `(font-latex-superscript-face ((t (:height 0.9))))
    `(font-latex-verbatim-face ((t (:inherit fixed-pitch :foreground "#91a5c1")))) ;; LightSteelBlue3
-   `(font-latex-warning-face ((t (:inherit font-lock-warning-face))))))
+   `(font-latex-warning-face ((t (:inherit font-lock-warning-face)))))
 
-(custom-theme-set-variables
- 'wombat2
- '(ansi-color-names-vector [,wombat/black ,wombat/red ,wombat/green ,wombat/yellow,
-                            ,wombat/blue ,wombat/magenta ,wombat/cyan ,wombat/white]))
+  (custom-theme-set-variables
+   'wombat2
+   `(ansi-color-names-vector [,wombat/black ,wombat/red ,wombat/green ,wombat/yellow ,wombat/blue ,wombat/magenta ,wombat/cyan ,wombat/white])))
 
 (provide-theme 'wombat2)
-
-;; Local Variables:
-;; no-byte-compile: t
-;; End:
 
 ;;; wombat2-theme.el ends here
 
@@ -251,11 +245,6 @@ Ansi-Color faces are included.")
 
 ;; `(comint-highlight-input ((t (:bold t :weight bold))))
 ;; `(comint-highlight-prompt ((t (:foreground "#f6f3e8"))))
-;; (compilation-column-number ((t (:foreground "#f6f3e8"))))
-;; (compilation-error ((t (:bold t :weight bold :foreground "white"))))
-;; (compilation-info ((t (:bold t :foreground "Green1" :weight bold))))
-;; (compilation-line-number ((t (:bold t :weight bold :foreground "white"))))
-;; (compilation-warning ((t (:bold t :foreground "red" :weight bold))))
 ;; (completions-common-part ((t (:stipple nil :background "#242424" :foreground "#f6f3e8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 138 :width normal :foundry "Bitstream" :family "Bitstream Vera Sans Mono"))))
 ;; (completions-first-difference ((t (:bold t :weight bold))))
 ;; (cparen-around-andor-face ((t (:bold t :foreground "maroon" :weight bold))))
