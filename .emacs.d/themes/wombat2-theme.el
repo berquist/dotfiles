@@ -104,12 +104,20 @@ Ansi-Color faces are included.")
    ;; This is for _the tab before the space_!
    `(whitespace-space-after-tab ((,class (:background ,wombat-orange+2))))
 
+   ;;; General faces
+   `(error ((,class (:foreground ,wombat-red-1))))
+   `(warning ((,class (:foreground ,wombat-orange-1))))
+   `(success ((,class (:foreground ,wombat/green))))
+
    ;;; Mode line faces
    `(mode-line ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
    `(mode-line-inactive ((,class (:background ,wombat-gray-3 :box (:line-width 1 :color "#857b6f" :style nil)))))
    ;; `(mode-line-emphasis ((,class (:bold t))))
    ;; `(mode-line-highlight ((,class (:background ,wombat-orange :box nil))))
    ;; `(mode-line-buffer-id ((,class (:bold t :background "#424242" :weight bold))))
+   `(compilation-mode-line-exit ((,class (:inherit compilation-info :weight bold))))
+   `(compilation-mode-line-fail ((,class (:inherit compilation-error :weight bold))))
+   `(compilation-mode-line-run ((,class (:inherit compilation-warning :weight bold))))
 
    ;;; Escape and prompt faces
    `(minibuffer-prompt ((,class (:foreground ,wombat/red))))
