@@ -254,20 +254,10 @@ Links:
 
 * Parens/whitespace/indentation
 
-#+BEGIN_SRC emacs-lisp
-(electric-pair-mode)
-#+END_SRC
-
-See https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package.
-
 #+begin_src emacs-lisp
-(use-package mic-paren
-  :config
-  (setq paren-delay nil)
-  (setq paren-highlight-at-point t)
-  (setq paren-highlight-offscreen t)
-  :init
-  (paren-activate))
+(electric-pair-mode)
+(show-paren-mode)
+(setq show-paren-delay 0.0)
 
 (use-package whitespace
   :bind (("C-c t" . whitespace-mode))

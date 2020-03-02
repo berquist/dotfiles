@@ -85,7 +85,6 @@
  ("mediawiki-el" . "8473e12d1839f5287a4227586bf117dad820f867")
  ("melpa" . "bf0caf3c60f4b8c6ed1c126a5feb91c99eea1f60")
  ("meson-mode" . "b507a87455af906e6c49aa4af70eba5b1d1af9ef")
- ("mic-paren" . "d0410c7d805c9aaf51a1bcefaaef092bed5824c4")
  ("monochrome-theme.el" . "bfca67fe7365310bc47ae9ca96c417caada54896")
  ("nadvice" . "2dfcf614dc5472fb21e48f93d0ebb4546276377f")
  ("nim-mode" . "16a245e4974d21a6e9e7163e7fbfb50a0bd89f99")

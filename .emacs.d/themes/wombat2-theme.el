@@ -156,11 +156,9 @@ Ansi-Color faces are included.")
    `(company-tooltip-selection ((,class (:background "DarkOrange3"))))
 
    ;;; Parens
-   ;; `(show-paren-match-face ((t (:background ,wombat-orange :foreground ,wombat/white :bold t))))
-   ;; `(show-paren-mismatch-face ((t (:background ,wombat-purple-1 :foreground ,wombat-blue-2))))
-   ;; `(paren-face-match ((t (:inherit show-paren-match-face))))
-   ;; `(paren-face-match-light ((t (:inherit show-paren-match-face))))
-   ;; `(paren-face-mismatch ((t (:inherit show-paren-mismatch-face))))
+   `(show-paren-match ((,class (:background ,wombat-orange :foreground ,wombat/white :bold t))))
+   `(show-paren-mismatch ((,class (:background ,wombat-purple-1 :foreground ,wombat-blue-2))))
+   ;; TODO show-paren-match-expression? I don't use expression mode.
 
    ;;; LaTeX
    `(font-latex-bold-face ((t (:foreground ,wombat-green-1))))
