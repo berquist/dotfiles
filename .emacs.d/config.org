@@ -335,11 +335,8 @@ Links:
 (use-package abyss-theme)
 (use-package dracula-theme)
 (use-package gotham-theme)
-(use-package lush-theme)
-(use-package monochrome-theme)
 (use-package plan9-theme)
 (use-package punpun-theme) ; (punpun-light, punpun-dark)
-(use-package quasi-monochrome-theme)
 (use-package rebecca-theme)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
