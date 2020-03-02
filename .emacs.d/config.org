@@ -1432,13 +1432,12 @@ Modified to remove/disable Racket.
 * Other languages
 
 #+BEGIN_SRC emacs-lisp
-(use-package dockerfile-mode)
 (use-package chapel-mode)
 (use-package clojure-mode)
 (use-package cuda-mode)
+(use-package dockerfile-mode)
 (use-package graphviz-dot-mode)
 (use-package lua-mode)
-(use-package mediawiki)
 (use-package meson-mode)
 (use-package pacfiles-mode)
 (use-package scala-mode)
