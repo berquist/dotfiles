@@ -97,6 +97,7 @@
  ("pyenv-mode" . "aec6f2aa289f6aed974f053c081143758dd142fb")
  ("pythonic" . "ba9af8ce302579a2b2097b867a35a9fc0bc4bceb")
  ("racket-mode" . "5f396fa91fc22310f5c519aa658436a1a5251846")
+ ("rainbow-mode" . "3ef813d6377226de0cac1b0ee536b517f45e61ad")
  ("rebecca-theme" . "9ac0c71c2858b76dc5499f62c7c7fb7f9e8f16bc")
  ("ripgrep.el" . "40e871dcc4519a70981e9f28acea304692a60978")
  ("rustic" . "99396915c78556f4ad0da8caf9cb2a269582c39f")

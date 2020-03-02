@@ -344,6 +344,12 @@ Links:
 (load-theme 'punpun-dark t)
 #+end_src
 
+** other coloration
+
+#+begin_src emacs-lisp
+(use-package rainbow-mode)
+#+end_src
+
 ** Windows
 
 TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.html
