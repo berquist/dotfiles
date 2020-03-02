@@ -25,7 +25,7 @@
  ("dtrt-indent" . "48221c928b72746d18c1e284c45748a0c2f1691f")
  ("editorconfig-emacs" . "5c67d22a749408fe9a719ccc4cc75beba62a71e8")
  ("elcord" . "88bc8f6f6b92a9d3095d55e4ddc3601ea13d4447")
- ("emacs" . "7d7a05a6a488a252e7b28607835d1998b89f51b2")
+ ("emacs" . "f7cf1b23ae8f70aaf723552159213d143b92889a")
  ("emacs-abyss-theme" . "18791c6e8d9cc2b4815c9f08627a2e94fc0eeb14")
  ("emacs-async" . "86aef2c38e7d35e8509b7feeee3e989d825eba91")
  ("emacs-ctable" . "b8830d1ca95abb100a81bc32011bd17d5ecba000")
