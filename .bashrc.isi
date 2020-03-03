@@ -4,10 +4,11 @@
 
 export PS1="[\u@\h \w]\$ "
 
-source ~/dotfiles/interactive_exports.bash
-source ~/dotfiles/aliases.bash
-source ~/dotfiles/bash_hist.bash
-source ~/dotfiles/functions.bash
+. ~/dotfiles/interactive_exports.bash
+. ~/dotfiles/aliases.bash
+. ~/dotfiles/bash_hist.bash
+. ~/dotfiles/functions.bash
+. ~/dotfiles/slurm.bash
 
 export GIT_AUTHOR_EMAIL='berquist@isi.edu'
 export GIT_COMMITER_EMAIL='berquist@isi.edu'

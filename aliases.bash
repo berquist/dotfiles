@@ -40,14 +40,3 @@ alias etags_qchem='find -L $PWD -not \( -path "./build" -prune \) -not \( -path 
 alias ctags_qchem='ctags -e --languages=-HTML,-JavaScript --links --verbose --totals -R'
 alias qchem_cppcheck='find . -type f -name "*.[hC]" | xargs cppcheck --enable=all --language=c++ --std=c++03'
 alias qchem_cpplint='find . -type f -name "*.[hC]" | xargs cpplint --root=. --extensions=C --headers=h'
-
-###############################################################################
-### SLURM
-############################################################################### 
-
-format="\"%8i %9u %9P %35j %2t %10M %10l %5D %3C %R %H %I %J %z\""
-flags="-S +i -o ${format}"
-alias q="squeue -u $USER ${flags}"
-alias qa="squeue -a ${flags}"
-alias c="scontrol show jobid -dd"
-alias walltimes='sacctmgr show qos'

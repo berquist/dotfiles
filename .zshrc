@@ -15,5 +15,6 @@ compinit
 . "${HOME}"/dotfiles/interactive_exports.bash
 . "${HOME}"/dotfiles/aliases.bash 
 . "${HOME}"/dotfiles/functions.bash
+. "${HOME}"/dotfiles/slurm.bash
 
 . "${HOME}"/dotfiles/.zshrc."$(hname)"
