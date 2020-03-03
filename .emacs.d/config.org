@@ -868,8 +868,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :bind (("C-M-<tab>" . clang-format-region)))
 #+END_SRC
 
-TODO What's the difference between =c++-mode= and =cc-mode=?
-
 ** ISPC
 
 Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
@@ -1482,4 +1480,12 @@ Don't use ~:init (elcord-mode)~ because there are many machines on which we don'
   (setq wakatime-cli-path (executable-find "wakatime"))
   :init
   (global-wakatime-mode))
+#+END_SRC
+
+* Functions
+
+#+BEGIN_SRC emacs-lisp
+(defun ejb/insert-date ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
 #+END_SRC
