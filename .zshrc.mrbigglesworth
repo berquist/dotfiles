@@ -6,7 +6,7 @@ eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
 export PATH="${HOME}"/repositories/pacapt:"${PATH}"
 
-source /etc/profile.d/modules.sh
+. /etc/profile.d/modules.sh
 module use "${HOME}/modules/mrbigglesworth"
 
 module load git/github

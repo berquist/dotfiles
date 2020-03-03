@@ -11,6 +11,6 @@ eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
 export WORKON_HOME=$HOME/data/virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+. /usr/bin/virtualenvwrapper.sh
 
 module use "${HOME}/modules/osmium"

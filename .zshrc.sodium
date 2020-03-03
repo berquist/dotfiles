@@ -36,13 +36,13 @@ function ssh() {
     echo -n -e "\033]0;${USER}@${HOSTNAME%%.*}\007";
 }
 
-source ~/dotfiles/aliases_macos.bash
+. ~/dotfiles/aliases_macos.bash
 
 # export MATLAB_ROOT='/Applications/MATLAB_R2012a.app'
 # export MATLAB_BIN="${MATLAB_ROOT}/bin"
 # export PATH="${PATH}:${MATLAB_BIN}"
 
-source /usr/local/opt/lmod/init/zsh
+. /usr/local/opt/lmod/init/zsh
 module use "${HOME}/modules/sodium"
 
 module load python/psi4conda

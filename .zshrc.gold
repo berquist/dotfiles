@@ -12,9 +12,9 @@ then
 fi
 
 export WORKON_HOME="${HOME}"/virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+. /usr/bin/virtualenvwrapper.sh
 
-source "${HOME}"/.cargo/env
+. "${HOME}"/.cargo/env
 
-source /etc/profile.d/modules.zsh
+. /etc/profile.d/modules.zsh
 module use "${HOME}/modules/gold"

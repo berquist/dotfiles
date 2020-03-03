@@ -6,7 +6,7 @@
 ### GENERAL
 ########################################
 
-source ~/dotfiles/exports.bash
+. ~/dotfiles/exports.bash
 
 ########################################
 ### PATHS

@@ -6,10 +6,10 @@
 # explanation.
 if [[ -f /etc/zprofile ]]; then
     PATH=""
-    source /etc/zprofile
+    . /etc/zprofile
 fi
 
-source "${HOME}"/dotfiles/path_exports.bash
+. "${HOME}"/dotfiles/path_exports.bash
 
 [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
 # pyenv doesn't seem to be interfering with conda
@@ -21,10 +21,10 @@ if command -v rbenv 1>/dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
 
-[[ -f "${HOME}"/perl5/perlbrew/etc/bashrc ]] && source "${HOME}"/perl5/perlbrew/etc/bashrc
+[[ -f "${HOME}"/perl5/perlbrew/etc/bashrc ]] && . "${HOME}"/perl5/perlbrew/etc/bashrc
 
 # Rust
-[[ -f "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
+[[ -f "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
 
 # Nim
 [[ -d "${HOME}/.nimble/bin" ]] && export PATH="${HOME}/.nimble/bin:${PATH}"

@@ -72,7 +72,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=()
 
-source $ZSH/oh-my-zsh.sh
+. $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -124,4 +124,4 @@ zplugin snippet ~/dotfiles/zfunc/_poetry
 # TODO
 zplugin snippet ~/dotfiles/berquist.zsh-theme
 
-source "${HOME}"/dotfiles/.zshrc
+. "${HOME}"/dotfiles/.zshrc
