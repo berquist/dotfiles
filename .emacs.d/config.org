@@ -1017,29 +1017,10 @@ Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
 ** Linters
 
 #+begin_src emacs-lisp
-;; Use pyflakes instead of flake8 or pylint for syntax checking.
-;; I think stuffing the setq under config activates this for Python.
 (use-package flycheck-pyflakes)
-  ;; :config
-  ;; Don't disable these, in case pyflakes isn't available.
-  (add-to-list 'flycheck-disabled-checkers 'python-flake8)
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
-  ;; (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
-  ;; )
-;; Enable the use of both pyflakes and pylint.
-;; https://github.com/flycheck/flycheck/issues/186
-;; (flycheck-add-next-checker 'python-pyflakes 'python-pylint)
-
-(use-package flycheck-mypy)
 
 (use-package flycheck-pyre
   :hook (flycheck-mode . flycheck-pyre-setup))
-
-(use-package flycheck-pycheckers
-  :disabled t
-  :config
-  (setq flycheck-pycheckers-checkers '(pylint flake8 pyflakes mypy3 bandit))
-  :hook (flycheck-mode . flycheck-pycheckers-setup))
 #+end_src
 
 ** Reformatters

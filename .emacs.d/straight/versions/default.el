@@ -32,7 +32,6 @@
  ("emacs-deferred" . "2239671d94b38d92e9b28d4e12fd79814cfb9c16")
  ("emacs-epc" . "e1bfa5ca163273859336e3cc89b4b6460f7f8cda")
  ("emacs-flycheck-cython" . "ecc4454d35ab5317ab66a04406f36f0c1dbc0b76")
- ("emacs-flycheck-mypy" . "12a77ee8ee3f6e774365f63be3cd5aede6462dd5")
  ("emacs-gradle-mode" . "e4d665d5784ecda7ddfba015f07c69be3cfc45f2")
  ("emacs-htmlize" . "86f22f211e9230857197c42a9823d3f05381deed")
  ("emacs-libvterm" . "af5cb81caf19077b701681df75ec7984a44ae7c8")
