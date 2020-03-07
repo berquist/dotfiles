@@ -341,7 +341,7 @@ Links:
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-(load-theme 'punpun-dark t)
+(load-theme 'wombat2 t)
 #+end_src
 
 ** other coloration
