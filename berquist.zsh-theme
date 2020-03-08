@@ -24,4 +24,4 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 RPROMPT=''
 
 PROMPT='%{$fg[yellow]%}%d%{$reset_color%} $(git_super_status) $(virtualenv_prompt_info) $(conda_prompt_info)
-[%{$fg[blue]%}%n%{$reset_color%}@%{$fg[cyan]%}$(hname)%{$reset_color%}]%(!.#.$) '
+[%{$fg[blue]%}%n%{$reset_color%}@%{$fg[cyan]%}$(hostname -s)%{$reset_color%}]%(!.#.$) '

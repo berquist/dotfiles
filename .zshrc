@@ -17,7 +17,7 @@ compinit
 . "${HOME}"/dotfiles/functions.bash
 . "${HOME}"/dotfiles/slurm.bash
 
-machine_specific_file="${HOME}"/dotfiles/.zshrc."$(hname)"
+machine_specific_file="${HOME}"/dotfiles/.zshrc."$(hostname -s)"
 if [[ -f "${machine_specific_file}" ]]; then
     . "${machine_specific_file}"
 fi

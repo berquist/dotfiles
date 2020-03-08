@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-function hname() {
-    if [[ "$(uname)" == "Darwin" ]]; then
-        hostname -s
-    else
-        hostname
-    fi
-}
-
 function pip2-locations() {
     for i in $(pip2 freeze | cut -d'=' -f1); do
         echo -n " $i "
