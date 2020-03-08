@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+# export ANACONDA_HOME="/home/eric/.conda"
+export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.3.30"
