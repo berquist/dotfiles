@@ -15,6 +15,7 @@ alias es='emacs -nw'
 # For use of git diff inside working trees. TODO Shell completion doesn't work
 # with it though?
 alias gdiff='git wdiff --no-index'
+alias gfr='git fetch --all; git rebase upstream/master'
 alias grep='grep --color -n'
 alias tmux='tmux -2'
 # alias lessm='LESSOPEN="| src-hilite-lesspipe.sh %s" less -M '
