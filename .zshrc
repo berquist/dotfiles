@@ -21,3 +21,5 @@ machine_specific_file="${HOME}"/dotfiles/.zshrc."$(hostname -s)"
 if [[ -f "${machine_specific_file}" ]]; then
     . "${machine_specific_file}"
 fi
+
+eval "$(direnv hook zsh)"
