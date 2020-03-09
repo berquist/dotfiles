@@ -100,28 +100,28 @@ plugins=()
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-### Added by Zplugin's installer
-. "$HOME/.zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin installer's chunk
-zplugin light sobolevn/wakatime-zsh-plugin
-zplugin snippet OMZ::plugins/colorize/colorize.plugin.zsh
-zplugin snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
-zplugin snippet OMZ::plugins/sprunge/sprunge.plugin.zsh
-zplugin ice svn
-zplugin snippet OMZ::plugins/git-prompt
+### Added by Zinit's installer
+. "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit installer's chunk
+zinit light sobolevn/wakatime-zsh-plugin
+zinit snippet OMZ::plugins/colorize/colorize.plugin.zsh
+zinit snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
+zinit snippet OMZ::plugins/sprunge/sprunge.plugin.zsh
+zinit ice svn
+zinit snippet OMZ::plugins/git-prompt
 # Rust programming language
-zplugin ice as"completion" wait'!2' silent
-zplugin snippet OMZ::plugins/cargo/_cargo
-zplugin ice as"completion" wait'!2' silent
-zplugin snippet OMZ::plugins/rust/_rust
-zplugin ice as"completion" wait'!2' silent
-zplugin snippet ~/dotfiles/zfunc/_rustup
+zinit ice as"completion" wait'!2' silent
+zinit snippet OMZ::plugins/cargo/_cargo
+zinit ice as"completion" wait'!2' silent
+zinit snippet OMZ::plugins/rust/_rust
+zinit ice as"completion" wait'!2' silent
+zinit snippet ~/dotfiles/zfunc/_rustup
 # Python programming language
-zplugin ice as"completion" wait'!2' silent
-zplugin snippet ~/dotfiles/zfunc/_poetry
+zinit ice as"completion" wait'!2' silent
+zinit snippet ~/dotfiles/zfunc/_poetry
 # TODO
-zplugin snippet ~/dotfiles/berquist.zsh-theme
+zinit snippet ~/dotfiles/berquist.zsh-theme
 
 . "${HOME}"/dotfiles/.zshrc
