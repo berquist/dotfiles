@@ -39,13 +39,6 @@ if [[ -d "${NVM_DIR}" ]]; then
 fi
 
 
-# conda
-# Don't automatically load this if it's available.
-# if [[ -d "${HOME}/.anaconda" ]]; then
-#     eval "$(${HOME}/.anaconda/bin/conda shell.zsh hook)"
-#     export ANACONDA_HOME="${HOME}/.anaconda"
-# fi
-
 machine_specific_file="${HOME}"/dotfiles/.zshenv."$(hostname -s)"
 if [[ -f "${machine_specific_file}" ]]; then
     . "${machine_specific_file}"

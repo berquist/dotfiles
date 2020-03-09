@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# export ANACONDA_HOME="/home/eric/.conda"
+# export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.3.30"
+export anaconda_home="/Users/berquist/.anaconda"
+
+if [[ -d "${anaconda_home}" ]]; then
+    eval "$(${anaconda_home}/bin/conda shell.zsh hook)"
+    export ANACONDA_HOME="${anaconda_home}"
+fi
