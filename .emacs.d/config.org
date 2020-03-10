@@ -1281,9 +1281,10 @@ current buffer, return its path, otherwise nil."
   :mode (("\\.params\\'" . yaml-mode)
          ("\\.clang-format\\'" . yaml-mode)))
 (use-package flycheck-yamllint
+  :after flycheck
   :hook (flycheck-mode . flycheck-yamllint-setup)
   :config
-  (add-to-list 'flycheck-disabled-checkers 'yaml-ruby))
+  (add-to-list 'flycheck-disabled-checkers 'yaml-jsyaml))
 #+END_SRC
 
 * JSON
