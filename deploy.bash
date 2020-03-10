@@ -12,6 +12,7 @@ mkdir -p ~/repositories
 ln -fsv ~/dotfiles/.aspell.en.prepl ~/.aspell.en.prepl
 ln -fsv ~/dotfiles/.aspell.en.pws ~/.aspell.en.pws
 ln -fsv ~/dotfiles/.condarc ~/.condarc
+ln -fsv ~/dotfiles/.emacs.d ~/.emacs.d
 ln -fsv ~/dotfiles/.gitconfig ~/.gitconfig
 ln -fsv ~/dotfiles/.mdlrc ~/.mdlrc
 ln -fsv ~/dotfiles/.sbclrc ~/.sbclrc
