@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+# https://superuser.com/a/583502/551499
+#
+# This needs to live here and not in `~/.zprofile`; see that file for an
+# explanation.
+if [[ $(uname) == "Darwin" ]] && [[ -f /etc/zprofile ]]; then
+    PATH=""
+    . /etc/zprofile
+fi
+
 . "${HOME}"/dotfiles/path_exports.bash
 
 [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
