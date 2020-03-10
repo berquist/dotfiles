@@ -27,6 +27,18 @@ if [[ $hname == "osmium" ]]; then
     ln -fsv ~/dotfiles/.xinitrc.arch ~/.xinitrc
 fi
 
+# Install chemacs
+chemacs_target_dir=~/repositories/chemacs
+if [[ -d $chemacs_target_dir ]]; then
+    (
+        cd $chemacs_target_dir
+        git pull
+    )
+else
+    git clone https://github.com/plexus/chemacs.git $chemacs_target_dir
+fi
+ln -fsv $chemacs_target_dir/.emacs ~/.emacs
+
 # Install oh-my-zsh
 ohmyzsh_target_dir=~/repositories/ohmyzsh
 if [[ -d $ohmyzsh_target_dir ]]; then
@@ -50,8 +62,6 @@ if [[ -d $zinit_target_dir ]]; then
 else
     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 fi
-zinit self-update
-zinit update
 
 # Install pyenv
 pyenv_target_dir=~/.pyenv
