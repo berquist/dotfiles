@@ -488,6 +488,12 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (projectile-mode))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(use-package direnv
+  :init
+  (direnv-mode))
+#+END_SRC
+
 * Spelling
 
 - ispell and flyspell are intentionally intermingled
