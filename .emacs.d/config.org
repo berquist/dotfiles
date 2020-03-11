@@ -224,23 +224,6 @@ current buffer's, reload dir-locals."
 ;;                         'my-reload-dir-locals-for-all-buffer-in-this-directory))))
 #+END_SRC
 
-* TRAMP
-
-- Set VC backends here, even though I never use =vc-mode=, because this is one way of speeding up TRAMP while still allowing use of =vc-mode=, except for Git.
-- Only set =tramp-verbose= while debugging, otherwise you'll think TRAMP is slow for the wrong reason.
-
-Links:
-- https://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
-- https://www.emacswiki.org/emacs/TrampMode
-
-#+BEGIN_SRC emacs-lisp
-(setq tramp-default-method "ssh")
-;; (setq tramp-verbose 8)
-(setq vc-handled-backends (delq 'Git vc-handled-backends))
-(require 'tramp)
-(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-#+END_SRC
-
 * Snippets
 
 #+BEGIN_SRC emacs-lisp
@@ -494,6 +477,23 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 (use-package direnv
   :init
   (direnv-mode))
+#+END_SRC
+
+* TRAMP
+
+- Set VC backends here, even though I never use =vc-mode=, because this is one way of speeding up TRAMP while still allowing use of =vc-mode=, except for Git.
+- Only set =tramp-verbose= while debugging, otherwise you'll think TRAMP is slow for the wrong reason.
+
+Links:
+- https://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
+- https://www.emacswiki.org/emacs/TrampMode
+
+#+BEGIN_SRC emacs-lisp
+(setq tramp-default-method "ssh")
+;; (setq tramp-verbose 8)
+(setq vc-handled-backends (delq 'Git vc-handled-backends))
+(require 'tramp)
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 #+END_SRC
 
 * Spelling
