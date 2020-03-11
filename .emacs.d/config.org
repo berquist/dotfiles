@@ -494,6 +494,7 @@ Links:
 (setq vc-handled-backends (delq 'Git vc-handled-backends))
 (require 'tramp)
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+(use-package counsel-tramp)
 #+END_SRC
 
 * Spelling
