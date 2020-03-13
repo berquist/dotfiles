@@ -440,10 +440,16 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 - For =ripgrep=, which has the traditional =grep= interface, use =M-x ripgrep-regexp= to activate.
 
 #+BEGIN_SRC emacs-lisp
-(use-package ripgrep)
+(use-package ripgrep
+  :disabled t
+  :config
+  (setq ripgrep-arguments '("--hidden")))
 (use-package deadgrep
   ;; <f5> is suggested, but that is inconvenient on my keyboards...
   :bind (("C-c g" . deadgrep)))
+(use-package rg
+  :config
+  (setq rg-command-line-flags '("--hidden")))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
