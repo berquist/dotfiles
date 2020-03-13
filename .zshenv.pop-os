@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
