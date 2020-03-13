@@ -11,6 +11,12 @@ fi
 
 . "${HOME}"/dotfiles/path_exports.bash
 
+# Put this early on, so that additions to $PATH take less precedence.
+machine_specific_file="${HOME}"/dotfiles/.zshenv."$(hostname -s)"
+if [[ -f "${machine_specific_file}" ]]; then
+    . "${machine_specific_file}"
+fi
+
 [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
 # pyenv doesn't seem to be interfering with conda
 [[ -d "${HOME}/.pyenv/bin" ]] && export PATH="${HOME}/.pyenv/bin:${PATH}"
@@ -36,10 +42,4 @@ if [[ -d "${NVM_DIR}" ]]; then
     export NVM_DIR
     \. "${NVM_DIR}/nvm.sh"
     \. "${NVM_DIR}/bash_completion"
-fi
-
-
-machine_specific_file="${HOME}"/dotfiles/.zshenv."$(hostname -s)"
-if [[ -f "${machine_specific_file}" ]]; then
-    . "${machine_specific_file}"
 fi
