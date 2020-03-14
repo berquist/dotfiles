@@ -897,18 +897,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :bind (("C-M-<tab>" . clang-format-region)))
 #+END_SRC
 
-** ISPC
-
-Taken from an [[https://github.com/ispc/ispc/issues/1105][ISPC GitHub issue]].
-
-#+begin_src emacs-lisp
-(font-lock-add-keywords 'c++-mode '(("\\<\\(uniform\\)" . 'font-lock-keyword-face)
-                                    ("\\<\\(varying\\)" . 'font-lock-keyword-face)
-                                    ("\\<\\(export\\)" . 'font-lock-keyword-face)))
-(add-to-list 'auto-mode-alist '("\\.ispc\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.isph\\'" . c++-mode))
-#+end_src
-
 * Java
 
 #+BEGIN_SRC emacs-lisp
