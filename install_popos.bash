@@ -1,5 +1,32 @@
 #!/usr/bin/env bash
 
+# base
+autoconf
+build-essential
+curl
+libbz2-dev
+libffi-dev
+libgif-dev
+libgnutls28-dev
+libgtk-3-dev
+libjansson-dev
+liblzma-dev
+libncurses5-dev
+libncursesw5-dev
+libreadline-dev
+libsqlite3-dev
+libssl-dev
+libtiff-dev
+libxpm-dev
+llvm
+make
+python-openssl
+tk-dev
+wget
+xz-utils
+zlib1g-dev
+
+# userspace
 direnv
 discord
 emacs
@@ -7,30 +34,6 @@ htop
 iotop
 keychain
 mosh
+shellcheck
 subversion
 tmux
-
-make
-build-essential
-libssl-dev
-zlib1g-dev
-libbz2-dev
-libreadline-dev
-libsqlite3-dev
-wget
-curl
-llvm
-libncurses5-dev
-libncursesw5-dev 
-xz-utils
-tk-dev
-libffi-dev
-liblzma-dev
-python-openssl
-autoconf
-libjansson-dev
-libgtk-3-dev
-libxpm-dev
-libgnutls28-dev
-libtiff-dev
-libgif-dev
