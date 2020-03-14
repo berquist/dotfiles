@@ -952,7 +952,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 * Python
 
 #+begin_src emacs-lisp
-;; built-in
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
   :ensure nil
@@ -1025,7 +1024,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 
 #+begin_src emacs-lisp
 (use-package flycheck-pyflakes)
-
 (use-package flycheck-pyre
   :hook (flycheck-mode . flycheck-pyre-setup))
 #+end_src
