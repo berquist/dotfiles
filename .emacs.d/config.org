@@ -1338,8 +1338,7 @@ current buffer, return its path, otherwise nil."
 ** Hy
 
 #+BEGIN_SRC emacs-lisp
-(use-package hy-mode
-  :mode (("\\.hy\\'" . hy-mode)))
+(use-package hy-mode)
 #+END_SRC
 
 ** Scheme
