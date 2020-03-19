@@ -8,10 +8,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 ## Xfce
-compton -b --config=~/.compton.conf
-exec startxfce4
-thunar --daemon
+# compton -b --config=~/.compton.conf
+# exec startxfce4
+# thunar --daemon
 
 ## GNOME
-# export GDK_BACKEND=x11
-# exec gnome-session
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+exec gnome-session
