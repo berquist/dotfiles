@@ -32,6 +32,8 @@ if [[ -d "${spack_root}" ]]; then
     # . $(spack location -i lmod)/lmod/lmod/init/bash    
 fi
 
+eval "$(direnv hook bash)"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/nas/gaia/users/berquist/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
