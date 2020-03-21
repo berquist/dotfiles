@@ -1389,6 +1389,7 @@ Modified to remove/disable Racket.
          ("\\.rq\\'" . sparql-mode)))
 
 (use-package ttl-mode
+  :straight (ttl-mode :type git :flavor melpa :host github :repo "nxg/ttl-mode")
   :delight "N3/Turtle"
   :mode (("\\.n3\\'" . ttl-mode)    ; Notation3
          ("\\.nt\\'" . ttl-mode)    ; N-Triples
