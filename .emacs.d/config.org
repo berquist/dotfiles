@@ -867,9 +867,7 @@ These are valid for all C-style modes (I think).
 (use-package ccls
   :disabled t
   :after lsp-mode
-  :hook ((c-mode c++-mode) . (lambda ()
-                               (require 'ccls)
-                               (lsp))))
+  :hook ((c-mode c++-mode) . lsp))
 #+END_SRC
 
 This only makes sense for c++-mode.
