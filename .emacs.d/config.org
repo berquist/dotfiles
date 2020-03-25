@@ -485,6 +485,9 @@ Links:
 - https://www.emacswiki.org/emacs/TrampMode
 
 #+BEGIN_SRC emacs-lisp
+;; Setting this to true would be ideal (so that a reformatter can be applied
+;; remotely), but it causes saving to hang.
+(setq auto-revert-remote-files nil)
 (setq tramp-default-method "ssh")
 ;; (setq tramp-verbose 8)
 (setq vc-handled-backends (delq 'Git vc-handled-backends))
