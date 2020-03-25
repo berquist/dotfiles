@@ -985,8 +985,8 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :after python
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
+
 (use-package company-anaconda
-  :after (company-mode anaconda-mode)
   :init
   ;; TODO ensure this comes after company-lsp, if it is present
   (with-eval-after-load 'company
