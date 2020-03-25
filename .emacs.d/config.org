@@ -570,6 +570,9 @@ Links:
   (setq company-minimum-prefix-length 0)
   (setq company-tooltip-align-annotations t))
 
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 (use-package lsp-mode
   :commands lsp
   :hook ((c-mode c++-mode cmake-mode fortran-mode kotlin-mode nim-mode python-mode sh-mode) . lsp)
@@ -583,6 +586,7 @@ Links:
     ;; https://github.com/emacs-lsp/lsp-mode/commit/f110a8f0fd316bcd87396fbea2dce3617bca9d5e
     (add-to-list 'lsp-language-id-configuration '(fortran-mode . "fortran"))
     (add-to-list 'lsp-language-id-configuration '(sh-mode . "bash"))))
+
 (use-package lsp-ui
   :disabled t
   :commands lsp-ui-mode
