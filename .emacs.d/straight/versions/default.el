@@ -53,8 +53,6 @@
  ("flycheck-gradle" . "1ca08bbc343362a923cbdc2010f66e41655e92ab")
  ("flycheck-kotlin" . "5104ee9a3fdb7f0a0a3d3bcfd8dd3c45a9929310")
  ("flycheck-nimsuggest" . "dc9a5de1cb3ee05db5794d824610959a1f603bc9")
- ("flycheck-pyflakes" . "61b045939e3743b2162b7e4e73249c66fc2b8f65")
- ("flycheck-pyre" . "0560122caae207d99d8af1ac2b4e5d6f6a1ce444")
  ("flycheck-vale" . "f08249535348d046d0974b9c20fe1b7dd3cd2660")
  ("flycheck-yamllint" . "1e9fe3b2d3e42d551b94473816a8eeee637b446c")
  ("forge" . "2e2d26cf428012f0ece53a81cde02179e72648aa")
