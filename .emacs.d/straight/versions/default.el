@@ -78,7 +78,7 @@
  ("julia-emacs" . "6e9e60b2c75b68d379428a45b129c86de0967a2e")
  ("kotlin-mode" . "ab610996820b5cbdb032edbf8747661131603ab8")
  ("let-alist" . "ef3c02fa292b6e32769945bbbfb7f2e5ac574b64")
- ("lsp-java" . "0cea6fd5e7b163766ddf47380d655771c1b070e5")
+ ("lsp-java" . "6efb741845d7c0506ee4ccbd1cccb7cdf0b31085")
  ("lsp-mode" . "3b75d8b9f43b826b2674c5673cac0fe6c5fdf3e9")
  ("lua-mode" . "1f596a93b3f1caadd7bba01030f8c179b029600b")
  ("macrostep" . "424e3734a1ee526a1bd7b5c3cd1d3ef19d184267")
