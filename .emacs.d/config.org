@@ -556,14 +556,15 @@ Links:
   :config
   ;; These are company backends I know I'll never use, so remove them if
   ;; present.
-  (setq backends-to-remove
+  (setq ejb/company-backends-to-remove
         '(company-bbdb
           company-eclim
           company-xcode
           company-oddmuse))
   (setq company-backends
         (seq-filter
-         (lambda (backend) (not (member backend backends-to-remove)))
+         (lambda (backend)
+           (not (member backend ejb/company-backends-to-remove)))
          company-backends))
   (setq company-dabbrev-downcase nil)
   (setq company-idle-delay 10)
@@ -591,6 +592,7 @@ Links:
   (setq lsp-ui-doc-include-signature t)
   (setq lsp-ui-flycheck-enable t)
   (setq lsp-ui-peek-always-show t))
+
 (use-package company-lsp
   :commands company-lsp
   :config
@@ -974,25 +976,32 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :interpreter ("ipython" . python-mode)
   :config
   (setq python-fill-docstring-style 'pep-257-nn)
-  (setq python-indent-guess-indent-offset nil))
+  (setq python-indent-guess-indent-offset nil)
+  ;; The output from side-effects is gibberish :(
+  ;; (setq python-shell-interpreter "ipython")
+)
 
 (use-package pydoc
   :after python)
 
 (use-package anaconda-mode
+  :after python
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
 (use-package company-anaconda
+  :after (company-mode anaconda-mode)
   :init
+  ;; TODO ensure this comes after company-lsp, if it is present
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-anaconda)))
 
 (use-package virtualenvwrapper
+  :after python
   :init
   (exec-path-from-shell-copy-env "WORKON_HOME"))
 
 (use-package conda
-  :after delight
+  :after (delight python)
   :commands (conda-env-deactivate
              conda-env-activate
              conda-env-list
@@ -1022,7 +1031,8 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
       (format " conda[%s]" conda-env-current-name)))
   (delight 'python-mode '(:eval (format "Python%s" (ejb/conda-mode-lighter))) :major))
 
-(use-package pyenv-mode)
+(use-package pyenv-mode
+  :after python)
 
 (use-package lsp-python-ms
   :disabled t
@@ -1038,9 +1048,10 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 ** Linters
 
 #+begin_src emacs-lisp
-(use-package flycheck-pyflakes)
 (use-package flycheck-pyre
-  :hook (flycheck-mode . flycheck-pyre-setup))
+  :disabled t
+  :after (python flycheck-mode)
+  :hook (python-mode . flycheck-pyre-setup))
 #+end_src
 
 ** Reformatters
@@ -1289,8 +1300,8 @@ current buffer, return its path, otherwise nil."
   :mode (("\\.params\\'" . yaml-mode)
          ("\\.clang-format\\'" . yaml-mode)))
 (use-package flycheck-yamllint
-  :after flycheck
-  :hook (flycheck-mode . flycheck-yamllint-setup)
+  :after (flycheck yaml-mode)
+  :hook (yaml-mode . flycheck-yamllint-setup)
   :config
   (add-to-list 'flycheck-disabled-checkers 'yaml-jsyaml))
 #+END_SRC
