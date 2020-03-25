@@ -117,7 +117,7 @@
  ("spongebob.el" . "ae8ae6ba0dc57b7357ba87ff0609d27c4a0a5f51")
  ("strace-mode" . "2901baa968d5180ab985ac40ca22cc20914d01f5")
  ("straight.el" . "e8f9cd51a3e51744f37dbc89bbd6cc7bf8bbc452")
- ("swiper" . "64f05f4735bba8b708bc12cfc2cbfb7fb7706787")
+ ("swiper" . "8fae568daafdc79d4990ad739bac42ee230d3234")
  ("systemd-mode" . "51c148e09a129ddf33d95276aa0e89d4ef6f8dd2")
  ("transient" . "a269614c69ad8b2703e6e5093d0017d6afad6cca")
  ("treemacs" . "81b69d9ee26326178cef08d5aef2811df4f659ed")
