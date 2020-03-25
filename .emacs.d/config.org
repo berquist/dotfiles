@@ -565,6 +565,8 @@ Links:
          (lambda (backend) (not (member backend backends-to-remove)))
          company-backends))
   (setq company-dabbrev-downcase nil)
+  (setq company-idle-delay 10)
+  (setq company-minimum-prefix-length 0)
   (setq company-tooltip-align-annotations t))
 
 (use-package lsp-mode
@@ -591,7 +593,6 @@ Links:
   :commands company-lsp
   :config
   (setq company-lsp-cache-candidates t)
-  (setq company-lsp-enable-snippet nil)
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-lsp)))
