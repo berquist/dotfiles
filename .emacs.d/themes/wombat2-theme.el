@@ -146,15 +146,6 @@ Ansi-Color faces are included.")
    `(link ((,class (:foreground ,wombat/blue :underline t))))
    `(link-visited ((,class (:foreground ,wombat/red :underline t))))
 
-   ;;; Company
-   `(company-preview ((,class (:background "midnight blue" :foreground "wheat"))))
-   `(company-preview-common ((,class (:inherit company-preview :foreground "salmon"))))
-   `(company-scrollbar-bg ((,class (:background "chocolate"))))
-   `(company-scrollbar-fg ((,class (:background "IndianRed4"))))
-   `(company-template-field ((,class (:background "light sea green" :foreground "white"))))
-   `(company-tooltip ((,class (:background "dark slate gray" :foreground "white"))))
-   `(company-tooltip-selection ((,class (:background "DarkOrange3"))))
-
    ;;; Parens
    `(show-paren-match ((,class (:background ,wombat/green :foreground ,wombat/white :bold t))))
    `(show-paren-mismatch ((,class (:background ,wombat-pink :foreground ,wombat/black :bold t))))
