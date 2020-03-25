@@ -126,7 +126,6 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 
 ;; Set up the initial scratch buffer.
 ;; http://emacsredux.com/blog/2014/07/25/configure-the-scratch-buffers-mode/
-(setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message nil)
 
 ;; Allow making whole regions uppercase or lowercase.
