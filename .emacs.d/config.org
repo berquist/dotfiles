@@ -550,6 +550,17 @@ Links:
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous))
   :config
+  ;; These are company backends I know I'll never use, so remove them if
+  ;; present.
+  (setq backends-to-remove
+        '(company-bbdb
+          company-eclim
+          company-xcode
+          company-oddmuse))
+  (setq company-backends
+        (seq-filter
+         (lambda (backend) (not (member backend backends-to-remove)))
+         company-backends))
   (setq company-dabbrev-downcase nil)
   (setq company-tooltip-align-annotations t))
 
