@@ -10,9 +10,6 @@ export PS1="[\u@\h \w]\$ "
 . ~/dotfiles/functions.bash
 . ~/dotfiles/slurm.bash
 
-export GIT_AUTHOR_EMAIL='berquist@isi.edu'
-export GIT_COMMITER_EMAIL='berquist@isi.edu'
-
 export GAIA_HOME=/nas/gaia/users/berquist
 
 alias gcd="cd ${GAIA_HOME}"

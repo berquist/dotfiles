@@ -7,3 +7,6 @@ export GOCACHE=/nas/gaia/users/berquist/.cache/go-build
 if [[ "$TERM" != "" ]]; then
     stty -ixon
 fi
+
+export GIT_AUTHOR_EMAIL='berquist@isi.edu'
+export GIT_COMMITER_EMAIL='berquist@isi.edu'

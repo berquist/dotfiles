@@ -12,3 +12,8 @@ fi
 if [[ "$TERM" != "" ]]; then
     stty -ixon
 fi
+
+machine_specific_file="${HOME}"/dotfiles/.zprofile."$(hostname -s)"
+if [[ -f "${machine_specific_file}" ]]; then
+    . "${machine_specific_file}"
+fi
