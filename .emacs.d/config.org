@@ -27,8 +27,10 @@ Fundamental third-party packages that don't go anywhere else.
 #+BEGIN_SRC emacs-lisp
 ;; Load this before any other third-party packages.
 (use-package no-littering
-  :init
-  (require 'no-littering))
+  :demand t)
+
+(use-package dash-functional
+  :demand t)
 
 ;; Set the path properly. Don't have a conditional on using the window system
 ;; in order to circumvent
@@ -36,11 +38,17 @@ Fundamental third-party packages that don't go anywhere else.
 (use-package exec-path-from-shell
   :init
   (exec-path-from-shell-initialize))
+;; Starting the GUI doesn't know anything about the Keychain:
+;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
+(setq ejb/desired-envvars
+      '("ANACONDA_HOME"
+        "GIT_AUTHOR_EMAIL"
+        "GIT_COMMITTER_EMAIL"
+        "SSH_AGENT_PID"
+        "SSH_AUTH_SOCK"
+        "WORKON_HOME"))
 (when (display-graphic-p)
-  ;; Starting the GUI doesn't know anything about the Keychain:
-  ;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
-  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
-  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK"))
+  (-each ejb/desired-envvars (lambda (envvar) (exec-path-from-shell-copy-env envvar))))
 #+END_SRC
 
 * M-x customize
@@ -123,10 +131,6 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; Turns out this is *extremely* irritating and moves the mark every time the
 ;; buffer refreshes!
 ;; (setq-default auto-revert-check-vc-info t)
-
-;; Set up the initial scratch buffer.
-;; http://emacsredux.com/blog/2014/07/25/configure-the-scratch-buffers-mode/
-(setq initial-scratch-message nil)
 
 ;; Allow making whole regions uppercase or lowercase.
 (put 'downcase-region 'disabled nil)
@@ -993,12 +997,10 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
     (add-to-list 'company-backends 'company-anaconda)))
 
 (use-package virtualenvwrapper
-  :after python
-  :init
-  (exec-path-from-shell-copy-env "WORKON_HOME"))
+  :after python)
 
 (use-package conda
-  :after (delight python)
+  :after delight
   :commands (conda-env-deactivate
              conda-env-activate
              conda-env-list
@@ -1007,7 +1009,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
              conda-env-initialize-eshell
              conda-env-autoactivate-mode)
   :init
-  (exec-path-from-shell-copy-env "ANACONDA_HOME")
   (conda-env-autoactivate-mode)
   ;; TODO store Python version in variable only when conda env changes
   ;; (defun ejb/conda-mode-lighter ()
@@ -1464,10 +1465,9 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 ;; this is very imPorTanT YoU See
+;; don't demand/require
 (use-package spongebob
-  :straight (:host gitlab :repo "dustyweb/spongebob.el")
-  :init
-  (require 'spongebob))
+  :straight (:host gitlab :repo "dustyweb/spongebob.el"))
 #+END_SRC
 
 ** Discord
