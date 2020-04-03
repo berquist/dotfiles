@@ -583,7 +583,6 @@ Links:
   (setq lsp-enable-snippet nil)
   (setq lsp-prefer-flymake nil)
   (setq lsp-rust-clippy-preference "on")
-  :init
   (with-eval-after-load 'lsp
     ;; https://github.com/emacs-lsp/lsp-mode/commit/f110a8f0fd316bcd87396fbea2dce3617bca9d5e
     (add-to-list 'lsp-language-id-configuration '(fortran-mode . "fortran"))
