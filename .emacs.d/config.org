@@ -636,6 +636,7 @@ TODO add LaTex
   :bind (("C-c f" . flycheck-mode))
   :config
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  (setq flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   (setq flycheck-gcc-openmp t)
   (setq flycheck-markdown-mdl-style "~/.mdlrc")
   ;; This interferes with project-specific configurations.
