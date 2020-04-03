@@ -25,6 +25,9 @@
 Fundamental third-party packages that don't go anywhere else.
 
 #+BEGIN_SRC emacs-lisp
+(setq gc-cons-threshold 6400000)
+(setq read-process-output-max (* 1024 1024))  ; 1 MB
+
 ;; Load this before any other third-party packages.
 (use-package no-littering
   :demand t)
