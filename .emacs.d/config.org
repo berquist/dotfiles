@@ -591,7 +591,6 @@ Links:
   ;; Partial ordering of (future) backends from most to least important.
   (setq ejb/company-ordering
         '(company-capf
-          company-lsp
           company-anaconda))
   (setq company-backends
         (seq-filter
@@ -609,6 +608,7 @@ Links:
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
+  (setq lsp-prefer-capf t)
   (setq lsp-prefer-flymake nil)
   (setq lsp-rust-clippy-preference "on")
   (with-eval-after-load 'lsp
@@ -623,14 +623,6 @@ Links:
   (setq lsp-ui-doc-include-signature t)
   (setq lsp-ui-flycheck-enable t)
   (setq lsp-ui-peek-always-show t))
-
-(use-package company-lsp
-  :commands company-lsp
-  :config
-  (setq company-lsp-cache-candidates t)
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-lsp)))
 #+END_SRC
 
 * Flycheck
