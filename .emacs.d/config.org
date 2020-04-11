@@ -625,6 +625,15 @@ Links:
   (setq lsp-ui-peek-always-show t))
 #+END_SRC
 
+* Debuggers
+
+#+BEGIN_SRC emacs-lisp
+(use-package realgud)
+(use-package realgud-ipdb)
+(use-package dap-mode
+  :commands (dap-debug dap-debug-edit-template))
+#+END_SRC
+
 * Flycheck
 
 ** General
@@ -876,6 +885,7 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 (bind-key (kbd "C-c l") 'ejb/comint-clear comint-mode-map)
+(setq compilation-scroll-output t)
 #+END_SRC
 
 * C/C++
@@ -1023,13 +1033,16 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :after delight
   :commands (conda-env-deactivate
              conda-env-activate
+             conda-env-activate-path
              conda-env-list
-             conda-with-env-shell-command
+             conda-with-env-shell-command  ; remove?
              conda-env-initialize-interactive-shells
              conda-env-initialize-eshell
+             conda-env-activate-for-buffer
              conda-env-autoactivate-mode)
   :init
   (conda-env-autoactivate-mode)
+  (conda-env-initialize-interactive-shells)
   ;; TODO store Python version in variable only when conda env changes
   ;; (defun ejb/conda-mode-lighter ()
   ;;   "Only display the lighter if a conda environment is active."
