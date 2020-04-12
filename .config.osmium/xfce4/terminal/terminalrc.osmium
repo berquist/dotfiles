@@ -1,5 +1,9 @@
 [Configuration]
-FontName=Panic Sans 11
+ColorBackground=#181818
+ColorCursor=#d8d8d8
+ColorForeground=#d8d8d8
+ColorPalette=#181818;#ab4642;#a1b56c;#f7ca88;#7cafc2;#ba8baf;#86c1b9;#d8d8d8;#585858;#ab4642;#a1b56c;#f7ca88;#7cafc2;#ba8baf;#86c1b9;#f8f8f8
+FontName=Panic Sans 12
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBordersDefault=TRUE
@@ -19,14 +23,6 @@ MiscToolbarDefault=FALSE
 ScrollingLines=1048576
 ShortcutsNoMenukey=TRUE
 ShortcutsNoMnemonics=TRUE
-MiscBellUrgent=FALSE
-MiscMouseWheelZoom=TRUE
-MiscMiddleClickOpensUri=FALSE
-MiscDefaultWorkingDir=
-MiscRewrapOnResize=TRUE
-MiscUseShiftArrowsToScroll=FALSE
-ColorPalette=#3f3f3f;#705050;#60b48a;#dfaf8f;#9ab8d7;#dc8cc3;#8cd0d3;#dcdcdc;#709080;#dca3a3;#72d5a3;#f0dfaf;#94bff3;#ec93d3;#93e0e3;#ffffff
-ColorForeground=#dcdcdc
-ColorBackground=#2c2c2c
-ColorCursor=#dcdcdc
+TabActivityColor=#218593
+ScrollingOnKeystroke=FALSE
 
