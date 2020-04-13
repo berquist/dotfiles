@@ -1,5 +1,6 @@
 ;; bootstrap installation of straight.el
 
+(setq straight-use-package-by-default t)
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -44,3 +45,11 @@
 
 (use-package spongebob
   :straight (:host gitlab :repo "dustyweb/spongebob.el"))
+
+(use-package elcord
+  :hook (after-init . elcord-mode)
+  ;; No work machines (laptop, cluster)
+  :if (not (string-match "isi" (shell-command-to-string "hostname -f")))
+  :config
+  (setq elcord-refresh-rate 5)
+  (setq elcord-use-major-mode-as-main-icon t))
