@@ -159,11 +159,30 @@ Ansi-Color faces are included.")
    `(font-latex-subscript-face ((t (:height 0.9))))
    `(font-latex-superscript-face ((t (:height 0.9))))
    `(font-latex-verbatim-face ((t (:inherit fixed-pitch :foreground "#91a5c1")))) ;; LightSteelBlue3
-   `(font-latex-warning-face ((t (:inherit font-lock-warning-face)))))
+   `(font-latex-warning-face ((t (:inherit font-lock-warning-face))))
+
+   ;;; Term
+   `(term-color-black ((t (:foreground ,wombat/black :background ,wombat/black))))
+   `(term-color-red ((t (:foreground ,wombat/red :background ,wombat/red))))
+   `(term-color-green ((t (:foreground ,wombat/green :background ,wombat/green))))
+   `(term-color-yellow ((t (:foreground ,wombat/yellow :background ,wombat/yellow))))
+   `(term-color-blue ((t (:foreground ,wombat/blue :background ,wombat/blue))))
+   `(term-color-magenta ((t (:foreground ,wombat-purple :background ,wombat-purple))))
+   `(term-color-cyan ((t (:foreground ,wombat/cyan :background ,wombat/cyan))))
+   `(term-color-white ((t (:foreground ,wombat/white :background ,wombat/white))))
+
+   )
 
   (custom-theme-set-variables
    'wombat2
-   `(ansi-color-names-vector [,wombat/black ,wombat/red ,wombat/green ,wombat/yellow ,wombat/blue ,wombat/magenta ,wombat/cyan ,wombat/white])))
+   `(ansi-color-names-vector [,wombat/black
+                              ,wombat/red
+                              ,wombat/green
+                              ,wombat/yellow
+                              ,wombat/blue
+                              ,wombat-purple
+                              ,wombat/cyan
+                              ,wombat/white])))
 
 (provide-theme 'wombat2)
 
