@@ -20,3 +20,10 @@ function install() {
         git clone $url
     done
 }
+
+if [[ $(uname) == "Linux" ]]; then
+    fonts_dir=${HOME}/.local/share/fonts
+    mkdir -p ${fonts_dir}
+    ln -sv $HOME/repositories/chrissimpkins/codeface ${fonts_dir}/codeface
+    fc-cache
+fi
