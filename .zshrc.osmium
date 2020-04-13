@@ -8,9 +8,6 @@ export apps="${QCPROGS}"
 
 eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
-export WORKON_HOME=$HOME/data/virtualenvs
 . /usr/bin/virtualenvwrapper.sh
 
 source /opt/spack/share/spack/setup-env.sh
