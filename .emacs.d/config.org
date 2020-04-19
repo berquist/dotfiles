@@ -626,7 +626,7 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode python-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode sh-mode) . lsp)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
@@ -1026,6 +1026,7 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
   :ensure nil
+  :hook (python-mode . lsp)
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :config
