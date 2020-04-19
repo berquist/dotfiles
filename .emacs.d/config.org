@@ -598,8 +598,14 @@ Links:
           company-xcode
           company-oddmuse))
   ;; Partial ordering of (future) backends from most to least important.
+  ;;
+  ;; - For Python, prefer the language server over `anaconda-mode' if
+  ;;   possible.
+  ;;
+  ;; - For Nim, nimsuggest seems to give much better results than nimlsp.
   (setq ejb/company-ordering
-        '(company-capf
+        '(company-nimsuggest
+          company-capf
           company-anaconda))
   (setq company-backends
         (seq-filter
@@ -609,11 +615,18 @@ Links:
   (setq company-dabbrev-downcase nil)
   (setq company-idle-delay 10)
   (setq company-minimum-prefix-length 0)
-  (setq company-tooltip-align-annotations t))
+  (setq company-tooltip-align-annotations t)
+  :init
+  (defun ejb/fix-company-ordering ()
+    (with-eval-after-load 'company
+      (setq company-backends
+            (-sort '(lambda (e1 e2)
+                      (funcall (-rpartial 'ejb/comparator ejb/company-ordering) e1 e2))
+                   company-backends)))))
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode cmake-mode fortran-mode kotlin-mode nim-mode python-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode python-mode sh-mode) . lsp)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
@@ -1033,7 +1046,8 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :init
   ;; TODO ensure this comes after company-lsp, if it is present
   (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-anaconda)))
+    (add-to-list 'company-backends 'company-anaconda)
+    (ejb/fix-company-ordering)))
 
 (use-package virtualenvwrapper
   :after python)
@@ -1210,6 +1224,7 @@ This section needs to come after the Markdown section so that CMake files get re
   (("CMakeLists\\.txt\\'" . cmake-mode)
    ("CMakeCache\\.txt\\'" . cmake-mode)
    ("\\.cmake\\'" . cmake-mode))
+  :hook (cmake-mode . lsp)
   :config
   (setq cmake-tab-width 4))
 #+end_src
@@ -1439,6 +1454,7 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package kotlin-mode
+  :hook (kotlin-mode . lsp)
   :mode (("\\.kt\\'" . kotlin-mode)
          ("\\.kts\\'" . kotlin-mode))) ; Kotlin script
 (use-package flycheck-kotlin
@@ -1479,7 +1495,12 @@ Modified to remove/disable Racket.
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck-nimsuggest)
 (use-package nim-mode
-  :hook (nim-mode . nimsuggest-mode))
+  ;; We want to be able to "fix" the company backend ordering after
+  ;; `nimsuggest-mode' adds `company-nimsuggest' to `company-backends', so the
+  ;; hooks need to be in this order.
+  :hook ((nim-mode . ejb/fix-company-ordering)
+         (nim-mode . nimsuggest-mode)
+         (nim-mode . lsp)))
 ;; TODO I'm not sure what the advantage of this package is.
 ;; (use-package flycheck-nim)
 #+END_SRC
@@ -1533,14 +1554,4 @@ Modified to remove/disable Racket.
   (setq wakatime-cli-path (executable-find "wakatime"))
   :init
   (global-wakatime-mode))
-#+END_SRC
-
-* Company backend ordering
-
-#+BEGIN_SRC emacs-lisp
-(with-eval-after-load 'company
-  (setq company-backends
-        (-sort '(lambda (e1 e2)
-                  (funcall (-rpartial 'ejb/comparator ejb/company-ordering) e1 e2))
-               company-backends)))
 #+END_SRC
