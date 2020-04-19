@@ -1000,9 +1000,7 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 * PKGBUILDs
 
 #+begin_src emacs-lisp
-(use-package pkgbuild-mode
-  :mode
-  (("/PKGBUILD/" . pkgbuild-mode)))
+(use-package pkgbuild-mode)
 #+end_src
 
 * LaTeX
