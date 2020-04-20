@@ -615,7 +615,10 @@ Links:
   (setq company-dabbrev-downcase nil)
   (setq company-idle-delay 10)
   (setq company-minimum-prefix-length 0)
+  (setq company-search-regexp-function #'company-search-words-regexp)
+  (setq company-selection-wrap-around t)
   (setq company-tooltip-align-annotations t)
+  (setq company-transformers '(company-sort-by-backend-importance))
   :init
   (defun ejb/fix-company-ordering ()
     (with-eval-after-load 'company
