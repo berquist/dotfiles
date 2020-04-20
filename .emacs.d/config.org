@@ -404,7 +404,7 @@ I've decided to stop using =ido= in favor of "better" and "more modern" packages
   (ido-vertical-mode 1))
 #+end_src
 
-TODO how to get these to carry over to Ivy?
+TODO how to get these to carry over to Ivy? Probably `ivy-ignore-buffers'
 
 #+BEGIN_SRC emacs-lisp
 (setq completions-format 'vertical)
@@ -426,6 +426,7 @@ TODO how to get these to carry over to Ivy?
   :config
   (setq ivy-action-wrap t)
   (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-magic-tilde nil)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-wrap t)
   :init
