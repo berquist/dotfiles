@@ -371,9 +371,11 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (use-package default-text-scale
   ;; Don't use `default-text-scale-mode', since it introduces bindings I don't
   ;; want.
-  :bind (("C-+" . default-text-scale-increase)
-         ("C-_" . default-text-scale-decrease)
-         ("C-)" . default-text-scale-reset)))
+  ;; TODO interferes with C-/?
+  ;; :bind (("C-+" . default-text-scale-increase)
+  ;;        ("C-_" . default-text-scale-decrease)
+  ;;        ("C-)" . default-text-scale-reset))
+)
 #+end_src
 
 * Searching and projects
