@@ -610,7 +610,7 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode sh-mode) . lsp)
+  :hook ((fortran-mode sh-mode) . lsp)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
@@ -905,7 +905,6 @@ These are valid for all C-style modes (I think).
 
 #+BEGIN_SRC emacs-lisp
 (use-package ccls
-  :disabled t
   :after lsp-mode
   :hook ((c-mode c++-mode) . lsp))
 #+END_SRC
