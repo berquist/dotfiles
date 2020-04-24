@@ -344,7 +344,6 @@ current buffer's, reload dir-locals."
 
 #+begin_src emacs-lisp
 ;; Other themes I like to have installed:
-(use-package abyss-theme)
 (use-package dracula-theme)
 (use-package gotham-theme)
 (use-package plan9-theme)
@@ -449,19 +448,6 @@ TODO how to get these to carry over to Ivy? Probably `ivy-ignore-buffers'
   ;; TODO this doesn't work the way I expect
   :init
   (amx-mode))
-#+END_SRC
-
-Source for anzu can be found [[https://github.com/syohex/emacs-anzu][here]]. There isn't a need for anzu when using Swiper.
-
-#+BEGIN_SRC emacs-lisp
-(use-package anzu
-  :disabled t
-  :delight
-  ;; M-% and C-M-% are the original query-replace(-regexp) shortcuts
-  ;; :bind (("C-x C-g" . anzu-query-replace)
-  ;;        ("C-x C-a" . anzu-query-replace-regexp))
-  :init
-  (global-anzu-mode 1))
 #+END_SRC
 
 Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed.
@@ -571,12 +557,6 @@ Links:
 #+BEGIN_SRC emacs-lisp
 (use-package wc-mode
   :bind (("C-c w" . wc-mode)))
-#+END_SRC
-
-** pattern finding
-
-#+BEGIN_SRC emacs-lisp
-(use-package comb)
 #+END_SRC
 
 * Completion and language servers
@@ -745,13 +725,6 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package git-timemachine)
 #+END_SRC
 
-Not using =git-gutter= right now, but if I did...
-
-#+BEGIN_SRC emacs-lisp
-(setq git-gutter:handled-backends '(git svn hg bzr))
-(setq git-gutter:hide-gutter t)
-#+END_SRC
-
 ** GitHub and other providers
 
 #+BEGIN_SRC emacs-lisp
@@ -889,18 +862,6 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
     (message "Enabled org html export on save for current buffer...")))
 #+END_SRC
 
-# ** org-ref
-
-# #+BEGIN_SRC emacs-lisp
-# (use-package org-ref
-#   :config
-#   (setq reftex-default-bibliography '("~/Dropbox/_bibliography/references.bib")
-#         org-ref-bibliography-notes "~/Dropbox/_bibliography/notes.org"
-#         org-ref-default-bibliography '("~/Dropbox/_bibliography/references.bib")
-#         org-ref-pdf-directory "~/Dropbox/_bibliography/bibtex-pdfs"
-#         bibtex-dialect 'biblatex))
-# #+END_SRC
-
 * Compilation
 
 Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#110.
@@ -999,12 +960,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
                 ("\\.f08\\'" . f90-mode))
               auto-mode-alist))
 (setq fortran-comment-region "C")
-#+end_src
-
-* PKGBUILDs
-
-#+begin_src emacs-lisp
-(use-package pkgbuild-mode)
 #+end_src
 
 * LaTeX
@@ -1291,13 +1246,6 @@ current buffer, return its path, otherwise nil."
   :delight)
 #+END_SRC
 
-* Ruby (builtin)
-
-#+BEGIN_SRC emacs-lisp
-(use-package ruby-mode
-  :mode ("Vagrantfile" . ruby-mode))
-#+END_SRC
-
 * Conf (builtin)
 
 #+BEGIN_SRC emacs-lisp
@@ -1508,31 +1456,22 @@ Modified to remove/disable Racket.
 ;; (use-package flycheck-nim)
 #+END_SRC
 
-* Other languages
+* Other languages, modes, and packages
 
 #+BEGIN_SRC emacs-lisp
 (use-package chapel-mode)
-(use-package clojure-mode)
 (use-package cuda-mode)
 (use-package dockerfile-mode)
 (use-package graphviz-dot-mode)
 (use-package lua-mode)
 (use-package meson-mode)
 (use-package pacfiles-mode)
-(use-package scala-mode)
-(use-package strace-mode)
+(use-package pkgbuild-mode)
 (use-package systemd)
 (use-package vterm)
 #+END_SRC
 
 * External services
-
-#+BEGIN_SRC emacs-lisp
-;; this is very imPorTanT YoU See
-;; don't demand/require
-(use-package spongebob
-  :straight (:host gitlab :repo "dustyweb/spongebob.el"))
-#+END_SRC
 
 ** Discord
 
