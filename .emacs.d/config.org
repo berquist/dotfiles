@@ -385,26 +385,6 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 
 I've decided to stop using =ido= in favor of "better" and "more modern" packages...
 
-#+begin_src emacs-lisp
-(use-package ido
-  :disabled t
-  :config
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  ;; wow, that *is* annoying!
-  (setq ido-use-filename-at-point nil)
-  (setq ido-use-url-at-point nil)
-  :init
-  (ido-mode t))
-(use-package ido-vertical-mode
-  :disabled t
-  :after ido
-  :config
-  (setq ido-vertical-show-count t)
-  :init
-  (ido-vertical-mode 1))
-#+end_src
-
 TODO how to get these to carry over to Ivy? Probably `ivy-ignore-buffers'
 
 #+BEGIN_SRC emacs-lisp
