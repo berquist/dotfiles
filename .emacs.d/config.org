@@ -592,7 +592,7 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((fortran-mode sh-mode) . lsp)
+  :hook ((fortran-mode sh-mode) . lsp-deferred)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
@@ -888,7 +888,7 @@ These are valid for all C-style modes (I think).
 #+BEGIN_SRC emacs-lisp
 (use-package ccls
   :after lsp-mode
-  :hook ((c-mode c++-mode) . lsp))
+  :hook ((c-mode c++-mode) . lsp-deferred))
 #+END_SRC
 
 This only makes sense for c++-mode.
@@ -910,11 +910,11 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
-  :hook (java-mode . lsp))
 (use-package gradle-mode)
 (use-package flycheck-gradle
   :commands (flycheck-gradle-setup)
   :hook ((java-mode kotlin-mode) . flycheck-gradle-setup))
+  :hook (java-mode . lsp-deferred))
 #+END_SRC
 
 * Makefiles
@@ -966,7 +966,7 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
   :ensure nil
-  :hook (python-mode . lsp)
+  :hook (python-mode . lsp-deferred)
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :config
@@ -983,7 +983,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 
 (use-package company-anaconda
   :init
-  ;; TODO ensure this comes after company-lsp, if it is present
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-anaconda)
     (ejb/fix-company-ordering)))
@@ -1030,7 +1029,7 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :after lsp-mode
   :hook (python-mode . (lambda ()
                          (require 'lsp-python-ms)
-                         (lsp)))
+                         (lsp-deferred)))
   :config
   (setq lsp-python-ms-cache "Library")
   (setq lsp-python-ms-nupkg-channel "daily"))
@@ -1163,7 +1162,7 @@ This section needs to come after the Markdown section so that CMake files get re
   (("CMakeLists\\.txt\\'" . cmake-mode)
    ("CMakeCache\\.txt\\'" . cmake-mode)
    ("\\.cmake\\'" . cmake-mode))
-  :hook (cmake-mode . lsp)
+  :hook (cmake-mode . lsp-deferred)
   :config
   (setq cmake-tab-width 4))
 #+end_src
@@ -1275,7 +1274,7 @@ current buffer, return its path, otherwise nil."
   :after lsp-mode
   :hook (julia-mode . (lambda ()
                         (require 'lsp-julia)
-                        (lsp))))
+                        (lsp-deferred))))
 #+END_SRC
 
 * YAML
@@ -1387,7 +1386,7 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package kotlin-mode
-  :hook (kotlin-mode . lsp)
+  :hook (kotlin-mode . lsp-deferred)
   :mode (("\\.kt\\'" . kotlin-mode)
          ("\\.kts\\'" . kotlin-mode))) ; Kotlin script
 (use-package flycheck-kotlin
@@ -1433,7 +1432,7 @@ Modified to remove/disable Racket.
   ;; hooks need to be in this order.
   :hook ((nim-mode . ejb/fix-company-ordering)
          (nim-mode . nimsuggest-mode)
-         (nim-mode . lsp)))
+         (nim-mode . lsp-deferred)))
 ;; TODO I'm not sure what the advantage of this package is.
 ;; (use-package flycheck-nim)
 #+END_SRC
