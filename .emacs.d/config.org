@@ -910,10 +910,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
-(use-package gradle-mode)
-(use-package flycheck-gradle
-  :commands (flycheck-gradle-setup)
-  :hook ((java-mode kotlin-mode) . flycheck-gradle-setup))
   :hook (java-mode . lsp-deferred))
 #+END_SRC
 
