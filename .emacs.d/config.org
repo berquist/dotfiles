@@ -1260,17 +1260,10 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package julia-mode)
-(use-package flycheck-julia
-  :disabled t
-  :hook (flycheck-mode . flycheck-julia-setup))
-(use-package julia-repl
-  :disabled t)
-(use-package lsp-julia
-  :disabled t
-  :after lsp-mode
-  :hook (julia-mode . (lambda ()
-                        (require 'lsp-julia)
-                        (lsp-deferred))))
+;; Snail requires vterm
+(use-package vterm)
+(use-package julia-snail
+  :hook (julia-mode . julia-snail-mode))
 #+END_SRC
 
 * YAML
@@ -1445,7 +1438,6 @@ Modified to remove/disable Racket.
 (use-package pacfiles-mode)
 (use-package pkgbuild-mode)
 (use-package systemd)
-(use-package vterm)
 #+END_SRC
 
 * External services
