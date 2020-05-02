@@ -1264,6 +1264,12 @@ current buffer, return its path, otherwise nil."
 (use-package vterm)
 (use-package julia-snail
   :hook (julia-mode . julia-snail-mode))
+(use-package lsp-julia
+  ;; Not working with Julia v1.4 right now.
+  :disabled t
+  :hook (julia-mode . (lambda ()
+                        (require 'lsp-julia)
+                        (lsp-deferred))))
 #+END_SRC
 
 * YAML

@@ -78,6 +78,7 @@
  ("kotlin-mode" . "ab610996820b5cbdb032edbf8747661131603ab8")
  ("let-alist" . "ef3c02fa292b6e32769945bbbfb7f2e5ac574b64")
  ("lsp-java" . "4f66649c2f02978145bd2e51ff8e6444b8631964")
+ ("lsp-julia" . "da66e78eb601b1652c3a9096e0ceea6b852aa6a0")
  ("lsp-mode" . "a332405c789e91f3af518ea83b3eac125fb4b8ea")
  ("lsp-treemacs" . "9d1a42b7d7abb112035f05f50ffde9834da034ae")
  ("lua-mode" . "658bf8f6c2bdcfe41cd14f5fb651563b41d0fbaa")
