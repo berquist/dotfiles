@@ -378,21 +378,11 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 )
 #+end_src
 
-* Searching and projects
-
-- Some handy tips for [[https://www.masteringemacs.org/article/introduction-to-ido-mode]["Interactively DO things."]]
-- http://oremacs.com/2015/02/09/ido-vertical/
-
-I've decided to stop using =ido= in favor of "better" and "more modern" packages...
-
-TODO how to get these to carry over to Ivy? Probably `ivy-ignore-buffers'
+* Narrowing, searching, and projects
 
 #+BEGIN_SRC emacs-lisp
 (setq completions-format 'vertical)
-(add-to-list 'completion-ignored-extensions ".html")
 #+END_SRC
-
-=amx= is used to get =M-x= ordered by frequency, something =ido= has that =ivy= does not.
 
 #+BEGIN_SRC emacs-lisp
 (use-package ivy
@@ -426,10 +416,10 @@ TODO how to get these to carry over to Ivy? Probably `ivy-ignore-buffers'
   :after ivy
   :bind (("C-s" . swiper-isearch)
          ("C-r" . swiper-isearch-backward)))
-(use-package amx
-  ;; TODO this doesn't work the way I expect
-  :init
-  (amx-mode))
+(use-package prescient
+  :hook (after-init . prescient-persist-mode))
+(use-package ivy-prescient
+  :hook (after-init . ivy-prescient-mode))
 #+END_SRC
 
 Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed.
@@ -589,6 +579,9 @@ Links:
             (-sort '(lambda (e1 e2)
                       (funcall (-rpartial 'ejb/comparator ejb/company-ordering) e1 e2))
                    company-backends)))))
+
+(use-package company-prescient
+  :hook (after-init . company-prescient-mode))
 
 (use-package lsp-mode
   :commands lsp
