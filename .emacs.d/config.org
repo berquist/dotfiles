@@ -1313,7 +1313,8 @@ current buffer, return its path, otherwise nil."
   :config
   (setq rustic-ansi-faces ansi-color-names-vector)
   (setq rustic-format-on-save t)
-  (setq rustic-indent-method-chain t))
+  (setq rustic-indent-method-chain t)
+  (setq rustic-lsp-server 'rust-analyzer))
 #+END_SRC
 
 * Scheme/Lisp
