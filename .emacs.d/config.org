@@ -369,13 +369,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setq-default indicate-buffer-boundaries 'right)
 
 (use-package default-text-scale
-  ;; Don't use `default-text-scale-mode', since it introduces bindings I don't
-  ;; want.
-  ;; TODO interferes with C-/?
-  ;; :bind (("C-+" . default-text-scale-increase)
-  ;;        ("C-_" . default-text-scale-decrease)
-  ;;        ("C-)" . default-text-scale-reset))
-)
+  :demand t)
 #+end_src
 
 * Narrowing, searching, and projects
@@ -386,8 +380,10 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 
 #+BEGIN_SRC emacs-lisp
 (use-package ivy
+  :disabled t
   :delight
-  :defer nil
+  :demand t
+  ;; :hook (after-init . ivy-mode)
   :bind
   (:map ivy-minibuffer-map
         ;; This could be swiper-map, but I want it everywhere narrowing is
@@ -403,9 +399,11 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   :init
   (ivy-mode))
 (use-package counsel
+  :disabled t
   :after ivy
   :delight
-  :defer nil
+  :demand t
+  ;; :hook (after-init . counsel-mode)
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file))
   :init
@@ -413,12 +411,30 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   ;; Don't force matches to start at the beginning.
   (setq ivy-initial-inputs-alist nil))
 (use-package swiper
+  :disabled t
   :after ivy
+  ;; :hook (after-init . swiper-mode)
   :bind (("C-s" . swiper-isearch)
          ("C-r" . swiper-isearch-backward)))
+(use-package selectrum
+  :hook (after-init . selectrum-mode))
+(use-package ctrlf
+  :hook (after-init . ctrlf-mode)
+  :config
+  ;; do away with literal/regexp/fuzzy, only keeping fuzzy-regexp
+  ;; why doesn't this work?
+  ;; (setq ctrlf-style-alist `((fuzzy-regexp . ,(alist-get 'fuzzy-regexp ctrlf-style-alist)))))
+  ;; this doesn't work either
+  ;; (setq ctrlf-style-alist '((fuzzy-regexp . (:prompt "fuzzy regexp"
+  ;;                                                    :translator ctrlf-translate-fuzzy-regexp
+  ;;                                                    :case-fold ctrlf-no-uppercase-regexp-p)))))
+)
 (use-package prescient
   :hook (after-init . prescient-persist-mode))
+(use-package selectrum-prescient
+  :hook (after-init . selectrum-prescient-mode))
 (use-package ivy-prescient
+  :disabled t
   :hook (after-init . ivy-prescient-mode))
 #+END_SRC
 
