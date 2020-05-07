@@ -419,16 +419,15 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (use-package selectrum
   :hook (after-init . selectrum-mode))
 (use-package ctrlf
-  :hook (after-init . ctrlf-mode)
+  :demand t
   :config
-  ;; do away with literal/regexp/fuzzy, only keeping fuzzy-regexp
-  ;; why doesn't this work?
-  ;; (setq ctrlf-style-alist `((fuzzy-regexp . ,(alist-get 'fuzzy-regexp ctrlf-style-alist)))))
-  ;; this doesn't work either
-  ;; (setq ctrlf-style-alist '((fuzzy-regexp . (:prompt "fuzzy regexp"
-  ;;                                                    :translator ctrlf-translate-fuzzy-regexp
-  ;;                                                    :case-fold ctrlf-no-uppercase-regexp-p)))))
-)
+  ;; prefer fuzzy over literal searching
+  (setq ctrlf-mode-bindings
+        '(([remap isearch-forward] . ctrlf-forward-fuzzy)
+          ([remap isearch-backward] . ctrlf-backward-fuzzy)
+          ([remap isearch-forward-regexp] . ctrlf-forward-fuzzy-regexp)
+          ([remap isearch-backward-regexp] . ctrlf-backward-fuzzy-regexp)))
+  (ctrlf-mode))
 (use-package prescient
   :hook (after-init . prescient-persist-mode))
 (use-package selectrum-prescient
