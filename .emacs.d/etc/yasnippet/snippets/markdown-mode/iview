@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: ISI interview decision
+# key: iview
+# --
+## Decision
+
+Meets minimum qualifications:
+- [ ] Yes
+- [ ] No
+
+Meets preferred competencies:
+- [ ] All
+- [ ] Some
+- [ ] None
