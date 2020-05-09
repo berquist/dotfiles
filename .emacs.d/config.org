@@ -379,7 +379,8 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setq-default indicate-buffer-boundaries 'right)
 
 (use-package default-text-scale
-  :demand t)
+  :demand t
+  :hook (after-init . default-text-scale-mode))
 #+end_src
 
 * Narrowing, searching, and projects
