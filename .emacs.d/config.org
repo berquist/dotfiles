@@ -352,15 +352,15 @@ current buffer's, reload dir-locals."
   :config
   (add-to-list 'custom-theme-load-path
                (concat straight-base-dir
-                       "straight/build/base16-eva-theme/"))
-  (load-theme 'base16-eva t))
+                       "straight/build/base16-eva-theme/")))
+  ;; (load-theme 'base16-eva t))
 (use-package dracula-theme)
 (use-package gotham-theme)
 (use-package plan9-theme)
 (use-package punpun-theme) ; (punpun-light, punpun-dark)
 (use-package rebecca-theme)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;; (load-theme 'wombat2 t)
+(load-theme 'wombat2 t)
 (use-package rainbow-mode)
 #+end_src
 
