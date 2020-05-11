@@ -472,7 +472,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (setq projectile-enable-caching t)
   (setq projectile-indexing-method 'hybrid)
   (setq projectile-project-search-path
-        '("~/development" "~/projects" "~/repositories"))
+        '("~/development" "~/repositories"))
   (setq projectile-require-project-root t)
   (setq projectile-sort-order 'access-time)
   (setq projectile-project-root-files-top-down-recurring
