@@ -2,9 +2,6 @@
 
 ## work laptop
 
-# brew install keychain
-eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
-
 . ~/dotfiles/aliases_macos.bash
 
 . ~/dotfiles/dotfiles-private/isi_laptop_private.bash

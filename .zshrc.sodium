@@ -2,9 +2,6 @@
 
 ## home laptop
 
-# brew install keychain
-eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
-
 ## #####################
 ## ## Setting Mac OS X
 ## ## Terminal.app name.

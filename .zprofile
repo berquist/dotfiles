@@ -13,6 +13,8 @@ if [[ "$TERM" != "" ]]; then
     stty -ixon
 fi
 
+eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
+
 machine_specific_file="${HOME}"/dotfiles/.zprofile."$(hostname -s)"
 if [[ -f "${machine_specific_file}" ]]; then
     . "${machine_specific_file}"

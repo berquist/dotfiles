@@ -6,8 +6,6 @@
 export QCPROGS="${HOME}/data/opt/apps"
 export apps="${QCPROGS}"
 
-eval $(keychain --nogui --eval --quiet --agents ssh id_rsa)
-
 . /usr/bin/virtualenvwrapper.sh
 
 source /opt/spack/share/spack/setup-env.sh
