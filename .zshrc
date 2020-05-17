@@ -17,6 +17,12 @@ compinit
 . "${HOME}"/dotfiles/functions.bash
 . "${HOME}"/dotfiles/slurm.bash
 
+if [[ $(uname) == "Darwin" ]]; then
+    eval $(keychain --quiet --nogui --eval --inherit any --agents ssh id_rsa)
+else
+    eval $(keychain --quiet --nogui --eval --inherit any --systemd --agents ssh id_rsa)
+fi
+
 machine_specific_file="${HOME}"/dotfiles/.zshrc."$(hostname -s)"
 if [[ -f "${machine_specific_file}" ]]; then
     . "${machine_specific_file}"
