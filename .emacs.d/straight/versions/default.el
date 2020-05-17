@@ -83,7 +83,7 @@
  ("lsp-treemacs" . "bd2c3727dd1e46e972477f11ba84999697ed842c")
  ("lua-mode" . "35b6e4c20b8b4eaf783ccc8e613d0dd06dbd165c")
  ("macrostep" . "424e3734a1ee526a1bd7b5c3cd1d3ef19d184267")
- ("magit" . "b1b2683f6012ff3bc29bd9cbe562246477f1523f")
+ ("magit" . "d05545ec2fd7edf915eaf1b9c15c785bb08975cc")
  ("markdown-mode" . "9c582ffe8c875225ce3c8a3b9a7dfda6a02ad02c")
  ("melpa" . "5dfa6e222036aa350b675ec94b72241d80a12994")
  ("meson-mode" . "bc6c09136c7f7de6f4b6ce9294e9b998e24b93c7")
