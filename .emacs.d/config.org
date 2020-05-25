@@ -716,7 +716,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package gitconfig-mode)
 (use-package gitignore-mode)
 (use-package magit
-  :bind (("C-c m" . magit-status)))
+  :bind (("C-x g" . magit-status)))
 (use-package magit-svn
   :disabled t
   :hook magit-mode)
