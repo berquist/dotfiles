@@ -1227,10 +1227,6 @@ current buffer, return its path, otherwise nil."
 #+BEGIN_SRC emacs-lisp
 ;; Don't use matlab-mode.
 ;; (use-package matlab-mode)
-;; I don't write Objective-C.
-;; TODO this doesn't work
-(assq-delete-all "\\.m\\'" auto-mode-alist)
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 (setq octave-block-offset 4)
 #+END_SRC
 
