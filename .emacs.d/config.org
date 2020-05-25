@@ -712,12 +712,9 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package git-commit
   :init
   (global-git-commit-mode))
-(use-package gitattributes-mode
-  :mode (("\\.gitattributes\\'" . gitattributes-mode)))
-(use-package gitconfig-mode
-  :mode (("\\.gitconfig\\'" . gitconfig-mode)))
-(use-package gitignore-mode
-  :mode (("\\.gitignore\\'" . gitignore-mode)))
+(use-package gitattributes-mode)
+(use-package gitconfig-mode)
+(use-package gitignore-mode)
 (use-package magit
   :bind (("C-c m" . magit-status)))
 (use-package magit-svn
@@ -878,18 +875,6 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
 
 * C/C++
 
-#+begin_src emacs-lisp
-(setq auto-mode-alist
-     (append '(("\\.C\\'" . c++-mode)
-               ("\\.cc\\'" . c++-mode)
-               ("\\.cpp\\'" . c++-mode)
-               ("\\.c\\'" . c-mode)
-               ("\\.h\\'" . c++-mode)
-               ("\\.hh\\'" . c++-mode)
-               ("\\.hpp\\'" . c++-mode))
-               auto-mode-alist))
-#+end_src
-
 These are valid for all C-style modes (I think).
 
 #+BEGIN_SRC emacs-lisp
@@ -932,29 +917,9 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :hook (java-mode . lsp-deferred))
 #+END_SRC
 
-* Makefiles
-
-#+begin_src emacs-lisp
-(setq auto-mode-alist
-      (append '(("Makefile*\\'" . makefile-mode)
-                ("makefile*\\'" . makefile-mode))
-              auto-mode-alist))
-#+end_src
-
 * FORTRAN
 
 #+begin_src emacs-lisp
-;; These might already be defaults, but it doesn't hurt.
-(setq auto-mode-alist
-      (append '(("\\.f\\'"   . fortran-mode)
-                ("\\.F\\'"   . fortran-mode)
-                ("\\.for\\'" . fortran-mode)
-                ("\\.f90\\'" . f90-mode)
-                ("\\.F90\\'" . f90-mode)
-                ("\\.f95\\'" . f90-mode)
-                ("\\.f03\\'" . f90-mode)
-                ("\\.f08\\'" . f90-mode))
-              auto-mode-alist))
 (setq fortran-comment-region "C")
 #+end_src
 
@@ -1107,9 +1072,6 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
 
 #+begin_src emacs-lisp
 (use-package markdown-mode
-  :mode (("\\.markdown\\'" . markdown-mode)
-         ("\\.mdown\\'" . markdown-mode)
-         ("\\.md\\'" . markdown-mode))
   :hook (markdown-mode . pandoc-mode)
   ;; Don't run pandoc on every save, it gets annoying.
   ;; :config
@@ -1173,10 +1135,6 @@ This section needs to come after the Markdown section so that CMake files get re
 
 #+begin_src emacs-lisp
 (use-package cmake-mode
-  :mode
-  (("CMakeLists\\.txt\\'" . cmake-mode)
-   ("CMakeCache\\.txt\\'" . cmake-mode)
-   ("\\.cmake\\'" . cmake-mode))
   :hook (cmake-mode . lsp-deferred)
   :config
   (setq cmake-tab-width 4))
@@ -1270,6 +1228,7 @@ current buffer, return its path, otherwise nil."
 ;; Don't use matlab-mode.
 ;; (use-package matlab-mode)
 ;; I don't write Objective-C.
+;; TODO this doesn't work
 (assq-delete-all "\\.m\\'" auto-mode-alist)
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 (setq octave-block-offset 4)
@@ -1309,8 +1268,7 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package json-mode
-  :mode (("\\.json\\'" . json-mode)
-         ("\\.cjson\\'" . json-mode)
+  :mode (("\\.cjson\\'" . json-mode)
          ("\\.qcjson\\'" . json-mode)))
 #+END_SRC
 
@@ -1365,7 +1323,7 @@ current buffer, return its path, otherwise nil."
 (use-package hy-mode)
 #+END_SRC
 
-** Scheme
+** Scheme and Racket
 
 Modified to remove/disable Racket.
 
@@ -1386,24 +1344,14 @@ Modified to remove/disable Racket.
                                        ((regexp "\\.sld\\'") chibi))))
 (use-package scribble-mode
   :hook (scribble-mode . geiser))
-#+END_SRC
-
-** Racket
-
-#+BEGIN_SRC emacs-lisp
-(use-package racket-mode
-  ;; TODO the top one doesn't work?
-  :mode (("\\.rkt[dl]?\\'" . racket-mode)
-         ("\\.rkt\\'" . racket-mode)))
+(use-package racket-mode)
 #+END_SRC
 
 * Kotlin
 
 #+BEGIN_SRC emacs-lisp
 (use-package kotlin-mode
-  :hook (kotlin-mode . lsp-deferred)
-  :mode (("\\.kt\\'" . kotlin-mode)
-         ("\\.kts\\'" . kotlin-mode))) ; Kotlin script
+  :hook (kotlin-mode . lsp-deferred))
 (use-package flycheck-kotlin
   :init
   (with-eval-after-load 'flycheck
@@ -1416,7 +1364,7 @@ Modified to remove/disable Racket.
 (use-package sparql-mode
   :mode (("\\.sparql\\'" . sparql-mode)
          ("\\.rq\\'" . sparql-mode)))
-
+;; TODO company-sparql
 (use-package ttl-mode
   :straight (ttl-mode :type git :flavor melpa :host github :repo "nxg/ttl-mode")
   :delight "N3/Turtle"
@@ -1425,14 +1373,6 @@ Modified to remove/disable Racket.
          ("\\.shacl\\'" . ttl-mode) ; SHACL (not a graph, but constraints; looks similar)
          ("\\.ttl\\'" . ttl-mode)   ; Turtle (Terse RDF Triple Language)
          ("\\.turtle\\'" . ttl-mode)))
-#+END_SRC
-
-* GraphQL
-
-#+BEGIN_SRC emacs-lisp
-(use-package graphql-mode
-  :mode
-  (("\\.\\(gql\\|graphql\\)\\'" . graphql-mode)))
 #+END_SRC
 
 * Nim
@@ -1458,6 +1398,7 @@ Modified to remove/disable Racket.
 (use-package chapel-mode)
 (use-package cuda-mode)
 (use-package dockerfile-mode)
+(use-package graphql-mode)
 (use-package graphviz-dot-mode)
 (use-package lua-mode)
 (use-package meson-mode)
