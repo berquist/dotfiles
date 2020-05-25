@@ -1306,7 +1306,8 @@ current buffer, return its path, otherwise nil."
 (use-package slime
   :config
   (setq common-lisp-style-default "modern")
-  (setq inferior-lisp-program "clisp")
+  ;; default is "lisp", which on my Arch Linux machine is CMUCL
+  (setq inferior-lisp-program "sbcl")
   (setq lisp-indent-function 'common-lisp-indent-function)
   (setq slime-contribs '(slime-cl-indent slime-fancy))
   :init
