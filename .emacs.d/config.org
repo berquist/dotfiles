@@ -611,17 +611,13 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((fortran-mode sh-mode) . lsp-deferred)
+  :hook ((fortran-mode f90-mode sh-mode) . lsp-deferred)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
   (setq lsp-prefer-capf t)
   (setq lsp-prefer-flymake nil)
-  (setq lsp-rust-clippy-preference "on")
-  (with-eval-after-load 'lsp
-    ;; https://github.com/emacs-lsp/lsp-mode/commit/f110a8f0fd316bcd87396fbea2dce3617bca9d5e
-    (add-to-list 'lsp-language-id-configuration '(fortran-mode . "fortran"))
-    (add-to-list 'lsp-language-id-configuration '(sh-mode . "bash"))))
+  (setq lsp-rust-clippy-preference "on"))
 
 (use-package lsp-ui
   :disabled t
