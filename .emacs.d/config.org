@@ -750,6 +750,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture))
   :config
+  (setq org-adapt-indentation nil)
   (setq org-agenda-files '("~/Dropbox/Notes"
                            "~/Dropbox/research/lab_notebook"))
   (setq org-babel-tangle-lang-exts '(("python" . "py")
@@ -768,8 +769,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (setq org-html-with-latex '(mathjax))
   (setq org-image-actual-width nil)
   (setq org-latex-create-formula-image-program 'imagemagick)
-  ;; The only difference from the default is that the `colorlinks` option is
-  ;; passed to hyperref.
+  ;; The differences from the default are that the `colorlinks` option is
+  ;; passed to hyperref, and `braket`, `microtype`, and `xcolor` are used.
   (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t
                                             ("pdflatex"))
                                            ("T1" "fontenc" t
@@ -784,7 +785,10 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                            ("" "textcomp" t)
                                            ("" "amssymb" t)
                                            ("" "capt-of" nil)
-                                           ("colorlinks=true" "hyperref" nil)))
+                                           ("colorlinks=true" "hyperref" nil)
+                                           ("" "braket" t)
+                                           ("final" "microtype" nil)
+                                           ("usenames,dvipsnames,svgnames,table" "xcolor" nil)))
   (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
   (setq org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
@@ -799,18 +803,10 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
   ;; You need to install pygments to use minted.
   (when (executable-find "pygmentize")
-    ;; Add minted to the defaults packages to include when exporting.
     (add-to-list 'org-latex-packages-alist '("" "minted" nil))
-    ;; Tell the latex export to use the minted package for source code
-    ;; coloration.
     (setq org-latex-listings 'minted)
-    ;; Let the exporter use the -shell-escape option to let latex execute
-    ;; external programs.  This obviously and can be dangerous to activate!
     (setq org-latex-minted-options
           '(("framesep" "2mm"))))
-  (add-to-list 'org-latex-packages-alist '("" "braket" t))
-  (add-to-list 'org-latex-packages-alist '("final" "microtype" nil))
-  (add-to-list 'org-latex-packages-alist '("usenames,dvipsnames,svgnames,table" "xcolor" nil))
   (with-eval-after-load "ox-latex"
     (add-to-list 'org-latex-classes '("refsheet" "\\documentclass{refsheet}"
                                       ("\\section{%s}" . "\\section*{%s}")
