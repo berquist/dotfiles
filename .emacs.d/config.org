@@ -1011,16 +1011,9 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   (setq lsp-python-ms-nupkg-channel "daily"))
 #+end_src
 
-** Linters
-
-#+begin_src emacs-lisp
-(use-package flycheck-pyre
-  :disabled t
-  :after (python flycheck-mode)
-  :hook (python-mode . flycheck-pyre-setup))
-#+end_src
-
 ** Reformatters
+
+If ~:after python~ isn't present, the bindings don't get added properly?
 
 #+BEGIN_SRC emacs-lisp
 (use-package blacken
@@ -1045,16 +1038,11 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
         ("C-c C-i" . isortify-buffer)))
 #+END_SRC
 
-** Cython
+** Leftovers
 
 #+BEGIN_SRC emacs-lisp
 (use-package cython-mode)
 (use-package flycheck-cython)
-#+END_SRC
-
-** pip
-
-#+BEGIN_SRC emacs-lisp
 (use-package pip-requirements)
 #+END_SRC
 
