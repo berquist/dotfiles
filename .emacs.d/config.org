@@ -1270,11 +1270,17 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package rustic
+  ;; :bind (:map rustic-mode-map ("C-c C-c C-;" . rustic-docstring-around-dwim))
   :config
   (setq rustic-ansi-faces ansi-color-names-vector)
   (setq rustic-format-on-save t)
   (setq rustic-indent-method-chain t)
-  (setq rustic-lsp-server 'rust-analyzer))
+  (setq rustic-lsp-server 'rust-analyzer)
+  (defun rustic-docstring-around-dwim ()
+    "Use `comment-dwim' to make a Rust docstring for the thing surrounding the comment."
+    (interactive)
+    (let ((comment-start "//! "))
+      (call-interactively 'comment-dwim))))
 #+END_SRC
 
 * Scheme/Lisp
@@ -1359,12 +1365,19 @@ Modified to remove/disable Racket.
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck-nimsuggest)
 (use-package nim-mode
+  :bind (:map nim-mode-map ("C-c C-;" . nim-docstring-dwim))
   ;; We want to be able to "fix" the company backend ordering after
   ;; `nimsuggest-mode' adds `company-nimsuggest' to `company-backends', so the
   ;; hooks need to be in this order.
   :hook ((nim-mode . ejb/fix-company-ordering)
          (nim-mode . nimsuggest-mode)
-         (nim-mode . lsp-deferred)))
+         (nim-mode . lsp-deferred))
+  :config
+  (defun nim-docstring-dwim ()
+    "Use `comment-dwim' to make a Nim docstring."
+    (interactive)
+    (let ((comment-start "## "))
+      (call-interactively 'comment-dwim))))
 ;; TODO I'm not sure what the advantage of this package is.
 ;; (use-package flycheck-nim)
 #+END_SRC
