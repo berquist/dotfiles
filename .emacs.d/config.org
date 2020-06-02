@@ -812,9 +812,14 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))))
 (use-package htmlize)
 (use-package ox-gfm
-  :after org)
+  :after org
+  :hook (org-mode . (lambda () (require 'ox-gfm))))
 (use-package ox-pandoc
-  :after org)
+  :after org
+  :hook (org-mode . (lambda () (require 'ox-pandoc))))
+(use-package ox-trac
+  :after org
+  :hook (org-mode . (lambda () (require 'ox-trac))))
 #+end_src
 
 From https://emacs.stackexchange.com/questions/20577/org-babel-load-all-languages-on-demand.
