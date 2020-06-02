@@ -1,5 +1,3 @@
-;; bootstrap installation of straight.el
-
 (setq straight-use-package-by-default t)
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -14,6 +12,8 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(setq use-package-always-defer t
+      use-package-verbose t)
 (straight-use-package 'use-package)
 
 ;; Load this before any other third-party packages.
@@ -26,11 +26,8 @@
 (bind-key (kbd "C-x b") 'ibuffer)
 (bind-key (kbd "C-c b") 'switch-to-previous-buffer)
 
-(bind-key (kbd "C-x C-h") 'replace-string)
-
 (set-frame-font "Panic Sans-11")
-(use-package dracula-theme
-  :straight t)
+(use-package dracula-theme)
 (load-theme 'dracula t)
 
 (use-package ido
@@ -43,13 +40,4 @@
   :init
   (ido-mode t))
 
-(use-package spongebob
-  :straight (:host gitlab :repo "dustyweb/spongebob.el"))
-
-(use-package elcord
-  :hook (after-init . elcord-mode)
-  ;; No work machines (laptop, cluster)
-  :if (not (string-match "isi" (shell-command-to-string "hostname -f")))
-  :config
-  (setq elcord-refresh-rate 5)
-  (setq elcord-use-major-mode-as-main-icon t))
+(use-package org)
