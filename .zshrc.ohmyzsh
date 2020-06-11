@@ -105,12 +105,10 @@ plugins=()
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit installer's chunk
+zinit light romkatv/zsh-prompt-benchmark
 zinit light sobolevn/wakatime-zsh-plugin
-zinit snippet OMZ::plugins/colorize/colorize.plugin.zsh
 zinit snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
 zinit snippet OMZ::plugins/sprunge/sprunge.plugin.zsh
-zinit ice svn
-zinit snippet OMZ::plugins/git-prompt
 # Rust programming language
 zinit ice as"completion" wait'!2' silent
 zinit snippet OMZ::plugins/cargo/_cargo
@@ -122,6 +120,7 @@ zinit snippet ~/dotfiles/zfunc/_rustup
 zinit ice as"completion" wait'!2' silent
 zinit snippet ~/dotfiles/zfunc/_poetry
 # TODO
-zinit snippet ~/dotfiles/berquist.zsh-theme
+zinit light denysdovhan/spaceship-prompt
+zinit snippet ~/dotfiles/berquist.spaceship.zsh-theme
 
 . "${HOME}"/dotfiles/.zshrc

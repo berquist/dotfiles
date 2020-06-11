@@ -1,6 +1,8 @@
 # -*- mode: shell-script -*-
 
-### My personal zsh "theme"
+# My personal zsh "theme"
+
+## oh-my-zsh
 
 function virtualenv_prompt_info() {
     if [[ -n "${VIRTUAL_ENV}" ]]; then
