@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -106,8 +113,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit installer's chunk
 zinit light romkatv/zsh-prompt-benchmark
-zinit light sobolevn/wakatime-zsh-plugin
-zinit snippet OMZ::plugins/gpg-agent/gpg-agent.plugin.zsh
+zinit ice depth=1; zinit light sobolevn/wakatime-zsh-plugin
 zinit snippet OMZ::plugins/sprunge/sprunge.plugin.zsh
 # Rust programming language
 zinit ice as"completion" wait'!2' silent
@@ -120,7 +126,11 @@ zinit snippet ~/dotfiles/zfunc/_rustup
 zinit ice as"completion" wait'!2' silent
 zinit snippet ~/dotfiles/zfunc/_poetry
 # TODO
-zinit light denysdovhan/spaceship-prompt
-zinit snippet ~/dotfiles/berquist.spaceship.zsh-theme
+# zinit light denysdovhan/spaceship-prompt
+# zinit snippet ~/dotfiles/berquist.spaceship.zsh-theme
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 . "${HOME}"/dotfiles/.zshrc
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
