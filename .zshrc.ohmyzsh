@@ -54,9 +54,9 @@ zinit snippet OMZ::plugins/rust/_rust
 zinit ice as"completion" wait'!2' silent
 zinit snippet ~/dotfiles/zfunc/_rustup
 # Python programming language
-zinit ice as"completion" wait'!2' silent
-zinit snippet ~/dotfiles/zfunc/_poetry
-# TODO
+# zinit ice as"completion" wait'!2' silent
+# zinit snippet ~/dotfiles/zfunc/_poetry
+# Prompt
 # zinit light denysdovhan/spaceship-prompt
 # zinit snippet ~/dotfiles/berquist.spaceship.zsh-theme
 zinit ice depth=1; zinit light romkatv/powerlevel10k
