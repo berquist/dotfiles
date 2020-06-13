@@ -43,7 +43,6 @@
     anaconda                # conda environment (https://conda.io/)
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
     rust_version          # rustc version (https://www.rust-lang.org)
-    java_version          # java version (https://www.java.com/)
     jenv                    # java version from jenv (https://github.com/jenv/jenv)
     # =========================[ Line #2 ]=========================
     newline                 # \n
@@ -710,16 +709,6 @@
   typeset -g POWERLEVEL9K_RUST_VERSION_PROJECT_ONLY=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_RUST_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
-
-  ####################[ java_version: java version (https://www.java.com/) ]####################
-  # Java version color.
-  typeset -g POWERLEVEL9K_JAVA_VERSION_FOREGROUND=32
-  # Show java version only when in a java project subdirectory.
-  typeset -g POWERLEVEL9K_JAVA_VERSION_PROJECT_ONLY=true
-  # Show brief version.
-  typeset -g POWERLEVEL9K_JAVA_VERSION_FULL=false
-  # Custom icon.
-  # typeset -g POWERLEVEL9K_JAVA_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###############[ jenv: java version from jenv (https://github.com/jenv/jenv) ]################
   # Java color.
