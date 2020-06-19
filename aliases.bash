@@ -16,7 +16,6 @@ alias es='emacs -nw'
 # with it though?
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
-alias grep='grep --color -n'
 alias tmux='tmux -2'
 # alias lessm='LESSOPEN="| src-hilite-lesspipe.sh %s" less -M '
 alias ls='ls --color=auto'
