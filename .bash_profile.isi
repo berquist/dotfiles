@@ -10,3 +10,5 @@ fi
 
 export GIT_AUTHOR_EMAIL='berquist@isi.edu'
 export GIT_COMMITTER_EMAIL='berquist@isi.edu'
+
+export ANACONDA_HOME=/nas/gaia/users/berquist/miniconda3
