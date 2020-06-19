@@ -24,11 +24,11 @@ alias mongod_stop="mongod --dbpath=${GAIA_HOME}/fireworks_mongodb_dir --shutdown
 spack_root=/nas/gaia/users/berquist/repositories/spack
 if [[ -d "${spack_root}" ]]; then
     . "${spack_root}"/share/spack/setup-env.sh
-    . "${spack_root}"/var/spack/environments/interactive/loads
+    # . "${spack_root}"/var/spack/environments/interactive/loads
     # TODO figure out best way to get Lmod working
     # . $(spack location -i lmod)/lmod/lmod/init/bash    
+    spack env activate interactive
 fi
-
 eval "$(direnv hook $(basename $SHELL))"
 
 # >>> conda initialize >>>

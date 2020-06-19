@@ -6,5 +6,5 @@ flags="-S +i -o ${format}"
 alias q="squeue -u $USER ${flags}"
 alias qa="squeue -a ${flags}"
 
-export SACCT_FORMAT=jobid,user,account,partition,jobname%30,state,exitcode,elapsed,nodelist,reqmem
+export SACCT_FORMAT=jobid,user,account,partition,jobname%30,state,start,end,exitcode,elapsed,nodelist,reqmem
 alias sl="sacct -a | less"
