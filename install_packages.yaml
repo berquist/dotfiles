@@ -8,3 +8,7 @@
     - name: install packages
       pacman:
         name: "{{ default_arch_packages }}"
+      # For debugging
+      # pacman:
+      #   name: "{{ item }}"
+      # loop: "{{ default_arch_packages }}"

@@ -2,20 +2,18 @@
 default_arch_packages:
   # low-level
   - arch-install-scripts
-  - compton
+  - picom
   - cuda
   - gcc-fortran
   - gdb
   - lib32-glibc
-  - lib32-libstdc++5
-  - libcl
   - libclc
-  - libcl-headers
   - libstdc++5
   - linux-headers
   - nvidia
   - nvidia-libgl
   - opencl-headers
+  - opencl-nvidia
   - valgrind
 
   # programming: C/C++
@@ -58,7 +56,8 @@ default_arch_packages:
   - pyenv
   - cython
   - jupyter-notebook
-  - mypy
+  # Prefer `mypy-git` from AUR
+  # - mypy
   - pygmentize
   - pypy3
   - python-black
@@ -72,9 +71,6 @@ default_arch_packages:
   - python-joblib
   - python-matplotlib
   - python-mccabe
-  - python-mdanalysis
-  # apparently there are problems with 3.x
-  - python2-mdanalysis
   - python2-mock
   - python-mpmath
   - python-networkx
@@ -83,7 +79,7 @@ default_arch_packages:
   - python-nose
   - python-numexpr
   - python-numpy
-  - python-openbabel
+  # - python-openbabel
   - python-opengl
   - python-openpyxl
   - python-pandas
@@ -96,8 +92,6 @@ default_arch_packages:
   - python-pycuda
   - python-pydocstyle
   - python-pylint
-  - python-pyqt4
-  - python-pyqt5
   - python-pytables
   - python-pytest-cov
   - python-pytest-shutil
@@ -130,7 +124,8 @@ default_arch_packages:
   - ttf-sazanami
 
   # editors
-  - emacs
+  # Prefer `emacs27-git` from AUR
+  # - emacs
 
   # groups
   - xfce4
@@ -147,10 +142,10 @@ default_arch_packages:
   - aspell-en
   - atool
   - bash-language-server
-  - blas
+  # - blas
   - boost
   - boost-libs
-  - cblas
+  # - cblas
   - checkbashisms
   - cmake
   - colordiff
@@ -183,7 +178,7 @@ default_arch_packages:
   - iotop
   - jq
   - languagetool
-  - lapack
+  # - lapack
   - lesspipe
   - lftp
   - lsb-release
@@ -197,7 +192,7 @@ default_arch_packages:
   - netcdf
   - netcdf-fortran
   - obs-studio
-  - openbabel
+  # - openbabel
   - openmpi
   - openssh
   - pacman-contrib
@@ -248,3 +243,95 @@ default_arch_packages:
   - # SLURM
   - ipmitool
   - rrdtool
+
+default_arch_packages_aur:
+  # - lib32-libstdc++5
+  # - python-mdanalysis
+
+  # Programming: C++
+  - armadillo
+  - blitz
+  - cpplint
+  # - pgi-compilers
+
+  # Programming: Fortran
+  - fortran-language-server
+  - ftnchek
+
+  # Programming: JVM
+  - kotlin-language-server
+  - ktlint
+
+  # Programming: Lisp/Scheme
+  - carp-git
+  - chez-scheme-git
+  - chibi-scheme-git
+  - hy-git
+  - leiningen
+  - roswell
+
+  # Programming: Python
+  # - doc8
+  - pyenv-virtualenv
+  - pyenv-virtualenvwrapper
+  - pjson
+  - pyre-check-bin
+  - python-algopy
+  - python-ase
+  - python-asv
+  - python-autograd
+  - python-deepdiff
+  - python-jax
+  - python-mmh3
+  - python-pyfiglet
+  - python-pylatex-git
+  - python-memory_profiler
+  - python-numba
+  - python-ordered-set
+  - python-pdbpp
+  - python-pythonpy
+  # - python-unp
+  - python-versioneer
+  - snakemake
+
+  # Programming: Ruby
+  - ruby-mdl
+  - ruby-travis
+  - travis-lint
+
+  # command-line tools
+  - cask
+  - direnv
+  - grace
+  - multimarkdown
+  - pipman-git
+  - swig2
+  - wakatime
+  - watchman
+
+  # SLURM
+  - slurm-llnl
+
+  # GUI tools
+  # - avogadro-git
+  - discord-canary
+  - dropbox
+  - fftw2
+  - figlet-fonts
+  - haguichi
+  # - libgfortran6
+  - lmod
+  - logmein-hamachi
+  # - molden
+  - pandoc-bin
+  - shellcheck-static
+  - slack-desktop
+  - symlinks
+  - tmux-git
+  - ttf-ms-fonts
+  - visual-studio-code-bin
+  - yay
+
+  # other
+  - dftbplus
+  - gamess
