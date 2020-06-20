@@ -1,0 +1,10 @@
+---
+- name: install packages
+  gather_facts: false
+  hosts: localhost
+  vars_files:
+    - package_list_osmium.yaml
+  tasks:
+    - name: install packages
+      pacman:
+        name: "{{ default_arch_packages }}"
