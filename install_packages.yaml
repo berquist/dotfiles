@@ -3,7 +3,7 @@
   gather_facts: false
   hosts: localhost
   vars_files:
-    - package_list_osmium.yaml
+    - package_lists.yaml
   tasks:
     - name: install packages
       pacman:

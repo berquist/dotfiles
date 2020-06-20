@@ -33,7 +33,7 @@
   roles:
     - kewlfft.aur
   vars_files:
-    - package_list_osmium.yaml
+    - package_lists.yaml
   tasks:
     - name: install AUR packages
       # aur:
