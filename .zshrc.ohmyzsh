@@ -45,7 +45,7 @@ autoload -Uz _zinit
 ### End of Zinit installer's chunk
 zinit light romkatv/zsh-prompt-benchmark
 zinit ice depth=1; zinit light sobolevn/wakatime-zsh-plugin
-zinit snippet OMZ::plugins/sprunge/sprunge.plugin.zsh
+zinit snippet OMZP::sprunge
 # Rust programming language
 zinit ice as"completion" wait'!2' silent
 zinit snippet OMZ::plugins/cargo/_cargo
