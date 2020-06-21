@@ -1,7 +1,7 @@
 ---
-- name: install packages
+- name: install packages for Arch Linux
   gather_facts: false
-  hosts: localhost
+  hosts: all
   vars_files:
     - package_lists.yaml
   tasks:

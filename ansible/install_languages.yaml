@@ -2,7 +2,7 @@
 - name: install Rust
   # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   gather_facts: false
-  hosts: localhost
+  hosts: all
   tasks:
     - name: get rustup installer
       get_url:
@@ -16,7 +16,7 @@
 - name: install Nim
   # curl https://nim-lang.org/choosenim/init.sh -sSf | sh
   gather_facts: false
-  hosts: localhost
+  hosts: all
   tasks:
     - name: get choosenim installer
       get_url:

@@ -1,7 +1,7 @@
 ---
 - name: Ensure `aur_builder` user is prepared
   gather_facts: false
-  hosts: localhost
+  hosts: all
   tasks:
     - name: Create `aur_builder` user
       user:
@@ -16,7 +16,7 @@
 
 - name: bootstrap AUR installation
   gather_facts: false
-  hosts: localhost
+  hosts: all
   become_user: aur_builder
   roles:
     - kewlfft.aur
@@ -28,7 +28,7 @@
 
 - name: install AUR packages
   gather_facts: false
-  hosts: localhost
+  hosts: all
   become_user: aur_builder
   roles:
     - kewlfft.aur
