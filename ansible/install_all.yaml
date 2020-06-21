@@ -43,3 +43,26 @@
       register: deploy_private_notarch
       changed_when: "'0 dotfile(s) installed.' not in deploy_private_notarch.stdout"
       when: ansible_distribution != "Archlinux"
+
+- name: enable and start services
+  hosts: localhost
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
+          - system
+  tasks:
+    - name: enable and start Dropbox
+      systemd:
+        name: dropbox
+        state: started
+        enabled: true
+        scope: user
+      when: ansible_distribution == "Archlinux"
+    - name: enable and start Emacs daemon
+      systemd:
+        name: emacs
+        state: started
+        enabled: true
+        scope: user
+      when: ansible_system == "Linux"
