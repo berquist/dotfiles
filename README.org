@@ -6,11 +6,12 @@ The basic steps are:
 - Install Ansible roles from Galaxy.
 - Install software through the package manager.
 - Install GitHub repos and programming languages.
+- Deploy dotfiles.
 
 To perform these steps,
 #+begin_src bash
 bash ./bootstrap_package_installation.bash
-# depending on the OS
-ansible-playbook install_packages_{arch,homebrew}.yaml
-ansible-playbook install_all.yaml
+# depending on the OS; this step isn't smart yet
+ansible-playbook ./ansible/install_packages_{arch,homebrew}.yaml
+ansible-playbook ./ansible/install_all.yaml
 #+end_src

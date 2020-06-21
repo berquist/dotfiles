@@ -3,3 +3,25 @@
 - import_playbook: install_anaconda.yaml
 - import_playbook: install_github_repos.yaml
 - import_playbook: install_languages.yaml
+
+- name: deploy dotfiles
+  hosts: all
+  gather_facts: false
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
+          - system
+  tasks:
+    - name: install dotdrop dependencies
+      command: python -m pip install --user -r ~/dotfiles/dotdrop/requirements.txt
+      when: ansible_distribution != "Archlinux"
+    - name: bootstrap dotdrop
+      command: ./dotdrop/bootstrap.sh
+      when: ansible_distribution != "Archlinux"
+    - name: deploy from public dotfiles
+      command: dotdrop install -c ~/dotfiles/config.yaml
+      when: ansible_distribution == "Archlinux"
+    - name: deploy from private dotfiles
+      command: dotdrop install -c ~/dotfiles/dotfiles-private/config.yaml
+      when: ansible_distribution == "Archlinux"
