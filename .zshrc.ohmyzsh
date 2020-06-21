@@ -54,8 +54,8 @@ zinit snippet OMZ::plugins/rust/_rust
 zinit ice as"completion" wait'!2' silent
 zinit snippet ~/dotfiles/zfunc/_rustup
 # Python programming language
-# zinit ice as"completion" wait'!2' silent
-# zinit snippet ~/dotfiles/zfunc/_poetry
+zinit ice as"completion" wait'!2' silent
+zinit snippet ~/dotfiles/zfunc/_poetry
 # Prompt
 # zinit light denysdovhan/spaceship-prompt
 # zinit snippet ~/dotfiles/berquist.spaceship.zsh-theme
