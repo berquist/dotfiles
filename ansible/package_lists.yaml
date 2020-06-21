@@ -434,6 +434,7 @@ default_packages_homebrew_cask:
 default_github_repos:
   - chrissimpkins/codeface
   - github/gitignore
+  - icy/pacapt
   - mbadolato/iTerm2-Color-Schemes
   - plexus/chemacs
 
