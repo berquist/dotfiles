@@ -6,10 +6,13 @@ funame=$(uname -a)
 base_plat=$(echo ${funame} | cut -d ' ' -f 1)
 
 case ${base_plat} in
-    # TODO don't assume that we're on Arch: add Pop!_OS detection
     Linux)
         if [[ ! -f /usr/bin/ansible ]]; then
-            sudo pacman -S ansible
+            if test $(echo ${funame} | grep -F 'arch'); then
+                sudo pacman -S ansible
+            elif test $(echo ${funame} | grep -F 'Ubuntu'); then
+                sudo apt install ansible
+            fi
         fi
         ;;
     Darwin)
@@ -21,4 +24,4 @@ case ${base_plat} in
     *)
 esac
 
-ansible-galaxy install -r requirements.yaml
+ansible-galaxy install -r ./ansible/requirements.yaml
