@@ -472,6 +472,7 @@ default_packages_popos:
   - iotop
   - keychain
   - mosh
+  - python3-pip
   - shellcheck
   - subversion
   - tmux

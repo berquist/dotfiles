@@ -1,0 +1,19 @@
+---
+- name: install packages for Pop!_OS
+  gather_facts: false
+  hosts: localhost
+  vars_files:
+    - package_lists.yaml
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
+  tasks:
+    - name: install packages
+      apt:
+        name: "{{ default_packages_popos }}"
+      # For debugging
+      # apt:
+      #   name: "{{ item }}"
+      # loop: "{{ default_packages_popos }}"
+      when: ansible_distribution == "Pop!_OS"

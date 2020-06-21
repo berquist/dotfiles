@@ -12,6 +12,9 @@ To perform these steps,
 #+begin_src bash
 bash ./bootstrap_package_installation.bash
 # depending on the OS; this step isn't smart yet
-ansible-playbook ./ansible/install_packages_{arch,homebrew}.yaml
+ansible-playbook ./ansible/install_packages_{arch,popos}.yaml -b -K
+# or
+ansible-playbook ./ansible/install_packages_homebrew.yaml
+# then
 ansible-playbook ./ansible/install_all.yaml
 #+end_src
