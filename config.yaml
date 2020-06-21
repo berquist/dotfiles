@@ -16,6 +16,24 @@ dotfiles:
   f_sbclrc:
     src: sbclrc
     dst: ~/.sbclrc
+  f_aspell.en.prepl:
+    src: aspell.en.prepl
+    dst: ~/.aspell.en.prepl
+  f_aspell.en.pws:
+    src: aspell.en.pws
+    dst: ~/.aspell.en.pws
+  f_tmux.conf:
+    src: tmux.conf
+    dst: ~/.tmux.conf
+  f_terminalrc:
+    src: config/xfce4/terminal/terminalrc
+    dst: ~/.config/xfce4/terminal/terminalrc
+  f_terminalrc.osmium:
+    src: config/xfce4/terminal/terminalrc.osmium
+    dst: ~/.config/xfce4/terminal/terminalrc.osmium
+  f_override.conf:
+    src: config/systemd/user/emacs.service.d/override.conf
+    dst: ~/.config/systemd/user/emacs.service.d/override.conf
 profiles:
   osmium:
     dotfiles:
@@ -23,3 +41,9 @@ profiles:
     - f_cuby4
     - f_pylintrc
     - f_sbclrc
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_tmux.conf
+    - f_terminalrc
+    - f_terminalrc.osmium
+    - f_override.conf
