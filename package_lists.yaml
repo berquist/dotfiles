@@ -432,3 +432,10 @@ default_packages_homebrew_cask:
   - vagrant-manager
   - visualvm
   - zotero
+
+default_github_repos:
+  - chrissimpkins/codeface
+  - github/gitignore
+  - mbadolato/iTerm2-Color-Schemes
+  - plexus/chemacs
+  - robbyrussell/oh-my-zsh
