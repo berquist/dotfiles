@@ -1,0 +1,22 @@
+---
+- name: Install Homebrew packages
+  gather_facts: false
+  hosts: localhost
+  vars_files:
+    - package_lists.yaml
+  tasks:
+    - name: install main packages
+      homebrew:
+        name: "{{ item }}"
+      loop: "{{ default_packages_homebrew }}"
+    - name: tap for vale linter
+      homebrew_tap:
+        name: valelint/vale
+    - name: install external packages
+      homebrew:
+        name: "{{ item }}"
+      loop: "{{ default_packages_homebrew_ext }}"
+    - name: install casks
+      homebrew_cask:
+        name: "{{ item }}"
+      loop: "{{ default_packages_homebrew_cask }}"

@@ -335,3 +335,100 @@ default_arch_packages_aur:
   # other
   - dftbplus
   - gamess
+
+default_packages_linuxbrew:
+  - fd
+  - fzf
+
+default_packages_homebrew:
+  - ant
+  - aspell
+  - autoconf
+  - automake
+  - bash # Don't forget to add to /etc/shells
+  - blazegraph
+  - cmake
+  - colordiff
+  - dos2unix
+  - editorconfig
+  # - emacs
+  - exa
+  - fd
+  - fuseki
+  - fzf
+  - git
+  - gpg
+  - "gradle --with-all"
+  - htop
+  - hub
+  - jena
+  - jq
+  - keychain
+  - kotlin
+  - languagetool
+  - less
+  - lesspipe
+  - lftp
+  - libgit2
+  - libtool
+  - lmod
+  - maven
+  - mono
+  - nano
+  - npm
+  - pandoc
+  - proselint
+  - pyenv
+  - pyenv-virtualenv
+  - pyenv-virtualenvwrapper
+  - reattach-to-user-namespace
+  - r
+  - rbenv-bundler
+  - ripgrep
+  - shellcheck
+  - "sox --with-libao --with-libsndfile --with-opencore-amr --with-opusfile"
+  - tidy-html5
+  - tmux
+  - util-linux
+  - wakatime-cli
+  - watchman
+  - wget
+  - xmlstarlet
+  - yamllint
+  - zlib
+  - zsh # Don't forget to add to /etc/shells
+
+default_packages_homebrew_ext:
+  - holgerbrandl/tap/kscript
+  - shyiko/ktlint/ktlint
+  - vale
+
+default_packages_homebrew_cask:
+  # -> problems due to app relocation
+  # - 1password
+  # - anaconda
+  - basecamp
+  - blue-jeans
+  # - caffeine
+  - dash
+  # - divvy
+  # - dropbox
+  - emacs
+  # -> problems due to app relocation
+  # - firefox
+  # -> problems due to app relocation
+  # - intellij-idea-ce
+  - iterm2
+  - java
+  - kitty
+  - mactex
+  - meld
+  # -> problems due to app relocation
+  # - pycharm-ce
+  - rstudio
+  # - slack
+  - spectacle
+  - vagrant
+  - vagrant-manager
+  - visualvm
+  - zotero
