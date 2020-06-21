@@ -41,10 +41,6 @@
         src: "{{ base_dir }}/chemacs/.emacs"
         dest: "{{ home_dir }}/.emacs"
         state: link
-    - name: clone oh-my-zsh
-      git:
-        repo: https://github.com/robbyrussell/oh-my-zsh.git
-        dest: "{{ home_dir }}/.oh-my-zsh"
     - name: ensure zinit prefix exists
       file:
         path: "{{ home_dir }}/.zinit"
