@@ -12,3 +12,42 @@
       # pacman:
       #   name: "{{ item }}"
       # loop: "{{ default_arch_packages }}"
+    - name: Create `aur_builder` user
+      user:
+        name: aur_builder
+        group: aur_builder
+    - name: Ensure `aur_builder` user can use pacman as non-root
+      lineinfile:
+        path: /etc/sudoers.d/11-install-aur_builder
+        line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+        create: yes
+        validate: 'visudo -cf %s'
+
+- name: bootstrap AUR installation
+  gather_facts: false
+  hosts: all
+  become_user: aur_builder
+  roles:
+    - kewlfft.aur
+  tasks:
+    - name: install yay
+      aur:
+        name: yay
+        use: makepkg
+
+- name: install AUR packages
+  gather_facts: false
+  hosts: all
+  become_user: aur_builder
+  roles:
+    - kewlfft.aur
+  vars_files:
+    - package_lists.yaml
+  tasks:
+    - name: install AUR packages
+      # aur:
+      #   name: "{{ default_arch_packages_aur }}"
+      # For debugging
+      aur:
+        name: "{{ item }}"
+      loop: "{{ default_arch_packages_aur }}"
