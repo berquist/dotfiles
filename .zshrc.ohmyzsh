@@ -36,13 +36,73 @@ DISABLE_UPDATE_PROMPT="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
-. $ZSH/oh-my-zsh.sh
-
 ### Added by Zinit's installer
 . "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit installer's chunk
+
+zinit snippet OMZL::clipboard.zsh
+zinit snippet OMZL::compfix.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::correction.zsh
+zinit snippet OMZL::diagnostics.zsh
+zinit snippet OMZL::directories.zsh
+zinit snippet OMZL::functions.zsh
+zinit snippet OMZL::git.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::key-bindings.zsh
+zinit snippet OMZL::misc.zsh
+zinit snippet OMZL::spectrum.zsh
+zinit snippet OMZL::termsupport.zsh
+zinit snippet OMZL::theme-and-appearance.zsh
+
+autoload -U compaudit compinit
+
+# Figure out the SHORT hostname
+if [[ "$OSTYPE" = darwin* ]]; then
+  # macOS's $HOST changes with dhcp, etc. Use ComputerName if possible.
+  SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST=${HOST/.*/}
+else
+  SHORT_HOST=${HOST/.*/}
+fi
+
+# Save the location of the current completion dump file.
+if [ -z "$ZSH_COMPDUMP" ]; then
+  ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+fi
+
+# Construct zcompdump OMZ metadata
+zcompdump_fpath="#omz fpath: $fpath"
+
+# Delete the zcompdump file if OMZ zcompdump metadata changed
+if ! command grep -q -Fx "$zcompdump_fpath" "$ZSH_COMPDUMP" 2>/dev/null; then
+  command rm -f "$ZSH_COMPDUMP"
+  zcompdump_refresh=1
+fi
+
+if [[ $ZSH_DISABLE_COMPFIX != true ]]; then
+  # If completion insecurities exist, warn the user
+  handle_completion_insecurities
+  # Load only from secure directories
+  compinit -i -C -d "${ZSH_COMPDUMP}"
+else
+  # If the user wants it, load from all found directories
+  compinit -u -C -d "${ZSH_COMPDUMP}"
+fi
+
+# Append zcompdump metadata if missing
+if (( $zcompdump_refresh )); then
+  # Use `tee` in case the $ZSH_COMPDUMP filename is invalid, to silence the error
+  # See https://github.com/ohmyzsh/ohmyzsh/commit/dd1a7269#commitcomment-39003489
+  tee -a "$ZSH_COMPDUMP" &>/dev/null <<EOF
+
+$zcompdump_fpath
+EOF
+fi
+
+unset zcompdump_fpath zcompdump_refresh
+
 zinit light romkatv/zsh-prompt-benchmark
 zinit ice depth=1; zinit light sobolevn/wakatime-zsh-plugin
 zinit snippet OMZP::sprunge
