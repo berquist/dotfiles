@@ -88,6 +88,12 @@ dotfiles:
   f_xinitrc:
     src: xinitrc
     dst: ~/.xinitrc
+  f_pdbrc:
+    src: pdbrc
+    dst: ~/.pdbrc
+  f_nvimrc:
+    src: nvimrc
+    dst: ~/.nvimrc
 profiles:
   osmium:
     dotfiles:
@@ -119,3 +125,5 @@ profiles:
     - f_zshrc
     - f_compton.conf
     - f_xinitrc
+    - f_pdbrc
+    - f_nvimrc
