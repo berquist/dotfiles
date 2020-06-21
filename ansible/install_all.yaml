@@ -7,6 +7,10 @@
 - name: deploy dotfiles
   hosts: localhost
   gather_facts: false
+  vars:
+    dotdrop_manual_install_file: ~/dotfiles/dotdrop/dotdrop.sh
+    dotdrop_public_config: ~/dotfiles/config.yaml
+    dotdrop_private_config: ~/dotfiles/dotfiles-private/config.yaml
   pre_tasks:
     - setup:
         gather_subset:
@@ -14,14 +18,28 @@
           - system
   tasks:
     - name: install dotdrop dependencies
-      command: python -m pip install --user -r ~/dotfiles/dotdrop/requirements.txt
+      command: python3 -m pip install --user -r ~/dotfiles/dotdrop/requirements.txt
+      register: pip_install
+      changed_when: "'Successfully installed' in pip_install.stdout"
       when: ansible_distribution != "Archlinux"
     - name: bootstrap dotdrop
-      command: ./dotdrop/bootstrap.sh
+      command: ~/dotfiles/dotdrop/bootstrap.sh
+      args:
+        creates: "{{ dotdrop_manual_install_file }}"
       when: ansible_distribution != "Archlinux"
-    - name: deploy from public dotfiles
-      command: dotdrop install -c ~/dotfiles/config.yaml
+    - name: deploy from public dotfiles on Arch
+      command: "dotdrop install -c {{ dotdrop_public_config }}"
       when: ansible_distribution == "Archlinux"
-    - name: deploy from private dotfiles
-      command: dotdrop install -c ~/dotfiles/dotfiles-private/config.yaml
+    - name: deploy from public dotfiles not on Arch
+      command: "{{ dotdrop_manual_install_file }} install -c {{ dotdrop_public_config }}"
+      register: deploy_public_notarch
+      changed_when: "'0 dotfile(s) installed.' not in deploy_public_notarch.stdout"
+      when: ansible_distribution != "Archlinux"
+    - name: deploy from private dotfiles on Arch
+      command: "dotdrop install -c {{ dotdrop_private_config }}"
       when: ansible_distribution == "Archlinux"
+    - name: deploy from private dotfiles not on Arch
+      command: "{{ dotdrop_manual_install_file }} install -c {{ dotdrop_private_config }}"
+      register: deploy_private_notarch
+      changed_when: "'0 dotfile(s) installed.' not in deploy_private_notarch.stdout"
+      when: ansible_distribution != "Archlinux"

@@ -128,3 +128,18 @@ profiles:
     - f_xinitrc
     - f_pdbrc
     - f_nvimrc
+  pop-os:
+    dotfiles:
+    - d_emacs.d
+    - d_tmux
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_condarc
+    - f_gitconfig
+    - f_mdlrc
+    - f_p10k.zsh
+    - f_sbclrc
+    - f_tmux.conf
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
