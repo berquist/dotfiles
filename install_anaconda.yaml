@@ -7,7 +7,7 @@
   vars:
     anaconda_download_dest: "{{ home_dir }}/opt/apps/python"
     anaconda_prefix: "{{ anaconda_download_dest }}/anaconda"
-    anaconda_version: 5.3.0
+    anaconda_version: 2020.02
     # TODO handle MacOSX
     anaconda_file: "Anaconda3-{{ anaconda_version }}-Linux-x86_64.sh"
   tasks:
