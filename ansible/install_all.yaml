@@ -45,6 +45,7 @@
       when: ansible_distribution != "Archlinux"
 
 - name: enable and start services
+  gather_facts: false
   hosts: localhost
   pre_tasks:
     - setup:

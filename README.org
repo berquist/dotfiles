@@ -7,6 +7,7 @@ The basic steps are:
 - Install software through the package manager.
 - Install GitHub repos and programming languages.
 - Deploy dotfiles.
+- Set the shell to zsh.
 
 To perform these steps,
 #+begin_src bash
@@ -17,4 +18,5 @@ ansible-playbook ./ansible/install_packages_{arch,popos}.yaml -b -K
 ansible-playbook ./ansible/install_packages_homebrew.yaml
 # then
 ansible-playbook ./ansible/install_all.yaml
+ansible-playbook ./ansible/set_shell.yaml -b -K
 #+end_src
