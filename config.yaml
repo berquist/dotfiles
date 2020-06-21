@@ -1,0 +1,25 @@
+config:
+  banner: false
+  dotpath: .
+  link_dotfile_default: link
+  link_on_import: link
+dotfiles:
+  f_ansible.cfg:
+    src: ansible.cfg
+    dst: ~/.ansible.cfg
+  f_cuby4:
+    src: cuby4
+    dst: ~/.cuby4
+  f_pylintrc:
+    src: pylintrc
+    dst: ~/.pylintrc
+  f_sbclrc:
+    src: sbclrc
+    dst: ~/.sbclrc
+profiles:
+  osmium:
+    dotfiles:
+    - f_ansible.cfg
+    - f_cuby4
+    - f_pylintrc
+    - f_sbclrc

@@ -1,0 +1,190 @@
+# -*- mode: yaml -*-
+
+#===============================================================================
+# General setup
+#===============================================================================
+
+verbosity: debug
+
+job_cleanup: no
+delete_large_files: no
+existing_calc_dir: recreate
+
+#===============================================================================
+# Default interfaces selectef for method
+#===============================================================================
+
+# default_interfaces:
+#   hf: turbomole
+#   dft: turbomole
+#   mp2: turbomole
+#   scc-dftb: dftb
+#   scc-dftb3: dftb
+#   am1: mopac
+#   pm3: mopac
+#   pm6: mopac
+#   pm7: mopac
+#   mndo: mopac
+#   mndo-d: mopac
+#   rm1: mopac
+
+#===============================================================================
+# Interfaces
+#===============================================================================
+
+#-------------------------------------------------------------------------------
+# DFTB
+#-------------------------------------------------------------------------------
+# DFTB+ executable
+# dftbplus_exe: /home/rezac/bin/DFTB+/dftb+1.2.1/dftb+
+# DFTB executable (original program, not DFTB+)
+#dftb_exe: /home/rezac/bin/dftb/dftb3_distribute_120201/src/dftb
+# dftb_exe: /home/rezac/bin/dftb/dftb3_distribute_121125/src/dftb
+# Path to directory containing directories with sets of Slater-Koster files
+# dftb_slko_basepath: /home/rezac/bin/DFTB+/slko
+# Default set of Slater-Koster files (directory name)
+# dftb_slko_set: halogens2.0_NHmod
+
+# Path to directory containing directories with sets of Slater-Koster files
+# dftb_slko_basepath: /home/rezac/bin/DFTB+/slko
+# Default set of Slater-Koster files (directory name)
+# dftb_slko_set: halogens2.0_NHmod
+
+#-------------------------------------------------------------------------------
+# AMBER
+#-------------------------------------------------------------------------------
+# Amber sander executable
+# amber_ld_path: ""
+# amber_amberhome: /home/rezac/bin/amber/amber11/arch/amd64-intel_11.0.081/amber11
+#amber_sander_exe: /home/rezac/bin/amber/amber11/arch/amd64-intel_11.0.081/amber11/bin/sander 
+
+#-------------------------------------------------------------------------------
+# Turbomole
+#-------------------------------------------------------------------------------
+
+#--------------------------------------------------
+# turbomole_version: 6.2
+# turbomole_turbodir: /home/rezac/bin/turbomole/TurboMole-6.2/arch/all
+# turbomole_bin_dir: /home/rezac/bin/turbomole/TurboMole-6.2/arch/all/bin/em64t-unknown-linux-gnu
+# turbomole_scripts_dir: /home/rezac/bin/turbomole/TurboMole-6.2/arch/all/scripts
+#-------------------------------------------------- 
+
+#--------------------------------------------------
+# turbomole_version: 6.3
+# turbomole_turbodir: /home/rezac/bin/turbomole/turbomole-6.3/arch/all
+# turbomole_bin_dir: /home/rezac/bin/turbomole/turbomole-6.3/arch/all/bin/em64t-unknown-linux-gnu
+# turbomole_scripts_dir: /home/rezac/bin/turbomole/turbomole-6.3/arch/all/scripts
+#-------------------------------------------------- 
+
+#--------------------------------------------------
+# turbomole_version: 6.4
+# turbomole_turbodir: /home/rezac/bin/turbomole/turbomole-6.4/arch/all
+# turbomole_bin_dir: /home/rezac/bin/turbomole/turbomole-6.4/arch/all/bin/em64t-unknown-linux-gnu
+# turbomole_bin_dir_smp: /home/rezac/bin/turbomole/turbomole-6.4/arch/all/bin/em64t-unknown-linux-gnu_smp
+# turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.4/arch/all/bin/em64t-unknown-linux-gnu_mpi
+# turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.4/arch/all/bin/em64t-unknown-linux-gnu_ga
+# turbomole_scripts_dir: /home/rezac/bin/turbomole/turbomole-6.4/arch/all/scripts
+#-------------------------------------------------- 
+
+#--------------------------------------------------
+# turbomole_version: 6.5
+# turbomole_turbodir: /home/rezac/bin/turbomole/turbomole-6.5/arch/all
+# turbomole_bin_dir: /home/rezac/bin/turbomole/turbomole-6.5/arch/all/bin/em64t-unknown-linux-gnu
+# turbomole_bin_dir_smp: /home/rezac/bin/turbomole/turbomole-6.5/arch/all/bin/em64t-unknown-linux-gnu_smp
+# turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.5/arch/all/bin/em64t-unknown-linux-gnu_mpi
+# turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.5/arch/all/bin/em64t-unknown-linux-gnu_ga
+# turbomole_scripts_dir: /home/rezac/bin/turbomole/turbomole-6.5/arch/all/scripts
+#-------------------------------------------------- 
+
+# turbomole_version: 6.6
+# turbomole_turbodir: /home/rezac/bin/turbomole/turbomole-6.6/arch/all
+# turbomole_bin_dir: /home/rezac/bin/turbomole/turbomole-6.6/arch/all/bin/em64t-unknown-linux-gnu
+# turbomole_bin_dir_smp: /home/rezac/bin/turbomole/turbomole-6.6/arch/all/bin/em64t-unknown-linux-gnu_smp
+# turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.6/arch/all/bin/em64t-unknown-linux-gnu_mpi
+# turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.6/arch/all/bin/em64t-unknown-linux-gnu_ga
+# turbomole_scripts_dir: /home/rezac/bin/turbomole/turbomole-6.6/arch/all/scripts
+
+#-------------------------------------------------------------------------------
+# Cfour
+#-------------------------------------------------------------------------------
+
+# cfour_bin_dir_mpi: 
+# cfour_ld_path: "" 
+# cfour_mrcc_bin_dir: /home/rezac/bin/mrcc
+
+cfour_genbas_file: /home/eric/opt/apps/cfour/cfour_v2.00beta_64bit_linux_serial/basis/GENBAS
+cfour_bin_dir: /home/eric/opt/apps/cfour/cfour_v2.00beta_64bit_linux_serial/bin
+
+#-------------------------------------------------------------------------------
+# MOPAC
+#-------------------------------------------------------------------------------
+
+mopac_exe: /home/eric/opt/apps/mopac/2012/MOPAC2012.exe
+
+#-------------------------------------------------------------------------------
+# Balloon
+#-------------------------------------------------------------------------------
+# balloon_dir: /home/rezac/bin/balloon/balloon_1.4.0.1036
+
+#-------------------------------------------------------------------------------
+# DeMon
+#-------------------------------------------------------------------------------
+#demon_exe: /home/rezac/bin/demon/2.5.4/demon_cdft_200613/deMon.2.5.4.opt
+#demon_version: "2.5.4"
+#demon_with_cuby_interface: yes
+
+#demon_exe: /home/rezac/bin/demon/4.2.4_cdft/deMon.4.2.4.opt
+#demon_version: "4.2.4"
+#demon_with_cuby_interface: yes
+
+# demon_exe: /home/rezac/bin/demon/build/demon/4.2.5/object.opt/deMon.4.2.5.opt
+# demon_version: "4.2.5"
+# demon_with_cuby_interface: yes
+
+
+# demon_basis_file: /home/rezac/bin/demon/2.5.4/deMon/BASIS.ADLL
+# demon_auxis_file: /home/rezac/bin/demon/2.5.4/deMon/AUXIS
+# demon_ecps_file: /home/rezac/bin/demon/2.5.4/deMon/ECPS
+# demon_mcps_file: /home/rezac/bin/demon/2.5.4/deMon/MCPS
+# demon_lib_dir: /home/rezac/bin/demon/4.2.4_master_bin/libs
+
+
+#-------------------------------------------------------------------------------
+# Orca
+#-------------------------------------------------------------------------------
+
+orca_bin_dir: /home/eric/opt/apps/orca/3.0.3
+
+#-------------------------------------------------------------------------------
+# PSI4
+#-------------------------------------------------------------------------------
+
+psi4_bin_dir: /home/eric/opt/apps/python/anaconda2/bin
+
+#-------------------------------------------------------------------------------
+# Gaussian as a driver
+#-------------------------------------------------------------------------------
+# gaussian_driver_exe: /home/rezac/bin/gaussian/G09
+
+#-------------------------------------------------------------------------------
+# Molpro
+#-------------------------------------------------------------------------------
+# molpro_exe: /home/rezac/bin/molpro2010.1/bin/molpro
+# molpro_lib_dir: /home/rezac/bin/molpro2010.1/lib
+
+#-------------------------------------------------------------------------------
+# Charmm
+#-------------------------------------------------------------------------------
+# charmm_exe: /home/rezac/bin/charmm35/c35b3/exec/gnu/charmm
+
+#-------------------------------------------------------------------------------
+# Gaussian
+#-------------------------------------------------------------------------------
+# gaussian_bin_dir: /home/rezac/bin/gaussian/gaussian09/a02/arch/amd64-pgi70-acml/g09
+# gaussian_version: g09
+
+#-------------------------------------------------------------------------------
+# MRCC
+#-------------------------------------------------------------------------------
+
+mrcc_bin_dir: /home/eric/opt/apps/mrcc/2015-02-04.binary
