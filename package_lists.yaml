@@ -438,7 +438,6 @@ default_github_repos:
   - github/gitignore
   - mbadolato/iTerm2-Color-Schemes
   - plexus/chemacs
-  - robbyrussell/oh-my-zsh
 
 default_packages_popos:
   # base

@@ -10,7 +10,9 @@
     fonts_dir: "{{ home_dir }}/.local/share/fonts"
   pre_tasks:
     - setup:
-        filter: ansible_system
+        gather_subset:
+          - distribution
+          - system
   tasks:
     - name: ensure base exists
       file:
@@ -35,3 +37,32 @@
     - name: update font cache
       command: fc-cache
       when: ansible_system == "Linux"
+    - name: link chemacs
+      file:
+        src: "{{ base_dir }}/chemacs/.emacs"
+        dest: "{{ home_dir }}/.emacs"
+        state: link
+    - name: clone oh-my-zsh
+      git:
+        repo: https://github.com/robbyrussell/oh-my-zsh.git
+        dest: "{{ home_dir }}/.oh-my-zsh"
+    - name: ensure zinit prefix exists
+      file:
+        path: "{{ home_dir }}/.zinit"
+        state: directory
+    - name: clone zinit
+      git:
+        repo: https://github.com/zdharma/zinit.git
+        dest: "{{ home_dir }}/.zinit/bin"
+    - name: ensure pyenv prefix exists
+      file:
+        path: "{{ home_dir }}/.pyenv"
+        state: directory
+    - name: install pyenv, but not on Arch or macOS
+      git:
+        repo: https://github.com/pyenv/pyenv.git
+        dest: "{{ home_dir }}/.pyenv"
+      when:
+        - ansible_distribution != "Archlinux"
+    # - name: install Rust
+    # - name: install Nim
