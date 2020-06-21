@@ -27,6 +27,6 @@
         cmd: bash /tmp/install_choosenim.bash
         creates: ~/.nimble/bin/choosenim
     - name: install latest stable Nim
-      command: choosenim update stable
+      command: ~/.nimble/bin/choosenim update stable
       register: choosenim_update_stable
-      changed_when: '"Already up to date at version" not in choosenim_update_stable.stdout'
+      changed_when: "'Already up to date at version' not in choosenim_update_stable.stdout"
