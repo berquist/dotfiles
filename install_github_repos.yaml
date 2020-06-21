@@ -3,10 +3,9 @@
   gather_facts: false
   hosts: localhost
   vars_files:
+    - common_vars.yaml
     - package_lists.yaml
   vars:
-    home_dir: "{{ lookup('env', 'HOME') }}"
-    base_dir: "{{ home_dir }}/repositories"
     fonts_dir: "{{ home_dir }}/.local/share/fonts"
   pre_tasks:
     - setup:

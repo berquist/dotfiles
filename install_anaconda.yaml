@@ -1,0 +1,25 @@
+---
+- name: install Anaconda Python distribution
+  gather_facts: false
+  hosts: localhost
+  vars_files:
+    - common_vars.yaml
+  vars:
+    anaconda_download_dest: "{{ home_dir }}/opt/apps/python"
+    anaconda_prefix: "{{ anaconda_download_dest }}/anaconda"
+    anaconda_version: 5.3.0
+    # TODO handle MacOSX
+    anaconda_file: "Anaconda3-{{ anaconda_version }}-Linux-x86_64.sh"
+  tasks:
+    - name: ensure prefix exists
+      file:
+        path: "{{ anaconda_download_dest }}"
+        state: directory
+    - name: get Anaconda
+      get_url:
+        url: "https://repo.anaconda.com/archive/{{ anaconda_file }}"
+        dest: "{{ anaconda_download_dest }}/{{ anaconda_file }}"
+    - name: install Anaconda
+      command: "bash {{ anaconda_download_dest }}/{{ anaconda_file }} -b -p {{ anaconda_prefix }}"
+      args:
+        creates: "{{ anaconda_prefix }}"

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 funame=$(uname -a)
 base_plat=$(echo ${funame} | cut -d ' ' -f 1)
 

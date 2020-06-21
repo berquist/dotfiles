@@ -1,0 +1,3 @@
+---
+home_dir: "{{ lookup('env', 'HOME') }}"
+base_dir: "{{ home_dir }}/repositories"
