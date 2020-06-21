@@ -379,9 +379,8 @@ default_packages_homebrew:
   - pyenv
   - pyenv-virtualenv
   - pyenv-virtualenvwrapper
+  - realpath
   - reattach-to-user-namespace
-  - r
-  - rbenv-bundler
   - ripgrep
   - shellcheck
   - "sox --with-libao --with-libsndfile --with-opencore-amr --with-opusfile"
