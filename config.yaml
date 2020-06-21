@@ -34,6 +34,33 @@ dotfiles:
   f_override.conf:
     src: config/systemd/user/emacs.service.d/override.conf
     dst: ~/.config/systemd/user/emacs.service.d/override.conf
+  f_clisprc.lisp:
+    src: clisprc.lisp
+    dst: ~/.clisprc.lisp
+  f_condarc:
+    src: condarc
+    dst: ~/.condarc
+  f_emacs-profiles.el:
+    src: emacs-profiles.el
+    dst: ~/.emacs-profiles.el
+  d_emacs.d_elpy:
+    src: emacs.d_elpy
+    dst: ~/.emacs.d_elpy
+  d_emacs.d_fresh:
+    src: emacs.d_fresh
+    dst: ~/.emacs.d_fresh
+  d_emacs.d_straight:
+    src: emacs.d_straight
+    dst: ~/.emacs.d_straight
+  f_mdlrc:
+    src: mdlrc
+    dst: ~/.mdlrc
+  f_zprofile:
+    src: zprofile
+    dst: ~/.zprofile
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
 profiles:
   osmium:
     dotfiles:
@@ -47,3 +74,12 @@ profiles:
     - f_terminalrc
     - f_terminalrc.osmium
     - f_override.conf
+    - f_clisprc.lisp
+    - f_condarc
+    - f_emacs-profiles.el
+    - d_emacs.d_elpy
+    - d_emacs.d_fresh
+    - d_emacs.d_straight
+    - f_mdlrc
+    - f_zprofile
+    - f_gitconfig
