@@ -63,5 +63,3 @@
         dest: "{{ home_dir }}/.pyenv"
       when:
         - ansible_distribution != "Archlinux"
-    # - name: install Rust
-    # - name: install Nim

@@ -1,0 +1,32 @@
+---
+- name: install Rust
+  # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  gather_facts: false
+  hosts: localhost
+  tasks:
+    - name: get rustup installer
+      get_url:
+        url: https://sh.rustup.rs
+        dest: /tmp/install_rustup.bash
+    - name: run rustup
+      command:
+        cmd: bash /tmp/install_rustup.bash -y --profile=complete --no-modify-path
+        creates: ~/.rustup/settings.toml
+
+- name: install Nim
+  # curl https://nim-lang.org/choosenim/init.sh -sSf | sh
+  gather_facts: false
+  hosts: localhost
+  tasks:
+    - name: get choosenim installer
+      get_url:
+        url: https://nim-lang.org/choosenim/init.sh
+        dest: /tmp/install_choosenim.bash
+    - name: install choosenim
+      command:
+        cmd: bash /tmp/install_choosenim.bash
+        creates: ~/.nimble/bin/choosenim
+    - name: install latest stable Nim
+      command: choosenim update stable
+      register: choosenim_update_stable
+      changed_when: '"Already up to date at version" not in choosenim_update_stable.stdout'
