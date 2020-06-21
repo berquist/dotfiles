@@ -5,8 +5,12 @@
   vars_files:
     - package_lists.yaml
   vars:
-    # TODO
-    base_dir: /home/eric/repositories
+    home_dir: "{{ lookup('env', 'HOME') }}"
+    base_dir: "{{ home_dir }}/repositories"
+    fonts_dir: "{{ home_dir }}/.local/share/fonts"
+  pre_tasks:
+    - setup:
+        filter: ansible_system
   tasks:
     - name: ensure base exists
       file:
@@ -15,19 +19,19 @@
     - name: get repos from GitHub
       git:
         repo: "https://github.com/{{ item }}.git"
-        # TODO
-        dest: "{{ base_dir }}/{{ item | split('/') | last }}"
+        dest: "{{ base_dir }}/{{ item.split('/')[1] }}"
+      loop: "{{ default_github_repos }}"
     - name: make sure fonts dir exists
       file:
-        path: /home/eric/.local/share/fonts
+        path: "{{ fonts_dir }}"
         state: directory
-      # TODO only when Linux
+      when: ansible_system == "Linux"
     - name: link codeface into fonts dir
       file:
         src: "{{ base_dir }}/codeface"
-        dest: /home/eric/.local/share/fonts/codeface
+        dest: "{{ fonts_dir }}/codeface"
         state: link
-      # TODO only when Linux
+      when: ansible_system == "Linux"
     - name: update font cache
       command: fc-cache
-      # TODO only when Linux
+      when: ansible_system == "Linux"
