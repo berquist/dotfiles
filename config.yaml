@@ -79,6 +79,15 @@ dotfiles:
   f_vmdrc:
     src: vmdrc
     dst: ~/.vmdrc
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+  f_compton.conf:
+    src: compton.conf
+    dst: ~/.compton.conf
+  f_xinitrc:
+    src: xinitrc
+    dst: ~/.xinitrc
 profiles:
   osmium:
     dotfiles:
@@ -107,3 +116,6 @@ profiles:
     - f_p10k.zsh
     - f_zshenv
     - f_vmdrc
+    - f_zshrc
+    - f_compton.conf
+    - f_xinitrc
