@@ -466,6 +466,8 @@ default_packages_popos:
   - zlib1g-dev
 
   # userspace
+  - ansible
+  - ansible-lint
   - direnv
   - discord
   - emacs
