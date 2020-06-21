@@ -1,7 +1,3 @@
 # What are these?
 .saves*
 url
-
-# tmux
-.tmux/plugins
-.tmux/resurrect

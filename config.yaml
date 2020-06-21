@@ -1,6 +1,6 @@
 config:
   banner: false
-  dotpath: .
+  dotpath: dotfiles
   link_dotfile_default: link
   link_on_import: link
   showdiff: true
