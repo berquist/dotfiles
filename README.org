@@ -1,0 +1,16 @@
+* dotfiles
+
+The basic steps are:
+- If on macOS, install Homebrew.
+- Install Ansible.
+- Install Ansible roles from Galaxy.
+- Install software through the package manager.
+- Install GitHub repos and programming languages.
+
+To perform these steps,
+#+begin_src bash
+bash ./bootstrap_package_installation.bash
+# depending on the OS
+ansible-playbook install_packages_{arch,homebrew}.yaml
+ansible-playbook install_all.yaml
+#+end_src
