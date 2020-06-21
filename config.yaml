@@ -70,6 +70,15 @@ dotfiles:
   d_idea:
     src: idea
     dst: ~/.idea
+  f_p10k.zsh:
+    src: p10k.zsh
+    dst: ~/.p10k.zsh
+  f_zshenv:
+    src: zshenv
+    dst: ~/.zshenv
+  f_vmdrc:
+    src: vmdrc
+    dst: ~/.vmdrc
 profiles:
   osmium:
     dotfiles:
@@ -95,3 +104,6 @@ profiles:
     - d_emacs.d
     - d_tmux
     - d_idea
+    - f_p10k.zsh
+    - f_zshenv
+    - f_vmdrc

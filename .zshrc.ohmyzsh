@@ -56,9 +56,10 @@ zinit snippet ~/dotfiles/zfunc/_rustup
 # Python programming language
 zinit ice as"completion" wait'!2' silent
 zinit snippet ~/dotfiles/zfunc/_poetry
-# Prompt
+# Prompt: Spaceship
 # zinit light denysdovhan/spaceship-prompt
 # zinit snippet ~/dotfiles/berquist.spaceship.zsh-theme
+# Prompt: powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 . "${HOME}"/dotfiles/.zshrc
