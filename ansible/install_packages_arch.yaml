@@ -4,24 +4,31 @@
   hosts: all
   vars_files:
     - package_lists.yaml
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
   tasks:
     - name: install packages
-      pacman:
-        name: "{{ default_arch_packages }}"
-      # For debugging
       # pacman:
-      #   name: "{{ item }}"
-      # loop: "{{ default_arch_packages }}"
+      #   name: "{{ default_arch_packages }}"
+      # For debugging
+      pacman:
+        name: "{{ item }}"
+      loop: "{{ default_arch_packages }}"
+      when: ansible_distribution == "Archlinux"
     - name: Create `aur_builder` user
       user:
         name: aur_builder
         group: aur_builder
+      when: ansible_distribution == "Archlinux"
     - name: Ensure `aur_builder` user can use pacman as non-root
       lineinfile:
         path: /etc/sudoers.d/11-install-aur_builder
         line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
         create: yes
         validate: 'visudo -cf %s'
+      when: ansible_distribution == "Archlinux"
 
 - name: bootstrap AUR installation
   gather_facts: false
@@ -29,11 +36,16 @@
   become_user: aur_builder
   roles:
     - kewlfft.aur
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
   tasks:
     - name: install yay
       aur:
         name: yay
         use: makepkg
+      when: ansible_distribution == "Archlinux"
 
 - name: install AUR packages
   gather_facts: false
@@ -43,6 +55,10 @@
     - kewlfft.aur
   vars_files:
     - package_lists.yaml
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
   tasks:
     - name: install AUR packages
       # aur:
@@ -51,3 +67,4 @@
       aur:
         name: "{{ item }}"
       loop: "{{ default_arch_packages_aur }}"
+      when: ansible_distribution == "Archlinux"

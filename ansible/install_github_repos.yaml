@@ -61,5 +61,4 @@
       git:
         repo: https://github.com/pyenv/pyenv.git
         dest: "{{ home_dir }}/.pyenv"
-      when:
-        - ansible_distribution != "Archlinux"
+      when: ansible_distribution != "Archlinux"
