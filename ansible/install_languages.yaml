@@ -17,6 +17,8 @@
   # curl https://nim-lang.org/choosenim/init.sh -sSf | sh
   gather_facts: false
   hosts: localhost
+  vars:
+    choosenim_location: ~/.nimble/bin/choosenim
   tasks:
     - name: get choosenim installer
       get_url:
@@ -25,8 +27,8 @@
     - name: install choosenim
       command:
         cmd: bash /tmp/install_choosenim.bash
-        creates: ~/.nimble/bin/choosenim
+        creates: "{{ choosenim_location }}"
     - name: install latest stable Nim
-      command: ~/.nimble/bin/choosenim update stable
+      command: "{{ choosenim_location }} update stable"
       register: choosenim_update_stable
       changed_when: "'Already up to date at version' not in choosenim_update_stable.stdout"
