@@ -11,14 +11,12 @@ default_arch_packages:
   - libstdc++5
   - linux-headers
   - nvidia
-  - nvidia-libgl
   - opencl-headers
   - opencl-nvidia
   - valgrind
 
   # programming: C/C++
   - clang
-  - clang-analyzer
   - gdb
   - lldb
 
