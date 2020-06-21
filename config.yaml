@@ -3,6 +3,7 @@ config:
   dotpath: .
   link_dotfile_default: link
   link_on_import: link
+  showdiff: true
 dotfiles:
   f_ansible.cfg:
     src: ansible.cfg
