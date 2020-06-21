@@ -1411,6 +1411,7 @@ Modified to remove/disable Racket.
   ;; No work machines (laptop, cluster)
   :if (not (string-match "isi" (shell-command-to-string "hostname -f")))
   :config
+  (setq elcord-client-id '"714056771391717468")
   (setq elcord-refresh-rate 5)
   (setq elcord-use-major-mode-as-main-icon t)
   :init

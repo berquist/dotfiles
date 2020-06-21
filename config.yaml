@@ -61,6 +61,15 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+  d_emacs.d:
+    src: emacs.d
+    dst: ~/.emacs.d
+  d_tmux:
+    src: tmux
+    dst: ~/.tmux
+  d_idea:
+    src: idea
+    dst: ~/.idea
 profiles:
   osmium:
     dotfiles:
@@ -83,3 +92,6 @@ profiles:
     - f_mdlrc
     - f_zprofile
     - f_gitconfig
+    - d_emacs.d
+    - d_tmux
+    - d_idea
