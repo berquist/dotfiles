@@ -11,11 +11,11 @@
   tasks:
     - name: install packages
       # pacman:
-      #   name: "{{ default_arch_packages }}"
+      #   name: "{{ default_packages_arch }}"
       # For debugging
       pacman:
         name: "{{ item }}"
-      loop: "{{ default_arch_packages }}"
+      loop: "{{ default_packages_arch }}"
       when: ansible_distribution == "Archlinux"
     - name: Create `aur_builder` user
       user:
@@ -62,9 +62,9 @@
   tasks:
     - name: install AUR packages
       # aur:
-      #   name: "{{ default_arch_packages_aur }}"
+      #   name: "{{ default_packages_arch_aur }}"
       # For debugging
       aur:
         name: "{{ item }}"
-      loop: "{{ default_arch_packages_aur }}"
+      loop: "{{ default_packages_arch_aur }}"
       when: ansible_distribution == "Archlinux"

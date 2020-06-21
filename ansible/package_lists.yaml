@@ -1,5 +1,5 @@
 ---
-default_arch_packages:
+default_packages_arch:
   # low-level
   - arch-install-scripts
   - picom
@@ -243,7 +243,7 @@ default_arch_packages:
   - ipmitool
   - rrdtool
 
-default_arch_packages_aur:
+default_packages_arch_aur:
   # - lib32-libstdc++5
   # - python-mdanalysis
 
