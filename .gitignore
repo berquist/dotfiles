@@ -1,3 +1,5 @@
+*.html
+
 # What are these?
 .saves*
 url
