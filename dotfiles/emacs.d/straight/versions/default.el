@@ -89,7 +89,6 @@
  ("meson-mode" . "bc6c09136c7f7de6f4b6ce9294e9b998e24b93c7")
  ("nadvice" . "2dfcf614dc5472fb21e48f93d0ebb4546276377f")
  ("nim-mode" . "16a245e4974d21a6e9e7163e7fbfb50a0bd89f99")
- ("org" . "3c4cb7b296c78aafb0d6302a4075f1f1fa1c7e1c")
  ("no-littering" . "74e3d1b62161eca25ce2d7a94b94aebbd8097ef9")
  ("ox-gfm" . "99f93011b069e02b37c9660b8fcb45dab086a07f")
  ("ox-pandoc" . "aa37dc7e94213d4ebedb85c384c1ba35007da18e")

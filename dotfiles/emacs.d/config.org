@@ -742,6 +742,9 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (not (equal lang "latex")))
 
 (use-package org
+  ;; Give up on trying to use the latest one, which doesn't load properly with
+  ;; straight.
+  :straight (org :type built-in)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture))
@@ -942,7 +945,7 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 #+begin_src emacs-lisp
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
-  :ensure nil
+  :straight (python :type built-in)
   :hook (python-mode . lsp-deferred)
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
