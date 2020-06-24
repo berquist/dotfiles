@@ -26,7 +26,7 @@
         dest: /tmp/install_choosenim.bash
     - name: install choosenim
       command:
-        cmd: bash /tmp/install_choosenim.bash
+        cmd: bash /tmp/install_choosenim.bash -y
         creates: "{{ choosenim_location }}"
     - name: install latest stable Nim
       command: "{{ choosenim_location }} update stable"
