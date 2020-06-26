@@ -478,4 +478,6 @@ default_packages_popos:
   - python3-pip
   - shellcheck
   - subversion
+  - thunderbird
+  - thunderbird-gnome-support
   - tmux
