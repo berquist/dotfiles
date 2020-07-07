@@ -1,6 +1,7 @@
 ---
 # These have logic that works standalone.
-- import_playbook: install_anaconda.yaml
+# FIXME Don't install Anaconda right now, since its location isn't correct
+# - import_playbook: install_anaconda.yaml
 - import_playbook: install_github_repos.yaml
 - import_playbook: install_languages.yaml
 
