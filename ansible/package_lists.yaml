@@ -481,3 +481,4 @@ default_packages_popos:
   - thunderbird
   - thunderbird-gnome-support
   - tmux
+  - transmission-gtk
