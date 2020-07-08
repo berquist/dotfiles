@@ -755,6 +755,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (setq org-babel-tangle-lang-exts '(("python" . "py")
                                      ("emacs-lisp" . "el")
                                      ("elisp" . "el")))
+  (setq org-clock-persist t)
   (setq org-closed-keep-when-no-todo t)
   (setq org-confirm-babel-evaluate nil)
   (setq org-descriptive-links nil)
@@ -812,7 +813,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                       ("\\subsection{%s}" . "\\subsection*{%s}")
                                       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                                       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                                      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))))
+                                      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+  (org-clock-persistence-insinuate))
 (use-package htmlize)
 (use-package ox-gfm
   :after org
