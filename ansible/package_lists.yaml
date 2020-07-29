@@ -475,6 +475,7 @@ default_packages_popos:
   - iotop
   - keychain
   - mosh
+  - nmap
   - python3-pip
   - shellcheck
   - subversion
