@@ -1,5 +1,7 @@
 * dotfiles
 
+Don't forget =--recurse-submodules= when cloning!
+
 The basic steps are:
 - If on macOS, install Homebrew.
 - Install Ansible.
