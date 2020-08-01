@@ -749,8 +749,6 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
          ("C-c c" . org-capture))
   :config
   (setq org-adapt-indentation nil)
-  (setq org-agenda-files '("~/Dropbox/Notes"
-                           "~/Dropbox/research/lab_notebook"))
   (setq org-babel-tangle-lang-exts '(("python" . "py")
                                      ("emacs-lisp" . "el")
                                      ("elisp" . "el")))
