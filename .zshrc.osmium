@@ -8,7 +8,7 @@ export apps="${QCPROGS}"
 
 . /usr/bin/virtualenvwrapper.sh
 
-source /opt/spack/share/spack/setup-env.sh
+source "${HOME}"/data/spack/share/spack/setup-env.sh
 
 source /usr/share/lmod/lmod/init/zsh
 module use "${HOME}/modules/osmium"
