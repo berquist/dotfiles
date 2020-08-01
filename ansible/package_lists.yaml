@@ -471,11 +471,14 @@ default_packages_popos:
   - direnv
   - discord
   - emacs
+  - graphviz
   - htop
   - iotop
   - keychain
   - mosh
   - nmap
+  - openssh-client
+  - openssh-server
   - python3-pip
   - shellcheck
   - subversion
