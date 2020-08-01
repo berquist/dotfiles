@@ -1393,6 +1393,12 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package chapel-mode)
+(use-package coconut-mode
+  :straight (:host github
+             ;; "main" is NickSeagull, alternate (not working) is "padawanphysicist"
+             :repo "NickSeagull/coconut-mode")
+  :init
+  (add-to-list 'auto-mode-alist '("\\.coco$" . coconut-mode)))
 (use-package cuda-mode)
 (use-package dockerfile-mode)
 (use-package graphql-mode)
