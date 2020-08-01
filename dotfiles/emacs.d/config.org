@@ -499,7 +499,6 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 
 * TRAMP
 
-- Set VC backends here, even though I never use =vc-mode=, because this is one way of speeding up TRAMP while still allowing use of =vc-mode=, except for Git.
 - Only set =tramp-verbose= while debugging, otherwise you'll think TRAMP is slow for the wrong reason.
 
 Links:
@@ -759,7 +758,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (setq org-closed-keep-when-no-todo t)
   (setq org-confirm-babel-evaluate nil)
   (setq org-descriptive-links nil)
-  (setq org-directory "~/Dropbox/Notes")
+  (setq org-duration-format 'h:mm)
   (setq org-edit-src-content-indentation 0)
   (setq org-export-backends '(ascii html icalendar latex md))
   (setq org-export-dispatch-use-expert-ui t)
