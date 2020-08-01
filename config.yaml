@@ -95,6 +95,9 @@ dotfiles:
   f_nvimrc:
     src: nvimrc
     dst: ~/.nvimrc
+  f_emacsclient.desktop:
+    src: local/share/applications/emacsclient.desktop
+    dst: ~/.local/share/applications/emacsclient.desktop
 profiles:
   osmium:
     dotfiles:
@@ -128,6 +131,7 @@ profiles:
     - f_xinitrc
     - f_pdbrc
     - f_nvimrc
+    - f_emacsclient.desktop
   pop-os:
     dotfiles:
     - d_emacs.d
