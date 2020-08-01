@@ -121,7 +121,7 @@
  ("slime" . "5f48c8c1f3c1538cccc155268d304172e6339aa7")
  ("sparql-mode" . "62f198256453265af48bef3a0207e80143fbff1e")
  ("spinner" . "2daa167bec1c7566d662d48613a94453536b524a")
- ("straight.el" . "5d046ad09413f3aba6198229e392cdd3f07e77ee")
+ ("straight.el" . "55e9a7bfed934df8e93c9552ad5802b6b7e60d63")
  ("swiper" . "c6b60d34ac37bf4d91a25f16d22e528f85e06938")
  ("systemd-mode" . "51c148e09a129ddf33d95276aa0e89d4ef6f8dd2")
  ("transient" . "4d44d08e90355a8ef36aaad1f9f79c95de1ce0e9")
