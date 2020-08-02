@@ -90,6 +90,16 @@
           - system
   tags:
     - gnome
+  vars:
+    - power_schema: org.gnome.settings-daemon.plugins.power
+    - power_key: sleep-inactive-ac-timeout
+    - power_value: 0
+  # TODO Theming:
+  # - org.gnome.desktop.interface cursor-theme 'Pop' (May need 'Adwaita' on Arch)
+  # - org.gnome.desktop.interface gtk-theme-theme 'Pop-dark'
+  # - org.gnome.desktop.interface icon-theme 'Pop' (May need 'Adwaita' on Arch)
+  # - org.gnome.desktop.sound theme-name 'Pop'
+  # - org.gnome.desktop.wm.preferences theme 'Pop' (May need 'Adwaita' on Arch)
   tasks:
     # - name: check if gsettings is available before running the config command
     #   # Use an explicit location, just because it's easier.
@@ -99,14 +109,14 @@
     #   register: has_gsettings
     #   when: ansible_system == "Linux"
     - name: get current GDM sleep value
-      command: gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout
+      command: "gsettings get {{ power_schema }} {{ power_key }}"
       changed_when: false
       register: gdm_current_sleep_value
       when:
         - ansible_system == "Linux"
         # - has_gsettings.rc == 0
     - name: disable sleeping for GDM if not already set
-      command: gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+      command: "gsettings set {{ power_schema }} {{ power_key }} {{ power_value }}"
       # notify:
       #   - restart GDM
       when:
