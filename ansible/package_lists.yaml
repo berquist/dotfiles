@@ -2,7 +2,7 @@
 default_packages_arch:
   # low-level
   - arch-install-scripts
-  - picom
+  # - picom
   # - cuda
   - gcc-fortran
   - gdb
@@ -87,7 +87,7 @@ default_packages_arch:
   - python-pip
   - python-pipenv
   - python-pycodestyle
-  - python-pycuda
+  # - python-pycuda
   - python-pydocstyle
   - python-pylint
   - python-pytables
@@ -223,17 +223,20 @@ default_packages_arch:
   - zsh
 
   # GUI-based
+  - chromium
+  - discord
   - firefox
   - firefox-developer-edition
   - gimp
-  - gnome-system-monitor
+  - gnome
+  # - gnome-system-monitor
   - intellij-idea-community-edition
   - jmol
   - meld
   - pycharm-community-edition
   - pymol
-  - ristretto
-  - thunar-archive-plugin
+  # - ristretto
+  # - thunar-archive-plugin
   - transmission-cli
   - transmission-remote-gtk
   - virtualbox
@@ -285,7 +288,7 @@ default_packages_arch_aur:
   - python-pyfiglet
   - python-pylatex-git
   - python-memory-profiler
-  - python-numba
+  # - python-numba
   - python-ordered-set
   - python-pdbpp
   - python-pythonpy
@@ -314,9 +317,8 @@ default_packages_arch_aur:
 
   # GUI tools
   # - avogadro-git
-  - discord-canary
-  - dropbox
-  - fftw2
+  # - dropbox
+  # - fftw2
   - figlet-fonts
   # - libgfortran6
   - lmod
@@ -331,8 +333,8 @@ default_packages_arch_aur:
   - yay
 
   # other
-  - dftbplus
-  - gamess
+  # - dftbplus
+  # - gamess
 
 default_packages_linuxbrew:
   - fd
