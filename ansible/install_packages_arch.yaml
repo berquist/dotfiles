@@ -17,6 +17,9 @@
         name: "{{ item }}"
       loop: "{{ default_packages_arch }}"
       when: ansible_distribution == "Archlinux"
+    - name: Create `aur_builder` group
+      group:
+        name: aur_builder
     - name: Create `aur_builder` user
       user:
         name: aur_builder

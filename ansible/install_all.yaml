@@ -56,13 +56,13 @@
           - distribution
           - system
   tasks:
-    - name: enable and start Dropbox
-      systemd:
-        name: dropbox
-        state: started
-        enabled: true
-        scope: user
-      when: ansible_distribution == "Archlinux"
+    # - name: enable and start Dropbox
+    #   systemd:
+    #     name: dropbox
+    #     state: started
+    #     enabled: true
+    #     scope: user
+    #   when: ansible_distribution == "Archlinux"
     - name: enable and start Emacs daemon
       systemd:
         name: emacs
@@ -113,3 +113,6 @@
   #     service:
   #       name: gdm
   #       state: restarted
+
+# - name: set keyboard layout
+# TODO localectl --no-convert set-x11-keymap "" "" "" caps:ctrl_modifier

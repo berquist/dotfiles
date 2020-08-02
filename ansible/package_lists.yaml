@@ -3,16 +3,16 @@ default_packages_arch:
   # low-level
   - arch-install-scripts
   - picom
-  - cuda
+  # - cuda
   - gcc-fortran
   - gdb
   - lib32-glibc
-  - libclc
+  # - libclc
   - libstdc++5
   - linux-headers
-  - nvidia
-  - opencl-headers
-  - opencl-nvidia
+  # - nvidia
+  # - opencl-headers
+  # - opencl-nvidia
   - valgrind
 
   # programming: C/C++
@@ -81,7 +81,7 @@ default_packages_arch:
   - python-opengl
   - python-openpyxl
   - python-pandas
-  - python-periodictable
+  # - python-periodictable
   - python-pillow
   - python-pint
   - python-pip
@@ -126,7 +126,7 @@ default_packages_arch:
   # - emacs
 
   # groups
-  - xfce4
+  # - xfce4
   - texlive-most
 
   # command-line tools and general libraries
@@ -155,10 +155,9 @@ default_packages_arch:
   - diffoscope
   - docker
   - dos2unix
-  - dotdrop
   - doxygen
   # - eigen
-  - eigen2
+  # - eigen2
   - exa
   - fd
   - freeimage
@@ -168,7 +167,7 @@ default_packages_arch:
   - gnuplot
   - gsl
   - hdf5
-  - hub
+  # - hub
   - hugo
   - keybase
   - keybase-gui
@@ -249,20 +248,20 @@ default_packages_arch_aur:
 
   # Programming: C++
   - armadillo
-  - blitz
+  # - blitz
   - cpplint
   # - pgi-compilers
 
   # Programming: Fortran
   - fortran-language-server
-  - ftnchek
+  # - ftnchek
 
   # Programming: JVM
   - kotlin-language-server
-  - ktlint
+  # - ktlint
 
   # Programming: Lisp/Scheme
-  - carp-git
+  # - carp-git
   - chez-scheme-git
   - chibi-scheme-git
   - hy-git
@@ -277,14 +276,15 @@ default_packages_arch_aur:
   - pyre-check-bin
   - python-algopy
   - python-ase
-  - python-asv
+  # - python-asv
   - python-autograd
+  # - python-cupy
   - python-deepdiff
   - python-jax
   - python-mmh3
   - python-pyfiglet
   - python-pylatex-git
-  - python-memory_profiler
+  - python-memory-profiler
   - python-numba
   - python-ordered-set
   - python-pdbpp
@@ -301,6 +301,7 @@ default_packages_arch_aur:
   # command-line tools
   - cask
   - direnv
+  - dotdrop
   - grace
   - multimarkdown
   - pipman-git
@@ -309,7 +310,7 @@ default_packages_arch_aur:
   - watchman
 
   # SLURM
-  - slurm-llnl
+  # - slurm-llnl
 
   # GUI tools
   # - avogadro-git
@@ -317,13 +318,11 @@ default_packages_arch_aur:
   - dropbox
   - fftw2
   - figlet-fonts
-  - haguichi
   # - libgfortran6
   - lmod
-  - logmein-hamachi
   # - molden
-  - pandoc-bin
-  - shellcheck-static
+  # - pandoc-bin
+  # - shellcheck-static
   - slack-desktop
   - symlinks
   - tmux-git

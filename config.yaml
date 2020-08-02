@@ -102,6 +102,20 @@ dotfiles:
     src: Xdefaults
     dst: ~/.Xdefaults
 profiles:
+  beryllium:
+    dotfiles:
+    - d_emacs.d
+    - d_tmux
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_condarc
+    - f_gitconfig
+    - f_mdlrc
+    - f_p10k.zsh
+    - f_tmux.conf
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
   osmium:
     dotfiles:
     - f_ansible.cfg
