@@ -1,0 +1,15 @@
+- name: enable and start system services
+  gather_facts: false
+  hosts: localhost
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
+          - system
+  tasks:
+    - name: enable and start SSH server (Linux)
+      systemd:
+        name: sshd
+        state: started
+        enabled: true
+      when: ansible_system == "Linux"

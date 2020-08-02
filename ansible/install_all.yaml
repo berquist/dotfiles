@@ -17,6 +17,8 @@
         gather_subset:
           - distribution
           - system
+  tags:
+    - dotdrop
   tasks:
     - name: install dotdrop dependencies
       command: python3 -m pip install --user -r ~/dotfiles/dotdrop/requirements.txt
@@ -45,7 +47,7 @@
       changed_when: "'0 dotfile(s) installed.' not in deploy_private_notarch.stdout"
       when: ansible_distribution != "Archlinux"
 
-- name: enable and start services
+- name: enable and start user services
   gather_facts: false
   hosts: localhost
   pre_tasks:
@@ -54,12 +56,6 @@
           - distribution
           - system
   tasks:
-    # - name: enable and start SSH server (Arch)
-    #   systemd:
-    #     name: sshd
-    #     state: started
-    #     enabled: true
-    #   # TODO this isn't user scope!
     - name: enable and start Dropbox
       systemd:
         name: dropbox
