@@ -98,6 +98,9 @@ dotfiles:
   f_emacsclient.desktop:
     src: local/share/applications/emacsclient.desktop
     dst: ~/.local/share/applications/emacsclient.desktop
+  f_xdefaults:
+    src: Xdefaults
+    dst: ~/.Xdefaults
 profiles:
   osmium:
     dotfiles:
@@ -147,6 +150,7 @@ profiles:
     - f_zprofile
     - f_zshenv
     - f_zshrc
+    - f_xdefaults
   sodium.local:
     dotfiles:
     - d_emacs.d
