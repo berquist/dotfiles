@@ -324,8 +324,10 @@ default_packages_arch_aur:
   - lmod
   # - molden
   # - pandoc-bin
+  - pop-gtk-theme
   # - shellcheck-static
   - slack-desktop
+  - spotify
   - symlinks
   - tmux-git
   - ttf-ms-fonts

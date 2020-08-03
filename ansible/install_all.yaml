@@ -94,12 +94,6 @@
     - power_schema: org.gnome.settings-daemon.plugins.power
     - power_key: sleep-inactive-ac-timeout
     - power_value: 0
-  # TODO Theming:
-  # - org.gnome.desktop.interface cursor-theme 'Pop' (May need 'Adwaita' on Arch)
-  # - org.gnome.desktop.interface gtk-theme-theme 'Pop-dark'
-  # - org.gnome.desktop.interface icon-theme 'Pop' (May need 'Adwaita' on Arch)
-  # - org.gnome.desktop.sound theme-name 'Pop'
-  # - org.gnome.desktop.wm.preferences theme 'Pop' (May need 'Adwaita' on Arch)
   tasks:
     # - name: check if gsettings is available before running the config command
     #   # Use an explicit location, just because it's easier.
@@ -132,6 +126,24 @@
   #     service:
   #       name: gdm
   #       state: restarted
+
+- name: apply dconf settings
+  tags:
+    - gnome
+  hosts: localhost
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - system
+  vars_files:
+    - dconf_settings.yaml
+  tasks:
+    - include_tasks: apply_dconf_settings.yaml
+      loop: "{{ dconf_settings }}"
+      loop_control:
+        loop_var: dconf_setting_triple
+      when:
+        - ansible_system == "Linux"
 
 # - name: set keyboard layout
 # TODO localectl --no-convert set-x11-keymap "" "" "" caps:ctrl_modifier
