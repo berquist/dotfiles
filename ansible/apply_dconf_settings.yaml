@@ -1,0 +1,10 @@
+---
+- name: get current dconf value
+  command: "gsettings get {{ dconf_setting_triple[0] }} {{ dconf_setting_triple[1] }}"
+  changed_when: false
+  register: dconf_current_value
+
+- name: apply dconf value if not already set
+  command: "gsettings set {{ dconf_setting_triple[0] }} {{ dconf_setting_triple[1] }} {{ dconf_setting_triple[2] }}"
+  when:
+    - dconf_current_value.stdout != dconf_setting_triple[2]
