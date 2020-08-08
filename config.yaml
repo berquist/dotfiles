@@ -5,45 +5,9 @@ config:
   link_on_import: link
   showdiff: true
 dotfiles:
-  f_ansible.cfg:
-    src: ansible.cfg
-    dst: ~/.ansible.cfg
-  f_cuby4:
-    src: cuby4
-    dst: ~/.cuby4
-  f_pylintrc:
-    src: pylintrc
-    dst: ~/.pylintrc
-  f_sbclrc:
-    src: sbclrc
-    dst: ~/.sbclrc
-  f_aspell.en.prepl:
-    src: aspell.en.prepl
-    dst: ~/.aspell.en.prepl
-  f_aspell.en.pws:
-    src: aspell.en.pws
-    dst: ~/.aspell.en.pws
-  f_tmux.conf:
-    src: tmux.conf
-    dst: ~/.tmux.conf
-  f_terminalrc:
-    src: config/xfce4/terminal/terminalrc
-    dst: ~/.config/xfce4/terminal/terminalrc
-  f_terminalrc.osmium:
-    src: config/xfce4/terminal/terminalrc.osmium
-    dst: ~/.config/xfce4/terminal/terminalrc.osmium
-  f_override.conf:
-    src: config/systemd/user/emacs.service.d/override.conf
-    dst: ~/.config/systemd/user/emacs.service.d/override.conf
-  f_clisprc.lisp:
-    src: clisprc.lisp
-    dst: ~/.clisprc.lisp
-  f_condarc:
-    src: condarc
-    dst: ~/.condarc
-  f_emacs-profiles.el:
-    src: emacs-profiles.el
-    dst: ~/.emacs-profiles.el
+  d_emacs.d:
+    src: emacs.d
+    dst: ~/.emacs.d
   d_emacs.d_elpy:
     src: emacs.d_elpy
     dst: ~/.emacs.d_elpy
@@ -53,54 +17,90 @@ dotfiles:
   d_emacs.d_straight:
     src: emacs.d_straight
     dst: ~/.emacs.d_straight
-  f_mdlrc:
-    src: mdlrc
-    dst: ~/.mdlrc
-  f_zprofile:
-    src: zprofile
-    dst: ~/.zprofile
-  f_gitconfig:
-    src: gitconfig
-    dst: ~/.gitconfig
-  d_emacs.d:
-    src: emacs.d
-    dst: ~/.emacs.d
-  d_tmux:
-    src: tmux
-    dst: ~/.tmux
   d_idea:
     src: idea
     dst: ~/.idea
-  f_p10k.zsh:
-    src: p10k.zsh
-    dst: ~/.p10k.zsh
-  f_zshenv:
-    src: zshenv
-    dst: ~/.zshenv
-  f_vmdrc:
-    src: vmdrc
-    dst: ~/.vmdrc
-  f_zshrc:
-    src: zshrc
-    dst: ~/.zshrc
+  d_tmux:
+    src: tmux
+    dst: ~/.tmux
+  f_ansible.cfg:
+    src: ansible.cfg
+    dst: ~/.ansible.cfg
+  f_aspell.en.prepl:
+    src: aspell.en.prepl
+    dst: ~/.aspell.en.prepl
+  f_aspell.en.pws:
+    src: aspell.en.pws
+    dst: ~/.aspell.en.pws
+  f_clisprc.lisp:
+    src: clisprc.lisp
+    dst: ~/.clisprc.lisp
   f_compton.conf:
     src: compton.conf
     dst: ~/.compton.conf
-  f_xinitrc:
-    src: xinitrc
-    dst: ~/.xinitrc
-  f_pdbrc:
-    src: pdbrc
-    dst: ~/.pdbrc
-  f_nvimrc:
-    src: nvimrc
-    dst: ~/.nvimrc
+  f_condarc:
+    src: condarc
+    dst: ~/.condarc
+  f_cuby4:
+    src: cuby4
+    dst: ~/.cuby4
+  f_emacs-profiles.el:
+    src: emacs-profiles.el
+    dst: ~/.emacs-profiles.el
   f_emacsclient.desktop:
     src: local/share/applications/emacsclient.desktop
     dst: ~/.local/share/applications/emacsclient.desktop
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+  f_mdlrc:
+    src: mdlrc
+    dst: ~/.mdlrc
+  f_nvimrc:
+    src: nvimrc
+    dst: ~/.nvimrc
+  f_override.conf:
+    src: config/systemd/user/emacs.service.d/override.conf
+    dst: ~/.config/systemd/user/emacs.service.d/override.conf
+  f_p10k.zsh:
+    src: p10k.zsh
+    dst: ~/.p10k.zsh
+  f_pdbrc:
+    src: pdbrc
+    dst: ~/.pdbrc
+  f_pylintrc:
+    src: pylintrc
+    dst: ~/.pylintrc
+  f_sbclrc:
+    src: sbclrc
+    dst: ~/.sbclrc
+  f_terminalrc:
+    src: config/xfce4/terminal/terminalrc
+    dst: ~/.config/xfce4/terminal/terminalrc
+  f_terminalrc.osmium:
+    src: config/xfce4/terminal/terminalrc.osmium
+    dst: ~/.config/xfce4/terminal/terminalrc.osmium
+  f_tmux.conf:
+    src: tmux.conf
+    dst: ~/.tmux.conf
+  f_vmdrc:
+    src: vmdrc
+    dst: ~/.vmdrc
   f_xdefaults:
     src: Xdefaults
     dst: ~/.Xdefaults
+  f_xinitrc:
+    src: xinitrc
+    dst: ~/.xinitrc
+  f_zprofile:
+    src: zprofile
+    dst: ~/.zprofile
+  f_zshenv:
+    src: zshenv
+    dst: ~/.zshenv
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
 profiles:
   beryllium:
     dotfiles:
@@ -118,37 +118,37 @@ profiles:
     - f_zshrc
   osmium:
     dotfiles:
-    - f_ansible.cfg
-    - f_cuby4
-    - f_pylintrc
-    - f_sbclrc
-    - f_aspell.en.prepl
-    - f_aspell.en.pws
-    - f_tmux.conf
-    - f_terminalrc
-    - f_terminalrc.osmium
-    - f_override.conf
-    - f_clisprc.lisp
-    - f_condarc
-    - f_emacs-profiles.el
+    - d_emacs.d
     - d_emacs.d_elpy
     - d_emacs.d_fresh
     - d_emacs.d_straight
-    - f_mdlrc
-    - f_zprofile
-    - f_gitconfig
-    - d_emacs.d
-    - d_tmux
     - d_idea
-    - f_p10k.zsh
-    - f_zshenv
-    - f_vmdrc
-    - f_zshrc
+    - d_tmux
+    - f_ansible.cfg
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_clisprc.lisp
     - f_compton.conf
-    - f_xinitrc
-    - f_pdbrc
-    - f_nvimrc
+    - f_condarc
+    - f_cuby4
+    - f_emacs-profiles.el
     - f_emacsclient.desktop
+    - f_gitconfig
+    - f_mdlrc
+    - f_nvimrc
+    - f_override.conf
+    - f_p10k.zsh
+    - f_pdbrc
+    - f_pylintrc
+    - f_sbclrc
+    - f_terminalrc
+    - f_terminalrc.osmium
+    - f_tmux.conf
+    - f_vmdrc
+    - f_xinitrc
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
   pop-os:
     dotfiles:
     - d_emacs.d
@@ -161,10 +161,10 @@ profiles:
     - f_p10k.zsh
     - f_sbclrc
     - f_tmux.conf
+    - f_xdefaults
     - f_zprofile
     - f_zshenv
     - f_zshrc
-    - f_xdefaults
   sodium.local:
     dotfiles:
     - d_emacs.d
