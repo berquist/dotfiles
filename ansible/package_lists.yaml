@@ -2,26 +2,17 @@
 default_packages_arch:
   # low-level
   - arch-install-scripts
-  # - picom
-  # - cuda
   - gcc-fortran
   - gdb
   - lib32-glibc
-  # - libclc
   - libstdc++5
   - linux-headers
-  # - nvidia
-  # - opencl-headers
-  # - opencl-nvidia
   - valgrind
 
   # programming: C/C++
   - clang
   - gdb
   - lldb
-
-  # programming: Crystal
-  - crystal
 
   # programming: Julia
   - julia
@@ -32,6 +23,165 @@ default_packages_arch:
   - jdk-openjdk
   - openjdk8-src
   - openjdk-src
+
+  # programming: Python
+  # If something is commented out here, then it's probably a split
+  # package.
+
+  # fonts
+  - cowsay
+  - figlet
+  - ttf-inconsolata
+  - ttf-sazanami
+
+  # editors
+  # Prefer `emacs27-git` from AUR
+  # - emacs
+
+  # groups
+  - gnome
+  # - xfce4
+  - texlive-most
+
+  # command-line tools and general libraries
+  - ansible
+  - ansible-lint
+  - arb
+  - arrayfire
+  - asp
+  - aspell
+  - aspell-en
+  - atool
+  - bash-language-server
+  - boost
+  - boost-libs
+  - checkbashisms
+  - cmake
+  - colordiff
+  - cpio
+  - cppcheck
+  - cronie
+  - ctags
+  - diffoscope
+  - dos2unix
+  - doxygen
+  # - eigen
+  # - eigen2
+  - exa
+  - fd
+  - freeimage
+  - gist
+  - git
+  - git-lfs
+  - github-cli
+  - gnuplot
+  - gsl
+  - hdf5
+  - keychain
+  - htop
+  - iotop
+  - jq
+  - languagetool
+  - lesspipe
+  - lftp
+  - lsb-release
+  - lzip
+  - markdown
+  - mlocate
+  - mosh
+  - mpdecimal
+  - namcap
+  - neofetch
+  # - openbabel
+  - openmpi
+  - openssh
+  - pacman-contrib
+  - parallel
+  - pbzip2
+  - perl-term-readkey # git-svn
+  - proselint
+  - pybind11
+  - rclone
+  - reflector
+  - restic
+  - rlwrap
+  - screenfetch
+  - strace
+  - subversion
+  - swig
+  - sysstat
+  - tcsh
+  # Prefer `tmux-git` from the AUR.
+  # - tmux
+  - tree
+  - unrar
+  - vagrant
+  - vlc
+  - wget
+  - words
+  - xsel
+  - xclip
+  - yamllint
+  - zerotier-one
+  - zsh
+
+  # GUI-based
+  - chromium
+  - discord
+  - feh
+  - firefox
+  - firefox-developer-edition
+  - gimp
+  - jmol
+  - meld
+
+default_packages_arch_aur:
+  # - lib32-libstdc++5
+  # - python-mdanalysis
+
+  # Programming: C++
+  - armadillo
+  # - blitz
+  - cpplint
+  # - pgi-compilers
+
+  # Programming: Fortran
+  - fortran-language-server
+  # - ftnchek
+
+  # command-line tools
+  - direnv
+  - dotdrop
+  - pipman-git
+  - wakatime
+
+  # GUI tools
+  - fftw2
+  - figlet-fonts
+  - lmod
+  - pop-gtk-theme
+  - spotify
+  - symlinks
+  - tmux-git
+  - ttf-ms-fonts
+  - yay
+
+packages_beryllium:
+
+packages_beryllium_aur:
+
+packages_osmium:
+  # low-level
+  - cuda
+  - libclc
+  - nvidia
+  - opencl-headers
+  - opencl-nvidia
+
+  # programming: Crystal
+  - crystal
+
+  # programming: JVM
   - kotlin
   - scala
 
@@ -44,9 +194,6 @@ default_packages_arch:
   - racket
   # - racket-docs
   - sbcl
-
-  # programming: Lua
-  - lua51
 
   # programming: Python
   # If something is commented out here, then it's probably a split
@@ -81,13 +228,13 @@ default_packages_arch:
   - python-opengl
   - python-openpyxl
   - python-pandas
-  # - python-periodictable
   - python-pillow
   - python-pint
   - python-pip
   - python-pipenv
+  - python-poetry
   - python-pycodestyle
-  # - python-pycuda
+  - python-pycuda
   - python-pydocstyle
   - python-pylint
   - python-pytables
@@ -110,155 +257,35 @@ default_packages_arch:
   - jupyter-nbconvert
   - autopep8
   - yapf
-  - poetry
 
   # programming: Ruby
   - ruby
-
-  # fonts
-  - cowsay
-  - figlet
-  - ttf-inconsolata
-  - ttf-sazanami
-
-  # editors
-  # Prefer `emacs27-git` from AUR
-  # - emacs
-
-  # groups
-  # - xfce4
-  - texlive-most
-
-  # command-line tools and general libraries
-  - ack
-  - ansible
-  - ansible-lint
-  - arb
-  - arrayfire
-  - asp
-  - aspell
-  - aspell-en
-  - atool
-  - bash-language-server
-  # - blas
-  - boost
-  - boost-libs
-  # - cblas
-  - checkbashisms
-  - cmake
-  - colordiff
-  - cpio
-  - cppcheck
-  - cronie
-  - ctags
-  - devtools
-  - diffoscope
-  - docker
-  - dos2unix
-  - doxygen
-  # - eigen
-  # - eigen2
-  - exa
-  - fd
-  - freeimage
-  - gist
-  - git
-  - git-lfs
-  - gnuplot
-  - gsl
-  - hdf5
-  # - hub
-  - hugo
-  - keybase
-  - keybase-gui
-  - keychain
-  - htop
-  - iotop
-  - jq
-  - languagetool
-  # - lapack
-  - lesspipe
-  - lftp
-  - lsb-release
-  - lzip
-  - markdown
-  - mercurial
-  - mlocate
-  - mosh
-  - mpdecimal
-  - namcap
-  - netcdf
-  - netcdf-fortran
-  - obs-studio
-  # - openbabel
-  - openmpi
-  - openssh
-  - pacman-contrib
-  - parallel
-  - pbzip2
-  - perl-term-readkey # git-svn
-  - proselint
-  - pybind11
-  - python-language-server
-  - rclone
-  - reflector
-  - restic
-  - rlwrap
-  - strace
-  - subversion
-  - swig
-  - sysstat
-  - tcsh
-  # - tmux
-  - tree
-  - unrar
-  - vagrant
-  - vlc
-  - wget
-  - words
-  - xsel
-  - xclip
-  - yamllint
-  - zerotier-one
-  - zsh
-
-  # GUI-based
-  - chromium
-  - discord
-  - firefox
-  - firefox-developer-edition
-  - gimp
-  - gnome
-  # - gnome-system-monitor
-  - intellij-idea-community-edition
-  - jmol
-  - meld
-  - pycharm-community-edition
-  - pymol
-  # - ristretto
-  # - thunar-archive-plugin
-  - transmission-cli
-  - transmission-remote-gtk
-  - virtualbox
 
   - # SLURM
   - ipmitool
   - rrdtool
 
-default_packages_arch_aur:
-  # - lib32-libstdc++5
-  # - python-mdanalysis
+  # command-line tools and general libraries
+  - ack
+  - devtools
+  - docker
+  - hugo
+  - keybase
+  - keybase-gui
+  - netcdf
+  - netcdf-fortran
+  - obs-studio
+  - python-language-server
 
-  # Programming: C++
-  - armadillo
-  # - blitz
-  - cpplint
-  # - pgi-compilers
+  # GUI-based
+  - intellij-idea-community-edition
+  - pycharm-community-edition
+  - pymol
+  - transmission-cli
+  - transmission-remote-gtk
+  - virtualbox
 
-  # Programming: Fortran
-  - fortran-language-server
-  # - ftnchek
-
+packages_osmium_aur:
   # Programming: JVM
   - kotlin-language-server
   # - ktlint
@@ -279,20 +306,20 @@ default_packages_arch_aur:
   - pyre-check-bin
   - python-algopy
   - python-ase
-  # - python-asv
+  - python-asv
   - python-autograd
-  # - python-cupy
+  - python-cupy
   - python-deepdiff
   - python-jax
   - python-mmh3
+  - python-periodictable
   - python-pyfiglet
   - python-pylatex-git
   - python-memory-profiler
-  # - python-numba
+  - python-numba
   - python-ordered-set
   - python-pdbpp
   - python-pythonpy
-  # - python-unp
   - python-versioneer
   - snakemake
 
@@ -301,42 +328,29 @@ default_packages_arch_aur:
   - ruby-travis
   - travis-lint
 
+  # SLURM
+  - slurm-llnl
+
   # command-line tools
   - cask
-  - direnv
-  - dotdrop
   - grace
   - multimarkdown
-  - pipman-git
   - swig2
-  - wakatime
   - watchman
-
-  # SLURM
-  # - slurm-llnl
 
   # GUI tools
   # - avogadro-git
-  # - dropbox
-  # - fftw2
-  - figlet-fonts
+  - dropbox
   # - libgfortran6
-  - lmod
-  # - molden
-  # - pandoc-bin
-  - pop-gtk-theme
-  # - shellcheck-static
+  - molden
+  - pandoc-bin
+  - shellcheck-static
   - slack-desktop
-  - spotify
-  - symlinks
-  - tmux-git
-  - ttf-ms-fonts
   - visual-studio-code-bin
-  - yay
 
   # other
-  # - dftbplus
-  # - gamess
+  - dftbplus
+  - gamess
 
 default_packages_linuxbrew:
   - fd
