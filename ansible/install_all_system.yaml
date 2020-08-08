@@ -13,3 +13,43 @@
         state: started
         enabled: true
       when: ansible_system == "Linux"
+
+# See https://askubuntu.com/a/1251037 and https://askubuntu.com/a/191013.
+- name: disable sleeping for Gnome Display Manager (GDM)
+  gather_facts: false
+  hosts: localhost
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - system
+  tags:
+    - gnome
+  vars:
+    - power_schema: org.gnome.settings-daemon.plugins.power
+    - power_key: sleep-inactive-ac-timeout
+    - power_value: 0
+  tasks:
+    # - name: check if gsettings is available before running the config command
+    #   # Use an explicit location, just because it's easier.
+    #   file:
+    #     path: /usr/bin/gsettings
+    #     state: file
+    #   register: has_gsettings
+    #   when: ansible_system == "Linux"
+    - name: get current GDM sleep value
+      command: "gsettings get {{ power_schema }} {{ power_key }}"
+      changed_when: false
+      register: gdm_current_sleep_value
+      when:
+        - ansible_system == "Linux"
+        # - has_gsettings.rc == 0
+    - name: disable sleeping for GDM if not already set
+      command: "gsettings set {{ power_schema }} {{ power_key }} {{ power_value }}"
+      register: gdm_disabled_sleep
+      when:
+        - ansible_system == "Linux"
+        # - has_gsettings.rc == 0
+        - gdm_current_sleep_value.stdout != "0"
+    # - name: determine if GDM was running
+    # TODO
+    # - name: restart GDM if config changed and it was running
