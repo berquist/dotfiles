@@ -8,8 +8,9 @@
     - setup:
         gather_subset:
           - distribution
+          - hostname
   tasks:
-    - name: install packages
+    - name: install common packages
       # pacman:
       #   name: "{{ default_packages_arch }}"
       # For debugging
@@ -17,6 +18,11 @@
         name: "{{ item }}"
       loop: "{{ default_packages_arch }}"
       when: ansible_distribution == "Archlinux"
+    - name: install hostname-specific packages
+      pacman:
+        name: "{{ item }}"
+      loop: "{{ lookup('vars', 'packages_' + ansible_hostname) }}"
+      when: ansible_distribution == "ArchLinux"
     - name: Create `aur_builder` group
       group:
         name: aur_builder
@@ -62,6 +68,7 @@
     - setup:
         gather_subset:
           - distribution
+          - hostname
   tasks:
     - name: install AUR packages
       # aur:
@@ -71,3 +78,8 @@
         name: "{{ item }}"
       loop: "{{ default_packages_arch_aur }}"
       when: ansible_distribution == "Archlinux"
+    - name: install hostname-specific packages
+      pacman:
+        name: "{{ item }}"
+      loop: "{{ lookup('vars', 'packages_' + ansible_hostname + '_aur') }}"
+      when: ansible_distribution == "ArchLinux"
