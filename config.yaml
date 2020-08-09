@@ -71,6 +71,9 @@ dotfiles:
   f_pylintrc:
     src: pylintrc
     dst: ~/.pylintrc
+  f_rc:
+    src: ssh/rc
+    dst: ~/.ssh/rc
   f_sbclrc:
     src: sbclrc
     dst: ~/.sbclrc
@@ -140,6 +143,7 @@ profiles:
     - f_p10k.zsh
     - f_pdbrc
     - f_pylintrc
+    - f_rc
     - f_sbclrc
     - f_terminalrc
     - f_terminalrc.osmium
