@@ -45,8 +45,8 @@ dotfiles:
     src: cuby4
     dst: ~/.cuby4
   f_direnvrc:
-    src: direnvrc
-    dst: ~/.direnvrc
+    src: config/direnv/direnvrc
+    dst: ~/.config/direnv/direnvrc
   f_emacs-profiles.el:
     src: emacs-profiles.el
     dst: ~/.emacs-profiles.el
