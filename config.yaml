@@ -44,6 +44,9 @@ dotfiles:
   f_cuby4:
     src: cuby4
     dst: ~/.cuby4
+  f_direnvrc:
+    src: direnvrc
+    dst: ~/.direnvrc
   f_emacs-profiles.el:
     src: emacs-profiles.el
     dst: ~/.emacs-profiles.el
@@ -134,6 +137,7 @@ profiles:
     - f_compton.conf
     - f_condarc
     - f_cuby4
+    - f_direnvrc
     - f_emacs-profiles.el
     - f_emacsclient.desktop
     - f_gitconfig
