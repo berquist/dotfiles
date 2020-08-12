@@ -35,8 +35,7 @@ default_packages_arch:
   - ttf-sazanami
 
   # editors
-  # Prefer `emacs27-git` from AUR
-  # - emacs
+  - emacs
 
   # groups
   - gnome
