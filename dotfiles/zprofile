@@ -12,13 +12,3 @@ fi
 if [[ "$TERM" != "" ]]; then
     stty -ixon
 fi
-
-{%@@ if profile == "osmium" @@%}
-# Make Spack available to login shells. It doesn't go in zshenv because tmux
-# shells don't like that.
-# source "${HOME}"/data/spack/share/spack/setup-env.sh
-{%@@ elif profile == "pop-os" @@%}
-# Make Spack available to login shells. It doesn't go in zshenv because tmux
-# shells don't like that.
-source ~/repositories/spack/share/spack/setup-env.sh
-{%@@ endif @@%}

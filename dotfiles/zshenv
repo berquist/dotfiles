@@ -56,3 +56,10 @@ fi
 #     eval $(keychain --quiet --nogui --eval --inherit any --systemd --agents ssh id_rsa)
 # fi
 eval $(keychain --quiet --nogui --eval --inherit any --agents ssh id_rsa)
+
+# Spack
+{%@@ if profile == "osmium" @@%}
+. "${HOME}"/data/spack/share/spack/setup-env.sh
+{%@@ elif profile == "pop-os" @@%}
+. "${HOME}"/repositories/spack/share/spack/setup-env.sh
+{%@@ endif @@%}
