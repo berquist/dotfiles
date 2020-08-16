@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-## home laptop
-
-. ~/repositories/spack/share/spack/setup-env.sh

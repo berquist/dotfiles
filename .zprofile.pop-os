@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+## home laptop
+
+# Make Spack available to login shells. It doesn't go in zshenv because tmux
+# shells don't like that.
+source ~/repositories/spack/share/spack/setup-env.sh

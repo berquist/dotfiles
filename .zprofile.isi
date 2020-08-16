@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-export GIT_AUTHOR_EMAIL='berquist@isi.edu'
-export GIT_COMMITTER_EMAIL='berquist@isi.edu'
