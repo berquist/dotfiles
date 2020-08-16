@@ -59,6 +59,9 @@ dotfiles:
   f_mdlrc:
     src: mdlrc
     dst: ~/.mdlrc
+  f_nanorc:
+    src: nanorc
+    dst: ~/.nanorc
   f_nvimrc:
     src: nvimrc
     dst: ~/.nvimrc
@@ -142,6 +145,7 @@ profiles:
     - f_emacsclient.desktop
     - f_gitconfig
     - f_mdlrc
+    - f_nanorc
     - f_nvimrc
     - f_override.conf
     - f_p10k.zsh
@@ -166,6 +170,7 @@ profiles:
     - f_condarc
     - f_gitconfig
     - f_mdlrc
+    - f_nanorc
     - f_p10k.zsh
     - f_sbclrc
     - f_tmux.conf
@@ -182,6 +187,7 @@ profiles:
     - f_condarc
     - f_gitconfig
     - f_mdlrc
+    - f_nanorc
     - f_p10k.zsh
     - f_tmux.conf
     - f_zprofile
