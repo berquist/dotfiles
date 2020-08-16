@@ -43,3 +43,10 @@ if [[ -d "${NVM_DIR}" ]]; then
     \. "${NVM_DIR}/nvm.sh"
     \. "${NVM_DIR}/bash_completion"
 fi
+
+# if [[ $(uname) == "Darwin" ]]; then
+#     eval $(keychain --quiet --nogui --eval --inherit any --agents ssh id_rsa)
+# else
+#     eval $(keychain --quiet --nogui --eval --inherit any --systemd --agents ssh id_rsa)
+# fi
+eval $(keychain --quiet --nogui --eval --inherit any --agents ssh id_rsa)
