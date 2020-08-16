@@ -139,11 +139,58 @@ compinit
 . "${HOME}"/dotfiles/functions.bash
 . "${HOME}"/dotfiles/slurm.bash
 
+{%@@ if profile == "osmium" @@%}
+# re-export
+export QCPROGS="${HOME}/data/opt/apps"
+export apps="${QCPROGS}"
 
-machine_specific_file="${HOME}"/dotfiles/.zshrc."$(hostname -s)"
-if [[ -f "${machine_specific_file}" ]]; then
-    . "${machine_specific_file}"
-fi
+. /usr/bin/virtualenvwrapper.sh
+
+source /usr/share/lmod/lmod/init/zsh
+module use "${HOME}/modules/osmium"
+{%@@ elif profile == "sodium.local" @@%}
+## #####################
+## ## Setting Mac OS X
+## ## Terminal.app name.
+## ## This code goes to
+## ## all your ~/.bashrc or
+## ## ~/.bash_profile files.
+## ## Now you can jump from
+## ## machine to machine and
+## ## never get lost.
+## #####################
+
+## -----------------------------
+## -- this runs when you get new
+## -- you get new interactive bash
+## -- shell - the condition is needed
+## -- so it will not interrupt the scp command
+
+if [[ "$-" =~ "i" ]]; then
+    echo -n -e "\033]0;${USER}@${HOSTNAME%%.*}\007";
+fi;
+
+## -----------------------------
+## -- this runs when you logoff
+## -- from a ssh session - it puts
+## -- back previous terminal name;
+
+function ssh() {
+    /usr/bin/ssh "$@";
+    echo -n -e "\033]0;${USER}@${HOSTNAME%%.*}\007";
+}
+
+. ~/dotfiles/aliases_macos.bash
+
+# export MATLAB_ROOT='/Applications/MATLAB_R2012a.app'
+# export MATLAB_BIN="${MATLAB_ROOT}/bin"
+# export PATH="${PATH}:${MATLAB_BIN}"
+
+. /usr/local/opt/lmod/init/zsh
+module use "${HOME}/modules/sodium"
+
+module load python/psi4conda
+{%@@ endif @@%}
 
 eval "$(direnv hook $(basename $SHELL))"
 
