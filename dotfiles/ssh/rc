@@ -1,6 +1,7 @@
 # -*- mode: shell-script -*-
 
-target=~/.ssh/ssh_auth_sock.$HOSTNAME
-if [ ! -S $target ] && [ -S "$SSH_AUTH_SOCK" ]; then
-    ln -sf $(find /tmp -maxdepth 2 -type s -name "agent*" -user $USER -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2) $target
-fi
+# Inspired by 
+# target=/tmp/ssh_auth_sock.${HOSTNAME}.${USER} #.${RANDOM}
+# if [ ! -S $target ] && [ -S "$SSH_AUTH_SOCK" ]; then
+#     ln -sf $(find /tmp -maxdepth 2 -type s -name "agent*" -user $USER -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2) $target
+# fi

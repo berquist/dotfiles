@@ -151,7 +151,6 @@ profiles:
     - f_p10k.zsh
     - f_pdbrc
     - f_pylintrc
-    - f_rc
     - f_sbclrc
     - f_terminalrc
     - f_terminalrc.osmium
