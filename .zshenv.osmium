@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-# export ANACONDA_HOME="/home/eric/.conda"
-export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.3.30"
-
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
-export WORKON_HOME=$HOME/data/virtualenvs

@@ -12,10 +12,16 @@ fi
 . "${HOME}"/dotfiles/path_exports.bash
 
 # Put this early on, so that additions to $PATH take less precedence.
-machine_specific_file="${HOME}"/dotfiles/.zshenv."$(hostname -s)"
-if [[ -f "${machine_specific_file}" ]]; then
-    . "${machine_specific_file}"
-fi
+{%@@ if profile == "osmium" @@%}
+# export ANACONDA_HOME="/home/eric/.conda"
+export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.3.30"
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
+export WORKON_HOME=$HOME/data/virtualenvs
+{%@@ elif profile == "pop-os" @@%}
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+{%@@ endif @@%}
 
 [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
 # pyenv doesn't seem to be interfering with conda
