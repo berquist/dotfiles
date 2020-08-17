@@ -46,6 +46,8 @@
     - name: disable sleeping for GDM if not already set
       command: "gsettings set {{ power_schema }} {{ power_key }} {{ power_value }}"
       register: gdm_disabled_sleep
+      # GNOME is bad
+      failed_when: '"WARNING" in gdm_disabled_sleep.stderr'
       when:
         - ansible_system == "Linux"
         # - has_gsettings.rc == 0
