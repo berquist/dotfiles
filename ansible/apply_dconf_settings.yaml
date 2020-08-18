@@ -5,7 +5,8 @@
   register: gsettings_get
 
 - name: apply dconf value if not already set
-  command: "gsettings set {{ dconf_setting_triple[0] }} {{ dconf_setting_triple[1] }} {{ dconf_setting_triple[2] }}"
+  # https://askubuntu.com/a/311988
+  command: "dbus-launch --exit-with-session gsettings set {{ dconf_setting_triple[0] }} {{ dconf_setting_triple[1] }} {{ dconf_setting_triple[2] }}"
   register: gsettings_set
   # GNOME is bad
   failed_when: '"WARNING" in gsettings_set.stderr'

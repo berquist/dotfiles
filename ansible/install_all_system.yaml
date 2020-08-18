@@ -29,6 +29,8 @@
     - power_key: sleep-inactive-ac-timeout
     - power_value: 0
   tasks:
+    # TODO check if dbus-launch is available
+    #
     # - name: check if gsettings is available before running the config command
     #   # Use an explicit location, just because it's easier.
     #   file:
@@ -44,7 +46,8 @@
         - ansible_system == "Linux"
         # - has_gsettings.rc == 0
     - name: disable sleeping for GDM if not already set
-      command: "gsettings set {{ power_schema }} {{ power_key }} {{ power_value }}"
+      # https://askubuntu.com/a/311988
+      command: "dbus-launch --exit-with-session gsettings set {{ power_schema }} {{ power_key }} {{ power_value }}"
       register: gdm_disabled_sleep
       # GNOME is bad
       failed_when: '"WARNING" in gdm_disabled_sleep.stderr'
