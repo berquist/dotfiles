@@ -1,8 +1,11 @@
 # -*- mode: yaml -*-
 channels:
-  - http://conda.anaconda.org/psi4
+  - psi4
   - conda-forge
+  - openbabel
+  - theochem
   - defaults
 changeps1: false
-channel_priority: strict
+channel_priority: flexible
+pip_interop_enabled: true
 report_errors: true
