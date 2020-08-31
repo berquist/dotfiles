@@ -1280,7 +1280,7 @@ current buffer, return its path, otherwise nil."
   ;; :bind (:map rustic-mode-map ("C-c C-c C-;" . rustic-docstring-around-dwim))
   :config
   (setq rustic-ansi-faces ansi-color-names-vector)
-  (setq rustic-format-on-save t)
+  (setq rustic-format-trigger on-save)
   (setq rustic-indent-method-chain t)
   (setq rustic-lsp-server 'rust-analyzer)
   (defun rustic-docstring-around-dwim ()
