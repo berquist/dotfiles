@@ -945,7 +945,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
   :straight (python :type built-in)
-  :hook (python-mode . lsp-deferred)
   :mode (("\\.ipy\\'" . python-mode))
   :interpreter ("ipython" . python-mode)
   :config
@@ -1012,6 +1011,12 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
   :config
   (setq lsp-python-ms-cache "Library")
   (setq lsp-python-ms-nupkg-channel "daily"))
+
+(use-package lsp-pyright
+  :after lsp-mode
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))
 #+end_src
 
 ** Reformatters

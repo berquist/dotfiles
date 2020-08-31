@@ -80,6 +80,7 @@
  ("let-alist" . "b299c78897cc307f9d5521927376fbd06a26f123")
  ("lsp-java" . "541abcbdc4926b39cbd4c3bd4df3f1213670b01a")
  ("lsp-mode" . "bced375a3252e2f43c4a3ae76ff00735cada4a86")
+ ("lsp-pyright" . "ccd00074622520acb7a65357a59d8c8426c12a00")
  ("lsp-treemacs" . "fb8d271ee386dc3d5447d1808f24b030827ec828")
  ("lua-mode" . "35b6e4c20b8b4eaf783ccc8e613d0dd06dbd165c")
  ("macrostep" . "424e3734a1ee526a1bd7b5c3cd1d3ef19d184267")
