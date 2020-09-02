@@ -35,7 +35,9 @@ default_packages_arch:
   - ttf-sazanami
 
   # editors
-  - emacs
+  # Prefer `emacs-lucid` from the AUR, since the GTK version keeps crashing
+  # for some reason.
+  # - emacs
 
   # groups
   - gnome
@@ -155,6 +157,7 @@ default_packages_arch_aur:
   - wakatime
 
   # GUI tools
+  - emacs-lucid
   - fftw2
   - figlet-fonts
   - lmod
