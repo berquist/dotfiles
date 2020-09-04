@@ -645,8 +645,6 @@ Links:
 
 ** General
 
-TODO add LaTex
-
 #+begin_src emacs-lisp
 (use-package flycheck
   :bind (("C-c f" . flycheck-mode))
