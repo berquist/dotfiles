@@ -68,9 +68,6 @@ dotfiles:
   f_override.conf:
     src: config/systemd/user/emacs.service.d/override.conf
     dst: ~/.config/systemd/user/emacs.service.d/override.conf
-  f_p10k.zsh:
-    src: p10k.zsh
-    dst: ~/.p10k.zsh
   f_pdbrc:
     src: pdbrc
     dst: ~/.pdbrc
@@ -120,7 +117,6 @@ profiles:
     - f_condarc
     - f_gitconfig
     - f_mdlrc
-    - f_p10k.zsh
     - f_tmux.conf
     - f_zprofile
     - f_zshenv
@@ -148,7 +144,6 @@ profiles:
     - f_nanorc
     - f_nvimrc
     - f_override.conf
-    - f_p10k.zsh
     - f_pdbrc
     - f_pylintrc
     - f_sbclrc
@@ -170,7 +165,6 @@ profiles:
     - f_gitconfig
     - f_mdlrc
     - f_nanorc
-    - f_p10k.zsh
     - f_sbclrc
     - f_tmux.conf
     - f_xdefaults
@@ -187,7 +181,6 @@ profiles:
     - f_gitconfig
     - f_mdlrc
     - f_nanorc
-    - f_p10k.zsh
     - f_tmux.conf
     - f_zprofile
     - f_zshenv
