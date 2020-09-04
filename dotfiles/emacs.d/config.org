@@ -929,19 +929,26 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 
 * LaTeX
 
+Lowercase functions (=latex-mode=) come from Emacs tex-mode. Mixed-case functions (=LaTeX-mode=) come from AUCTeX...kind of. From =textmodes/tex-mode.el=:
+#+begin_quote
+The following three autoloaded aliases appear to conflict with
+AUCTeX.  However, even though AUCTeX uses the mixed case variants
+for all mode relevant variables and hooks, the invocation function
+and setting of `major-mode' themselves need to be lowercase for
+AUCTeX to provide a fully functional user-level replacement.  So
+these aliases should remain as they are, in particular since AUCTeX
+users are likely to use them.
+#+end_quote
+
 #+begin_src emacs-lisp
 (use-package auctex
+  :hook ((latex-mode LaTeX-mode) . lsp-deferred)
   :config
   (add-to-list 'font-latex-math-environments "dmath"))
 (use-package auctex-latexmk
   :after auctex
   :init
   (auctex-latexmk-setup))
-;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
-;; (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
-;; (setq font-latex-math-environments
-;;       (append '("dmath")
-;;               font-latex-math-environments))
 #+end_src
 
 * Python
