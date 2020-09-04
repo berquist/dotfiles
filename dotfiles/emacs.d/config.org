@@ -468,9 +468,14 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 (use-package projectile
   :bind ("C-c p" . projectile-command-map)
   :config
+  (defun projectile-root-qchem (dir &optional list)
+    "If $QC is defined, set the projectile root to it, avoiding the need to place a `.projectile`' file there."
+    (getenv "QC"))
   (setq projectile-completion-system 'ivy)
   (setq projectile-enable-caching t)
   (setq projectile-indexing-method 'hybrid)
+  (setq projectile-project-root-files-functions
+        (cons 'projectile-root-qchem projectile-project-root-files-functions))
   (setq projectile-project-search-path
         '("~/development" "~/repositories"))
   (setq projectile-require-project-root t)
