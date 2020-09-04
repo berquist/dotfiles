@@ -1007,16 +1007,6 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 (use-package pyenv-mode
   :after python)
 
-(use-package lsp-python-ms
-  :disabled t
-  :after lsp-mode
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-python-ms)
-                         (lsp-deferred)))
-  :config
-  (setq lsp-python-ms-cache "Library")
-  (setq lsp-python-ms-nupkg-channel "daily"))
-
 (use-package lsp-pyright
   :after lsp-mode
   :hook (python-mode . (lambda ()
