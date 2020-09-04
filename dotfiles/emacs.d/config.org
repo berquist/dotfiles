@@ -615,7 +615,7 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode f90-mode sh-mode) . lsp-deferred)
+  :hook ((fortran-mode f90-mode sh-mode) . lsp-deferred)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
@@ -894,9 +894,9 @@ These are valid for all C-style modes (I think).
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-;; (use-package ccls
-;;   :after lsp-mode
-;;   :hook ((c-mode c++-mode) . lsp-deferred))
+(use-package ccls
+  :after lsp-mode
+  :hook ((c-mode c++-mode) . lsp-deferred))
 #+END_SRC
 
 This only makes sense for c++-mode.
