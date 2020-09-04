@@ -1023,9 +1023,7 @@ If ~:after python~ isn't present, the bindings don't get added properly?
   :after python
   :bind
   (:map python-mode-map
-        ("C-c C-b" . blacken-buffer))
-  :config
-  (setq blacken-allow-py36 t))
+        ("C-c C-b" . blacken-buffer)))
 
 (use-package yapfify
   :after python
