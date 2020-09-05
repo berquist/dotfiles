@@ -619,6 +619,7 @@ Links:
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
+  (setq lsp-file-watch-threshold 500000)
   (setq lsp-prefer-capf t)
   (setq lsp-prefer-flymake nil)
   (setq lsp-rust-clippy-preference "on"))
