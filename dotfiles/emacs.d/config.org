@@ -1286,7 +1286,6 @@ current buffer, return its path, otherwise nil."
   (setq rustic-ansi-faces ansi-color-names-vector)
   (setq rustic-format-trigger 'on-save)
   (setq rustic-indent-method-chain t)
-  (setq rustic-lsp-server 'rust-analyzer)
   (defun rustic-docstring-around-dwim ()
     "Use `comment-dwim' to make a Rust docstring for the thing surrounding the comment."
     (interactive)
