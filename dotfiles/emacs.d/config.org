@@ -615,7 +615,7 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((fortran-mode f90-mode sh-mode) . lsp-deferred)
+  :hook ((fortran-mode f90-mode sh-mode) . lsp)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
@@ -894,7 +894,7 @@ These are valid for all C-style modes (I think).
 #+BEGIN_SRC emacs-lisp
 (use-package ccls
   :after lsp-mode
-  :hook ((c-mode c++-mode) . lsp-deferred))
+  :hook ((c-mode c++-mode) . lsp))
 #+END_SRC
 
 This only makes sense for c++-mode.
@@ -916,7 +916,7 @@ https://stackoverflow.com/questions/2619853/emacs-override-indentation
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
-  :hook (java-mode . lsp-deferred))
+  :hook (java-mode . lsp))
 #+END_SRC
 
 * FORTRAN
@@ -940,7 +940,7 @@ users are likely to use them.
 
 #+begin_src emacs-lisp
 (use-package auctex
-  :hook ((latex-mode LaTeX-mode) . lsp-deferred)
+  :hook ((latex-mode LaTeX-mode) . lsp)
   :config
   (add-to-list 'font-latex-math-environments "dmath"))
 (use-package auctex-latexmk
@@ -1016,7 +1016,7 @@ users are likely to use them.
   :after lsp-mode
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
-                          (lsp-deferred))))
+                          (lsp))))
 #+end_src
 
 ** Reformatters
@@ -1125,7 +1125,7 @@ This section needs to come after the Markdown section so that CMake files get re
 
 #+begin_src emacs-lisp
 (use-package cmake-mode
-  :hook (cmake-mode . lsp-deferred)
+  :hook (cmake-mode . lsp)
   :config
   (setq cmake-tab-width 4))
 #+end_src
@@ -1233,7 +1233,7 @@ current buffer, return its path, otherwise nil."
   :disabled t
   :hook (julia-mode . (lambda ()
                         (require 'lsp-julia)
-                        (lsp-deferred))))
+                        (lsp))))
 #+END_SRC
 
 * YAML
@@ -1343,7 +1343,7 @@ Modified to remove/disable Racket.
 
 #+BEGIN_SRC emacs-lisp
 (use-package kotlin-mode
-  :hook (kotlin-mode . lsp-deferred))
+  :hook (kotlin-mode . lsp))
 (use-package flycheck-kotlin
   :init
   (with-eval-after-load 'flycheck
@@ -1380,7 +1380,7 @@ Modified to remove/disable Racket.
   ;; hooks need to be in this order.
   :hook ((nim-mode . ejb/fix-company-ordering)
          (nim-mode . nimsuggest-mode)
-         (nim-mode . lsp-deferred))
+         (nim-mode . lsp))
   :config
   (defun nim-docstring-dwim ()
     "Use `comment-dwim' to make a Nim docstring."
