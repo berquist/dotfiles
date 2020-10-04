@@ -7,5 +7,5 @@ channels:
   - defaults
 changeps1: false
 channel_priority: flexible
-pip_interop_enabled: true
+# pip_interop_enabled: true
 report_errors: true
