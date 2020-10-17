@@ -56,12 +56,24 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+  f_i3_config:
+    src: config/i3/config
+    dst: ~/.config/i3/config
+  f_i3status_config:
+    src: config/i3status/config
+    dst: ~/.config/i3status/config
   f_mdlrc:
     src: mdlrc
     dst: ~/.mdlrc
   f_nanorc:
     src: nanorc
     dst: ~/.nanorc
+  f_nitrogen.cfg:
+    src: config/nitrogen/nitrogen.cfg
+    dst: ~/.config/nitrogen/nitrogen.cfg
+  f_nitrogen_bg-saved.cfg:
+    src: config/nitrogen/bg-saved.cfg
+    dst: ~/.config/nitrogen/bg-saved.cfg
   f_nvimrc:
     src: nvimrc
     dst: ~/.nvimrc
@@ -116,7 +128,11 @@ profiles:
     - f_aspell.en.pws
     - f_condarc
     - f_gitconfig
+    - f_i3_config
+    - f_i3status_config
     - f_mdlrc
+    - f_nitrogen.cfg
+    - f_nitrogen_bg-saved.cfg
     - f_tmux.conf
     - f_zprofile
     - f_zshenv
