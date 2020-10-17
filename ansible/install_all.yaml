@@ -83,6 +83,7 @@
 - name: apply dconf settings
   tags:
     - gnome
+  gather_facts: false
   hosts: localhost
   pre_tasks:
     - setup:
@@ -96,6 +97,25 @@
       loop_control:
         loop_var: dconf_setting_triple
       when:
+        - ansible_system == "Linux"
+
+- name: apply XDG settings
+  gather_facts: false
+  hosts: localhost
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - system
+  tasks:
+    - name: get current default browser
+      command: xdg-settings get default-web-browser
+      register: current_default_web_browser
+      when:
+        - ansible_system == "Linux"
+    - name: set default browser to Firefox
+      command: xdg-settings set default-web-browser firefox.desktop
+      when:
+        - current_default_web_browser.stdout != "firefox.desktop"
         - ansible_system == "Linux"
 
 # - name: set keyboard layout
