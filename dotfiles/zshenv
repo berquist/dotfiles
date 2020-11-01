@@ -14,7 +14,7 @@ fi
 # Put this early on, so that additions to $PATH take less precedence.
 {%@@ if profile == "osmium" @@%}
 # export ANACONDA_HOME="/home/eric/.conda"
-export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.3.30"
+export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.7.12"
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
