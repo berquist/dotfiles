@@ -26,8 +26,10 @@
     - gnome
   vars:
     - power_schema: org.gnome.settings-daemon.plugins.power
-    - power_key: sleep-inactive-ac-timeout
-    - power_value: 0
+    - sleep_inactive_ac_timeout_key: sleep-inactive-ac-timeout
+    - sleep_inactive_ac_timeout_value: 0
+    - sleep_inactive_ac_type_key: sleep-inactive-ac-type
+    - sleep_inactive_ac_type_value: nothing
   tasks:
     # TODO check if dbus-launch is available
     #
@@ -38,23 +40,39 @@
     #     state: file
     #   register: has_gsettings
     #   when: ansible_system == "Linux"
-    - name: get current GDM sleep value
-      command: "gsettings get {{ power_schema }} {{ power_key }}"
+    - name: get current GDM sleep timeout value
+      command: "gsettings get {{ power_schema }} {{ sleep_inactive_ac_timeout_key }}"
       changed_when: false
-      register: gdm_current_sleep_value
+      register: gdm_current_sleep_timeout
       when:
         - ansible_system == "Linux"
         # - has_gsettings.rc == 0
-    - name: disable sleeping for GDM if not already set
+    - name: disable sleeping timeout for GDM if not already set
       # https://askubuntu.com/a/311988
-      command: "dbus-launch --exit-with-session gsettings set {{ power_schema }} {{ power_key }} {{ power_value }}"
-      register: gdm_disabled_sleep
+      command: "dbus-launch --exit-with-session gsettings set {{ power_schema }} {{ sleep_inactive_ac_timeout_key }} {{ sleep_inactive_ac_timeout_value }}"
+      register: gdm_disabled_sleep_timeout
       # GNOME is bad
-      failed_when: '"WARNING" in gdm_disabled_sleep.stderr'
+      failed_when: '"WARNING" in gdm_disabled_sleep_timeout.stderr'
       when:
         - ansible_system == "Linux"
         # - has_gsettings.rc == 0
-        - gdm_current_sleep_value.stdout != "0"
+        - gdm_current_sleep_timeout.stdout != sleep_inactive_ac_timeout_value
+    - name: get current GDM sleep type value
+      command: "gsettings get {{ power_schema }} {{ sleep_inactive_ac_type_key }}"
+      changed_when: false
+      register: gdm_current_sleep_type
+      when:
+        - ansible_system == "Linux"
+        # - has_gsettings.rc == 0
+    - name: disable sleeping method for GDM if not already set
+      command: "dbus-launch --exit-with-session gsettings set {{ power_schema }} {{ sleep_inactive_ac_type_key }} {{ sleep_inactive_ac_type_value }}"
+      register: gdm_disabled_sleep_type
+      # GNOME is bad
+      failed_when: '"WARNING" in gdm_disabled_sleep_type.stderr'
+      when:
+        - ansible_system == "Linux"
+        # - has_gsettings.rc == 0
+        - gdm_current_sleep_type.stdout != sleep_inactive_ac_type_value
     # - name: determine if GDM was running
     # TODO
     # - name: restart GDM if config changed and it was running
