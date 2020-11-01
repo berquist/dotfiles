@@ -280,6 +280,7 @@ packages_osmium:
   - python-language-server
 
   # GUI-based
+  - alacritty
   - intellij-idea-community-edition
   - pycharm-community-edition
   - pymol

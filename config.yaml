@@ -23,6 +23,9 @@ dotfiles:
   d_tmux:
     src: tmux
     dst: ~/.tmux
+  f_alacritty.yml:
+    src: config/alacritty/alacritty.yml
+    dst: ~/.config/alacritty/alacritty.yml
   f_ansible.cfg:
     src: ansible.cfg
     dst: ~/.ansible.cfg
@@ -124,6 +127,7 @@ profiles:
     dotfiles:
     - d_emacs.d
     - d_tmux
+    - f_alacritty.yml
     - f_aspell.en.prepl
     - f_aspell.en.pws
     - f_condarc
@@ -145,6 +149,7 @@ profiles:
     - d_emacs.d_straight
     - d_idea
     - d_tmux
+    - f_alacritty.yml
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
@@ -175,6 +180,7 @@ profiles:
     dotfiles:
     - d_emacs.d
     - d_tmux
+    - f_alacritty.yml
     - f_aspell.en.prepl
     - f_aspell.en.pws
     - f_condarc
