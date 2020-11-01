@@ -585,10 +585,11 @@ Links:
   ;; - For Python, prefer the language server over `anaconda-mode' if
   ;;   possible.
   ;;
-  ;; - For Nim, nimsuggest seems to give much better results than nimlsp.
+  ;; - For Nim, nimsuggest seems to give much better results than nimlsp. But
+  ;;   it times out too much.
   (setq ejb/company-ordering
-        '(company-nimsuggest
-          company-capf
+        '(company-capf
+          company-nimsuggest
           company-anaconda))
   (setq company-backends
         (seq-filter
