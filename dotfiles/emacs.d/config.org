@@ -1013,7 +1013,7 @@ users are likely to use them.
   :after python)
 
 (use-package lsp-pyright
-  :after lsp-mode
+  ;; :after lsp-mode
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
                           (lsp))))
