@@ -1411,8 +1411,10 @@ Modified to remove/disable Racket.
 (use-package lua-mode)
 (use-package meson-mode)
 (use-package pacfiles-mode)
+(use-package pdf-tools)
 (use-package pkgbuild-mode)
 (use-package systemd)
+(use-package vagrant-tramp)
 #+END_SRC
 
 * External services
