@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Bootstrapping strategy: start with Ansible from the system package
+# manager. If on macOS and Homebrew isn't installed, install it.
+
 set -euo pipefail
 
 funame=$(uname -a)
@@ -8,9 +11,9 @@ base_plat=$(echo ${funame} | cut -d ' ' -f 1)
 case ${base_plat} in
     Linux)
         if [[ ! -f /usr/bin/ansible ]]; then
-            if test $(echo ${funame} | grep -F 'arch'); then
+	    if [[ "${funame}" =~ 'arch' ]]; then
                 sudo pacman -S ansible
-            elif test $(echo ${funame} | grep -F 'Ubuntu'); then
+	    elif [[ "${funame}" =~ 'Ubuntu' ]]; then
                 sudo apt install ansible
             fi
         fi

@@ -506,3 +506,13 @@ default_packages_popos:
   - thunderbird-gnome-support
   - tmux
   - transmission-gtk
+
+default_packages_ubuntu:
+  - libtool-bin
+
+  # userspace
+  - ansible
+  - ansible-lint
+  - git
+  - python3-pip
+  - subversion

@@ -19,7 +19,7 @@ ansible-playbook ./ansible/install_packages_{arch,popos}.yaml -b -K
 # or
 ansible-playbook ./ansible/install_packages_homebrew.yaml
 # then
-ansible-playbook ./ansible/install_all.yaml
 ansible-playbook ./ansible/install_all_system.yaml -b -K
+ansible-playbook ./ansible/install_all.yaml
 ansible-playbook ./ansible/set_shell.yaml -b -K
 #+end_src

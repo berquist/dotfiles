@@ -35,6 +35,12 @@ dotfiles:
   f_aspell.en.pws:
     src: aspell.en.pws
     dst: ~/.aspell.en.pws
+  f_bash_profile:
+    src: bash_profile
+    dst: ~/.bash_profile
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
   f_clisprc.lisp:
     src: clisprc.lisp
     dst: ~/.clisprc.lisp
@@ -141,6 +147,15 @@ profiles:
     - f_zprofile
     - f_zshenv
     - f_zshrc
+  coreman4:
+    dotfiles:
+    - d_emacs.d
+    - d_tmux
+    - f_ansible.cfg
+    - f_bash_profile
+    - f_bashrc
+    - f_gitconfig
+    - f_tmux.conf
   osmium:
     dotfiles:
     - d_emacs.d
