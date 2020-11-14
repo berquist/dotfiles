@@ -39,6 +39,9 @@ default_packages_arch:
   # for some reason.
   # - emacs
 
+  # env
+  - xorg-xinit
+
   # groups
   - gnome
   # - xfce4
@@ -97,6 +100,7 @@ default_packages_arch:
   - openmpi
   - openssh
   - pacman-contrib
+  - pandoc
   - parallel
   - pbzip2
   - perl-term-readkey # git-svn
@@ -128,7 +132,6 @@ default_packages_arch:
 
   # GUI-based
   - chromium
-  - discord
   - feh
   - firefox
   - firefox-developer-edition
@@ -343,10 +346,10 @@ packages_osmium_aur:
 
   # GUI tools
   # - avogadro-git
+  - discord-canary
   - dropbox
   # - libgfortran6
   - molden
-  - pandoc-bin
   - shellcheck-static
   - slack-desktop
   - visual-studio-code-bin
