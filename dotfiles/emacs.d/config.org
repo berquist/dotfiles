@@ -639,6 +639,7 @@ Links:
 (use-package realgud)
 (use-package realgud-ipdb)
 (use-package dap-mode
+  :disabled t
   :commands (dap-debug dap-debug-edit-template))
 #+END_SRC
 
