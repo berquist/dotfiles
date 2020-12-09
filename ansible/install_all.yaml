@@ -5,15 +5,6 @@
 # - import_playbook: install_github_repos.yaml
 - import_playbook: install_languages.yaml
 
-- name: make ~/pythonpath for loose Python code
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: make ~/pythonpath for loose Python code
-      file:
-        path: ~/pythonpath
-        state: directory
-
 - name: deploy dotfiles
   hosts: localhost
   gather_facts: false
