@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 function pip2-locations() {
-    for i in $(pip2 freeze | cut -d'=' -f1); do
+    for i in $(python2 -m pip freeze | cut -d'=' -f1); do
         echo -n " $i "
         pip2 show $i | grep Location | cut -d':' -f3
     done
 }
 
 function pip3-locations() {
-    for i in $(pip3 freeze | cut -d'=' -f1); do
+    for i in $(python3 -m pip freeze | cut -d'=' -f1); do
         echo -n " $i "
         pip3 show $i | grep Location | cut -d':' -f3
     done
