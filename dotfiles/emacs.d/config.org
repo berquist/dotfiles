@@ -1341,6 +1341,15 @@ Modified to remove/disable Racket.
 (use-package racket-mode)
 #+END_SRC
 
+** Clojure
+
+#+begin_src emacs-lisp
+(use-package paredit)
+;; TODO add paredit hook
+(use-package clojure-mode)
+(use-package cider)
+#+end_src
+
 * Kotlin
 
 #+BEGIN_SRC emacs-lisp
