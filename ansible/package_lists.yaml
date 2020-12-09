@@ -488,9 +488,14 @@ default_packages_popos:
   - xz-utils
   - zlib1g-dev
 
+  # Programming: JVM
+  - clojure
+  - leiningen
+
   # userspace
   - ansible
   - ansible-lint
+  - avogadro
   - direnv
   - discord
   - emacs
