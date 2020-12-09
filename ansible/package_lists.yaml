@@ -526,6 +526,7 @@ default_packages_ubuntu:
   # userspace
   - ansible
   - ansible-lint
+  - docker-compose
   - git
   - python3-pip
   - subversion
