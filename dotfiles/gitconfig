@@ -45,6 +45,9 @@
 	untracked = cyan
 	unmerged = yellow
 
+[pull]
+	ff = only
+
 [push]
 	default = simple
 
