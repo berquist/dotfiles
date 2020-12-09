@@ -47,14 +47,14 @@
       register: deploy_public_notarch
       changed_when: "'0 dotfile(s) installed.' not in deploy_public_notarch.stdout"
       when: ansible_distribution != "Archlinux"
-    - name: deploy from private dotfiles on Arch
-      command: "dotdrop install -c {{ dotdrop_private_config }}"
-      when: ansible_distribution == "Archlinux"
-    - name: deploy from private dotfiles not on Arch
-      command: "{{ dotdrop_manual_install_file }} install -c {{ dotdrop_private_config }}"
-      register: deploy_private_notarch
-      changed_when: "'0 dotfile(s) installed.' not in deploy_private_notarch.stdout"
-      when: ansible_distribution != "Archlinux"
+    # - name: deploy from private dotfiles on Arch
+    #   command: "dotdrop install -c {{ dotdrop_private_config }}"
+    #   when: ansible_distribution == "Archlinux"
+    # - name: deploy from private dotfiles not on Arch
+    #   command: "{{ dotdrop_manual_install_file }} install -c {{ dotdrop_private_config }}"
+    #   register: deploy_private_notarch
+    #   changed_when: "'0 dotfile(s) installed.' not in deploy_private_notarch.stdout"
+    #   when: ansible_distribution != "Archlinux"
 
 - name: enable and start user services
   gather_facts: false
