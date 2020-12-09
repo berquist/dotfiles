@@ -774,7 +774,11 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (setq org-image-actual-width nil)
   (setq org-latex-create-formula-image-program 'imagemagick)
   ;; The differences from the default are that the `colorlinks` option is
-  ;; passed to hyperref, and `braket`, `microtype`, and `xcolor` are used.
+  ;; passed to hyperref, and the following packages are added:
+  ;; - tabulary
+  ;; - braket
+  ;; - microtype
+  ;; - xcolor
   (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t
                                             ("pdflatex"))
                                            ("T1" "fontenc" t
@@ -789,10 +793,10 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                            ("" "textcomp" t)
                                            ("" "amssymb" t)
                                            ("" "capt-of" nil)
-                                           ("colorlinks=true" "hyperref" nil)
+                                           ("" "hyperref" nil)
+                                           ("" "tabulary" nil)
                                            ("" "braket" t)
-                                           ("final" "microtype" nil)
-                                           ("usenames,dvipsnames,svgnames,table" "xcolor" nil)))
+                                           ("final" "microtype" nil)))
   (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
   (setq org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
