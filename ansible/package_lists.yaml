@@ -27,6 +27,8 @@ default_packages_arch:
   # programming: Python
   # If something is commented out here, then it's probably a split
   # package.
+  - python-mongomock
+  - python-pymongo
 
   # fonts
   - cowsay
@@ -116,6 +118,7 @@ default_packages_arch:
   - swig
   - sysstat
   - tcsh
+  - texlab
   # Prefer `tmux-git` from the AUR.
   # - tmux
   - tree
@@ -160,7 +163,7 @@ default_packages_arch_aur:
   - wakatime
 
   # GUI tools
-  - emacs-lucid
+  - emacs-git
   - fftw2
   - figlet-fonts
   - lmod
@@ -187,7 +190,9 @@ packages_osmium:
   - crystal
 
   # programming: JVM
+  - clojure
   - kotlin
+  - leiningen
   - scala
 
   # programming: Lisp/Scheme
