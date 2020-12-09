@@ -4,12 +4,6 @@ export EXERCISM_WORKSPACE="${HOME}"/development/exercism
 export npm_config_prefix="${HOME}"/.node_modules
 export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
 
-pythonpathdirs=($(find "${HOME}"/pythonpath -maxdepth 1 -type d))
-# https://stackoverflow.com/questions/1335815/how-to-slice-an-array-in-bash
-for d in ${pythonpathdirs[@]:1}; do
-    export PYTHONPATH="${d}:$PYTHONPATH"
-done
-
 # TODO replace this with a function
 [[ -d "${HOME}"/personal_scripts ]] && export PATH="${HOME}"/personal_scripts:"${PATH}"
 [[ -d "${HOME}"/opt/bin ]] && export PATH="${HOME}"/opt/bin:"${PATH}"
