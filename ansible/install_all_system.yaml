@@ -1,4 +1,5 @@
-- import_playbook: install_docker.yaml
+# TODO only on coreman4
+# - import_playbook: install_docker.yaml
 
 - name: enable and start system services
   gather_facts: false

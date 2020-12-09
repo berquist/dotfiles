@@ -47,48 +47,48 @@
     #   changed_when: "'0 dotfile(s) installed.' not in deploy_private_notarch.stdout"
     #   when: ansible_distribution != "Archlinux"
 
-- name: enable and start user services
-  gather_facts: false
-  hosts: localhost
-  pre_tasks:
-    - setup:
-        gather_subset:
-          - distribution
-          - system
-  tasks:
-    # - name: enable and start Dropbox
-    #   systemd:
-    #     name: dropbox
-    #     state: started
-    #     enabled: true
-    #     scope: user
-    #   when: ansible_distribution == "Archlinux"
-    - name: enable and start Emacs daemon
-      systemd:
-        name: emacs
-        state: started
-        enabled: true
-        scope: user
-      when: ansible_system == "Linux"
+# - name: enable and start user services
+#   gather_facts: false
+#   hosts: localhost
+#   pre_tasks:
+#     - setup:
+#         gather_subset:
+#           - distribution
+#           - system
+#   tasks:
+#     # - name: enable and start Dropbox
+#     #   systemd:
+#     #     name: dropbox
+#     #     state: started
+#     #     enabled: true
+#     #     scope: user
+#     #   when: ansible_distribution == "Archlinux"
+#     - name: enable and start Emacs daemon
+#       systemd:
+#         name: emacs
+#         state: started
+#         enabled: true
+#         scope: user
+#       when: ansible_system == "Linux"
 
-- name: apply dconf settings
-  tags:
-    - gnome
-  gather_facts: false
-  hosts: localhost
-  pre_tasks:
-    - setup:
-        gather_subset:
-          - system
-  vars_files:
-    - dconf_settings.yaml
-  tasks:
-    - include_tasks: apply_dconf_settings.yaml
-      loop: "{{ dconf_settings }}"
-      loop_control:
-        loop_var: dconf_setting_triple
-      when:
-        - ansible_system == "Linux"
+# - name: apply dconf settings
+#   tags:
+#     - gnome
+#   gather_facts: false
+#   hosts: localhost
+#   pre_tasks:
+#     - setup:
+#         gather_subset:
+#           - system
+#   vars_files:
+#     - dconf_settings.yaml
+#   tasks:
+#     - include_tasks: apply_dconf_settings.yaml
+#       loop: "{{ dconf_settings }}"
+#       loop_control:
+#         loop_var: dconf_setting_triple
+#       when:
+#         - ansible_system == "Linux"
 
 - name: apply XDG settings
   gather_facts: false
