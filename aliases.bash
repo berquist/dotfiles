@@ -18,9 +18,11 @@ alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
 alias tmux='tmux -2'
 # alias lessm='LESSOPEN="| src-hilite-lesspipe.sh %s" less -M '
-alias l='pwd; ls -hFl'
-alias la='l -a'
-alias lh='l -t | head'
+if command -v exa 1>/dev/null 2>&1; then
+    source exa.bash
+else
+    source ls.bash
+fi
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
