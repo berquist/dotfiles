@@ -1,7 +1,7 @@
-unalias ls
-unalias l
-unalias la
-unalias lh
+unalias ls 2>/dev/null
+unalias l 2>/dev/null
+unalias la 2>/dev/null
+unalias lh 2>/dev/null
 
 alias ls='exa'
 alias l='pwd; ls -Fl'
