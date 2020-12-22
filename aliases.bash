@@ -19,9 +19,9 @@ alias gfr='git fetch --all; git rebase upstream/master'
 alias tmux='tmux -2'
 # alias lessm='LESSOPEN="| src-hilite-lesspipe.sh %s" less -M '
 if command -v exa 1>/dev/null 2>&1; then
-    source exa.bash
+    source ~/dotfiles/exa.bash
 else
-    source ls.bash
+    source ~/dotfiles/ls.bash
 fi
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias psmem='ps aux --sort -rss'
