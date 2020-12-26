@@ -1363,6 +1363,7 @@ Modified to remove/disable Racket.
 #+begin_src emacs-lisp
 (use-package clojure-mode)
 (use-package cider)
+(use-package flycheck-clojure)
 #+end_src
 
 * Kotlin
@@ -1435,6 +1436,7 @@ Modified to remove/disable Racket.
 (use-package idris-mode)
 (use-package lua-mode)
 (use-package meson-mode)
+(use-package opencl-mode)
 (use-package pacfiles-mode)
 (use-package pdf-tools)
 (use-package pkgbuild-mode)
