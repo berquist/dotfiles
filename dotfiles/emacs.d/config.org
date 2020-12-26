@@ -637,6 +637,7 @@ Links:
 
 #+BEGIN_SRC emacs-lisp
 (use-package realgud)
+;; TODO load this when in Python and realgud has been loaded
 (use-package realgud-ipdb)
 (use-package dap-mode
   :disabled t
@@ -971,11 +972,13 @@ users are likely to use them.
 )
 
 (use-package anaconda-mode
+  :disabled t
   :after python
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
 
 (use-package company-anaconda
+  :disabled t
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-anaconda)
