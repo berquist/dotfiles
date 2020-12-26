@@ -377,7 +377,6 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setq-default indicate-buffer-boundaries 'right)
 
 (use-package default-text-scale
-  :demand t
   :hook (after-init . default-text-scale-mode))
 #+end_src
 
@@ -1337,7 +1336,7 @@ TODO disable .m files from loading as Objective-C
 
 ** Scheme and Racket
 
-Modified to remove/disable Racket.
+Modified to remove/disable Racket, which has ~racket-mode~.
 
 #+BEGIN_SRC emacs-lisp
 (use-package geiser
