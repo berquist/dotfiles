@@ -101,8 +101,6 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 (tooltip-mode -1)
-;; Sometimes I get lazy...
-(when window-system (menu-bar-mode 1))
 
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message t
