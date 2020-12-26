@@ -2,8 +2,6 @@
 channels:
   - psi4
   - conda-forge
-  - openbabel
-  - theochem
   - defaults
 changeps1: false
 channel_priority: flexible
