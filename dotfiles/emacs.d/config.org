@@ -1222,9 +1222,9 @@ current buffer, return its path, otherwise nil."
 
 * MATLAB/Octave (builtin)
 
+TODO disable .m files from loading as Objective-C
+
 #+BEGIN_SRC emacs-lisp
-;; Don't use matlab-mode.
-;; (use-package matlab-mode)
 (setq octave-block-offset 4)
 #+END_SRC
 
