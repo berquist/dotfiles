@@ -1302,10 +1302,21 @@ current buffer, return its path, otherwise nil."
 
 * Scheme/Lisp
 
+#+begin_src emacs-lisp
+(use-package paredit
+  :hook ((emacs-lisp-mode
+          lisp-mode
+          scheme-mode
+          cider-mode
+          clojure-mode
+          hy-mode
+          racket-mode
+          slime-mode) . paredit-mode))
+#+end_src
+
 ** Lisp
 
 #+BEGIN_SRC emacs-lisp
-(setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/clhs/HyperSpec/"))
 (use-package slime
   :config
   (setq common-lisp-style-default "modern")
@@ -1350,8 +1361,6 @@ Modified to remove/disable Racket.
 ** Clojure
 
 #+begin_src emacs-lisp
-(use-package paredit)
-;; TODO add paredit hook
 (use-package clojure-mode)
 (use-package cider)
 #+end_src
