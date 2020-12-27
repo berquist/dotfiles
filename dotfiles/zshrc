@@ -8,7 +8,6 @@ autoload -Uz _zinit
 
 zinit snippet OMZL::compfix.zsh
 zinit snippet "${HOME}"/dotfiles/zcompdump.zsh
-zinit snippet "${HOME}"/dotfiles/keybindings.zsh
 zinit snippet OMZL::completion.zsh
 zinit snippet OMZL::diagnostics.zsh
 zinit snippet OMZL::functions.zsh
@@ -32,6 +31,8 @@ zinit snippet ~/dotfiles/zfunc/_rustup
 zinit ice svn
 zinit snippet OMZ::plugins/git-prompt
 zinit snippet "${HOME}"/dotfiles/berquist.zsh-theme
+
+bindkey -e
 
 unsetopt auto_cd
 setopt auto_pushd
