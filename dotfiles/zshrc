@@ -1,10 +1,6 @@
 #!/usr/bin/env zsh
 
-### Added by Zinit's installer
-. "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit installer's chunk
+source "${HOME}/.zinit/bin/zinit.zsh"
 
 zinit snippet OMZL::compfix.zsh
 zinit snippet "${HOME}"/dotfiles/zcompdump.zsh
@@ -15,18 +11,16 @@ zinit snippet OMZL::git.zsh
 zinit snippet OMZL::termsupport.zsh
 zinit snippet OMZL::theme-and-appearance.zsh
 
-autoload -U compaudit compinit
-
 zinit light romkatv/zsh-prompt-benchmark
 zinit ice depth=1; zinit light sobolevn/wakatime-zsh-plugin
 zinit snippet OMZP::sprunge
 # Rust programming language
-zinit ice as"completion" wait'!2' silent
+zinit ice as"completion" wait'!3' silent
 zinit snippet OMZ::plugins/cargo/_cargo
-zinit ice as"completion" wait'!2' silent
+zinit ice as"completion" wait'!4' silent
 zinit snippet OMZ::plugins/rust/_rust
-zinit ice as"completion" wait'!2' silent
-zinit snippet ~/dotfiles/zfunc/_rustup
+zinit ice as"completion" wait'!5' silent
+zinit snippet "${HOME}"/dotfiles/zfunc/_rustup
 # Prompt
 zinit ice svn
 zinit snippet OMZ::plugins/git-prompt
@@ -46,24 +40,22 @@ unsetopt notify
 setopt prompt_subst
 setopt pushd_ignore_dups
 
-# The following lines were added by compinstall
 zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
-. "${HOME}"/dotfiles/history.zsh
-. "${HOME}"/dotfiles/interactive_exports.bash
-. "${HOME}"/dotfiles/aliases.bash 
-. "${HOME}"/dotfiles/functions.bash
-. "${HOME}"/dotfiles/slurm.bash
+source "${HOME}"/dotfiles/history.zsh
+source "${HOME}"/dotfiles/interactive_exports.bash
+source "${HOME}"/dotfiles/aliases.bash 
+source "${HOME}"/dotfiles/functions.bash
+source "${HOME}"/dotfiles/slurm.bash
 
 {%@@ if profile == "osmium" @@%}
 # re-export
 export QCPROGS="${HOME}/data/opt/apps"
 export apps="${QCPROGS}"
 
-. /usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 
 source /usr/share/lmod/lmod/init/zsh
 module use "${HOME}/modules/osmium"
@@ -99,13 +91,13 @@ function ssh() {
     echo -n -e "\033]0;${USER}@${HOSTNAME%%.*}\007";
 }
 
-. ~/dotfiles/aliases_macos.bash
+source "${HOME}"/dotfiles/aliases_macos.bash
 
 # export MATLAB_ROOT='/Applications/MATLAB_R2012a.app'
 # export MATLAB_BIN="${MATLAB_ROOT}/bin"
 # export PATH="${PATH}:${MATLAB_BIN}"
 
-. /usr/local/opt/lmod/init/zsh
+source /usr/local/opt/lmod/init/zsh
 module use "${HOME}/modules/sodium"
 
 module load python/psi4conda
