@@ -4,7 +4,7 @@
 #
 # This needs to live here and not in `~/.zprofile`; see that file for an
 # explanation.
-if [[ $(uname) == "Darwin" ]] && [[ -f /etc/zprofile ]]; then
+if [[ "$OSTYPE" = darwin* ]] && [[ -f /etc/zprofile ]]; then
     PATH=""
     . /etc/zprofile
 fi
@@ -26,14 +26,15 @@ test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
 # pyenv doesn't seem to be interfering with conda
 [[ -d "${HOME}/.pyenv/bin" ]] && export PATH="${HOME}/.pyenv/bin:${PATH}"
+# These are...slow.
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
-if command -v rbenv 1>/dev/null 2>&1; then eval "$(rbenv init -)"; fi
+# if command -v rbenv 1>/dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
-if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
+# if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
 
-[[ -f "${HOME}"/perl5/perlbrew/etc/bashrc ]] && . "${HOME}"/perl5/perlbrew/etc/bashrc
+# [[ -f "${HOME}"/perl5/perlbrew/etc/bashrc ]] && . "${HOME}"/perl5/perlbrew/etc/bashrc
 
 # Rust
 [[ -f "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
@@ -42,19 +43,14 @@ if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
 [[ -d "${HOME}/.nimble/bin" ]] && export PATH="${HOME}/.nimble/bin:${PATH}"
 
 # Node Version Manager
-NVM_DIR="${HOME}/.nvm"
-if [[ -d "${NVM_DIR}" ]]; then
-    unset npm_config_prefix
-    export NVM_DIR
-    \. "${NVM_DIR}/nvm.sh"
-    \. "${NVM_DIR}/bash_completion"
-fi
-
-# if [[ $(uname) == "Darwin" ]]; then
-#     eval $(keychain --quiet --nogui --eval --inherit any --agents ssh id_rsa)
-# else
-#     eval $(keychain --quiet --nogui --eval --inherit any --systemd --agents ssh id_rsa)
+# NVM_DIR="${HOME}/.nvm"
+# if [[ -d "${NVM_DIR}" ]]; then
+#     unset npm_config_prefix
+#     export NVM_DIR
+#     \. "${NVM_DIR}/nvm.sh"
+#     \. "${NVM_DIR}/bash_completion"
 # fi
+
 eval $(keychain --quiet --nogui --eval --inherit any --agents ssh id_rsa)
 
 # Spack
