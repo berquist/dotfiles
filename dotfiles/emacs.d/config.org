@@ -474,6 +474,7 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (setq projectile-completion-system 'ivy)
   (setq projectile-enable-caching t)
   (setq projectile-indexing-method 'hybrid)
+  (setq projectile-mode-line-prefix " P")
   (setq projectile-project-root-files-functions
         (cons 'projectile-root-qchem projectile-project-root-files-functions))
   (setq projectile-project-search-path
@@ -598,6 +599,7 @@ Links:
          company-backends))
   (setq company-dabbrev-downcase nil)
   (setq company-idle-delay 10)
+  (setq company-lighter-base "cmp")
   (setq company-minimum-prefix-length 0)
   (setq company-search-regexp-function #'company-search-words-regexp)
   (setq company-selection-wrap-around t)
