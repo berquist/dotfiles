@@ -4,12 +4,18 @@ export SCRATCH=/scratch
 export HOME1=/dftman/home1/ericb
 export HOME2=/dftman/home2/ericb
 
-source "${HOME2}"/spack/share/spack/setup-env.sh
+if [[ "${HOSTNAME}" == "dellman5" ]]; then
+    source "${HOME2}"/spack_dellman5/share/spack/setup-env.sh
+else
+    source "${HOME2}"/spack/share/spack/setup-env.sh
+fi
 
-export PYENV_ROOT="${HOME2}/pyenv"
-[[ -d "${PYENV_ROOT}/bin" ]] && export PATH="${PYENV_ROOT}/bin:${PATH}"
-if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
-if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
+if [[ "${HOSTNAME}" == "coreman4" ]]; then
+    export PYENV_ROOT="${HOME2}/pyenv"
+    [[ -d "${PYENV_ROOT}/bin" ]] && export PATH="${PYENV_ROOT}/bin:${PATH}"
+    if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
+    if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
+fi
 
 # TODO
 # apt install libbz2-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev
@@ -20,8 +26,10 @@ if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtual
 # python -m pip install ansible ansible-lint
 # python -m pip install docker
 
-if [ -f "$HOME/.bashrc" ]; then
-    source "$HOME/.bashrc"
+if [ -f "${HOME}/.bashrc" ]; then
+    source "${HOME}/.bashrc"
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${HOME}/.cargo/bin:$PATH"
+
+module use "${HOME}"/modules/coreman4
