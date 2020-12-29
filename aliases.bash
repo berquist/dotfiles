@@ -17,11 +17,10 @@ alias es='emacs -nw'
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
 alias tmux='tmux -2'
-# alias lessm='LESSOPEN="| src-hilite-lesspipe.sh %s" less -M '
 if command -v exa 1>/dev/null 2>&1; then
-    source ~/dotfiles/exa.bash
+    source "${HOME}"/dotfiles/exa.bash
 else
-    source ~/dotfiles/ls.bash
+    source "${HOME}"/dotfiles/ls.bash
 fi
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias psmem='ps aux --sort -rss'

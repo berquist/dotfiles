@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 unalias ls 2>/dev/null
 unalias l 2>/dev/null
 unalias la 2>/dev/null
