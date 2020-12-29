@@ -991,8 +991,7 @@ users are likely to use them.
 
 (use-package conda
   :after delight
-  :hook ((after-init . conda-env-initialize-interactive-shells)
-         (after-init . conda-env-autoactivate-mode))
+  :hook (after-init . conda-env-initialize-interactive-shells)
   :commands (conda-env-deactivate
              conda-env-activate
              conda-env-activate-path
@@ -1024,7 +1023,6 @@ users are likely to use them.
   :after python)
 
 (use-package lsp-pyright
-  ;; :after lsp-mode
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
                           (lsp))))
