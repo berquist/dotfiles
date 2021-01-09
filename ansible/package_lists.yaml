@@ -298,7 +298,6 @@ packages_osmium:
 
 packages_osmium_aur:
   # Programming: JVM
-  - kotlin-language-server
   # - ktlint
 
   # Programming: Lisp/Scheme
@@ -338,6 +337,13 @@ packages_osmium_aur:
   - ruby-mdl
   - ruby-travis
   - travis-lint
+
+  # language servers
+  - cmake-language-server-git
+  - dockerfile-language-server-bin
+  - kotlin-language-server
+  - pyright
+  - yaml-language-server
 
   # SLURM
   - slurm-llnl
