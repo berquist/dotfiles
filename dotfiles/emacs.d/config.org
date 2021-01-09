@@ -623,7 +623,7 @@ Links:
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-snippet nil)
   (setq lsp-file-watch-threshold 500000)
-  (setq lsp-headerline-breadcrumb-enable t)
+  (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-prefer-flymake nil)
   (setq lsp-rust-clippy-preference "on"))
@@ -657,6 +657,7 @@ Links:
   :bind (("C-c f" . flycheck-mode))
   :config
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  (setq flycheck-checker-error-threshold 1500)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   (setq flycheck-gcc-openmp t)
   (setq flycheck-markdown-mdl-style "~/.mdlrc")
