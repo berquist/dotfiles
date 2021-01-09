@@ -662,6 +662,7 @@ Links:
   (setq flycheck-markdown-mdl-style "~/.mdlrc")
   ;; This interferes with project-specific configurations.
   ;; (setq flycheck-pylintrc "~/.pylintrc")
+  (add-to-list 'flycheck-disabled-checkers 'yaml-jsyaml)
   :init
   (global-flycheck-mode))
 #+end_src
@@ -1254,11 +1255,6 @@ TODO disable .m files from loading as Objective-C
   ;; A decent assumption for work-specific pseudo-YAML files.
   :mode (("\\.params\\'" . yaml-mode)
          ("\\.clang-format\\'" . yaml-mode)))
-(use-package flycheck-yamllint
-  :after (flycheck yaml-mode)
-  :hook (yaml-mode . flycheck-yamllint-setup)
-  :config
-  (add-to-list 'flycheck-disabled-checkers 'yaml-jsyaml))
 #+END_SRC
 
 * JSON
