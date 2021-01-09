@@ -1443,6 +1443,7 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package pacfiles-mode)
 (use-package pdf-tools)
 (use-package pkgbuild-mode)
+(use-package snakemake-mode)
 (use-package systemd)
 (use-package vagrant-tramp)
 #+END_SRC
