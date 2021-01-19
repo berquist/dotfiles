@@ -654,6 +654,7 @@ Links:
 
 #+begin_src emacs-lisp
 (use-package flycheck
+  :straight (flycheck :type git :host github :repo "berquist/flycheck" :branch "chain-yaml-linters")
   :bind (("C-c f" . flycheck-mode))
   :config
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
