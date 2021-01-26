@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-export EDITOR="emacs -nw"
+# https://askubuntu.com/a/866376
+export EDITOR="emacsclient -t -a=\"\""
 
 # https://twitter.com/hhulkko/status/114256631419772928
 # http://darrendev.blogspot.com/2011/07/customize-less-less-annoying.html

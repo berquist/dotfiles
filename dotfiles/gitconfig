@@ -14,10 +14,8 @@
 	signingkey = AAD43B70A5049675CFC8B101BAFD205D5FA2B329
 
 [core]
-	# When using the emacs daemon, just `emacs` is a problem;
-	# `--no-window-system` forces a separate process and to open in a
-	# terminal, not a GUI.
-	editor = emacs -nw
+	# https://askubuntu.com/a/866376
+	editor = emacsclient -t -a=\\\"\\\"
 	autocrlf = input
 	safecrlf = warn
 
