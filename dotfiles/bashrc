@@ -17,5 +17,7 @@ if [[ $- == *i* ]]; then
 
     if [[ "${HOSTNAME}" == "coreman4" ]]; then
         source "${HOME}"/env/spackenv
+
+        eval "$(direnv hook $(basename $SHELL))"
     fi
 fi
