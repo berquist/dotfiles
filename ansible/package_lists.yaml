@@ -532,7 +532,11 @@ default_packages_ubuntu:
   # userspace
   - ansible
   - ansible-lint
+  - apt-file
+  - colordiff
   - docker-compose
   - git
+  - python-subversion
   - python3-pip
   - subversion
+  - vagrant
