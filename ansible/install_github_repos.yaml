@@ -36,6 +36,7 @@
     - name: update font cache
       command: fc-cache
       when: ansible_system == "Linux"
+      changed_when: false
     - name: link chemacs
       file:
         src: "{{ base_dir }}/chemacs/.emacs"
@@ -58,3 +59,20 @@
         repo: https://github.com/pyenv/pyenv.git
         dest: "{{ home_dir }}/.pyenv"
       when: ansible_distribution != "Archlinux"
+    - name: see if ~/.clojure exists and is a git repo with the right remote
+      git:
+        repo: git@github.com:berquist/clojure-deps-edn.git
+        dest: "{{ home_dir }}/.clojure"
+        clone: no
+        update: no
+      register: clojure_dir_status
+      changed_when: false
+    - name: if ~/.clojure exists and isn't a git repo with the right remote, remove it
+      file:
+        path: "{{ home_dir }}/.clojure"
+        state: absent
+      when: not clojure_dir_status.before
+    - name: install personal Clojure deps
+      git:
+        repo: git@github.com:berquist/clojure-deps-edn.git
+        dest: "{{ home_dir }}/.clojure"
