@@ -718,7 +718,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 #+BEGIN_SRC emacs-lisp
 (use-package git-commit
   :init
-  (global-git-commit-mode))
+  (require 'git-commit))
 (use-package gitattributes-mode)
 (use-package gitconfig-mode)
 (use-package gitignore-mode)
