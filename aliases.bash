@@ -17,7 +17,7 @@ alias es='emacs -nw'
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
 alias tmux='tmux -2'
-if command -v exa 1>/dev/null 2>&1; then
+if command -v exa >/dev/null 2>&1; then
     source "${HOME}"/dotfiles/exa.bash
 else
     source "${HOME}"/dotfiles/ls.bash
