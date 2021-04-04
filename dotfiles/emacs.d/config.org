@@ -801,7 +801,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                            ("" "hyperref" nil)
                                            ("" "tabulary" nil)
                                            ("" "braket" t)
-                                           ("final" "microtype" nil)))
+                                           ("final" "microtype" nil)
+                                           ("usenames,dvipsnames,svgnames,table" "xcolor" nil)))
   (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
   (setq org-html-mathjax-options
