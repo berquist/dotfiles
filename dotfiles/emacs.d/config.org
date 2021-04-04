@@ -784,6 +784,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   ;; - braket
   ;; - microtype
   ;; - xcolor
+  ;; where xcolor needs to be loaded early for packages that would otherwise
+  ;; automatically load it.
   (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t
                                             ("pdflatex"))
                                            ("T1" "fontenc" t
@@ -798,11 +800,11 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                            ("" "textcomp" t)
                                            ("" "amssymb" t)
                                            ("" "capt-of" nil)
-                                           ("" "hyperref" nil)
+                                           ("usenames,dvipsnames,svgnames,table" "xcolor" nil)
+                                           ("colorlinks=true" "hyperref" nil)
                                            ("" "tabulary" nil)
                                            ("" "braket" t)
-                                           ("final" "microtype" nil)
-                                           ("usenames,dvipsnames,svgnames,table" "xcolor" nil)))
+                                           ("final" "microtype" nil)))
   (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
   (setq org-html-mathjax-options
