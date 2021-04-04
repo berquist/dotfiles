@@ -117,7 +117,9 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; http://stackoverflow.com/questions/12989072/showing-continuation-lines-in-emacs-in-a-text-terminal
 (setq-default transient-mark-mode t)
 (setq-default visual-line-mode t)
+;; Never truncate lines, even in partial width windows.
 (setq-default truncate-lines nil)
+(setq truncate-partial-width-windows nil)
 ;; (global-display-line-numbers-mode)
 (setq-default line-number-mode t)
 (setq-default column-number-mode t)
