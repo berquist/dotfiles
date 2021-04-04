@@ -921,14 +921,12 @@ These are valid for all C-style modes (I think).
   :hook ((c-mode c++-mode) . lsp))
 #+END_SRC
 
-This only makes sense for c++-mode.
-
-https://stackoverflow.com/questions/2619853/emacs-override-indentation
-
 #+BEGIN_SRC emacs-lisp
-(defun my-c++-setup ()
-  (c-set-offset 'innamespace [0]))
-(add-hook 'c++-mode-hook 'my-c++-setup)
+(defconst my-cc-style
+  '("cc-mode"
+    (c-offsets-alist . ((innamespace . [0])))))
+
+(c-add-style "my-cc-mode" my-cc-style)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
