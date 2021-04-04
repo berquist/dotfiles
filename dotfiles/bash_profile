@@ -4,10 +4,17 @@ export SCRATCH=/scratch
 export HOME1=/dftman/home1/ericb
 export HOME2=/dftman/home2/ericb
 
-if [[ "${HOSTNAME}" == "dellman5" ]]; then
-    source "${HOME2}"/spack_dellman5/share/spack/setup-env.sh
-else
+if [[ "${HOSTNAME}" == "coreman4" ]]; then
     source "${HOME2}"/spack/share/spack/setup-env.sh
+elif [[ "${HOSTNAME}" == "cheetah" ]]; then
+    source "${HOME2}"/spack_cheetah/share/spack/setup-env.sh
+# TODO base Python 3 too old, force Python 2?
+elif [[ "${HOSTNAME}" == "dellman4" ]]; then
+    source "${HOME2}"/spack_dellman4/share/spack/setup-env.sh
+elif [[ "${HOSTNAME}" == "dellman5" ]]; then
+    source "${HOME2}"/spack_dellman5/share/spack/setup-env.sh
+elif [[ "${HOSTNAME}" == "gpuman2.q-chem.com" ]]; then
+    source "${HOME2}"/spack_gpuman2/share/spack/setup-env.sh
 fi
 
 if [[ "${HOSTNAME}" == "coreman4" ]]; then
@@ -30,6 +37,11 @@ if [ -f "${HOME}/.bashrc" ]; then
     source "${HOME}/.bashrc"
 fi
 
-export PATH="${HOME}/.cargo/bin:$PATH"
+if [[ "${HOSTNAME}" == "coreman4" ]]; then
+    export PATH="${HOME}/.cargo/bin:$PATH"
+fi
 
-module use "${HOME}"/modules/coreman4
+module use "${HOME}"/modules/work
+if [[ "${HOSTNAME}" == "coreman4" ]]; then
+    module use "${HOME}"/modules/coreman4
+fi
