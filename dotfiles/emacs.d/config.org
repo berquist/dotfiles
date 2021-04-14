@@ -1268,7 +1268,8 @@ TODO disable .m files from loading as Objective-C
 (use-package yaml-mode
   ;; A decent assumption for work-specific pseudo-YAML files.
   :mode (("\\.params\\'" . yaml-mode)
-         ("\\.clang-format\\'" . yaml-mode)))
+         ("\\.clang-format\\'" . yaml-mode)
+         ("\\.asdf\\'" . yaml-mode)))
 #+END_SRC
 
 * JSON
