@@ -353,10 +353,7 @@ current buffer's, reload dir-locals."
 ;;              :repo "kjakapat/eva-theme"
 ;;              :files ("emacs/build/*.el"))
 ;;   :config
-;;   (add-to-list 'custom-theme-load-path
-;;                (concat straight-base-dir
-;;                        "straight/build/base16-eva-theme/")))
-;;   ;; (load-theme 'base16-eva t))
+;;   (load-theme 'base16-eva t))
 (use-package dracula-theme)
 (use-package gotham-theme)
 (use-package plan9-theme)
