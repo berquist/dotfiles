@@ -9,15 +9,6 @@ dotfiles:
   d_emacs.d:
     src: emacs.d
     dst: ~/.emacs.d
-  d_emacs.d_elpy:
-    src: emacs.d_elpy
-    dst: ~/.emacs.d_elpy
-  d_emacs.d_fresh:
-    src: emacs.d_fresh
-    dst: ~/.emacs.d_fresh
-  d_emacs.d_straight:
-    src: emacs.d_straight
-    dst: ~/.emacs.d_straight
   d_idea:
     src: idea
     dst: ~/.idea
@@ -57,9 +48,6 @@ dotfiles:
   f_direnvrc:
     src: config/direnv/direnvrc
     dst: ~/.config/direnv/direnvrc
-  f_emacs-profiles.el:
-    src: emacs-profiles.el
-    dst: ~/.emacs-profiles.el
   f_emacsclient.desktop:
     src: local/share/applications/emacsclient.desktop
     dst: ~/.local/share/applications/emacsclient.desktop
@@ -160,9 +148,6 @@ profiles:
   osmium:
     dotfiles:
     - d_emacs.d
-    - d_emacs.d_elpy
-    - d_emacs.d_fresh
-    - d_emacs.d_straight
     - d_idea
     - d_tmux
     - f_alacritty.yml
@@ -174,7 +159,6 @@ profiles:
     - f_condarc
     - f_cuby4
     - f_direnvrc
-    - f_emacs-profiles.el
     - f_emacsclient.desktop
     - f_gitconfig
     - f_mdlrc
