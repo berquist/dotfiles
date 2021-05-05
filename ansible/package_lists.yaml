@@ -469,7 +469,6 @@ default_github_repos:
   - chrissimpkins/codeface
   - github/gitignore
   - icy/pacapt
-  - mbadolato/iTerm2-Color-Schemes
 
 default_packages_popos:
   # base
