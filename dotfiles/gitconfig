@@ -109,3 +109,5 @@
 	required = true
 [github]
 	user = berquist
+[init]
+	defaultBranch = main
