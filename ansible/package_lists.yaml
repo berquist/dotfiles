@@ -27,6 +27,7 @@ default_packages_arch:
   # programming: Python
   # If something is commented out here, then it's probably a split
   # package.
+  - python-funcy
   - python-mongomock
   - python-pymongo
 
@@ -159,7 +160,9 @@ default_packages_arch_aur:
   # command-line tools
   - direnv
   - dotdrop
+  - git-delta
   - pipman-git
+  - tealdeer
   - wakatime
 
   # GUI tools
@@ -191,14 +194,11 @@ packages_osmium:
 
   # programming: JVM
   - clojure
-  - kotlin
   - leiningen
-  - scala
 
   # programming: Lisp/Scheme
   - chicken
   - clisp
-  - clojure
   - cmucl
   - mit-scheme
   - racket
@@ -315,11 +315,13 @@ packages_osmium_aur:
   - pjson
   - pyre-check-bin
   - python-algopy
+  - python-asdf
   - python-ase
   - python-asv
   - python-autograd
   - python-cupy
   - python-deepdiff
+  - python-hickle
   - python-jax
   - python-mmh3
   - python-periodictable
@@ -339,6 +341,7 @@ packages_osmium_aur:
   - travis-lint
 
   # language servers
+  - clojure-lsp-bin
   - cmake-language-server-git
   - dockerfile-language-server-bin
   - kotlin-language-server
