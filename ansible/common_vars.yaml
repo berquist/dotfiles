@@ -1,5 +1,4 @@
 ---
 home_dir: "{{ lookup('env', 'HOME') }}"
-base_dir: "{{ home_dir }}/repositories"
 # This works even with privilege escalation.
 username: "{{ lookup('env', 'USER') }}"

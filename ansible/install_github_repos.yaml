@@ -15,12 +15,12 @@
   tasks:
     - name: ensure base exists
       file:
-        path: "{{ base_dir }}"
+        path: "{{ github_repo_base_dir }}"
         state: directory
     - name: get repos from GitHub
       git:
         repo: "https://github.com/{{ item }}.git"
-        dest: "{{ base_dir }}/{{ item.split('/')[1] }}"
+        dest: "{{ github_repo_base_dir }}/{{ item.split('/')[1] }}"
       loop: "{{ default_github_repos }}"
     - name: make sure fonts dir exists
       file:
@@ -29,7 +29,7 @@
       when: ansible_system == "Linux"
     - name: link codeface into fonts dir
       file:
-        src: "{{ base_dir }}/codeface"
+        src: "{{ github_repo_base_dir }}/codeface"
         dest: "{{ fonts_dir }}/codeface"
         state: link
       when: ansible_system == "Linux"
