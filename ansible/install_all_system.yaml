@@ -1,9 +1,10 @@
+---
 # TODO only on coreman4
 # - import_playbook: install_docker.yaml
 
 - name: enable and start system services
   gather_facts: false
-  hosts: localhost
+  hosts: all
   pre_tasks:
     - setup:
         gather_subset:
@@ -20,7 +21,7 @@
 # See https://askubuntu.com/a/1251037 and https://askubuntu.com/a/191013.
 - name: disable sleeping for Gnome Display Manager (GDM)
   gather_facts: false
-  hosts: localhost
+  hosts: all
   pre_tasks:
     - setup:
         gather_subset:

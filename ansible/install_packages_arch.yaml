@@ -1,7 +1,7 @@
 ---
 - name: install packages for Arch Linux
   gather_facts: false
-  hosts: localhost
+  hosts: all
   vars_files:
     - package_lists.yaml
   pre_tasks:
@@ -41,7 +41,7 @@
 
 - name: bootstrap AUR installation
   gather_facts: false
-  hosts: localhost
+  hosts: all
   become_user: aur_builder
   roles:
     - kewlfft.aur
@@ -58,7 +58,7 @@
 
 - name: install AUR packages
   gather_facts: false
-  hosts: localhost
+  hosts: all
   become_user: aur_builder
   roles:
     - kewlfft.aur

@@ -1,7 +1,7 @@
 ---
 - name: install packages for Pop!_OS
   gather_facts: false
-  hosts: localhost
+  hosts: all
   vars_files:
     - package_lists.yaml
   pre_tasks:

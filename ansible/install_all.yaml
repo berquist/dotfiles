@@ -6,7 +6,7 @@
 - import_playbook: install_languages.yaml
 
 - name: deploy dotfiles
-  hosts: localhost
+  hosts: all
   gather_facts: false
   vars:
     dotdrop_manual_install_file: ~/dotfiles/dotdrop/dotdrop.sh
@@ -49,7 +49,7 @@
 
 # - name: enable and start user services
 #   gather_facts: false
-#   hosts: localhost
+#   hosts: all
 #   pre_tasks:
 #     - setup:
 #         gather_subset:
@@ -75,7 +75,7 @@
 #   tags:
 #     - gnome
 #   gather_facts: false
-#   hosts: localhost
+#   hosts: all
 #   pre_tasks:
 #     - setup:
 #         gather_subset:
@@ -92,7 +92,7 @@
 
 - name: apply XDG settings
   gather_facts: false
-  hosts: localhost
+  hosts: all
   pre_tasks:
     - setup:
         gather_subset:

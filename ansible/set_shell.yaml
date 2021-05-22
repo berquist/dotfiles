@@ -1,7 +1,7 @@
 ---
 - name: set the shell to zshell
   gather_facts: false
-  hosts: localhost
+  hosts: all
   vars_files:
     - common_vars.yaml
   pre_tasks:

@@ -1,7 +1,7 @@
 ---
 - name: install Anaconda Python distribution
   gather_facts: false
-  hosts: localhost
+  hosts: all
   vars_files:
     - common_vars.yaml
   vars:
