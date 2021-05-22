@@ -32,7 +32,7 @@ Fundamental third-party packages that don't go anywhere else.
 (use-package no-littering
   :demand t)
 
-(use-package dash-functional
+(use-package dash
   :demand t)
 
 ;; Set the path properly. Don't have a conditional on using the window system
@@ -887,6 +887,21 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
     (message "Enabled org html export on save for current buffer...")))
 #+END_SRC
 
+** org-ref
+
+#+begin_src emacs-lisp
+(use-package org-ref
+  :disabled t
+  :config
+  (setq reftex-default-bibliography "~/bibliography2/references.bib")
+  (setq org-ref-default-bibliography "~/bibliography2/references.bib")
+  (setq org-ref-bibliography-notes "~/bibliography2/notes.org")
+  (setq org-ref-pdf-directory "~/bibliography2/pdfs")
+  (setq bibtex-completion-bibliography "~/bibliography2/references.bib")
+  (setq bibtex-completion-library-path "~/bibliography2/pdfs")
+  (setq bibtex-completion-notes-path "~/bibliography2/notes"))
+#+end_src
+
 * Compilation
 
 Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#110.
@@ -1260,6 +1275,8 @@ TODO disable .m files from loading as Objective-C
 #+END_SRC
 
 * YAML
+
+- [[https://asdf.readthedocs.io/][Advanced Scientific Data Format]] files are based on YAML.
 
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode
