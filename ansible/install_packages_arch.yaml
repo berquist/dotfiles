@@ -22,7 +22,7 @@
       pacman:
         name: "{{ item }}"
       loop: "{{ lookup('vars', 'packages_' + ansible_hostname) }}"
-      when: ansible_distribution == "ArchLinux"
+      when: ansible_distribution == "Archlinux"
     - name: Create `aur_builder` group
       group:
         name: aur_builder
@@ -82,4 +82,4 @@
       pacman:
         name: "{{ item }}"
       loop: "{{ lookup('vars', 'packages_' + ansible_hostname + '_aur') }}"
-      when: ansible_distribution == "ArchLinux"
+      when: ansible_distribution == "Archlinux"
