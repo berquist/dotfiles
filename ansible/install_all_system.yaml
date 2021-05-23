@@ -1,4 +1,5 @@
 ---
+- import_playbook: install_1password.yaml
 # TODO only on coreman4
 # - import_playbook: install_docker.yaml
 
