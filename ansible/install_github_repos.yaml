@@ -71,3 +71,7 @@
       git:
         repo: git@github.com:berquist/clojure-deps-edn.git
         dest: "{{ home_dir }}/.clojure"
+    - name: clone Spack
+      git:
+        repo: https://github.com/spack/spack.git
+        dest: "{{ spack_root }}"
