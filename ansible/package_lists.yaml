@@ -37,11 +37,6 @@ default_packages_arch:
   - ttf-inconsolata
   - ttf-sazanami
 
-  # editors
-  # Prefer `emacs-lucid` from the AUR, since the GTK version keeps crashing
-  # for some reason.
-  # - emacs
-
   # env
   - xorg-xinit
 
@@ -377,7 +372,6 @@ default_packages_linuxbrew:
   - fzf
 
 default_packages_homebrew:
-  - ant
   - aspell
   - autoconf
   - automake
@@ -390,17 +384,13 @@ default_packages_homebrew:
   # - emacs
   - exa
   - fd
-  - fuseki
   - fzf
   - git
   - gpg
-  - "gradle --with-all"
   - htop
   - hub
-  - jena
   - jq
   - keychain
-  - kotlin
   - languagetool
   - less
   - lesspipe
@@ -408,7 +398,6 @@ default_packages_homebrew:
   - libgit2
   - libtool
   - lmod
-  - maven
   - mono
   - nano
   - npm
@@ -421,7 +410,6 @@ default_packages_homebrew:
   - reattach-to-user-namespace
   - ripgrep
   - shellcheck
-  - "sox --with-libao --with-libsndfile --with-opencore-amr --with-opusfile"
   - tidy-html5
   - tmux
   - util-linux
