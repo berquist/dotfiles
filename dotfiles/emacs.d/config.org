@@ -776,18 +776,15 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (setq org-html-with-latex '(mathjax))
   (setq org-image-actual-width nil)
   (setq org-latex-create-formula-image-program 'imagemagick)
-  ;; The differences from the default are that the `colorlinks` option is
-  ;; passed to hyperref, and the following packages are added:
+  ;; The differences from the default are that the following packages are added:
   ;; - tabulary
   ;; - braket
   ;; - microtype
   ;; - xcolor
   ;; where xcolor needs to be loaded early for packages that would otherwise
   ;; automatically load it.
-  (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t
-                                            ("pdflatex"))
-                                           ("T1" "fontenc" t
-                                            ("pdflatex"))
+  (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t ("pdflatex"))
+                                           ("T1" "fontenc" t ("pdflatex"))
                                            ("" "graphicx" t)
                                            ("" "grffile" t)
                                            ("" "longtable" nil)
@@ -798,8 +795,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                            ("" "textcomp" t)
                                            ("" "amssymb" t)
                                            ("" "capt-of" nil)
-                                           ("usenames,dvipsnames,svgnames,table" "xcolor" nil)
-                                           ("colorlinks=true" "hyperref" nil)
+                                           ("dvipsnames,svgnames,table" "xcolor" nil)
+                                           ("" "hyperref" nil)
                                            ("" "tabulary" nil)
                                            ("" "braket" t)
                                            ("final" "microtype" nil)))
@@ -838,7 +835,12 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                       ("\\subsection{%s}" . "\\subsection*{%s}")
                                       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                                       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                                      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+                                      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+    ;; The difference here is that xcolor options are passed in.
+    (add-to-list 'org-latex-classes '("beamer" "\\documentclass[presentation,xcolor={dvipsnames,svgnames,table}]{beamer}"
+		                              ("\\section{%s}" . "\\section*{%s}")
+		                              ("\\subsection{%s}" . "\\subsection*{%s}")
+		                              ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
   (org-clock-persistence-insinuate))
 (use-package htmlize)
 (use-package ox-gfm
