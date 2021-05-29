@@ -1544,8 +1544,6 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 #+BEGIN_SRC emacs-lisp
 (use-package elcord
   :config
-  (setq elcord-client-id '"714056771391717468")
-  (setq elcord-refresh-rate 5)
   (setq elcord-use-major-mode-as-main-icon t)
   :init
   (elcord-mode))
