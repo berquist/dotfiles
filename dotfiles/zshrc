@@ -2,6 +2,8 @@
 
 source "${HOME}/.zinit/bin/zinit.zsh"
 
+autoload -U compaudit compinit
+
 zinit snippet OMZL::compfix.zsh
 zinit snippet "${HOME}"/dotfiles/zcompdump.zsh
 zinit snippet OMZL::completion.zsh
@@ -19,6 +21,7 @@ zinit snippet OMZ::plugins/cargo/_cargo
 zinit ice as"completion" wait'!4' silent
 zinit snippet OMZ::plugins/rust/_rust
 zinit ice as"completion" wait'!5' silent
+# TODO autogenerate this with Ansible
 zinit snippet "${HOME}"/dotfiles/zfunc/_rustup
 # Prompt
 zinit ice svn
