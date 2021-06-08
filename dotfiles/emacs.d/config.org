@@ -917,6 +917,18 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
 (setq compilation-scroll-output t)
 #+END_SRC
 
+* Tree-Sitter
+
+#+begin_src emacs-lisp
+(use-package tree-sitter
+  :init
+  (global-tree-sitter-mode))
+(use-package tree-sitter-langs
+  :hook ((tree-sitter-after-on . tree-sitter-hl-mode))
+  :init
+  (require 'tree-sitter-langs))
+#+end_src
+
 * C/C++
 
 These are valid for all C-style modes (I think).
