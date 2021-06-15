@@ -102,6 +102,7 @@ default_packages_arch:
   - parallel
   - pbzip2
   - perl-term-readkey # git-svn
+  - pigz
   - proselint
   - pybind11
   - rclone
