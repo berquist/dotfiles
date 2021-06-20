@@ -165,6 +165,7 @@ default_packages_arch_aur:
   - emacs-git
   - fftw2
   - figlet-fonts
+  - google-chrome
   - lmod
   - pop-gtk-theme
   - spotify
