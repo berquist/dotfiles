@@ -1390,20 +1390,10 @@ TODO disable .m files from loading as Objective-C
 Modified to remove/disable Racket, which has ~racket-mode~.
 
 #+BEGIN_SRC emacs-lisp
-(use-package geiser
-  :config
-  (setq geiser-active-implementations '(guile chicken chez mit chibi))
-  (setq geiser-implementations-alist '(((regexp "\\.scm\\'") guile)
-                                       ((regexp "\\.scm\\'") chicken)
-                                       ((regexp "\\.release-info\\'") chicken)
-                                       ((regexp "\\.meta\\'") chicken)
-                                       ((regexp "\\.setup\\'") chicken)
-                                       ((regexp "\\.ss\\'") chez)
-                                       ((regexp "\\.def\\'") chez)
-                                       ((regexp "\\.scm\\'") mit)
-                                       ((regexp "\\.pkg\\'") mit)
-                                       ((regexp "\\.scm\\'") chibi)
-                                       ((regexp "\\.sld\\'") chibi))))
+(use-package geiser-chez)
+(use-package geiser-chibi)
+(use-package geiser-guile)
+(use-package geiser-mit)
 (use-package scribble-mode
   :hook (scribble-mode . geiser))
 (use-package racket-mode)
