@@ -500,7 +500,7 @@ default_packages_popos:
   - avogadro
   - direnv
   - discord
-  - emacs
+  - emacs-snapshot
   - graphviz
   - htop
   - iotop
@@ -526,6 +526,7 @@ default_packages_ubuntu:
   - apt-file
   - colordiff
   - docker-compose
+  - emacs-snapshot
   - git
   - python-subversion
   - python3-pip

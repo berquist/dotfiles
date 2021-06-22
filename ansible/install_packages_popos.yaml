@@ -1,5 +1,5 @@
 ---
-- name: install packages for Pop!_OS
+- name: install packages for Debian derivatives
   gather_facts: false
   hosts: all
   vars_files:
@@ -9,11 +9,15 @@
         gather_subset:
           - distribution
   tasks:
-    - name: install packages
+    - name: add Emacs snapshot repository
+      apt_repository:
+        repo: "ppa:ubuntu-elisp/ppa"
+      when: ansible_distribution == "Pop!_OS" or ansible_distribution == "Ubuntu"
+    - name: install packages for Pop!_OS
       apt:
         name: "{{ default_packages_popos }}"
-      # For debugging
-      # apt:
-      #   name: "{{ item }}"
-      # loop: "{{ default_packages_popos }}"
       when: ansible_distribution == "Pop!_OS"
+    - name: install packages for Ubuntu
+      apt:
+        name: "{{ default_packages_ubuntu }}"
+      when: ansible_distribution == "Ubuntu"
