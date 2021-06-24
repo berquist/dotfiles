@@ -474,8 +474,8 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (setq projectile-enable-caching t)
   (setq projectile-indexing-method 'hybrid)
   (setq projectile-mode-line-prefix " P")
-  (setq projectile-project-root-files-functions
-        (cons 'projectile-root-qchem projectile-project-root-files-functions))
+  (setq projectile-project-root-functions
+        (cons 'projectile-root-qchem projectile-project-root-functions))
   (setq projectile-project-search-path
         '("~/development" "~/repositories"))
   (setq projectile-require-project-root t)
