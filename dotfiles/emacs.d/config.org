@@ -388,7 +388,9 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setq completions-format 'vertical)
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
+The old Ivy/Counsel/Swiper setup.
+
+#+begin_src emacs-lisp
 (use-package ivy
   :disabled t
   :delight
@@ -426,26 +428,52 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   ;; :hook (after-init . swiper-mode)
   :bind (("C-s" . swiper-isearch)
          ("C-r" . swiper-isearch-backward)))
+#+end_src
+
+[[https://github.com/raxod502/selectrum][Selectrum]] provides a completion UI. [[https://github.com/raxod502/prescient.el/][Prescient]] handles sorting and filtering.
+
+#+begin_src emacs-lisp
+(use-package prescient
+  :hook (after-init . prescient-persist-mode))
+(use-package company-prescient
+  :hook (after-init . company-prescient-mode))
 (use-package selectrum
   :hook (after-init . selectrum-mode))
+(use-package selectrum-prescient
+  :hook (after-init . selectrum-prescient-mode))
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package ivy-prescient
+  :disabled t
+  :hook (after-init . ivy-prescient-mode))
+#+end_src
+
+[[https://github.com/raxod502/ctrlf][CTRLF]] replaces Isearch for single-buffer text search.
+
+#+begin_src emacs-lisp
 (use-package ctrlf
-  :demand t
+  :hook (after-init . ctrlf-mode)
   :config
   ;; prefer fuzzy over literal searching
   (setq ctrlf-mode-bindings
         '(([remap isearch-forward] . ctrlf-forward-fuzzy)
           ([remap isearch-backward] . ctrlf-backward-fuzzy)
           ([remap isearch-forward-regexp] . ctrlf-forward-fuzzy-regexp)
-          ([remap isearch-backward-regexp] . ctrlf-backward-fuzzy-regexp)))
-  (ctrlf-mode))
-(use-package prescient
-  :hook (after-init . prescient-persist-mode))
-(use-package selectrum-prescient
-  :hook (after-init . selectrum-prescient-mode))
-(use-package ivy-prescient
-  :disabled t
-  :hook (after-init . ivy-prescient-mode))
-#+END_SRC
+          ([remap isearch-backward-regexp] . ctrlf-backward-fuzzy-regexp))))
+#+end_src
+
+[[https://github.com/minad/consult][Consult]] is like a combination of Counsel and Swiper.
+
+#+begin_src emacs-lisp
+(use-package consult
+  :demand t)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package marginalia
+  :hooks (after-init . marginalia-mode))
+#+end_src
 
 Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed.
 - For =ripgrep=, which has the traditional =grep= interface, use =M-x ripgrep-regexp= to activate.
