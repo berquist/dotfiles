@@ -472,7 +472,7 @@ The old Ivy/Counsel/Swiper setup.
 
 #+begin_src emacs-lisp
 (use-package marginalia
-  :hooks (after-init . marginalia-mode))
+  :hook (after-init . marginalia-mode))
 #+end_src
 
 Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed.
