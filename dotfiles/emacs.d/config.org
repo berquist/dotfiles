@@ -822,10 +822,12 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (setq org-image-actual-width nil)
   (setq org-latex-create-formula-image-program 'imagemagick)
   ;; The differences from the default are that the following packages are added:
+  ;; - xcolor
+  ;; - booktabs
   ;; - tabulary
   ;; - braket
   ;; - microtype
-  ;; - xcolor
+  ;; - siunitx
   ;; where xcolor needs to be loaded early for packages that would otherwise
   ;; automatically load it.
   (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t ("pdflatex"))
@@ -842,9 +844,11 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                            ("" "capt-of" nil)
                                            ("dvipsnames,svgnames,table" "xcolor" nil)
                                            ("" "hyperref" nil)
+                                           ("" "booktabs" nil)
                                            ("" "tabulary" nil)
                                            ("" "braket" t)
-                                           ("final" "microtype" nil)))
+                                           ("final" "microtype" nil)
+                                           ("" "siunitx" nil)))
   (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
   (setq org-html-mathjax-options
@@ -859,6 +863,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
           (tagindent ".8em")
           (tagside "right")))
   (setq org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
+  (setq org-latex-tables-booktabs t)
   (setq org-list-allow-alphabetical t)
   (setq org-log-done 'time)
   (setq org-log-done-with-time t)
@@ -872,6 +877,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (when (executable-find "pygmentize")
     (add-to-list 'org-latex-packages-alist '("" "minted" nil))
     (setq org-latex-listings 'minted)
+    ;; TODO these are applied in square brackets to every block, rather than using a global \mintedsetup.
     (setq org-latex-minted-options
           '(("framesep" "2mm"))))
   (with-eval-after-load "ox-latex"
