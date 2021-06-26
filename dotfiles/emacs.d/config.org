@@ -453,14 +453,15 @@ The old Ivy/Counsel/Swiper setup.
 
 #+begin_src emacs-lisp
 (use-package ctrlf
-  :hook (after-init . ctrlf-mode)
   :config
   ;; prefer fuzzy over literal searching
   (setq ctrlf-mode-bindings
         '(([remap isearch-forward] . ctrlf-forward-fuzzy)
           ([remap isearch-backward] . ctrlf-backward-fuzzy)
           ([remap isearch-forward-regexp] . ctrlf-forward-fuzzy-regexp)
-          ([remap isearch-backward-regexp] . ctrlf-backward-fuzzy-regexp))))
+          ([remap isearch-backward-regexp] . ctrlf-backward-fuzzy-regexp)))
+  :init
+  (ctrlf-mode))
 #+end_src
 
 [[https://github.com/minad/consult][Consult]] is like a combination of Counsel and Swiper.
