@@ -827,9 +827,11 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   ;; - tabulary
   ;; - braket
   ;; - microtype
+  ;; - listings
   ;; - siunitx
   ;; where xcolor needs to be loaded early for packages that would otherwise
-  ;; automatically load it.
+  ;; automatically load it.  Although we later prefer minted over listings for
+  ;; code formatting, listings is still very good for verbatim-like blocks.
   (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t ("pdflatex"))
                                            ("T1" "fontenc" t ("pdflatex"))
                                            ("" "graphicx" t)
@@ -848,6 +850,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                            ("" "tabulary" nil)
                                            ("" "braket" t)
                                            ("final" "microtype" nil)
+                                           ("" listings nil)
                                            ("" "siunitx" nil)))
   (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
   (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
@@ -878,8 +881,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
     (add-to-list 'org-latex-packages-alist '("" "minted" nil))
     (setq org-latex-listings 'minted)
     ;; TODO these are applied in square brackets to every block, rather than using a global \mintedsetup.
-    (setq org-latex-minted-options
-          '(("framesep" "2mm"))))
+    (setq org-latex-minted-options nil))
   (with-eval-after-load "ox-latex"
     (add-to-list 'org-latex-classes '("refsheet" "\\documentclass{refsheet}"
                                       ("\\section{%s}" . "\\section*{%s}")
