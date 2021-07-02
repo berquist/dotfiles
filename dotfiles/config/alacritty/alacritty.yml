@@ -1,8 +1,6 @@
 font:
 {%@@ if profile == "pop-os" @@%}
   size: 16
-{%@@ elif profile == "osmium" @@%}
-  size: 20
 {%@@ endif @@%}
   normal:
     family: Panic Sans
