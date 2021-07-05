@@ -1,7 +1,4 @@
 font:
-{%@@ if profile == "pop-os" @@%}
-  size: 16
-{%@@ endif @@%}
   normal:
     family: Panic Sans
   bold:
