@@ -382,9 +382,9 @@ current buffer's, reload dir-locals."
 TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.html
 
 #+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(font . "Panic Sans-11"))
+(add-to-list 'default-frame-alist '(font . "Fira Mono-11"))
 ;; https://emacs.stackexchange.com/q/45895
-(set-face-attribute 'fixed-pitch nil :family "Fira Mono")
+(set-face-attribute 'fixed-pitch nil :family "Panic Sans")
 
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
