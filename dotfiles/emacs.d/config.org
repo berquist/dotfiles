@@ -401,48 +401,6 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setq completions-format 'vertical)
 #+END_SRC
 
-The old Ivy/Counsel/Swiper setup.
-
-#+begin_src emacs-lisp
-(use-package ivy
-  :disabled t
-  :delight
-  :demand t
-  ;; :hook (after-init . ivy-mode)
-  :bind
-  (:map ivy-minibuffer-map
-        ;; This could be swiper-map, but I want it everywhere narrowing is
-        ;; used.
-        ("C-r" . ivy-previous-line-or-history)
-        ("<return>" . ivy-alt-done))
-  :config
-  (setq ivy-action-wrap t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-magic-tilde nil)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-wrap t)
-  :init
-  (ivy-mode))
-(use-package counsel
-  :disabled t
-  :after ivy
-  :delight
-  :demand t
-  ;; :hook (after-init . counsel-mode)
-  :bind (("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file))
-  :init
-  (counsel-mode)
-  ;; Don't force matches to start at the beginning.
-  (setq ivy-initial-inputs-alist nil))
-(use-package swiper
-  :disabled t
-  :after ivy
-  ;; :hook (after-init . swiper-mode)
-  :bind (("C-s" . swiper-isearch)
-         ("C-r" . swiper-isearch-backward)))
-#+end_src
-
 [[https://github.com/raxod502/selectrum][Selectrum]] provides a completion UI. [[https://github.com/raxod502/prescient.el/][Prescient]] handles sorting and filtering.
 
 #+begin_src emacs-lisp
