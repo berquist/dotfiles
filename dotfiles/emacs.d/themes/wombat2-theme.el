@@ -82,7 +82,7 @@ Ansi-Color faces are included.")
                                      :underline t))))
    `(region ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
    `(secondary-selection ((,class (:background ,wombat-blue-1 :foreground ,wombat/white :bold t)))) ;; background: ,wombat/magenta
-   `(isearch ((,class (:background ,wombat-gray :foreground ,wombat/white)))) ;; background: ,wombat-gray-3, foreground: #857b6f
+   `(isearch ((,class (:background ,wombat-pink-1 :foreground ,wombat/white)))) ;; background: ,wombat-gray-3, foreground: #857b6f
    `(isearch-fail ((,class (:background ,wombat-red-1))))
    `(lazy-highlight ((,class (:italic t :background ,wombat-purple :foreground ,wombat-gray+2)))) ;; background: "#384048"
    ;; `(lazy-highlight-face ((,class (:foreground ,wombat-blue-2 :background ,wombat-orange+1))))
