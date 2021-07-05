@@ -1,11 +1,11 @@
 font:
   normal:
-    family: Panic Sans
+    family: Fira Mono
   bold:
-    family: Panic Sans
-    # style: Bold
+    family: Fira Mono
+    style: Bold
   italic:
-    family: Panic Sans
+    family: Fira Mono
     # style: Italic
 
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
