@@ -1383,6 +1383,7 @@ TODO disable .m files from loading as Objective-C
 #+begin_src emacs-lisp
 (use-package paredit
   :hook ((emacs-lisp-mode
+          inferior-emacs-lisp-mode
           lisp-mode
           scheme-mode
           cider-mode
