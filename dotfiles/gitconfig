@@ -19,6 +19,9 @@
 	autocrlf = input
 	safecrlf = warn
 
+[blame]
+	coloring = repeatedLines
+
 # Available colors are enumerated in
 # http://stackoverflow.com/questions/15458237/git-pretty-format-colors
 [color]
@@ -43,21 +46,52 @@
 	untracked = cyan
 	unmerged = yellow
 
+[commit]
+	gpgsign = false
+
+[diff]
+	# TODO Why this number?
+	renameLimit = 1011
+
+[difftool.latex]
+	# Needs the `ldiff` script.
+	cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
+
+# Where did this come from?
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[init]
+	defaultBranch = main
+
+[github]
+	user = berquist
+
+[log]
+	date = "format:%F %r (%a, %d %b %Y %T %z)"
+
+[merge]
+	conflictstyle = diff3
+	verbosity = 3
+
 [pull]
 	ff = only
 
 [push]
 	default = simple
 
-[merge]
-	conflictstyle = diff3
-	verbosity = 3
+[pretty]
+	# THis is comparable to `--pretty=oneline`, but includes the extra
+	# (relative) date and author information at the end.
+	olra = %C(auto)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr)%C(reset) %C(blue)<%an>%C(reset)
 
 [alias]
 	# git git git git git git git git git ...
 	git = !exec git
 	branches = branch -a -v
-	ferch = fetch
 	commit = commit --verbose
 	remotes = remote -v
 	st = status -sb
@@ -65,14 +99,21 @@
 	dc = diff --cached
 	ds = diff --staged
 
-	# http://stackoverflow.com/questions/6017987/how-can-i-list-all-the-deleted-files-in-a-git-repository
-	show-deleted = log --diff-filter=D --summary
-	show-deleted2 = !git log --all --pretty=format: --name-only --diff-filter=D | sort -u
-	l = log --graph --pretty=fuller --abbrev-commit --date=format:'%F %r (%a, %d %b %Y %T %z)'
-	# gitk style, very pretty mhmmmm
-	lg = !git l --pretty=format:'%Cred%h%Creset %G? -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset'
+	l = log --graph --abbrev-commit
+	# This is comparable to `log --graph --oneline`, but includes the extra
+	# (relative) date and author information at the end.
+	lg = log --graph --abbrev-commit --pretty=olra
 
+	# Continue listing the history of a file beyond renames (works only for a
+	# single file).
 	when = !git log --follow -- "$2"
+
+	# http://stackoverflow.com/questions/6017987/how-can-i-list-all-the-deleted-files-in-a-git-repository
+	# Show the files that were deleted for each commit.
+	show-deleted = log --diff-filter=D --summary
+	# Show just the names of all deleted files over the entire repository
+	# history.
+	show-all-deleted = !git log --all --pretty=format: --name-only --diff-filter=D | sort -u
 
 	## Let's do some destructive stuff.
 	# Add more things to the last commit on the current head, with the
@@ -92,22 +133,3 @@
 	# http://stackoverflow.com/questions/1721738/using-diff-or-anything-else-to-get-character-level-diff-between-text-files
 	# Changing --word-diff to plain helps to make things more obvious.
 	cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
-
-[diff]
-	# TODO Why this number?
-	renameLimit = 1011
-
-[difftool.latex]
-	# Needs the `ldiff` script.
-	cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
-
-# Where did this come from?
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[github]
-	user = berquist
-[init]
-	defaultBranch = main
