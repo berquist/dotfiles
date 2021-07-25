@@ -27,13 +27,16 @@ default_packages_arch:
   # programming: Python
   # If something is commented out here, then it's probably a split
   # package.
+  - mypy
   - python-funcy
   - python-mongomock
+  - python-pre-commit
   - python-pymongo
 
   # fonts
   - cowsay
   - figlet
+  - noto-fonts-extra
   - ttf-inconsolata
   - ttf-sazanami
 
@@ -42,7 +45,6 @@ default_packages_arch:
 
   # groups
   - gnome
-  # - xfce4
   - texlive-most
 
   # command-line tools and general libraries
@@ -208,13 +210,12 @@ packages_osmium:
   - pyenv
   - cython
   - jupyter-notebook
-  # Prefer `mypy-git` from AUR
-  # - mypy
   - pygmentize
   - pypy3
   - python-black
   - python-bottleneck
   - python-cookiecutter
+  - python-cytoolz
   - python-docopt
   - flake8
   - python-gmpy2
@@ -256,6 +257,7 @@ packages_osmium:
   - python-statsmodels
   - python-sympy
   - python-terminado
+  - python-toolz
   - python-virtualenv
   - python-virtualenvwrapper
   - python-xlrd
@@ -490,7 +492,11 @@ default_packages_popos:
   - xz-utils
   - zlib1g-dev
 
-  # Programming: JVM
+  # programming: Julia
+  - julia
+  - julia-doc
+
+  # programming: JVM
   - clojure
   - leiningen
 
