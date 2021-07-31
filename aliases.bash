@@ -16,7 +16,8 @@ alias es='emacs -nw'
 # with it though?
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
-alias tmux='tmux -2'
+# If exa is available, set preferred aliases to use it (and its different
+# flags) rather than ls.
 if command -v exa >/dev/null 2>&1; then
     source "${HOME}"/dotfiles/exa.bash
 else
@@ -25,8 +26,10 @@ fi
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
+alias snv='svn'
 alias sw='telnet towel.blinkenlights.nl'
 alias t='tail -F -n 100 --sleep-interval=0.1'
+alias tmux='tmux -2'
 alias whcih='which'
 
 # So I don't do stupid things.
