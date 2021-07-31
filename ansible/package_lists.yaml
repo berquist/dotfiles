@@ -57,6 +57,7 @@ default_packages_arch:
   - aspell-en
   - atool
   - bash-language-server
+  - bat
   - boost
   - boost-libs
   - checkbashisms
@@ -380,6 +381,7 @@ default_packages_homebrew:
   - autoconf
   - automake
   - bash # Don't forget to add to /etc/shells
+  - bat
   - blazegraph
   - cmake
   - colordiff
@@ -504,6 +506,7 @@ default_packages_popos:
   - ansible
   - ansible-lint
   - avogadro
+  - bat
   - direnv
   - discord
   - emacs-snapshot
