@@ -10,8 +10,6 @@ export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.7.12"
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
 export WORKON_HOME=$HOME/data/virtualenvs
-{%@@ elif profile == "pop-os" @@%}
-test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 {%@@ endif @@%}
 
 [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"

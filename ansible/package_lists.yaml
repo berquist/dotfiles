@@ -372,10 +372,6 @@ packages_osmium_aur:
   - dftbplus
   - gamess
 
-default_packages_linuxbrew:
-  - fd
-  - fzf
-
 default_packages_homebrew:
   - aspell
   - autoconf
