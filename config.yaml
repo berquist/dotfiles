@@ -6,6 +6,9 @@ config:
   link_on_import: link
   showdiff: true
 dotfiles:
+  d_bat:
+    src: config/bat
+    dst: ~/.config/bat
   d_emacs.d:
     src: emacs.d
     dst: ~/.emacs.d
@@ -123,6 +126,7 @@ dotfiles:
 profiles:
   beryllium:
     dotfiles:
+    - d_bat
     - d_emacs.d
     - d_tmux
     - f_alacritty.yml
@@ -139,6 +143,7 @@ profiles:
     - f_zshrc
   coreman4:
     dotfiles:
+    - d_bat
     - d_emacs.d
     - d_tmux
     - f_ansible.cfg
@@ -149,6 +154,7 @@ profiles:
     - f_tmux.conf
   osmium:
     dotfiles:
+    - d_bat
     - d_emacs.d
     - d_idea
     - d_tmux
@@ -181,6 +187,7 @@ profiles:
     - f_zshrc
   pop-os:
     dotfiles:
+    - d_bat
     - d_emacs.d
     - d_tmux
     - f_alacritty.yml
@@ -200,6 +207,7 @@ profiles:
     - f_zshrc
   sodium.local:
     dotfiles:
+    - d_bat
     - d_emacs.d
     - d_tmux
     - f_aspell.en.prepl
