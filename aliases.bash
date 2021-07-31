@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 alias 2to3='2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma'
+if command -v batcat >/dev/null 2>&1; then
+    if ! command -v bat >/dev/null 2>&1; then
+        alias bat='batcat'
+    fi
+fi
 alias cath='tail -n +1'
 alias d='df -h'
 alias dus='\du -h --max-depth=1'
