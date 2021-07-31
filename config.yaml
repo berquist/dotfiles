@@ -54,6 +54,9 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+  f_gitignore:
+    src: gitignore
+    dst: ~/.gitignore
   f_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
@@ -128,6 +131,7 @@ profiles:
     - f_aspell.en.pws
     - f_condarc
     - f_gitconfig
+    - f_gitignore
     - f_mdlrc
     - f_tmux.conf
     - f_zprofile
@@ -141,6 +145,7 @@ profiles:
     - f_bash_profile
     - f_bashrc
     - f_gitconfig
+    - f_gitignore
     - f_tmux.conf
   osmium:
     dotfiles:
@@ -158,6 +163,7 @@ profiles:
     - f_direnvrc
     - f_emacsclient.desktop
     - f_gitconfig
+    - f_gitignore
     - f_mdlrc
     - f_nanorc
     - f_nvimrc
@@ -183,6 +189,7 @@ profiles:
     - f_aspell.en.pws
     - f_condarc
     - f_gitconfig
+    - f_gitignore
     - f_mdlrc
     - f_nanorc
     - f_sbclrc
@@ -199,6 +206,7 @@ profiles:
     - f_aspell.en.pws
     - f_condarc
     - f_gitconfig
+    - f_gitignore
     - f_mdlrc
     - f_nanorc
     - f_tmux.conf

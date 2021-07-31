@@ -1,3 +1,4 @@
+# -*- mode: gitconfig; -*-
 # For useful information about most of these options, see
 # https://git-scm.com/docs/git-config
 
@@ -16,6 +17,7 @@
 [core]
 	# https://askubuntu.com/a/866376
 	editor = emacsclient -t -a=\\\"\\\"
+	excludesfile = ~/.gitignore
 	autocrlf = input
 	safecrlf = warn
 
@@ -84,7 +86,7 @@
 	default = simple
 
 [pretty]
-	# THis is comparable to `--pretty=oneline`, but includes the extra
+	# This is comparable to `--pretty=oneline`, but includes the extra
 	# (relative) date and author information at the end.
 	olra = %C(auto)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr)%C(reset) %C(blue)<%an>%C(reset)
 
