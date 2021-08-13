@@ -19,7 +19,7 @@ if [[ $- == *i* ]]; then
         source "${HOME}"/env/spackenv
         eval "$(direnv hook $(basename $SHELL))"
     elif [[ "${HOSTNAME}" == "gpuman2.q-chem.com" ]]; then
-        module load gnu/7.4.0
+        module load gnu/7.5.0
         module load colordiff-1.0.19-gcc-7.4.0-lowhzak
         module load direnv-2.20.0-gcc-7.4.0-orxocw7
         module load emacs-27.1-gcc-7.4.0-r4dgzro

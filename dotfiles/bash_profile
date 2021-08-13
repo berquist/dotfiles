@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export PS1='\u@\h:\w
+\$ '
+
 export SCRATCH=/scratch
 export HOME1=/dftman/home1/ericb
 export HOME2=/dftman/home2/ericb
@@ -17,12 +20,13 @@ elif [[ "${HOSTNAME}" == "gpuman2.q-chem.com" ]]; then
     source "${HOME2}"/spack_gpuman2/share/spack/setup-env.sh
 fi
 
-if [[ "${HOSTNAME}" == "coreman4" ]]; then
-    export PYENV_ROOT="${HOME2}/pyenv"
-    [[ -d "${PYENV_ROOT}/bin" ]] && export PATH="${PYENV_ROOT}/bin:${PATH}"
-    if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
-    if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
+export PYENV_ROOT="${HOME2}/pyenv"
+[[ -d "${PYENV_ROOT}/bin" ]] && export PATH="${PYENV_ROOT}/bin:${PATH}"
+if command -v pyenv >/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
 fi
+if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
 # TODO
 # apt install libbz2-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev
@@ -37,9 +41,8 @@ if [ -f "${HOME}/.bashrc" ]; then
     source "${HOME}/.bashrc"
 fi
 
-if [[ "${HOSTNAME}" == "coreman4" ]]; then
-    export PATH="${HOME}/.cargo/bin:$PATH"
-fi
+# Rust
+[[ -f "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
 
 module use "${HOME}"/modules/work
 if [[ "${HOSTNAME}" == "coreman4" ]]; then

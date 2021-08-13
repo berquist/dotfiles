@@ -1,5 +1,5 @@
 ---
-- name: install Docker on Debian-based systems
+- name: install Docker on Ubuntu-based systems
   hosts: all
   vars:
     apt_https_packages:
