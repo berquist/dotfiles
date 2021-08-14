@@ -9,6 +9,8 @@
         gather_subset:
           - distribution
           - hostname
+      tags:
+        - always
   tasks:
     - name: install common packages
       # pacman:

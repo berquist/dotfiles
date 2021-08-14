@@ -8,6 +8,8 @@
     - setup:
         gather_subset:
           - system
+      tags:
+        - always
   tasks:
     - name: install main packages
       homebrew:

@@ -17,6 +17,8 @@
         gather_subset:
           - distribution
           - system
+      tags:
+        - always
   tags:
     - dotdrop
   tasks:

@@ -11,6 +11,8 @@
         gather_subset:
           - distribution
           - system
+      tags:
+        - always
   tasks:
     - name: enable and start SSH server (Linux)
       systemd:

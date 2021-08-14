@@ -12,6 +12,8 @@
         gather_subset:
           - distribution
           - system
+      tags:
+        - always
   tasks:
     - name: ensure base exists
       file:

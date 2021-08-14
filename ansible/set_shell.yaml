@@ -8,6 +8,8 @@
     - setup:
         gather_subset:
           - system
+      tags:
+        - always
   tasks:
     - name: set the shell to zshell on Linux
       command: "chsh -s /bin/zsh {{ username }}"
