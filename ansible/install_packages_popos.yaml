@@ -2,17 +2,22 @@
 - name: install packages for Debian derivatives
   gather_facts: false
   hosts: all
+  vars:
+    exa_unpack_dir: /tmp/exa
+    exa_version: 0.10.0
   vars_files:
     - package_lists.yaml
   pre_tasks:
     - setup:
         gather_subset:
           - distribution
+      tags:
+        - always
   tasks:
     - name: add Emacs snapshot repository
       apt_repository:
         repo: "ppa:ubuntu-elisp/ppa"
-      when: ansible_distribution == "Pop!_OS" or ansible_distribution == "Ubuntu"
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
     - name: install packages for Pop!_OS
       apt:
         name: "{{ default_packages_popos }}"
@@ -21,3 +26,46 @@
       apt:
         name: "{{ default_packages_ubuntu }}"
       when: ansible_distribution == "Ubuntu"
+    # - name: prepare apt to use a repository over HTTPS
+    #   apt:
+    #     name: "{{ apt_https_packages }}"
+    #     update_cache: true
+    #     install_recommends: false
+    #   when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+    - name: install archives for Ubuntu or Pop!_OS
+      apt:
+        deb: "{{ item }}"
+      loop: "{{ default_packages_deb }}"
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+    - name: make exa unpack dir
+      file:
+        path: "{{ exa_unpack_dir }}"
+        state: directory
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+      tags:
+        - exa
+    - name: get exa archive and unzip
+      unarchive:
+        src: "https://github.com/ogham/exa/releases/download/v{{ exa_version }}/exa-linux-x86_64-v{{ exa_version }}.zip"
+        dest: "{{ exa_unpack_dir }}"
+        remote_src: true
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+      tags:
+        - exa
+    - name: move exa files into place
+      copy:
+        src: "{{ item['src'] }}"
+        dest: "{{ item['dest'] }}"
+        remote_src: true
+      loop:
+        # yamllint disable rule:braces
+        - { src: "{{ exa_unpack_dir }}/bin/exa", dest: /usr/local/bin/exa }
+        - { src: "{{ exa_unpack_dir }}/completions/exa.bash", dest: /etc/bash_completion.d/exa.bash }
+        - { src: "{{ exa_unpack_dir }}/completions/exa.fish", dest: /usr/share/fish/vendor_completions.d/exa.fish }
+        - { src: "{{ exa_unpack_dir }}/completions/exa.zsh", dest: /usr/local/share/zsh/site-functions/exa.zsh }
+        - { src: "{{ exa_unpack_dir }}/man/exa.1", dest: /usr/local/man/exa.1 }
+        - { src: "{{ exa_unpack_dir }}/man/exa_colors.5", dest: /usr/local/man/exa_colors.5 }
+        # yamllint enable rule:braces
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+      tags:
+        - exa

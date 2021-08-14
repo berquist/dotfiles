@@ -23,6 +23,3 @@ ansible-playbook ./ansible/install_all_system.yaml -b -K
 ansible-playbook ./ansible/install_all.yaml
 ansible-playbook ./ansible/set_shell.yaml -b -K
 #+end_src
-
-** TODO
-- Install ~exa~ on Ubuntu through cargo

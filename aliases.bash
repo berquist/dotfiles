@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 alias 2to3='2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma'
+# Debian and derivatives
 if command -v batcat >/dev/null 2>&1; then
     if ! command -v bat >/dev/null 2>&1; then
         alias bat='batcat'
@@ -11,6 +12,12 @@ alias d='df -h'
 alias dus='\du -h --max-depth=1'
 alias dus2='du | sort -nr | cut -f2- | xargs du -hs'
 alias f='finger'
+# Debian and derivatives
+if command -v fdfind >/dev/null 2>&1; then
+    if ! command -v fd >/dev/null 2>&1; then
+        alias fd='fdfind'
+    fi
+fi
 alias top='top -d 1'
 alias edk='emacsclient -e "(kill-emacs)"'
 alias eds='emacs --daemon'
