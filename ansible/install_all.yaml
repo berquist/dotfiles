@@ -108,8 +108,8 @@
     - name: set default browser to Firefox
       command: xdg-settings set default-web-browser firefox.desktop
       when:
-        - current_default_web_browser.stdout != "firefox.desktop"
         - ansible_system == "Linux"
+        - current_default_web_browser.stdout != "firefox.desktop"
 
 # - name: set keyboard layout
 # TODO localectl --no-convert set-x11-keymap "" "" "" caps:ctrl_modifier
