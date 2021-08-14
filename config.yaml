@@ -62,6 +62,9 @@ dotfiles:
   f_gpg-agent.conf:
     src: gnupg/gpg-agent.conf
     dst: ~/.gnupg/gpg-agent.conf
+  f_gpg.conf:
+    src: gnupg/gpg.conf
+    dst: ~/.gnupg/gpg.conf
   f_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
@@ -138,6 +141,8 @@ profiles:
     - f_condarc
     - f_gitconfig
     - f_gitignore
+    - f_gpg-agent.conf
+    - f_gpg.conf
     - f_mdlrc
     - f_tmux.conf
     - f_zprofile
@@ -154,6 +159,7 @@ profiles:
     - f_gitconfig
     - f_gitignore
     - f_gpg-agent.conf
+    - f_gpg.conf
     - f_tmux.conf
   osmium:
     dotfiles:
@@ -174,6 +180,7 @@ profiles:
     - f_gitconfig
     - f_gitignore
     - f_gpg-agent.conf
+    - f_gpg.conf
     - f_mdlrc
     - f_nanorc
     - f_nvimrc
@@ -202,6 +209,7 @@ profiles:
     - f_gitconfig
     - f_gitignore
     - f_gpg-agent.conf
+    - f_gpg.conf
     - f_mdlrc
     - f_nanorc
     - f_sbclrc
