@@ -435,8 +435,6 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   (ctrlf-mode))
 #+end_src
 
-[[https://github.com/minad/consult][Consult]] is like a combination of Counsel and Swiper.
-
 Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] installed.
 - For =ripgrep=, which has the traditional =grep= interface, use =M-x ripgrep-regexp= to activate.
 
