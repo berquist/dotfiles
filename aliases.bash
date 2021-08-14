@@ -31,6 +31,7 @@ fi
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
+alias sd='svn diff --diff-cmd colordiff'
 alias snv='svn'
 alias sw='telnet towel.blinkenlights.nl'
 alias t='tail -F -n 100 --sleep-interval=0.1'
