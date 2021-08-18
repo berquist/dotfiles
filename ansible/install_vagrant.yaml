@@ -1,0 +1,42 @@
+---
+- name: install Vagrant on Ubuntu-based systems
+  gather_facts: false
+  hosts: all
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
+      tags:
+        - always
+  vars:
+    apt_https_packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+    vagrant_packages:
+      - vagrant
+      - virtualbox
+  tasks:
+    - name: prepare apt to use a repository over HTTPS
+      apt:
+        name: "{{ apt_https_packages }}"
+        update_cache: true
+        install_recommends: false
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+    # curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    # sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    # sudo apt-get update && sudo apt-get install vagrant
+    - name: get Vagrant Ubuntu repository signing key
+      apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+    - name: add Vagrant Ubuntu repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+    - name: install Vagrant and backend virtualization dependencies
+      apt:
+        name: "{{ vagrant_packages }}"
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")

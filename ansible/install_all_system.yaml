@@ -2,6 +2,7 @@
 - import_playbook: install_1password.yaml
 # TODO only on coreman4
 # - import_playbook: install_docker.yaml
+- import_playbook: install_vagrant.yaml
 
 - name: enable and start system services
   gather_facts: false
