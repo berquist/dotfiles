@@ -22,8 +22,11 @@ zinit ice as"completion" wait'!5' silent
 zinit snippet "${HOME}"/dotfiles/zfunc/_rustup
 # Prompt
 zinit ice svn
-zinit snippet OMZ::plugins/git-prompt
+zinit snippet OMZP::git-prompt
 zinit snippet "${HOME}"/dotfiles/berquist.zsh-theme
+# Other plugins
+zinit ice svn
+zinit snippet OMZP::gpg-agent
 
 bindkey -e
 
