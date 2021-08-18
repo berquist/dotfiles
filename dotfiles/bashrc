@@ -11,6 +11,8 @@ if [[ $- == *i* ]]; then
     source "${HOME}"/dotfiles/interactive_exports.bash
     source "${HOME}"/dotfiles/functions.bash
 
+    export GPG_TTY=$(tty)
+
     alias cds="cd ${SCRATCH}"
     alias cd1="cd ${HOME1}"
     alias cd2="cd ${HOME2}"
