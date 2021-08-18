@@ -12,8 +12,10 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 export WORKON_HOME=$HOME/data/virtualenvs
 {%@@ endif @@%}
 
+# All this stuff is here and not in .zshrc as is usually recommended so that
+# *all* shells have access, not just interactive ones.
+
 [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
-# pyenv doesn't seem to be interfering with conda
 [[ -d "${HOME}/.pyenv/bin" ]] && export PATH="${HOME}/.pyenv/bin:${PATH}"
 # These are...slow.
 if command -v pyenv >/dev/null 2>&1; then
@@ -22,26 +24,11 @@ if command -v pyenv >/dev/null 2>&1; then
 fi
 if command -v pyenv-virtualenv-init >/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
-# if command -v rbenv >/dev/null 2>&1; then eval "$(rbenv init -)"; fi
-
-# if command -v jenv >/dev/null 2>&1; then eval "$(jenv init -)"; fi
-
-# [[ -f "${HOME}"/perl5/perlbrew/etc/bashrc ]] && . "${HOME}"/perl5/perlbrew/etc/bashrc
-
 # Rust
 [[ -f "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
 
 # Nim
 [[ -d "${HOME}/.nimble/bin" ]] && export PATH="${HOME}/.nimble/bin:${PATH}"
-
-# Node Version Manager
-# NVM_DIR="${HOME}/.nvm"
-# if [[ -d "${NVM_DIR}" ]]; then
-#     unset npm_config_prefix
-#     export NVM_DIR
-#     \. "${NVM_DIR}/nvm.sh"
-#     \. "${NVM_DIR}/bash_completion"
-# fi
 
 eval $(keychain --quiet --nogui --eval --inherit any --agents ssh id_rsa)
 
