@@ -374,11 +374,8 @@ packages_osmium_aur:
 
 default_packages_homebrew:
   - aspell
-  - autoconf
-  - automake
-  - bash # Don't forget to add to /etc/shells
+  - bash  # Don't forget to add to /etc/shells
   - bat
-  - blazegraph
   - cmake
   - colordiff
   - dos2unix
@@ -386,21 +383,12 @@ default_packages_homebrew:
   # - emacs
   - exa
   - fd
-  - fzf
   - git
   - gpg
   - htop
-  - hub
-  - jq
   - keychain
   - languagetool
   - less
-  - lesspipe
-  - lftp
-  - libgit2
-  - libtool
-  - lmod
-  - mono
   - nano
   - npm
   - pandoc
@@ -412,16 +400,13 @@ default_packages_homebrew:
   - reattach-to-user-namespace
   - ripgrep
   - shellcheck
-  - tidy-html5
   - tmux
   - util-linux
   - wakatime-cli
-  - watchman
   - wget
-  - xmlstarlet
   - yamllint
   - zlib
-  - zsh # Don't forget to add to /etc/shells
+  - zsh  # Don't forget to add to /etc/shells
 
 default_packages_homebrew_ext:
   - holgerbrandl/tap/kscript

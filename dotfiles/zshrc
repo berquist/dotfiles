@@ -63,11 +63,6 @@ source /usr/share/lmod/lmod/init/zsh
 module use "${HOME}/modules/osmium"
 {%@@ elif profile == "sodium.local" @@%}
 source "${HOME}"/dotfiles/aliases_macos.bash
-
-source /usr/local/opt/lmod/init/zsh
-module use "${HOME}/modules/sodium"
-
-module load python/psi4conda
 {%@@ endif @@%}
 
 eval "$(direnv hook $(basename $SHELL))"
