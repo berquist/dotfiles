@@ -408,19 +408,13 @@ default_packages_homebrew:
   - zlib
   - zsh  # Don't forget to add to /etc/shells
 
-default_packages_homebrew_ext:
-  - holgerbrandl/tap/kscript
-  - shyiko/ktlint/ktlint
-  - vale
+default_packages_homebrew_ext: []
 
 default_packages_homebrew_cask:
   # -> problems due to app relocation
   # - 1password
   # - anaconda
-  - basecamp
-  - blue-jeans
   # - caffeine
-  - dash
   # - divvy
   # - dropbox
   - emacs
@@ -430,17 +424,11 @@ default_packages_homebrew_cask:
   # - intellij-idea-ce
   - iterm2
   - java
-  - kitty
   - mactex
   - meld
   # -> problems due to app relocation
   # - pycharm-ce
-  - rstudio
   # - slack
-  - spectacle
-  - vagrant
-  - vagrant-manager
-  - visualvm
   - zotero
 
 default_github_repos:
