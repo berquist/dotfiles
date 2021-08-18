@@ -2,19 +2,16 @@
 
 source "${HOME}/.zinit/bin/zinit.zsh"
 
-autoload -U compaudit compinit
+autoload -Uz compaudit compinit
 
 zinit snippet OMZL::compfix.zsh
 zinit snippet "${HOME}"/dotfiles/zcompdump.zsh
 zinit snippet OMZL::completion.zsh
-zinit snippet OMZL::diagnostics.zsh
 zinit snippet OMZL::git.zsh
-zinit snippet OMZL::termsupport.zsh
 zinit snippet OMZL::theme-and-appearance.zsh
 
 zinit light romkatv/zsh-prompt-benchmark
 zinit ice depth=1; zinit light sobolevn/wakatime-zsh-plugin
-zinit snippet OMZP::sprunge
 # Rust programming language
 zinit ice as"completion" wait'!3' silent
 zinit snippet OMZ::plugins/cargo/_cargo
@@ -50,7 +47,7 @@ source "${HOME}"/dotfiles/history.zsh
 source "${HOME}"/dotfiles/interactive_exports.bash
 source "${HOME}"/dotfiles/aliases.bash
 source "${HOME}"/dotfiles/functions.bash
-source "${HOME}"/dotfiles/slurm.bash
+# source "${HOME}"/dotfiles/slurm.bash
 
 {%@@ if profile == "osmium" @@%}
 # re-export

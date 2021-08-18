@@ -1,51 +1,12 @@
 #!/usr/bin/env bash
 
-function pip2-locations() {
-    for i in $(python2 -m pip freeze | cut -d'=' -f1); do
-        echo -n " $i "
-        pip2 show $i | grep Location | cut -d':' -f3
-    done
-}
-
-function pip3-locations() {
-    for i in $(python3 -m pip freeze | cut -d'=' -f1); do
-        echo -n " $i "
-        pip3 show $i | grep Location | cut -d':' -f3
-    done
-}
-
+# Ensure the pager is used for certain Subversion operations.
 function svn() {
     if [[ "$1" = "diff" ]] || [[ "$1" = "log" ]] || [[ "$1" = "blame" ]]
     then
         command svn "$@" | less
     else
         command svn "$@"
-    fi
-}
-
-# https://unix.stackexchange.com/q/3773
-# https://unix.stackexchange.com/q/248080
-# find() {
-#     find "$@" 2>/dev/null
-# }
-
-function pst() {
-    ps --forest -o pid,tty,stat,time,cmd -g $(ps -o sid= -p $1)
-}
-
-# https://stackoverflow.com/a/10169840
-function hub() {
-    if [[ $# -gt 0 ]] && [[ "$1" == "pr" ]] && [[ "$2" == "list" ]]; then
-        shift 2
-        command hub pr list --format="%sC%>(8)%i%Creset %t %Cblue[%H]%Creset %l %Cgreen%Mt%Creset%n" "$@"
-    elif [[ $# -gt 0 ]] && [[ "$1" == "pr" ]] && [[ "$2" == "checkout" ]]; then
-        shift 2
-        prnum="$@"
-        # TODO custom branch name based on GitHub username, remote branch
-        # name, and PR number
-        command hub pr checkout "$prnum"
-    else
-        command hub "$@"
     fi
 }
 

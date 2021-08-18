@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-. "${HOME}"/dotfiles/path_exports.bash
+source "${HOME}"/dotfiles/path_exports.bash
 
 # Put this early on, so that additions to $PATH take less precedence.
 {%@@ if profile == "osmium" @@%}
@@ -15,7 +15,7 @@ export WORKON_HOME=$HOME/data/virtualenvs
 # All this stuff is here and not in .zshrc as is usually recommended so that
 # *all* shells have access, not just interactive ones.
 
-[[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
+# [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
 [[ -d "${HOME}/.pyenv/bin" ]] && export PATH="${HOME}/.pyenv/bin:${PATH}"
 # These are...slow.
 if command -v pyenv >/dev/null 2>&1; then
@@ -25,7 +25,7 @@ fi
 if command -v pyenv-virtualenv-init >/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Rust
-[[ -f "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
+[[ -d "${HOME}/.cargo/bin" ]] && export PATH="${HOME}/.cargo/bin:${PATH}"
 
 # Nim
 [[ -d "${HOME}/.nimble/bin" ]] && export PATH="${HOME}/.nimble/bin:${PATH}"
