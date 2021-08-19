@@ -25,9 +25,6 @@
         update_cache: true
         install_recommends: false
       when: ansible_distribution in ("Ubuntu", "Pop!_OS")
-    # curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-    # sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-    # sudo apt-get update && sudo apt-get install vagrant
     - name: get Vagrant Ubuntu repository signing key
       apt_key:
         url: https://apt.releases.hashicorp.com/gpg

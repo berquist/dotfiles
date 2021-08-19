@@ -1,0 +1,27 @@
+---
+- name: install Ansible on Ubuntu-based systems
+  gather_facts: false
+  hosts: all
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
+      tags:
+        - always
+  tasks:
+    - name: prepare apt
+      apt:
+        name: software-properties-common
+        update_cache: true
+        install_recommends: false
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+    - name: add Ansible Ubuntu repository
+      apt_repository:
+        repo: "ppa:ansible/ansible"
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
+    - name: install Ansible
+      apt:
+        name: ansible
+        state: latest
+        update_cache: true
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
