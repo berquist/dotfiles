@@ -981,7 +981,6 @@ These are valid for all C-style modes (I think).
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
-  :disabled t
   :hook (java-mode . lsp))
 #+END_SRC
 
@@ -1556,7 +1555,10 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package docker-tramp)
 (use-package graphql-mode)
 (use-package graphviz-dot-mode)
-(use-package idris-mode)
+(use-package groovy-mode)
+(use-package idris-mode
+  :disabled t)
+(use-package lox-mode)
 (use-package lua-mode)
 (use-package meson-mode)
 (use-package opencl-mode)
@@ -1566,6 +1568,7 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package snakemake-mode)
 (use-package systemd)
 (use-package vagrant-tramp)
+(use-package zig-mode)
 #+END_SRC
 
 * External services
