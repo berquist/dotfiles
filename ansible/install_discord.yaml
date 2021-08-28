@@ -1,0 +1,22 @@
+---
+- name: install Discord Canary on Ubuntu-based systems
+  gather_facts: false
+  hosts: all
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - distribution
+      tags:
+        - always
+  vars:
+    pkgver: 0.0.128
+  tasks:
+    # - name: download Discord Canary Debian package
+    #   get_url:
+    #     url: https://discordapp.com/api/download/canary?platform=linux
+    #     dest: /tmp/discord-canary.deb
+    - name: install Discord Canary
+      apt:
+        # https://discord.com/api/download/canary?platform=linux&format=deb
+        deb: "https://dl-canary.discordapp.net/apps/linux/{{ pkgver }}/discord-canary-{{ pkgver }}.deb"
+      when: ansible_distribution in ("Ubuntu", "Pop!_OS")
