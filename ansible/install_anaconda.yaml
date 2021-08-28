@@ -2,11 +2,9 @@
 - name: install Anaconda Python distribution
   gather_facts: false
   hosts: all
-  vars_files:
-    - common_vars.yaml
   vars:
     # TODO dest is different on osmium
-    anaconda_download_dest: "{{ home_dir }}/opt/apps/python"
+    anaconda_download_dest: "{{ lookup('env', 'HOME') }}/opt/apps/python"
     anaconda_prefix: "{{ anaconda_download_dest }}/anaconda"
     anaconda_version: 2020.02
     # TODO handle MacOSX

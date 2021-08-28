@@ -3,10 +3,9 @@
   gather_facts: false
   hosts: all
   vars_files:
-    - common_vars.yaml
     - package_lists.yaml
   vars:
-    fonts_dir: "{{ home_dir }}/.local/share/fonts"
+    fonts_dir: "{{ lookup('env', 'HOME') }}/.local/share/fonts"
   pre_tasks:
     - setup:
         gather_subset:
@@ -41,38 +40,38 @@
       changed_when: false
     - name: ensure zinit prefix exists
       file:
-        path: "{{ home_dir }}/.zinit"
+        path: "{{ lookup('env', 'HOME') }}/.zinit"
         state: directory
     - name: clone zinit
       git:
         repo: https://github.com/zdharma/zinit.git
-        dest: "{{ home_dir }}/.zinit/bin"
+        dest: "{{ lookup('env', 'HOME') }}/.zinit/bin"
     - name: ensure pyenv prefix exists
       file:
-        path: "{{ home_dir }}/.pyenv"
+        path: "{{ lookup('env', 'HOME') }}/.pyenv"
         state: directory
     - name: install pyenv, but not on Arch or macOS
       git:
         repo: https://github.com/pyenv/pyenv.git
-        dest: "{{ home_dir }}/.pyenv"
+        dest: "{{ lookup('env', 'HOME') }}/.pyenv"
       when: ansible_distribution != "Archlinux"
     - name: see if ~/.clojure exists and is a git repo with the right remote
       git:
         repo: git@github.com:berquist/clojure-deps-edn.git
-        dest: "{{ home_dir }}/.clojure"
+        dest: "{{ lookup('env', 'HOME') }}/.clojure"
         clone: no
         update: no
       register: clojure_dir_status
       changed_when: false
     - name: if ~/.clojure exists and isn't a git repo with the right remote, remove it
       file:
-        path: "{{ home_dir }}/.clojure"
+        path: "{{ lookup('env', 'HOME') }}/.clojure"
         state: absent
       when: not clojure_dir_status.before
     - name: install personal Clojure deps
       git:
         repo: git@github.com:berquist/clojure-deps-edn.git
-        dest: "{{ home_dir }}/.clojure"
+        dest: "{{ lookup('env', 'HOME') }}/.clojure"
     - name: clone Spack
       git:
         repo: https://github.com/spack/spack.git
