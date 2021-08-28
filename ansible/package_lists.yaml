@@ -435,6 +435,7 @@ default_github_repos:
   - chrissimpkins/codeface
   - github/gitignore
   - icy/pacapt
+  - romkatv/gitstatus
 
 default_packages_popos:
   # base
