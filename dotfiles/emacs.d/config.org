@@ -1568,7 +1568,9 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package snakemake-mode)
 (use-package systemd)
 (use-package vagrant-tramp)
-(use-package zig-mode)
+(use-package zig-mode
+  :after lsp-mode
+  :hook (zig-mode . lsp))
 #+END_SRC
 
 * External services
