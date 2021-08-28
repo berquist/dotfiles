@@ -8,6 +8,7 @@ zinit snippet OMZL::compfix.zsh
 zinit snippet "${HOME}"/dotfiles/zcompdump.zsh
 zinit snippet OMZL::completion.zsh
 zinit snippet OMZL::git.zsh
+zinit snippet OMZL::termsupport.zsh
 zinit snippet OMZL::theme-and-appearance.zsh
 
 zinit light romkatv/zsh-prompt-benchmark
