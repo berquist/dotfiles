@@ -12,7 +12,12 @@
     - name: set the shell to zshell on Linux
       command: "chsh -s /bin/zsh {{ lookup('env', 'USER') }}"
       when: ansible_system == "Linux"
-    # TODO make sure this is in /etc/shells on macOS
+    - name: check that /usr/local/bin/zsh is available in /etc/shells
+      command: "grep -F '/usr/local/bin/zsh' /etc/shells"
+      register: custom_zsh_available
+      when: ansible_system == "macOS"
     - name: set the shell to zshell on macOS
       command: "chsh -s /usr/local/bin/zsh {{ lookup('env', 'USER') }}"
-      when: ansible_system != "Linux"
+      when:
+        - ansible_system == "macOS"
+        - custom_zsh_available.rc == 0
