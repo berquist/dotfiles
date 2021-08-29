@@ -227,13 +227,13 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 Taken from https://emacs.stackexchange.com/a/13096/10950
 
 #+BEGIN_SRC emacs-lisp
-(defun my-reload-dir-locals-for-current-buffer ()
+(defun ejb/my-reload-dir-locals-for-current-buffer ()
   "reload dir locals for the current buffer"
   (interactive)
   (let ((enable-local-variables :all))
     (hack-dir-local-variables-non-file-buffer)))
 
-(defun my-reload-dir-locals-for-all-buffer-in-this-directory ()
+(defun ejb/my-reload-dir-locals-for-all-buffer-in-this-directory ()
   "For every buffer with the same `default-directory` as the
 current buffer's, reload dir-locals."
   (interactive)
@@ -800,8 +800,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 
 #+begin_src emacs-lisp
 ;; http://orgmode.org/manual/Code-evaluation-security.html
-(defun my-org-confirm-babel-evaluate (lang body)
-  (not (equal lang "latex")))
+;; (defun ejb/my-org-confirm-babel-evaluate (lang body)
+;;   (not (equal lang "latex")))
 
 (use-package org
   ;; Give up on trying to use the latest one, which doesn't load properly with
@@ -932,7 +932,7 @@ Additional things of interest might be found in https://github.com/xiaohanyu/oh-
 ~~Every time an Org buffer is saved, automatically export it to HTML.~~  Taken from https://www.reddit.com/r/emacs/comments/4golh1/how_to_auto_export_html_when_saving_in_orgmode/.  This is more annoying than it's worth.
 
 #+BEGIN_SRC emacs-lisp
-(defun org-mode-export-hook ()
+(defun ejb/org-mode-export-hook ()
   (add-hook 'after-save-hook 'org-html-export-to-html t t))
 ;; (add-hook 'org-mode-hook #'org-mode-export-hook)
 #+END_SRC
@@ -940,7 +940,7 @@ Additional things of interest might be found in https://github.com/xiaohanyu/oh-
 A function to toggle this auto-HTML-export behavior. Does this play nice with the function above?
 
 #+BEGIN_SRC emacs-lisp
-(defun toggle-org-html-export-on-save ()
+(defun ejb/toggle-org-html-export-on-save ()
   (interactive)
   (if (memq 'org-html-export-to-html after-save-hook)
       (progn
@@ -1273,7 +1273,7 @@ https://www.reddit.com/r/emacs/comments/5tzub2/improving_shellscriptmode_highlig
 (defconst sh-mode--string-interpolated-variable-regexp
   "{\\$[^}\n\\\\]*\\(?:\\\\.[^}\n\\\\]*\\)*}\\|\\${\\sw+}\\|\\$\\sw+")
 
-(defun sh-mode--string-interpolated-variable-font-lock-find (limit)
+(defun ejb/sh-mode--string-interpolated-variable-font-lock-find (limit)
   (while (re-search-forward sh-mode--string-interpolated-variable-regexp limit t)
     (let ((quoted-stuff (nth 3 (syntax-ppss))))
       (when (and quoted-stuff (member quoted-stuff '(?\" ?`)))
@@ -1287,7 +1287,7 @@ https://www.reddit.com/r/emacs/comments/5tzub2/improving_shellscriptmode_highlig
 ;;                           `(sh-mode--string-interpolated-variable-font-lock-find)
 ;;                           'append))
 (font-lock-add-keywords 'sh-mode
-                        `((sh-mode--string-interpolated-variable-font-lock-find))
+                        `((ejb/sh-mode--string-interpolated-variable-font-lock-find))
                         'append)
 
 ;; This doesn't work because it only finds the first instance.
@@ -1585,7 +1585,7 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck-nimsuggest)
 (use-package nim-mode
-  :bind (:map nim-mode-map ("C-c C-;" . nim-docstring-dwim))
+  :bind (:map nim-mode-map ("C-c C-;" . ejb/nim-docstring-dwim))
   ;; We want to be able to "fix" the company backend ordering after
   ;; `nimsuggest-mode' adds `company-nimsuggest' to `company-backends', so the
   ;; hooks need to be in this order.
@@ -1593,7 +1593,7 @@ Modified to remove/disable Racket, which has ~racket-mode~.
          (nim-mode . nimsuggest-mode)
          (nim-mode . lsp))
   :config
-  (defun nim-docstring-dwim ()
+  (defun ejb/nim-docstring-dwim ()
     "Use `comment-dwim' to make a Nim docstring."
     (interactive)
     (let ((comment-start "## "))
