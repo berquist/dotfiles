@@ -25,7 +25,7 @@
 Fundamental third-party packages that don't go anywhere else.
 
 #+BEGIN_SRC emacs-lisp
-(setq gc-cons-threshold 12800000)
+(setq gc-cons-threshold (* 1024 1024 100))
 (setq read-process-output-max (* 1024 1024 5))  ; 5 MB
 
 ;; Load this before any other third-party packages.
@@ -452,33 +452,97 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
+(defun ejb/conditional-append (list items)
+  "Only append the contents of ITEMS to LIST that don't already
+appear in LIST."
+  (append list (-difference items list)))
+
+(defun ejb/conditional-prepend (list items)
+  "Only prepend the contents of ITEMS to LIST that don't already
+appear in LIST."
+  (append (-difference items list) list))
+
+(defun ejb/vc-svn-url (file-or-dir &optional _remote-name)
+  "Get the Subversion URL for FILE-OR-DIR if possible, returning
+nil otherwise."
+  (let ((default-directory (vc-svn-root file-or-dir)))
+    (if default-directory
+        (with-temp-buffer
+          (vc-svn-command (current-buffer) 0 nil
+                          "info" "--show-item" "url")
+          (buffer-substring-no-properties (point-min) (1- (point-max)))))))
+
+;; (defun f-parents (path)
+;;   "Get all the parent paths of PATH, from oldest to youngest, not
+;; including PATH."
+;;   (let ((parents '())
+;;         (parent (f-parent path)))
+;;     (while parent
+;;       (setq parents (cons parent parents))
+;;       (setq parent (f-parent parent)))
+;;     parents))
+
+;; (defun f-parents-incl (path)
+;;   "Get all the parent paths of PATH, from oldest to youngest,
+;; including PATH."
+;;   (append (f-parents path) (list (directory-file-name path))))
+
+;; (defun ejb/projectile-root-qchem (dir &optional list)
+;;   (let ((parents (f-parents-incl dir)))
+;;     (cl-loop for parent in parents
+;;              do
+;;              (setq vc-svn-url (ejb/vc-svn-url parent))
+;;              if vc-svn-url
+;;              return parent
+;;              end)))
+
+;; (defun ejb/projectile-root-qchem (dir &optional list)
+;;   "If $QC is defined, set the projectile root to it, avoiding the need to place a `.projectile`' file there."
+;;   (getenv "QC"))
+
+(defun ejb/projectile-root-qchem (dir &optional list)
+  "Find the project root of a Q-Chem Subversion repository.
+
+When inside a directory of an external, such as in a development
+package or Q-Chem trunk, the project root should be the
+development package or the Q-Chem checkout, not the directory of
+the external.
+
+Placing `projectile-root-top-down-recurring' ahead of
+`projectile-root-top-down' will technically work, since it finds
+the top-level repository rather than the external, but it messes
+with the default ordering Projectile uses.
+"
+  (let ((root-top-down-recurring (projectile-root-top-down-recurring dir '(".svn"))))
+    (if root-top-down-recurring
+        (let ((vc-svn-url (ejb/vc-svn-url root-top-down-recurring)))
+          (if (string-prefix-p "https://jubilee.q-chem.com/" vc-svn-url)
+              root-top-down-recurring)))))
+
 (use-package projectile
   :bind ("C-c p" . projectile-command-map)
   :config
-  (defun projectile-root-qchem (dir &optional list)
-    "If $QC is defined, set the projectile root to it, avoiding the need to place a `.projectile`' file there."
-    (getenv "QC"))
-  (setq projectile-enable-caching t)
-  (setq projectile-indexing-method 'hybrid)
   (setq projectile-mode-line-prefix " P")
-  (setq projectile-project-root-functions
-        (cons 'projectile-root-qchem projectile-project-root-functions))
-  (setq projectile-project-search-path
-        '("~/development" "~/repositories"))
   (setq projectile-require-project-root t)
   (setq projectile-sort-order 'access-time)
-  (setq projectile-project-root-files-top-down-recurring
-        (append
-         '("compile_commands.json" ".ccls")
-         projectile-project-root-files-top-down-recurring))
+  (setq projectile-project-search-path
+        '("~/development" "~/repositories"))
+  (setq projectile-project-root-functions
+        '(projectile-root-local
+          ejb/projectile-root-qchem
+          projectile-root-bottom-up
+          projectile-root-top-down
+          projectile-root-top-down-recurring))
+  ;; (setq projectile-project-root-files-top-down-recurring
+  ;;       (append
+  ;;        '("compile_commands.json" ".ccls")
+  ;;        projectile-project-root-files-top-down-recurring))
   (setq projectile-globally-ignored-directories
-        (append
-         '("build" "CMakeFiles" ".ccls-cache")
-         projectile-globally-ignored-directories))
+        (ejb/conditional-prepend projectile-globally-ignored-directories
+         '("build" "CMakeFiles")))
   (setq projectile-globally-ignored-files
-        (append
-         '("cmake_install.cmake")
-         projectile-globally-ignored-files))
+        (ejb/conditional-prepend projectile-globally-ignored-files
+         '("cmake_install.cmake")))
   :init
   (projectile-mode))
 #+END_SRC
@@ -956,20 +1020,18 @@ These are valid for all C-style modes (I think).
       '((c-mode . javadoc)
         (java-mode . javadoc)
         (pike-mode . autodoc)))
+
+(defconst my-cc-style
+  '("cc-mode"
+    (c-offsets-alist . ((innamespace . [0])))))
+
+(c-add-style "my-cc-mode" my-cc-style)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 (use-package ccls
   :after lsp-mode
   :hook ((c-mode c++-mode) . lsp))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(defconst my-cc-style
-  '("cc-mode"
-    (c-offsets-alist . ((innamespace . [0])))))
-
-(c-add-style "my-cc-mode" my-cc-style)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
