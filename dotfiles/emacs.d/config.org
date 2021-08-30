@@ -534,11 +534,11 @@ with the default ordering Projectile uses.
           projectile-root-bottom-up
           projectile-root-top-down
           projectile-root-top-down-recurring))
-  (setq projecfile-project-root-files-bottom-up
-        (ejb/conditional-prepend projecfile-project-root-files-bottom-up
+  (setq projectile-project-root-files-bottom-up
+        (ejb/conditional-prepend projectile-project-root-files-bottom-up
                                  '(".ccls-root")))
-  (setq projecfile-project-root-files-top-down-recurring
-        (ejb/conditional-prepend projecfile-project-root-files-top-down-recurring
+  (setq projectile-project-root-files-top-down-recurring
+        (ejb/conditional-prepend projectile-project-root-files-top-down-recurring
                                  '("compile_commands.json")))
   (setq projectile-globally-ignored-directories
         (ejb/conditional-prepend projectile-globally-ignored-directories
