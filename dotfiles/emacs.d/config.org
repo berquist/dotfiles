@@ -534,16 +534,21 @@ with the default ordering Projectile uses.
           projectile-root-bottom-up
           projectile-root-top-down
           projectile-root-top-down-recurring))
-  ;; (setq projectile-project-root-files-top-down-recurring
-  ;;       (append
-  ;;        '("compile_commands.json" ".ccls")
-  ;;        projectile-project-root-files-top-down-recurring))
+  (setq projecfile-project-root-files-bottom-up
+        (ejb/conditional-prepend projecfile-project-root-files-bottom-up
+                                 '(".ccls-root")))
+  (setq projecfile-project-root-files-top-down-recurring
+        (ejb/conditional-prepend projecfile-project-root-files-top-down-recurring
+                                 '("compile_commands.json")))
   (setq projectile-globally-ignored-directories
         (ejb/conditional-prepend projectile-globally-ignored-directories
-         '("build" "CMakeFiles")))
+                                 '(".ccls-cache"
+                                   ".clangd"
+                                   "build"
+                                   "CMakeFiles")))
   (setq projectile-globally-ignored-files
         (ejb/conditional-prepend projectile-globally-ignored-files
-         '("cmake_install.cmake")))
+                                 '("cmake_install.cmake")))
   :init
   (projectile-mode))
 #+END_SRC
