@@ -1068,6 +1068,9 @@ These are valid for all C-style modes (I think).
 #+BEGIN_SRC emacs-lisp
 (use-package clang-format
   :bind (("C-M-<tab>" . clang-format-region)))
+
+(use-package astyle
+  :when (executable-find "astyle"))
 #+END_SRC
 
 * Java
