@@ -28,18 +28,7 @@ if command -v pyenv >/dev/null 2>&1; then
 fi
 if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
-# TODO
-# apt install libbz2-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev
-# pyenv install 3.8.6
-# pyenv global 3.8.6
-# python -m pip install -U pip setuptools
-# python -m pip install wheel
-# python -m pip install ansible ansible-lint
-# python -m pip install docker
-
-if [ -f "${HOME}/.bashrc" ]; then
-    source "${HOME}/.bashrc"
-fi
+[[ -f "${HOME}/.bashrc" ]] && source "${HOME}/.bashrc"
 
 # Rust
 [[ -f "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
