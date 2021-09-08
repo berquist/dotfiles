@@ -9,7 +9,7 @@
       tags:
         - always
   vars:
-    pkgver: 0.0.128
+    pkgver: 0.0.129
   tasks:
     - name: install Discord Canary
       apt:
