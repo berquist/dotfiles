@@ -1657,6 +1657,7 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package lox-mode)
 (use-package lua-mode)
 (use-package meson-mode)
+(use-package nix-mode)
 (use-package opencl-mode)
 (use-package pacfiles-mode)
 (use-package pdf-tools)

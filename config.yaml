@@ -196,7 +196,7 @@ profiles:
     - f_zprofile
     - f_zshenv
     - f_zshrc
-  pop-os:
+  scandium:
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -208,13 +208,13 @@ profiles:
     - f_condarc
     - f_gitconfig
     - f_gitignore
-    - f_gpg-agent.conf
-    - f_gpg.conf
+    # - f_gpg-agent.conf
+    # - f_gpg.conf
     - f_mdlrc
-    - f_nanorc
-    - f_sbclrc
+    # - f_nanorc
+    # - f_sbclrc
     - f_tmux.conf
-    - f_xdefaults
+    # - f_xdefaults
     - f_zprofile
     - f_zshenv
     - f_zshrc

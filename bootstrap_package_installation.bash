@@ -11,10 +11,13 @@ base_plat=$(echo ${funame} | cut -d ' ' -f 1)
 case ${base_plat} in
     Linux)
         if [[ ! -f /usr/bin/ansible ]]; then
-	    if [[ "${funame}" =~ 'arch' ]]; then
+            if [[ "${funame}" =~ 'arch' ]]; then
                 sudo pacman -S ansible
-	    elif [[ "${funame}" =~ 'Ubuntu' ]]; then
+            elif [[ "${funame}" =~ 'Ubuntu' ]]; then
                 sudo apt install ansible
+            fi
+        elif $(command -v ansible); then
+            if [[ "${funame}" =~ "NixOS" ]]; then
             fi
         fi
         ;;
