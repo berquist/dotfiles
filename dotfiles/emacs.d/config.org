@@ -1684,7 +1684,10 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 ** Discord
 
 #+BEGIN_SRC emacs-lisp
+(load "~/dotfiles/dotfiles-private/work-hostnames.el")
 (use-package elcord
+  ;; No work machines
+  :if (not (ejb/is-work-machine))
   :config
   (setq elcord-use-major-mode-as-main-icon t)
   :init
