@@ -1012,10 +1012,12 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
 
 #+begin_src emacs-lisp
 (use-package tree-sitter
+  :disabled t
   :delight
   :init
   (global-tree-sitter-mode))
 (use-package tree-sitter-langs
+  :disabled t
   :hook ((tree-sitter-after-on . tree-sitter-hl-mode))
   :init
   (require 'tree-sitter-langs))
