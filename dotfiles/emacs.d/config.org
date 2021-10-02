@@ -1643,8 +1643,6 @@ Modified to remove/disable Racket, which has ~racket-mode~.
     (interactive)
     (let ((comment-start "## "))
       (call-interactively 'comment-dwim))))
-;; TODO I'm not sure what the advantage of this package is.
-;; (use-package flycheck-nim)
 #+END_SRC
 
 * Other languages, modes, and packages
