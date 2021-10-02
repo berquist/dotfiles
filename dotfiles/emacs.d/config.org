@@ -755,6 +755,15 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   :hook (flycheck-mode . flycheck-vale-setup))
 #+END_SRC
 
+* Diffing (built-in)
+
+#+begin_src emacs-lisp
+;; (use-package diff-mode
+;;   :straight (diff-mode :type built-in))
+(setq diff-advance-after-apply-hunk nil)
+(setq diff-font-lock-prettify t)
+#+end_src
+
 * Git/version control
 
 ** General
