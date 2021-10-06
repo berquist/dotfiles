@@ -24,7 +24,9 @@
         name: sshd
         state: started
         enabled: true
-      when: ansible_system == "Linux"
+      when:
+        - ansible_system == "Linux"
+        - ansible_distribution != "NixOS"
 
 # See https://askubuntu.com/a/1251037 and https://askubuntu.com/a/191013.
 - name: disable sleeping for Gnome Display Manager (GDM)
@@ -58,6 +60,7 @@
       register: gdm_current_sleep_timeout
       when:
         - ansible_system == "Linux"
+        - ansible_distribution != "NixOS"
         # - has_gsettings.rc == 0
     - name: disable sleeping timeout for GDM if not already set
       # https://askubuntu.com/a/311988
@@ -67,6 +70,7 @@
       failed_when: '"WARNING" in gdm_disabled_sleep_timeout.stderr'
       when:
         - ansible_system == "Linux"
+        - ansible_distribution != "NixOS"
         # - has_gsettings.rc == 0
         - gdm_current_sleep_timeout.stdout != sleep_inactive_ac_timeout_value
     - name: get current GDM sleep type value
@@ -75,6 +79,7 @@
       register: gdm_current_sleep_type
       when:
         - ansible_system == "Linux"
+        - ansible_distribution != "NixOS"
         # - has_gsettings.rc == 0
     - name: disable sleeping method for GDM if not already set
       command: "dbus-launch --exit-with-session gsettings set {{ power_schema }} {{ sleep_inactive_ac_type_key }} {{ sleep_inactive_ac_type_value }}"
@@ -83,6 +88,7 @@
       failed_when: '"WARNING" in gdm_disabled_sleep_type.stderr'
       when:
         - ansible_system == "Linux"
+        - ansible_distribution != "NixOS"
         # - has_gsettings.rc == 0
         - gdm_current_sleep_type.stdout != sleep_inactive_ac_type_value
     # - name: determine if GDM was running

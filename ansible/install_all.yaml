@@ -73,7 +73,9 @@
         state: started
         enabled: true
         scope: user
-      when: ansible_system == "Linux"
+      when:
+        - ansible_system == "Linux"
+        - ansible_distribution != "NixOS"
 
 - name: apply dconf settings
   tags:
@@ -93,6 +95,7 @@
         loop_var: dconf_setting_triple
       when:
         - ansible_system == "Linux"
+        - ansible_distribution != "NixOS"
 
 - name: apply XDG settings
   gather_facts: false
@@ -107,11 +110,13 @@
       register: current_default_web_browser
       when:
         - ansible_system == "Linux"
+        - ansible_distribution != "NixOS"
     - name: set default browser to Firefox
       command: xdg-settings set default-web-browser firefox.desktop
       when:
         - ansible_system == "Linux"
         - current_default_web_browser.stdout != "firefox.desktop"
+        - ansible_distribution != "NixOS"
 
 # - name: set keyboard layout
 # TODO localectl --no-convert set-x11-keymap "" "" "" caps:ctrl_modifier

@@ -77,30 +77,25 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    file
-    zerotierone
-    wget
-    direnv
-    htop
-    bat
-    ripgrep
-    exa
-    git
-    neofetch
-    alacritty
-    firefox
-    plexamp
-    spotify
-    slack
-    signal-desktop
-    discord-canary
     _1password-gui
+    alacritty
+    bat
+    dconf2nix
+    direnv
+    discord-canary
+    exa
+    file
+    firefox
+    git
+    gnome.gnome-tweak-tool
+    home-manager
+    htop
+    neofetch
     pop-gtk-theme
     pop-icon-theme
-    gnome.gnome-tweak-tool
-    python39
-    python39Packages.ansible
-    python39Packages.docopt
+    ripgrep
+    wget
+    zerotierone
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -111,11 +106,16 @@
     enableSSHSupport = true;
   };
 
-  services.openssh = {
-    enable = true;
-    passwordAuthentication = false;
+  services = {
+    openssh = {
+      enable = true;
+      passwordAuthentication = false;
+    };
+    zerotierone = {
+      enable = true;
+      joinNetworks = [ "abfd31bd47409170" ];
+    };
   };
-  services.zerotierone.enable = true;
 
   system.stateVersion = "21.05";
 }

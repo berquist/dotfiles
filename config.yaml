@@ -47,6 +47,9 @@ dotfiles:
   f_cuby4:
     src: cuby4
     dst: ~/.cuby4
+  f_dconf.nix:
+    src: config/nixpkgs/dconf.nix
+    dst: ~/.config/nixpkgs/dconf.nix
   f_direnvrc:
     src: config/direnv/direnvrc
     dst: ~/.config/direnv/direnvrc
@@ -65,6 +68,9 @@ dotfiles:
   f_gpg.conf:
     src: gnupg/gpg.conf
     dst: ~/.gnupg/gpg.conf
+  f_home.nix:
+    src: config/nixpkgs/home.nix
+    dst: ~/.config/nixpkgs/home.nix
   f_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
@@ -206,10 +212,12 @@ profiles:
     - f_aspell.en.prepl
     - f_aspell.en.pws
     - f_condarc
+    - f_dconf.nix
     - f_gitconfig
     - f_gitignore
     # - f_gpg-agent.conf
     # - f_gpg.conf
+    - f_home.nix
     - f_mdlrc
     # - f_nanorc
     # - f_sbclrc

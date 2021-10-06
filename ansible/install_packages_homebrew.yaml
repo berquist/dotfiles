@@ -15,18 +15,14 @@
       homebrew:
         name: "{{ item }}"
       loop: "{{ default_packages_homebrew }}"
-      when: ansible_system != "Linux"
     - name: tap for vale linter
       homebrew_tap:
         name: valelint/vale
-      when: ansible_system != "Linux"
     - name: install external packages
       homebrew:
         name: "{{ item }}"
       loop: "{{ default_packages_homebrew_ext }}"
-      when: ansible_system != "Linux"
     - name: install casks
       homebrew_cask:
         name: "{{ item }}"
       loop: "{{ default_packages_homebrew_cask }}"
-      when: ansible_system != "Linux"
