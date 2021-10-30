@@ -783,9 +783,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package git-commit
   :init
   (require 'git-commit))
-(use-package gitattributes-mode)
-(use-package gitconfig-mode)
-(use-package gitignore-mode)
+(use-package git-modes)
 (use-package magit
   :bind (("C-x g" . magit-status)))
 (use-package magit-svn
