@@ -116,6 +116,9 @@ dotfiles:
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
+  f_user.json:
+    src: config/exercism/user.json
+    dst: ~/.config/exercism/user.json
   f_vmdrc:
     src: vmdrc
     dst: ~/.vmdrc
@@ -197,6 +200,7 @@ profiles:
     - f_terminalrc
     - f_terminalrc.osmium
     - f_tmux.conf
+    - f_user.json
     - f_vmdrc
     - f_xinitrc
     - f_zprofile
@@ -222,6 +226,7 @@ profiles:
     # - f_nanorc
     # - f_sbclrc
     - f_tmux.conf
+    - f_user.json
     # - f_xdefaults
     - f_zprofile
     - f_zshenv
