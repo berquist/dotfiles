@@ -259,6 +259,7 @@ packages_osmium:
   - python-sympy
   - python-terminado
   - python-toolz
+  - python-tox
   - python-virtualenv
   - python-virtualenvwrapper
   - python-xlrd
