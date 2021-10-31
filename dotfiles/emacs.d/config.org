@@ -1403,7 +1403,9 @@ TODO disable .m files from loading as Objective-C
 #+BEGIN_SRC emacs-lisp
 (use-package julia-mode)
 ;; Snail requires vterm
-(use-package vterm)
+(use-package vterm
+  :config
+  (setq vterm-always-compile-module t))
 (use-package julia-snail
   :hook (julia-mode . julia-snail-mode))
 (use-package lsp-julia
