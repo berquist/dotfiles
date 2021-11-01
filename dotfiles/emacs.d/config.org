@@ -1530,6 +1530,7 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 
 #+begin_src emacs-lisp
 (use-package clojure-mode
+  :hook (clojure-mode . lsp)
   :config
   (defun cider-interactive-notify-and-eval (code)
     (interactive)
