@@ -254,6 +254,11 @@ current buffer's, reload dir-locals."
 
 * Snippets
 
+TODO:
+- =set -euo pipefail= in shell scripts
+- =if __name__ == "__main__"= boilerplate in Python
+  - =def main() -> None:= with =argparse=
+
 #+BEGIN_SRC emacs-lisp
 (use-package yasnippet
   :disabled t
@@ -349,16 +354,15 @@ current buffer's, reload dir-locals."
 (use-package abyss-theme)
 (use-package base16-theme)
 (use-package base16-eva-theme
-  :disabled t
   :straight (:host github
              :repo "kjakapat/eva-theme"
              :files ("emacs/build/*.el"))
-  :config
-  (load-theme 'base16-eva t))
+  ;; :config
+  ;; (load-theme 'base16-eva t)
+  )
 (use-package colonoscopy-theme)
 (use-package dracula-theme)
 (use-package emacs-tron-theme
-  :disabled t
   :straight (:host github
              :repo "ivanmarcin/emacs-tron-theme"))
 (use-package gotham-theme)
@@ -368,7 +372,6 @@ current buffer's, reload dir-locals."
 (use-package spacegray-theme)
 (use-package tron-legacy-theme)
 (use-package tronesque-theme
-  :disabled t
   :straight (:host github
              :repo "aurelienbottazini/tronesque"
              :files ("themes/tronesque-theme.el")))
@@ -412,12 +415,6 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   :hook (after-init . selectrum-mode))
 (use-package selectrum-prescient
   :hook (after-init . selectrum-prescient-mode))
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package ivy-prescient
-  :disabled t
-  :hook (after-init . ivy-prescient-mode))
 #+end_src
 
 [[https://github.com/raxod502/ctrlf][CTRLF]] replaces Isearch for single-buffer text search.
@@ -699,9 +696,6 @@ Links:
 (use-package realgud)
 ;; TODO load this when in Python and realgud has been loaded
 (use-package realgud-ipdb)
-(use-package dap-mode
-  :disabled t
-  :commands (dap-debug dap-debug-edit-template))
 #+END_SRC
 
 * Flycheck
@@ -721,29 +715,6 @@ Links:
   ;; (setq flycheck-pylintrc "~/.pylintrc")
   :init
   (global-flycheck-mode))
-#+end_src
-
-** Shell
-
-For this to work, =checkbashisms= needs to be available on the =$PATH=:
-
-#+begin_src sh
-yaourt -S checkbashisms # Arch Linux, from AUR
-brew install checkbashisms # Mac OS X, from Homebrew
-sudo apt-get install devscripts # Debian/Ubuntu, official
-sudo yum install rpmdevtools # Red Hat/CentOS
-sudo pkg install checkbashisms # FreeBSD
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package flycheck-checkbashisms
-  ;; We assume that shellcheck can handle this.
-  :disabled t
-  :hook (flycheck-mode . flycheck-checkbashisms-setup)
-  :config
-  ;; Check 'echo -n' usage
-  (setq flycheck-checkbashisms-newline t)
-  (setq flycheck-checkbashisms-posix t))
 #+end_src
 
 ** Prose
@@ -787,19 +758,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package magit
   :bind (("C-x g" . magit-status)))
 (use-package magit-svn
-  :disabled t
   :hook magit-mode)
 (use-package git-timemachine)
-#+END_SRC
-
-** GitHub and other providers
-
-#+BEGIN_SRC emacs-lisp
-(use-package forge
-  :disabled t
-  :after magit)
-(use-package github-review
-  :disabled t)
 #+END_SRC
 
 * Pandoc
@@ -963,21 +923,6 @@ A function to toggle this auto-HTML-export behavior. Does this play nice with th
     (message "Enabled org html export on save for current buffer...")))
 #+END_SRC
 
-** org-ref
-
-#+begin_src emacs-lisp
-(use-package org-ref
-  :disabled t
-  :config
-  (setq reftex-default-bibliography "~/bibliography2/references.bib")
-  (setq org-ref-default-bibliography "~/bibliography2/references.bib")
-  (setq org-ref-bibliography-notes "~/bibliography2/notes.org")
-  (setq org-ref-pdf-directory "~/bibliography2/pdfs")
-  (setq bibtex-completion-bibliography "~/bibliography2/references.bib")
-  (setq bibtex-completion-library-path "~/bibliography2/pdfs")
-  (setq bibtex-completion-notes-path "~/bibliography2/notes"))
-#+end_src
-
 * Compilation
 
 Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#110.
@@ -1004,21 +949,6 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
         ("C-<return>" . eir-eval-in-ielm))
   :config
   (setq eir-repl-placement 'right))
-#+end_src
-
-* Tree-Sitter
-
-#+begin_src emacs-lisp
-(use-package tree-sitter
-  :disabled t
-  :delight
-  :init
-  (global-tree-sitter-mode))
-(use-package tree-sitter-langs
-  :disabled t
-  :hook ((tree-sitter-after-on . tree-sitter-hl-mode))
-  :init
-  (require 'tree-sitter-langs))
 #+end_src
 
 * C/C++
@@ -1652,8 +1582,7 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package graphql-mode)
 (use-package graphviz-dot-mode)
 (use-package groovy-mode)
-(use-package idris-mode
-  :disabled t)
+(use-package idris-mode)
 (use-package lox-mode)
 (use-package lua-mode)
 (use-package meson-mode)
