@@ -709,10 +709,13 @@ Links:
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
   (setq flycheck-checker-error-threshold 1500)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  (setq flycheck-clang-pedantic t)
+  (setq flycheck-clang-pedantic-errors t)
   (setq flycheck-gcc-openmp t)
+  (setq flycheck-gcc-pedantic t)
+  (setq flycheck-gcc-pedantic-errors t)
+  (setq flycheck-cppcheck-checks '("all"))
   (setq flycheck-markdown-mdl-style "~/.mdlrc")
-  ;; This interferes with project-specific configurations.
-  ;; (setq flycheck-pylintrc "~/.pylintrc")
   :init
   (global-flycheck-mode))
 #+end_src
