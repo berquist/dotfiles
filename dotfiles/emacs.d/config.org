@@ -673,13 +673,13 @@ Links:
   :commands lsp
   :hook ((fortran-mode f90-mode sh-mode) . lsp)
   :config
-  (setq lsp-auto-guess-root t)
+  (setq lsp-keep-workspace-alive nil)
   (setq lsp-enable-snippet nil)
-  (setq lsp-file-watch-threshold 500000)
-  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-auto-guess-root t)
+  (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-modeline-diagnostics-enable nil)
-  (setq lsp-prefer-flymake nil)
-  (setq lsp-rust-clippy-preference "on"))
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-file-watch-threshold 500000))
 
 (use-package lsp-ui
   :disabled t
