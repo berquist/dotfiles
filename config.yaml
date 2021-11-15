@@ -62,6 +62,9 @@ dotfiles:
   f_gitignore:
     src: gitignore
     dst: ~/.gitignore
+  f_gnome-keyring-ssh.desktop:
+    src: config/autostart/gnome-keyring-ssh.desktop
+    dst: ~/.config/autostart/gnome-keyring-ssh.desktop
   f_gpg-agent.conf:
     src: gnupg/gpg-agent.conf
     dst: ~/.gnupg/gpg-agent.conf
@@ -150,6 +153,7 @@ profiles:
     - f_condarc
     - f_gitconfig
     - f_gitignore
+    - f_gnome-keyring-ssh.desktop
     - f_gpg-agent.conf
     - f_gpg.conf
     - f_mdlrc
@@ -167,6 +171,7 @@ profiles:
     - f_bashrc
     - f_gitconfig
     - f_gitignore
+    - f_gnome-keyring-ssh.desktop
     - f_gpg-agent.conf
     - f_gpg.conf
     - f_tmux.conf
@@ -188,6 +193,7 @@ profiles:
     - f_emacsclient.desktop
     - f_gitconfig
     - f_gitignore
+    - f_gnome-keyring-ssh.desktop
     - f_gpg-agent.conf
     - f_gpg.conf
     - f_mdlrc
