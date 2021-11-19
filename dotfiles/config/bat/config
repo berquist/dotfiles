@@ -4,3 +4,6 @@
 #--pager="less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
 --theme='Dracula'
 --map-syntax='*.asdf:YAML'
+--map-syntax='*.cjson:JSON'
+--map-syntax='*.qcjson:JSON'
+--map-syntax='*.qcschema:JSON'
