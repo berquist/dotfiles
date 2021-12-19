@@ -162,7 +162,7 @@ default_packages_arch_aur:
   - git-delta
   - pipman-git
   - tealdeer
-  - wakatime
+  - wakatime-cli-bin
 
   # GUI tools
   - emacs-git

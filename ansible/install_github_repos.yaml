@@ -44,7 +44,7 @@
         state: directory
     - name: clone zinit
       git:
-        repo: https://github.com/zdharma/zinit.git
+        repo: https://github.com/zdharma-continuum/zinit.git
         dest: "{{ lookup('env', 'HOME') }}/.zinit/bin"
     - name: ensure pyenv prefix exists
       file:

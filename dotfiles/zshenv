@@ -2,6 +2,10 @@
 
 source "${HOME}"/dotfiles/path_exports.bash
 
+# `wakatime-cli` is the outdated Python package, `wakatime` is the current Go
+# package.
+export ZSH_WAKATIME_BIN=$(command -v wakatime)
+
 # Put this early on, so that additions to $PATH take less precedence.
 {%@@ if profile == "osmium" @@%}
 # export ANACONDA_HOME="/home/eric/.conda"

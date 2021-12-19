@@ -4,28 +4,21 @@ source "${HOME}/.zinit/bin/zinit.zsh"
 
 autoload -Uz compaudit compinit
 
-zinit snippet OMZL::compfix.zsh
-zinit snippet "${HOME}"/dotfiles/zcompdump.zsh
-zinit snippet OMZL::completion.zsh
-zinit snippet OMZL::git.zsh
-zinit snippet OMZL::termsupport.zsh
-zinit snippet OMZL::theme-and-appearance.zsh
+zinit for \
+      OMZL::compfix.zsh \
+      "${HOME}"/dotfiles/zcompdump.zsh \
+      OMZL::completion.zsh \
+      OMZL::git.zsh \
+      OMZL::termsupport.zsh \
+      OMZL::theme-and-appearance.zsh
 
 zinit light romkatv/zsh-prompt-benchmark
 zinit ice depth=1; zinit light sobolevn/wakatime-zsh-plugin
-# Rust programming language
-zinit ice as"completion" wait'!3' silent
-zinit snippet OMZ::plugins/cargo/_cargo
-zinit ice as"completion" wait'!4' silent
-zinit snippet OMZ::plugins/rust/_rust
-zinit ice as"completion" wait'!5' silent
-# TODO autogenerate this with Ansible
-zinit snippet "${HOME}"/dotfiles/zfunc/_rustup
 # Prompt
 zinit ice svn
 zinit snippet OMZP::git-prompt
 zinit snippet "${HOME}"/dotfiles/berquist.zsh-theme
-# Other plugins
+# Other
 zinit ice svn
 zinit snippet OMZP::gpg-agent
 
