@@ -4,7 +4,7 @@ source "${HOME}"/dotfiles/path_exports.bash
 
 # `wakatime-cli` is the outdated Python package, `wakatime` is the current Go
 # package.
-{%@@ if profile == "sodium" @@%}
+{%@@ if profile == "sodium.local" @@%}
 # ...unless you're using Homebrew, where they've renamed the command back to
 # the old one.
 export ZSH_WAKATIME_BIN=/usr/local/bin/wakatime-cli
