@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      /etc/nixos/cachix.nix
     ];
 
   # Speed up development at the cost of possible build race conditions
@@ -50,7 +51,8 @@
   console.useXkbConfig = true;
 
   sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = true;
+  hardware.opengl.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -66,35 +68,27 @@
   services.emacs.package = pkgs.emacsGcc;
 
   nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/emacs-overlay/archive/961d6e84bcc5414e452f6cf674aef818575e317b.tar.gz;
-      sha256 = "1ghp341jrz3ab12lml68bqjahzjjd4x8168jq2mwdzqkldqbsflx";
-    }))
-    (import (builtins.fetchTarball {
-      url = "https://github.com/InternetUnexplorer/discord-overlay/archive/main.tar.gz";
+    # (import (builtins.fetchTarball {
+    #   url = "https://github.com/InternetUnexplorer/discord-overlay/archive/main.tar.gz";
+    # }))
+    (import (builtins.fetchGit {
+      url = "https://github.com/nix-community/emacs-overlay.git";
+      ref = "master";
+      rev = "8186f94aafaf8cb90f624b0ebc92d133fcfe7410";
     }))
   ];
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    _1password-gui
-    alacritty
-    bat
+    cachix
     dconf2nix
-    direnv
-    discord-canary
-    exa
-    file
+    # discord-canary
     firefox
     git
     gnome.gnome-tweak-tool
     home-manager
-    htop
-    neofetch
     pop-gtk-theme
     pop-icon-theme
-    ripgrep
-    wget
     zerotierone
   ];
 
