@@ -1349,7 +1349,7 @@ TODO disable .m files from loading as Objective-C
 
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode
-  ;; A decent assumption for work-specific pseudo-YAML files.
+  ;; A decent assumption for ISI-specific pseudo-YAML files.
   :mode (("\\.params\\'" . yaml-mode)
          ("\\.clang-format\\'" . yaml-mode)
          ("\\.asdf\\'" . yaml-mode)
