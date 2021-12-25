@@ -1567,17 +1567,15 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 #+BEGIN_SRC emacs-lisp
 (use-package chapel-mode)
 (use-package coconut-mode
+  :disabled t
   :straight (:host github
              ;; "main" is NickSeagull, alternate (not working) is "padawanphysicist"
              :repo "NickSeagull/coconut-mode")
   :mode ("\\.coco\\'" . coconut-mode))
-(use-package cuda-mode)
 (use-package dockerfile-mode)
 (use-package docker-tramp)
-(use-package graphql-mode)
 (use-package graphviz-dot-mode)
 (use-package groovy-mode)
-(use-package idris-mode)
 (use-package lox-mode)
 (use-package lua-mode)
 (use-package meson-mode)
@@ -1589,9 +1587,6 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package snakemake-mode)
 (use-package systemd)
 (use-package vagrant-tramp)
-(use-package zig-mode
-  :after lsp-mode
-  :hook (zig-mode . lsp))
 #+END_SRC
 
 * External services
