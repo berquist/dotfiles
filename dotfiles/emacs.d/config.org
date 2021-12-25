@@ -1386,13 +1386,18 @@ TODO disable .m files from loading as Objective-C
 
 #+BEGIN_SRC emacs-lisp
 (use-package rustic
-  ;; :bind (:map rustic-mode-map ("C-c C-c C-;" . rustic-docstring-around-dwim))
+  :bind (:map rustic-mode-map
+              ("C-c C-c C-;" . rustic-docstring-around-dwim)
+              ("C-c C-c C-d" . rustic-cargo-build-doc))
   :config
   (setq rustic-ansi-faces ansi-color-names-vector)
   (setq rustic-format-trigger 'on-save)
   (setq rustic-indent-method-chain t)
   (defun rustic-docstring-around-dwim ()
-    "Use `comment-dwim' to make a Rust docstring for the thing surrounding the comment."
+    "Use `comment-dwim' to make a Rust docstring for the thing surrounding the comment.
+
+Such comments are mostly for module- or crate-level documentation.
+See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more information."
     (interactive)
     (let ((comment-start "//! "))
       (call-interactively 'comment-dwim))))
