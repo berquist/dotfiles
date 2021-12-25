@@ -672,6 +672,7 @@ Links:
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-lens-enable nil)
   (setq lsp-file-watch-threshold 500000))
 
 (use-package lsp-ui
