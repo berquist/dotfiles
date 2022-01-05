@@ -338,8 +338,6 @@ packages_osmium_aur:
 
   # Programming: Ruby
   - ruby-mdl
-  - ruby-travis
-  - travis-lint
 
   # language servers
   - clojure-lsp-bin
