@@ -1,0 +1,38 @@
+---
+- name: install LLVM toolchain on Ubuntu-based systems
+  hosts: all
+  vars_files:
+    - package_lists.yaml
+  vars:
+    # - llvm_version: 14
+    # - llvm_version_string: ""
+    - llvm_version: 13
+    - llvm_version_string: "-13"
+  tasks:
+    - name: prepare apt to use a repository over HTTPS
+      apt:
+        name: "{{ apt_https_packages }}"
+        update_cache: true
+        install_recommends: false
+    - name: get LLVM repository signing key
+      apt_key:
+        url: https://apt.llvm.org/llvm-snapshot.gpg.key
+    - name: add LLVM Ubuntu repository
+      apt_repository:
+        repo: "deb http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release }}{{ llvm_version_string }} main"
+    - name: install LLVM toolchain
+      apt:
+        name:
+          - "clang-{{ llvm_version }}"
+          - "clang-tools-{{ llvm_version }}"
+          - "clang-{{ llvm_version }}-doc"
+          - "libclang-common-{{ llvm_version }}-dev"
+          - "libclang-{{ llvm_version }}-dev"
+          - "libclang1-{{ llvm_version }}"
+          - "clang-format-{{ llvm_version }}"
+          - "python3-clang-{{ llvm_version }}"
+          - "clangd-{{ llvm_version }}"
+          - "lldb-{{ llvm_version }}"
+          - "lld-{{ llvm_version }}"
+        update_cache: true
+        install_recommends: false
