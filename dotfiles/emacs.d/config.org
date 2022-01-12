@@ -1589,7 +1589,9 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package opencl-mode)
 (use-package pacfiles-mode)
 (use-package pdf-tools)
-(use-package pkgbuild-mode)
+(use-package pkgbuild-mode
+  :config
+  (setq pkgbuild-update-sums-on-save nil))
 (use-package snakemake-mode)
 (use-package systemd)
 (use-package vagrant-tramp)
