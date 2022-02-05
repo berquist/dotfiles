@@ -92,6 +92,9 @@ dotfiles:
   f_nitrogen_bg-saved.cfg:
     src: config/nitrogen/bg-saved.cfg
     dst: ~/.config/nitrogen/bg-saved.cfg
+  f_nixpkgs_overlays_discord.nix:
+    src: config/nixpkgs/overlays/discord.nix
+    dst: ~/.config/nixpkgs/overlays/discord.nix
   f_nvimrc:
     src: nvimrc
     dst: ~/.nvimrc
@@ -230,6 +233,7 @@ profiles:
     - f_home.nix
     - f_mdlrc
     # - f_nanorc
+    - f_nixpkgs_overlays_discord.nix
     # - f_sbclrc
     - f_tmux.conf
     - f_user.json

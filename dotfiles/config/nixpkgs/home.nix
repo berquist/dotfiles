@@ -31,41 +31,53 @@ in {
   home.packages = [
     act
     alacritty
+    armadillo
     aspell
     aspellDicts.en
+    autoconf
     babashka
     bat
     cask
+    ccls
     clj-kondo
     clojure
     clojure-lsp
     cmake
     direnv
+    discord-canary
     exa
     exercism
     fd
     file
     gfortran
+    gh
+    # ghostscript
     gnumake
     htop
+    imagemagick
     jabref
     # julia
     leiningen
     neofetch
     nodejs
+    pigz
     pinentry-emacs
     plexamp
     python-with-my-packages
+    qchem.dalton
+    qchem.nwchem
     ripgrep
     signal-desktop
     slack
     spotify
     subversion
     texlive.combined.scheme-full
+    wakatime
     tmux
     wget
     yamllint
     yarn
+    zoom-us
   ];
 
   programs = {
@@ -76,6 +88,9 @@ source ~/dotfiles/interactive_exports.bash
 source ~/dotfiles/aliases.bash
 source ~/dotfiles/functions.bash
 '';
+#       profileExtra = ''
+# . ~/repositories/spack/share/spack/setup-env.sh
+# '';
     };
     direnv = {
       enable = true;
@@ -83,6 +98,9 @@ source ~/dotfiles/functions.bash
     # gpg = {
     #   enable = true;
     # };
+    vscode = {
+      enable = true;
+    };
   };
 
   # services = {

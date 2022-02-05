@@ -68,13 +68,10 @@
   services.emacs.package = pkgs.emacsGcc;
 
   nixpkgs.overlays = [
-    # (import (builtins.fetchTarball {
-    #   url = "https://github.com/InternetUnexplorer/discord-overlay/archive/main.tar.gz";
-    # }))
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/emacs-overlay.git";
       ref = "master";
-      rev = "8186f94aafaf8cb90f624b0ebc92d133fcfe7410";
+      rev = "7a5bce1e455eb52f5bdaff575424f20dec439886";
     }))
   ];
 
@@ -82,7 +79,7 @@
   environment.systemPackages = with pkgs; [
     cachix
     dconf2nix
-    # discord-canary
+    file
     firefox
     git
     gnome.gnome-tweak-tool
