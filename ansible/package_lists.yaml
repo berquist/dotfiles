@@ -70,6 +70,7 @@ default_packages_arch:
   - diffoscope
   - dos2unix
   - doxygen
+  - duf
   # - eigen
   # - eigen2
   - exa
