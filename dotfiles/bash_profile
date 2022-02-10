@@ -6,6 +6,7 @@ export PS1='\u@\h:\w
 export SCRATCH=/scratch
 export HOME1=/dftman/home1/ericb
 export HOME2=/dftman/home2/ericb
+export VAGRANT_HOME="${HOME2}"/vagrant
 
 if [[ "${HOSTNAME}" == "coreman4" ]]; then
     source "${HOME2}"/spack/share/spack/setup-env.sh
