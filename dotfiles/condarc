@@ -1,4 +1,5 @@
 # -*- mode: yaml -*-
+---
 channels:
   - psi4
   - conda-forge
@@ -7,3 +8,5 @@ changeps1: false
 channel_priority: flexible
 # pip_interop_enabled: true
 report_errors: true
+pkgs_dirs:
+  - /home/eric/data/conda_pkgs
