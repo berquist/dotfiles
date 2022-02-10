@@ -1413,7 +1413,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
           inferior-emacs-lisp-mode
           lisp-mode
           scheme-mode
-          cider-mode
+          cider-repl-mode
           clojure-mode
           hy-mode
           racket-mode
