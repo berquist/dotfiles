@@ -1,41 +1,43 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Only run in interactive shells.
-if [[ $- == *i* ]]; then
-    if [[ $TERM == "alacritty" ]]; then
-        export TERM=xterm-256color
-    fi
+[[ $- == *i* ]] || return
 
-    source "${HOME}"/dotfiles/aliases.bash
-    source "${HOME}"/dotfiles/bash_hist.bash
-    source "${HOME}"/dotfiles/interactive_exports.bash
-    source "${HOME}"/dotfiles/functions.bash
-
-    export GPG_TTY=$(tty)
-
-    alias cds="cd ${SCRATCH}"
-    alias cd1="cd ${HOME1}"
-    alias cd2="cd ${HOME2}"
-
-    if [[ "${HOSTNAME}" == "coreman4" ]]; then
-        source "${HOME}"/env/spackenv
-        eval "$(direnv hook $(basename $SHELL))"
-    elif [[ "${HOSTNAME}" == "gpuman2.q-chem.com" ]]; then
-        module load gnu/7.5.0
-        module load colordiff-1.0.19-gcc-7.4.0-lowhzak
-        module load direnv-2.20.0-gcc-7.4.0-orxocw7
-        module load emacs-27.1-gcc-7.4.0-r4dgzro
-        module load exa-0.9.0-gcc-7.4.0-5u4bkl2
-        module load htop-2.2.0-gcc-7.4.0-4xtw5eq
-        module load git-2.29.0-gcc-7.4.0-lgygldk
-        module load patch-2.7.6-gcc-7.4.0-4ga7kal
-        module load tmux-3.1b-gcc-7.4.0-rfmeiiv
-        eval "$(direnv hook $(basename $SHELL))"
-    # elif [[ "${HOSTNAME}" == "dellman4" ]]; then
-    #     eval "$(direnv hook $(basename $SHELL))"
-    fi
-
-    alias cdbj='cd /scratch/qcdevops/jenkins/workspace/build_qchem'
-    alias cdtd4='cd /scratch/qcdevops/jenkins/workspace/svnq_checkin/checkin/current/build/test'
-    alias cdtmp='cd /Volumes/scratch/qcdevops/jenkins/workspace/svnq_checkin/checkin/current/build/test'
+if [[ $TERM == "alacritty" ]]; then
+    export TERM=xterm-256color
 fi
+
+source "${HOME}"/dotfiles/aliases.bash
+source "${HOME}"/dotfiles/bash_hist.bash
+source "${HOME}"/dotfiles/interactive_exports.bash
+source "${HOME}"/dotfiles/functions.bash
+
+{%@@ if profile == "osmium" @@%}
+{%@@ else @@%}
+export GPG_TTY=$(tty)
+
+alias cds="cd ${SCRATCH}"
+alias cd1="cd ${HOME1}"
+alias cd2="cd ${HOME2}"
+
+if [[ "${HOSTNAME}" == "coreman4" ]]; then
+    source "${HOME}"/env/spackenv
+    eval "$(direnv hook bash)"
+elif [[ "${HOSTNAME}" == "gpuman2.q-chem.com" ]]; then
+    module load gnu/7.5.0
+    module load colordiff-1.0.19-gcc-7.4.0-lowhzak
+    module load direnv-2.20.0-gcc-7.4.0-orxocw7
+    module load emacs-27.1-gcc-7.4.0-r4dgzro
+    module load exa-0.9.0-gcc-7.4.0-5u4bkl2
+    module load htop-2.2.0-gcc-7.4.0-4xtw5eq
+    module load git-2.29.0-gcc-7.4.0-lgygldk
+    module load patch-2.7.6-gcc-7.4.0-4ga7kal
+    module load tmux-3.1b-gcc-7.4.0-rfmeiiv
+    eval "$(direnv hook bash)"
+    # elif [[ "${HOSTNAME}" == "dellman4" ]]; then
+    #     eval "$(direnv hook bash)"
+fi
+
+alias cdbj='cd /scratch/qcdevops/jenkins/workspace/build_qchem'
+alias cdtd4='cd /scratch/qcdevops/jenkins/workspace/svnq_checkin/checkin/current/build/test'
+alias cdtmp='cd /Volumes/scratch/qcdevops/jenkins/workspace/svnq_checkin/checkin/current/build/test'
+{%@@ endif @@%}

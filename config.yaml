@@ -153,6 +153,8 @@ profiles:
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
+    - f_bash_profile
+    - f_bashrc
     - f_condarc
     - f_gitconfig
     - f_gitignore
@@ -188,6 +190,8 @@ profiles:
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
+    - f_bash_profile
+    - f_bashrc
     - f_clisprc.lisp
     - f_compton.conf
     - f_condarc

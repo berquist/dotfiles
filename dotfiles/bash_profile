@@ -1,5 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+# include ~/.profile if it exists
+[[ -f ~/.profile ]] && source ~/.profile
+
+# include ~/.bashrc if it exists
+[[ -f ~/.bashrc ]] && source ~/.bashrc
+
+{%@@ if profile == "osmium" @@%}
+{%@@ else @@%}
 export PS1='\u@\h:\w
 \$ '
 
@@ -42,3 +50,4 @@ module use "${HOME}"/modules/work
 if [[ "${HOSTNAME}" == "coreman4" ]]; then
     module use "${HOME}"/modules/coreman4
 fi
+{%@@ endif @@%}

@@ -59,4 +59,4 @@ module use "${HOME}/modules/osmium"
 source "${HOME}"/dotfiles/aliases_macos.bash
 {%@@ endif @@%}
 
-eval "$(direnv hook $(basename $SHELL))"
+eval "$(direnv hook zsh)"
