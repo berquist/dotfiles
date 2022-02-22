@@ -1,27 +1,5 @@
 #!/usr/bin/env zsh
 
-source "${HOME}/.zinit/bin/zinit.zsh"
-
-autoload -Uz compaudit compinit
-
-zinit for \
-      OMZL::compfix.zsh \
-      "${HOME}"/dotfiles/zcompdump.zsh \
-      OMZL::completion.zsh \
-      OMZL::git.zsh \
-      OMZL::termsupport.zsh \
-      OMZL::theme-and-appearance.zsh
-
-zinit light romkatv/zsh-prompt-benchmark
-zinit ice depth=1; zinit light sobolevn/wakatime-zsh-plugin
-# Prompt
-zinit ice svn
-zinit snippet OMZP::git-prompt
-zinit snippet "${HOME}"/dotfiles/berquist.zsh-theme
-# Other
-zinit ice svn
-zinit snippet OMZP::gpg-agent
-
 bindkey -e
 
 unsetopt auto_cd
@@ -36,9 +14,8 @@ unsetopt notify
 setopt prompt_subst
 setopt pushd_ignore_dups
 
-zstyle :compinstall filename "${HOME}/.zshrc"
-autoload -Uz compinit
-compinit
+export PS1='%n@%m:%~
+$ '
 
 source "${HOME}"/dotfiles/history.zsh
 source "${HOME}"/dotfiles/interactive_exports.bash
@@ -46,12 +23,14 @@ source "${HOME}"/dotfiles/aliases.bash
 source "${HOME}"/dotfiles/functions.bash
 # source "${HOME}"/dotfiles/slurm.bash
 
+if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
+    source $(command -v virtualenvwrapper_lazy.sh)
+fi
+
 {%@@ if profile == "osmium" @@%}
 # re-export
 export QCPROGS="${HOME}/data/opt/apps"
 export apps="${QCPROGS}"
-
-source /usr/bin/virtualenvwrapper.sh
 
 source /usr/share/lmod/lmod/init/zsh
 module use "${HOME}/modules/osmium"
