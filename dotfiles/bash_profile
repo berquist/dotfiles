@@ -50,4 +50,7 @@ module use "${HOME}"/modules/work
 if [[ "${HOSTNAME}" == "coreman4" ]]; then
     module use "${HOME}"/modules/coreman4
 fi
+
+nix_sh=/dftman/home/ericb/.nix-profile/etc/profile.d/nix.sh
+[[ -f "${nix_sh}" ]] && source "${nix_sh}"
 {%@@ endif @@%}
