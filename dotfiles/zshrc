@@ -39,3 +39,5 @@ source "${HOME}"/dotfiles/aliases_macos.bash
 {%@@ endif @@%}
 
 eval "$(direnv hook zsh)"
+
+source "${HOME}"/dotfiles/termsupport.zsh
