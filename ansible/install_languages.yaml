@@ -32,3 +32,15 @@
       command: "{{ choosenim_location }} update stable"
       register: choosenim_update_stable
       changed_when: "'Already up to date at version' not in choosenim_update_stable.stdout"
+
+- name: install Julia packages
+  gather_facts: false
+  hosts: all
+  tasks:
+    - name: check for Julia
+      shell: "$(command -v julia)"
+      register: julia_result
+    - name: install base environment packages
+      command:
+        cmd: julia 'using Pkg; Pkg.add(["LanguageServer", "OhMyREPL", "Revise"]); Pkg.instantiate()'
+      when: julia_result.rc == 0
