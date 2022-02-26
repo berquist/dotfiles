@@ -7,6 +7,8 @@ channels:
 changeps1: false
 channel_priority: flexible
 # pip_interop_enabled: true
+quiet: false
 report_errors: true
+verbosity: 1
 pkgs_dirs:
-  - /home/eric/data/conda_pkgs
+  - "{{@@ conda_pkg_dir @@}}"

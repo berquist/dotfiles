@@ -145,6 +145,8 @@ dotfiles:
     dst: ~/.zshrc
 profiles:
   beryllium:
+    variables:
+      conda_pkg_dir: /home/eric/.conda_pkgs
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -167,6 +169,8 @@ profiles:
     - f_zshenv
     - f_zshrc
   coreman4:
+    variables:
+      conda_pkg_dir: /dftman/home2/ericb/.conda_pkgs
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -181,6 +185,8 @@ profiles:
     - f_gpg.conf
     - f_tmux.conf
   osmium:
+    variables:
+      conda_pkg_dir: /home/eric/data/.conda_pkgs
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -220,6 +226,8 @@ profiles:
     - f_zshenv
     - f_zshrc
   scandium:
+    variables:
+      conda_pkg_dir: /home/eric/.conda_pkgs
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -246,6 +254,8 @@ profiles:
     - f_zshenv
     - f_zshrc
   sodium.local:
+    variables:
+      conda_pkg_dir: /Users/eric/.conda_pkgs
     dotfiles:
     - d_bat
     - d_emacs.d
