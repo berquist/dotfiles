@@ -120,8 +120,7 @@ default_packages_arch:
   - sysstat
   - tcsh
   - texlab
-  # Prefer `tmux-git` from the AUR.
-  # - tmux
+  - tmux
   - tree
   - unrar
   - vagrant
@@ -174,7 +173,6 @@ default_packages_arch_aur:
   - pop-gtk-theme
   - spotify
   - symlinks
-  - tmux-git
   - ttf-ms-fonts
   - yay
 
