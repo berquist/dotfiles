@@ -76,3 +76,4 @@
       git:
         repo: https://github.com/spack/spack.git
         dest: "{{ spack_root }}"
+        version: develop
