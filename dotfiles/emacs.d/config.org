@@ -755,6 +755,9 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package git-modes)
 (use-package magit
   :bind (("C-x g" . magit-status)))
+(use-package magit-delta
+  ;;:hook (magit-mode . magit-delta-mode)
+  )
 (use-package magit-svn
   :disabled t
   :hook magit-mode)
@@ -1001,6 +1004,7 @@ These are valid for all C-style modes (I think).
 
 #+BEGIN_SRC emacs-lisp
 (use-package ccls
+  :disabled t
   :after lsp-mode
   :hook ((c-mode c++-mode) . lsp))
 #+END_SRC
@@ -1526,7 +1530,6 @@ Modified to remove/disable Racket, which has ~racket-mode~.
               ("C-c n i i" . notespace/init)
               ("C-c n s" . notespace/render-static-html)
               ("C-c n c" . notespace/eval-and-realize-notes-from-change)))
-
 (use-package cider)
 (use-package flycheck-clojure)
 #+end_src
@@ -1535,10 +1538,12 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 
 #+BEGIN_SRC emacs-lisp
 (use-package sparql-mode
+  :disabled t
   :mode (("\\.sparql\\'" . sparql-mode)
          ("\\.rq\\'" . sparql-mode)))
 ;; TODO company-sparql
 (use-package ttl-mode
+  :disabled t
   :straight (ttl-mode :type git :flavor melpa :host github :repo "nxg/ttl-mode")
   :delight "N3/Turtle"
   :mode (("\\.n3\\'" . ttl-mode)    ; Notation3
@@ -1573,7 +1578,8 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 * Other languages, modes, and packages
 
 #+BEGIN_SRC emacs-lisp
-(use-package chapel-mode)
+(use-package chapel-mode
+  :disabled t)
 (use-package coconut-mode
   :disabled t
   :straight (:host github
@@ -1588,8 +1594,9 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package lua-mode)
 (use-package meson-mode)
 (use-package nix-mode)
-(use-package opencl-mode)
 (use-package pacfiles-mode)
+(use-package opencl-mode
+  :disabled t)
 (use-package pdf-tools)
 (use-package pkgbuild-mode
   :config
