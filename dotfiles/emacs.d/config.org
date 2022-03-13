@@ -722,6 +722,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck-vale
+  :disabled t
   :if (executable-find "vale")
   :hook (flycheck-mode . flycheck-vale-setup))
 #+END_SRC
@@ -729,8 +730,6 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 * Diffing (built-in)
 
 #+begin_src emacs-lisp
-;; (use-package diff-mode
-;;   :straight (diff-mode :type built-in))
 (setq diff-advance-after-apply-hunk nil)
 (setq diff-font-lock-prettify t)
 #+end_src
@@ -758,8 +757,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package magit
   :bind (("C-x g" . magit-status)))
 (use-package magit-delta
-  ;;:hook (magit-mode . magit-delta-mode)
-  )
+  :disabled t
+  :hook (magit-mode . magit-delta-mode))
 (use-package magit-svn
   :disabled t
   :hook magit-mode)
@@ -1379,6 +1378,7 @@ TODO disable .m files from loading as Objective-C
 (use-package jinja2-mode
   :mode (("\\.j2\\'" . jinja2-mode)))
 (use-package web-beautify
+  :disabled t
   :config
   (eval-after-load 'js2-mode
     '(define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
@@ -1615,6 +1615,7 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 #+BEGIN_SRC emacs-lisp
 (load "~/dotfiles/dotfiles-private/work-hostnames.el")
 (use-package elcord
+  :disabled t
   ;; No work machines
   :if (not (ejb/is-work-machine))
   :config
