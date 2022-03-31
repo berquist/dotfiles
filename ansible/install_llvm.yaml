@@ -4,10 +4,8 @@
   vars_files:
     - package_lists.yaml
   vars:
-    # - llvm_version: 14
-    # - llvm_version_string: ""
-    - llvm_version: 13
-    - llvm_version_string: "-13"
+    - llvm_version: 14
+    - llvm_version_string: "-14"
   tasks:
     - name: prepare apt to use a repository over HTTPS
       apt:
