@@ -662,7 +662,7 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((fortran-mode f90-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode f90-mode sh-mode) . lsp)
   :config
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-enable-snippet nil)
