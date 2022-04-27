@@ -147,6 +147,7 @@ profiles:
   beryllium:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
+      spack_root: /home/eric/repositories/spack
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -171,6 +172,7 @@ profiles:
   coreman4:
     variables:
       conda_pkg_dir: /dftman/home2/ericb/.conda_pkgs
+      spack_root: /dftman/home2/ericb/spack
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -187,6 +189,7 @@ profiles:
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
+      spack_root: /home/eric/data/spack
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -228,6 +231,7 @@ profiles:
   scandium:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
+      spack_root: /home/eric/repositories/spack
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -256,6 +260,7 @@ profiles:
   sodium.local:
     variables:
       conda_pkg_dir: /Users/eric/.conda_pkgs
+      spack_root: /Users/eric/repositories/spack
     dotfiles:
     - d_bat
     - d_emacs.d

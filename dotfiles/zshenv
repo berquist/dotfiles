@@ -44,6 +44,6 @@ if command -v pyenv-virtualenv-init >/dev/null 2>&1; then eval "$(pyenv virtuale
 # Spack
 {%@@ if profile == "osmium" @@%}
 . "${HOME}"/data/spack/share/spack/setup-env.sh
-{%@@ elif profile == "pop-os" @@%}
+{%@@ elif profile == "beryllium" @@%}
 . "${HOME}"/repositories/spack/share/spack/setup-env.sh
 {%@@ endif @@%}
