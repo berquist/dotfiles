@@ -346,6 +346,7 @@ TODO:
 ** Themes
 
 #+begin_src emacs-lisp
+;; These are nice when I'm bored...
 (use-package abyss-theme)
 (use-package base16-theme)
 (use-package base16-eva-theme
@@ -371,6 +372,7 @@ TODO:
              :repo "aurelienbottazini/tronesque"
              :files ("themes/tronesque-theme.el")))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; ...but ultimately this is my daily driver.
 (load-theme 'wombat2 t)
 (use-package rainbow-mode)
 #+end_src
@@ -434,12 +436,13 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 (use-package ripgrep
   :config
   (setq ripgrep-arguments '("--hidden")))
-(use-package deadgrep
-  ;; <f5> is suggested, but that is inconvenient on my keyboards...
-  :bind (("C-c g" . deadgrep)))
+;; ...though projectile will try this one if the above isn't available.
 (use-package rg
   :config
   (setq rg-command-line-flags '("--hidden")))
+(use-package deadgrep
+  ;; <f5> is suggested, but that is inconvenient on my keyboards...
+  :bind (("C-c g" . deadgrep)))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
