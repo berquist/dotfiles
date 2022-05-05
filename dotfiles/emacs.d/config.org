@@ -324,7 +324,7 @@ TODO:
 
 (use-package dtrt-indent
   :init
-  (dtrt-indent-mode 1))
+  (dtrt-indent-global-mode))
 
 (use-package unfill
   :bind (("C-M-q" . unfill-paragraph)))
