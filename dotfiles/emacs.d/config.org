@@ -1458,12 +1458,11 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 ** Hy
 
 #+BEGIN_SRC emacs-lisp
-(use-package hy-mode)
+(use-package hy-mode
+  :disabled t)
 #+END_SRC
 
 ** Scheme and Racket
-
-Modified to remove/disable Racket, which has ~racket-mode~.
 
 #+BEGIN_SRC emacs-lisp
 (use-package geiser-chez)
@@ -1601,8 +1600,10 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package docker-tramp)
 (use-package graphviz-dot-mode)
 (use-package groovy-mode)
-(use-package lox-mode)
-(use-package lua-mode)
+(use-package lox-mode
+  :disabled t)
+(use-package lua-mode
+  :disabled t)
 (use-package meson-mode)
 (use-package nix-mode)
 (use-package pacfiles-mode)
@@ -1612,7 +1613,8 @@ Modified to remove/disable Racket, which has ~racket-mode~.
 (use-package pkgbuild-mode
   :config
   (setq pkgbuild-update-sums-on-save nil))
-(use-package snakemake-mode)
+(use-package snakemake-mode
+  :disabled t)
 (use-package systemd)
 (use-package vagrant-tramp)
 #+END_SRC
