@@ -1020,6 +1020,7 @@ the header, based upon the associated source code file."
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
+  :disabled t
   :hook (java-mode . lsp))
 #+END_SRC
 
@@ -1279,6 +1280,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
+  :when (executable-find "editorconfig")
   :hook ((prog-mode text-mode) . editorconfig-mode)
   :config
   (defun ejb/editorconfig-has-editorconfig ()
@@ -1439,6 +1441,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+BEGIN_SRC emacs-lisp
 (use-package slime
+  :disabled t
   :config
   (setq common-lisp-style-default "modern")
   ;; default is "lisp", which on my Arch Linux machine is CMUCL
@@ -1459,13 +1462,19 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 ** Scheme and Racket
 
 #+BEGIN_SRC emacs-lisp
-(use-package geiser-chez)
-(use-package geiser-chibi)
-(use-package geiser-guile)
-(use-package geiser-mit)
+(use-package geiser-chez
+  :disabled t)
+(use-package geiser-chibi
+  :disabled t)
+(use-package geiser-guile
+  :disabled t)
+(use-package geiser-mit
+  :disabled t)
 (use-package scribble-mode
+  :disabled t
   :hook (scribble-mode . geiser))
-(use-package racket-mode)
+(use-package racket-mode
+  :disabled t)
 #+END_SRC
 
 ** Clojure
@@ -1535,7 +1544,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
               ("C-c n s" . notespace/render-static-html)
               ("C-c n c" . notespace/eval-and-realize-notes-from-change)))
 (use-package cider)
-(use-package flycheck-clojure)
 #+end_src
 
 * Semantic web: SPARQL/Turtle
