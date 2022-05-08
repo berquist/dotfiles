@@ -50,9 +50,13 @@ alias cp='cp -i -v'
 alias mv='mv -i -v'
 alias rm='rm -i -v'
 
-# alias tags_dalton=''
 # These have to be run from $QC.
 alias etags_qchem='find -L $PWD -not \( -path "./build" -prune \) -not \( -path "./.git" -prune \) -not \( -path "./.svn" -prune \) -not \( -path "./doc/html" -prune \) -name "*\.[chfpCHF]*" -print | etags --class-qualify --declarations -'
 alias ctags_qchem='ctags -e --languages=-HTML,-JavaScript --links --verbose --totals -R'
-alias qchem_cppcheck='find . -type f -name "*.[hC]" | xargs cppcheck --enable=all --language=c++ --std=c++03'
-alias qchem_cpplint='find . -type f -name "*.[hC]" | xargs cpplint --root=. --extensions=C --headers=h'
+cmd_qchem_cpp_filelist='find . -type f \( -path "./.ccls-cache/*" -o -path "./thirdparty/*" -o -path "./build/CMakeFiles/*" \) -prune -o -name "*.[hC]" -print0'
+# shellcheck disable=SC2139
+alias qchem_cpp_filelist="${cmd_qchem_cpp_filelist}"
+# shellcheck disable=SC2139
+alias qchem_cppcheck="${cmd_qchem_cpp_filelist} | xargs -0 cppcheck --enable=all --language=c++ --std=c++11"
+# shellcheck disable=SC2139
+alias qchem_cpplint="${cmd_qchem_cpp_filelist} | xargs -0 cpplint --root=. --extensions=C --headers=h"
