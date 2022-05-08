@@ -53,7 +53,8 @@ alias rm='rm -i -v'
 # These have to be run from $QC.
 alias etags_qchem='find -L $PWD -not \( -path "./build" -prune \) -not \( -path "./.git" -prune \) -not \( -path "./.svn" -prune \) -not \( -path "./doc/html" -prune \) -name "*\.[chfpCHF]*" -print | etags --class-qualify --declarations -'
 alias ctags_qchem='ctags -e --languages=-HTML,-JavaScript --links --verbose --totals -R'
-cmd_qchem_cpp_filelist='find . -type f \( -path "./.ccls-cache/*" -o -path "./thirdparty/*" -o -path "./build/CMakeFiles/*" \) -prune -o -name "*.[hC]" -print0'
+# https://stackoverflow.com/a/4210072/3249688
+cmd_qchem_cpp_filelist='find . -type f \( -path "./.ccls-cache/*" -o -path "./armadillo/*" -o -path "./thirdparty/*" -o -path "./build/CMakeFiles/*" \) -prune -o -name "*.[hC]" -print0'
 # shellcheck disable=SC2139
 alias qchem_cpp_filelist="${cmd_qchem_cpp_filelist}"
 # shellcheck disable=SC2139
