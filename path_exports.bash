@@ -4,6 +4,7 @@ export EXERCISM_WORKSPACE="${HOME}"/development/exercism
 # This messes with nvm.
 # export npm_config_prefix="${HOME}"/.node_modules
 export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
+export RIPGREP_CONFIG_PATH="${HOME}"/dotfiles/ripgreprc
 
 # TODO replace this with a function
 [[ -d "${HOME}"/personal_scripts ]] && export PATH="${HOME}"/personal_scripts:"${PATH}"
