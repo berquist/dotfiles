@@ -21,6 +21,13 @@
     - name: install LLVM toolchain
       apt:
         name:
+          - "libllvm-{{ llvm_version }}-ocaml-dev"
+          - "libllvm{{ llvm_version }}"
+          - "llvm-{{ llvm_version }}"
+          - "llvm-{{ llvm_version }}-dev"
+          - "llvm-{{ llvm_version }}-doc"
+          - "llvm-{{ llvm_version }}-examples"
+          - "llvm-{{ llvm_version }}-runtime"
           - "clang-{{ llvm_version }}"
           - "clang-tools-{{ llvm_version }}"
           - "clang-{{ llvm_version }}-doc"
@@ -30,7 +37,16 @@
           - "clang-format-{{ llvm_version }}"
           - "python3-clang-{{ llvm_version }}"
           - "clangd-{{ llvm_version }}"
+          - "clang-tidy-{{ llvm_version }}"
+          - "libfuzzer-{{ llvm_version }}-dev"
           - "lldb-{{ llvm_version }}"
           - "lld-{{ llvm_version }}"
+          - "libc++-{{ llvm_version }}-dev"
+          - "libc++abi-{{ llvm_version }}-dev"
+          - "libomp-{{ llvm_version }}-dev"
+          - "libclc-{{ llvm_version }}-dev"
+          - "libunwind-{{ llvm_version }}-dev"
+          - "libmlir-{{ llvm_version }}-dev"
+          - "mlir-{{ llvm_version }}-tools"
         update_cache: true
         install_recommends: false
