@@ -1,0 +1,12 @@
+--style=java
+--indent=spaces=4
+--convert-tabs
+
+--add-braces
+--max-code-length=100
+
+--suffix=none
+--exclude="CMakeLists.txt configure"
+--preserve-data
+--lineend=linux
+--formatted

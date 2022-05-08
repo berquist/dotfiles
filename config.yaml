@@ -29,6 +29,9 @@ dotfiles:
   f_aspell.en.pws:
     src: aspell.en.pws
     dst: ~/.aspell.en.pws
+  f_astylerc:
+    src: astylerc
+    dst: ~/.astylerc
   f_bash_profile:
     src: bash_profile
     dst: ~/.bash_profile
@@ -156,6 +159,7 @@ profiles:
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
+    - f_astylerc
     - f_bash_profile
     - f_bashrc
     - f_condarc
@@ -178,6 +182,7 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_ansible.cfg
+    - f_astylerc
     - f_bash_profile
     - f_bashrc
     - f_gitconfig
@@ -199,6 +204,7 @@ profiles:
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
+    - f_astylerc
     - f_bash_profile
     - f_bashrc
     - f_clisprc.lisp
@@ -240,6 +246,7 @@ profiles:
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
+    - f_astylerc
     - f_condarc
     - f_dconf.nix
     - f_gitconfig
