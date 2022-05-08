@@ -384,6 +384,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   (setq global-whitespace-mode nil))
 
 (use-package dtrt-indent
+  :delight " dtrt"
   :init
   (dtrt-indent-global-mode))
 
