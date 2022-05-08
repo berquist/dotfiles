@@ -4,4 +4,3 @@
 (let ((quicklisp-init (merge-pathnames ".quicklisp.clisp/setup.lisp" (user-homedir-pathname))))
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
-

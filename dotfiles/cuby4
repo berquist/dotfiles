@@ -56,7 +56,7 @@ existing_calc_dir: recreate
 # Amber sander executable
 # amber_ld_path: ""
 # amber_amberhome: /home/rezac/bin/amber/amber11/arch/amd64-intel_11.0.081/amber11
-#amber_sander_exe: /home/rezac/bin/amber/amber11/arch/amd64-intel_11.0.081/amber11/bin/sander 
+#amber_sander_exe: /home/rezac/bin/amber/amber11/arch/amd64-intel_11.0.081/amber11/bin/sander
 
 #-------------------------------------------------------------------------------
 # Turbomole
@@ -67,14 +67,14 @@ existing_calc_dir: recreate
 # turbomole_turbodir: /home/rezac/bin/turbomole/TurboMole-6.2/arch/all
 # turbomole_bin_dir: /home/rezac/bin/turbomole/TurboMole-6.2/arch/all/bin/em64t-unknown-linux-gnu
 # turbomole_scripts_dir: /home/rezac/bin/turbomole/TurboMole-6.2/arch/all/scripts
-#-------------------------------------------------- 
+#--------------------------------------------------
 
 #--------------------------------------------------
 # turbomole_version: 6.3
 # turbomole_turbodir: /home/rezac/bin/turbomole/turbomole-6.3/arch/all
 # turbomole_bin_dir: /home/rezac/bin/turbomole/turbomole-6.3/arch/all/bin/em64t-unknown-linux-gnu
 # turbomole_scripts_dir: /home/rezac/bin/turbomole/turbomole-6.3/arch/all/scripts
-#-------------------------------------------------- 
+#--------------------------------------------------
 
 #--------------------------------------------------
 # turbomole_version: 6.4
@@ -84,7 +84,7 @@ existing_calc_dir: recreate
 # turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.4/arch/all/bin/em64t-unknown-linux-gnu_mpi
 # turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.4/arch/all/bin/em64t-unknown-linux-gnu_ga
 # turbomole_scripts_dir: /home/rezac/bin/turbomole/turbomole-6.4/arch/all/scripts
-#-------------------------------------------------- 
+#--------------------------------------------------
 
 #--------------------------------------------------
 # turbomole_version: 6.5
@@ -94,7 +94,7 @@ existing_calc_dir: recreate
 # turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.5/arch/all/bin/em64t-unknown-linux-gnu_mpi
 # turbomole_bin_dir_mpi: /home/rezac/bin/turbomole/turbomole-6.5/arch/all/bin/em64t-unknown-linux-gnu_ga
 # turbomole_scripts_dir: /home/rezac/bin/turbomole/turbomole-6.5/arch/all/scripts
-#-------------------------------------------------- 
+#--------------------------------------------------
 
 # turbomole_version: 6.6
 # turbomole_turbodir: /home/rezac/bin/turbomole/turbomole-6.6/arch/all
@@ -108,8 +108,8 @@ existing_calc_dir: recreate
 # Cfour
 #-------------------------------------------------------------------------------
 
-# cfour_bin_dir_mpi: 
-# cfour_ld_path: "" 
+# cfour_bin_dir_mpi:
+# cfour_ld_path: ""
 # cfour_mrcc_bin_dir: /home/rezac/bin/mrcc
 
 cfour_genbas_file: /home/eric/opt/apps/cfour/cfour_v2.00beta_64bit_linux_serial/basis/GENBAS
