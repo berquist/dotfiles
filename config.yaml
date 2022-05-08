@@ -38,6 +38,9 @@ dotfiles:
   f_bashrc:
     src: bashrc
     dst: ~/.bashrc
+  f_clang-format:
+    src: clang-format
+    dst: ~/.clang-format
   f_clisprc.lisp:
     src: clisprc.lisp
     dst: ~/.clisprc.lisp
@@ -162,6 +165,7 @@ profiles:
     - f_astylerc
     - f_bash_profile
     - f_bashrc
+    - f_clang-format
     - f_condarc
     - f_gitconfig
     - f_gitignore
@@ -185,6 +189,7 @@ profiles:
     - f_astylerc
     - f_bash_profile
     - f_bashrc
+    - f_clang-format
     - f_gitconfig
     - f_gitignore
     - f_gnome-keyring-ssh.desktop
@@ -207,6 +212,7 @@ profiles:
     - f_astylerc
     - f_bash_profile
     - f_bashrc
+    - f_clang-format
     - f_clisprc.lisp
     - f_compton.conf
     - f_condarc
@@ -234,6 +240,7 @@ profiles:
     - f_zprofile
     - f_zshenv
     - f_zshrc
+    - f_clang-format
   scandium:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
@@ -247,6 +254,7 @@ profiles:
     - f_aspell.en.prepl
     - f_aspell.en.pws
     - f_astylerc
+    - f_clang-format
     - f_condarc
     - f_dconf.nix
     - f_gitconfig
