@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 export EXERCISM_WORKSPACE="${HOME}"/development/exercism
-export npm_config_prefix="${HOME}"/.node_modules
+# This messes with nvm.
+# export npm_config_prefix="${HOME}"/.node_modules
 export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
 
 # TODO replace this with a function
@@ -10,7 +11,7 @@ export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
 [[ -d "${HOME}"/.local/bin ]] && export PATH="${HOME}"/.local/bin:"${PATH}"
 [[ -d "${HOME}"/repositories/rmsd/rmsd ]] && export PATH="${HOME}"/repositories/rmsd/rmsd:"${PATH}"
 [[ -d "${HOME}"/opt/bin/scripts ]] && export PATH="${HOME}"/opt/bin/scripts:"${PATH}"
-[[ -d "${HOME}"/.node_modules/bin ]] && export PATH="${HOME}"/.node_modules/bin:"${PATH}"
+# [[ -d "${HOME}"/.node_modules/bin ]] && export PATH="${HOME}"/.node_modules/bin:"${PATH}"
 [[ -d "${HOME}"/go/bin ]] && export PATH="${HOME}"/go/bin:"${PATH}"
 
 export SCRATCH=/tmp
