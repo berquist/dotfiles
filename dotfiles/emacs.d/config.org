@@ -719,6 +719,7 @@ Links:
   ; (setq flycheck-gcc-pedantic-errors t)
   ; (setq flycheck-cppcheck-checks '("all"))
   (setq flycheck-markdown-mdl-style "~/.mdlrc")
+  (setq flycheck-mode-line-prefix "FC")
   :init
   (global-flycheck-mode))
 #+end_src
