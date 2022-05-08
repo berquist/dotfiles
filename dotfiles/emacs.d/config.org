@@ -267,6 +267,67 @@ TODO:
   :disabled t)
 #+END_SRC
 
+* Theming and window shaping
+
+** mode line
+
+#+BEGIN_SRC emacs-lisp
+(use-package delight)
+(delight 'emacs-lisp-mode "Elisp" :major)
+#+END_SRC
+
+** Themes
+
+#+begin_src emacs-lisp
+;; These are nice when I'm bored...
+(use-package abyss-theme)
+(use-package base16-theme)
+(use-package base16-eva-theme
+  :straight (:host github
+             :repo "kjakapat/eva-theme"
+             :files ("emacs/build/*.el"))
+  ;; :config
+  ;; (load-theme 'base16-eva t)
+  )
+(use-package colonoscopy-theme)
+(use-package dracula-theme)
+(use-package emacs-tron-theme
+  :straight (:host github
+             :repo "ivanmarcin/emacs-tron-theme"))
+(use-package gotham-theme)
+(use-package plan9-theme)
+(use-package punpun-theme) ; (punpun-light, punpun-dark)
+(use-package rebecca-theme)
+(use-package spacegray-theme)
+(use-package tron-legacy-theme)
+(use-package tronesque-theme
+  :straight (:host github
+             :repo "aurelienbottazini/tronesque"
+             :files ("themes/tronesque-theme.el")))
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; ...but ultimately this is my daily driver.
+(load-theme 'wombat2 t)
+(use-package rainbow-mode)
+#+end_src
+
+** Windows
+
+TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.html
+
+#+begin_src emacs-lisp
+(add-to-list 'default-frame-alist '(font . "Panic Sans-11"))
+;; https://emacs.stackexchange.com/q/45895
+(set-face-attribute 'fixed-pitch nil :family "Fira Mono")
+
+(setq-default indicate-empty-lines t)
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
+(setq-default indicate-buffer-boundaries 'right)
+
+(use-package default-text-scale
+  :hook (after-init . default-text-scale-mode))
+#+end_src
+
 * Parens/whitespace/indentation
 
 #+begin_src emacs-lisp
@@ -332,67 +393,6 @@ TODO:
 ;; Always place a newline at the end of files, like nano does by
 ;; default.
 (setq require-final-newline t)
-#+end_src
-
-* Theming and window shaping
-
-** mode line
-
-#+BEGIN_SRC emacs-lisp
-(use-package delight)
-(delight 'emacs-lisp-mode "Elisp" :major)
-#+END_SRC
-
-** Themes
-
-#+begin_src emacs-lisp
-;; These are nice when I'm bored...
-(use-package abyss-theme)
-(use-package base16-theme)
-(use-package base16-eva-theme
-  :straight (:host github
-             :repo "kjakapat/eva-theme"
-             :files ("emacs/build/*.el"))
-  ;; :config
-  ;; (load-theme 'base16-eva t)
-  )
-(use-package colonoscopy-theme)
-(use-package dracula-theme)
-(use-package emacs-tron-theme
-  :straight (:host github
-             :repo "ivanmarcin/emacs-tron-theme"))
-(use-package gotham-theme)
-(use-package plan9-theme)
-(use-package punpun-theme) ; (punpun-light, punpun-dark)
-(use-package rebecca-theme)
-(use-package spacegray-theme)
-(use-package tron-legacy-theme)
-(use-package tronesque-theme
-  :straight (:host github
-             :repo "aurelienbottazini/tronesque"
-             :files ("themes/tronesque-theme.el")))
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;; ...but ultimately this is my daily driver.
-(load-theme 'wombat2 t)
-(use-package rainbow-mode)
-#+end_src
-
-** Windows
-
-TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.html
-
-#+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(font . "Panic Sans-11"))
-;; https://emacs.stackexchange.com/q/45895
-(set-face-attribute 'fixed-pitch nil :family "Fira Mono")
-
-(setq-default indicate-empty-lines t)
-(when (not indicate-empty-lines)
-  (toggle-indicate-empty-lines))
-(setq-default indicate-buffer-boundaries 'right)
-
-(use-package default-text-scale
-  :hook (after-init . default-text-scale-mode))
 #+end_src
 
 * Narrowing, searching, and projects
