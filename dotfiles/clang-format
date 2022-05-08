@@ -4,8 +4,11 @@ BasedOnStyle: LLVM
 ColumnLimit: 100
 IndentWidth: 4
 AccessModifierOffset: -4
+
 AllowAllArgumentsOnNextLine: false
 AllowAllConstructorInitializersOnNextLine: false
-AllowAllConstructorInitializersOnNextLine: false
+AllowShortFunctionsOnASingleLine: false
 BinPackArguments: false
 BinPackParameters: false
+BreakConstructorInitializers: BeforeComma
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
