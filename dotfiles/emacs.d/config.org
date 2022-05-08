@@ -34,6 +34,10 @@ Fundamental third-party packages that don't go anywhere else.
 (use-package dash
   :demand t)
 
+;; Here for early loading.
+(use-package delight)
+(delight 'emacs-lisp-mode "Elisp" :major)
+
 ;; Set the path properly. Don't have a conditional on using the window system
 ;; in order to circumvent
 ;; https://emacs.stackexchange.com/questions/27918/why-is-exec-path-different-in-emacsclient-emacsserver-than-in-emacs.
@@ -84,8 +88,8 @@ Only package-selected-packages and custom-safe-themes should go in here.
 #+BEGIN_SRC emacs-lisp
 (setq custom-file "~/.emacs.d/custom.el")
 ;; Intentionally save to a customization file that is not loaded by Emacs and
-;; is ignored by Git. All permanent customization should be in this file, but
-;; not sending to /dev/zero allows temporary customization via `customize`
+;; is ignored by Git. All permanent customization should be in this org file,
+;; but not sending to /dev/zero allows temporary customization via `customize`
 ;; then cherry-picking from `custom.el` into here.
 #+END_SRC
 
@@ -116,6 +120,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; http://stackoverflow.com/questions/12989072/showing-continuation-lines-in-emacs-in-a-text-terminal
 (setq-default transient-mark-mode t)
 (setq-default visual-line-mode t)
+(delight 'visual-line-mode " W" t)
 ;; Never truncate lines, even in partial width windows.
 (setq-default truncate-lines nil)
 (setq truncate-partial-width-windows nil)
@@ -268,13 +273,6 @@ TODO:
 #+END_SRC
 
 * Theming and window shaping
-
-** mode line
-
-#+BEGIN_SRC emacs-lisp
-(use-package delight)
-(delight 'emacs-lisp-mode "Elisp" :major)
-#+END_SRC
 
 ** Themes
 
