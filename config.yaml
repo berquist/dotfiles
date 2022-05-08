@@ -153,7 +153,9 @@ profiles:
   beryllium:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
+      pre_commit_home: /home/eric/.cache/pre-commit
       spack_root: /home/eric/repositories/spack
+      vagrant_home: /home/eric/.vagrant.d
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -180,7 +182,9 @@ profiles:
   coreman4:
     variables:
       conda_pkg_dir: /dftman/home2/ericb/.conda_pkgs
+      pre_commit_home: /dftman/home2/ericb/.pre-commit
       spack_root: /dftman/home2/ericb/spack
+      vagrant_home: /dftman/home2/ericb/vagrant
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -199,7 +203,9 @@ profiles:
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
+      pre_commit_home: /home/eric/data/.pre-commit
       spack_root: /home/eric/data/spack
+      vagrant_home: /home/eric/.vagrant.d
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -244,7 +250,9 @@ profiles:
   scandium:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
+      pre_commit_home: /home/eric/.cache/pre-commit
       spack_root: /home/eric/repositories/spack
+      vagrant_home: /home/eric/.vagrant.d
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -275,7 +283,9 @@ profiles:
   sodium.local:
     variables:
       conda_pkg_dir: /Users/eric/.conda_pkgs
+      pre_commit_home: /Users/eric/.cache/pre-commit
       spack_root: /Users/eric/repositories/spack
+      vagrant_home: /Users/eric/.vagrant.d
     dotfiles:
     - d_bat
     - d_emacs.d

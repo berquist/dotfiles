@@ -14,7 +14,8 @@ export PS1='\u@\h:\w
 export SCRATCH=/scratch
 export HOME1=/dftman/home1/ericb
 export HOME2=/dftman/home2/ericb
-export VAGRANT_HOME="${HOME2}"/vagrant
+export PRE_COMMIT_HOME="{{@@ pre_commit_home @@}}"
+export VAGRANT_HOME="{{@@ vagrant_home @@}}"
 
 if [[ "${HOSTNAME}" == "coreman4" ]]; then
     export PYENV_ROOT="${HOME2}/pyenv"

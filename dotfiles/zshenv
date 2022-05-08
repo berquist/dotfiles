@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 source "${HOME}"/dotfiles/path_exports.bash
+export PRE_COMMIT_HOME="{{@@ pre_commit_home @@}}"
 
 # `wakatime-cli` is the outdated Python package, `wakatime` is the current Go
 # package.
