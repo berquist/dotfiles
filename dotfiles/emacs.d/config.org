@@ -991,6 +991,7 @@ the header, based upon the associated source code file."
 
 (defconst ejb/cc-style
   '("k&r"
+    (c-basic-offset . 4)
     (c-offsets-alist . ((innamespace . [0])))))
 
 (c-add-style "ejb" ejb/cc-style)
