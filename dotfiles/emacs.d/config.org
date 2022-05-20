@@ -37,6 +37,7 @@ Fundamental third-party packages that don't go anywhere else.
 ;; Here for early loading.
 (use-package delight)
 (delight 'emacs-lisp-mode "Elisp" :major)
+(setq eldoc-minor-mode-string " ED")
 
 ;; Set the path properly. Don't have a conditional on using the window system
 ;; in order to circumvent
@@ -254,22 +255,16 @@ current buffer's, reload dir-locals."
 
 * Snippets
 
-TODO:
-- =set -euo pipefail= in shell scripts
-- =if __name__ == "__main__"= boilerplate in Python
-  - =def main() -> None:= with =argparse=
-
 #+BEGIN_SRC emacs-lisp
 (use-package yasnippet
-  :disabled t
+  :delight
   ;; TODO
   ;; :bind (:map yas-minor-mode-map
   ;;             ("C-M-/" . yas-expand)
   ;;             ("TAB" . nil))
   :init
   (yas-global-mode 1))
-(use-package yasnippet-snippets
-  :disabled t)
+(use-package yasnippet-snippets)
 #+END_SRC
 
 * Theming and window shaping
