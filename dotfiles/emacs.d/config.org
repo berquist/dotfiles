@@ -1064,6 +1064,7 @@ users are likely to use them.
   (setq TeX-auto-save nil)
   (setq TeX-parse-self t))
 (use-package auctex-latexmk
+  :disabled t
   :config
   (setq auctex-latexmk-inherit-TeX-PDF-mode t)
   :init

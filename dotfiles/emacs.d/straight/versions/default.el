@@ -2,7 +2,6 @@
  ("Emacs-wgrep" . "f9687c28bbc2e84f87a479b6ce04407bb97cfb23")
  ("ace-window" . "0577c426a9833ab107bab46c60d1885c611b2fb9")
  ("auctex" . "53b82804c9dd9dbea306876f3be84ebacbeb7e74")
- ("auctex-latexmk" . "4d353522650d7685acbf1d38f7dbc504f734bd84")
  ("avy" . "ba5f035be33693d1a136a5cbeedb24327f551a92")
  ("base16-emacs" . "43f3257aaf53e9c50f5db11b81fd66ec41ab2883")
  ("blacken" . "563c744f545552cb92e8e84d5be4e2cdbabc93ca")
