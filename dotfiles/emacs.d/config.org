@@ -204,7 +204,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 - Used to have stuff for ='comment-or-uncomment-region=, ='comment-region=, and ='uncomment-region= here, but =M-;= calls ='comment-dwim=, which is what you really want.
 
 #+begin_src emacs-lisp
-(bind-key (kbd "M-/") 'hippie-expand)
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
 (bind-key (kbd "C-x C-b") 'switch-to-buffer)
 (bind-key (kbd "C-x b") 'ibuffer)
 (bind-key (kbd "C-c b") 'switch-to-previous-buffer)
@@ -222,6 +222,18 @@ What's the difference between setq and setq-default? See here: http://stackoverf
   :init
   (which-key-mode))
 #+END_SRC
+
+https://github.com/Wilfred/helpful
+
+#+begin_src emacs-lisp
+(use-package helpful
+  :config
+  (global-set-key [remap describe-function] 'helpful-callable)
+  (global-set-key [remap describe-variable] 'helpful-variable)
+  (global-set-key [remap describe-key] 'helpful-key)
+  :init
+  (require 'helpful))
+#+end_src
 
 * dir-locals
 

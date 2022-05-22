@@ -60,6 +60,7 @@
  ("gotham-theme" . "4b8214df0851bb69b44c3e864568b7e0030a95d2")
  ("graphviz-dot-mode" . "6e96a89762760935a7dff6b18393396f6498f976")
  ("groovy-emacs-modes" . "29210e5a969c02169b68e04f2e28e3bf2fc13363")
+ ("helpful" . "2f91e7992dae078a9cbc0d7f8e603e02d0abfcb0")
  ("ht.el" . "c4c1be487d6ecb353d07881526db05d7fc90ea87")
  ("hydra" . "9e9e00cb240ea1903ffd36a54956b3902c379d29")
  ("isortify" . "ae7fb7163ce075209543f72953c9f431d103f6a3")
