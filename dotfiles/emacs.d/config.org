@@ -1375,11 +1375,11 @@ TODO disable .m files from loading as Objective-C
 * JSON
 
 #+BEGIN_SRC emacs-lisp
-;; (use-package json
-;;   :straight (json :type built-in)
-;;   :mode (("\\.cjson\\'" . json-mode)
-;;          ("\\.qcjson\\'" . json-mode)
-;;          ("\\.qcschema\\'" . json-mode)))
+(use-package jsonian
+  :straight (jsonian :type git :host github :repo "iwahbe/jsonian")
+  :mode (("\\.cjson\\'" . jsonian-mode)
+         ("\\.qcjson\\'" . jsonian-mode)
+         ("\\.qcschema\\'" . jsonian-mode)))
 (use-package jq-format
   :config
   (setq jq-format-extra-args '("--indent 4")))
