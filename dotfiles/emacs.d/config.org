@@ -125,10 +125,12 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; Never truncate lines, even in partial width windows.
 (setq-default truncate-lines nil)
 (setq truncate-partial-width-windows nil)
-;; (global-display-line-numbers-mode)
 (setq-default line-number-mode t)
 (setq-default column-number-mode t)
 (setq-default cursor-type 'box)
+
+;; (global-display-line-numbers-mode)
+(setq display-line-numbers-grow-only t)
 
 ;; Enable maximum syntax highlighting wherever possible.
 (setq-default global-font-lock-mode t)
