@@ -28,10 +28,10 @@ repos:
     hooks:
       - id: yamllint
   - repo: https://github.com/ansible-community/ansible-lint
-    rev: "v6.2.0a0"
+    rev: "v6.2.2"
     hooks:
       - id: ansible-lint
   - repo: https://github.com/sirosen/check-jsonschema
-    rev: "0.15.0"
+    rev: "0.15.1"
     hooks:
       - id: check-github-workflows
