@@ -160,25 +160,17 @@ profiles:
     - d_bat
     - d_emacs.d
     - d_tmux
-    - f_alacritty.yml
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
     - f_astylerc
-    - f_bash_profile
-    - f_bashrc
     - f_clang-format
     - f_condarc
     - f_gitconfig
     - f_gitignore
-    - f_gnome-keyring-ssh.desktop
-    - f_gpg-agent.conf
-    - f_gpg.conf
+    - f_home.nix
     - f_mdlrc
     - f_tmux.conf
-    - f_zprofile
-    - f_zshenv
-    - f_zshrc
   coreman4:
     variables:
       conda_pkg_dir: /dftman/home2/ericb/.conda_pkgs
