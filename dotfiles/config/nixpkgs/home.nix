@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 with pkgs;
 let
@@ -28,10 +28,11 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
+  # environment.sessionVariables.NIXOS_OZONE_WL = 1;
+
   home.packages = [
     act
     alacritty
-    armadillo
     aspell
     aspellDicts.en
     autoconf
@@ -42,25 +43,25 @@ in {
     clj-kondo
     clojure
     clojure-lsp
-    cmake
+    delta
     direnv
     discord-canary
+    duf
     exa
     exercism
     fd
-    file
-    gfortran
+    # fenix.stable.toolchain
     gh
-    # ghostscript
-    gnumake
+    google-chrome
     htop
     imagemagick
+    inkscape
     jabref
-    # julia
     leiningen
     neofetch
+    nix-linter
     nodejs
-    pigz
+    onefetch
     pinentry-emacs
     plexamp
     python-with-my-packages
@@ -69,11 +70,13 @@ in {
     ripgrep
     signal-desktop
     slack
+    speedtest-cli
     spotify
     subversion
     texlive.combined.scheme-full
     wakatime
     tmux
+    valgrind
     wget
     yamllint
     yarn
@@ -88,26 +91,20 @@ source ~/dotfiles/interactive_exports.bash
 source ~/dotfiles/aliases.bash
 source ~/dotfiles/functions.bash
 '';
-#       profileExtra = ''
-# . ~/repositories/spack/share/spack/setup-env.sh
-# '';
     };
     direnv = {
       enable = true;
     };
-    # gpg = {
-    #   enable = true;
-    # };
     vscode = {
       enable = true;
     };
   };
 
-  # services = {
-  #   gpg-agent = {
-  #     enable = true;
-  #   };
-  # };
+  services = {
+    gpg-agent = {
+      enable = true;
+    };
+  };
 
   home.stateVersion = "21.05";
 }
