@@ -1,14 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+  ];
+
+  nix.buildCores = 4;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -24,36 +21,22 @@
   boot.initrd.luks.devices."luks-85580c6a-f738-47f4-89e8-e5813d48a383".device = "/dev/disk/by-uuid/85580c6a-f738-47f4-89e8-e5813d48a383";
   boot.initrd.luks.devices."luks-85580c6a-f738-47f4-89e8-e5813d48a383".keyFile = "/crypto_keyfile.bin";
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  networking.hostName = "beryllium";
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/New_York";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
     layout = "us";
-    xkbVariant = "";
+    xkbOptions = "ctrl:swapcaps";
   };
+  console.useXkbConfig = true;
 
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
@@ -76,22 +59,42 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eric = {
-    isNormalUser = true;
     description = "Eric Berquist";
     extraGroups = [ "networkmanager" "wheel" ];
+    isNormalUser = true;
+    shell = pkgs.bash;
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # valid for 60 minutes instead of the default 5
+  security.sudo.extraConfig = ''
+    Defaults        timestamp_timeout=60
+  '';
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  nixpkgs.overlays = [
+    (import (builtins.fetchGit {
+      url = "https://github.com/nix-community/emacs-overlay.git";
+      ref = "master";
+      rev = "0293f1492cb21e8be1927e2c9fefee1ac14f2953";
+    }))
+    (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
+  ];
+
+  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    cachix
+    colordiff
+    dconf2nix
+    file
     firefox
+    git
+    home-manager
+    mosh
+    pop-gtk-theme
+    pop-icon-theme
+    tmux
+    tree
+    xdg-desktop-portal
     zerotierone
   ];
 
@@ -104,8 +107,14 @@
   # };
 
   services = {
+    emacs = {
+      # TODO does `enable` belong here?
+      enable = true;
+      package = pkgs.emacsNativeComp;
+    };
     openssh = {
       enable = true;
+      passwordAuthentication = false;
     };
     zerotierone = {
       enable = true;
@@ -126,5 +135,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }

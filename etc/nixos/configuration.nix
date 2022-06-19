@@ -19,8 +19,9 @@
 
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+    layout = "us";
     xkbOptions = "ctrl:swapcaps";
   };
   console.useXkbConfig = true;
@@ -35,10 +36,10 @@
   };
 
   users.users.eric = {
-    isNormalUser = true;
     description = "Eric Berquist";
-    shell = pkgs.bash;
     extraGroups = [ "wheel" "networkmanager" ];
+    isNormalUser = true;
+    shell = pkgs.bash;
   };
 
   # valid for 60 minutes instead of the default 5

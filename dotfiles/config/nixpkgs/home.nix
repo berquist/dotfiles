@@ -22,8 +22,8 @@ in {
   imports = [ ./dconf.nix ];
 
   home = {
-    username = "eric";
     homeDirectory = "/home/eric";
+    username = "eric";
   };
 
   nixpkgs.config.allowUnfree = true;
