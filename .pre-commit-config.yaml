@@ -32,6 +32,6 @@ repos:
     hooks:
       - id: ansible-lint
   - repo: https://github.com/sirosen/check-jsonschema
-    rev: "0.16.0"
+    rev: "0.16.2"
     hooks:
       - id: check-github-workflows
