@@ -86,6 +86,12 @@ dotfiles:
   f_i3status_config:
     src: config/i3status/config
     dst: ~/.config/i3status/config
+  f_ipython_config.py:
+    src: ipython/profile_default/ipython_config.py
+    dst: ~/.ipython/profile_default/ipython_config.py
+  f_ipython_kernel_config.py:
+    src: ipython/profile_default/ipython_kernel_config.py
+    dst: ~/.ipython/profile_default/ipython_kernel_config.py
   f_mdlrc:
     src: mdlrc
     dst: ~/.mdlrc
@@ -169,6 +175,8 @@ profiles:
     - f_gitconfig
     - f_gitignore
     - f_home.nix
+    - f_ipython_config.py
+    - f_ipython_kernel_config.py
     - f_mdlrc
     - f_tmux.conf
   coreman4:
@@ -191,6 +199,8 @@ profiles:
     - f_gnome-keyring-ssh.desktop
     - f_gpg-agent.conf
     - f_gpg.conf
+    - f_ipython_config.py
+    - f_ipython_kernel_config.py
     - f_tmux.conf
   osmium:
     variables:
@@ -222,6 +232,8 @@ profiles:
     - f_gnome-keyring-ssh.desktop
     - f_gpg-agent.conf
     - f_gpg.conf
+    - f_ipython_config.py
+    - f_ipython_kernel_config.py
     - f_mdlrc
     - f_nanorc
     - f_nvimrc
@@ -262,6 +274,8 @@ profiles:
     # - f_gpg-agent.conf
     # - f_gpg.conf
     - f_home.nix
+    - f_ipython_config.py
+    - f_ipython_kernel_config.py
     - f_mdlrc
     # - f_nanorc
     - f_nixpkgs_overlays_discord.nix
