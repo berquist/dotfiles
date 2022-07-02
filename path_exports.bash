@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 export EXERCISM_WORKSPACE="${HOME}"/development/exercism
+export LSP_USE_PLISTS=true
 # This messes with nvm.
 # export npm_config_prefix="${HOME}"/.node_modules
 export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
