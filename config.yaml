@@ -80,6 +80,9 @@ dotfiles:
   f_home.nix:
     src: config/nixpkgs/home.nix
     dst: ~/.config/nixpkgs/home.nix
+  f_home_beryllium.nix:
+    src: config/nixpkgs/home_beryllium.nix
+    dst: ~/.config/nixpkgs/home.nix
   f_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
@@ -174,7 +177,7 @@ profiles:
     - f_condarc
     - f_gitconfig
     - f_gitignore
-    - f_home.nix
+    - f_home_beryllium.nix
     - f_ipython_config.py
     - f_ipython_kernel_config.py
     - f_mdlrc

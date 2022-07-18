@@ -12,7 +12,7 @@
 
   networking.hostName = "scandium";
 
-  time.timeZone = "America/New_York";
+  time.timeZone = null;
 
   networking.useDHCP = false;
   networking.interfaces.wlp2s0.useDHCP = true;
@@ -37,7 +37,7 @@
 
   users.users.eric = {
     description = "Eric Berquist";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     isNormalUser = true;
     shell = pkgs.bash;
   };
@@ -63,11 +63,13 @@
     dconf2nix
     file
     firefox
+    firefox-devedition-bin
     git
     home-manager
     mosh
     pop-gtk-theme
     pop-icon-theme
+    pptp
     tmux
     tree
     xdg-desktop-portal

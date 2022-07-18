@@ -24,7 +24,7 @@
   networking.hostName = "beryllium";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "America/New_York";
+  time.timeZone = null;
 
   i18n.defaultLocale = "en_US.utf8";
 
@@ -72,11 +72,11 @@
   '';
 
   nixpkgs.overlays = [
-    (import (builtins.fetchGit {
-      url = "https://github.com/nix-community/emacs-overlay.git";
-      ref = "master";
-      rev = "0293f1492cb21e8be1927e2c9fefee1ac14f2953";
-    }))
+    #(import (builtins.fetchGit {
+    #  url = "https://github.com/nix-community/emacs-overlay.git";
+    #  ref = "master";
+    #  rev = "0293f1492cb21e8be1927e2c9fefee1ac14f2953";
+    #}))
     (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
   ];
 
@@ -87,11 +87,13 @@
     dconf2nix
     file
     firefox
+    firefox-devedition-bin
     git
     home-manager
     mosh
     pop-gtk-theme
     pop-icon-theme
+    pptp
     tmux
     tree
     xdg-desktop-portal
