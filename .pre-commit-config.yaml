@@ -23,15 +23,29 @@ repos:
       - id: detect-aws-credentials
       - id: detect-private-key
       - id: mixed-line-ending
+  # - repo: https://github.com/jumanjihouse/pre-commit-hooks
+  #   rev: "2.1.6"
+  #   hooks:
+  #     - id: markdownlint
+  #     - id: script-must-have-extension
+  #     - id: script-must-not-have-extension
+  # - repo: https://github.com/lovesegfault/beautysh
+  #   rev: "v6.2.1"
+  #   hooks:
+  #     - id: beautysh
+  # - repo: https://github.com/shellcheck-py/shellcheck-py
+  #   rev: "v0.8.0.4"
+  #   hooks:
+  #     - id: shellcheck
   - repo: https://github.com/adrienverge/yamllint
-    rev: "v1.26.3"
+    rev: "v1.27.1"
     hooks:
       - id: yamllint
   - repo: https://github.com/ansible-community/ansible-lint
     rev: "v6.3.0"
     hooks:
       - id: ansible-lint
-  - repo: https://github.com/sirosen/check-jsonschema
-    rev: "0.16.0"
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: "0.17.1"
     hooks:
       - id: check-github-workflows
