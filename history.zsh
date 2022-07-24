@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 
 _size=1000000000
+# TODO:
+# - not sure these need to be exported
+# - HISTCONTROL?
 export HISTCONTROL=
 export HISTFILESIZE=${_size}
 export HISTSIZE=${_size}
@@ -19,16 +22,16 @@ setopt share_history          # share command history data
 
 
 function omz_history {
-  local list
-  zparseopts -E l=list
+    local list
+    zparseopts -E l=list
 
-  if [[ -n "$list" ]]; then
-    # if -l provided, run as if calling `fc' directly
-    builtin fc "$@"
-  else
-    # unless a number is provided, show all history events (starting from 1)
-    [[ ${@[-1]-} = *[0-9]* ]] && builtin fc -l "$@" || builtin fc -l "$@" 1
-  fi
+    if [[ -n "$list" ]]; then
+        # if -l provided, run as if calling `fc' directly
+        builtin fc "$@"
+    else
+        # unless a number is provided, show all history events (starting from 1)
+        [[ ${@[-1]-} = *[0-9]* ]] && builtin fc -l "$@" || builtin fc -l "$@" 1
+    fi
 }
 
 alias history='omz_history -i'
