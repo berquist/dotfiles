@@ -529,6 +529,7 @@ with the default ordering Projectile uses.
   :config
   (setq projectile-mode-line-prefix " P")
   (setq projectile-require-project-root t)
+  ;; not used with (setq projectile-indexing-method 'alien)
   (setq projectile-sort-order 'access-time)
   (setq projectile-project-search-path
         '("~/development" "~/repositories"))
@@ -538,21 +539,26 @@ with the default ordering Projectile uses.
           projectile-root-bottom-up
           projectile-root-top-down
           projectile-root-top-down-recurring))
-  (setq projectile-project-root-files-bottom-up
-        (ejb/conditional-prepend projectile-project-root-files-bottom-up
-                                 '(".ccls-root")))
-  (setq projectile-project-root-files-top-down-recurring
-        (ejb/conditional-prepend projectile-project-root-files-top-down-recurring
-                                 '("compile_commands.json")))
+  ;; TODO clean these up
+  ;;
+  ;; (setq projectile-project-root-files-bottom-up
+  ;;       (ejb/conditional-prepend projectile-project-root-files-bottom-up
+  ;;                                '(".ccls-root")))
+  ;; (setq projectile-project-root-files-top-down-recurring
+  ;;       (ejb/conditional-prepend projectile-project-root-files-top-down-recurring
+  ;;                                '("compile_commands.json")))
   (setq projectile-globally-ignored-directories
         (ejb/conditional-prepend projectile-globally-ignored-directories
-                                 '(".ccls-cache"
-                                   ".clangd"
-                                   "build"
-                                   "CMakeFiles")))
+                                 '("*.mypy_cache"
+                                   "*build"
+                                   "*__pycache__")))
   (setq projectile-globally-ignored-files
         (ejb/conditional-prepend projectile-globally-ignored-files
                                  '("cmake_install.cmake")))
+  (setq projectile-globally-ignored-file-suffixes
+        (ejb/conditional-prepend projectile-globally-ignored-file-suffixes
+                                 '(".elc"
+                                   ".pyc")))
   :init
   (projectile-mode))
 #+END_SRC
