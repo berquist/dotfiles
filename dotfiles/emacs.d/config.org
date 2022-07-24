@@ -53,6 +53,7 @@ Fundamental third-party packages that don't go anywhere else.
       '("ANACONDA_HOME"
         "GIT_AUTHOR_EMAIL"
         "GIT_COMMITTER_EMAIL"
+        "GPG_TTY"
         "SSH_AGENT_PID"
         "SSH_AUTH_SOCK"
         "WORKON_HOME"))
