@@ -727,6 +727,10 @@ Links:
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
   (setq flycheck-checker-error-threshold 1500)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  ;; json-python-json -> json-jq -> json-jsonlint
+  (setq ejb/flycheck-checker-default-json 'json-python-json)
+  (flycheck-add-next-checker 'json-python-json 'json-jq t)
+  (flycheck-add-next-checker 'json-jq 'json-jsonlint t)
   ; (setq flycheck-clang-pedantic t)
   ; (setq flycheck-clang-pedantic-errors t)
   (setq flycheck-gcc-openmp t)
@@ -1389,13 +1393,16 @@ TODO disable .m files from loading as Objective-C
 
 #+BEGIN_SRC emacs-lisp
 (use-package jsonian
-  :straight (jsonian :type git :host github :repo "iwahbe/jsonian")
   :mode (("\\.cjson\\'" . jsonian-mode)
          ("\\.qcjson\\'" . jsonian-mode)
-         ("\\.qcschema\\'" . jsonian-mode)))
+         ("\\.qcschema\\'" . jsonian-mode))
+  :hook ((jsonian-mode . (lambda ()
+                           (flycheck-select-checker ejb/flycheck-checker-default-json))))
+  :init
+  (jsonian-enable-flycheck))
 (use-package jq-format
   :config
-  (setq jq-format-extra-args '("--indent 4")))
+  (setq jq-format-extra-args '("--indent" "4")))
 #+END_SRC
 
 * HTML
