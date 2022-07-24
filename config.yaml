@@ -128,6 +128,9 @@ dotfiles:
   f_sbclrc:
     src: sbclrc
     dst: ~/.sbclrc
+  f_startup.jl:
+    src: julia/config/startup.jl
+    dst: ~/.julia/config/startup.jl
   f_terminalrc:
     src: config/xfce4/terminal/terminalrc
     dst: ~/.config/xfce4/terminal/terminalrc
@@ -244,6 +247,7 @@ profiles:
     - f_pdbrc
     - f_pylintrc
     - f_sbclrc
+    - f_startup.jl
     - f_terminalrc
     - f_terminalrc.osmium
     - f_tmux.conf
