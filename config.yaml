@@ -228,6 +228,7 @@ profiles:
     - f_bashrc
     - f_clang-format
     - f_clisprc.lisp
+    - f_clang-format
     - f_compton.conf
     - f_condarc
     - f_cuby4
@@ -257,7 +258,6 @@ profiles:
     - f_zprofile
     - f_zshenv
     - f_zshrc
-    - f_clang-format
   scandium:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
