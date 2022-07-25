@@ -722,8 +722,20 @@ Links:
 
 #+begin_src emacs-lisp
 (use-package flycheck
+  :hook ((lsp-managed-mode . (lambda ()
+                               (when (derived-mode-p 'sh-mode)
+                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (sh-shellcheck)))))))))
+         (lsp-managed-mode . (lambda ()
+                               (when (derived-mode-p 'tex-mode)
+                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (tex-chktex))))))))))
   :bind (("C-c f" . flycheck-mode))
   :config
+  ;; https://github.com/flycheck/flycheck/issues/1762#issuecomment-750458442
+  (defvar-local my/flycheck-local-cache nil)
+  (defun my/flycheck-checker-get (fn checker property)
+    (or (alist-get property (alist-get checker my/flycheck-local-cache))
+        (funcall fn checker property)))
+  (advice-add 'flycheck-checker-get :around 'my/flycheck-checker-get)
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
   (setq flycheck-checker-error-threshold 1500)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
