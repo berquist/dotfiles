@@ -1,5 +1,7 @@
 # -*- mode: shell-script -*-
 
+autoload -U colors && colors
+
 function virtualenv_prompt_info() {
     if [[ -n "${VIRTUAL_ENV}" ]]; then
         name=$(basename "${VIRTUAL_ENV}")
