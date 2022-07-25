@@ -727,7 +727,10 @@ Links:
                                  (setq my/flycheck-local-cache '((lsp . ((next-checkers . (sh-shellcheck)))))))))
          (lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'tex-mode)
-                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (tex-chktex))))))))))
+                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (tex-chktex)))))))))
+         (lsp-managed-mode . (lambda ()
+                               (when (derived-mode-p 'python-mode)
+                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (python-flake8))))))))))
   :bind (("C-c f" . flycheck-mode))
   :config
   ;; https://github.com/flycheck/flycheck/issues/1762#issuecomment-750458442
