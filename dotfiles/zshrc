@@ -14,9 +14,7 @@ unsetopt notify
 setopt prompt_subst
 setopt pushd_ignore_dups
 
-export PS1='%n@%m:%~
-$ '
-
+source "${HOME}"/dotfiles/berquist.zsh-theme
 source "${HOME}"/dotfiles/history.zsh
 source "${HOME}"/dotfiles/interactive_exports.bash
 source "${HOME}"/dotfiles/aliases.bash

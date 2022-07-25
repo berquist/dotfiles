@@ -13,3 +13,5 @@ export MANWIDTH=78
 
 # export PIP_REQUIRE_VIRTUALENV=1
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# disables prompt mangling in virtual_env/bin/activate
+export VIRTUAL_ENV_DISABLE_PROMPT=1
