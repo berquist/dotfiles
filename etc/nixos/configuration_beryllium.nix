@@ -82,9 +82,12 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    bat
     cachix
     colordiff
     dconf2nix
+    exa
+    fd
     file
     firefox
     firefox-devedition-bin
@@ -94,6 +97,7 @@
     pop-gtk-theme
     pop-icon-theme
     pptp
+    ripgrep
     tmux
     tree
     xdg-desktop-portal

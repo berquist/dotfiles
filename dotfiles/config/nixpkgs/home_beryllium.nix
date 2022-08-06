@@ -25,8 +25,6 @@ with pkgs;
   nixpkgs.config.allowUnfree = true;
 
   home.packages = [
-    exa
-    fd
     google-chrome
     htop
     plexamp

@@ -37,7 +37,6 @@ in {
     aspellDicts.en
     autoconf
     babashka
-    bat
     cask
     ccls
     clj-kondo
@@ -47,9 +46,7 @@ in {
     direnv
     discord-canary
     duf
-    exa
     exercism
-    fd
     # fenix.stable.toolchain
     gh
     google-chrome
@@ -67,7 +64,6 @@ in {
     python-with-my-packages
     qchem.dalton
     qchem.nwchem
-    ripgrep
     signal-desktop
     slack
     speedtest-cli
