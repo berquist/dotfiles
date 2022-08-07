@@ -1409,6 +1409,7 @@ TODO disable .m files from loading as Objective-C
 #+BEGIN_SRC emacs-lisp
 (use-package jsonian
   :mode (("\\.cjson\\'" . jsonian-mode)
+         ("\\.jsonld\\'" . jsonian-mode)
          ("\\.qcjson\\'" . jsonian-mode)
          ("\\.qcschema\\'" . jsonian-mode))
   :hook ((jsonian-mode . (lambda ()
