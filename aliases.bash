@@ -9,6 +9,9 @@ if command -v batcat >/dev/null 2>&1; then
 fi
 alias cath='tail -n +1'
 alias d='df -h'
+# https://hub.docker.com/r/alpine/dfimage
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
+# dfimage -sV=1.36 nginx:latest
 alias dus='\du -h --max-depth=1'
 alias dus2='du | sort -nr | cut -f2- | xargs du -hs'
 alias f='finger'
