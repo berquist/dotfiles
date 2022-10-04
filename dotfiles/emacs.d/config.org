@@ -686,6 +686,10 @@ Links:
   :commands lsp
   :hook ((c-mode c++-mode fortran-mode f90-mode sh-mode) . lsp)
   :config
+  ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
+  ;; When using no-littering, `lsp-session-file' is under var/lsp/session.el.
+  (advice-add 'lsp :before (lambda (&rest _args)
+                             (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-enable-snippet nil)
   (setq lsp-auto-guess-root t)
@@ -697,7 +701,8 @@ Links:
   (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-lens-enable nil)
-  (setq lsp-file-watch-threshold 500000))
+  (setq lsp-file-watch-threshold 500000)
+  (setq lsp-enable-suggest-server-download nil))
 
 (use-package lsp-ui
   :disabled t
@@ -1176,8 +1181,8 @@ users are likely to use them.
 
 (use-package lsp-pyright
   :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))
+                         (require 'lsp-pyright)
+                         (lsp))))
 #+end_src
 
 ** Reformatters
