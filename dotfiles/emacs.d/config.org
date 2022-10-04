@@ -773,7 +773,17 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 
 #+begin_src emacs-lisp
 (setq diff-advance-after-apply-hunk nil)
-(setq diff-font-lock-prettify t)
+;; This is the default, but make it explicit that +/- markers should not
+;; appear in the fringe.
+(setq diff-font-lock-prettify nil)
+
+(use-package vdiff
+  :config
+  (setq vdiff-auto-refine t)
+  (setq vdiff-diff-algorithm 'git-diff-patience)
+  (setf (alist-get 'custom vdiff-diff-algorithms) "git --no-pager diff --patience --no-index --no-color --word-diff-regex=.")
+  ;; (setq vdiff-diff-algorithm 'custom)
+  )
 #+end_src
 
 * Git/version control
