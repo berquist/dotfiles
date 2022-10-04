@@ -1,2 +1,4 @@
 # Never look through anything that seems like a build directory.
 --glob=!build*
+# Python coverage output
+--glob=!htmlcov
