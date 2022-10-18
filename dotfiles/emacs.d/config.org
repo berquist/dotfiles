@@ -1512,6 +1512,10 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   (setq slime-contribs '(slime-cl-indent slime-fancy))
   :init
   (require 'slime-autoloads))
+
+(use-package sly
+  :config
+  (setq inferior-lisp-program "sbcl"))
 #+END_SRC
 
 ** Hy
