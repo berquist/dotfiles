@@ -595,7 +595,7 @@ Links:
 (setq vc-handled-backends (delq 'Git vc-handled-backends))
 (require 'tramp)
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-(use-package counsel-tramp)
+(use-package vagrant-tramp)
 #+END_SRC
 
 * Spelling
@@ -1686,7 +1686,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   (setq pkgbuild-update-sums-on-save nil))
 (use-package snakemake-mode)
 (use-package systemd)
-(use-package vagrant-tramp)
 #+END_SRC
 
 * External services
