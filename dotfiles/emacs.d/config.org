@@ -1396,7 +1396,7 @@ TODO disable .m files from loading as Objective-C
                         (require 'lsp-julia)
                         (lsp)))
   :config
-  (setq lsp-julia-default-environment "~/.julia/environments/v1.7"))
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.8"))
 (use-package julia-formatter
   :hook ((julia-mode . julia-formatter-mode)
          (julia-mode . julia-formatter--ensure-server)))
