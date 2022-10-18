@@ -1190,6 +1190,8 @@ users are likely to use them.
 
 If ~:after python~ isn't present, the bindings don't get added properly?
 
+There is also the built-in =python-sort-imports= via =C-c C-i s=.
+
 #+BEGIN_SRC emacs-lisp
 (use-package blacken
   :after python
@@ -1197,18 +1199,11 @@ If ~:after python~ isn't present, the bindings don't get added properly?
   (:map python-mode-map
         ("C-c C-b" . blacken-buffer)))
 
-(use-package yapfify
+(use-package python-isort
   :after python
   :bind
   (:map python-mode-map
-        ("C-c C-y b" . yapfify-buffer)
-        ("C-c C-y r" . yapfify-region)))
-
-(use-package isortify
-  :after python
-  :bind
-  (:map python-mode-map
-        ("C-c C-i" . isortify-buffer)))
+        ("C-c C-a" . python-isort-buffer)))
 #+END_SRC
 
 ** Leftovers
@@ -1436,6 +1431,12 @@ TODO disable .m files from loading as Objective-C
   :config
   (setq jq-format-extra-args '("--indent" "4")))
 #+END_SRC
+
+* Dhall
+
+#+begin_src emacs-lisp
+(use-package dhall-mode)
+#+end_src
 
 * HTML
 
