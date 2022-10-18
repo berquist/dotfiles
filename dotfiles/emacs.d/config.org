@@ -414,8 +414,8 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   :init
   (vertico-mode))
 
-;; (use-package orderless
-;;   :ensure t)
+(use-package orderless
+  :ensure t)
 
 (use-package marginalia
   :init
@@ -428,9 +428,8 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
       ;; default:
       ;; completion-styles '(basic partial-completion emacs22)
       ;; recommended by orderless:
-      ;; completion-styles '(orderless basic)
-      ;; completion-category-overrides '((file (styles basic partial-completion)))
-      )
+      completion-styles '(orderless basic)
+      completion-category-overrides '((file (styles basic partial-completion))))
 #+END_SRC
 
 [[https://github.com/radian-software/ctrlf][CTRLF]] replaces Isearch for single-buffer text search.
