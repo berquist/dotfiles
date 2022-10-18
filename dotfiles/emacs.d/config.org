@@ -170,9 +170,10 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-;; Don't actively display warnings from bytecode compilation.
+;; Don't actively display warnings from bytecode compilation and similar.
 (setq warning-suppress-types '((comp)
                                (direnv)
+                               (emacs)
                                (lsp-mode)
                                (ox-pandoc)))
 #+end_src
