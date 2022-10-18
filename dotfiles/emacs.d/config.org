@@ -88,7 +88,7 @@ Only package-selected-packages and custom-safe-themes should go in here.
 - https://www.reddit.com/r/emacs/comments/53zpv9/how_do_i_get_emacs_to_stop_adding_custom_fields/
 
 #+BEGIN_SRC emacs-lisp
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 ;; Intentionally save to a customization file that is not loaded by Emacs and
 ;; is ignored by Git. All permanent customization should be in this org file,
 ;; but not sending to /dev/zero allows temporary customization via `customize`
@@ -312,7 +312,7 @@ current buffer's, reload dir-locals."
   :straight (:host github
              :repo "aurelienbottazini/tronesque"
              :files ("themes/tronesque-theme.el")))
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'custom-theme-load-path (expand-file-name "themes/" user-emacs-directory))
 ;; ...but ultimately this is my daily driver.
 (load-theme 'wombat2 t)
 (use-package rainbow-mode)
