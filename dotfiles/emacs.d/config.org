@@ -1665,8 +1665,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
              :repo "NickSeagull/coconut-mode")
   :mode ("\\.coco\\'" . coconut-mode))
 (use-package dockerfile-mode)
-(use-package docker-tramp
-  :if (version< emacs-version "29.1"))
 (use-package graphviz-dot-mode)
 (use-package groovy-mode)
 (use-package lox-mode)

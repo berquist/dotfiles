@@ -25,7 +25,6 @@
  ("deft" . "28be94d89bff2e1c7edef7244d7c5ba0636b1296")
  ("delight" . "70cb8cec9e5eb2c24364e065d85c2ea8f14a587c")
  ("dhall-mode" . "c77f1c1e75b6d2725019c5275fc102ae98d25628")
- ("docker-tramp.el" . "930d7b46c180d8a13240a028c1b40af84f2a3219")
  ("dockerfile-mode" . "52c6c00da1d31c0b6c29c74335b3af63ed6bf06c")
  ("dtrt-indent" . "d4fd1b4977eb0d534844fddf01c3c51c70c57205")
  ("editorconfig-emacs" . "541298aa616c344aa6a90f08205ae1041f6f016e")
