@@ -1605,7 +1605,10 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
               ("C-c n i i" . notespace/init)
               ("C-c n s" . notespace/render-static-html)
               ("C-c n c" . notespace/eval-and-realize-notes-from-change)))
-(use-package cider)
+(use-package cider
+  :config
+  (setq cider-default-cljs-repl 'node)
+  (setq cider-repl-pop-to-buffer-on-connect nil))
 #+end_src
 
 * Semantic web: SPARQL/Turtle
