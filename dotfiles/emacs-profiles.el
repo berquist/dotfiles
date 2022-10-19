@@ -4,9 +4,9 @@
 
 ;;; Code:
 
-(("default" . ((user-emacs-directory . "~/.emacs.d")))
- ("elpy" . ((user-emacs-directory . "~/.emacs.d_elpy")))
- ("fresh" . ((user-emacs-directory . "~/.emacs.d_fresh")))
+(("default" . ((user-emacs-directory . "~/dotfiles/dotfiles/emacs.d")))
+ ("fresh" . ((user-emacs-directory . "~/dotfiles/dotfiles/emacs.d_fresh")))
+ ("lsp" . ((user-emacs-directory . "~/dotfiles/dotfiles/emacs.d_lsp")))
  ("Phoenix181" . ((user-emacs-directory . "~/repositories/dotfiles-and-emacs-configs/dotfiles/Phoenix181/emacs/.emacs.d")))
  ("tphmacs" . ((user-emacs-director . "~/development/speckledlemon/forks/tphmacs/.emacs.d"))))
 

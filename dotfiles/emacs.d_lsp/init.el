@@ -1,6 +1,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
-(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+                         ("nongnu" . "https://elpa.nongnu.org/nongnu/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
@@ -26,38 +27,36 @@
 
 (bind-key (kbd "C-x C-h") 'replace-string)
 
-(set-frame-font "Panic Sans-11")
 (use-package dracula-theme)
-(load-theme 'dracula t)
+(use-package ef-themes
+  :init
+  (load-theme 'ef-bio t))
 
-(use-package ido
+(use-package vertico
   :config
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  ;; wow, that *is* annoying!
-  (setq ido-use-filename-at-point nil)
-  (setq ido-use-url-at-point nil)
+  (setq vertico-cycle t)
   :init
-  (ido-mode t))
+  (vertico-mode))
 
-(use-package elpy
-  :hook (elpy-mode . (lambda () (highlight-indentation-mode -1)))
+(use-package orderless
+  :ensure t)
+
+(use-package marginalia
   :init
-  (elpy-enable))
+  (marginalia-mode))
+
+(setq completion-ignore-case t
+      read-buffer-completion-ignore-case t
+      read-file-name-completion-ignore-case t
+      completion-styles '(orderless basic)
+      completion-category-overrides '((file (styles basic partial-completion))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("725a0ac226fc6a7372074c8924c18394448bb011916c05a87518ad4563738668" default)))
- '(package-selected-packages (quote (gotham-theme elpy use-package)))
- '(safe-local-variable-values
-   (quote
-    ((pyvenv-workon . qcelemental)
-     (pyvenv-workon . cclib_berquist)))))
+ '(package-selected-packages '(ef-themes dracula-theme no-littering use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
