@@ -130,7 +130,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (setq-default column-number-mode t)
 (setq-default cursor-type 'box)
 
-;; (global-display-line-numbers-mode)
+;; (global-display-line-numbers-mode 1)
 (setq display-line-numbers-grow-only t)
 
 ;; Enable maximum syntax highlighting wherever possible.
@@ -395,7 +395,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (use-package dtrt-indent
   :delight " dtrt"
   :init
-  (dtrt-indent-global-mode))
+  (dtrt-indent-global-mode 1))
 
 (use-package unfill
   :bind (("C-M-q" . unfill-paragraph)))
