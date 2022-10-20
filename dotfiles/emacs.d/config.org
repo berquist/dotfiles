@@ -688,9 +688,6 @@ Links:
                       (funcall (-rpartial 'ejb/comparator ejb/company-ordering) e1 e2))
                    company-backends)))))
 
-(use-package company-prescient
-  :hook (after-init . company-prescient-mode))
-
 (use-package lsp-mode
   :commands lsp
   :hook ((c-mode c++-mode fortran-mode f90-mode sh-mode) . lsp)
