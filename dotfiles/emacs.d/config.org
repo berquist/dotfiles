@@ -558,9 +558,13 @@ with the default ordering Projectile uses.
   ;;                                '("compile_commands.json")))
   (setq projectile-globally-ignored-directories
         (ejb/conditional-prepend projectile-globally-ignored-directories
-                                 '("*.mypy_cache"
-                                   "*build"
-                                   "*__pycache__")))
+                                 '("^\\.hypothesis"
+                                   "^\\.mypy_cache"
+                                   "^\\.pytest_cache"
+                                   ; all possible build directories
+                                   "build"
+                                   "htmlcov"
+                                   "^__pycache__")))
   (setq projectile-globally-ignored-files
         (ejb/conditional-prepend projectile-globally-ignored-files
                                  '("cmake_install.cmake")))
