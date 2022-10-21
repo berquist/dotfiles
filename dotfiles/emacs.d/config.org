@@ -712,7 +712,8 @@ Links:
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-lens-enable nil)
   (setq lsp-file-watch-threshold 500000)
-  (setq lsp-enable-suggest-server-download nil))
+  (setq lsp-enable-suggest-server-download nil)
+  (setq lsp-clients-clangd-args '("--header-insertion=never")))
 
 (use-package lsp-ui
   :disabled t
