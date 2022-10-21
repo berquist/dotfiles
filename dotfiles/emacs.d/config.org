@@ -299,6 +299,7 @@ current buffer's, reload dir-locals."
   )
 (use-package colonoscopy-theme)
 (use-package dracula-theme)
+(use-package ef-themes)
 (use-package emacs-tron-theme
   :straight (:host github
              :repo "ivanmarcin/emacs-tron-theme"))
