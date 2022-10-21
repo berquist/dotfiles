@@ -693,7 +693,7 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode f90-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode f90-mode js-mode sh-mode) . lsp)
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
   ;; When using no-littering, `lsp-session-file' is under var/lsp/session.el.
