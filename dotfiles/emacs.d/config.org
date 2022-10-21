@@ -1506,6 +1506,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 ** Emacs Lisp
 
 #+begin_src emacs-lisp
+(put 'ert-deftest 'lisp-indent-function 'defun)
+
 (use-package cask-mode)
 #+end_src
 
