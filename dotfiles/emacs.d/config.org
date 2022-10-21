@@ -36,7 +36,6 @@ Fundamental third-party packages that don't go anywhere else.
 
 ;; Here for early loading.
 (use-package delight)
-(delight 'emacs-lisp-mode "Elisp" :major)
 (setq eldoc-minor-mode-string " ED")
 
 ;; Set the path properly. Don't have a conditional on using the window system
