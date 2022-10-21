@@ -548,14 +548,9 @@ with the default ordering Projectile uses.
           projectile-root-bottom-up
           projectile-root-top-down
           projectile-root-top-down-recurring))
-  ;; TODO clean these up
-  ;;
-  ;; (setq projectile-project-root-files-bottom-up
-  ;;       (ejb/conditional-prepend projectile-project-root-files-bottom-up
-  ;;                                '(".ccls-root")))
-  ;; (setq projectile-project-root-files-top-down-recurring
-  ;;       (ejb/conditional-prepend projectile-project-root-files-top-down-recurring
-  ;;                                '("compile_commands.json")))
+  (setq projectile-project-root-files-bottom-up
+        (ejb/conditional-prepend projectile-project-root-files-bottom-up
+                                 '(".exercism")))
   (setq projectile-globally-ignored-directories
         (ejb/conditional-prepend projectile-globally-ignored-directories
                                  '("^\\.hypothesis"
@@ -573,7 +568,7 @@ with the default ordering Projectile uses.
                                  '(".elc"
                                    ".pyc")))
   :init
-  (projectile-mode))
+  (projectile-mode 1))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
