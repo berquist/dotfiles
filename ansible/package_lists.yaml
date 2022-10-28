@@ -279,6 +279,7 @@ packages_osmium:
   - ack
   - devtools
   - docker
+  - docker-buildx
   - hugo
   - keybase
   - keybase-gui
