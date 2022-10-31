@@ -1,7 +1,9 @@
-;;; wombat2-theme.el --- The wombat color theme for Emacs.   -*-coding: utf-8 -*-
+;;; wombat2-theme.el --- The wombat color theme for Emacs. -*- lexical-binding: t; coding: utf-8; -*-
+
 ;; Copyright (C) 2009 Jesus Alvarez
 
-;; Author: Jesus Alvarez <demizer.one@gmail.com>
+;; Author: Jesus Alvarez <demizer.one@gmail.com> (https://github.com/jasonblewis/color-theme-wombat/blob/master/color-theme-wombat.el)
+;; Author: Kristoffer Grönlund <krig@koru.se>
 ;; Modified by: Eric Berquist <eric DOT berquist AT gmail DOT com>
 ;; URL: https://github.com/demizer/color-theme-wombat
 
@@ -31,15 +33,17 @@
   "Medium-contrast faces with a dark gray background (custom).
 Adapted, with permission, from a Vim color scheme by Lars
 H. Nielsen.  Basic, Font Lock, Isearch, Gnus, Message, and
-Ansi-Color faces are included.")
+Ansi-Color faces are included."
+  :background-mode 'dark
+  :kind 'color-scheme)
 
 (let ((class '((class color) (min-colors 89)))
-      ;; Variables with '/' correspond to the ANSI spots, *not* the
-      ;; actual colors they contain. Unless noted or commented out,
-      ;; they are the original Wombat colors.
+      ;; Variables with '/' correspond to the ANSI spots, *not* the actual
+      ;; colors they contain.  Unless noted or commented out, they are the
+      ;; original Wombat colors.  (That might not be true anymore.)
 
       ;; -x are darker, +x are lighter.
-      (wombat-red-1    "red")
+      (wombat-red-1    "#b85149")
       (wombat/red      "#e5786d")
       (wombat-orange-1 "#f57900")
       (wombat-orange   "#e65c00")
@@ -47,19 +51,21 @@ Ansi-Color faces are included.")
       (wombat-orange+2 "#ffc125")
       (wombat-green-1  "#4bc98a")
       (wombat/green    "#95e454")
-      (wombat/yellow   "#cae682")
-      ;; (wombat/yellow   "#e7e784")
-      (wombat-blue-2   "#006689")
+      (wombat-yellow-1 "#cae682")
+      (wombat/yellow   "#e7e784")
+      (wombat-blue-3   "#006689")
+      (wombat-blue-2   "#5b98c2")
       (wombat-blue-1   "#64a8d8")
       (wombat/blue     "#8ac6f2")
-      (wombat/cyan     "#ccaa8f")
-      ;; (wombat/cyan     "#00b7eb")
+      (wombat/cyan     "#00b7eb")
+      (wombat-cyan+1   "#70cecc")
       (wombat/magenta  "#333366")
       (wombat-purple-1 "#cc99cc")
       (wombat-purple   "#663399")
       (wombat-pink-1   "#f283b6")
       (wombat-pink     "#f6b3df")
       (wombat/white    "#f6f3e8")
+      (wombat-white+1  "#ffffff")
 
       (wombat-gray+2   "#a0a8b0")
       (wombat-gray+1   "#99968b")
@@ -78,14 +84,14 @@ Ansi-Color faces are included.")
 
    ;;; Highlighting faces
    `(fringe ((,class (:background ,wombat-gray-5))))
-   `(highlight ((,class (:background ,wombat-gray-1 :foreground "#ffffff"
+   `(highlight ((,class (:background ,wombat-gray-1 :foreground ,wombat-white+1
                                      :underline t))))
    `(region ((,class (:background ,wombat-gray-2 :foreground ,wombat/white))))
-   `(secondary-selection ((,class (:background ,wombat-blue-1 :foreground ,wombat/white :bold t)))) ;; background: ,wombat/magenta
-   `(isearch ((,class (:background ,wombat-pink-1 :foreground ,wombat/white)))) ;; background: ,wombat-gray-3, foreground: #857b6f
+   `(secondary-selection ((,class (:background ,wombat-blue-1 :foreground ,wombat/white :bold t))))
+   `(isearch ((,class (:background ,wombat-purple-1 :foreground ,wombat/white))))
    `(isearch-fail ((,class (:background ,wombat-red-1))))
-   `(lazy-highlight ((,class (:italic t :background ,wombat-purple :foreground ,wombat-gray+2)))) ;; background: "#384048"
-   ;; `(lazy-highlight-face ((,class (:foreground ,wombat-blue-2 :background ,wombat-orange+1))))
+   `(lazy-highlight ((,class (:italic t :background ,wombat-purple :foreground ,wombat-gray+2))))
+   ;; `(lazy-highlight-face ((,class (:foreground ,wombat-blue-3 :background ,wombat-orange+1))))
 
    ;;; whitespace-mode defines the following:
    ;;;   space, hspace, tab, newline, trailing, line, space-before-tab, indentation, big-indent, empty, space-after-tab
@@ -121,7 +127,8 @@ Ansi-Color faces are included.")
 
    ;;; Escape and prompt faces
    `(minibuffer-prompt ((,class (:foreground ,wombat/red))))
-   `(escape-glyph ((,class (:foreground "#ddaa6f"))))
+   `(escape-glyph ((,class (:foreground ,wombat-orange :weight bold))))
+   `(homoglyph ((,class (:foreground ,wombat-orange :weight bold))))
 
    ;;; Font lock faces
    `(font-lock-builtin-face ((,class (:foreground ,wombat/red))))
@@ -151,39 +158,64 @@ Ansi-Color faces are included.")
    `(show-paren-mismatch ((,class (:background ,wombat-pink :foreground ,wombat/black :bold t))))
 
    ;;; LaTeX
-   `(font-latex-bold-face ((t (:foreground ,wombat-green-1))))
-   `(font-latex-italic-face ((t (:inherit italic :foreground ,wombat-green-1))))
-   `(font-latex-math-face ((t (:inherit font-lock-builtin-face))))
-   `(font-latex-sectioning-5-face ((t (:inherit variable-pitch :foreground ,wombat-blue-2 :weight bold))))
-   `(font-latex-string-face ((t (:inherit font-lock-string-face))))
-   `(font-latex-subscript-face ((t (:height 0.9))))
-   `(font-latex-superscript-face ((t (:height 0.9))))
-   `(font-latex-verbatim-face ((t (:inherit fixed-pitch :foreground "#91a5c1")))) ;; LightSteelBlue3
-   `(font-latex-warning-face ((t (:inherit font-lock-warning-face))))
+   `(font-latex-bold-face ((,class (:foreground ,wombat-green-1))))
+   `(font-latex-italic-face ((,class (:inherit italic :foreground ,wombat-green-1))))
+   `(font-latex-math-face ((,class (:inherit font-lock-builtin-face))))
+   `(font-latex-sectioning-5-face ((,class (:inherit variable-pitch :foreground ,wombat-blue-3 :weight bold))))
+   `(font-latex-string-face ((,class (:inherit font-lock-string-face))))
+   `(font-latex-subscript-face ((,class (:height 0.9))))
+   `(font-latex-superscript-face ((,class (:height 0.9))))
+   `(font-latex-verbatim-face ((,class (:inherit fixed-pitch :foreground "#91a5c1")))) ;; LightSteelBlue3
+   `(font-latex-warning-face ((,class (:inherit font-lock-warning-face))))
 
-   ;;; Term
-   `(term-color-black ((t (:foreground ,wombat/black :background ,wombat/black))))
-   `(term-color-red ((t (:foreground ,wombat/red :background ,wombat/red))))
-   `(term-color-green ((t (:foreground ,wombat/green :background ,wombat/green))))
-   `(term-color-yellow ((t (:foreground ,wombat/yellow :background ,wombat/yellow))))
-   `(term-color-blue ((t (:foreground ,wombat/blue :background ,wombat/blue))))
-   `(term-color-magenta ((t (:foreground ,wombat-purple :background ,wombat-purple))))
-   `(term-color-cyan ((t (:foreground ,wombat/cyan :background ,wombat/cyan))))
-   `(term-color-white ((t (:foreground ,wombat/white :background ,wombat/white))))
-
-   )
-
-  (custom-theme-set-variables
-   'wombat2
-   `(ansi-color-names-vector [,wombat/black
-                              ,wombat/red
-                              ,wombat/green
-                              ,wombat/yellow
-                              ,wombat/blue
-                              ,wombat-purple
-                              ,wombat/cyan
-                              ,wombat/white])))
+   ;;; ANSI colors
+   `(ansi-color-black ((,class (:background ,wombat/black :foreground ,wombat/black))))
+   `(ansi-color-red ((,class (:background ,wombat-red-1 :foreground ,wombat-red-1))))
+   `(ansi-color-green ((,class (:background ,wombat-green-1 :foreground ,wombat-green-1))))
+   `(ansi-color-yellow ((,class (:background ,wombat-yellow-1 :foreground ,wombat-yellow-1))))
+   `(ansi-color-blue ((,class (:background ,wombat-blue-2 :foreground ,wombat-blue-2))))
+   `(ansi-color-magenta ((,class (:background ,wombat-purple :foreground ,wombat-purple))))
+   `(ansi-color-cyan ((,class (:background ,wombat/cyan :foreground ,wombat/cyan))))
+   `(ansi-color-white ((,class (:background ,wombat/white :foreground ,wombat/white))))
+   `(ansi-color-bright-black ((,class (:background ,wombat-gray-2 :foreground ,wombat-gray-2))))
+   `(ansi-color-bright-red ((,class (:background ,wombat/red :foreground ,wombat/red))))
+   `(ansi-color-bright-green ((,class (:background ,wombat/green :foreground ,wombat/green))))
+   `(ansi-color-bright-yellow ((,class (:background ,wombat/yellow :foreground ,wombat/yellow))))
+   `(ansi-color-bright-blue ((,class (:background ,wombat/blue :foreground ,wombat/blue))))
+   `(ansi-color-bright-magenta ((,class (:background ,wombat-pink :foreground ,wombat-pink))))
+   `(ansi-color-bright-cyan ((,class (:background ,wombat-cyan+1 :foreground ,wombat-cyan+1))))
+   `(ansi-color-bright-white ((,class (:background ,wombat-white+1 :foreground ,wombat-white+1))))))
 
 (provide-theme 'wombat2)
 
 ;;; wombat2-theme.el ends here
+
+;; https://github.com/alacritty/alacritty/wiki/Color-schemes
+;; # Colors (Wombat)
+;; colors:
+;;   # Default colors
+;;   primary:
+;;     background: '#1f1f1f'
+;;     foreground: '#e5e1d8'
+
+;;   # Normal colors
+;;   normal:
+;;     black:   '#000000'
+;;     red:     '#f7786d'
+;;     green:   '#bde97c'
+;;     yellow:  '#efdfac'
+;;     blue:    '#6ebaf8'
+;;     magenta: '#ef88ff'
+;;     cyan:    '#90fdf8'
+;;     white:   '#e5e1d8'
+
+;;   # Bright colors
+;;   bright:
+;;     black:   '#b4b4b4'
+;;     red:     '#f99f92'
+;;     green:   '#e3f7a1'
+;;     yellow:  '#f2e9bf'
+;;     blue:    '#b3d2ff'
+;;     magenta: '#e5bdff'
+;;     cyan:    '#c2fefa'
+;;     white:   '#ffffff'

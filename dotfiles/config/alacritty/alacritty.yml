@@ -1,3 +1,4 @@
+---
 font:
   normal:
     family: Panic Sans
@@ -10,32 +11,61 @@ font:
 
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
 # Colors (Wombat)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#1f1f1f'
+#     foreground: '#e5e1d8'
+
+#   # Normal colors
+#   normal:
+#     black:   '#000000'
+#     red:     '#f7786d'
+#     green:   '#bde97c'
+#     yellow:  '#efdfac'
+#     blue:    '#6ebaf8'
+#     magenta: '#ef88ff'
+#     cyan:    '#90fdf8'
+#     white:   '#e5e1d8'
+
+#   # Bright colors
+#   bright:
+#     black:   '#b4b4b4'
+#     red:     '#f99f92'
+#     green:   '#e3f7a1'
+#     yellow:  '#f2e9bf'
+#     blue:    '#b3d2ff'
+#     magenta: '#e5bdff'
+#     cyan:    '#c2fefa'
+#     white:   '#ffffff'
+
+# Colors (Wombat2)
 colors:
   # Default colors
   primary:
-    background: '#1f1f1f'
+    background: '#242424'
     foreground: '#e5e1d8'
 
   # Normal colors
   normal:
     black:   '#000000'
-    red:     '#f7786d'
-    green:   '#bde97c'
-    yellow:  '#efdfac'
-    blue:    '#6ebaf8'
-    magenta: '#ef88ff'
-    cyan:    '#90fdf8'
-    white:   '#e5e1d8'
+    red:     '#b85149'
+    green:   '#4bc98a'
+    yellow:  '#cae682'
+    blue:    '#5b98c2'
+    magenta: '#663399'
+    cyan:    '#00b7eb'
+    white:   '#f6f3e8'
 
   # Bright colors
   bright:
     black:   '#b4b4b4'
-    red:     '#f99f92'
-    green:   '#e3f7a1'
-    yellow:  '#f2e9bf'
-    blue:    '#b3d2ff'
-    magenta: '#e5bdff'
-    cyan:    '#c2fefa'
+    red:     '#e5786d'
+    green:   '#95e454'
+    yellow:  '#e7e784'
+    blue:    '#8ac6f2'
+    magenta: '#f6b3df'
+    cyan:    '#70cecc'
     white:   '#ffffff'
 
 key_bindings:
