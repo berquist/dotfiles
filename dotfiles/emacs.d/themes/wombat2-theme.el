@@ -33,9 +33,7 @@
   "Medium-contrast faces with a dark gray background (custom).
 Adapted, with permission, from a Vim color scheme by Lars
 H. Nielsen.  Basic, Font Lock, Isearch, Gnus, Message, and
-Ansi-Color faces are included."
-  :background-mode 'dark
-  :kind 'color-scheme)
+Ansi-Color faces are included.")
 
 (let ((class '((class color) (min-colors 89)))
       ;; Variables with '/' correspond to the ANSI spots, *not* the actual
