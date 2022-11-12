@@ -340,8 +340,8 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 * Parens/whitespace/indentation
 
 #+begin_src emacs-lisp
-(electric-pair-mode)
-(show-paren-mode)
+(electric-pair-mode 1)
+(show-paren-mode 1)
 (setq show-paren-delay 0.0)
 
 (use-package whitespace
