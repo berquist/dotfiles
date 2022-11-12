@@ -68,6 +68,7 @@ default_packages_arch:
   - cronie
   - ctags
   - diffoscope
+  - direnv
   - dos2unix
   - doxygen
   - duf
@@ -157,9 +158,9 @@ default_packages_arch_aur:
   # - ftnchek
 
   # command-line tools
-  - direnv
   - dotdrop
   - git-delta
+  - hadolint
   - pipman-git
   - tealdeer
   - wakatime-cli-bin
