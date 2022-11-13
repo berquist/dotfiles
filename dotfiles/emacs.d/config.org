@@ -431,7 +431,22 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
       ;; completion-styles '(basic partial-completion emacs22)
       ;; recommended by orderless:
       completion-styles '(orderless basic)
-      completion-category-overrides '((file (styles basic partial-completion))))
+      completion-category-overrides '((file (styles basic partial-completion)))
+      hippie-expand-try-functions-list '(try-complete-file-name-partially
+                                         try-complete-file-name
+                                         try-expand-all-abbrevs
+                                         ;; try-expand-list
+                                         try-expand-line
+                                         try-expand-dabbrev
+                                         try-expand-dabbrev-visible
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
+;; https://github.com/Zetagon/literate-dotfiles/blob/4bb980a2fd0d60784939bfc21dc10e7aebc16eb2/config.org#default
+(add-hook 'text-mode-hook
+          (lambda ()
+            (remove #'try-expand-line hippie-expand-try-functions-list)))
 #+END_SRC
 
 [[https://github.com/radian-software/ctrlf][CTRLF]] replaces Isearch for single-buffer text search.
