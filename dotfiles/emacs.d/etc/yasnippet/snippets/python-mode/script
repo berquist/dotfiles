@@ -1,15 +1,17 @@
 # -*- mode: snippet -*-
-# name: default Python script
-# key: default
+# name: script
+# key: script
 # --
 #!/usr/bin/env python
 
-def main(args) -> None:
+import argparse
+
+
+def main(args: argparse.Namespace) -> None:
     pass
 
-if __name == "__main__":
-    import argparse
 
+if __name == "__main__":
     parser = argparse.ArgumentParser()
 
     args = parser.parse_args()

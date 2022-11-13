@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: ansible-playbook
+# key: ansp
+# --
+---
+- name: $1
+  hosts:
+    - $2
+  gather_facts: false
+  tasks:
+    - name: $3
+      debug:
+        msg: "Hello, world!"
