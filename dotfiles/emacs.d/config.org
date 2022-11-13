@@ -1707,6 +1707,13 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
       (call-interactively 'comment-dwim))))
 #+END_SRC
 
+* HDF5/h5dump
+
+#+begin_src emacs-lisp
+(load (expand-file-name "h5dump.el" user-emacs-directory))
+;(add-hook 'h5dump-mode-hook #'hs-minor-mode)
+#+end_src
+
 * Other languages, modes, and packages
 
 #+BEGIN_SRC emacs-lisp
