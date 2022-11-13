@@ -1,11 +1,14 @@
 ---
 dconf_settings:
   # Theming
-  - ["org.gnome.desktop.interface", "cursor-theme", "'Pop'"] # (May need 'Adwaita' on Arch)
+  # (May need 'Adwaita' on Arch)
+  - ["org.gnome.desktop.interface", "cursor-theme", "'Pop'"]
   - ["org.gnome.desktop.interface", "gtk-theme", "'Pop-dark'"]
-  - ["org.gnome.desktop.interface", "icon-theme", "'Pop'"] # (May need 'Adwaita' on Arch)
+  # (May need 'Adwaita' on Arch)
+  - ["org.gnome.desktop.interface", "icon-theme", "'Pop'"]
   - ["org.gnome.desktop.sound", "theme-name", "'Pop'"]
-  - ["org.gnome.desktop.wm.preferences", "theme", "'Pop'"] # (May need 'Adwaita' on Arch)
+  # (May need 'Adwaita' on Arch)
+  - ["org.gnome.desktop.wm.preferences", "theme", "'Pop'"]
   # Behavior
   - ["org.gnome.desktop.peripherals.mouse", "natural-scroll", "false"]
   - ["org.gnome.desktop.peripherals.touchpad", "natural-scroll", "false"]

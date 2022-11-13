@@ -25,4 +25,3 @@ export RPROMPT=''
 
 export PS1='%{$fg[yellow]%}%d%{$reset_color%}$(virtualenv_prompt_info)$(conda_prompt_info)
 [%{$fg[blue]%}%n%{$reset_color%}@%{$fg[cyan]%}$(hostname -s)%{$reset_color%}]%(!.#.$) '
-

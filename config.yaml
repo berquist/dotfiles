@@ -1,3 +1,5 @@
+---
+# yamllint disable rule:indentation
 config:
   banner: false
   dotpath: dotfiles

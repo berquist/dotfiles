@@ -9,6 +9,8 @@ font:
     family: Panic Sans
     # style: Italic
 
+# yamllint disable rule:colons
+
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
 # Colors (Wombat)
 # colors:
@@ -69,4 +71,4 @@ colors:
     white:   '#ffffff'
 
 key_bindings:
-  - { key: N, mods: Shift|Control, action: SpawnNewInstance }
+  - {key: N, mods: Shift|Control, action: SpawnNewInstance}
