@@ -216,6 +216,34 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (bind-key (kbd "C-x C-9") 'text-scale-decrease)
 (bind-key (kbd "C-x C-0") 'text-scale-increase)
 (bind-key (kbd "C-x C-h") 'replace-string)
+;; `hs-minor-mode-map' uses `C-c @` as prefix, but `@` is terrible, but the
+;; remaining defaults are fine, so reuse those.
+(let ((hs-group-key "h"))
+  (bind-keys
+   ((concat "C-c " hs-group-key " C-h")   . hs-hide-block)
+   ((concat "C-c " hs-group-key " C-s")   . hs-show-block)
+   ((concat "C-c " hs-group-key " C-M-h") . hs-hide-all)
+   ((concat "C-c " hs-group-key " C-M-s") . hs-show-all)
+   ((concat "C-c " hs-group-key " C-l")   . hs-hide-level)
+   ((concat "C-c " hs-group-key " C-c")   . hs-toggle-hiding)
+   ((concat "C-c " hs-group-key " C-a")   . hs-show-all)
+   ((concat "C-c " hs-group-key " C-t")   . hs-hide-all)
+   ((concat "C-c " hs-group-key " C-d")   . hs-hide-block)
+   ((concat "C-c " hs-group-key " C-e")   . hs-toggle-hiding)))
+;; I don't understand why this doesn't work.
+;; (bind-keys
+;;  :prefix-map hs-minor-mode-map
+;;  :prefix "C-c h"
+;;  ("C-h"   . hs-hide-block)
+;;  ("C-s"   . hs-show-block)
+;;  ("C-M-h" . hs-hide-all)
+;;  ("C-M-s" . hs-show-all)
+;;  ("C-l"   . hs-hide-level)
+;;  ("C-c"   . hs-toggle-hiding)
+;;  ("C-a"   . hs-show-all)
+;;  ("C-t"   . hs-hide-all)
+;;  ("C-d"   . hs-hide-block)
+;;  ("C-e"   . hs-toggle-hiding))
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
@@ -1711,7 +1739,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (load (expand-file-name "h5dump.el" user-emacs-directory))
-;(add-hook 'h5dump-mode-hook #'hs-minor-mode)
+(add-hook 'h5dump-mode-hook #'hs-minor-mode)
 #+end_src
 
 * Other languages, modes, and packages
