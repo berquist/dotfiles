@@ -1243,7 +1243,9 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   ;; This isn't super necessary since I have pandoc run a similar command
   ;; every time I save with these default arguments, but this always produces
   ;; HTML where pandoc-mode might not.
-  (setq markdown-command "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header=/home/eric/.emacs.d/mathjax.html")
+  (setq markdown-command
+        (concat "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header="
+                (expand-file-name "mathjax.html" user-emacs-directory)))
   (setq markdown-enable-math t)
   (setq markdown-fontify-code-blocks-natively t)
   (setq markdown-hide-markup nil)
