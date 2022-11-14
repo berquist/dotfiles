@@ -218,7 +218,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (bind-key (kbd "C-x C-h") 'replace-string)
 ;; `hs-minor-mode-map' uses `C-c @` as prefix, but `@` is terrible, but the
 ;; remaining defaults are fine, so reuse those.
-(let ((hs-group-key "h"))
+(let ((hs-group-key "C-h"))
   (bind-keys
    ((concat "C-c " hs-group-key " C-h")   . hs-hide-block)
    ((concat "C-c " hs-group-key " C-s")   . hs-show-block)
@@ -233,7 +233,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; I don't understand why this doesn't work.
 ;; (bind-keys
 ;;  :prefix-map hs-minor-mode-map
-;;  :prefix "C-c h"
+;;  :prefix "C-c C-h"
 ;;  ("C-h"   . hs-hide-block)
 ;;  ("C-s"   . hs-show-block)
 ;;  ("C-M-h" . hs-hide-all)
@@ -619,7 +619,7 @@ with the default ordering Projectile uses.
 #+BEGIN_SRC emacs-lisp
 (use-package direnv
   :init
-  (direnv-mode))
+  (direnv-mode 1))
 #+END_SRC
 
 * TRAMP
@@ -1502,7 +1502,8 @@ the original buffer."
          ("\\.qcjson\\'" . jsonian-mode)
          ("\\.qcschema\\'" . jsonian-mode))
   :hook ((jsonian-mode . (lambda ()
-                           (flycheck-select-checker ejb/flycheck-checker-default-json))))
+                           (flycheck-select-checker ejb/flycheck-checker-default-json)))
+         (jsonian-mode . hs-minor-mode))
   :init
   (jsonian-enable-flycheck))
 (use-package jq-format
