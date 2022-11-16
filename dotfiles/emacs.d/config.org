@@ -1274,7 +1274,8 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
 
 #+begin_src emacs-lisp
 (use-package markdown-mode
-  :hook (markdown-mode . pandoc-mode)
+  :hook ((markdown-mode . pandoc-mode)
+         (markdown-mode . outline-minor-mode))
   ;; Don't run pandoc on every save, it gets annoying.
   ;; :config
   ;; (add-hook 'markdown-mode-hook
