@@ -286,8 +286,8 @@ current buffer's, reload dir-locals."
   (let ((dir default-directory))
     (dolist (buffer (buffer-list))
       (with-current-buffer buffer
-        (when (equal default-directory dir))
-        (my-reload-dir-locals-for-current-buffer)))))
+        (when (equal default-directory dir)
+          (ejb/my-reload-dir-locals-for-current-buffer))))))
 
 ;; (add-hook 'emacs-lisp-mode-hook
 ;;           (defun enable-autoreload-for-dir-locals ()
@@ -442,14 +442,14 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   :config
   (setq vertico-cycle t)
   :init
-  (vertico-mode))
+  (vertico-mode 1))
 
 (use-package orderless
   :ensure t)
 
 (use-package marginalia
   :init
-  (marginalia-mode))
+  (marginalia-mode 1))
 
 (setq completions-format 'vertical
       completion-ignore-case t
