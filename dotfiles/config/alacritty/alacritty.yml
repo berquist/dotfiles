@@ -9,6 +9,9 @@ font:
     family: Panic Sans
     # style: Italic
 
+window:
+  opacity: 0.75
+
 # yamllint disable rule:colons
 
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
