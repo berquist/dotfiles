@@ -1740,8 +1740,9 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 * HDF5/h5dump
 
 #+begin_src emacs-lisp
-(load (expand-file-name "h5dump.el" user-emacs-directory))
-(add-hook 'h5dump-mode-hook #'hs-minor-mode)
+(use-package h5dump-mode
+  :straight (:host github :repo "berquist/h5dump-mode")
+  :hook (h5dump-mode . hs-minor-mode))
 #+end_src
 
 * Other languages, modes, and packages
