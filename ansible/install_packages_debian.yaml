@@ -4,7 +4,7 @@
   hosts: all
   vars:
     exa_unpack_dir: /tmp/exa
-    exa_version: 0.10.0
+    exa_version: 0.10.1
   vars_files:
     - package_lists.yaml
   pre_tasks:
