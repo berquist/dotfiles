@@ -412,7 +412,6 @@ default_packages_homebrew_ext: []
 
 default_packages_homebrew_cask:
   # -> problems due to app relocation
-  # - 1password
   # - anaconda
   # - caffeine
   # - divvy

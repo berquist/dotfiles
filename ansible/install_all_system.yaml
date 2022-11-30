@@ -1,5 +1,4 @@
 ---
-- import_playbook: install_1password.yaml
 # TODO not on coreman4
 # - import_playbook: install_discord.yaml
 # TODO only on coreman4
