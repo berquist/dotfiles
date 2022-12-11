@@ -652,10 +652,6 @@ Links:
   :config
   (setq langtool-default-language "en-US")
   (setq langtool-mother-tongue "en")
-  ;; TODO update
-  (if (eq system-type 'darwin)
-      (setq langtool-language-tool-server-jar "/usr/local/Cellar/languagetool/4.7/libexec/languagetool-server.jar"
-            langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.7/libexec/languagetool-commandline.jar"))
   ;; Arch Linux
   (if (eq system-type 'gnu/linux)
       (setq ; langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
