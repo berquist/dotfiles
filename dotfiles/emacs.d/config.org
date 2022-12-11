@@ -674,13 +674,6 @@ Links:
   (setq flyspell-mode-line-string " FlyS"))
 #+end_src
 
-** word count
-
-#+BEGIN_SRC emacs-lisp
-(use-package wc-mode
-  :bind (("C-c w" . wc-mode)))
-#+END_SRC
-
 * Completion and language servers
 
 #+BEGIN_SRC emacs-lisp
