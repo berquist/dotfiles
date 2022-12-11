@@ -1555,15 +1555,20 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (use-package paredit
-  :hook ((emacs-lisp-mode
-          inferior-emacs-lisp-mode
-          lisp-mode
-          scheme-mode
-          cider-repl-mode
-          clojure-mode
-          hy-mode
-          racket-mode
-          slime-mode) . paredit-mode))
+  :hook (((emacs-lisp-mode inferior-emacs-lisp-mode lisp-mode scheme-mode cider-repl-mode clojure-mode hy-mode racket-mode slime-mode) . paredit-mode)
+         ;; TODO I dont't think this works?
+         ;; (paredit-mode . (lambda () (electric-indent-local-mode -1)))
+         )
+  :config
+  ;; These are the previous defaults before `paredit-RET' was introduced.
+  ;;
+  ;; The default is `newline', old paredit was `newline', then turned into
+  ;; `paredit-RET'.
+  (unbind-key (kbd "RET") paredit-mode-map)
+  ;; The default is `electric-newline-and-maybe-indent' (at least in
+  ;; `fundamental-mode' and many prog modes), old paredit was
+  ;; `paredit-newline', then turned into `paredit-C-j'.
+  (bind-key (kbd "C-j") #'paredit-newline paredit-mode-map))
 #+end_src
 
 ** Emacs Lisp
