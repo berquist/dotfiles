@@ -773,7 +773,7 @@ Links:
 (use-package flycheck
   :hook ((lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'sh-mode)
-                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (sh-shellcheck)))))))))
+                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (sh-bash)))))))))
          (lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'tex-mode)
                                  (setq my/flycheck-local-cache '((lsp . ((next-checkers . (tex-chktex)))))))))
