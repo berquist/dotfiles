@@ -620,6 +620,9 @@ with the default ordering Projectile uses.
 (use-package direnv
   :init
   (direnv-mode 1))
+
+(use-package dotenv-mode
+  :mode (("\\.secrets\\'" . dotenv-mode)))
 #+END_SRC
 
 * TRAMP
