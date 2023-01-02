@@ -125,9 +125,6 @@ dotfiles:
   f_pdbrc:
     src: pdbrc
     dst: ~/.pdbrc
-  f_pylintrc:
-    src: pylintrc
-    dst: ~/.pylintrc
   f_rc:
     src: ssh/rc
     dst: ~/.ssh/rc
@@ -253,7 +250,6 @@ profiles:
     - f_nvimrc
     - f_override.conf
     - f_pdbrc
-    - f_pylintrc
     - f_sbclrc
     - f_startup.jl
     - f_terminalrc
