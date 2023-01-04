@@ -1,12 +1,21 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    /etc/nixos/cachix.nix
+    # /etc/nixos/cachix.nix
   ];
 
-  nix.buildCores = 4;
+  nix = {
+    extraOptions = ''
+     keep-outputs = true
+     keep-derivations = true
+     experimental-features = nix-command flakes
+    '';
+    settings = {
+      cores = 4;
+    };
+  };
 
   boot.loader.systemd-boot.enable = true;
 
@@ -51,7 +60,7 @@
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/emacs-overlay.git";
       ref = "master";
-      rev = "0293f1492cb21e8be1927e2c9fefee1ac14f2953";
+      rev = "3d5e5cfa91ed10d39e0504387242750996e8b027";
     }))
     (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
   ];
@@ -88,9 +97,8 @@
 
   services = {
     emacs = {
-      # TODO does `enable` belong here?
       enable = true;
-      package = pkgs.emacsNativeComp;
+      package = pkgs.emacsGitNativeComp;
     };
     openssh = {
       enable = true;
@@ -101,11 +109,6 @@
       joinNetworks = [ "abfd31bd47409170" ];
     };
   };
-
-  nix.extraOptions = ''
-    keep-outputs = true
-    keep-derivations = true
-'';
 
   system.stateVersion = "21.05";
 }
