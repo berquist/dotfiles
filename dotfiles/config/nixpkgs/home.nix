@@ -17,8 +17,6 @@ let
   ];
   python-with-my-packages = python39.withPackages my-python-packages;
 in {
-  programs.home-manager.enable = true;
-
   imports = [ ./dconf.nix ];
 
   home = {
@@ -36,12 +34,11 @@ in {
     aspell
     aspellDicts.en
     autoconf
-    babashka
+    # babashka
     cask
-    ccls
-    clj-kondo
-    clojure
-    clojure-lsp
+    # clj-kondo
+    # clojure
+    # clojure-lsp
     delta
     direnv
     discord-canary
@@ -53,17 +50,16 @@ in {
     htop
     imagemagick
     inkscape
-    jabref
-    leiningen
+    # jabref
+    # leiningen
     neofetch
     nix-linter
-    nodejs
     onefetch
     pinentry-emacs
     plexamp
     python-with-my-packages
-    qchem.dalton
-    qchem.nwchem
+    # qchem.dalton
+    # qchem.nwchem
     signal-desktop
     slack
     speedtest-cli
@@ -75,7 +71,6 @@ in {
     valgrind
     wget
     yamllint
-    yarn
     zoom-us
   ];
 
@@ -89,6 +84,9 @@ source ~/dotfiles/functions.bash
 '';
     };
     direnv = {
+      enable = true;
+    };
+    home-manager = {
       enable = true;
     };
     vscode = {

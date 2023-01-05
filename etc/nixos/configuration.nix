@@ -2,8 +2,8 @@
 
 {
   imports = [
-    /etc/nixos/hardware-configuration.nix
-    # /etc/nixos/cachix.nix
+    ./hardware-configuration.nix
+    # ./cachix.nix
   ];
 
   nix = {
@@ -48,6 +48,9 @@
     description = "Eric Berquist";
     extraGroups = [ "networkmanager" "wheel" ];
     isNormalUser = true;
+    openssh.authorizedKeys.keys = [
+      # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+    ];
     shell = pkgs.bash;
   };
 
@@ -56,16 +59,18 @@
     Defaults        timestamp_timeout=60
   '';
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchGit {
-      url = "https://github.com/nix-community/emacs-overlay.git";
-      ref = "master";
-      rev = "3d5e5cfa91ed10d39e0504387242750996e8b027";
-    }))
-    (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
-  ];
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (import (builtins.fetchGit {
+        url = "https://github.com/nix-community/emacs-overlay.git";
+        ref = "master";
+        rev = "3d5e5cfa91ed10d39e0504387242750996e8b027";
+      }))
+      (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
+    ];
+  };
 
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     bat
     cachix
@@ -103,6 +108,7 @@
     openssh = {
       enable = true;
       passwordAuthentication = false;
+      permitRootLogin = "no";
     };
     zerotierone = {
       enable = true;
