@@ -216,10 +216,10 @@ profiles:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
       pre_commit_home: /home/eric/data/.pre-commit
       spack_root: /home/eric/data/spack
-      vagrant_home: /home/eric/.vagrant.d
+      vagrant_home: /home/eric/data/.vagrant.d
     dotfiles:
     - d_bat
-    - d_emacs.d
+    # - d_emacs.d
     - d_idea
     - d_tmux
     - f_alacritty.yml
@@ -240,7 +240,7 @@ profiles:
     - f_gh_config.yml
     - f_gitconfig
     - f_gitignore
-    - f_gnome-keyring-ssh.desktop
+    # - f_gnome-keyring-ssh.desktop
     - f_gpg-agent.conf
     - f_gpg.conf
     - f_ipython_config.py
