@@ -1795,6 +1795,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   (setq pkgbuild-update-sums-on-save nil))
 (use-package snakemake-mode)
 (use-package systemd)
+(use-package tracwiki-mode
+  :mode ("\\.trac\\'" . tracwiki-mode))
 #+END_SRC
 
 * External services
