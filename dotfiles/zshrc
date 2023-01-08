@@ -40,3 +40,5 @@ eval "$(direnv hook zsh)"
 
 source "${HOME}"/dotfiles/termsupport.zsh
 source "${HOME}"/dotfiles/completion.zsh
+
+export VAGRANT_HOME="{{@@ vagrant_home @@}}"
