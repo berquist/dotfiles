@@ -37,7 +37,7 @@ repos:
   #   hooks:
   #     - id: shellcheck
   - repo: https://github.com/adrienverge/yamllint
-    rev: "v1.28.0"
+    rev: "v1.29.0"
     hooks:
       - id: yamllint
   # - repo: https://github.com/ansible-community/ansible-lint
@@ -45,6 +45,6 @@ repos:
   #   hooks:
   #     - id: ansible-lint
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: "0.19.2"
+    rev: "0.20.0"
     hooks:
       - id: check-github-workflows
