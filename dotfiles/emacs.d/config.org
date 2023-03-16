@@ -1438,7 +1438,6 @@ the original buffer."
         (julia-repl-activate-parent nil)))))
 
 (use-package lsp-julia
-  :disabled t
   :hook (julia-mode . (lambda ()
                         (require 'lsp-julia)
                         (lsp)))
