@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: @testset
+# key: testset
+# --
+@testset "${1}" begin
+    $0
+end
