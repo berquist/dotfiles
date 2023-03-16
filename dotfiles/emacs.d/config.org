@@ -567,6 +567,7 @@ with the default ordering Projectile uses.
         '("~/development" "~/repositories"))
   (setq projectile-project-root-functions
         '(projectile-root-local
+          projectile-root-marked
           ejb/projectile-root-qchem
           projectile-root-bottom-up
           projectile-root-top-down
