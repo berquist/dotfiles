@@ -51,6 +51,8 @@
   )
 (load-theme 'wombat t)
 
+(setq flymake-mode-line-lighter "FM")
+
 (use-package vertico
   :config
   (setq vertico-cycle t)
@@ -80,14 +82,19 @@
 
 (use-package company)
 
+(use-package lsp-mode
+  :hook (python-mode . lsp)
+  :config
+  (setq lsp-lens-enable nil))
+
+(use-package julia-mode)
+(use-package lsp-julia
+  :hook (julia-mode . lsp))
+
 (use-package rustic
   :config
   (setq rustic-format-trigger 'on-save)
   (setq rustic-indent-method-chain t))
-
-(use-package lsp-mode
-  :config
-  (setq lsp-lens-enable nil))
 
 (use-package lsp-java
   :hook (java-mode . lsp))
@@ -97,8 +104,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(vterm lox-mode corfu dracula-theme no-littering use-package)))
+ '(package-selected-packages '(vterm lox-mode corfu use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
