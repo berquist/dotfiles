@@ -129,7 +129,7 @@
  ("sly" . "f34c22289a2b3ab10e607f9f8822d62bb5c98cf5")
  ("snakemake-mode" . "849a74c24597c72818f194cf410087fc7c07f3d1")
  ("spinner" . "634529bb3173e09b37499f636de70abf29d9fa8a")
- ("straight.el" . "ad1b02e921a28c3cb532202a74a87e1cc2156810")
+ ("straight.el" . "3eca39dfc6797243ec7d1c6a7d45142407f73f88")
  ("systemd-mode" . "8742607120fbc440821acbc351fda1e8e68a8806")
  ("tablist" . "faab7a035ef2258cc4ea2182f67e3aedab7e2af9")
  ("tracwiki-mode" . "6a620444d59b438f42383b48cd4c19c03105dba6")
