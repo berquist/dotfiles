@@ -1424,18 +1424,7 @@ TODO disable .m files from loading as Objective-C
 (use-package julia-repl
   :hook (julia-mode . julia-repl-mode)
   :config
-  (julia-repl-set-terminal-backend 'vterm)
-  :init
-  (defun ejb/julia-repl ()
-    "Start the Julia REPL and activate the project corresponding to
-the original buffer."
-    (interactive)
-    (let ((script-buffer (current-buffer)))
-      (julia-repl)
-      ;; This runs the command in the original buffer but the point remains in
-      ;; the REPL buffer.
-      (with-current-buffer script-buffer
-        (julia-repl-activate-parent nil)))))
+  (julia-repl-set-terminal-backend 'vterm))
 
 (use-package lsp-julia
   :hook (julia-mode . (lambda ()
