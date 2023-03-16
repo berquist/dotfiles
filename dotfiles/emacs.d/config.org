@@ -535,34 +535,6 @@ nil otherwise."
                           "info" "--show-item" "url")
           (buffer-substring-no-properties (point-min) (1- (point-max)))))))
 
-;; (defun f-parents (path)
-;;   "Get all the parent paths of PATH, from oldest to youngest, not
-;; including PATH."
-;;   (let ((parents '())
-;;         (parent (f-parent path)))
-;;     (while parent
-;;       (setq parents (cons parent parents))
-;;       (setq parent (f-parent parent)))
-;;     parents))
-
-;; (defun f-parents-incl (path)
-;;   "Get all the parent paths of PATH, from oldest to youngest,
-;; including PATH."
-;;   (append (f-parents path) (list (directory-file-name path))))
-
-;; (defun ejb/projectile-root-qchem (dir &optional list)
-;;   (let ((parents (f-parents-incl dir)))
-;;     (cl-loop for parent in parents
-;;              do
-;;              (setq vc-svn-url (ejb/vc-svn-url parent))
-;;              if vc-svn-url
-;;              return parent
-;;              end)))
-
-;; (defun ejb/projectile-root-qchem (dir &optional list)
-;;   "If $QC is defined, set the projectile root to it, avoiding the need to place a `.projectile`' file there."
-;;   (getenv "QC"))
-
 (defun ejb/projectile-root-qchem (dir &optional list)
   "Find the project root of a Q-Chem Subversion repository.
 
