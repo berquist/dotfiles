@@ -767,7 +767,7 @@ Links:
         (funcall fn checker property)))
   (advice-add 'flycheck-checker-get :around 'my/flycheck-checker-get)
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
-  (setq flycheck-checker-error-threshold 1500)
+  (setq flycheck-checker-error-threshold 2000)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   ;; json-python-json -> json-jq -> json-jsonlint
   (setq ejb/flycheck-checker-default-json 'json-python-json)
