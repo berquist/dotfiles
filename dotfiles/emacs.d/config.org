@@ -1731,7 +1731,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (use-package h5dump-mode
-  :straight (:host github :repo "berquist/h5dump-mode")
   :hook (h5dump-mode . hs-minor-mode))
 #+end_src
 
