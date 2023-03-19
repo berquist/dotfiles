@@ -1152,18 +1152,8 @@ users are likely to use them.
   ;; (setq python-shell-interpreter "ipython")
 )
 
-(use-package anaconda-mode
-  :disabled t
-  :after python
-  :hook ((python-mode . anaconda-mode)
-         (python-mode . anaconda-eldoc-mode)))
-
-(use-package company-anaconda
-  :disabled t
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-anaconda)
-    (ejb/fix-company-ordering)))
+(use-package python-docstring
+  :hook (python-mode . python-docstring-mode))
 
 (use-package virtualenvwrapper
   :after python)

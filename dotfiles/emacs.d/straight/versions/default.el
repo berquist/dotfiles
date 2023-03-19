@@ -114,6 +114,7 @@
  ("projectile" . "30a340f22de227b973e2245002291595857d83ae")
  ("punpun-themes" . "6a7e04de1ad9f7ba9074b7206bffc9241c33349c")
  ("pyenv-mode" . "b818901b8eac0e260ced66a6a5acabdbf6f5ba99")
+ ("python-docstring-mode" . "3fe87a28acdc83e63191a29fed8649f57d075e3b")
  ("pythonic" . "c18a5bd8cb2ba59014b6b29b5bf1903bd2476a07")
  ("queue" . "130c2d656cd5d7376552272fab9e50a7c37d0c4a")
  ("rainbow-mode" . "8e96388fb4d616a9dde23e712bad0d9cd048fbf0")
