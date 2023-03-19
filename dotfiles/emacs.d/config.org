@@ -1153,7 +1153,8 @@ users are likely to use them.
 )
 
 (use-package python-docstring
-  :hook (python-mode . python-docstring-mode))
+  :hook (python-mode . python-docstring-mode)
+  :delight)
 
 (use-package virtualenvwrapper
   :after python)
