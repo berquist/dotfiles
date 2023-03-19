@@ -1144,13 +1144,17 @@ users are likely to use them.
 (use-package python
   :straight (python :type built-in)
   :mode (("\\.ipy\\'" . python-mode))
-  :interpreter ("ipython" . python-mode)
   :config
   (setq python-fill-docstring-style 'pep-257-nn)
   (setq python-indent-guess-indent-offset nil)
-  ;; The output from side-effects is gibberish :(
-  ;; (setq python-shell-interpreter "ipython")
-)
+  (setq python-shell-interpreter (cond ((executable-find "ipython") "ipython")
+                                       ((executable-find "python3") "python3")
+                                       ((executable-find "python") "python")
+                                       (t "python3")))
+  (setq python-shell-interpreter-args (cond ((executable-find "ipython") "-i --simple-prompt")
+                                            (t "-i"))))
+
+
 
 (use-package python-docstring
   :hook (python-mode . python-docstring-mode)
