@@ -1160,6 +1160,12 @@ users are likely to use them.
   :hook (python-mode . python-docstring-mode)
   :delight)
 
+(use-package numpydoc
+  :after python
+  :config
+  (setq numpydoc-insertion-style 'nil)
+  (setq numpydoc-insert-examples-block nil))
+
 (use-package virtualenvwrapper
   :after python)
 
