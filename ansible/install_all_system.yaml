@@ -1,10 +1,7 @@
 ---
-# TODO not on coreman4
 # - import_playbook: install_discord.yaml
-# TODO only on coreman4
 # - import_playbook: install_docker.yaml
 - import_playbook: install_vagrant.yaml
-# TODO not on coreman4
 # - import_playbook: install_zulip.yaml
 
 - name: enable and start system services

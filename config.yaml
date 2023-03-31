@@ -188,29 +188,6 @@ profiles:
     - f_ipython_kernel_config.py
     - f_mdlrc
     - f_tmux.conf
-  coreman4:
-    variables:
-      conda_pkg_dir: /dftman/home2/ericb/.conda_pkgs
-      pre_commit_home: /dftman/home2/ericb/.pre-commit
-      spack_root: /dftman/home2/ericb/spack
-      vagrant_home: /dftman/home2/ericb/vagrant
-    dotfiles:
-    - d_bat
-    - d_emacs.d
-    - d_tmux
-    - f_ansible.cfg
-    - f_astylerc
-    - f_bash_profile
-    - f_bashrc
-    - f_clang-format
-    - f_gitconfig
-    - f_gitignore
-    - f_gnome-keyring-ssh.desktop
-    - f_gpg-agent.conf
-    - f_gpg.conf
-    - f_ipython_config.py
-    - f_ipython_kernel_config.py
-    - f_tmux.conf
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
