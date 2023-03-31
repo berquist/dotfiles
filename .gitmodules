@@ -1,6 +1,6 @@
 [submodule "dotfiles-private"]
 	path = dotfiles-private
-	url = git@bitbucket.org:berquist/dotfiles-private
+	url = git@github.com:berquist/dotfiles-private
 [submodule "dotdrop"]
 	path = dotdrop
 	url = https://github.com/deadc0de6/dotdrop.git
