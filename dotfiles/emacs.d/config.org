@@ -1738,6 +1738,10 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 * Other languages, modes, and packages
 
 #+BEGIN_SRC emacs-lisp
+(use-package apptainer-mode
+  :mode ("\\.def\\'" . apptainer-mode)
+  ;; not on MELPA yet
+  :straight (:host github :repo "berquist/apptainer-mode"))
 (use-package coconut-mode
   :disabled t
   :straight (:host github
