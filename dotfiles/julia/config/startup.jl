@@ -2,7 +2,12 @@
 
 import Pkg
 let
-    pkgs = ["Revise", "OhMyREPL", "PkgTemplates"]
+    pkgs = [
+        "Debugger",
+        "Revise",
+        "OhMyREPL",
+        "PkgTemplates"
+    ]
     for pkg in pkgs
         if Base.find_package(pkg) === nothing
             Pkg.add(pkg)
