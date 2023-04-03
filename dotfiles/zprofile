@@ -3,3 +3,8 @@
 if [[ "$TERM" != "" ]]; then
     stty -ixon
 fi
+
+{%@@ if profile == "sodium.local" @@%}
+[[ "$TERM" == "alacritty" ]] && export TERM="xterm-256color"
+[[ -f /usr/local/bin/brew ]] && eval "$(/usr/local/bin/brew shellenv)"
+{%@@ endif @@%}
