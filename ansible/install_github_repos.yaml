@@ -38,14 +38,6 @@
       command: fc-cache
       when: ansible_system == "Linux"
       changed_when: false
-    - name: ensure zinit prefix exists
-      file:
-        path: "{{ lookup('env', 'HOME') }}/.zinit"
-        state: directory
-    - name: clone zinit
-      git:
-        repo: https://github.com/zdharma-continuum/zinit.git
-        dest: "{{ lookup('env', 'HOME') }}/.zinit/bin"
     - name: ensure pyenv prefix exists
       file:
         path: "{{ lookup('env', 'HOME') }}/.pyenv"
