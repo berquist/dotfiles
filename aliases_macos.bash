@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if ! command -v exa 1>/dev/null 2>&1; then
-    unalias ls
+    # unalias ls
     alias ls='ls -G'
     unalias l
     alias l='pwd; ls -hl'
