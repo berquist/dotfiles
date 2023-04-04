@@ -70,5 +70,9 @@ colors:
     cyan:    '#70cecc'
     white:   '#ffffff'
 
+window:
+  option_as_alt: OnlyLeft
+
 key_bindings:
-  - {key: N, mods: Shift|Control, action: SpawnNewInstance}
+  - {key: N, mods: Shift|Control, action: CreateNewWindow}
+  - {key: N, mods: Command, action: CreateNewWindow}
