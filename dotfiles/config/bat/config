@@ -5,6 +5,7 @@
 --theme='Dracula'
 --map-syntax='*.asdf:YAML'
 --map-syntax='*.cjson:JSON'
+--map-syntax='*.cwl:YAML'
 --map-syntax='*.jsonld:JSON'
 --map-syntax='*.qcjson:JSON'
 --map-syntax='*.qcschema:JSON'
