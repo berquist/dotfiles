@@ -1761,6 +1761,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :hook (go-mode . lsp))
 (use-package graphviz-dot-mode)
 (use-package groovy-mode)
+(use-package jenkinsfile-mode)
 (use-package just-mode)
 (use-package lox-mode)
 (use-package lua-mode)
