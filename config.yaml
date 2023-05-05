@@ -244,6 +244,7 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_alacritty.yml
+    - f_ansible.cfg
     - f_tmux.conf
   scandium:
     variables:
