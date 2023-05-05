@@ -715,9 +715,6 @@ Links:
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-enable-snippet nil)
   (setq lsp-auto-guess-root t)
-  ;; TODO specifically clangd is annoying, turn this back on when I know how
-  ;; to selectively change this if a .clang-format is present somewhere
-  ;; between pwd and the project root
   (setq lsp-enable-on-type-formatting nil)
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-modeline-diagnostics-enable nil)
@@ -1084,8 +1081,10 @@ the header, based upon the associated source code file."
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(use-package clang-format
-  :bind (("C-M-<tab>" . clang-format-region)))
+(use-package clang-format+
+  :hook (c-mode-common . clang-format+-mode)
+  :config
+  (setq clang-format+-context 'modification))
 
 (use-package astyle
   :when (executable-find "astyle"))
