@@ -79,3 +79,5 @@ window:
 key_bindings:
   - {key: N, mods: Shift|Control, action: CreateNewWindow}
   - {key: N, mods: Command, action: CreateNewWindow}
+  - {key: Q, mods: Command, action: None}
+  - {key: W, mods: Command, action: None}
