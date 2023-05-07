@@ -69,6 +69,8 @@ default_packages_arch:
   - ctags
   - diffoscope
   - direnv
+  - docker
+  - docker-buildx
   - dos2unix
   - doxygen
   - duf
@@ -109,6 +111,7 @@ default_packages_arch:
   - pbzip2
   - perl-term-readkey # git-svn
   - pigz
+  - podman
   - proselint
   - pybind11
   - rclone
@@ -177,10 +180,6 @@ default_packages_arch_aur:
   - symlinks
   - ttf-ms-fonts
   - yay
-
-packages_beryllium:
-
-packages_beryllium_aur:
 
 packages_osmium:
   # low-level
@@ -280,8 +279,6 @@ packages_osmium:
   # command-line tools and general libraries
   - ack
   - devtools
-  - docker
-  - docker-buildx
   - hugo
   - keybase
   - keybase-gui
@@ -361,7 +358,6 @@ packages_osmium_aur:
 
   # GUI tools
   # - avogadro-git
-  - discord-canary
   - dropbox
   # - libgfortran6
   - molden
@@ -372,6 +368,7 @@ packages_osmium_aur:
   # other
   - dftbplus
   - gamess
+  # - nvidia-container-toolkit
 
 default_packages_homebrew:
   - aspell
@@ -438,78 +435,8 @@ default_github_repos:
   - romkatv/gitstatus
 
 default_packages_popos:
-  # base
-  - autoconf
-  - build-essential
-  - curl
-  - libbz2-dev
-  - libffi-dev
-  - libgif-dev
-  - libgnutls28-dev
-  - libgtk-3-dev
-  - libjansson-dev
-  - liblzma-dev
-  - libncurses5-dev
-  - libncursesw5-dev
-  - libreadline-dev
-  - libsqlite3-dev
-  - libssl-dev
-  - libtiff-dev
-  - libxpm-dev
-  - llvm
-  - make
-  - python-openssl
-  - tk-dev
-  - wget
-  - xz-utils
-  - zlib1g-dev
-
-  # programming: Julia
-  - julia
-  - julia-doc
-
-  # programming: JVM
-  - clojure
-  - leiningen
-
-  # userspace
-  - ansible
-  - ansible-lint
-  - avogadro
-  - direnv
-  - discord
-  - emacs-snapshot
-  - graphviz
-  - htop
-  - iotop
-  - keychain
-  - mosh
-  - nmap
-  - openssh-client
-  - openssh-server
-  - python3-pip
-  - shellcheck
-  - subversion
-  - thunderbird
-  - thunderbird-gnome-support
-  - tmux
-  - transmission-gtk
 
 default_packages_ubuntu:
-  - libtool-bin
-
-  # userspace
-  - ansible
-  - ansible-lint
-  - apt-file
-  - colordiff
-  - docker-compose
-  - emacs-snapshot
-  - git
-  - python-subversion
-  - python3-pip
-  - subversion
-  - vagrant
 
 default_packages_deb:
   - https://github.com/sharkdp/bat/releases/download/v0.22.1/bat_0.22.1_amd64.deb
