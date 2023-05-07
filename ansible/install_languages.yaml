@@ -3,6 +3,10 @@
   # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   gather_facts: false
   hosts: all
+  pre_tasks:
+    - setup:
+        gather_subset:
+          - system
   tasks:
     - name: get rustup installer
       get_url:
@@ -12,6 +16,11 @@
       command:
         cmd: bash /tmp/install_rustup.bash -y --profile=complete --no-modify-path
         creates: ~/.rustup/settings.toml
+    - name: add rust-analyzer as component
+      command:
+        cmd: rustup component add rust-analyzer
+        creates: ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer
+      when: ansible_system == "Linux"
 
 - name: install Nim
   # curl https://nim-lang.org/choosenim/init.sh -sSf | sh
