@@ -8,6 +8,7 @@ if command -v batcat >/dev/null 2>&1; then
     fi
 fi
 alias cath='tail -n +1'
+alias cfd='/usr/share/clang/clang-format-diff.py'
 alias d='df -h'
 # https://hub.docker.com/r/alpine/dfimage
 alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
