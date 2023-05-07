@@ -46,9 +46,6 @@ dotfiles:
   f_clisprc.lisp:
     src: clisprc.lisp
     dst: ~/.clisprc.lisp
-  f_compton.conf:
-    src: compton.conf
-    dst: ~/.compton.conf
   f_condarc:
     src: condarc
     dst: ~/.condarc
@@ -189,7 +186,6 @@ profiles:
     - f_clang-format
     - f_clisprc.lisp
     - f_clang-format
-    - f_compton.conf
     - f_condarc
     - f_cuby4
     - f_direnvrc
