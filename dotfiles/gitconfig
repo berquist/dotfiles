@@ -52,6 +52,7 @@
 	gpgsign = false
 
 [diff]
+	colorMoved = default
 	# TODO Why this number?
 	renameLimit = 1011
 
@@ -135,3 +136,11 @@
 	# http://stackoverflow.com/questions/1721738/using-diff-or-anything-else-to-get-character-level-diff-between-text-files
 	# Changing --word-diff to plain helps to make things more obvious.
 	cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
+
+# [interactive]
+# 	diffFilter = delta --color-only
+
+# [delta]
+# 	line-numbers = true
+# 	navigate = true
+# 	syntax-theme = Dracula
