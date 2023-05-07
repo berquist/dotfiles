@@ -89,9 +89,6 @@ dotfiles:
   f_home.nix:
     src: config/nixpkgs/home.nix
     dst: ~/.config/nixpkgs/home.nix
-  f_home_beryllium.nix:
-    src: config/nixpkgs/home_beryllium.nix
-    dst: ~/.config/nixpkgs/home.nix
   f_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
@@ -171,29 +168,6 @@ dotfiles:
     src: zshrc
     dst: ~/.zshrc
 profiles:
-  beryllium:
-    variables:
-      conda_pkg_dir: /home/eric/.conda_pkgs
-      pre_commit_home: /home/eric/.cache/pre-commit
-      spack_root: /home/eric/repositories/spack
-      vagrant_home: /home/eric/.vagrant.d
-    dotfiles:
-    - d_bat
-    - d_emacs.d
-    - d_tmux
-    - f_ansible.cfg
-    - f_aspell.en.prepl
-    - f_aspell.en.pws
-    - f_astylerc
-    - f_clang-format
-    - f_condarc
-    - f_gitconfig
-    - f_gitignore
-    - f_home_beryllium.nix
-    - f_ipython_config.py
-    - f_ipython_kernel_config.py
-    - f_mdlrc
-    - f_tmux.conf
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
