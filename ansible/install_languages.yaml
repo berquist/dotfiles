@@ -51,5 +51,5 @@
       register: julia_result
     - name: install base environment packages
       command:
-        cmd: julia 'using Pkg; Pkg.add(["LanguageServer", "OhMyREPL", "Revise"]); Pkg.instantiate()'
+        cmd: julia 'using Pkg; Pkg.add(["LanguageServer"]); Pkg.instantiate()'
       when: julia_result.rc == 0
