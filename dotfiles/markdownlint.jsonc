@@ -1,0 +1,8 @@
+{
+    // single-title/single-h1: This isn't HTML, there is no "single top-level
+    // heading", it's just a section identifier.
+    "MD025": false,
+
+    // no-inline-html
+    "MD033": false
+}
