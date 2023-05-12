@@ -1,5 +1,3 @@
----
-# yamllint disable rule:indentation
 config:
   banner: false
   dotpath: dotfiles
@@ -122,6 +120,9 @@ dotfiles:
   f_override.conf:
     src: config/systemd/user/emacs.service.d/override.conf
     dst: ~/.config/systemd/user/emacs.service.d/override.conf
+  f_paru.conf:
+    src: config/paru/paru.conf
+    dst: ~/.config/paru/paru.conf
   f_pdbrc:
     src: pdbrc
     dst: ~/.pdbrc
@@ -184,8 +185,8 @@ profiles:
     - f_bash_profile
     - f_bashrc
     - f_clang-format
-    - f_clisprc.lisp
     - f_clang-format
+    - f_clisprc.lisp
     - f_condarc
     - f_cuby4
     - f_direnvrc
@@ -194,7 +195,6 @@ profiles:
     - f_gh_config.yml
     - f_gitconfig
     - f_gitignore
-    # - f_gnome-keyring-ssh.desktop
     - f_gpg-agent.conf
     - f_gpg.conf
     - f_ipython_config.py
@@ -204,6 +204,7 @@ profiles:
     - f_nanorc
     - f_nvimrc
     - f_override.conf
+    - f_paru.conf
     - f_pdbrc
     - f_sbclrc
     - f_startup.jl
