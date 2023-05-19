@@ -71,7 +71,7 @@ with pkgs;
       sd = "svn diff --diff-cmd colordiff";
       snv = "svn";
       sw = "telnet towel.blinkenlights.nl";
-      t = "tail -F -n 100 --sleep-interval = 0.1";
+      t = "tail -F -n 100 --sleep-interval=0.1";
       tmux = "tmux -2";
       whcih = "which";
       # So I don't do stupid things.
