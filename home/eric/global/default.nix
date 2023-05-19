@@ -157,10 +157,13 @@ with pkgs;
         map-syntax = [
           "*.asdf:YAML"
           "*.cjson:JSON"
+          "*.cwl:YAML"
+          "*.jsonc:JSON"
           "*.jsonld:JSON"
           "*.qcjson:JSON"
           "*.qcschema:JSON"
           "flake.lock:JSON"
+          "*Jenkinsfile*:Groovy"
         ];
         theme = "Dracula";
       };
