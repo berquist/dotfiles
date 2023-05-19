@@ -18,7 +18,7 @@ with pkgs;
       tree
       wget
     ];
-    sessionVariables = {
+    sessionVariables = rec {
       # These are for interactive usage.
       # https://askubuntu.com/a/866376
       EDITOR = "emacsclient -t -a=\"\"";
@@ -35,10 +35,10 @@ with pkgs;
       PIP_CONFIG_FILE = "${config.home.homeDirectory}/dotfiles/pip.conf";
       RIPGREP_CONFIG_PATH = "${config.home.homeDirectory}/dotfiles/ripgreprc";
       SCRATCH = "/tmp";
-      scratch = "${config.home.sessionVariables.SCRATCH}";
+      scratch = "${SCRATCH}";
       # TODO still needed?
       QCPROGS = "${config.home.homeDirectory}/opt/apps";
-      apps = "${config.home.sessionVariables.QCPROGS}";
+      apps = "${QCPROGS}";
     };
     shellAliases = rec {
       "2to3" = "2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma";
@@ -216,11 +216,6 @@ with pkgs;
         if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
             source $(command -v virtualenvwrapper_lazy.sh)
         fi
-      '' + lib.readFile ./functions.bash;
-      profileExtra = ''
-        if [[ "$TERM" != "" ]]; then
-            stty -ixon
-        fi
 
         # Changing Directories
         unsetopt auto_cd
@@ -247,7 +242,12 @@ with pkgs;
         setopt beep
         setopt emacs
 
-        WORDCHARS=''''
+        WORDCHARS=""
+      '' + lib.readFile ./functions.bash;
+      profileExtra = ''
+        if [[ "$TERM" != "" ]]; then
+            stty -ixon
+        fi
       '';
       sessionVariables = {
         PS1 = "%F{yellow}%d%f\n[%F{blue}%n%f@%F{cyan}%m%f]%(!.#.$) ";
