@@ -38,19 +38,19 @@
       "eric@osmium" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home/osmium.nix ];
+        modules = [ ./home/eric/osmium.nix ];
       };
       # personal laptop
       "eric@scandium" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home/scandium.nix ];
+        modules = [ ./home/eric/scandium.nix ];
       };
       # personal laptop
       "eric@sodium" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-darwin;
         extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home/sodium.nix ];
+        modules = [ ./home/eric/sodium.nix ];
       };
     };
   };
