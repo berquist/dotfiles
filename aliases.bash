@@ -32,6 +32,7 @@ alias es='emacs -nw'
 # with it though?
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
+alias kubectl='minikube kubectl --'
 # If exa is available, set preferred aliases to use it (and its different
 # flags) rather than ls.
 if command -v exa >/dev/null 2>&1; then
