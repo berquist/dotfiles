@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: shellcheck
+# key: shellcheck
+# --
+# shellcheck disable=$0
