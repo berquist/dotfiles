@@ -46,6 +46,12 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./home/scandium.nix ];
       };
+      # personal laptop
+      "eric@sodium" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./home/sodium.nix ];
+      };
     };
   };
 }

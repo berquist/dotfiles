@@ -17,14 +17,15 @@ let
   ];
   python-with-my-packages = python39.withPackages my-python-packages;
 in {
-  # imports = [ ./dconf.nix ];
+  imports = [
+    ./global
+    # ./dconf.nix
+  ];
 
   home = {
     homeDirectory = "/home/eric";
     username = "eric";
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   # environment.sessionVariables.NIXOS_OZONE_WL = 1;
 
@@ -41,7 +42,7 @@ in {
     # clojure-lsp
     delta
     direnv
-    discord-canary
+    # discord-canary
     duf
     exercism
     # fenix.stable.toolchain
@@ -82,12 +83,6 @@ source ~/dotfiles/interactive_exports.bash
 source ~/dotfiles/aliases.bash
 source ~/dotfiles/functions.bash
 '';
-    };
-    direnv = {
-      enable = true;
-    };
-    home-manager = {
-      enable = true;
     };
     vscode = {
       enable = true;
