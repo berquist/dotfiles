@@ -40,9 +40,10 @@ with pkgs;
       QCPROGS = "${config.home.homeDirectory}/opt/apps";
       apps = "${config.home.sessionVariables.QCPROGS}";
     };
-    shellAliases = {
+    shellAliases = rec {
       "2to3" = "2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma";
       cath = "tail -n +1";
+      cfd = "/usr/share/clang/clang-format-diff.py";
       d = "df -h";
       # https://hub.docker.com/r/alpine/dfimage
       dfimage = "docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage";
@@ -60,11 +61,12 @@ with pkgs;
       # doesn't work with it though?
       gdiff = "git wdiff --no-index";
       gfr = "git fetch --all; git rebase upstream/master";
+      kubectl = "minikube kubectl --";
       ls = "exa";
       l = "pwd; ls -Fl";
-      la = "l -a";
-      lt = "l -s modified -r";
-      lh = "lt | head";
+      la = "${l} -a";
+      lt = "${l} -s modified -r";
+      lh = "${lt} | head";
       mksrcinfo = "makepkg --printsrcinfo > .SRCINFO";
       psmem = "ps aux --sort -rss";
       scp = "scp -p";
@@ -79,6 +81,22 @@ with pkgs;
       mv = "mv -i -v";
       rm = "rm -i -v";
     };
+    # These still need to be ported.
+    #
+    # # These have to be run from $QC.
+    # alias etags_qchem='find -L $PWD -not \( -path "./build" -prune \) -not \( -path "./.git" -prune \) -not \( -path "./.svn" -prune \) -not \( -path "./doc/html" -prune \) -name "*\.[chfpCHF]*" -print | etags --class-qualify --declarations -'
+    # alias ctags_qchem='ctags -e --languages=-HTML,-JavaScript --links --verbose --totals -R'
+    # # https://stackoverflow.com/a/4210072/3249688
+    # cmd_qchem_cpp_filelist='find . -type f \( -path "./.ccls-cache/*" -o -path "./armadillo/*" -o -path "./thirdparty/*" -o -path "./build/CMakeFiles/*" \) -prune -o -name "*.[hC]" -print0'
+    # # shellcheck disable=SC2139
+    # alias qchem_cpp_filelist="${cmd_qchem_cpp_filelist}"
+    # # shellcheck disable=SC2139
+    # alias qchem_cppcheck="${cmd_qchem_cpp_filelist} | xargs -0 cppcheck --enable=all --language=c++ --std=c++11"
+    # # shellcheck disable=SC2139
+    # alias qchem_cpplint="${cmd_qchem_cpp_filelist} | xargs -0 cpplint --root=. --extensions=C --headers=h"
+    #
+    # [[ -d "${HOME}"/personal_scripts ]] && export PATH="${HOME}"/personal_scripts:"${PATH}"
+    # but also the subdirectories recursively
   };
 
   nixpkgs = {
@@ -138,12 +156,10 @@ with pkgs;
       historyFileSize = 1000000;
       historySize = 1000000;
       initExtra = ''
-        source "${config.home.homeDirectory}"/dotfiles/functions.bash
-
         if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
             source $(command -v virtualenvwrapper_lazy.sh)
         fi
-      '';
+      '' + lib.readFile ./functions.bash;
       sessionVariables = {
         HISTTIMEFORMAT = "[%F %T] ";
         PROMPT_COMMAND = "history -a; $PROMPT_COMMAND";
@@ -197,16 +213,41 @@ with pkgs;
         size = 1000000000;
       };
       initExtra = ''
-        source "${config.home.homeDirectory}"/dotfiles/functions.bash
-
         if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
             source $(command -v virtualenvwrapper_lazy.sh)
         fi
-      '';
+      '' + lib.readFile ./functions.bash;
       profileExtra = ''
         if [[ "$TERM" != "" ]]; then
             stty -ixon
         fi
+
+        # Changing Directories
+        unsetopt auto_cd
+        setopt auto_pushd
+
+        # Expansion and Globbing
+        unsetopt extended_glob
+        setopt nomatch
+
+        # History
+        setopt hist_verify
+
+        # Input/Output
+        setopt interactive_comments
+
+        # Job Control
+        unsetopt bg_nice
+        setopt long_list_jobs
+
+        # Prompting
+        setopt prompt_subst
+
+        # Zle
+        setopt beep
+        setopt emacs
+
+        WORDCHARS=''''
       '';
       sessionVariables = {
         PS1 = "%F{yellow}%d%f\n[%F{blue}%n%f@%F{cyan}%m%f]%(!.#.$) ";
