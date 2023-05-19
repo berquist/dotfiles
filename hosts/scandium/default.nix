@@ -2,6 +2,8 @@
   imports = [
     ./hardware-configuration.nix
     # ./cachix.nix
+
+    ../common/global
   ];
 
   nix = {
@@ -25,12 +27,13 @@
 
   boot.loader.systemd-boot.enable = true;
 
-  networking.hostName = "scandium";
-
   time.timeZone = null;
 
-  networking.useDHCP = false;
-  networking.interfaces.wlp2s0.useDHCP = true;
+  networking = {
+    hostName = "scandium";
+    useDHCP = false;
+    interfaces.wlp2s0.useDHCP = true;
+  };
 
   services.xserver = {
     enable = true;
@@ -89,10 +92,12 @@
     zerotierone
   ];
 
-  # TODO shouldn't this be per user?
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    # TODO shouldn't this be per user?
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
 
   services = {
