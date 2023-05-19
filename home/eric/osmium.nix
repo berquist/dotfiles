@@ -25,6 +25,8 @@
       envExtra = ''
         source /usr/share/lmod/lmod/init/zsh
         module use "${config.home.homeDirectory}/modules/osmium"
+
+        source ${config.home.sessionVariables.SPACK_ROOT}/share/spack/setup-env.sh
       '';
     };
   };

@@ -139,6 +139,10 @@ with pkgs;
       historySize = 1000000;
       initExtra = ''
         source "${config.home.homeDirectory}"/dotfiles/functions.bash
+
+        if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
+            source $(command -v virtualenvwrapper_lazy.sh)
+        fi
       '';
       sessionVariables = {
         HISTTIMEFORMAT = "[%F %T] ";
@@ -166,7 +170,22 @@ with pkgs;
     home-manager.enable = true;
     less.enable = true;
     zsh = {
-      # envExtra
+      envExtra = ''
+        # [[ -d "${config.home.homeDirectory}/.poetry/bin" ]] && export PATH="${config.home.homeDirectory}/.poetry/bin:$PATH"
+        [[ -d "${config.home.homeDirectory}/.pyenv/bin" ]] && export PATH="${config.home.homeDirectory}/.pyenv/bin:$PATH"
+        # These are...slow.
+        if command -v pyenv >/dev/null 2>&1; then
+            eval "$(pyenv init --path)"
+            eval "$(pyenv init -)"
+        fi
+        if command -v pyenv-virtualenv-init >/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
+
+        # Rust
+        [[ -d "${config.home.homeDirectory}/.cargo/bin" ]] && export PATH="${config.home.homeDirectory}/.cargo/bin:$PATH"
+
+        # Nim
+        [[ -d "${config.home.homeDirectory}/.nimble/bin" ]] && export PATH="${config.home.homeDirectory}/.nimble/bin:$PATH"
+      '';
       history = {
         extended = true;
         ignoreDups = false;
@@ -176,8 +195,16 @@ with pkgs;
       };
       initExtra = ''
         source "${config.home.homeDirectory}"/dotfiles/functions.bash
+
+        if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
+            source $(command -v virtualenvwrapper_lazy.sh)
+        fi
       '';
-      # profileExtra
+      profileExtra = ''
+        if [[ "$TERM" != "" ]]; then
+            stty -ixon
+        fi
+      '';
       sessionVariables = {
         PS1 = "%F{yellow}%d%f\n[%F{blue}%n%f@%F{cyan}%m%f]%(!.#.$) ";
       };
