@@ -68,7 +68,7 @@ in {
     sessionVariables = {
       PRE_COMMIT_HOME = "${config.home.homeDirectory}/.cache/pre-commit";
       SPACK_ROOT = "${config.home.homeDirectory}/repositories/spack";
-      VAGRANT_HOME = "${config.home.homeDirectory}/.vagrant.d";      
+      VAGRANT_HOME = "${config.home.homeDirectory}/.vagrant.d";
     };
   };
 
