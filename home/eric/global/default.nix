@@ -198,6 +198,20 @@ with pkgs;
     direnv.enable = true;
     home-manager.enable = true;
     less.enable = true;
+
+    tmux = {
+      aggressiveResize = true;
+      baseIndex = 1;
+      enable = true;
+      escapeTime = 0;
+      extraConfig = lib.readFile ./tmux/main.conf
+                    + lib.readFile ./tmux/theme_berquist.conf;
+      historyLimit = 100000;
+      keyMode = "emacs";
+      prefix = "`";
+      terminal = "screen-256color";
+    };
+
     zsh = {
       envExtra = ''
         # [[ -d "${config.home.homeDirectory}/.poetry/bin" ]] && export PATH="${config.home.homeDirectory}/.poetry/bin:$PATH"
