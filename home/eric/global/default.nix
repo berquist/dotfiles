@@ -179,7 +179,7 @@ with pkgs;
       '';
       # profileExtra
       sessionVariables = {
-        PS1 = "%d\n[%n@%m]%(!.#.$) ";
+        PS1 = "%F{yellow}%d%f\n[%F{blue}%n%f@%F{cyan}%m%f]%(!.#.$) ";
       };
     };
   };
