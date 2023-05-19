@@ -129,7 +129,6 @@ with pkgs;
         size = 1000000000;
       };
       initExtra = ''
-        source "${config.home.homeDirectory}"/dotfiles/berquist.zsh-theme
         source "${config.home.homeDirectory}"/dotfiles/functions.bash
       '';
       # profileExtra
