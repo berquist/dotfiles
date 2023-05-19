@@ -167,7 +167,7 @@ with pkgs;
             fi
         fi
 
-        [[ -d "${config.home.sessionVariables.PYENV_ROOT}/bin" ]] && export PATH="${config.home.sessionVariables.PYENV_ROOT}/bin:PATH"
+        [[ -d "${config.home.sessionVariables.PYENV_ROOT}/bin" ]] && export PATH="${config.home.sessionVariables.PYENV_ROOT}/bin:$PATH"
         if command -v pyenv >/dev/null 2>&1; then
             eval "$(pyenv init --path)"
             eval "$(pyenv init -)"
