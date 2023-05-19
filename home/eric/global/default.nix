@@ -1,23 +1,6 @@
 { config, pkgs, ...}:
 with pkgs;
 {
-  accounts = {
-    email = {
-      accounts = {
-        # qchem = {
-        #   address = "ericb@q-chem.com";
-        #   notmuch = {
-        #     enable = true;
-        #   };
-        #   offlineimap = {
-        #     enable = true;
-        #   };
-        #   primary = true;
-        #   realName = "Eric Berquist";
-        # };
-      };
-    };
-  };
   home = {
     username = "eric";
     homeDirectory = "/home/${config.home.username}";
@@ -225,10 +208,6 @@ with pkgs;
     direnv.enable = true;
     home-manager.enable = true;
     less.enable = true;
-
-    notmuch = {
-      enable = true;
-    };
 
     tmux = {
       aggressiveResize = true;
