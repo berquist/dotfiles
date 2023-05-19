@@ -1,5 +1,10 @@
+{ config, ...}:
+
 {
   home = {
+    username = "eric";
+    homeDirectory = "/home/${config.home.username}";
+
     shellAliases = {
       _2to3 = "2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma";
       cath = "tail -n +1";

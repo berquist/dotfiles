@@ -22,11 +22,6 @@ in {
     # ./dconf.nix
   ];
 
-  home = {
-    homeDirectory = "/home/eric";
-    username = "eric";
-  };
-
   # environment.sessionVariables.NIXOS_OZONE_WL = 1;
 
   home.packages = [
