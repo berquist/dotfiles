@@ -23,3 +23,32 @@ ansible-playbook ./ansible/install_all_system.yaml -b -K
 ansible-playbook ./ansible/install_all.yaml
 ansible-playbook ./ansible/set_shell.yaml -b -K
 #+end_src
+
+** [[https://nixos.org/download.html][Nix package manager]]
+
+Multi-user install:
+
+#+begin_src bash
+sh <(curl -L https://nixos.org/nix/install) --daemon
+#+end_src
+
+** [[https://nix-community.github.io/home-manager/index.html#sec-install-standalone][home-manager]]
+
+First time only:
+#+begin_src bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz home-manager
+nix-channel --update
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+nix-shell '<home-manager>' -A install
+#+end_src
+
+Add to =~/.config/nix/nix.conf=:
+#+begin_src conf
+experimental-features = nix-command flakes
+#+end_src
+
+Then:
+#+begin_src bash
+cd ~/dotfiles
+home-manager switch --flake .#eric@osmium
+#+end_src
