@@ -19,5 +19,6 @@ export RIPGREP_CONFIG_PATH="${HOME}"/dotfiles/ripgreprc
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
 
+# TODO still needed?
 export QCPROGS="${HOME}"/opt/apps
 export apps="${QCPROGS}"

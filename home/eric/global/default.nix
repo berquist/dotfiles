@@ -1,12 +1,47 @@
-{ config, ...}:
-
+{ config, pkgs, ...}:
+with pkgs;
 {
   home = {
     username = "eric";
     homeDirectory = "/home/${config.home.username}";
-
+    packages = [
+      bat
+      direnv
+      duf
+      exa
+      fd
+      file
+      git
+      htop
+      ripgrep
+      tmux
+      tree
+      wget
+    ];
+    sessionVariables = {
+      # These are for interactive usage.
+      # https://askubuntu.com/a/866376
+      EDITOR = "emacsclient -t -a=\"\"";
+      # https://twitter.com/hhulkko/status/114256631419772928
+      # http://darrendev.blogspot.com/2011/07/customize-less-less-annoying.html
+      LESS = "-FRX";
+      MANWIDTH = "78";
+      PYENV_VIRTUALENV_DISABLE_PROMPT = "1";
+      # disables prompt mangling in virtual_env/bin/activate
+      VIRTUAL_ENV_DISABLE_PROMPT = "1";
+      # These are for all usage.
+      EXERCISM_WORKSPACE = "${config.home.homeDirectory}/development/exercism";
+      LSP_USE_PLISTS = "true";
+      PIP_CONFIG_FILE = "${config.home.homeDirectory}/dotfiles/pip.conf";
+      RIPGREP_CONFIG_PATH = "${config.home.homeDirectory}/dotfiles/ripgreprc";
+      SCRATCH = "/tmp";
+      scratch = "${config.home.sessionVariables.SCRATCH}";
+      # TODO still needed?
+      QCPROGS = "${config.home.homeDirectory}/opt/apps";
+      apps = "${config.home.sessionVariables.QCPROGS}";
+    };
     shellAliases = {
-      _2to3 = "2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma";
+      "2to3" = "2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma";
       cath = "tail -n +1";
       d = "df -h";
       # https://hub.docker.com/r/alpine/dfimage
@@ -54,7 +89,50 @@
   };
 
   programs = {
+    bash = {
+      historyFile = "${config.home.homeDirectory}/.bash_eternal_history";
+      # Nix can't use the unlimited trick?
+      historyFileSize = 1000000;
+      historySize = 1000000;
+      initExtra = ''
+        source "${config.home.homeDirectory}"/dotfiles/functions.bash
+      '';
+      sessionVariables = {
+        HISTTIMEFORMAT = "[%F %T] ";
+        PROMPT_COMMAND = "history -a; $PROMPT_COMMAND";
+      };
+    };
+    bat = {
+      config = {
+        map-syntax = [
+          "*.asdf:YAML"
+          "*.cjson:JSON"
+          "*.jsonld:JSON"
+          "*.qcjson:JSON"
+          "*.qcschema:JSON"
+          "flake.lock:JSON"
+        ];
+        theme = "Dracula";
+      };
+      enable = true;
+    };
     direnv.enable = true;
     home-manager.enable = true;
+    less.enable = true;
+    zsh = {
+      # envExtra
+      history = {
+        extended = true;
+        ignoreDups = false;
+        save = 1000000000;
+        share = true;
+        size = 1000000000;
+      };
+      initExtra = ''
+        source "${config.home.homeDirectory}"/dotfiles/berquist.zsh-theme
+        source "${config.home.homeDirectory}"/dotfiles/functions.bash
+      '';
+      # profileExtra
+    };
   };
 }

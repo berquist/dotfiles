@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 with pkgs;
 let
@@ -24,64 +24,57 @@ in {
 
   # environment.sessionVariables.NIXOS_OZONE_WL = 1;
 
-  home.packages = [
-    act
-    alacritty
-    aspell
-    aspellDicts.en
-    autoconf
-    # babashka
-    cask
-    # clj-kondo
-    # clojure
-    # clojure-lsp
-    delta
-    direnv
-    # discord-canary
-    duf
-    exercism
-    # fenix.stable.toolchain
-    gh
-    google-chrome
-    htop
-    imagemagick
-    inkscape
-    # jabref
-    # leiningen
-    neofetch
-    nix-linter
-    onefetch
-    pinentry-emacs
-    plexamp
-    python-with-my-packages
-    # qchem.dalton
-    # qchem.nwchem
-    signal-desktop
-    slack
-    speedtest-cli
-    spotify
-    subversion
-    texlive.combined.scheme-full
-    wakatime
-    tmux
-    valgrind
-    wget
-    yamllint
-    zoom-us
-  ];
+  home = {
+    packages = [
+      act
+      alacritty
+      aspell
+      aspellDicts.en
+      autoconf
+      # babashka
+      cask
+      # clj-kondo
+      # clojure
+      # clojure-lsp
+      delta
+      # discord-canary
+      exercism
+      # fenix.stable.toolchain
+      gh
+      google-chrome
+      imagemagick
+      inkscape
+      # jabref
+      # leiningen
+      neofetch
+      nix-linter
+      onefetch
+      pinentry-emacs
+      plexamp
+      python-with-my-packages
+      # qchem.dalton
+      # qchem.nwchem
+      signal-desktop
+      slack
+      speedtest-cli
+      spotify
+      subversion
+      texlive.combined.scheme-full
+      wakatime
+      valgrind
+      yamllint
+      zoom-us
+    ];
+    sessionVariables = {
+      PRE_COMMIT_HOME = "${config.home.homeDirectory}/.cache/pre-commit";
+      SPACK_ROOT = "${config.home.homeDirectory}/repositories/spack";
+      VAGRANT_HOME = "${config.home.homeDirectory}/.vagrant.d";      
+    };
+  };
 
   programs = {
-    bash = {
-      enable = true;
-      initExtra = ''
-source ~/dotfiles/interactive_exports.bash
-source ~/dotfiles/aliases.bash
-source ~/dotfiles/functions.bash
-'';
-    };
-    vscode = {
-      enable = true;
-    };
+    bash.enable = true;
+    vscode.enable = true;
   };
 
   services = {
