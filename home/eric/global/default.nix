@@ -151,6 +151,16 @@ with pkgs;
       };
     };
     bash = {
+      bashrcExtra = ''
+        source ${config.home.homeDirectory}/env/spackenv
+
+        [[ -d "${config.home.sessionVariables.PYENV_ROOT}/bin" ]] && export PATH="${config.home.sessionVariables.PYENV_ROOT}/bin:PATH"
+        if command -v pyenv >/dev/null 2>&1; then
+            eval "$(pyenv init --path)"
+            eval "$(pyenv init -)"
+        fi
+        if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
+      '';
       historyFile = "${config.home.homeDirectory}/.bash_eternal_history";
       # Nix can't use the unlimited trick?
       historyFileSize = 1000000;
