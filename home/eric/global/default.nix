@@ -100,6 +100,9 @@ with pkgs;
       sessionVariables = {
         HISTTIMEFORMAT = "[%F %T] ";
         PROMPT_COMMAND = "history -a; $PROMPT_COMMAND";
+        # NixOS default:
+        # PS1 = "\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\]";
+        PS1 = "\w\n[\u@\h]\$ ";
       };
     };
     bat = {
@@ -132,6 +135,9 @@ with pkgs;
         source "${config.home.homeDirectory}"/dotfiles/functions.bash
       '';
       # profileExtra
+      sessionVariables = {
+        PS1 = "%d\n[%n@%m]%(!.#.$) ";
+      };
     };
   };
 }
