@@ -73,6 +73,7 @@ in {
   };
 
   programs = {
+    alacritty.enable = true;
     bash.enable = true;
     vscode.enable = true;
   };

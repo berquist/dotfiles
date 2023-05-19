@@ -89,6 +89,49 @@ with pkgs;
   };
 
   programs = {
+    alacritty = {
+      settings = {
+        # Wombat2
+        colors = {
+          primary = {
+            background = "#242424";
+            foreground = "#e5e1d8";
+          };
+          normal = {
+            black =   "#000000";
+            red =     "#b85149";
+            green =   "#4bc98a";
+            yellow =  "#cae682";
+            blue =    "#5b98c2";
+            magenta = "#663399";
+            cyan =    "#00b7eb";
+            white =   "#f6f3e8";
+          };
+          bright = {
+            black =   "#b4b4b4";
+            red =     "#e5786d";
+            green =   "#95e454";
+            yellow =  "#e7e784";
+            blue =    "#8ac6f2";
+            magenta = "#f6b3df";
+            cyan =    "#70cecc";
+            white =   "#ffffff";
+          };
+        };
+        font = {
+          normal.family = "Panic Sans";
+          bold.family = "Panic Sans";
+          italic.family = "Panic Sans";
+        };
+        key_bindings = [
+          {
+            key = "N";
+            mods = "Shift|Control";
+            action = "SpawnNewInstance";
+          }
+        ];
+      };
+    };
     bash = {
       historyFile = "${config.home.homeDirectory}/.bash_eternal_history";
       # Nix can't use the unlimited trick?

@@ -19,6 +19,7 @@
   };
 
   programs = {
+    alacritty.enable = true;
     zsh = {
       enable = true;
       envExtra = ''
