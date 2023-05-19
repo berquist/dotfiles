@@ -50,9 +50,6 @@ dotfiles:
   f_cuby4:
     src: cuby4
     dst: ~/.cuby4
-  f_dconf.nix:
-    src: config/nixpkgs/dconf.nix
-    dst: ~/.config/nixpkgs/dconf.nix
   f_direnvrc:
     src: config/direnv/direnvrc
     dst: ~/.config/direnv/direnvrc
@@ -81,9 +78,6 @@ dotfiles:
   f_gpg.conf:
     src: gnupg/gpg.conf
     dst: ~/.gnupg/gpg.conf
-  f_home.nix:
-    src: config/nixpkgs/home.nix
-    dst: ~/.config/nixpkgs/home.nix
   f_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
@@ -111,9 +105,6 @@ dotfiles:
   f_nitrogen_bg-saved.cfg:
     src: config/nitrogen/bg-saved.cfg
     dst: ~/.config/nitrogen/bg-saved.cfg
-  f_nixpkgs_overlays_discord.nix:
-    src: config/nixpkgs/overlays/discord.nix
-    dst: ~/.config/nixpkgs/overlays/discord.nix
   f_nvimrc:
     src: nvimrc
     dst: ~/.nvimrc
@@ -242,18 +233,15 @@ profiles:
     - f_astylerc
     - f_clang-format
     - f_condarc
-    - f_dconf.nix
     - f_gh_config.yml
     - f_gitconfig
     - f_gitignore
     # - f_gpg-agent.conf
     # - f_gpg.conf
-    - f_home.nix
     - f_ipython_config.py
     - f_ipython_kernel_config.py
     - f_mdlrc
     # - f_nanorc
-    - f_nixpkgs_overlays_discord.nix
     # - f_sbclrc
     - f_tmux.conf
     - f_user.json

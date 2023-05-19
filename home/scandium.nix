@@ -17,7 +17,7 @@ let
   ];
   python-with-my-packages = python39.withPackages my-python-packages;
 in {
-  imports = [ ./dconf.nix ];
+  # imports = [ ./dconf.nix ];
 
   home = {
     homeDirectory = "/home/eric";

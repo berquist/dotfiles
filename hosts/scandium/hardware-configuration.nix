@@ -28,4 +28,6 @@
     ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  nixpkgs.hostPlatform.system = "x86_64-linux";
 }

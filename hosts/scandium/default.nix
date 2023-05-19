@@ -1,19 +1,25 @@
-{ pkgs, ... }:
-
-{
+{ inputs, lib, config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
     # ./cachix.nix
   ];
 
   nix = {
-    extraOptions = ''
-     keep-outputs = true
-     keep-derivations = true
-     experimental-features = nix-command flakes
-    '';
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+
+    # extraOptions = ''
+    #  keep-outputs = true
+    #  keep-derivations = true
+    # '';
     settings = {
       cores = 4;
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
     };
   };
 
@@ -62,12 +68,8 @@
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      (import (builtins.fetchGit {
-        url = "https://github.com/nix-community/emacs-overlay.git";
-        ref = "master";
-        rev = "3d5e5cfa91ed10d39e0504387242750996e8b027";
-      }))
-      (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
+      inputs.emacs-overlay.overlays.emacs
+      inputs.fenix.overlays.default
     ];
   };
 
@@ -103,7 +105,7 @@
   services = {
     emacs = {
       enable = true;
-      package = pkgs.emacsGitNativeComp;
+      package = pkgs.emacsGit;
     };
     openssh = {
       enable = true;
