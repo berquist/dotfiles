@@ -63,7 +63,7 @@ with pkgs;
       gfr = "git fetch --all; git rebase upstream/master";
       kubectl = "minikube kubectl --";
       ls = "exa";
-      l = "pwd; ls -Fl";
+      l = "pwd; ${ls} -Fl";
       la = "${l} -a";
       lt = "${l} -s modified -r";
       lh = "${lt} | head";
