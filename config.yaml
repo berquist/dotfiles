@@ -160,113 +160,53 @@ profiles:
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
-      pre_commit_home: /home/eric/data/.pre-commit
-      spack_root: /home/eric/data/spack
-      vagrant_home: /home/eric/data/.vagrant.d
     dotfiles:
-    - d_bat
     # - d_emacs.d
     - d_idea
-    - d_tmux
-    - f_alacritty.yml
     - f_ansible.cfg
-    - f_aspell.en.prepl
-    - f_aspell.en.pws
-    - f_astylerc
-    - f_bash_profile
-    - f_bashrc
-    - f_clang-format
-    - f_clang-format
     - f_clisprc.lisp
     - f_condarc
     - f_cuby4
     - f_direnvrc
     - f_emacsclient.desktop
-    - f_gdbinit
-    - f_gh_config.yml
-    - f_gitconfig
-    - f_gitignore
     - f_gpg-agent.conf
     - f_gpg.conf
     - f_ipython_config.py
     - f_ipython_kernel_config.py
-    - f_markdownlint.jsonc
-    - f_mdlrc
     - f_nanorc
     - f_nvimrc
     - f_override.conf
     - f_paru.conf
-    - f_pdbrc
     - f_sbclrc
     - f_startup.jl
     - f_terminalrc
     - f_terminalrc.osmium
-    - f_tmux.conf
-    - f_user.json
-    - f_vmdrc
     - f_xinitrc
-    - f_zprofile
-    - f_zshenv
-    - f_zshrc
   s1096537:
     dotfiles:
     - d_bat
     - d_emacs.d
-    - d_tmux
     - f_alacritty.yml
     - f_ansible.cfg
     - f_tmux.conf
   scandium:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
-      pre_commit_home: /home/eric/.cache/pre-commit
-      spack_root: /home/eric/repositories/spack
-      vagrant_home: /home/eric/.vagrant.d
     dotfiles:
-    - d_bat
     - d_emacs.d
-    - d_tmux
-    - f_alacritty.yml
     - f_ansible.cfg
-    - f_aspell.en.prepl
-    - f_aspell.en.pws
-    - f_astylerc
-    - f_clang-format
     - f_condarc
-    - f_gh_config.yml
-    - f_gitconfig
-    - f_gitignore
     # - f_gpg-agent.conf
     # - f_gpg.conf
     - f_ipython_config.py
     - f_ipython_kernel_config.py
-    - f_mdlrc
     # - f_nanorc
     # - f_sbclrc
-    - f_tmux.conf
-    - f_user.json
     # - f_xdefaults
-    - f_zprofile
-    - f_zshenv
-    - f_zshrc
   sodium.local:
     variables:
       conda_pkg_dir: /Users/eric/.conda_pkgs
-      pre_commit_home: /Users/eric/.cache/pre-commit
-      spack_root: /Users/eric/repositories/spack
-      vagrant_home: /Users/eric/.vagrant.d
     dotfiles:
-    - d_bat
     - d_emacs.d
-    - d_tmux
-    - f_aspell.en.prepl
-    - f_aspell.en.pws
     - f_condarc
-    - f_gitconfig
-    - f_gitignore
-    - f_mdlrc
     - f_nanorc
-    - f_tmux.conf
-    - f_zprofile
-    - f_zshenv
-    - f_zshrc
