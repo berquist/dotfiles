@@ -2,7 +2,7 @@
 
 # Ensure the pager is used for certain Subversion operations.
 function svn() {
-    if [[ "$1" = "diff" ]] || [[ "$1" = "log" ]] || [[ "$1" = "blame" ]]
+    if [[ "$1" == "diff" ]] || [[ "$1" == "log" ]] || [[ "$1" == "blame" ]]
     then
         command svn "$@" | less
     else
