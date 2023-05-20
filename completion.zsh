@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-zmodload zsh/complist
+#zmodload zsh/complist
 
 WORDCHARS=''
 
