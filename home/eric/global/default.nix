@@ -35,11 +35,12 @@ with pkgs;
       ".markdownlint.jsonc".source = ../../../dotfiles/markdownlint.jsonc;
       ".mdlrc".source = ../../../dotfiles/mdlrc;
       ".pdbrc".source = ../../../dotfiles/pdbrc;
+      ".tmux.conf".source = ../../../dotfiles/tmux.conf;
+      ".tmux/tmux.theme.conf".source = ../../../dotfiles/tmux/tmux.theme.conf;
       ".vmdrc".source = ../../../dotfiles/vmdrc;
       ".zprofile".source = ../../../dotfiles/zprofile;
       ".zshenv".source = ../../../dotfiles/zshenv;
       ".zshrc".source = ../../../dotfiles/zshrc;
-      # ".tmux.conf".source = ../../../dotfiles/tmux.conf;
     };
   };
 
@@ -54,18 +55,6 @@ with pkgs;
     direnv.enable = true;
     home-manager.enable = true;
     less.enable = true;
-
-    tmux = {
-      aggressiveResize = true;
-      baseIndex = 1;
-      enable = true;
-      escapeTime = 0;
-      extraConfig = lib.readFile ./tmux/main.conf
-                    + lib.readFile ./tmux/theme_berquist.conf;
-      historyLimit = 100000;
-      keyMode = "emacs";
-      prefix = "`";
-      terminal = "screen-256color";
-    };
+    tmux.enable = true;
   };
 }
