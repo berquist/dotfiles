@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+if [ -n "$__HM_INT_VARS_SOURCED" ]; then return; fi
+export __HM_INT_VARS_SOURCED=1
+
 # https://askubuntu.com/a/866376
 export EDITOR="emacsclient -t -a=\"\""
 

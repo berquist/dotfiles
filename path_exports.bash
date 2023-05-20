@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+if [ -n "$__HM_SESS_VARS_SOURCED" ]; then return; fi
+export __HM_SESS_VARS_SOURCED=1
+
 export EXERCISM_WORKSPACE="${HOME}"/development/exercism
 export LSP_USE_PLISTS=true
 # This messes with nvm.
@@ -7,14 +10,19 @@ export LSP_USE_PLISTS=true
 export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
 export RIPGREP_CONFIG_PATH="${HOME}"/dotfiles/ripgreprc
 
-# TODO replace this with a function
-[[ -d "${HOME}"/personal_scripts ]] && export PATH="${HOME}"/personal_scripts:"${PATH}"
-[[ -d "${HOME}"/opt/bin ]] && export PATH="${HOME}"/opt/bin:"${PATH}"
-[[ -d "${HOME}"/.local/bin ]] && export PATH="${HOME}"/.local/bin:"${PATH}"
-[[ -d "${HOME}"/repositories/rmsd/rmsd ]] && export PATH="${HOME}"/repositories/rmsd/rmsd:"${PATH}"
-[[ -d "${HOME}"/opt/bin/scripts ]] && export PATH="${HOME}"/opt/bin/scripts:"${PATH}"
-# [[ -d "${HOME}"/.node_modules/bin ]] && export PATH="${HOME}"/.node_modules/bin:"${PATH}"
-[[ -d "${HOME}"/go/bin ]] && export PATH="${HOME}"/go/bin:"${PATH}"
+source "${HOME}"/dotfiles/path.sh
+prepend_to_path "${HOME}"/personal_scripts
+prepend_to_path "${HOME}"/opt/bin
+prepend_to_path "${HOME}"/.local/bin
+prepend_to_path "${HOME}"/repositories/rmsd/rmsd
+prepend_to_path "${HOME}"/opt/bin/scripts
+# prepend_to_path "${HOME}"/.node_modules/bin
+prepend_to_path "${HOME}"/go/bin
+# prepend_to_path "${HOME}/.poetry/bin"
+prepend_to_path "${HOME}/.pyenv/bin"
+prepend_to_path "${HOME}/.cargo/bin"
+prepend_to_path "${HOME}/.nimble/bin"
+prepend_to_path "${HOME}/.juliaup/bin"
 
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
