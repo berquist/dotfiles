@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+shopt -s histappend
+
 # Eternal bash history. https://stackoverflow.com/a/19533853/
 # ---------------------
 # Undocumented feature which sets the size to "unlimited".

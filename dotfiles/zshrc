@@ -1,17 +1,34 @@
 #!/usr/bin/env zsh
 
+# autoload -U compinit && compinit
+
 bindkey -e
 
+# Changing Directories
 unsetopt auto_cd
 setopt auto_pushd
-setopt beep
+
+# Expansion and Globbing
 unsetopt extended_glob
-setopt interactive_comments
-setopt long_list_jobs
-setopt multios  # TODO I don't understand this
 setopt nomatch
-unsetopt notify
+
+# Input/Output
+setopt interactive_comments
+
+# Job Control
+unsetopt bg_nice
+setopt long_list_jobs
+
+# Prompting
 setopt prompt_subst
+
+# Zle
+setopt beep
+setopt emacs
+
+# ???
+setopt multios  # TODO I don't understand this
+unsetopt notify
 setopt pushd_ignore_dups
 
 source "${HOME}"/dotfiles/berquist.zsh-theme
@@ -19,22 +36,24 @@ source "${HOME}"/dotfiles/history.zsh
 source "${HOME}"/dotfiles/interactive_exports.bash
 source "${HOME}"/dotfiles/aliases.bash
 source "${HOME}"/dotfiles/functions.bash
-# source "${HOME}"/dotfiles/slurm.bash
+source "${HOME}"/dotfiles/slurm.bash
 
 if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
     source $(command -v virtualenvwrapper_lazy.sh)
 fi
 
-{%@@ if profile == "osmium" @@%}
-# re-export
-export QCPROGS="${HOME}/data/opt/apps"
-export apps="${QCPROGS}"
 
-source /usr/share/lmod/lmod/init/zsh
-module use "${HOME}/modules/osmium"
-{%@@ elif profile == "sodium.local" @@%}
-source "${HOME}"/dotfiles/aliases_macos.bash
-{%@@ endif @@%}
+hostname=$(hostname)
+
+if [[ $hostname == "osmium" ]]; then
+    export QCPROGS="${HOME}/data/opt/apps"
+    export apps="${QCPROGS}"
+
+    source /usr/share/lmod/lmod/init/zsh
+    module use "${HOME}/modules/osmium"
+elif [[ $hostname == "sodium" ]]; then
+    source "${HOME}"/dotfiles/aliases_macos.bash
+fi
 
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
@@ -42,5 +61,3 @@ fi
 
 source "${HOME}"/dotfiles/termsupport.zsh
 source "${HOME}"/dotfiles/completion.zsh
-
-export VAGRANT_HOME="{{@@ vagrant_home @@}}"

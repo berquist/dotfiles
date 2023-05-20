@@ -1,47 +1,34 @@
 #!/usr/bin/env zsh
 
 source "${HOME}"/dotfiles/path_exports.bash
-export PRE_COMMIT_HOME="{{@@ pre_commit_home @@}}"
 
-# `wakatime-cli` is the outdated Python package, `wakatime` is the current Go
-# package.
-{%@@ if profile == "sodium.local" @@%}
-# ...unless you're using Homebrew, where they've renamed the command back to
-# the old one.
-export ZSH_WAKATIME_BIN=/usr/local/bin/wakatime-cli
-{%@@ else @@%}
-export ZSH_WAKATIME_BIN=$(command -v wakatime)
-{%@@ endif @@%}
-
-# Put this early on, so that additions to $PATH take less precedence.
-{%@@ if profile == "osmium" @@%}
 # export ANACONDA_HOME="/home/eric/.conda"
 # TODO blergh
 export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.7.12"
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
-export WORKON_HOME=$HOME/data/virtualenvs
-{%@@ endif @@%}
+export WORKON_HOME="${HOME}"/data/virtualenvs
 
 # All this stuff is here and not in .zshrc as is usually recommended so that
 # *all* shells have access, not just interactive ones.
 
-# [[ -d "${HOME}/.poetry/bin" ]] && export PATH="${HOME}/.poetry/bin:${PATH}"
-[[ -d "${HOME}/.pyenv/bin" ]] && export PATH="${HOME}/.pyenv/bin:${PATH}"
 # These are...slow.
 if command -v pyenv >/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 if command -v pyenv-virtualenv-init >/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
-# Rust
-[[ -d "${HOME}/.cargo/bin" ]] && export PATH="${HOME}/.cargo/bin:${PATH}"
+hostname=$(hostname)
 
-# Nim
-[[ -d "${HOME}/.nimble/bin" ]] && export PATH="${HOME}/.nimble/bin:${PATH}"
+if [[ $hostname == "osmium" ]]; then
+    export PRE_COMMIT_HOME="${HOME}"/data/.pre-commit
+    export SPACK_ROOT="${HOME}"/data/spack
+elif [[ $hostname == "scandium" ]]; then
+    export PRE_COMMIT_HOME="${HOME}"/.cache/pre-commit
+    export SPACK_ROOT="${HOME}"/repositories/spack
+elif [[ $hostname == "sodium" ]]; then
+    export PRE_COMMIT_HOME="${HOME}"/.cache/pre-commit
+    export SPACK_ROOT="${HOME}"/repositories/spack
+fi
 
-# Spack
-{%@@ if profile == "osmium" @@%}
-. "${HOME}"/data/spack/share/spack/setup-env.sh
-{%@@ endif @@%}
+[[ -d "${SPACK_ROOT}" ]] && source "${SPACK_ROOT}"/share/spack/setup-env.sh

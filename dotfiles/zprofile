@@ -4,7 +4,13 @@ if [[ "$TERM" != "" ]]; then
     stty -ixon
 fi
 
-{%@@ if profile == "sodium.local" @@%}
-[[ "$TERM" == "alacritty" ]] && export TERM="xterm-256color"
-[[ -f /usr/local/bin/brew ]] && eval "$(/usr/local/bin/brew shellenv)"
-{%@@ endif @@%}
+hostname=$(hostname)
+
+if [[ $hostname == "osmium" ]]; then
+    export VAGRANT_HOME="${HOME}"/data/.vagrant.d
+elif [[ $hostname == "scandium" ]]; then
+    export VAGRANT_HOME="${HOME}"/.vagrant.d
+elif [[ $hostname == "sodium" ]]; then
+    export VAGRANT_HOME="${HOME}"/.vagrant.d
+    [[ -f /usr/local/bin/brew ]] && eval "$(/usr/local/bin/brew shellenv)"
+fi

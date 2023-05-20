@@ -221,7 +221,7 @@
 ## For all details, see 'man nanorc', section SYNTAX HIGHLIGHTING.
 
 ## To include all existing syntax definitions, you can do:
-{%@@ if profile in ["osmium", "pop-os"] @@%}
+{%@@ if profile == "osmium" @@%}
 include "/usr/share/nano/*.nanorc"
 {%@@ elif profile == "sodium.local" @@%}
 include "/usr/local/share/nano/*.nanorc"
