@@ -55,6 +55,5 @@ with pkgs;
     direnv.enable = true;
     home-manager.enable = true;
     less.enable = true;
-    tmux.enable = true;
   };
 }
