@@ -12,12 +12,6 @@ export WORKON_HOME="${HOME}"/data/virtualenvs
 # All this stuff is here and not in .zshrc as is usually recommended so that
 # *all* shells have access, not just interactive ones.
 
-# These are...slow.
-if command -v pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-if command -v pyenv-virtualenv-init >/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
-
 hostname=$(hostname)
 
 if [[ $hostname == "osmium" ]]; then

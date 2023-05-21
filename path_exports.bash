@@ -20,6 +20,7 @@ prepend_to_path "${HOME}"/opt/bin/scripts
 prepend_to_path "${HOME}"/go/bin
 # prepend_to_path "${HOME}/.poetry/bin"
 prepend_to_path "${HOME}/.pyenv/bin"
+prepend_to_path "${PYENV_ROOT}/bin"
 prepend_to_path "${HOME}/.cargo/bin"
 prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
@@ -30,3 +31,6 @@ export scratch="${SCRATCH}"
 # TODO still needed?
 export QCPROGS="${HOME}"/opt/apps
 export apps="${QCPROGS}"
+
+if command -v pyenv >/dev/null 2>&1; then eval "$(pyenv init -)"; fi
+if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
