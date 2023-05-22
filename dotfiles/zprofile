@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+if [ -n "${__SOURCED_ZPROFILE}" ]; then return; fi
+export __SOURCED_ZPROFILE=1
+
 if [[ "$TERM" != "" ]]; then
     stty -ixon
 fi

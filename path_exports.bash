@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -n "$__HM_SESS_VARS_SOURCED" ]; then return; fi
-export __HM_SESS_VARS_SOURCED=1
+if [ -n "$__SOURCED_PATH_EXPORTS" ]; then return; fi
+export __SOURCED_PATH_EXPORTS=1
 
 export EXERCISM_WORKSPACE="${HOME}"/development/exercism
 export LSP_USE_PLISTS=true
@@ -28,7 +28,6 @@ prepend_to_path "${HOME}/.juliaup/bin"
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
 
-# TODO still needed?
 export QCPROGS="${HOME}"/opt/apps
 export apps="${QCPROGS}"
 

@@ -16,5 +16,9 @@ source "${HOME}"/dotfiles/history.bash
 source "${HOME}"/dotfiles/interactive_exports.bash
 source "${HOME}"/dotfiles/functions.bash
 
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook bash)"
+fi
+
 GPG_TTY="$(tty)"
 export GPG_TTY
