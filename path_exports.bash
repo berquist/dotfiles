@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -n "$__SOURCED_PATH_EXPORTS" ]; then return; fi
+echo "running path_exports"
 export __SOURCED_PATH_EXPORTS=1
 
 export EXERCISM_WORKSPACE="${HOME}"/development/exercism

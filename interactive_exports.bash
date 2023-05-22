@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -n "$__SOURCED_INTERACTIVE_EXPORTS" ]; then return; fi
+echo "running interactive_exports"
 export __SOURCED_INTERACTIVE_EXPORTS=1
 
 # https://askubuntu.com/a/866376
