@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+echo "running zshrc"
+
 # autoload -U compinit && compinit
 
 bindkey -e
@@ -38,17 +40,9 @@ source "${HOME}"/dotfiles/aliases.bash
 source "${HOME}"/dotfiles/functions.bash
 source "${HOME}"/dotfiles/slurm.bash
 
-if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
-    source $(command -v virtualenvwrapper_lazy.sh)
-fi
-
-
 hostname=$(hostname)
 
 if [[ $hostname == "osmium" ]]; then
-    export QCPROGS="${HOME}/data/opt/apps"
-    export apps="${QCPROGS}"
-
     source /usr/share/lmod/lmod/init/zsh
     module use "${HOME}/modules/osmium"
 elif [[ $hostname == "sodium" ]]; then
@@ -58,6 +52,10 @@ fi
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
+
+# TODO at least the virtualenv plugin isn't persisting inside of tmux, where
+# path_exports isn't being reexecuted (rightly so)
+source "${HOME}"/dotfiles/pyenv.bash
 
 source "${HOME}"/dotfiles/termsupport.zsh
 source "${HOME}"/dotfiles/completion.zsh

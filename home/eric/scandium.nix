@@ -15,7 +15,7 @@ let
     requests
     ruamel-yaml
   ];
-  python-with-my-packages = python39.withPackages my-python-packages;
+  python-with-my-packages = python310.withPackages my-python-packages;
 in {
   imports = [
     ./global
@@ -65,17 +65,9 @@ in {
       yamllint
       zoom-us
     ];
-    sessionVariables = {
-      PRE_COMMIT_HOME = "${config.home.homeDirectory}/.cache/pre-commit";
-      PYENV_ROOT = "${config.home.homeDirectory}/.pyenv";
-      SPACK_ROOT = "${config.home.homeDirectory}/repositories/spack";
-      VAGRANT_HOME = "${config.home.homeDirectory}/.vagrant.d";
-    };
   };
 
   programs = {
-    alacritty.enable = true;
-    bash.enable = true;
     vscode.enable = true;
   };
 

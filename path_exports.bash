@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-if [ -n "$__HM_SESS_VARS_SOURCED" ]; then return; fi
-export __HM_SESS_VARS_SOURCED=1
+if [ -n "$__SOURCED_PATH_EXPORTS" ]; then return; fi
+echo "running path_exports"
+export __SOURCED_PATH_EXPORTS=1
 
 export EXERCISM_WORKSPACE="${HOME}"/development/exercism
 export LSP_USE_PLISTS=true
@@ -20,13 +21,35 @@ prepend_to_path "${HOME}"/opt/bin/scripts
 prepend_to_path "${HOME}"/go/bin
 # prepend_to_path "${HOME}/.poetry/bin"
 prepend_to_path "${HOME}/.pyenv/bin"
+prepend_to_path "${PYENV_ROOT}/bin"
 prepend_to_path "${HOME}/.cargo/bin"
 prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
 
+source "${HOME}"/dotfiles/pyenv.bash
+
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
 
-# TODO still needed?
 export QCPROGS="${HOME}"/opt/apps
 export apps="${QCPROGS}"
+
+hostname=$(hostname)
+
+if [[ $hostname == "osmium" ]]; then
+    # export ANACONDA_HOME="/home/eric/.conda"
+    # TODO blergh
+    export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.7.12"
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+    export WORKON_HOME="${HOME}"/data/virtualenvs
+
+    export PRE_COMMIT_HOME="${HOME}"/data/.pre-commit
+    export SPACK_ROOT="${HOME}"/data/spack
+    export VAGRANT_HOME="${HOME}"/data/.vagrant.d
+else
+    export PRE_COMMIT_HOME="${HOME}"/.cache/pre-commit
+    export SPACK_ROOT="${HOME}"/repositories/spack
+    export VAGRANT_HOME="${HOME}"/.vagrant.d
+fi
+
+[[ -d "${SPACK_ROOT}" ]] && source "${SPACK_ROOT}"/share/spack/setup-env.sh

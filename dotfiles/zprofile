@@ -1,16 +1,15 @@
 #!/usr/bin/env zsh
 
+if [ -n "${__SOURCED_ZPROFILE}" ]; then return; fi
+echo "running zprofile"
+export __SOURCED_ZPROFILE=1
+
 if [[ "$TERM" != "" ]]; then
     stty -ixon
 fi
 
 hostname=$(hostname)
 
-if [[ $hostname == "osmium" ]]; then
-    export VAGRANT_HOME="${HOME}"/data/.vagrant.d
-elif [[ $hostname == "scandium" ]]; then
-    export VAGRANT_HOME="${HOME}"/.vagrant.d
-elif [[ $hostname == "sodium" ]]; then
-    export VAGRANT_HOME="${HOME}"/.vagrant.d
+if [[ $hostname == "sodium" ]]; then
     [[ -f /usr/local/bin/brew ]] && eval "$(/usr/local/bin/brew shellenv)"
 fi
