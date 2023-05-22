@@ -38,7 +38,19 @@ if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtual
 hostname=$(hostname)
 
 if [[ $hostname == "osmium" ]]; then
+    # export ANACONDA_HOME="/home/eric/.conda"
+    # TODO blergh
+    export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.7.12"
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+    export WORKON_HOME="${HOME}"/data/virtualenvs
+
+    export PRE_COMMIT_HOME="${HOME}"/data/.pre-commit
+    export SPACK_ROOT="${HOME}"/data/spack
     export VAGRANT_HOME="${HOME}"/data/.vagrant.d
 else
+    export PRE_COMMIT_HOME="${HOME}"/.cache/pre-commit
+    export SPACK_ROOT="${HOME}"/repositories/spack
     export VAGRANT_HOME="${HOME}"/.vagrant.d
 fi
+
+[[ -d "${SPACK_ROOT}" ]] && source "${SPACK_ROOT}"/share/spack/setup-env.sh
