@@ -10,11 +10,6 @@ fi
 
 hostname=$(hostname)
 
-if [[ $hostname == "osmium" ]]; then
-    export VAGRANT_HOME="${HOME}"/data/.vagrant.d
-else
-    export VAGRANT_HOME="${HOME}"/.vagrant.d
-fi
 if [[ $hostname == "sodium" ]]; then
     [[ -f /usr/local/bin/brew ]] && eval "$(/usr/local/bin/brew shellenv)"
 fi
