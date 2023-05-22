@@ -48,6 +48,10 @@ if [[ $hostname == "osmium" ]]; then
     module use "${HOME}/modules/osmium"
 elif [[ $uname == "Darwin" ]]; then
     source "${HOME}"/dotfiles/aliases_macos.bash
+    # Only interactive for now.
+    source "${HOME}"/dotfiles/path.sh
+    prepend_to_path /opt/homebrew/opt/ruby/bin
+    prepend_to_path "${HOME}/.gem/ruby/3.2.0/bin"
 fi
 
 if command -v direnv >/dev/null 2>&1; then
@@ -57,6 +61,6 @@ fi
 # TODO at least the virtualenv plugin isn't persisting inside of tmux, where
 # path_exports isn't being reexecuted (rightly so)
 source "${HOME}"/dotfiles/pyenv.bash
-
+source "${HOME}"/dotfiles/termsupport_all.bash
 source "${HOME}"/dotfiles/termsupport.zsh
 source "${HOME}"/dotfiles/completion.zsh
