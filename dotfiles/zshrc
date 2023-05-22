@@ -55,8 +55,7 @@ fi
 
 # TODO at least the virtualenv plugin isn't persisting inside of tmux, where
 # path_exports isn't being reexecuted (rightly so)
-# if command -v pyenv >/dev/null 2>&1; then eval "$(pyenv init -)"; fi
-if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
+source "${HOME}"/dotfiles/pyenv.bash
 
 source "${HOME}"/dotfiles/termsupport.zsh
 source "${HOME}"/dotfiles/completion.zsh
