@@ -60,7 +60,7 @@
     openssh.authorizedKeys.keys = [
       # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
     ];
-    shell = pkgs.bash;
+    shell = pkgs.zsh;
   };
 
   # valid for 60 minutes instead of the default 5
