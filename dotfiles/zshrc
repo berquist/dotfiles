@@ -41,11 +41,12 @@ source "${HOME}"/dotfiles/functions.bash
 source "${HOME}"/dotfiles/slurm.bash
 
 hostname=$(hostname)
+uname=$(uname)
 
 if [[ $hostname == "osmium" ]]; then
     source /usr/share/lmod/lmod/init/zsh
     module use "${HOME}/modules/osmium"
-elif [[ $hostname == "sodium" ]]; then
+elif [[ $uname == "Darwin" ]]; then
     source "${HOME}"/dotfiles/aliases_macos.bash
 fi
 

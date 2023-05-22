@@ -188,7 +188,13 @@ profiles:
     - d_emacs.d
     - f_alacritty.yml
     - f_ansible.cfg
+    # - f_condarc
+    - f_direnvrc
+    - f_markdownlint.jsonc
     - f_tmux.conf
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
   scandium:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
