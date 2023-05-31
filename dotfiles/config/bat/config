@@ -10,5 +10,6 @@
 --map-syntax='*.jsonld:JSON'
 --map-syntax='*.qcjson:JSON'
 --map-syntax='*.qcschema:JSON'
---map-syntax='flake.lock:JSON'
 --map-syntax='*Jenkinsfile*:Groovy'
+--map-syntax='.envrc*:DotENV'
+--map-syntax='flake.lock:JSON'
