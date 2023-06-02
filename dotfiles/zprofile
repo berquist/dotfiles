@@ -13,5 +13,3 @@ uname=$(uname)
 if [[ $uname == "Darwin" ]]; then
     [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-
-[[ -s "${HOME}/.config/proxy.bash" ]] && source "${HOME}/.config/proxy.bash"

@@ -64,3 +64,5 @@ source "${HOME}"/dotfiles/pyenv.bash
 source "${HOME}"/dotfiles/termsupport_all.bash
 source "${HOME}"/dotfiles/termsupport.zsh
 source "${HOME}"/dotfiles/completion.zsh
+
+[[ -s "${HOME}/.config/proxy.bash" ]] && source "${HOME}/.config/proxy.bash"
