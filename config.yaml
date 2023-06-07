@@ -188,6 +188,8 @@ profiles:
     - d_emacs.d
     - f_alacritty.yml
     - f_ansible.cfg
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
     # - f_condarc
     - f_direnvrc
     - f_markdownlint.jsonc
