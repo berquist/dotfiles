@@ -13,3 +13,4 @@
 --map-syntax='*Jenkinsfile*:Groovy'
 --map-syntax='.envrc*:DotENV'
 --map-syntax='flake.lock:JSON'
+--map-syntax='allowed_signers:Authorized Keys'
