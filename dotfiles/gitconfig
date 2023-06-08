@@ -12,7 +12,10 @@
 [user]
 	name = Eric Berquist
 	email = eric.berquist@gmail.com
+	# GPG
 	signingkey = AAD43B70A5049675CFC8B101BAFD205D5FA2B329
+	# SSH
+	# signingey = /home/eric/.ssh/id_rsa
 
 [core]
 	# https://askubuntu.com/a/866376
@@ -49,7 +52,7 @@
 	unmerged = yellow
 
 [commit]
-	gpgsign = false
+	gpgsign = true
 
 [diff]
 	colorMoved = default
@@ -73,6 +76,12 @@
 [github]
 	user = berquist
 
+[gpg]
+	format = openpgp
+
+[gpg "ssh"]
+	allowedSignersFile = /home/eric/.config/git/allowed_signers
+
 [log]
 	date = "format:%F %r (%a, %d %b %Y %T %z)"
 
@@ -90,6 +99,9 @@
 	# This is comparable to `--pretty=oneline`, but includes the extra
 	# (relative) date and author information at the end.
 	olra = %C(auto)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr)%C(reset) %C(blue)<%an>%C(reset)
+
+[tag]
+	gpgsign = true
 
 [alias]
 	# git git git git git git git git git ...
