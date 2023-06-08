@@ -13,9 +13,9 @@
 	name = Eric Berquist
 	email = eric.berquist@gmail.com
 	# GPG
-	signingkey = AAD43B70A5049675CFC8B101BAFD205D5FA2B329
+	signingKey = AAD43B70A5049675CFC8B101BAFD205D5FA2B329
 	# SSH
-	# signingey = /home/eric/.ssh/id_rsa
+	# signingKey = /home/eric/.ssh/id_rsa
 
 [core]
 	# https://askubuntu.com/a/866376
