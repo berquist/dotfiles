@@ -1473,10 +1473,12 @@ TODO disable .m files from loading as Objective-C
   (setq jq-format-extra-args '("--indent" "4")))
 #+END_SRC
 
-* Dhall
+* Better configuration languages
 
 #+begin_src emacs-lisp
+(use-package cue-mode)
 (use-package dhall-mode)
+(use-package nickel-mode)
 #+end_src
 
 * HTML
