@@ -1,9 +1,11 @@
 # -*- mode: gitignore -*-
 /*~
+/.cask/
+/.lsp-session*
+/.org-id-locations
 /ac-comphist.dat
 /amx-items
 /anaconda-mode/
-/.cask/
 /config.el
 /config.html
 /custom.el
@@ -11,19 +13,20 @@
 /ede-projects.el
 /eln-cache/
 /elpa/
+/elpaca/builds/
+/elpaca/cache/
+/elpaca/repos/
 /elpy/
 /eshell
 /ido.last
-/.lsp-session*
 /mspyls/
-/.org-id-locations
 /projectile-bookmarks.eld
 /projectile.cache
 /recentf
 /semanticdb
 /srecode-map.el
-/straight/build/
 /straight/build-cache.el
+/straight/build/
 /straight/modified/
 /straight/repos/
 /tramp
