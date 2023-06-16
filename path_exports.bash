@@ -42,6 +42,8 @@ if [[ $hostname == "osmium" ]]; then
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
     export WORKON_HOME="${HOME}"/data/virtualenvs
 
+    export apps="${HOME}"/data/opt/apps
+
     export PRE_COMMIT_HOME="${HOME}"/data/.pre-commit
     export SPACK_ROOT="${HOME}"/data/spack
     export VAGRANT_HOME="${HOME}"/data/.vagrant.d
