@@ -31,8 +31,7 @@ source "${HOME}"/dotfiles/pyenv.bash
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
 
-export QCPROGS="${HOME}"/opt/apps
-export apps="${QCPROGS}"
+export apps="${HOME}"/opt/apps
 
 hostname=$(hostname)
 
