@@ -8,7 +8,6 @@ export EXERCISM_WORKSPACE="${HOME}"/development/exercism
 export LSP_USE_PLISTS=true
 # This messes with nvm.
 # export npm_config_prefix="${HOME}"/.node_modules
-export PIP_CONFIG_FILE="${HOME}"/dotfiles/pip.conf
 export RIPGREP_CONFIG_PATH="${HOME}"/dotfiles/ripgreprc
 
 source "${HOME}"/dotfiles/path.sh

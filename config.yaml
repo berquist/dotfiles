@@ -117,6 +117,9 @@ dotfiles:
   f_pdbrc:
     src: pdbrc
     dst: ~/.pdbrc
+  f_pip.conf:
+    src: config/pip/pip.conf
+    dst: ~/.config/pip/pip.conf
   f_rc:
     src: ssh/rc
     dst: ~/.ssh/rc
@@ -177,6 +180,7 @@ profiles:
     - f_nvimrc
     - f_override.conf
     - f_paru.conf
+    - f_pip.conf
     - f_sbclrc
     - f_startup.jl
     - f_terminalrc
@@ -209,6 +213,7 @@ profiles:
     - f_ipython_config.py
     - f_ipython_kernel_config.py
     # - f_nanorc
+    - f_pip.conf
     # - f_sbclrc
     # - f_xdefaults
   sodium.local:
@@ -218,3 +223,4 @@ profiles:
     - d_emacs.d
     - f_condarc
     - f_nanorc
+    - f_pip.conf
