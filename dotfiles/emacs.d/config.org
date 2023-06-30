@@ -5,52 +5,74 @@
 
 (setq load-prefer-newer t)
 
-(defvar elpaca-installer-version 0.4)
-(defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
-(defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
-(defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
-(defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                              :ref nil
-                              :files (:defaults (:exclude "extensions"))
-                              :build (:not elpaca--activate-package)))
-(let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
-       (build (expand-file-name "elpaca/" elpaca-builds-directory))
-       (order (cdr elpaca-order))
-       (default-directory repo))
-  (add-to-list 'load-path (if (file-exists-p build) build repo))
-  (unless (file-exists-p repo)
-    (make-directory repo t)
-    (when (< emacs-major-version 28) (require 'subr-x))
-    (condition-case-unless-debug err
-        (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                 ((zerop (call-process "git" nil buffer t "clone"
-                                       (plist-get order :repo) repo)))
-                 ((zerop (call-process "git" nil buffer t "checkout"
-                                       (or (plist-get order :ref) "--"))))
-                 (emacs (concat invocation-directory invocation-name))
-                 ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                       "--eval" "(byte-recompile-directory \".\" 0 'force)")))
-                 ((require 'elpaca))
-                 ((elpaca-generate-autoloads "elpaca" repo)))
-            (kill-buffer buffer)
-          (error "%s" (with-current-buffer buffer (buffer-string))))
-      ((error) (warn "%s" err) (delete-directory repo 'recursive))))
-  (unless (require 'elpaca-autoloads nil t)
-    (require 'elpaca)
-    (elpaca-generate-autoloads "elpaca" repo)
-    (load "./elpaca-autoloads")))
-(add-hook 'after-init-hook #'elpaca-process-queues)
-(elpaca `(,@elpaca-order))
+(setq ejb/package-manager :straight)
 
-;; Install use-package support
-(elpaca elpaca-use-package
-  ;; Enable :elpaca use-package keyword.
-  (elpaca-use-package-mode)
-  ;; Assume :elpaca t unless otherwise specified.
-  (setq elpaca-use-package-by-default t))
+(cond
+ ((eq ejb/package-manager :elpaca)
+  (defvar elpaca-installer-version 0.4)
+  (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
+  (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
+  (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
+  (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
+                                :ref nil
+                                :files (:defaults (:exclude "extensions"))
+                                :build (:not elpaca--activate-package)))
+  (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
+         (build (expand-file-name "elpaca/" elpaca-builds-directory))
+         (order (cdr elpaca-order))
+         (default-directory repo))
+    (add-to-list 'load-path (if (file-exists-p build) build repo))
+    (unless (file-exists-p repo)
+      (make-directory repo t)
+      (when (< emacs-major-version 28) (require 'subr-x))
+      (condition-case-unless-debug err
+          (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
+                   ((zerop (call-process "git" nil buffer t "clone"
+                                         (plist-get order :repo) repo)))
+                   ((zerop (call-process "git" nil buffer t "checkout"
+                                         (or (plist-get order :ref) "--"))))
+                   (emacs (concat invocation-directory invocation-name))
+                   ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+                                         "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+                   ((require 'elpaca))
+                   ((elpaca-generate-autoloads "elpaca" repo)))
+              (kill-buffer buffer)
+            (error "%s" (with-current-buffer buffer (buffer-string))))
+        ((error) (warn "%s" err) (delete-directory repo 'recursive))))
+    (unless (require 'elpaca-autoloads nil t)
+      (require 'elpaca)
+      (elpaca-generate-autoloads "elpaca" repo)
+      (load "./elpaca-autoloads")))
+  (add-hook 'after-init-hook #'elpaca-process-queues)
+  (elpaca `(,@elpaca-order))
 
-;; Block until current queue processed.
-(elpaca-wait)
+  ;; Install use-package support
+  (elpaca elpaca-use-package
+    ;; Enable :elpaca use-package keyword.
+    (elpaca-use-package-mode)
+    ;; Assume :elpaca t unless otherwise specified.
+    (setq elpaca-use-package-by-default t))
+
+  ;; Block until current queue processed.
+  (elpaca-wait))
+ ((eq ejb/package-manager :straight)
+  (setq straight-use-package-by-default t)
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (bootstrap-version 5))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+
+  (setq use-package-always-defer t
+        use-package-verbose t)
+  (straight-use-package 'use-package)))
 #+END_SRC
 
 Fundamental third-party packages that don't go anywhere else.
@@ -75,7 +97,8 @@ Fundamental third-party packages that don't go anywhere else.
 (use-package exec-path-from-shell
   :init
   (exec-path-from-shell-initialize))
-(elpaca-wait)
+(if (eq ejb/package-manager :elpaca)
+    (elpaca-wait))
 ;; Starting the GUI doesn't know anything about the Keychain:
 ;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
 ;; I'm not sure that all of these are necessary anymore, considering that most
@@ -351,7 +374,7 @@ current buffer's, reload dir-locals."
 (use-package abyss-theme)
 (use-package base16-theme)
 (use-package base16-eva-theme
-  :elpaca (:host github
+  :straight (:host github
              :repo "kjakapat/eva-theme"
              :files ("emacs/build/*.el"))
   ;; :config
@@ -398,7 +421,8 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setq show-paren-delay 0.0)
 
 (use-package whitespace
-  :elpaca nil
+  ;; :elpaca nil
+  ;; :straight (whitespace :type built-in)
   :bind (("C-c t" . whitespace-mode))
   :mode (("\\.csv\\'" . whitespace-mode)
          ("\\.tab\\'" . whitespace-mode)
@@ -667,7 +691,7 @@ Links:
 
 ;; built-in
 (use-package flyspell
-  :elpaca nil
+  ;; :elpaca nil
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode))
   :bind (("C-'" . ispell-word)
@@ -884,7 +908,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package org
   ;; Give up on trying to use the latest one, which doesn't load properly with
   ;; straight.
-  :elpaca nil
+  ;; :elpaca nil
+  :straight (org :type built-in)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture))
@@ -1167,7 +1192,8 @@ users are likely to use them.
 #+begin_src emacs-lisp
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
-  :elpaca nil
+  ;; :elpaca nil
+  :straight (python :type built-in)
   :mode (("\\.ipy\\'" . python-mode))
   :config
   (setq python-fill-docstring-style 'pep-257-nn)
@@ -1405,7 +1431,7 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package conf-mode
-  :elpaca nil
+  ;; :elpaca nil
   :mode
   ; generic
   ((".nanorc" . conf-space-mode)
@@ -1420,7 +1446,7 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package nxml
-  :elpaca nil
+  ;; :elpaca nil
   :mode (("\\.rdf\\'" . nxml-mode)
          ("\\.xmp\\'" . nxml-mode)))
 #+END_SRC
@@ -1726,7 +1752,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
          ("\\.rq\\'" . sparql-mode)))
 ;; TODO company-sparql
 (use-package ttl-mode
-  :elpaca (ttl-mode :type git :flavor melpa :host github :repo "jeeger/ttl-mode")
+  :straight (ttl-mode :type git :flavor melpa :host github :repo "jeeger/ttl-mode")
   :delight "N3/Turtle"
   :mode (("\\.n3\\'" . ttl-mode)    ; Notation3
          ("\\.nt\\'" . ttl-mode)    ; N-Triples
@@ -1770,7 +1796,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package apptainer-mode
   :mode ("\\.def\\'" . apptainer-mode)
   ;; not on MELPA yet
-  :elpaca (:host github :repo "berquist/apptainer-mode"))
+  :straight (:host github :repo "berquist/apptainer-mode"))
 (use-package coconut-mode
   :disabled t
   :elpaca (:host github
@@ -1784,8 +1810,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package elixir-mode)
 (use-package ess)
 (use-package exercism-modern
-  :elpaca (:host github
-                   :repo "elken/exercism-modern"
+  :straight (:host github
+             :repo "elken/exercism-modern"
              :files ("*.el" "icons")))
 (use-package go-mode
   :hook (go-mode . lsp))
