@@ -52,4 +52,8 @@ else
     export VAGRANT_HOME="${HOME}"/.vagrant.d
 fi
 
+if [[ $hostname == "s1096537" ]]; then
+    export SPACK_ROOT="${HOME}"/development/forks/spack
+fi
+
 [[ -d "${SPACK_ROOT}" ]] && source "${SPACK_ROOT}"/share/spack/setup-env.sh

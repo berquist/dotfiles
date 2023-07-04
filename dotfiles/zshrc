@@ -60,6 +60,9 @@ fi
 
 # TODO at least the virtualenv plugin isn't persisting inside of tmux, where
 # path_exports isn't being reexecuted (rightly so)
+if [[ -n "${TMUX}" ]]; then
+    source "${HOME}"/dotfiles/path_exports.bash
+fi
 source "${HOME}"/dotfiles/pyenv.bash
 source "${HOME}"/dotfiles/termsupport_all.bash
 source "${HOME}"/dotfiles/termsupport.zsh
