@@ -150,6 +150,9 @@ dotfiles:
   f_xinitrc:
     src: xinitrc
     dst: ~/.xinitrc
+  f_yamllint_config:
+    src: config/yamllint/config
+    dst: ~/.config/yamllint/config
   f_zprofile:
     src: zprofile
     dst: ~/.zprofile
@@ -198,6 +201,7 @@ profiles:
     - f_direnvrc
     - f_markdownlint.jsonc
     - f_tmux.conf
+    - f_yamllint_config
     - f_zprofile
     - f_zshenv
     - f_zshrc
