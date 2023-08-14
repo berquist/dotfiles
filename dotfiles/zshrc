@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-echo "running zshrc"
+# echo "running zshrc"
 
 # autoload -U compinit && compinit
 
