@@ -89,6 +89,7 @@
     pop-icon-theme
     pptp
     xdg-desktop-portal
+    vlc
     zerotierone
   ];
 
@@ -103,7 +104,7 @@
   services = {
     emacs = {
       enable = true;
-      package = pkgs.emacsGit;
+      package = pkgs.emacs-git;
     };
     openssh = {
       enable = true;
