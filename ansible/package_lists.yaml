@@ -146,6 +146,7 @@ default_packages_arch:
   - gimp
   - jmol
   - meld
+  - wezterm
 
 default_packages_arch_aur:
   # - lib32-libstdc++5
@@ -288,7 +289,6 @@ packages_osmium:
   - python-language-server
 
   # GUI-based
-  - alacritty
   - intellij-idea-community-edition
   - pycharm-community-edition
   - pymol

@@ -27,7 +27,6 @@ in {
   home = {
     packages = [
       act
-      alacritty
       aspell
       aspellDicts.en
       autoconf
@@ -60,8 +59,9 @@ in {
       spotify
       subversion
       texlive.combined.scheme-full
-      wakatime
       valgrind
+      wakatime
+      wezterm
       yamllint
       zoom-us
     ];
