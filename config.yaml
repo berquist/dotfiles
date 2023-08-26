@@ -144,6 +144,9 @@ dotfiles:
   f_vmdrc:
     src: vmdrc
     dst: ~/.vmdrc
+  f_wezterm.lua:
+    src: config/wezterm/wezterm.lua
+    dst: ~/.config/wezterm/wezterm.lua
   f_xdefaults:
     src: Xdefaults
     dst: ~/.Xdefaults
@@ -201,6 +204,7 @@ profiles:
     - f_direnvrc
     - f_markdownlint.jsonc
     - f_tmux.conf
+    - f_wezterm.lua
     - f_yamllint_config
     - f_zprofile
     - f_zshenv
