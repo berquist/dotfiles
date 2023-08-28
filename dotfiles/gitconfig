@@ -26,7 +26,7 @@
 
 [blame]
 	coloring = repeatedLines
-	ignoreRevsFile = .git-blame-ignore-revs
+	# ignoreRevsFile = .git-blame-ignore-revs
 
 # Available colors are enumerated in
 # http://stackoverflow.com/questions/15458237/git-pretty-format-colors
