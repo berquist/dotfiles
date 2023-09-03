@@ -914,7 +914,6 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
          ("C-c c" . org-capture))
   :config
   (setq org-adapt-indentation nil)
-  (setq org-agenda-files '("~/development/qchem_lab_notebook"))
   (setq org-babel-tangle-lang-exts '(("emacs-lisp" . "el")
                                      ("elisp" . "el")
                                      ("javascript" . "js")
@@ -1007,6 +1006,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                       ("\\section{%s}" . "\\section*{%s}")
                                       ("\\subsection{%s}" . "\\subsection*{%s}")
                                       ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+  (load "~/dotfiles/dotfiles-private/org-agenda-files.el")
   (org-clock-persistence-insinuate))
 (use-package htmlize)
 (use-package ox-gfm
