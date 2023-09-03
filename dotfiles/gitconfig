@@ -120,6 +120,10 @@
 	# (relative) date and author information at the end.
 	lg = log --graph --abbrev-commit --pretty=olra
 
+	# Stop accidentally deleting untracked files.
+	# Always recurse into subdirectories.
+	c = clean -X -d
+
 	# Continue listing the history of a file beyond renames (works only for a
 	# single file).
 	when = !git log --follow -- "$2"
