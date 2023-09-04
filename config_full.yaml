@@ -238,17 +238,33 @@ profiles:
     variables:
       conda_pkg_dir: /home/eric/.conda_pkgs
     dotfiles:
+    - d_bat
     - d_emacs.d
+    - d_tmux
     - f_ansible.cfg
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_astylerc
+    - f_bash_profile
+    - f_bashrc
     - f_condarc
-    # - f_gpg-agent.conf
-    # - f_gpg.conf
+    - f_direnvrc
+    - f_gh_config.yml
+    - f_gitconfig
+    - f_gitignore
     - f_ipython_config.py
     - f_ipython_kernel_config.py
-    # - f_nanorc
+    - f_markdownlint.jsonc
+    - f_mdlrc
+    - f_nanorc
     - f_pip.conf
-    # - f_sbclrc
-    # - f_xdefaults
+    - f_tmux.conf
+    - f_user.json
+    - f_wezterm.lua
+    - f_yamllint_config
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
   sodium.local:
     variables:
       conda_pkg_dir: /Users/eric/.conda_pkgs
