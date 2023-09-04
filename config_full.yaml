@@ -170,11 +170,11 @@ profiles:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
     dotfiles:
-    # ".tmux/tmux.theme.conf".source = ../../../dotfiles/tmux/tmux.theme.conf;
-    # - d_emacs.d
-    # - d_tmux
     - d_bat
+    # chemacs2 repo
+    # - d_emacs.d
     - d_idea
+    - d_tmux
     - f_alacritty.yml
     - f_ansible.cfg
     - f_aspell.en.prepl
@@ -185,7 +185,6 @@ profiles:
     - f_clisprc.lisp
     - f_condarc
     - f_cuby4
-    - f_direnvrc
     - f_direnvrc
     - f_emacsclient.desktop
     - f_gdbinit
@@ -221,6 +220,7 @@ profiles:
     dotfiles:
     - d_bat
     - d_emacs.d
+    - d_tmux
     - f_alacritty.yml
     - f_ansible.cfg
     - f_aspell.en.prepl
@@ -253,7 +253,27 @@ profiles:
     variables:
       conda_pkg_dir: /Users/eric/.conda_pkgs
     dotfiles:
+    - d_bat
     - d_emacs.d
+    - d_tmux
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_astylerc
+    - f_bash_profile
+    - f_bashrc
     - f_condarc
+    - f_direnvrc
+    - f_gh_config.yml
+    - f_gitconfig
+    - f_gitignore
+    - f_markdownlint.jsonc
+    - f_mdlrc
     - f_nanorc
     - f_pip.conf
+    - f_tmux.conf
+    - f_user.json
+    - f_wezterm.lua
+    - f_yamllint_config
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
