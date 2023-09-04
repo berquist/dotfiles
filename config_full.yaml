@@ -1,0 +1,259 @@
+config:
+  banner: false
+  dotpath: dotfiles
+  link_dotfile_default: link
+  link_on_import: link
+  showdiff: true
+dotfiles:
+  d_bat:
+    src: config/bat
+    dst: ~/.config/bat
+  d_emacs.d:
+    src: emacs.d
+    dst: ~/.emacs.d
+  d_idea:
+    src: idea
+    dst: ~/.idea
+  d_tmux:
+    src: tmux
+    dst: ~/.tmux
+  f_alacritty.yml:
+    src: config/alacritty/alacritty.yml
+    dst: ~/.config/alacritty/alacritty.yml
+  f_ansible.cfg:
+    src: ansible.cfg
+    dst: ~/.ansible.cfg
+  f_aspell.en.prepl:
+    src: aspell.en.prepl
+    dst: ~/.aspell.en.prepl
+  f_aspell.en.pws:
+    src: aspell.en.pws
+    dst: ~/.aspell.en.pws
+  f_astylerc:
+    src: astylerc
+    dst: ~/.astylerc
+  f_bash_profile:
+    src: bash_profile
+    dst: ~/.bash_profile
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+  f_clang-format:
+    src: clang-format
+    dst: ~/.clang-format
+  f_clisprc.lisp:
+    src: clisprc.lisp
+    dst: ~/.clisprc.lisp
+  f_condarc:
+    src: condarc
+    dst: ~/.condarc
+  f_cuby4:
+    src: cuby4
+    dst: ~/.cuby4
+  f_direnvrc:
+    src: config/direnv/direnvrc
+    dst: ~/.config/direnv/direnvrc
+  f_emacsclient.desktop:
+    src: local/share/applications/emacsclient.desktop
+    dst: ~/.local/share/applications/emacsclient.desktop
+  f_gdbinit:
+    src: gdbinit
+    dst: ~/.gdbinit
+  f_gh_config.yml:
+    src: config/gh/config.yml
+    dst: ~/.config/gh/config.yml
+    chmod: '600'
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+  f_gitignore:
+    src: gitignore
+    dst: ~/.gitignore
+  f_gnome-keyring-ssh.desktop:
+    src: config/autostart/gnome-keyring-ssh.desktop
+    dst: ~/.config/autostart/gnome-keyring-ssh.desktop
+  f_gpg-agent.conf:
+    src: gnupg/gpg-agent.conf
+    dst: ~/.gnupg/gpg-agent.conf
+  f_gpg.conf:
+    src: gnupg/gpg.conf
+    dst: ~/.gnupg/gpg.conf
+  f_i3_config:
+    src: config/i3/config
+    dst: ~/.config/i3/config
+  f_i3status_config:
+    src: config/i3status/config
+    dst: ~/.config/i3status/config
+  f_ipython_config.py:
+    src: ipython/profile_default/ipython_config.py
+    dst: ~/.ipython/profile_default/ipython_config.py
+  f_ipython_kernel_config.py:
+    src: ipython/profile_default/ipython_kernel_config.py
+    dst: ~/.ipython/profile_default/ipython_kernel_config.py
+  f_markdownlint.jsonc:
+    src: markdownlint.jsonc
+    dst: ~/.markdownlint.jsonc
+  f_mdlrc:
+    src: mdlrc
+    dst: ~/.mdlrc
+  f_nanorc:
+    src: nanorc
+    dst: ~/.nanorc
+  f_nitrogen.cfg:
+    src: config/nitrogen/nitrogen.cfg
+    dst: ~/.config/nitrogen/nitrogen.cfg
+  f_nitrogen_bg-saved.cfg:
+    src: config/nitrogen/bg-saved.cfg
+    dst: ~/.config/nitrogen/bg-saved.cfg
+  f_nvimrc:
+    src: nvimrc
+    dst: ~/.nvimrc
+  f_override.conf:
+    src: config/systemd/user/emacs.service.d/override.conf
+    dst: ~/.config/systemd/user/emacs.service.d/override.conf
+  f_paru.conf:
+    src: config/paru/paru.conf
+    dst: ~/.config/paru/paru.conf
+  f_pdbrc:
+    src: pdbrc
+    dst: ~/.pdbrc
+  f_pip.conf:
+    src: config/pip/pip.conf
+    dst: ~/.config/pip/pip.conf
+  f_rc:
+    src: ssh/rc
+    dst: ~/.ssh/rc
+  f_sbclrc:
+    src: sbclrc
+    dst: ~/.sbclrc
+  f_startup.jl:
+    src: julia/config/startup.jl
+    dst: ~/.julia/config/startup.jl
+  f_terminalrc:
+    src: config/xfce4/terminal/terminalrc
+    dst: ~/.config/xfce4/terminal/terminalrc
+  f_terminalrc.osmium:
+    src: config/xfce4/terminal/terminalrc.osmium
+    dst: ~/.config/xfce4/terminal/terminalrc.osmium
+  f_tmux.conf:
+    src: tmux.conf
+    dst: ~/.tmux.conf
+  f_user.json:
+    src: config/exercism/user.json
+    dst: ~/.config/exercism/user.json
+  f_vmdrc:
+    src: vmdrc
+    dst: ~/.vmdrc
+  f_wezterm.lua:
+    src: config/wezterm/wezterm.lua
+    dst: ~/.config/wezterm/wezterm.lua
+  f_xdefaults:
+    src: Xdefaults
+    dst: ~/.Xdefaults
+  f_xinitrc:
+    src: xinitrc
+    dst: ~/.xinitrc
+  f_yamllint_config:
+    src: config/yamllint/config
+    dst: ~/.config/yamllint/config
+  f_zprofile:
+    src: zprofile
+    dst: ~/.zprofile
+  f_zshenv:
+    src: zshenv
+    dst: ~/.zshenv
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+profiles:
+  osmium:
+    variables:
+      conda_pkg_dir: /home/eric/data/.conda_pkgs
+    dotfiles:
+    # ".tmux/tmux.theme.conf".source = ../../../dotfiles/tmux/tmux.theme.conf;
+    # - d_emacs.d
+    # - d_tmux
+    - d_bat
+    - d_idea
+    - f_alacritty.yml
+    - f_ansible.cfg
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_astylerc
+    - f_bash_profile
+    - f_bashrc
+    - f_clisprc.lisp
+    - f_condarc
+    - f_cuby4
+    - f_direnvrc
+    - f_direnvrc
+    - f_emacsclient.desktop
+    - f_gdbinit
+    - f_gh_config.yml
+    - f_gitconfig
+    - f_gitignore
+    - f_gpg-agent.conf
+    - f_gpg.conf
+    - f_ipython_config.py
+    - f_ipython_kernel_config.py
+    - f_markdownlint.jsonc
+    - f_mdlrc
+    - f_nanorc
+    - f_nvimrc
+    - f_override.conf
+    - f_paru.conf
+    - f_pdbrc
+    - f_pip.conf
+    - f_sbclrc
+    - f_startup.jl
+    - f_terminalrc
+    - f_terminalrc.osmium
+    - f_tmux.conf
+    - f_user.json
+    - f_vmdrc
+    - f_wezterm.lua
+    - f_xinitrc
+    - f_yamllint_config
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
+  s1096537:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - f_alacritty.yml
+    - f_ansible.cfg
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    # - f_condarc
+    - f_direnvrc
+    - f_markdownlint.jsonc
+    - f_tmux.conf
+    - f_wezterm.lua
+    - f_yamllint_config
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
+  scandium:
+    variables:
+      conda_pkg_dir: /home/eric/.conda_pkgs
+    dotfiles:
+    - d_emacs.d
+    - f_ansible.cfg
+    - f_condarc
+    # - f_gpg-agent.conf
+    # - f_gpg.conf
+    - f_ipython_config.py
+    - f_ipython_kernel_config.py
+    # - f_nanorc
+    - f_pip.conf
+    # - f_sbclrc
+    # - f_xdefaults
+  sodium.local:
+    variables:
+      conda_pkg_dir: /Users/eric/.conda_pkgs
+    dotfiles:
+    - d_emacs.d
+    - f_condarc
+    - f_nanorc
+    - f_pip.conf
