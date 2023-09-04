@@ -91,6 +91,45 @@
     xdg-desktop-portal
     vlc
     zerotierone
+
+    # global home-manager
+    bat
+    duf
+    exa
+    fd
+    file
+    # git
+    htop
+    ripgrep
+    tmux
+    tree
+    wget
+
+    # this computer's home-manager
+    act
+    aspell
+    aspellDicts.en
+    autoconf
+    cask
+    delta
+    exercism
+    gh
+    google-chrome
+    imagemagick
+    neofetch
+    # broken?
+    # nix-linter
+    onefetch
+    pinentry-emacs
+    plexamp
+    spotify
+    subversion
+    texlive.combined.scheme-full
+    valgrind
+    wakatime
+    wezterm
+    yamllint
+    zoom-us
   ];
 
   programs = {

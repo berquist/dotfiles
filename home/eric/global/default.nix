@@ -5,17 +5,6 @@ with pkgs;
     username = "eric";
     homeDirectory = "/home/${config.home.username}";
     packages = [
-      bat
-      duf
-      exa
-      fd
-      file
-      git
-      htop
-      ripgrep
-      tmux
-      tree
-      wget
     ];
     file = {
       ".aspell.en.prepl".source = ../../../dotfiles/aspell.en.prepl;
@@ -52,9 +41,9 @@ with pkgs;
     };
   };
 
-  programs = {
-    direnv.enable = true;
-    home-manager.enable = true;
-    less.enable = true;
-  };
+  # programs = {
+  #   direnv.enable = true;
+  #   home-manager.enable = true;
+  #   less.enable = true;
+  # };
 }
