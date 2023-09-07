@@ -233,6 +233,11 @@ profiles:
     - f_condarc
     - f_nanorc
     - f_pip.conf
+  srrh8cicd01.sandia.gov:
+    dotfiles:
+    - d_emacs.d
+    - d_tmux
+    - f_tmux.conf
   sst-devel-new:
     dotfiles:
     - d_emacs.d
