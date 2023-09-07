@@ -1205,8 +1205,6 @@ users are likely to use them.
   (setq python-shell-interpreter-args (cond ((executable-find "ipython") "-i --simple-prompt")
                                             (t "-i"))))
 
-
-
 (use-package python-docstring
   :hook (python-mode . python-docstring-mode)
   :delight)
@@ -1221,6 +1219,7 @@ users are likely to use them.
   :after python)
 
 (use-package conda
+  :disabled t
   :after delight
   :hook (after-init . conda-env-initialize-interactive-shells)
   :commands (conda-env-deactivate
