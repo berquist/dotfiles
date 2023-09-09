@@ -1468,7 +1468,6 @@ TODO disable .m files from loading as Objective-C
 
 ;; Time to have the Julia REPLs duke it out...
 (use-package julia-snail
-  :disabled t
   :hook (julia-mode . julia-snail-mode)
   :config
   (setq julia-snail-repl-buffer "*julia-snail*"))
@@ -1476,6 +1475,7 @@ TODO disable .m files from loading as Objective-C
   :disabled t
   :hook (julia-mode . julia-vterm-mode))
 (use-package julia-repl
+  :disabled t
   :hook (julia-mode . julia-repl-mode)
   :config
   (julia-repl-set-terminal-backend 'vterm))
