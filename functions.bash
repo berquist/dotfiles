@@ -19,8 +19,3 @@ pyclean() {
     find ${PYCLEAN_PLACES} -type d -name ".mypy_cache" -delete
     find ${PYCLEAN_PLACES} -type d -name ".pytest_cache" -delete
 }
-
-unal() {
-    # shellcheck disable=SC2086
-    unalias $1 2>/dev/null
-}

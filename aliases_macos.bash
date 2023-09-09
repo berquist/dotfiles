@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-source functions.bash
+unal() {
+    # shellcheck disable=SC2086
+    unalias $1 2>/dev/null
+}
 
 if ! command -v eza >/dev/null 2>&1; then
     if ! command -v exa 1>/dev/null 2>&1; then

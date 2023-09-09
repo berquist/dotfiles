@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-source functions.bash
+unal() {
+    # shellcheck disable=SC2086
+    unalias $1 2>/dev/null
+}
 
 alias 2to3='2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma'
 # Debian and derivatives
