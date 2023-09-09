@@ -1470,7 +1470,10 @@ TODO disable .m files from loading as Objective-C
 (use-package julia-snail
   :hook (julia-mode . julia-snail-mode)
   :config
-  (setq julia-snail-repl-buffer "*julia-snail*"))
+  ; (setq julia-snail-terminal-type :eat)
+  (setq julia-snail-repl-buffer "*julia-snail*")
+  (when (executable-find "julialauncher")
+    (setq julia-snail-executable "julialauncher")))
 (use-package julia-vterm
   :disabled t
   :hook (julia-mode . julia-vterm-mode))
