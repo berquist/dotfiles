@@ -76,7 +76,7 @@ default_packages_arch:
   - duf
   # - eigen
   # - eigen2
-  - exa
+  - eza
   - fd
   - freeimage
   - gist
@@ -379,7 +379,7 @@ default_packages_homebrew:
   - dos2unix
   - editorconfig
   # - emacs
-  - exa
+  - eza
   - fd
   - git
   - gpg

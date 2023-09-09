@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 
-if ! command -v exa 1>/dev/null 2>&1; then
-    # unalias ls
-    alias ls='ls -G'
-    unalias l
-    alias l='pwd; ls -hl'
-    unalias la
-    alias la='l -a'
+source functions.bash
+
+if ! command -v eza >/dev/null 2>&1; then
+    if ! command -v exa 1>/dev/null 2>&1; then
+        # unal ls
+        alias ls='ls -G'
+        unal l
+        alias l='pwd; ls -hl'
+        unal la
+        alias la='l -a'
+    fi
 fi
-unalias t
+unal t
 alias t='tail -F -n 100' # no sleep interval on BSD tail?
-unalias top
+unal top
 alias top='top -u'

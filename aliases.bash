@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source functions.bash
+
 alias 2to3='2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma'
 # Debian and derivatives
 if command -v batcat >/dev/null 2>&1; then
@@ -36,10 +38,38 @@ alias julia='julialauncher'
 alias kubectl='minikube kubectl --'
 # If exa is available, set preferred aliases to use it (and its different
 # flags) rather than ls.
-if command -v exa >/dev/null 2>&1; then
-    source "${HOME}"/dotfiles/exa.bash
+# eza is the maintained fork of exa.
+if command -v eza >/dev/null 2>&1; then
+    unal ls
+    unal l
+    unal la
+    unal lh
+
+    alias ls='eza'
+    alias l='pwd; ls -Fl'
+    alias la='l -a'
+    alias lt='l -s modified -r'
+    alias lh='lt | head'
+elif command -v exa >/dev/null 2>&1; then
+    unal ls
+    unal l
+    unal la
+    unal lh
+
+    alias ls='exa'
+    alias l='pwd; ls -Fl'
+    alias la='l -a'
+    alias lt='l -s modified -r'
+    alias lh='lt | head'
 else
-    source "${HOME}"/dotfiles/ls.bash
+    unal ls
+    unal l
+    unal la
+    unal lh
+
+    alias l='pwd; ls -hFl'
+    alias la='l -a'
+    alias lh='l -t | head'
 fi
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias psmem='ps aux --sort -rss'

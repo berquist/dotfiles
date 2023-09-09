@@ -3,8 +3,8 @@
   gather_facts: false
   hosts: all
   vars:
-    exa_unpack_dir: /tmp/exa
-    exa_version: 0.10.1
+    eza_unpack_dir: /tmp/eza
+    eza_version: 0.11
   vars_files:
     - package_lists.yaml
   pre_tasks:
@@ -37,35 +37,35 @@
         deb: "{{ item }}"
       loop: "{{ default_packages_deb }}"
       when: ansible_distribution in ("Ubuntu", "Pop!_OS")
-    - name: make exa unpack dir
+    - name: make eza unpack dir
       file:
-        path: "{{ exa_unpack_dir }}"
+        path: "{{ eza_unpack_dir }}"
         state: directory
       when: ansible_distribution in ("Ubuntu", "Pop!_OS")
       tags:
-        - exa
-    - name: get exa archive and unzip
+        - eza
+    - name: get eza archive and unzip
       unarchive:
-        src: "https://github.com/ogham/exa/releases/download/v{{ exa_version }}/exa-linux-x86_64-v{{ exa_version }}.zip"
-        dest: "{{ exa_unpack_dir }}"
+        src: "https://github.com/eza-community/eza/releases/download/v{{ eza_version }}/eza-linux-x86_64-v{{ eza_version }}.zip"
+        dest: "{{ eza_unpack_dir }}"
         remote_src: true
       when: ansible_distribution in ("Ubuntu", "Pop!_OS")
       tags:
-        - exa
-    - name: move exa files into place
+        - eza
+    - name: move eza files into place
       copy:
         src: "{{ item['src'] }}"
         dest: "{{ item['dest'] }}"
         remote_src: true
       loop:
         # yamllint disable rule:braces
-        - { src: "{{ exa_unpack_dir }}/bin/exa", dest: /usr/local/bin/exa }
-        - { src: "{{ exa_unpack_dir }}/completions/exa.bash", dest: /etc/bash_completion.d/exa.bash }
-        - { src: "{{ exa_unpack_dir }}/completions/exa.fish", dest: /usr/share/fish/vendor_completions.d/exa.fish }
-        - { src: "{{ exa_unpack_dir }}/completions/exa.zsh", dest: /usr/local/share/zsh/site-functions/exa.zsh }
-        - { src: "{{ exa_unpack_dir }}/man/exa.1", dest: /usr/local/man/exa.1 }
-        - { src: "{{ exa_unpack_dir }}/man/exa_colors.5", dest: /usr/local/man/exa_colors.5 }
+        - { src: "{{ eza_unpack_dir }}/bin/eza", dest: /usr/local/bin/eza }
+        - { src: "{{ eza_unpack_dir }}/completions/eza.bash", dest: /etc/bash_completion.d/eza.bash }
+        - { src: "{{ eza_unpack_dir }}/completions/eza.fish", dest: /usr/share/fish/vendor_completions.d/eza.fish }
+        - { src: "{{ eza_unpack_dir }}/completions/eza.zsh", dest: /usr/local/share/zsh/site-functions/eza.zsh }
+        - { src: "{{ eza_unpack_dir }}/man/eza.1", dest: /usr/local/man/eza.1 }
+        - { src: "{{ eza_unpack_dir }}/man/eza_colors.5", dest: /usr/local/man/eza_colors.5 }
         # yamllint enable rule:braces
       when: ansible_distribution in ("Ubuntu", "Pop!_OS")
       tags:
-        - exa
+        - eza
