@@ -54,9 +54,7 @@ elif [[ $uname == "Darwin" ]]; then
     prepend_to_path "${HOME}/.gem/ruby/3.2.0/bin"
 fi
 
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook zsh)"
-fi
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
 # TODO at least the virtualenv plugin isn't persisting inside of tmux, where
 # path_exports isn't being reexecuted (rightly so)

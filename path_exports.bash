@@ -46,6 +46,8 @@ if [[ "${hostname}" == "osmium" ]]; then
     export PRE_COMMIT_HOME="${HOME}"/data/.pre-commit
     export SPACK_ROOT="${HOME}"/data/spack
     export VAGRANT_HOME="${HOME}"/data/.vagrant.d
+elif [[ "${hostname}" == "s1096537" ]]; then
+    export SPACK_ROOT="${HOME}"/development/forks/spack
 else
     export PRE_COMMIT_HOME="${HOME}"/.cache/pre-commit
     export SPACK_ROOT="${HOME}"/repositories/spack
