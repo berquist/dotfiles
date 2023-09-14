@@ -50,7 +50,7 @@ elif [[ "${hostname}" == "s1096537" ]]; then
     export SPACK_ROOT="${HOME}"/development/forks/spack
 else
     export PRE_COMMIT_HOME="${HOME}"/.cache/pre-commit
-    export SPACK_ROOT="${HOME}"/repositories/spack
+    [[ -n "${SPACK_ROOT}" ]] || export SPACK_ROOT="${HOME}"/repositories/spack
     export VAGRANT_HOME="${HOME}"/.vagrant.d
 fi
 
