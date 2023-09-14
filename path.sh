@@ -8,9 +8,14 @@ prepend_to_path() {
                 ;;
             *)
                 export PATH="${candidate}${PATH:+:${PATH}}"
-                # echo "added: ${candidate}"
                 ;;
         esac
     fi
     unset candidate
+}
+
+try_source() {
+    loc="${1}"
+    # shellcheck disable=SC1090
+    [ -f "${loc}" ] && . "${loc}"
 }

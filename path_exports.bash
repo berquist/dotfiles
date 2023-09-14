@@ -25,16 +25,16 @@ prepend_to_path "${HOME}/.cargo/bin"
 prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
 
-source "${HOME}"/dotfiles/pyenv.bash
+try_source "${HOME}"/dotfiles/pyenv.bash
 
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
 
 export apps="${HOME}"/opt/apps
 
-hostname=$(hostname)
+hostname="$(hostname)"
 
-if [[ $hostname == "osmium" ]]; then
+if [[ "${hostname}" == "osmium" ]]; then
     # export ANACONDA_HOME="/home/eric/.conda"
     # TODO blergh
     export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.7.12"
@@ -50,10 +50,6 @@ else
     export PRE_COMMIT_HOME="${HOME}"/.cache/pre-commit
     export SPACK_ROOT="${HOME}"/repositories/spack
     export VAGRANT_HOME="${HOME}"/.vagrant.d
-fi
-
-if [[ $hostname == "s1096537" ]]; then
-    export SPACK_ROOT="${HOME}"/development/forks/spack
 fi
 
 [[ -d "${SPACK_ROOT}" ]] && source "${SPACK_ROOT}"/share/spack/setup-env.sh

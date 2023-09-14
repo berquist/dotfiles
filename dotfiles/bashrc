@@ -10,15 +10,13 @@ shopt -s extglob
 shopt -s globstar
 shopt -s checkjobs
 
-source "${HOME}"/dotfiles/berquist.bash-theme
-source "${HOME}"/dotfiles/aliases.bash
-source "${HOME}"/dotfiles/history.bash
-source "${HOME}"/dotfiles/interactive_exports.bash
-source "${HOME}"/dotfiles/functions.bash
+try_source "${HOME}"/dotfiles/berquist.bash-theme
+try_source "${HOME}"/dotfiles/aliases.bash
+try_source "${HOME}"/dotfiles/history.bash
+try_source "${HOME}"/dotfiles/interactive_exports.bash
+try_source "${HOME}"/dotfiles/functions.bash
 
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook bash)"
-fi
+command -v direnv >/dev/null && eval "$(direnv hook bash)"
 
 GPG_TTY="$(tty)"
 export GPG_TTY
