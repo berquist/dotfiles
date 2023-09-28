@@ -204,6 +204,7 @@ profiles:
     # - f_condarc
     - f_direnvrc
     - f_markdownlint.jsonc
+    - f_startup.jl
     - f_tmux.conf
     - f_wezterm.lua
     - f_yamllint_config
