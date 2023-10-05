@@ -44,7 +44,7 @@
  ("emacs-deferred" . "2239671d94b38d92e9b28d4e12fd79814cfb9c16")
  ("emacs-direnv" . "d71ceb415732c3b76a2948147fa3559622aceba2")
  ("emacs-dotenv-mode" . "e3701bf739bde44f6484eb7753deadaf691b73fb")
- ("emacs-eat" . "2df07e6613a0da6f3b332a34620725f2773c9202")
+ ("emacs-eat" . "b4595662d4739b6f014d6ee9a9edea9f63e24389")
  ("emacs-elixir" . "00d6580a040a750e019218f9392cf9a4c2dac23a")
  ("emacs-epc" . "e1bfa5ca163273859336e3cc89b4b6460f7f8cda")
  ("emacs-flycheck-cython" . "ecc4454d35ab5317ab66a04406f36f0c1dbc0b76")
