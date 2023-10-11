@@ -9,6 +9,8 @@
 --map-syntax='*.cwl:YAML'
 --map-syntax='*.jsonc:JSON'
 --map-syntax='*.jsonld:JSON'
+# not Objective-C
+--map-syntax='*.m:MATLAB'
 --map-syntax='*.qcjson:JSON'
 --map-syntax='*.qcschema:JSON'
 --map-syntax='*Jenkinsfile*:Groovy'
