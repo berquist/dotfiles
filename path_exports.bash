@@ -24,6 +24,7 @@ prepend_to_path "${PYENV_ROOT}/bin"
 prepend_to_path "${HOME}/.cargo/bin"
 prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
+prepend_to_path "${HOME}/NuSMV-2.6.0-Darwin/bin"
 
 try_source "${HOME}"/dotfiles/pyenv.bash
 
