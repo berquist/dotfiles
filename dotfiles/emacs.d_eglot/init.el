@@ -23,6 +23,8 @@
   :init
   (require 'no-littering))
 
+(use-package delight)
+
 (setq-default line-number-mode t
               column-number-mode t
               indent-tabs-mode nil
@@ -65,10 +67,19 @@
       completion-styles '(orderless basic)
       completion-category-overrides '((file (styles basic partial-completion))))
 
+(use-package treesit-auto
+  :config
+  (setq treesit-auto-install t)
+  (global-treesit-auto-mode)
+  :init
+  (require 'treesit-auto))
+
 (use-package eglot
   :hook (prog-mode . eglot-ensure))
 
-(use-package julia-mode)
+(use-package julia-ts-mode
+  :mode "\\.jl\\'"
+  :delight "Julia")
 (use-package eglot-jl
   :config
   (when (executable-find "julialauncher")
