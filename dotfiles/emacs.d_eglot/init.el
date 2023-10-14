@@ -69,7 +69,12 @@
   :hook (prog-mode . eglot-ensure))
 
 (use-package julia-mode)
-(use-package eglot-jl)
+(use-package eglot-jl
+  :config
+  (when (executable-find "julialauncher")
+    (setq eglot-jl-julia-command "julialauncher"))
+  :init
+  (eglot-jl-init))
 
 (use-package rust-mode)
 ;; (use-package rustic
