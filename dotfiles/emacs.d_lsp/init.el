@@ -46,10 +46,8 @@
 
 (use-package dracula-theme)
 (use-package ef-themes
-  ;; :init
-  ;; (load-theme 'ef-bio t)
-  )
-(load-theme 'wombat t)
+  :init
+  (load-theme 'ef-bio t))
 
 (setq flymake-mode-line-lighter "FM")
 

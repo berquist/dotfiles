@@ -2,9 +2,9 @@
 
 (require 'package)
 (setq package-enable-at-startup nil)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-                         ("melpa" . "http://melpa.org/packages/")))
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -58,7 +58,8 @@
   :init
   (marginalia-mode))
 
-(setq completion-ignore-case t
+(setq completions-format 'vertical
+      completion-ignore-case t
       read-buffer-completion-ignore-case t
       read-file-name-completion-ignore-case t
       completion-styles '(orderless basic)
