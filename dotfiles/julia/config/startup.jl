@@ -4,7 +4,7 @@ import Pkg as var"#Pkg" # Don't import globally
 
 @async let
     pkgs = [
-        "AbbreviatedStackTraces",
+        # "AbbreviatedStackTraces",
         "Debugger",
         "Revise",
         "OhMyREPL",
