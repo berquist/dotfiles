@@ -86,6 +86,13 @@
     (setq eglot-jl-julia-command "julialauncher"))
   :init
   (eglot-jl-init))
+(use-package julia-repl
+  :hook (julia-mode . julia-repl-mode)
+  :config
+  (when (executable-find "julialauncher")
+    (push '(default-juliaup "julialauncher") julia-repl-executable-records))
+  (setq julia-repl-inferior-buffer-name-base "julia-repl")
+  (setq julia-repl-set-terminal-backend 'ansi-term))
 
 (use-package rust-mode)
 ;; (use-package rustic

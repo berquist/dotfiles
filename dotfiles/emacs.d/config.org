@@ -1491,7 +1491,10 @@ TODO disable .m files from loading as Objective-C
   :disabled t
   :hook (julia-mode . julia-repl-mode)
   :config
-  (julia-repl-set-terminal-backend 'vterm))
+  (when (executable-find "julialauncher")
+    (push '(default-juliaup "julialauncher") julia-repl-executable-records))
+  (setq julia-repl-inferior-buffer-name-base "julia-repl")
+  (setq julia-repl-set-terminal-backend 'ansi-term))
 
 (use-package lsp-julia
   :hook (julia-mode . (lambda ()
