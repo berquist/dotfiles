@@ -1478,14 +1478,45 @@ TODO disable .m files from loading as Objective-C
 
 ;; Time to have the Julia REPLs duke it out...
 (use-package julia-snail
+  :disabled t
   :hook (julia-mode . julia-snail-mode)
   :config
   (setq julia-snail-terminal-type :eat)
   (setq julia-snail-repl-buffer "*julia-snail*")
   (when (executable-find "julialauncher")
     (setq julia-snail-executable "julialauncher")))
+
+(defun julia-repl-run-tests (arg)
+  "From https://github.com/tpapp/julia-repl/issues/142"
+  (interactive "P")
+  (julia-repl-activate-parent arg)
+  (julia-repl--send-string "Pkg.test()"))
+
+(defun julia-repl-include-tests (arg)
+  "From https://github.com/tpapp/julia-repl/issues/142"
+  (interactive "P")
+  (if arg
+      (progn
+        (message "activating home project")
+        (julia-repl--send-string "import Pkg; Pkg.activate()"))
+    (cl-flet ((find-projectfile (filename)
+                (locate-dominating-file (buffer-file-name) filename)))
+      (if-let ((projectfile (or (find-projectfile "Project.toml")
+                                (find-projectfile "JuliaProject.toml"))))
+          (progn
+            (message "activating %s" projectfile)
+            (julia-repl--send-string
+             (concat "import Pkg; Pkg.activate(\""
+                     (expand-file-name (file-name-directory projectfile))
+                     "\"); include(\""
+                     (expand-file-name
+                      (concat (file-name-directory projectfile)
+                              (file-name-as-directory "test")
+                              "runtests.Jul"))
+                     "\")")))
+        (message "could not find project file")))))
+
 (use-package julia-repl
-  :disabled t
   :hook (julia-mode . julia-repl-mode)
   :config
   (when (executable-find "julialauncher")
