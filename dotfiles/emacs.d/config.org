@@ -1512,7 +1512,7 @@ TODO disable .m files from loading as Objective-C
                      (expand-file-name
                       (concat (file-name-directory projectfile)
                               (file-name-as-directory "test")
-                              "runtests.Jul"))
+                              "runtests.jl"))
                      "\")")))
         (message "could not find project file")))))
 
