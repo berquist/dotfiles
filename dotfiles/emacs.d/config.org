@@ -1498,7 +1498,10 @@ TODO disable .m files from loading as Objective-C
                         (require 'lsp-julia)
                         (lsp)))
   :config
-  (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
+  (when (executable-find "julialauncher")
+    (setq lsp-julia-command "julialauncher"))
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.9")
+  (setq lsp-julia-timeout 300))
 (use-package julia-formatter
   ;; Wow, this is really slow.
   :disabled t
