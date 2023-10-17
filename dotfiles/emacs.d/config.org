@@ -703,6 +703,13 @@ Links:
 * Completion and language servers
 
 #+BEGIN_SRC emacs-lisp
+(use-package treesit-auto
+  :config
+  (setq treesit-auto-install t)
+  (global-treesit-auto-mode)
+  :init
+  (require 'treesit-auto))
+
 (use-package company
   :hook (after-init . global-company-mode)
   :bind
@@ -1461,7 +1468,10 @@ TODO disable .m files from loading as Objective-C
 * Julia
 
 #+BEGIN_SRC emacs-lisp
-(use-package julia-mode)
+(use-package julia-ts-mode
+  :mode "\\.jl\\'"
+  :delight "Julia")
+
 (use-package vterm
   :config
   (setq vterm-always-compile-module t))
