@@ -57,6 +57,8 @@
 
 [diff]
 	colorMoved = default
+	# https://stackoverflow.com/q/6764953/
+	noprefix = true
 	# TODO Why this number?
 	renameLimit = 1011
 
