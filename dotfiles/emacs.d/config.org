@@ -1574,12 +1574,24 @@ TODO disable .m files from loading as Objective-C
 - [[https://asdf.readthedocs.io/][Advanced Scientific Data Format]] files are based on YAML.
 
 #+BEGIN_SRC emacs-lisp
-(use-package yaml-mode
-  ;; A decent assumption for ISI-specific pseudo-YAML files.
-  :mode (("\\.params\\'" . yaml-mode)
-         ("\\clang-format\\'" . yaml-mode)
-         ("\\.asdf\\'" . yaml-mode)
-         ("CITATION.cff" . yaml-mode)))
+;; The first is a decent assumption for ISI-specific pseudo-YAML files.
+(let ((ejb/yaml-modes '("\\.params\\'"
+                        "\\clang-format\\'"
+                        "\\.asdf\\'"
+                        "CITATION.cff")))
+  (if (version< emacs-version "29.1")
+      (progn
+        (use-package yaml-mode)
+        (mapc
+         (lambda (s) (add-to-list 'auto-mode-alist `(,s . yaml-ts-mode)))
+         ejb/yaml-modes))
+    ;; yaml-ts-mode is available
+    (progn
+      ;; So that it remains in the version manifest.
+      (use-package yaml-mode)
+      (mapc
+       (lambda (s) (add-to-list 'auto-mode-alist `(,s . yaml-ts-mode)))
+       ejb/yaml-modes))))
 #+END_SRC
 
 * JSON
