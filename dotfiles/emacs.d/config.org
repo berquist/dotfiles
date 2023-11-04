@@ -1368,10 +1368,23 @@ https://stackoverflow.com/a/35450025/3249688
 This section needs to come after the Markdown section so that CMake files get recognized properly.
 
 #+begin_src emacs-lisp
-(use-package cmake-mode
-  :hook (cmake-mode . lsp)
-  :config
-  (setq cmake-tab-width 4))
+(if (version< emacs-version "29.1")
+    (use-package cmake-mode
+      :hook (cmake-mode . lsp)
+      :config
+      (setq cmake-tab-width tab-width))
+  ;; cmake-ts-mode is available
+  (progn
+    ;; So that it remains in the version manifest.
+    (use-package cmake-mode)
+    (setq cmake-ts-mode-indent-offset 4)
+    ;; These are the defaults from cmake-mode; the one provided by
+    ;; cmake-ts-mode is "\\(?:CMakeLists\\.txt\\|\\.cmake\\)\\'"
+    (let ((cmake-modes '("\\.cmake\\'" "CMakeLists\\.txt\\'")))
+      (mapc
+       (lambda (s) (add-to-list 'auto-mode-alist `(,s . cmake-ts-mode)))
+       cmake-modes))
+    (add-hook 'cmake-ts-mode-hook #'lsp)))
 #+end_src
 
 * Shell Scripts
