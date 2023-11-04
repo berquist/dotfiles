@@ -1459,6 +1459,9 @@ current buffer, return its path, otherwise nil."
    (".flake8" . conf-unix-mode)
    (".pylintrc" . conf-unix-mode)
    (".style.yapf" . conf-unix-mode)))
+
+(if (version< emacs-version "29.1")
+    (setq toml-ts-mode-indent-offset tab-width))
 #+END_SRC
 
 * XML (builtin)
