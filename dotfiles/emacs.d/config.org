@@ -1567,17 +1567,32 @@ TODO disable .m files from loading as Objective-C
 * JSON
 
 #+BEGIN_SRC emacs-lisp
-(use-package jsonian
-  :mode (("\\.cjson\\'" . jsonian-mode)
-         ("\\.jsonld\\'" . jsonian-mode)
-         ("\\.qcjson\\'" . jsonian-mode)
-         ("\\.qcschema\\'" . jsonian-mode)
-         ("flake.lock" . jsonian-mode))
-  :hook ((jsonian-mode . (lambda ()
-                           (flycheck-select-checker ejb/flycheck-checker-default-json)))
-         (jsonian-mode . hs-minor-mode))
-  :init
-  (jsonian-enable-flycheck))
+(let ((ejb/json-modes '("\\.cjson\\'"
+                        "\\.jsonld\\'"
+                        "\\.qcjson\\'"
+                        "\\.qcschema\\'"
+                        "flake.lock")))
+  (if (version< emacs-version "29.1")
+      ;; Don't use jsonian when tree-sitter is available.
+      (progn
+        (use-package jsonian
+          :hook ((jsonian-mode . (lambda ()
+                                   (flycheck-select-checker ejb/flycheck-checker-default-json)))
+                 (jsonian-mode . hs-minor-mode))
+          :init
+          (jsonian-enable-flycheck))
+        (mapc
+         (lambda (s) (add-to-list 'auto-mode-alist `(,s . jsonian-mode)))
+         ejb/json-modes))
+    ;; json-ts-mode is available
+    (progn
+      ;; So that it remains in the version manifest.
+      (use-package jsonian)
+      (setq json-ts-mode-indent-offset tab-width)
+      (mapc
+       (lambda (s) (add-to-list 'auto-mode-alist `(,s . json-ts-mode)))
+       ejb/json-modes))))
+
 (use-package jq-format
   :config
   (setq jq-format-extra-args '("--indent" "4")))
