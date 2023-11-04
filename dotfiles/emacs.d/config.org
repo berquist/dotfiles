@@ -1875,13 +1875,24 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :hook (h5dump-mode . hs-minor-mode))
 #+end_src
 
-* Other languages, modes, and packages
+* Containers
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
+(if (version< emacs-version "29.1")
+    (use-package dockerfile-mode)
+  ;; dockerfile-ts-mode is available
+  ;; So that it remains in the version manifest.
+  (use-package dockerfile-mode))
+
 (use-package apptainer-mode
   :mode ("\\.def\\'" . apptainer-mode)
   ;; not on MELPA yet
   :straight (:host github :repo "berquist/apptainer-mode"))
+#+end_src
+
+* Other languages, modes, and packages
+
+#+BEGIN_SRC emacs-lisp
 (use-package coconut-mode
   :disabled t
   :elpaca (:host github
@@ -1890,7 +1901,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :mode ("\\.coco\\'" . coconut-mode))
 (use-package crontab-mode)
 (use-package cwl-mode)
-(use-package dockerfile-mode)
 (use-package earthfile-mode)
 (use-package elixir-mode)
 (use-package ess)
