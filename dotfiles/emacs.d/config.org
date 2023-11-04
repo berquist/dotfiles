@@ -1974,6 +1974,13 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   (global-wakatime-mode))
 #+END_SRC
 
+* Tree-sitter
+
+#+begin_src emacs-lisp
+(when (not (version< emacs-version "29.1"))
+  (setq treesit-font-lock-level 4))
+#+end_src
+
 #+BEGIN_SRC emacs-lisp
 ;; Local Variables:
 ;; no-byte-compile: t
