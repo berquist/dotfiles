@@ -1481,9 +1481,11 @@ TODO disable .m files from loading as Objective-C
 * Julia
 
 #+BEGIN_SRC emacs-lisp
-(use-package julia-ts-mode
-  :mode "\\.jl\\'"
-  :delight "Julia")
+(if (version< emacs-version "29.1")
+    (use-package julia-mode)
+  ;; not built-in; depends on julia-mode
+  (use-package julia-ts-mode
+    :delight "Julia"))
 
 (use-package vterm
   :config
