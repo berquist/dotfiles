@@ -3,7 +3,7 @@
 #+BEGIN_SRC emacs-lisp
 ;; -*- lexical-binding: t -*-
 
-(setq load-prefer-newer t)
+(setopt load-prefer-newer t)
 
 (setq ejb/package-manager :straight)
 
@@ -51,12 +51,12 @@
     ;; Enable :elpaca use-package keyword.
     (elpaca-use-package-mode)
     ;; Assume :elpaca t unless otherwise specified.
-    (setq elpaca-use-package-by-default t))
+    (setopt elpaca-use-package-by-default t))
 
   ;; Block until current queue processed.
   (elpaca-wait))
  ((eq ejb/package-manager :straight)
-  (setq straight-use-package-by-default t)
+  (setopt straight-use-package-by-default t)
   (defvar bootstrap-version)
   (let ((bootstrap-file
          (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -70,15 +70,15 @@
         (eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage))
 
-  (setq use-package-always-defer t
-        use-package-verbose t)
+  (setopt use-package-always-defer t
+          use-package-verbose t)
   (straight-use-package 'use-package)))
 #+END_SRC
 
 Fundamental third-party packages that don't go anywhere else.
 
 #+BEGIN_SRC emacs-lisp
-(setq read-process-output-max (* 1024 1024 5))  ; 5 MB
+(setopt read-process-output-max (* 1024 1024 5))  ; 5 MB
 
 ;; Load this before any other third-party packages.
 (use-package no-littering
@@ -89,7 +89,7 @@ Fundamental third-party packages that don't go anywhere else.
 
 ;; Here for early loading.
 (use-package delight)
-(setq eldoc-minor-mode-string " ED")
+(setopt eldoc-minor-mode-string " ED")
 
 ;; Set the path properly. Don't have a conditional on using the window system
 ;; in order to circumvent
@@ -103,16 +103,16 @@ Fundamental third-party packages that don't go anywhere else.
 ;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
 ;; I'm not sure that all of these are necessary anymore, considering that most
 ;; things should be in the correct dotfile.
-(setq ejb/desired-envvars
-      '("ANACONDA_HOME"
-        "GIT_AUTHOR_EMAIL"
-        "GIT_COMMITTER_EMAIL"
-        "GPG_TTY"
-        "SSH_AGENT_PID"
-        "SSH_AUTH_SOCK"
-        "WORKON_HOME"))
-(when (display-graphic-p)
-  (-each ejb/desired-envvars (lambda (envvar) (exec-path-from-shell-copy-env envvar))))
+(let ((ejb/desired-envvars '("ANACONDA_HOME"
+                             "GIT_AUTHOR_EMAIL"
+                             "GIT_COMMITTER_EMAIL"
+                             "GPG_TTY"
+                             "SSH_AGENT_PID"
+                             "SSH_AUTH_SOCK"
+                             "WORKON_HOME")))
+  (when (display-graphic-p)
+    (-each ejb/desired-envvars (lambda (envvar) (exec-path-from-shell-copy-env envvar)))))
+
 #+END_SRC
 
 * Functions
@@ -142,7 +142,7 @@ Only package-selected-packages and custom-safe-themes should go in here.
 - https://www.reddit.com/r/emacs/comments/53zpv9/how_do_i_get_emacs_to_stop_adding_custom_fields/
 
 #+BEGIN_SRC emacs-lisp
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setopt custom-file (expand-file-name "custom.el" user-emacs-directory))
 ;; Intentionally save to a customization file that is not loaded by Emacs and
 ;; is ignored by Git. All permanent customization should be in this org file,
 ;; but not sending to /dev/zero allows temporary customization via `customize`
@@ -161,85 +161,76 @@ What's the difference between setq and setq-default? See here: http://stackoverf
   (scroll-bar-mode -1))
 (tooltip-mode -1)
 
-(setq inhibit-splash-screen t
-      inhibit-startup-echo-area-message t
-      inhibit-startup-message t
-      initial-scratch-message nil)
+(setopt inhibit-startup-screen t
+        inhibit-startup-echo-area-message (user-login-name)
+        initial-scratch-message nil)
 
 (load "~/dotfiles/dotfiles-private/private.el")
-(setq-default user-full-name "Eric J. Berquist")
-(setq-default user-mail-address "eric.berquist@gmail.com")
+(setopt user-full-name "Eric J. Berquist"
+        user-mail-address "eric.berquist@gmail.com")
 
 ;; took some tricks from http://www.aaronbedra.com/emacs.d/
 
 ;; http://stackoverflow.com/questions/3281581/how-to-word-wrap-in-emacs
 ;; http://stackoverflow.com/questions/12989072/showing-continuation-lines-in-emacs-in-a-text-terminal
-(setq-default transient-mark-mode t)
-(setq-default visual-line-mode t)
+(setopt transient-mark-mode t
+        visual-line-mode t)
 (delight 'visual-line-mode " W" t)
 ;; Never truncate lines, even in partial width windows.
-(setq-default truncate-lines nil)
-(setq truncate-partial-width-windows nil)
-(setq-default line-number-mode t)
-(setq-default column-number-mode t)
-(setq-default cursor-type 'box)
+(setopt truncate-lines nil
+        truncate-partial-width-windows nil
+        line-number-mode t
+        column-number-mode t
+        cursor-type 'box)
 
 ;; (global-display-line-numbers-mode 1)
-(setq display-line-numbers-grow-only t)
+(setopt display-line-numbers-grow-only t)
 
 ;; Enable maximum syntax highlighting wherever possible.
-(setq-default global-font-lock-mode t)
-(setq-default font-lock-maximum-decoration t)
+(setopt global-font-lock-mode t
+        font-lock-maximum-decoration t)
 
 ;; Bells are annoying, stop ringing!
-(setq-default visible-bell nil)
-(setq-default audible-bell nil)
-(setq-default ring-bell-function 'ignore)
+(setopt visible-bell nil
+        audible-bell nil
+        ring-bell-function 'ignore)
 
 ;; 'y' is two characters less than 'yes'.
 ;; 'defalias' or 'fset'?
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; This is really annoying, yes I want to quit
-(setq confirm-kill-processes nil)
+(setopt confirm-kill-processes nil)
 
 ;; death to tabs, tabs are evil
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setopt indent-tabs-mode nil
+        tab-width 4)
 
 ;; Line length when executing `fill-paragraph`. Default is 70. See
 ;; https://www.emacswiki.org/emacs/FillParagraph and
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html.
-(setq-default fill-column 78)
-;; (setq-default sentence-end-double-space nil)
+(setopt fill-column 78)
 
 ;; Automatically reload buffers when their files change, and make sure
 ;; to check on the version control status every now and then.
 (global-auto-revert-mode t)
 ;; Turns out this is *extremely* irritating and moves the mark every time the
 ;; buffer refreshes!
-;; (setq-default auto-revert-check-vc-info t)
+;; (setopt auto-revert-check-vc-info t)
 
 ;; Allow making whole regions uppercase or lowercase.
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-
-;; Don't actively display warnings from bytecode compilation and similar.
-(setq warning-suppress-types '((comp)
-                               (direnv)
-                               (emacs)
-                               (lsp-mode)
-                               (ox-pandoc)))
 #+end_src
 
 * Backups/autosaving
 
 #+begin_src emacs-lisp
 ;; let's live on the edge and disable backup and autosave
-(setq-default backup-inhibited t)
-(setq-default auto-save-default nil)
-(setq-default create-lockfiles nil)
-(setq-default make-backup-files nil)
+(setopt backup-inhibited t
+        auto-save-default nil
+        create-lockfiles nil
+        make-backup-files nil)
 #+end_src
 
 * Disable popup boxes
@@ -303,8 +294,8 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (use-package which-key
   ;; why doesn't this work
   ;; :delight
-  :config
-  (setq which-key-lighter "")
+  :custom
+  (which-key-lighter "")
   :init
   (which-key-mode))
 #+END_SRC
@@ -402,10 +393,10 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 ;; https://emacs.stackexchange.com/q/45895
 (set-face-attribute 'fixed-pitch nil :family "Fira Mono")
 
-(setq-default indicate-empty-lines t)
+(setopt indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
-(setq-default indicate-buffer-boundaries 'right)
+(setopt indicate-buffer-boundaries 'right)
 
 (use-package default-text-scale
   :hook (after-init . default-text-scale-mode))
@@ -414,9 +405,15 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 * Parens/whitespace/indentation
 
 #+begin_src emacs-lisp
-(electric-pair-mode 1)
-(show-paren-mode 1)
-(setq show-paren-delay 0.0)
+(use-package elec-pair
+  :init
+  (electric-pair-mode 1))
+
+(use-package paren
+  :custom
+  (show-paren-delay 0.0)
+  :init
+  (show-paren-mode 1))
 
 (use-package whitespace
   ;; :elpaca nil
@@ -425,10 +422,10 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   :mode (("\\.csv\\'" . whitespace-mode)
          ("\\.tab\\'" . whitespace-mode)
          ("\\.tsv\\'" . whitespace-mode))
-  :config
+  :custom
   ;; use the fill-column value
-  (setq whitespace-line-column nil)
-  (setq whitespace-display-mappings
+  (whitespace-line-column nil)
+  (whitespace-display-mappings
    '((space-mark   ?\    [?\u00B7]     [?.])                    ; 32 SPACE, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
      ;; (space-mark ?\s [183] [46])
      ;; (space-mark 32 [32] [46]) ; normal space, display nothing
@@ -464,7 +461,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   ;; spaces. Since my goal is not to look for indentation problems, but find
   ;; _any_ mixing, consider any number of spaces after a tab. Additionally,
   ;; apply font locking to the spaces, not the tab.
-  (setq whitespace-space-after-tab-regexp '("\011+\\(\\( \\{0,\\}\\)+\\)" . "\\(\011+\\) \\{0,\\}"))
+  (whitespace-space-after-tab-regexp '("\011+\\(\\( \\{0,\\}\\)+\\)" . "\\(\011+\\) \\{0,\\}"))
   :init
   (setq global-whitespace-mode nil))
 
@@ -478,49 +475,49 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 
 ;; Always place a newline at the end of files, like nano does by
 ;; default.
-(setq require-final-newline t)
+(setopt require-final-newline t)
 #+end_src
 
 * Narrowing, searching, and projects
 
 #+BEGIN_SRC emacs-lisp
 (use-package vertico
-  :config
-  (setq vertico-cycle t)
+  :custom
+  (vertico-cycle t)
   :init
   (vertico-mode 1))
 
 (use-package orderless
   :ensure t
-  :config
-  (setq orderless-matching-styles '(orderless-flex)))
+  :custom
+  (orderless-matching-styles '(orderless-flex)))
 
 (use-package marginalia
   :init
   (marginalia-mode 1))
 
-(setq completions-format 'vertical
-      completion-ignore-case t
-      read-buffer-completion-ignore-case t
-      read-file-name-completion-ignore-case t
-      ;; default:
-      ;; completion-styles '(basic partial-completion emacs22)
-      ;; recommended by orderless:
-      completion-styles '(orderless basic)
-      ;; 'flex is roughly what I want in order to start matching in the middle
-      ;; of a string and is handled by the 'orderless-flex matching style
-      completion-category-overrides '((file (styles basic partial-completion)))
-      hippie-expand-try-functions-list '(try-complete-file-name-partially
-                                         try-complete-file-name
-                                         try-expand-all-abbrevs
-                                         ;; try-expand-list
-                                         try-expand-line
-                                         try-expand-dabbrev
-                                         try-expand-dabbrev-visible
-                                         try-expand-dabbrev-all-buffers
-                                         try-expand-dabbrev-from-kill
-                                         try-complete-lisp-symbol-partially
-                                         try-complete-lisp-symbol))
+(setopt completions-format 'vertical
+        completion-ignore-case t
+        read-buffer-completion-ignore-case t
+        read-file-name-completion-ignore-case t
+        ;; default:
+        ;; completion-styles '(basic partial-completion emacs22)
+        ;; recommended by orderless:
+        completion-styles '(orderless basic)
+        ;; 'flex is roughly what I want in order to start matching in the middle
+        ;; of a string and is handled by the 'orderless-flex matching style
+        completion-category-overrides '((file (styles basic partial-completion)))
+        hippie-expand-try-functions-list '(try-complete-file-name-partially
+                                           try-complete-file-name
+                                           try-expand-all-abbrevs
+                                           ;; try-expand-list
+                                           try-expand-line
+                                           try-expand-dabbrev
+                                           try-expand-dabbrev-visible
+                                           try-expand-dabbrev-all-buffers
+                                           try-expand-dabbrev-from-kill
+                                           try-complete-lisp-symbol-partially
+                                           try-complete-lisp-symbol))
 ;; https://github.com/Zetagon/literate-dotfiles/blob/4bb980a2fd0d60784939bfc21dc10e7aebc16eb2/config.org#default
 (add-hook 'text-mode-hook
           (lambda ()
@@ -547,13 +544,13 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 #+BEGIN_SRC emacs-lisp
 ;; This package is needed for projectile-ripgrep to work. Don't disable it.
 (use-package ripgrep
-  :config
-  (setq ripgrep-arguments '("--hidden")))
+  :custom
+  (ripgrep-arguments '("--hidden")))
 ;; ...though projectile will try this one if the above isn't available.
 (use-package rg
-  :config
-  (setq rg-command-line-flags '("--hidden"))
-  (setq rg-ignore-ripgreprc nil))
+  :custom
+  (rg-command-line-flags '("--hidden"))
+  (rg-ignore-ripgreprc nil))
 (use-package deadgrep
   ;; <f5> is suggested, but that is inconvenient on my keyboards...
   :bind (("C-c g" . deadgrep)))
@@ -602,41 +599,44 @@ with the default ordering Projectile uses.
 
 (use-package projectile
   :bind ("C-c p" . projectile-command-map)
+  :custom
+  (projectile-indexing-method 'alien)
+  (projectile-enable-caching t)
+  (projectile-mode-line-prefix " P")
+  (projectile-require-project-root t)
+  ;; not used with (projectile-indexing-method 'alien)
+  (projectile-sort-order 'access-time)
+  (projectile-project-search-path
+   '("~/development" "~/repositories"))
+  (projectile-project-root-functions
+   '(projectile-root-local
+     projectile-root-marked
+     ejb/projectile-root-qchem
+     projectile-root-bottom-up
+     projectile-root-top-down
+     projectile-root-top-down-recurring))
   :config
-  (setq projectile-indexing-method 'alien)
-  (setq projectile-enable-caching t)
-  (setq projectile-mode-line-prefix " P")
-  (setq projectile-require-project-root t)
-  ;; not used with (setq projectile-indexing-method 'alien)
-  (setq projectile-sort-order 'access-time)
-  (setq projectile-project-search-path
-        '("~/development" "~/repositories"))
-  (setq projectile-project-root-functions
-        '(projectile-root-local
-          projectile-root-marked
-          ejb/projectile-root-qchem
-          projectile-root-bottom-up
-          projectile-root-top-down
-          projectile-root-top-down-recurring))
-  (setq projectile-project-root-files-bottom-up
-        (ejb/conditional-prepend projectile-project-root-files-bottom-up
-                                 '(".exercism")))
-  (setq projectile-globally-ignored-directories
-        (ejb/conditional-prepend projectile-globally-ignored-directories
-                                 '("^\\.hypothesis"
-                                   "^\\.mypy_cache"
-                                   "^\\.pytest_cache"
-                                   ; all possible build directories
-                                   "build"
-                                   "htmlcov"
-                                   "^__pycache__")))
-  (setq projectile-globally-ignored-files
-        (ejb/conditional-prepend projectile-globally-ignored-files
-                                 '("cmake_install.cmake")))
-  (setq projectile-globally-ignored-file-suffixes
-        (ejb/conditional-prepend projectile-globally-ignored-file-suffixes
-                                 '(".elc"
-                                   ".pyc")))
+  ;; These can't be in :custom because something to do with the existence of
+  ;; the variables first.
+  (setopt projectile-project-root-files-bottom-up
+          (ejb/conditional-prepend projectile-project-root-files-bottom-up
+                                   '(".exercism")))
+  (setopt projectile-globally-ignored-directories
+          (ejb/conditional-prepend projectile-globally-ignored-directories
+                                   '("^\\.hypothesis"
+                                     "^\\.mypy_cache"
+                                     "^\\.pytest_cache"
+                                        ; all possible build directories
+                                     "build"
+                                     "htmlcov"
+                                     "^__pycache__")))
+  (setopt projectile-globally-ignored-files
+          (ejb/conditional-prepend projectile-globally-ignored-files
+                                   '("cmake_install.cmake")))
+  (setopt projectile-globally-ignored-file-suffixes
+          (ejb/conditional-prepend projectile-globally-ignored-file-suffixes
+                                   '(".elc"
+                                     ".pyc")))
   :init
   (projectile-mode 1))
 #+END_SRC
@@ -662,10 +662,10 @@ Links:
 #+BEGIN_SRC emacs-lisp
 ;; Setting this to true would be ideal (so that a reformatter can be applied
 ;; remotely), but it causes saving to hang.
-(setq auto-revert-remote-files nil)
-(setq tramp-default-method "ssh")
-;; (setq tramp-verbose 8)
-(setq vc-handled-backends (delq 'Git vc-handled-backends))
+(setopt auto-revert-remote-files nil
+        tramp-default-method "ssh"
+        ;; tramp-verbose 8
+        vc-handled-backends (delq 'Git vc-handled-backends))
 (require 'tramp)
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 (use-package vagrant-tramp)
@@ -678,12 +678,13 @@ Links:
 
 #+BEGIN_SRC emacs-lisp
 (use-package langtool
+  :custom
+  (langtool-default-language "en-US")
+  (langtool-mother-tongue "en")
   :config
-  (setq langtool-default-language "en-US")
-  (setq langtool-mother-tongue "en")
   ;; Arch Linux
   (if (eq system-type 'gnu/linux)
-      (setq ; langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
+      (setopt ; langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
             langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar"
             langtool-java-classpath "/usr/share/languagetool:/usr/share/java/languagetool/*")))
 
@@ -694,18 +695,19 @@ Links:
          (prog-mode . flyspell-prog-mode))
   :bind (("C-'" . ispell-word)
          ("C-M-'" . flyspell-buffer))
-  :config
-  (setq ispell-silently-savep t)
-  (setq flyspell-issue-welcome-flag nil)
-  (setq flyspell-mode-line-string " FlyS"))
+  :custom
+  (ispell-silently-savep t)
+  (flyspell-issue-welcome-flag nil)
+  (flyspell-mode-line-string " FlyS"))
 #+end_src
 
 * Completion and language servers
 
 #+BEGIN_SRC emacs-lisp
 (use-package treesit-auto
+  :custom
+  (treesit-auto-install t)
   :config
-  (setq treesit-auto-install t)
   (global-treesit-auto-mode)
   :init
   (require 'treesit-auto))
@@ -718,14 +720,29 @@ Links:
          ("M-/" . company-other-backend)
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous))
+  :custom
+  (company-dabbrev-downcase nil)
+  (company-idle-delay 10)
+  (company-lighter-base "cmp")
+  (company-minimum-prefix-length 0)
+  (company-search-regexp-function #'company-search-words-regexp)
+  (company-selection-wrap-around t)
+  (company-tooltip-align-annotations t)
+  (company-transformers '(company-sort-by-backend-importance))
   :config
   ;; These are company backends I know I'll never use, so remove them if
-  ;; present.
-  (setq ejb/company-backends-to-remove
-        '(company-bbdb
-          company-eclim
-          company-xcode
-          company-oddmuse))
+  ;; present.  Some may be obsolete and not even present anymore.
+  (let ((ejb/company-backends-to-remove
+         '(company-bbdb
+           company-eclim
+           company-xcode
+           company-oddmuse)))
+    (setopt company-backends
+            (seq-filter
+             (lambda (backend)
+               (not (member backend ejb/company-backends-to-remove)))
+             company-backends)))
+  :init
   ;; Partial ordering of (future) backends from most to least important.
   ;;
   ;; - For Python, prefer the language server over `anaconda-mode' if
@@ -737,54 +754,41 @@ Links:
         '(company-capf
           company-nimsuggest
           company-anaconda))
-  (setq company-backends
-        (seq-filter
-         (lambda (backend)
-           (not (member backend ejb/company-backends-to-remove)))
-         company-backends))
-  (setq company-dabbrev-downcase nil)
-  (setq company-idle-delay 10)
-  (setq company-lighter-base "cmp")
-  (setq company-minimum-prefix-length 0)
-  (setq company-search-regexp-function #'company-search-words-regexp)
-  (setq company-selection-wrap-around t)
-  (setq company-tooltip-align-annotations t)
-  (setq company-transformers '(company-sort-by-backend-importance))
-  :init
   (defun ejb/fix-company-ordering ()
     (with-eval-after-load 'company
-      (setq company-backends
-            (-sort '(lambda (e1 e2)
-                      (funcall (-rpartial 'ejb/comparator ejb/company-ordering) e1 e2))
-                   company-backends)))))
+      (setopt company-backends
+              (-sort '(lambda (e1 e2)
+                        (funcall (-rpartial 'ejb/comparator ejb/company-ordering) e1 e2))
+                     company-backends)))))
 
 (use-package lsp-mode
   :commands lsp
   :hook ((c-mode c++-mode fortran-mode f90-mode js-mode sh-mode) . lsp)
+  :custom
+  (lsp-keep-workspace-alive nil)
+  (lsp-enable-snippet nil)
+  (lsp-auto-guess-root t)
+  (lsp-enable-on-type-formatting nil)
+  (lsp-modeline-code-actions-enable nil)
+  (lsp-modeline-diagnostics-enable nil)
+  (lsp-headerline-breadcrumb-enable nil)
+  (lsp-lens-enable nil)
+  (lsp-file-watch-threshold 500000)
+  (lsp-enable-suggest-server-download nil)
+  (lsp-clients-clangd-args '("--header-insertion-decorators=0" "--header-insertion=never"))  :config
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
   ;; When using no-littering, `lsp-session-file' is under var/lsp/session.el.
   (advice-add 'lsp :before (lambda (&rest _args)
-                             (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
-  (setq lsp-keep-workspace-alive nil)
-  (setq lsp-enable-snippet nil)
-  (setq lsp-auto-guess-root t)
-  (setq lsp-enable-on-type-formatting nil)
-  (setq lsp-modeline-code-actions-enable nil)
-  (setq lsp-modeline-diagnostics-enable nil)
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-lens-enable nil)
-  (setq lsp-file-watch-threshold 500000)
-  (setq lsp-enable-suggest-server-download nil)
-  (setq lsp-clients-clangd-args '("--header-insertion-decorators=0" "--header-insertion=never")))
+                             (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht))))))
 
 (use-package lsp-ui
   :disabled t
   :commands lsp-ui-mode
-  :config
-  (setq lsp-ui-doc-include-signature t)
-  (setq lsp-ui-flycheck-enable t)
-  (setq lsp-ui-peek-always-show t))
+  :custom
+  (lsp-ui-doc-include-signature t)
+  (lsp-ui-flycheck-enable t)
+  (lsp-ui-peek-always-show t))
 #+END_SRC
 
 * Debuggers
@@ -811,6 +815,19 @@ Links:
                                (when (derived-mode-p 'python-mode)
                                  (setq my/flycheck-local-cache '((lsp . ((next-checkers . (python-flake8))))))))))
   :bind (("C-c f" . flycheck-mode))
+  :custom
+  (flycheck-check-syntax-automatically '(mode-enabled save))
+  (flycheck-checker-error-threshold 2000)
+  ; (flycheck-clang-pedantic t)
+  ; (flycheck-clang-pedantic-errors t)
+  (flycheck-gcc-openmp t)
+  ; (flycheck-gcc-pedantic t)
+  ; (flycheck-gcc-pedantic-errors t)
+  ; (flycheck-cppcheck-checks '("all"))
+  (flycheck-markdown-mdl-style "~/.mdlrc")
+  (flycheck-mode-line-prefix "FC")
+  (flycheck-yamllintrc "~/.config/yamllint/config")
+  (flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   :config
   ;; https://github.com/flycheck/flycheck/issues/1762#issuecomment-750458442
   (defvar-local my/flycheck-local-cache nil)
@@ -818,22 +835,10 @@ Links:
     (or (alist-get property (alist-get checker my/flycheck-local-cache))
         (funcall fn checker property)))
   (advice-add 'flycheck-checker-get :around 'my/flycheck-checker-get)
-  (setq flycheck-check-syntax-automatically '(mode-enabled save))
-  (setq flycheck-checker-error-threshold 2000)
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   ;; json-python-json -> json-jq -> json-jsonlint
   (setq ejb/flycheck-checker-default-json 'json-python-json)
   (flycheck-add-next-checker 'json-python-json 'json-jq t)
   (flycheck-add-next-checker 'json-jq 'json-jsonlint t)
-  ; (setq flycheck-clang-pedantic t)
-  ; (setq flycheck-clang-pedantic-errors t)
-  (setq flycheck-gcc-openmp t)
-  ; (setq flycheck-gcc-pedantic t)
-  ; (setq flycheck-gcc-pedantic-errors t)
-  ; (setq flycheck-cppcheck-checks '("all"))
-  (setq flycheck-markdown-mdl-style "~/.mdlrc")
-  (setq flycheck-mode-line-prefix "FC")
-  (setq-default flycheck-yamllintrc "~/.config/yamllint/config")
   :init
   (global-flycheck-mode))
 #+end_src
@@ -852,17 +857,17 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 * Diffing (built-in)
 
 #+begin_src emacs-lisp
-(setq diff-advance-after-apply-hunk nil)
-;; This is the default, but make it explicit that +/- markers should not
-;; appear in the fringe.
-(setq diff-font-lock-prettify nil)
+(setopt diff-advance-after-apply-hunk nil
+        ;; This is the default, but make it explicit that +/- markers should not
+        ;; appear in the fringe.
+        diff-font-lock-prettify nil)
 
 (use-package vdiff
-  :config
-  (setq vdiff-auto-refine t)
-  (setq vdiff-diff-algorithm 'git-diff-patience)
+  :custom
+  (vdiff-auto-refine t)
+  (vdiff-diff-algorithm 'git-diff-patience)
   (setf (alist-get 'custom vdiff-diff-algorithms) "git --no-pager diff --patience --no-index --no-color --word-diff-regex=.")
-  ;; (setq vdiff-diff-algorithm 'custom)
+  ;; (vdiff-diff-algorithm 'custom)
   )
 #+end_src
 
@@ -873,7 +878,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 #+BEGIN_SRC emacs-lisp
 ;; Even though VC systems (at least git) commit the symbolic link pointer
 ;; itself, and not the file it's pointing to, I want to edit the file.
-(setq vc-follow-symlinks t)
+(setopt vc-follow-symlinks t)
 #+END_SRC
 
 ** Git
@@ -919,27 +924,27 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture))
-  :config
-  (setq org-adapt-indentation nil)
-  (setq org-babel-tangle-lang-exts '(("emacs-lisp" . "el")
-                                     ("elisp" . "el")
-                                     ("javascript" . "js")
-                                     ("js" . "js")
-                                     ("python" . "py")))
-  (setq org-clock-persist t)
-  (setq org-closed-keep-when-no-todo t)
-  (setq org-confirm-babel-evaluate nil)
-  (setq org-descriptive-links nil)
-  (setq org-duration-format 'h:mm)
-  (setq org-edit-src-content-indentation 0)
-  (setq org-export-backends '(ascii html icalendar latex md))
-  (setq org-export-dispatch-use-expert-ui t)
-  (setq org-export-with-smart-quotes t)
+  :custom
+  (org-adapt-indentation nil)
+  (org-babel-tangle-lang-exts '(("emacs-lisp" . "el")
+                                ("elisp" . "el")
+                                ("javascript" . "js")
+                                ("js" . "js")
+                                ("python" . "py")))
+  (org-clock-persist t)
+  (org-closed-keep-when-no-todo t)
+  (org-confirm-babel-evaluate nil)
+  (org-descriptive-links nil)
+  (org-duration-format 'h:mm)
+  (org-edit-src-content-indentation 0)
+  (org-export-backends '(ascii html icalendar latex md))
+  (org-export-dispatch-use-expert-ui t)
+  (org-export-with-smart-quotes t)
   ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
-  (setq org-highlight-latex-and-relatex '(latex script entities))
-  (setq org-html-with-latex '(mathjax))
-  (setq org-image-actual-width nil)
-  (setq org-latex-create-formula-image-program 'imagemagick)
+  (org-highlight-latex-and-relatex '(latex script entities))
+  (org-html-with-latex '(mathjax))
+  (org-image-actual-width nil)
+  (org-latex-create-formula-image-program 'imagemagick)
   ;; The differences from the default are that the following packages are added:
   ;; - xcolor
   ;; - booktabs
@@ -951,56 +956,57 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   ;; where xcolor needs to be loaded early for packages that would otherwise
   ;; automatically load it.  Although we later prefer minted over listings for
   ;; code formatting, listings is still very good for verbatim-like blocks.
-  (setq org-latex-default-packages-alist '(("AUTO" "inputenc" t ("pdflatex"))
-                                           ("T1" "fontenc" t ("pdflatex"))
-                                           ("" "graphicx" t)
-                                           ("" "grffile" t)
-                                           ("" "longtable" nil)
-                                           ("" "wrapfig" nil)
-                                           ("" "rotating" nil)
-                                           ("normalem" "ulem" t)
-                                           ("" "amsmath" t)
-                                           ("" "textcomp" t)
-                                           ("" "amssymb" t)
-                                           ("" "capt-of" nil)
-                                           ("dvipsnames,svgnames,table" "xcolor" nil)
-                                           ("" "hyperref" nil)
-                                           ("" "booktabs" nil)
-                                           ("" "tabulary" nil)
-                                           ("" "braket" t)
-                                           ("final" "microtype" nil)
-                                           ("" "listings" nil)
-                                           ("" "siunitx" nil)))
-  (setq org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
-  (setq org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
-  (setq org-html-mathjax-options
-        '((path "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js")
-          (scale "100")
-          (align "center")
-          (font "TeX")
-          (linebreaks "false")
-          (autonumber "AMS")
-          (indent "0em")
-          (multlinewidth "85%")
-          (tagindent ".8em")
-          (tagside "right")))
-  (setq org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
-  (setq org-latex-tables-booktabs t)
-  (setq org-list-allow-alphabetical t)
-  (setq org-log-done 'time)
-  (setq org-log-done-with-time t)
-  (setq org-src-fontify-natively t)
-  (setq org-src-tab-acts-natively t)
-  (setq org-startup-folded nil)
+  (org-latex-default-packages-alist '(("AUTO" "inputenc" t ("pdflatex"))
+                                      ("T1" "fontenc" t ("pdflatex"))
+                                      ("" "graphicx" t)
+                                      ("" "grffile" t)
+                                      ("" "longtable" nil)
+                                      ("" "wrapfig" nil)
+                                      ("" "rotating" nil)
+                                      ("normalem" "ulem" t)
+                                      ("" "amsmath" t)
+                                      ("" "textcomp" t)
+                                      ("" "amssymb" t)
+                                      ("" "capt-of" nil)
+                                      ("dvipsnames,svgnames,table" "xcolor" nil)
+                                      ("" "hyperref" nil)
+                                      ("" "booktabs" nil)
+                                      ("" "tabulary" nil)
+                                      ("" "braket" t)
+                                      ("final" "microtype" nil)
+                                      ("" "listings" nil)
+                                      ("" "siunitx" nil)))
+  (org-latex-hyperref-template "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},\n pdfsubject={%d},\n pdfcreator={%c},\n pdflang={%L},\n colorlinks=true,\n linkcolor=MidnightBlue,\n citecolor=MidnightBlue,\n urlcolor=MidnightBlue}\n")
+  (org-latex-inline-image-rules '(("file" . "\\.\\(pdf\\|jpeg\\|jpg\\|png\\|ps\\|eps\\|tikz\\|pgf\\|svg\\|gif\\)\\'")))
+  (org-html-mathjax-options
+   '((path "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js")
+     (scale "100")
+     (align "center")
+     (font "TeX")
+     (linebreaks "false")
+     (autonumber "AMS")
+     (indent "0em")
+     (multlinewidth "85%")
+     (tagindent ".8em")
+     (tagside "right")))
+  (org-latex-pdf-process '("latexmk -pdf -xelatex -shell-escape -output-directory=%o %f"))
+  (org-latex-tables-booktabs t)
+  (org-list-allow-alphabetical t)
+  (org-log-done 'time)
+  (org-log-done-with-time t)
+  (org-src-fontify-natively t)
+  (org-src-tab-acts-natively t)
+  (org-startup-folded nil)
   ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
-  (setq org-startup-truncated nil)
+  (org-startup-truncated nil)
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
+  :config
   ;; You need to install pygments to use minted.
   (when (executable-find "pygmentize")
     (add-to-list 'org-latex-packages-alist '("" "minted" nil))
-    (setq org-latex-listings 'minted)
+    (setopt org-latex-listings 'minted)
     ;; TODO these are applied in square brackets to every block, rather than using a global \mintedsetup.
-    (setq org-latex-minted-options nil))
+    (setopt org-latex-minted-options nil))
   (with-eval-after-load "ox-latex"
     (add-to-list 'org-latex-classes '("refsheet" "\\documentclass{refsheet}"
                                       ("\\section{%s}" . "\\section*{%s}")
@@ -1072,7 +1078,7 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 (bind-key (kbd "C-c l") 'ejb/comint-clear comint-mode-map)
-(setq compilation-scroll-output t)
+(setopt compilation-scroll-output t)
 #+END_SRC
 
 * Evaluation
@@ -1086,8 +1092,8 @@ Taken from https://emacs.stackexchange.com/questions/62/hide-compilation-window#
         ("C-<return>" . eir-eval-in-ielm)
    :map Info-mode-map
         ("C-<return>" . eir-eval-in-ielm))
-  :config
-  (setq eir-repl-placement 'right))
+  :custom
+  (eir-repl-placement 'right))
 #+end_src
 
 * C/C++
@@ -1123,10 +1129,10 @@ the header, based upon the associated source code file."
 
 (c-add-style "ejb" ejb/cc-style)
 
-(setq c-default-style
-      '((java-mode . "java")
-        (awk-mode . "awk")
-        (other . "ejb")))
+(setopt c-default-style
+        '((java-mode . "java")
+          (awk-mode . "awk")
+          (other . "ejb")))
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
@@ -1139,9 +1145,9 @@ the header, based upon the associated source code file."
 #+BEGIN_SRC emacs-lisp
 (use-package clang-format+
   :hook (c-mode-common . clang-format+-mode)
-  :config
-  (setq clang-format-style "file")
-  (setq clang-format+-context 'modification))
+  :custom
+  (clang-format-style "file")
+  (clang-format+-context 'modification))
 
 (use-package astyle
   :when (executable-find "astyle"))
@@ -1155,10 +1161,12 @@ the header, based upon the associated source code file."
   :hook (java-mode . lsp))
 #+END_SRC
 
-* FORTRAN
+* FORTRAN (built-in)
 
 #+begin_src emacs-lisp
-(setq fortran-comment-region "C")
+(use-package fortran
+  :custom
+  (fortran-comment-region "C"))
 #+end_src
 
 * LaTeX
@@ -1180,16 +1188,17 @@ users are likely to use them.
   :config
   (add-to-list 'texmathp-tex-commands "dmath" 'env-on)
   (texmathp-compile)
-  :init
-  (setq-default TeX-master 'shared)
+  :custom
+  (TeX-master 'shared)
   ;; nil is the default; this remains here as a reminder that setting it to
   ;; true makes Emacs hang on every save when enabled.
-  (setq TeX-auto-save nil)
-  (setq TeX-parse-self t))
+  (TeX-auto-save nil)
+  (TeX-parse-self t))
+
 (use-package auctex-latexmk
   :disabled t
-  :config
-  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+  :custom
+  (auctex-latexmk-inherit-TeX-PDF-mode t)
   :init
   (auctex-latexmk-setup))
 #+end_src
@@ -1202,15 +1211,15 @@ users are likely to use them.
   ;; :elpaca nil
   :straight (python :type built-in)
   :mode (("\\.ipy\\'" . python-mode))
-  :config
-  (setq python-fill-docstring-style 'pep-257-nn)
-  (setq python-indent-guess-indent-offset nil)
-  (setq python-shell-interpreter (cond ((executable-find "ipython") "ipython")
-                                       ((executable-find "python3") "python3")
-                                       ((executable-find "python") "python")
-                                       (t "python3")))
-  (setq python-shell-interpreter-args (cond ((executable-find "ipython") "-i --simple-prompt")
-                                            (t "-i"))))
+  :custom
+  (python-fill-docstring-style 'pep-257-nn)
+  (python-indent-guess-indent-offset nil)
+  (python-shell-interpreter (cond ((executable-find "ipython") "ipython")
+                                  ((executable-find "python3") "python3")
+                                  ((executable-find "python") "python")
+                                  (t "python3")))
+  (python-shell-interpreter-args (cond ((executable-find "ipython") "-i --simple-prompt")
+                                       (t "-i"))))
 
 (use-package python-docstring
   :hook (python-mode . python-docstring-mode)
@@ -1218,9 +1227,9 @@ users are likely to use them.
 
 (use-package numpydoc
   :after python
-  :config
-  (setq numpydoc-insertion-style 'nil)
-  (setq numpydoc-insert-examples-block nil))
+  :custom
+  (numpydoc-insertion-style 'nil)
+  (numpydoc-insert-examples-block nil))
 
 (use-package virtualenvwrapper
   :after python)
@@ -1310,21 +1319,21 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   ;; (add-hook 'markdown-mode-hook
   ;;           (lambda ()
   ;;             (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
-  :config
-  (setq markdown-asymmetric-header t)
-  (setq markdown-content-type "application/xhtml+xml")
+  :custom
+  (markdown-asymmetric-header t)
+  (markdown-content-type "application/xhtml+xml")
   ;; This isn't super necessary since I have pandoc run a similar command
   ;; every time I save with these default arguments, but this always produces
   ;; HTML where pandoc-mode might not.
-  (setq markdown-command
-        (concat "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header="
-                (expand-file-name "mathjax.html" user-emacs-directory)))
-  (setq markdown-enable-math t)
-  (setq markdown-fontify-code-blocks-natively t)
-  (setq markdown-hide-markup nil)
-  (setq markdown-hide-urls nil)
-  (setq markdown-italic-underscore t)
-  (setq markdown-link-space-sub-char "-"))
+  (markdown-command
+   (concat "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header="
+           (expand-file-name "mathjax.html" user-emacs-directory)))
+  (markdown-enable-math t)
+  (markdown-fontify-code-blocks-natively t)
+  (markdown-hide-markup nil)
+  (markdown-hide-urls nil)
+  (markdown-italic-underscore t)
+  (markdown-link-space-sub-char "-"))
 #+end_src
 
 * deft
@@ -1334,17 +1343,17 @@ Taken conveniently from [[http://jblevins.org/projects/deft/][Jason Blevins' web
 #+begin_src emacs-lisp
 (use-package deft
   :bind (("C-c d" . deft))
-  :config
-  (setq deft-auto-save-interval 60.0)
+  :custom
+  (deft-auto-save-interval 60.0)
   ;; "${HOME}/Dropbox/Notes" doesn't work, why is that?
-  (setq deft-directory "~/Dropbox/Notes")
-  (setq deft-default-extension "md")
-  (setq deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex"))
-  (setq deft-recursive t)
-  (setq deft-text-mode 'gfm-mode)
-  (setq deft-time-format " %Y-%m-%d %H:%M:%S")
-  (setq deft-use-filename-as-title t)
-  (setq deft-use-filter-string-as-filename t))
+  (deft-directory "~/Dropbox/Notes")
+  (deft-default-extension "md")
+  (deft-extensions '("txt" "text" "utf8" "taskpaper" "md" "markdown" "org" "tex"))
+  (deft-recursive t)
+  (deft-text-mode 'gfm-mode)
+  (deft-time-format " %Y-%m-%d %H:%M:%S")
+  (deft-use-filename-as-title t)
+  (deft-use-filter-string-as-filename t))
 #+end_src
 
 https://stackoverflow.com/a/35450025/3249688
@@ -1371,13 +1380,13 @@ This section needs to come after the Markdown section so that CMake files get re
 (if (version< emacs-version "29.1")
     (use-package cmake-mode
       :hook (cmake-mode . lsp)
-      :config
-      (setq cmake-tab-width tab-width))
+      :custom
+      (cmake-tab-width tab-width))
   ;; cmake-ts-mode is available
   (progn
     ;; So that it remains in the version manifest.
     (use-package cmake-mode)
-    (setq cmake-ts-mode-indent-offset 4)
+    (setopt cmake-ts-mode-indent-offset 4)
     ;; These are the defaults from cmake-mode; the one provided by
     ;; cmake-ts-mode is "\\(?:CMakeLists\\.txt\\|\\.cmake\\)\\'"
     (let ((cmake-modes '("\\.cmake\\'" "CMakeLists\\.txt\\'")))
@@ -1461,7 +1470,7 @@ current buffer, return its path, otherwise nil."
    (".style.yapf" . conf-unix-mode)))
 
 (if (version< emacs-version "29.1")
-    (setq toml-ts-mode-indent-offset tab-width))
+    (setopt toml-ts-mode-indent-offset tab-width))
 #+END_SRC
 
 * XML (builtin)
@@ -1478,7 +1487,9 @@ current buffer, return its path, otherwise nil."
 TODO disable .m files from loading as Objective-C
 
 #+BEGIN_SRC emacs-lisp
-(setq octave-block-offset 4)
+(use-package octave
+  :custom
+  (octave-block-offset 4))
 #+END_SRC
 
 * Julia
@@ -1491,8 +1502,8 @@ TODO disable .m files from loading as Objective-C
     :delight "Julia"))
 
 (use-package vterm
-  :config
-  (setq vterm-always-compile-module t))
+  :custom
+  (vterm-always-compile-module t))
 
 (use-package eat
   :straight (eat :type git
@@ -1508,11 +1519,12 @@ TODO disable .m files from loading as Objective-C
 (use-package julia-snail
   ;; :disabled t
   :hook (julia-mode . julia-snail-mode)
+  :custom
+  (julia-snail-terminal-type :eat)
+  (julia-snail-repl-buffer "*julia-snail*")
   :config
-  (setq julia-snail-terminal-type :eat)
-  (setq julia-snail-repl-buffer "*julia-snail*")
   (when (executable-find "julialauncher")
-    (setq julia-snail-executable "julialauncher")))
+    (setopt julia-snail-executable "julialauncher")))
 
 (defun julia-repl-run-tests (arg)
   "From https://github.com/tpapp/julia-repl/issues/142"
@@ -1550,8 +1562,9 @@ TODO disable .m files from loading as Objective-C
   :config
   (when (executable-find "julialauncher")
     (push '(default-juliaup "julialauncher") julia-repl-executable-records))
-  (setq julia-repl-inferior-buffer-name-base "julia-repl")
-  (julia-repl-set-terminal-backend 'eat))
+  (julia-repl-set-terminal-backend 'eat)
+  :custom
+  (julia-repl-inferior-buffer-name-base "julia-repl"))
 
 (use-package lsp-julia
   :hook (julia-mode . (lambda ()
@@ -1559,9 +1572,11 @@ TODO disable .m files from loading as Objective-C
                         (lsp)))
   :config
   (when (executable-find "julialauncher")
-    (setq lsp-julia-command "julialauncher"))
-  (setq lsp-julia-default-environment "~/.julia/environments/v1.9")
-  (setq lsp-julia-timeout 300))
+    (setopt lsp-julia-command "julialauncher"))
+  :custom
+  (lsp-julia-default-environment "~/.julia/environments/v1.9")
+  (lsp-julia-timeout 300))
+
 (use-package julia-formatter
   ;; Wow, this is really slow.
   :disabled t
@@ -1618,14 +1633,14 @@ TODO disable .m files from loading as Objective-C
     (progn
       ;; So that it remains in the version manifest.
       (use-package jsonian)
-      (setq json-ts-mode-indent-offset tab-width)
+      (setopt json-ts-mode-indent-offset tab-width)
       (mapc
        (lambda (s) (add-to-list 'auto-mode-alist `(,s . json-ts-mode)))
        ejb/json-modes))))
 
 (use-package jq-format
-  :config
-  (setq jq-format-extra-args '("--indent" "4")))
+  :custom
+  (jq-format-extra-args '("--indent" "4")))
 #+END_SRC
 
 * Better configuration languages
@@ -1662,10 +1677,11 @@ TODO disable .m files from loading as Objective-C
   :bind (:map rustic-mode-map
               ("C-c C-c C-;" . rustic-docstring-around-dwim)
               ("C-c C-c C-d" . rustic-cargo-build-doc))
+  :custom
+  (rustic-ansi-faces ansi-color-names-vector)
+  (rustic-format-trigger 'on-save)
+  (rustic-indent-method-chain t)
   :config
-  (setq rustic-ansi-faces ansi-color-names-vector)
-  (setq rustic-format-trigger 'on-save)
-  (setq rustic-indent-method-chain t)
   (defun rustic-docstring-around-dwim ()
     "Use `comment-dwim' to make a Rust docstring for the thing surrounding the comment.
 
@@ -1710,18 +1726,18 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 #+BEGIN_SRC emacs-lisp
 (use-package slime
   :disabled t
-  :config
-  (setq common-lisp-style-default "modern")
+  :custom
+  (common-lisp-style-default "modern")
   ;; default is "lisp", which on my Arch Linux machine is CMUCL
-  (setq inferior-lisp-program "sbcl")
-  (setq lisp-indent-function 'common-lisp-indent-function)
-  (setq slime-contribs '(slime-cl-indent slime-fancy))
+  (inferior-lisp-program "sbcl")
+  (lisp-indent-function 'common-lisp-indent-function)
+  (slime-contribs '(slime-cl-indent slime-fancy))
   :init
   (require 'slime-autoloads))
 
 (use-package sly
-  :config
-  (setq inferior-lisp-program "sbcl"))
+  :custom
+  (inferior-lisp-program "sbcl"))
 #+END_SRC
 
 ** Hy
@@ -1816,9 +1832,10 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
               ("C-c n s" . notespace/render-static-html)
               ("C-c n c" . notespace/eval-and-realize-notes-from-change)))
 (use-package cider
+  :custom
+  (cider-default-cljs-repl 'node)
+  (cider-repl-pop-to-buffer-on-connect nil)
   :config
-  (setq cider-default-cljs-repl 'node)
-  (setq cider-repl-pop-to-buffer-on-connect nil)
   (defun cider-jack-in-bb ()
     "Start a babashka nREPL server for the current project and connect to it."
     (interactive)
@@ -1938,8 +1955,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package pacfiles-mode)
 (use-package pdf-tools)
 (use-package pkgbuild-mode
-  :config
-  (setq pkgbuild-update-sums-on-save nil))
+  :custom
+  (pkgbuild-update-sums-on-save nil))
 (use-package snakemake-mode)
 (use-package systemd)
 (use-package tracwiki-mode
@@ -1956,8 +1973,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :disabled t
   ;; No work machines
   :if (not (ejb/is-work-machine))
-  :config
-  (setq elcord-use-major-mode-as-main-icon t)
+  :custom
+  (elcord-use-major-mode-as-main-icon t)
   :init
   (elcord-mode))
 #+END_SRC
@@ -1968,8 +1985,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package wakatime-mode
   :if (executable-find "wakatime")
   :delight
-  :config
-  (setq wakatime-cli-path (executable-find "wakatime"))
+  :custom
+  (wakatime-cli-path (executable-find "wakatime"))
   :init
   (global-wakatime-mode))
 #+END_SRC
@@ -1978,7 +1995,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (when (not (version< emacs-version "29.1"))
-  (setq treesit-font-lock-level 4))
+  (setopt treesit-font-lock-level 4)
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
