@@ -5,7 +5,8 @@
 
 (setopt load-prefer-newer t)
 
-(setq ejb/package-manager :straight)
+(setq ejb/package-manager :straight
+      ejb/has-treesit (not (version< emacs-version "29.1")))
 
 (cond
  ((eq ejb/package-manager :elpaca)
@@ -704,13 +705,14 @@ Links:
 * Completion and language servers
 
 #+BEGIN_SRC emacs-lisp
-(use-package treesit-auto
-  :custom
-  (treesit-auto-install t)
-  :config
-  (global-treesit-auto-mode)
-  :init
-  (require 'treesit-auto))
+(when ejb/has-treesit
+  (use-package treesit-auto
+    :custom
+    (treesit-auto-install t)
+    :config
+    (global-treesit-auto-mode)
+    :init
+    (require 'treesit-auto)))
 
 (use-package company
   :hook (after-init . global-company-mode)
@@ -1377,7 +1379,7 @@ https://stackoverflow.com/a/35450025/3249688
 This section needs to come after the Markdown section so that CMake files get recognized properly.
 
 #+begin_src emacs-lisp
-(if (version< emacs-version "29.1")
+(if (not ejb/has-treesit)
     (use-package cmake-mode
       :hook (cmake-mode . lsp)
       :custom
@@ -1469,7 +1471,7 @@ current buffer, return its path, otherwise nil."
    (".pylintrc" . conf-unix-mode)
    (".style.yapf" . conf-unix-mode)))
 
-(if (version< emacs-version "29.1")
+(when ejb/has-treesit
     (setopt toml-ts-mode-indent-offset tab-width))
 #+END_SRC
 
@@ -1495,7 +1497,7 @@ TODO disable .m files from loading as Objective-C
 * Julia
 
 #+BEGIN_SRC emacs-lisp
-(if (version< emacs-version "29.1")
+(if (not ejb/has-treesit)
     (use-package julia-mode)
   ;; not built-in; depends on julia-mode
   (use-package julia-ts-mode
@@ -1594,7 +1596,7 @@ TODO disable .m files from loading as Objective-C
                         "\\clang-format\\'"
                         "\\.asdf\\'"
                         "CITATION.cff")))
-  (if (version< emacs-version "29.1")
+  (if (not ejb/has-treesit)
       (progn
         (use-package yaml-mode)
         (mapc
@@ -1617,7 +1619,7 @@ TODO disable .m files from loading as Objective-C
                         "\\.qcjson\\'"
                         "\\.qcschema\\'"
                         "flake.lock")))
-  (if (version< emacs-version "29.1")
+  (if (not ejb/has-treesit)
       ;; Don't use jsonian when tree-sitter is available.
       (progn
         (use-package jsonian
@@ -1912,7 +1914,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 * Containers
 
 #+begin_src emacs-lisp
-(if (version< emacs-version "29.1")
+(if (not ejb/has-treesit)
     (use-package dockerfile-mode)
   ;; dockerfile-ts-mode is available
   ;; So that it remains in the version manifest.
@@ -1994,7 +1996,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 * Tree-sitter
 
 #+begin_src emacs-lisp
-(when (not (version< emacs-version "29.1"))
+(when ejb/has-treesit
   (setopt treesit-font-lock-level 4)
 #+end_src
 
