@@ -488,10 +488,16 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   :init
   (vertico-mode 1))
 
+(defun ejb/orderless-style (component)
+  (orderless--separated-by '(zero-or-more nonl)
+    ;; "rev buffer" will give both "revert-buffer" and "ibuffer-do-revert"
+    (cl-loop for prefix in (split-string component)
+             collect prefix)))
+
 (use-package orderless
   :ensure t
   :custom
-  (orderless-matching-styles '(orderless-flex)))
+  (orderless-matching-styles '(ejb/orderless-style)))
 
 (use-package marginalia
   :init
@@ -505,8 +511,6 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
         ;; completion-styles '(basic partial-completion emacs22)
         ;; recommended by orderless:
         completion-styles '(orderless basic)
-        ;; 'flex is roughly what I want in order to start matching in the middle
-        ;; of a string and is handled by the 'orderless-flex matching style
         completion-category-overrides '((file (styles basic partial-completion)))
         hippie-expand-try-functions-list '(try-complete-file-name-partially
                                            try-complete-file-name
