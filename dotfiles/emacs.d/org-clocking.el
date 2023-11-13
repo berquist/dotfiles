@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; transform this
 '((2 "not-food")
   (1 "fish")
@@ -28,6 +30,52 @@
 ;; (2 "a") -> (("a"))
 ;; (3 "a") -> ((("a")))
 
+(1 "c") -> ("c")
+(2 "b") -> ("c" ("b"))
+(3 "a") -> ("c" ("b" ("a")))
+(2 "hi") -> ("c" ("b" ("a") "hi"))
+(2 "bye")  -> ("c" ("b" ("a") "hi" "bye"))
+(1 "hello") -> ("hello")
+
+(1 "c") -> (("c"))
+(2 "b") -> (("c" ("b")))
+(3 "a") -> (("c" ("b" ("a"))))
+(2 "hi") -> (("c" ("b" ("a") "hi")))
+(2 "bye") -> (("c" ("b" ("a") "hi" "bye")))
+(1 "hello") -> (("c" ("b" ("a") "hi" "bye")) ("hello"))
+
+(setq my-flat-tree
+      '((1 "c")
+        (2 "b")
+        (3 "a")
+        (2 "hi")
+        (1 "hello")))
+
+(defun flat-to-nested-tree (flat-tree)
+  (let ((nested-tree nil))
+    (when flat-tree
+      (when (not (= (car (nth 0 flat-tree)) 1))
+        (error "don't know how to handle first element not 1 yet"))
+      (let ((prev-level (car (nth 0 flat-tree))))
+        (setq nested-tree (append nested-tree (list (list (cadr (nth 0 flat-tree))))))
+        (dolist (idx (number-sequence 1 (1- (length flat-tree))))
+          (let ((node (nth idx flat-tree)))
+            (when (not (= (length node) 2))
+              (error "bad length of node"))
+            (let ((this-level (car node))
+                  (item (cadr node)))
+              ;; If new is same level,
+              ;;
+              ;; If new is lower level,
+              ;;
+              ;; If new is higher level,
+              ;; (cond (((< prev-level this-level) )
+              ;;        ((> prev-level this-level) )
+              ;;        (t )))
+              (setq nested-tree (append nested-tree (list (list item))))
+              (setq prev-level this-level)))
+          )))
+    nested-tree))
 
 (let* (
        ;; (flat-tree '((1 "<2023-05-30 Tue> 1424 best practices" ("@overhead") nil 884 nil)
