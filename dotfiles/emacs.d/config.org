@@ -2002,7 +2002,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (when ejb/has-treesit
-  (setopt treesit-font-lock-level 4)
+  (setopt treesit-font-lock-level 4))
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
