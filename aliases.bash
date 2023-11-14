@@ -12,6 +12,7 @@ if command -v batcat >/dev/null 2>&1; then
         alias bat='batcat'
     fi
 fi
+alias bhead='bat -r :10'
 alias cath='tail -n +1'
 alias cfd='/usr/share/clang/clang-format-diff.py'
 alias d='df -h'
