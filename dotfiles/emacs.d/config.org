@@ -2002,7 +2002,29 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (when ejb/has-treesit
-  (setopt treesit-font-lock-level 4))
+  (setopt treesit-font-lock-level 4)
+  ;; Regular yaml-mode has substantially different indentation behavior that I'm
+  ;; not willing to replicate in the yaml-ts-mode yet.
+  ;; (let ((yaml-ts-modes (seq-filter
+  ;;                       (lambda (p) (eq (cdr p) 'yaml-ts-mode))
+  ;;                       auto-mode-alist)))
+  ;;   (print "yaml-ts-modes:")
+  ;;   (print yaml-ts-modes)
+  ;;   (mapc (lambda (p) (delete p auto-mode-alist)) yaml-ts-modes)
+  ;;   (print "yaml-ts-modes:")
+  ;;   (print yaml-ts-modes))
+  ;; Remove regular Julia mode association even though it doesn't seem to
+  ;; conflict.
+  ;; (let ((julia-modes (seq-filter
+  ;;                     (lambda (p) (eq (cdr p) 'julia-mode))
+  ;;                     auto-mode-alist)))
+  ;;   (print "julia-modes:")
+  ;;   (print julia-modes)
+  ;;   (mapc (lambda (p) (delete p auto-mode-alist)) julia-modes)
+  ;;   (print "julia-modes:")
+  ;;   (print julia-modes)
+  ;;   )
+  )
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
