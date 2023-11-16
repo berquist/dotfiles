@@ -161,6 +161,9 @@
 	# Changing --word-diff to plain helps to make things more obvious.
 	cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
 
+	# Typos
+	checkotu = checkout
+
 # [interactive]
 # 	diffFilter = delta --color-only
 
