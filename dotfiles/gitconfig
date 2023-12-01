@@ -61,6 +61,13 @@
 	noprefix = true
 	# TODO Why this number?
 	renameLimit = 1011
+	tool = difftastic
+
+[difftool]
+	prompt = false
+
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
 
 [difftool.latex]
 	# Needs the `ldiff` script.
@@ -91,6 +98,9 @@
 [merge]
 	conflictstyle = diff3
 	verbosity = 3
+
+[pager]
+	difftool = true
 
 [pull]
 	ff = only
@@ -160,6 +170,10 @@
 	# http://stackoverflow.com/questions/1721738/using-diff-or-anything-else-to-get-character-level-diff-between-text-files
 	# Changing --word-diff to plain helps to make things more obvious.
 	cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
+
+	# Difftastic (https://difftastic.wilfred.me.uk/git.html)
+	dft = difftool
+	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
 
 	# Typos
 	checkotu = checkout
