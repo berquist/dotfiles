@@ -166,6 +166,11 @@ dotfiles:
     src: zshrc
     dst: ~/.zshrc
 profiles:
+  gadreel:
+    dotfiles:
+    - d_emacs.d
+    - d_tmux
+    - f_tmux.conf
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
@@ -294,3 +299,13 @@ profiles:
     - f_zprofile
     - f_zshenv
     - f_zshrc
+  srrh8cicd01.sandia.gov:
+    dotfiles:
+    - d_emacs.d
+    - d_tmux
+    - f_tmux.conf
+  sst-devel-new:
+    dotfiles:
+    - d_emacs.d
+    - d_tmux
+    - f_tmux.conf
