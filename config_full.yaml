@@ -168,6 +168,7 @@ dotfiles:
 profiles:
   gadreel:
     dotfiles:
+    - d_bat
     - d_emacs.d
     - d_tmux
     - f_tmux.conf
@@ -301,11 +302,13 @@ profiles:
     - f_zshrc
   srrh8cicd01.sandia.gov:
     dotfiles:
+    - d_bat
     - d_emacs.d
     - d_tmux
     - f_tmux.conf
   sst-devel-new:
     dotfiles:
+    - d_bat
     - d_emacs.d
     - d_tmux
     - f_tmux.conf
