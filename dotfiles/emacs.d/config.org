@@ -1761,8 +1761,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :disabled t)
 (use-package geiser-chibi
   :disabled t)
-(use-package geiser-guile
-  :disabled t)
+(use-package geiser-guile)
 (use-package geiser-mit
   :disabled t)
 (use-package scribble-mode
