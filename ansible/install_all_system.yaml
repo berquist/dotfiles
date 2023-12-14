@@ -1,5 +1,4 @@
 ---
-# - import_playbook: install_discord.yaml
 # - import_playbook: install_docker.yaml
 - import_playbook: install_vagrant.yaml
 # - import_playbook: install_zulip.yaml
