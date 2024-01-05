@@ -95,7 +95,7 @@
     # global home-manager
     bat
     duf
-    exa
+    eza
     fd
     file
     # git
