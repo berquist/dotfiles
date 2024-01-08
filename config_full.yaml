@@ -166,6 +166,12 @@ dotfiles:
     src: zshrc
     dst: ~/.zshrc
 profiles:
+  cee-compute035:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_tmux
+    - f_tmux.conf
   gadreel:
     dotfiles:
     - d_bat
