@@ -23,7 +23,7 @@
     - dotdrop
   tasks:
     - name: install dotdrop dependencies
-      command: python3 -m pip install --user -r ~/dotfiles/dotdrop/requirements.txt
+      command: "{{ ansible_python_interpreter }} -m pip install --user -r ~/dotfiles/dotdrop/requirements.txt"
       register: pip_install
       changed_when: "'Successfully installed' in pip_install.stdout"
       when: ansible_distribution != "Archlinux"
