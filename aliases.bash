@@ -50,7 +50,7 @@ if command -v eza >/dev/null 2>&1; then
     unal lh
 
     alias ls='eza'
-    alias l='pwd; ls -Fl'
+    alias l='pwd; ls --classify -l'
     alias la='l -a'
     alias lt='l -s modified -r'
     alias lh='lt | head'
