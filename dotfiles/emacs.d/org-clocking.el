@@ -101,7 +101,7 @@
     ;; Initialize the tree with the first node.
     (let* ((node (nth 0 flat-tree))
            (level (nth 0 node)))
-      
+
       )
     (dolist (idx (number-sequence 0 (1- (length tree))))
      (let* ((node (nth idx tree))
