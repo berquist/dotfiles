@@ -1379,6 +1379,17 @@ https://stackoverflow.com/a/35450025/3249688
 (bind-key "<f6>" 'yashi/deft-new-file)
 #+END_SRC
 
+** scratch buffers
+
+#+begin_src emacs-lisp
+(with-current-buffer "*scratch*"
+  (emacs-lock-mode 'kill))
+
+(use-package persistent-scratch
+  :init
+  (persistent-scratch-setup-default))
+#+end_src
+
 * CMake
 
 This section needs to come after the Markdown section so that CMake files get recognized properly.
