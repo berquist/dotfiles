@@ -820,7 +820,7 @@ Links:
                                  (setq my/flycheck-local-cache '((lsp . ((next-checkers . (tex-chktex)))))))))
          (lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'python-mode)
-                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (python-flake8))))))))))
+                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (python-pycompile))))))))))
   :bind (("C-c f" . flycheck-mode))
   :custom
   (flycheck-check-syntax-automatically '(mode-enabled save))
@@ -834,7 +834,7 @@ Links:
   (flycheck-markdown-mdl-style "~/.mdlrc")
   (flycheck-mode-line-prefix "FC")
   (flycheck-yamllintrc "~/.config/yamllint/config")
-  (flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  (flycheck-disabled-checkers '(emacs-lisp-checkdoc python-flake8 python-pylint))
   :config
   ;; https://github.com/flycheck/flycheck/issues/1762#issuecomment-750458442
   (defvar-local my/flycheck-local-cache nil)
@@ -846,6 +846,9 @@ Links:
   (setq ejb/flycheck-checker-default-json 'json-python-json)
   (flycheck-add-next-checker 'json-python-json 'json-jq t)
   (flycheck-add-next-checker 'json-jq 'json-jsonlint t)
+  ;; python-pycompile -> python-ruff -> python-mypy
+  (setq ejb/flycheck-checker-default-python 'python-pycompile)
+  (flycheck-add-next-checker 'python-pycompile 'python-ruff nil)
   :init
   (global-flycheck-mode))
 #+end_src
@@ -1218,6 +1221,8 @@ users are likely to use them.
   ;; :elpaca nil
   :straight (python :type built-in)
   :mode (("\\.ipy\\'" . python-mode))
+  :hook ((python-base-mode . (lambda ()
+                               (flycheck-select-checker ejb/flycheck-checker-default-python))))
   :custom
   (python-fill-docstring-style 'pep-257-nn)
   (python-indent-guess-indent-offset nil)
