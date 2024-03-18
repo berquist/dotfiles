@@ -82,7 +82,7 @@
     dconf2nix
     firefox
     firefox-devedition-bin
-    git
+    gitFull
     home-manager
     mosh
     pop-gtk-theme
