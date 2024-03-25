@@ -245,6 +245,9 @@ What's the difference between setq and setq-default? See here: http://stackoverf
   "Prevent y-or-n-p from activating a dialog"
   (let ((use-dialog-box nil))
     ad-do-it))
+
+;; Even when using the mouse, force the minibuffer.
+(setopt use-file-dialog nil)
 #+end_src
 
 * Key bindings
