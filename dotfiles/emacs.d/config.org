@@ -903,7 +903,9 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package git-commit
   :init
   (require 'git-commit))
-(use-package git-modes)
+(use-package git-modes
+  :mode (("/\\.containerignore\\'" . gitignore-mode)
+         ("/\\.dockerignore\\'" . gitignore-mode)))
 (use-package magit
   :bind (("C-x g" . magit-status)))
 (use-package magit-delta
