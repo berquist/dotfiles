@@ -187,7 +187,6 @@ profiles:
     # - d_emacs.d
     - d_idea
     - d_tmux
-    - f_alacritty.yml
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
@@ -233,7 +232,6 @@ profiles:
     - d_bat
     - d_emacs.d
     - d_tmux
-    - f_alacritty.yml
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
