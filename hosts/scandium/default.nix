@@ -92,19 +92,6 @@
     vlc
     zerotierone
 
-    # global home-manager
-    bat
-    duf
-    eza
-    fd
-    file
-    # git
-    htop
-    ripgrep
-    tmux
-    tree
-    wget
-
     # this computer's home-manager
     act
     aspell
@@ -113,10 +100,8 @@
     cask
     delta
     exercism
-    gh
     google-chrome
     imagemagick
-    neofetch
     # broken?
     # nix-linter
     onefetch

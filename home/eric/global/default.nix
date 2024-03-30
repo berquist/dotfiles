@@ -1,10 +1,24 @@
-{ config, pkgs, ...}:
-with pkgs;
+{ config, lib, pkgs, ...}:
+
 {
   home = {
     username = "eric";
-    homeDirectory = "/home/${config.home.username}";
-    packages = [
+    homeDirectory = lib.mkDefault "/home/${config.home.username}";
+    packages = with pkgs; [
+      bat
+      duf
+      eza
+      fd
+      file
+      gh
+      git
+      htop
+      neofetch
+      ripgrep
+      rsync
+      tmux
+      tree
+      wget
     ];
     file = {
       ".aspell.en.prepl".source = ../../../dotfiles/aspell.en.prepl;
@@ -41,9 +55,14 @@ with pkgs;
     };
   };
 
-  # programs = {
-  #   direnv.enable = true;
-  #   home-manager.enable = true;
-  #   less.enable = true;
-  # };
+  programs = {
+    direnv.enable = true;
+    gpg = {
+      enable = true;
+      mutableKeys = true;
+      mutableTrust = true;
+    };
+    home-manager.enable = true;
+    less.enable = true;
+  };
 }

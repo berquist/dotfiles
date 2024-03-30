@@ -5,5 +5,9 @@
     ./global
   ];
 
-  home.stateVersion = "22.11";
+  home = {
+    homeDirectory = "/Users/${config.home.username}";
+
+    stateVersion = "23.11";
+  };
 }
