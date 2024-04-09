@@ -18,3 +18,6 @@
 --map-syntax='.envrc*:DotENV'
 --map-syntax='flake.lock:JSON'
 --map-syntax='allowed_signers:Authorized Keys'
+
+--map-syntax='.fdignore:Git Ignore'
+--map-syntax='.ignore:Git Ignore'
