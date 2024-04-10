@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Add (prepend) a path to PATH if it exists as a directory and isn't already
 # in the PATH.
 prepend_to_path() {
