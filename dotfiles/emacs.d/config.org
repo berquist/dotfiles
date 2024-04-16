@@ -113,7 +113,6 @@ Fundamental third-party packages that don't go anywhere else.
                              "WORKON_HOME")))
   (when (display-graphic-p)
     (-each ejb/desired-envvars (lambda (envvar) (exec-path-from-shell-copy-env envvar)))))
-
 #+END_SRC
 
 * Functions
@@ -222,6 +221,14 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; Allow making whole regions uppercase or lowercase.
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
+;; Silence warnings
+(setopt warning-suppress-types
+        '((comp)
+          (direnv)
+          (emacs)
+          (lsp-mode)
+          (ox-pandoc)))
 #+end_src
 
 * Backups/autosaving
