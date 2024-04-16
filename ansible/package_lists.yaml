@@ -217,27 +217,19 @@ packages_osmium:
   - python-black
   - python-bottleneck
   - python-cookiecutter
-  - python-cytoolz
   - python-docopt
   - flake8
   - python-gmpy2
-  - python-h5py
-  - python-hypothesis
   - python-joblib
   - python-matplotlib
   - python-mccabe
-  - python2-mock
   - python-mpmath
   - python-networkx
-  - python-nltk
-  - nltk-data
   - python-nose
-  - python-numexpr
   - python-numpy
   # - python-openbabel
   - python-opengl
   - python-openpyxl
-  - python-pandas
   - python-pillow
   - python-pint
   - python-pip
@@ -255,11 +247,8 @@ packages_osmium:
   - python-scipy
   - python-seaborn
   - python-sh
-  - python-sphinx
-  - python-statsmodels
   - python-sympy
   - python-terminado
-  - python-toolz
   - python-tox
   - python-virtualenv
   - python-virtualenvwrapper
@@ -318,11 +307,7 @@ packages_osmium_aur:
   - python-asdf
   - python-ase
   - python-asv
-  - python-autograd
-  - python-cupy
   - python-deepdiff
-  - python-hickle
-  - python-jax
   - python-mmh3
   - python-periodictable
   - python-pyfiglet
@@ -333,7 +318,6 @@ packages_osmium_aur:
   - python-pdbpp
   - python-pythonpy
   - python-versioneer
-  - snakemake
 
   # Programming: Ruby
   - ruby-mdl
