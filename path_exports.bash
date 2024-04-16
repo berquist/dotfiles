@@ -20,7 +20,8 @@ prepend_to_path "${HOME}"/opt/bin/scripts
 prepend_to_path "${HOME}"/go/bin
 # prepend_to_path "${HOME}/.poetry/bin"
 prepend_to_path "${HOME}/.pyenv/bin"
-prepend_to_path "${PYENV_ROOT}/bin"
+# handled by the above
+# prepend_to_path "${PYENV_ROOT}/bin"
 prepend_to_path "${HOME}/.cargo/bin"
 prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
