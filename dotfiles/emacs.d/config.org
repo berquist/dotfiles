@@ -228,7 +228,8 @@ What's the difference between setq and setq-default? See here: http://stackoverf
           (direnv)
           (emacs)
           (lsp-mode)
-          (ox-pandoc)))
+          (ox-pandoc)
+          (treesit)))
 #+end_src
 
 * Backups/autosaving
