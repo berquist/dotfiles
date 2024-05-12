@@ -72,7 +72,6 @@
     config.allowUnfree = true;
     overlays = [
       inputs.emacs-overlay.overlays.emacs
-      inputs.fenix.overlays.default
     ];
   };
 
@@ -106,8 +105,6 @@
     # nix-linter
     onefetch
     pinentry-emacs
-    plexamp
-    spotify
     subversion
     texlive.combined.scheme-full
     valgrind
@@ -131,7 +128,7 @@
   services = {
     emacs = {
       enable = true;
-      package = pkgs.emacs-git;
+      package = pkgs.emacs29;
     };
     openssh = {
       enable = true;

@@ -13,11 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/emacs-overlay";
     };
-
-    fenix = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/fenix";
-    };
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
