@@ -1906,7 +1906,11 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
          ("\\.rq\\'" . sparql-mode)))
 ;; TODO company-sparql
 (use-package ttl-mode
-  :straight (ttl-mode :type git :flavor melpa :host github :repo "jeeger/ttl-mode")
+  :straight (ttl-mode
+             :type git
+             :host github
+             :repo "jeeger/ttl-mode"
+             :files ("*.el"))
   :delight "N3/Turtle"
   :mode (("\\.n3\\'" . ttl-mode)    ; Notation3
          ("\\.nt\\'" . ttl-mode)    ; N-Triples
