@@ -39,8 +39,10 @@
     enable = true;
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    layout = "us";
-    xkbOptions = "ctrl:swapcaps";
+    xkb = {
+      layout = "us";
+      options = "ctrl:swapcaps";      
+    };
   };
   console.useXkbConfig = true;
 
