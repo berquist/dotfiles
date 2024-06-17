@@ -1916,7 +1916,9 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
          ("\\.nt\\'" . ttl-mode)    ; N-Triples
          ("\\.shacl\\'" . ttl-mode) ; SHACL (not a graph, but constraints; looks similar)
          ("\\.ttl\\'" . ttl-mode)   ; Turtle (Terse RDF Triple Language)
-         ("\\.turtle\\'" . ttl-mode)))
+         ("\\.turtle\\'" . ttl-mode))
+  :custom
+  (ttl-indent-on-idle-timer nil))
 #+END_SRC
 
 * Nim
