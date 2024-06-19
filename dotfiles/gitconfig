@@ -114,6 +114,8 @@
 	# This is comparable to `--pretty=oneline`, but includes the extra
 	# (relative) date and author information at the end.
 	olra = %C(auto)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr)%C(reset) %C(blue)<%an>%C(reset)
+	# The above but with full hash
+	olfra = %C(auto)%H%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr)%C(reset) %C(blue)<%an>%C(reset)
 
 [rebase]
 	autoStash = true
@@ -142,7 +144,7 @@
 	l = log --graph --abbrev-commit
 	# This is comparable to `log --graph --oneline`, but includes the extra
 	# (relative) date and author information at the end.
-	lg = log --graph --abbrev-commit --pretty=olra
+	lg = log --graph --pretty=olrra
 
 	# Stop accidentally deleting untracked files.
 	# Always recurse into subdirectories.
