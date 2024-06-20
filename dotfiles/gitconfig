@@ -144,7 +144,7 @@
 	l = log --graph --abbrev-commit
 	# This is comparable to `log --graph --oneline`, but includes the extra
 	# (relative) date and author information at the end.
-	lg = log --graph --pretty=olrra
+	lg = log --graph --pretty=olra
 
 	# Stop accidentally deleting untracked files.
 	# Always recurse into subdirectories.
