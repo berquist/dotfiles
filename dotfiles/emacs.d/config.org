@@ -1471,6 +1471,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 (use-package editorconfig
   :when (executable-find "editorconfig")
   :hook ((prog-mode text-mode) . editorconfig-mode)
+  :custom (editorconfig-mode-lighter "")
   :config
   (defun ejb/editorconfig-has-editorconfig ()
     "If there is an .editorconfig file associated with the
@@ -1488,7 +1489,9 @@ current buffer, return its path, otherwise nil."
   ;; the naive search with `editorconfig-core-get-nearest-editorconfig` is
   ;; death over TRAMP.
   ;; :delight '(:eval (ejb/editorconfig-mode-lighter))
-  :delight)
+  ;; There is a defcustom now.
+  ;; :delight
+  )
 #+END_SRC
 
 * Conf (builtin)
