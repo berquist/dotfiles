@@ -2,7 +2,7 @@
 
 {
   home = {
-    username = "eric";
+    username = lib.mkDefault "eric";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     packages = with pkgs; [
       bat
