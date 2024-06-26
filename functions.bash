@@ -18,4 +18,10 @@ pyclean() {
     find ${PYCLEAN_PLACES} -type d -name "__pycache__" -delete
     find ${PYCLEAN_PLACES} -type d -name ".mypy_cache" -delete
     find ${PYCLEAN_PLACES} -type d -name ".pytest_cache" -delete
+    find ${PYCLEAN_PLACES} -type d -name ".ruff_cache" -delete
+    find ${PYCLEAN_PLACES} -type d -name "htmlcov" -delete
+}
+
+spack-checksum-add () {
+    spack checksum --batch --add-to-package ${1}
 }
