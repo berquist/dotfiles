@@ -12,7 +12,11 @@
 --map-syntax='*.jsonld:JSON'
 # not Objective-C
 --map-syntax='*.m:MATLAB'
+# They may also be Turtle, not sure
+--map-syntax='*.owl:XML'
 --map-syntax='*.qcjson:JSON'
+# They may also be Turtle, not sure
+--map-syntax='*.rdf:XML'
 --map-syntax='*.qcschema:JSON'
 --map-syntax='*Jenkinsfile*:Groovy'
 --map-syntax='.envrc*:DotENV'
