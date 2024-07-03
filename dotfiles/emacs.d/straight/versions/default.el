@@ -102,6 +102,7 @@
  ("meson-mode" . "0449c649daaa9322e1c439c1540d8c290501d455")
  ("nickel-mode" . "71441281e66500e978e10eb44d58e33a28f55b4e")
  ("nim-mode" . "625cc023bd75a741b7d4e629e5bec3a52f45b4be")
+ ("nix-mode" . "719feb7868fb567ecfe5578f6119892c771ac5e5")
  ("nix-ts-mode" . "c7be3506eb118991507e3ad3274d617ca971a07a")
  ("no-littering" . "8b07314d2f0594ff22bf798d9a5f5bf44b4dd4cd")
  ("nongnu-elpa" . "8851206c1817f6324088bc5bcbad033c662a80b2")
