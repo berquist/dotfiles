@@ -5,75 +5,56 @@
 
 (setopt load-prefer-newer t)
 
-(setq ejb/package-manager :straight
-      ejb/has-treesit (not (version< emacs-version "29.1")))
+(setq ejb/has-treesit (not (version< emacs-version "29.1")))
 
-(cond
- ((eq ejb/package-manager :elpaca)
-  (defvar elpaca-installer-version 0.4)
-  (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
-  (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
-  (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
-  (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                                :ref nil
-                                :files (:defaults (:exclude "extensions"))
-                                :build (:not elpaca--activate-package)))
-  (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
-         (build (expand-file-name "elpaca/" elpaca-builds-directory))
-         (order (cdr elpaca-order))
-         (default-directory repo))
-    (add-to-list 'load-path (if (file-exists-p build) build repo))
-    (unless (file-exists-p repo)
-      (make-directory repo t)
-      (when (< emacs-major-version 28) (require 'subr-x))
-      (condition-case-unless-debug err
-          (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                   ((zerop (call-process "git" nil buffer t "clone"
-                                         (plist-get order :repo) repo)))
-                   ((zerop (call-process "git" nil buffer t "checkout"
-                                         (or (plist-get order :ref) "--"))))
-                   (emacs (concat invocation-directory invocation-name))
-                   ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                         "--eval" "(byte-recompile-directory \".\" 0 'force)")))
-                   ((require 'elpaca))
-                   ((elpaca-generate-autoloads "elpaca" repo)))
-              (kill-buffer buffer)
-            (error "%s" (with-current-buffer buffer (buffer-string))))
-        ((error) (warn "%s" err) (delete-directory repo 'recursive))))
-    (unless (require 'elpaca-autoloads nil t)
-      (require 'elpaca)
-      (elpaca-generate-autoloads "elpaca" repo)
-      (load "./elpaca-autoloads")))
-  (add-hook 'after-init-hook #'elpaca-process-queues)
-  (elpaca `(,@elpaca-order))
+(defvar elpaca-installer-version 0.7)
+(defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
+(defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
+(defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
+(defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
+                              :ref nil :depth 1
+                              :files (:defaults "elpaca-test.el" (:exclude "extensions"))
+                              :build (:not elpaca--activate-package)))
+(let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
+       (build (expand-file-name "elpaca/" elpaca-builds-directory))
+       (order (cdr elpaca-order))
+       (default-directory repo))
+  (add-to-list 'load-path (if (file-exists-p build) build repo))
+  (unless (file-exists-p repo)
+    (make-directory repo t)
+    (when (< emacs-major-version 28) (require 'subr-x))
+    (condition-case-unless-debug err
+        (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
+                 ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
+                                                 ,@(when-let ((depth (plist-get order :depth)))
+                                                     (list (format "--depth=%d" depth) "--no-single-branch"))
+                                                 ,(plist-get order :repo) ,repo))))
+                 ((zerop (call-process "git" nil buffer t "checkout"
+                                       (or (plist-get order :ref) "--"))))
+                 (emacs (concat invocation-directory invocation-name))
+                 ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+                                       "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+                 ((require 'elpaca))
+                 ((elpaca-generate-autoloads "elpaca" repo)))
+            (progn (message "%s" (buffer-string)) (kill-buffer buffer))
+          (error "%s" (with-current-buffer buffer (buffer-string))))
+      ((error) (warn "%s" err) (delete-directory repo 'recursive))))
+  (unless (require 'elpaca-autoloads nil t)
+    (require 'elpaca)
+    (elpaca-generate-autoloads "elpaca" repo)
+    (load "./elpaca-autoloads")))
+(add-hook 'after-init-hook #'elpaca-process-queues)
+(elpaca `(,@elpaca-order))
 
-  ;; Install use-package support
-  (elpaca elpaca-use-package
-    ;; Enable :elpaca use-package keyword.
-    (elpaca-use-package-mode)
-    ;; Assume :elpaca t unless otherwise specified.
-    (setopt elpaca-use-package-by-default t))
+;; Install use-package support
+(elpaca elpaca-use-package
+  ;; Enable :elpaca use-package keyword.
+  (elpaca-use-package-mode)
+  ;; Assume :elpaca t unless otherwise specified.
+  (setopt elpaca-use-package-by-default t))
 
-  ;; Block until current queue processed.
-  (elpaca-wait))
- ((eq ejb/package-manager :straight)
-  (setopt straight-use-package-by-default t)
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-        (bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-           'silent 'inhibit-cookies)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage))
-
-  (setopt use-package-always-defer t
-          use-package-verbose t)
-  (straight-use-package 'use-package)))
+;; Block until current queue processed.
+(elpaca-wait)
 #+END_SRC
 
 Fundamental third-party packages that don't go anywhere else.
@@ -96,10 +77,9 @@ Fundamental third-party packages that don't go anywhere else.
 ;; in order to circumvent
 ;; https://emacs.stackexchange.com/questions/27918/why-is-exec-path-different-in-emacsclient-emacsserver-than-in-emacs.
 (use-package exec-path-from-shell
+  :ensure (:wait t)
   :init
   (exec-path-from-shell-initialize))
-(if (eq ejb/package-manager :elpaca)
-    (elpaca-wait))
 ;; Starting the GUI doesn't know anything about the Keychain:
 ;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
 ;; I'm not sure that all of these are necessary anymore, considering that most
@@ -377,9 +357,9 @@ current buffer's, reload dir-locals."
 (use-package abyss-theme)
 (use-package base16-theme)
 (use-package base16-eva-theme
-  :straight (:host github
-             :repo "kjakapat/eva-theme"
-             :files ("emacs/build/*.el"))
+  :ensure (:host github
+           :repo "kjakapat/eva-theme"
+           :files ("emacs/build/*.el"))
   ;; :config
   ;; (load-theme 'base16-eva t)
   )
@@ -418,18 +398,19 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 
 #+begin_src emacs-lisp
 (use-package elec-pair
+  :ensure nil
   :init
   (electric-pair-mode 1))
 
 (use-package paren
+  :ensure nil
   :custom
   (show-paren-delay 0.0)
   :init
   (show-paren-mode 1))
 
 (use-package whitespace
-  ;; :elpaca nil
-  ;; :straight (whitespace :type built-in)
+  :ensure nil
   :bind (("C-c t" . whitespace-mode))
   :mode (("\\.csv\\'" . whitespace-mode)
          ("\\.tab\\'" . whitespace-mode)
@@ -707,7 +688,7 @@ Links:
 
 ;; built-in
 (use-package flyspell
-  ;; :elpaca nil
+  :ensure nil
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode))
   :bind (("C-'" . ispell-word)
@@ -942,8 +923,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package org
   ;; Give up on trying to use the latest one, which doesn't load properly with
   ;; straight.
-  ;; :elpaca nil
-  :straight (org :type built-in)
+  :ensure nil
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture))
@@ -1188,6 +1168,7 @@ the header, based upon the associated source code file."
 
 #+begin_src emacs-lisp
 (use-package fortran
+  :ensure nil
   :custom
   (fortran-comment-region "C"))
 #+end_src
@@ -1231,8 +1212,7 @@ users are likely to use them.
 #+begin_src emacs-lisp
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
-  ;; :elpaca nil
-  :straight (python :type built-in)
+  :ensure nil
   :mode (("\\.ipy\\'" . python-mode))
   :hook ((python-base-mode . (lambda ()
                                (flycheck-select-checker ejb/flycheck-checker-default-python))))
@@ -1498,7 +1478,7 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package conf-mode
-  ;; :elpaca nil
+  :ensure nil
   :mode
   ; generic
   ((".nanorc" . conf-space-mode)
@@ -1517,7 +1497,7 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package nxml
-  ;; :elpaca nil
+  :ensure nil
   :mode (("\\.rdf\\'" . nxml-mode)
          ("\\.xmp\\'" . nxml-mode)))
 #+END_SRC
@@ -1528,6 +1508,7 @@ TODO disable .m files from loading as Objective-C
 
 #+BEGIN_SRC emacs-lisp
 (use-package octave
+  :ensure nil
   :custom
   (octave-block-offset 4))
 #+END_SRC
@@ -1546,14 +1527,14 @@ TODO disable .m files from loading as Objective-C
   (vterm-always-compile-module t))
 
 (use-package eat
-  :straight (eat :type git
-                 :host codeberg
-                 :repo "akib/emacs-eat"
-                 :files ("*.el" ("term" "term/*.el") "*.texi"
-                         "*.ti" ("terminfo/e" "terminfo/e/*")
-                         ("terminfo/65" "terminfo/65/*")
-                         ("integration" "integration/*")
-                         (:exclude ".dir-locals.el" "*-tests.el"))))
+  :ensure (eat :type git
+               :host codeberg
+               :repo "akib/emacs-eat"
+               :files ("*.el" ("term" "term/*.el") "*.texi"
+                       "*.ti" ("terminfo/e" "terminfo/e/*")
+                       ("terminfo/65" "terminfo/65/*")
+                       ("integration" "integration/*")
+                       (:exclude ".dir-locals.el" "*-tests.el"))))
 
 ;; Time to have the Julia REPLs duke it out...
 (use-package julia-snail
@@ -1910,11 +1891,11 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
          ("\\.rq\\'" . sparql-mode)))
 ;; TODO company-sparql
 (use-package ttl-mode
-  :straight (ttl-mode
-             :type git
-             :host github
-             :repo "jeeger/ttl-mode"
-             :files ("*.el"))
+  :ensure (ttl-mode
+           :type git
+           :host github
+           :repo "jeeger/ttl-mode"
+           :files ("*.el"))
   :delight "N3/Turtle"
   :mode (("\\.n3\\'" . ttl-mode)    ; Notation3
          ("\\.nt\\'" . ttl-mode)    ; N-Triples
@@ -1966,7 +1947,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package apptainer-mode
   :mode ("\\.def\\'" . apptainer-mode)
   ;; not on MELPA yet
-  :straight (:host github :repo "berquist/apptainer-mode"))
+  :ensure (:host github :repo "berquist/apptainer-mode"))
 #+end_src
 
 * Other languages, modes, and packages
@@ -1974,9 +1955,9 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 #+BEGIN_SRC emacs-lisp
 (use-package coconut-mode
   :disabled t
-  :elpaca (:host github
-             ;; "main" is NickSeagull, alternate (not working) is "padawanphysicist"
-             :repo "NickSeagull/coconut-mode")
+  :ensure (:host github
+           ;; "main" is NickSeagull, alternate (not working) is "padawanphysicist"
+           :repo "NickSeagull/coconut-mode")
   :mode ("\\.coco\\'" . coconut-mode))
 (use-package crontab-mode)
 (use-package cwl-mode)
@@ -1984,9 +1965,9 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package elixir-mode)
 (use-package ess)
 (use-package exercism-modern
-  :straight (:host github
-             :repo "elken/exercism-modern"
-             :files ("*.el" "icons")))
+  :ensure (:host github
+           :repo "elken/exercism-modern"
+           :files ("*.el" "icons")))
 (use-package go-mode
   :hook (go-mode . lsp))
 (use-package graphviz-dot-mode)
