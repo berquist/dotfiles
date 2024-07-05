@@ -20,3 +20,10 @@ command -v direnv >/dev/null && eval "$(direnv hook bash)"
 
 GPG_TTY="$(tty)"
 export GPG_TTY
+
+# Automatically added by the Guix install script.
+if [ -n "$GUIX_ENVIRONMENT" ]; then
+    if [[ $PS1 =~ (.*)"\\$" ]]; then
+        PS1="${BASH_REMATCH[1]} [env]\\\$ "
+    fi
+fi
