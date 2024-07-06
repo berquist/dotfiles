@@ -902,7 +902,18 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package transient)
 (use-package magit
   :after (transient)
-  :bind (("C-x g" . magit-status)))
+  :bind (("C-x g" . magit-status))
+  :init
+  (let ((exe-git
+         (cond
+          ((executable-find "/usr/bin/git") "/usr/bin/git")
+          (t "git")))
+        (exe-gitk
+         (cond
+          ((executable-find "/usr/bin/gitk") "/usr/bin/gitk")
+          (t "gitk"))))
+    (setopt magit-git-executable exe-git
+            magit-gitk-executable exe-gitk)))
 (use-package magit-delta
   :disabled t
   :hook (magit-mode . magit-delta-mode))
