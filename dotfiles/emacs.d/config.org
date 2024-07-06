@@ -1,4 +1,4 @@
-* Straight and other prerequisites
+* Elpaca and other prerequisites
 
 #+BEGIN_SRC emacs-lisp
 ;; -*- lexical-binding: t -*-
@@ -487,6 +487,10 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 * Narrowing, searching, and projects
 
 #+BEGIN_SRC emacs-lisp
+(when ejb/has-treesit
+  (use-package treesit-fold
+    :ensure (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")))
+
 (use-package vertico
   :custom
   (vertico-cycle t)
