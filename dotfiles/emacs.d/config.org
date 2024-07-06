@@ -1447,16 +1447,15 @@ https://stackoverflow.com/a/35450025/3249688
 This section needs to come after the Markdown section so that CMake files get recognized properly.
 
 #+begin_src emacs-lisp
-(if (not ejb/has-treesit)
-    (use-package cmake-mode
-      :hook (cmake-mode . lsp)
-      :custom
-      ;; This isn't working
-      (cmake-tab-width tab-width))
+(use-package cmake-mode
+  :hook (cmake-mode . lsp)
+  :custom
+  ;; This isn't working
+  (cmake-tab-width tab-width))
+
+(when ejb/has-treesit
   ;; cmake-ts-mode is available
   (progn
-    ;; So that it remains in the version manifest.
-    (use-package cmake-mode)
     (setopt cmake-ts-mode-indent-offset 4)
     ;; These are the defaults from cmake-mode; the one provided by
     ;; cmake-ts-mode is "\\(?:CMakeLists\\.txt\\|\\.cmake\\)\\'"
@@ -1709,8 +1708,6 @@ TODO disable .m files from loading as Objective-C
          ejb/json-modes))
     ;; json-ts-mode is available
     (progn
-      ;; So that it remains in the version manifest.
-      (use-package jsonian)
       (setopt json-ts-mode-indent-offset tab-width)
       (mapc
        (lambda (s) (add-to-list 'auto-mode-alist `(,s . json-ts-mode)))
@@ -1995,12 +1992,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 * Containers
 
 #+begin_src emacs-lisp
-(if (not ejb/has-treesit)
-    (use-package dockerfile-mode)
-  ;; dockerfile-ts-mode is available
-  ;; So that it remains in the version manifest.
-  (use-package dockerfile-mode))
-
+(use-package dockerfile-mode)
 (use-package apptainer-mode
   :mode ("\\.def\\'" . apptainer-mode)
   ;; not on MELPA yet
@@ -2036,8 +2028,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package meson-mode)
 (use-package nix-mode)
 (if ejb/has-treesit
-    (use-package nix-ts-mode
-      :mode "\\.nix\\'"))
+    (use-package nix-ts-mode))
 (use-package pacfiles-mode)
 (use-package pdf-tools)
 (use-package pkgbuild-mode
@@ -2076,35 +2067,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :init
   (global-wakatime-mode))
 #+END_SRC
-
-* Tree-sitter
-
-#+begin_src emacs-lisp
-(when ejb/has-treesit
-  (setopt treesit-font-lock-level 4)
-  ;; Regular yaml-mode has substantially different indentation behavior that I'm
-  ;; not willing to replicate in the yaml-ts-mode yet.
-  ;; (let ((yaml-ts-modes (seq-filter
-  ;;                       (lambda (p) (eq (cdr p) 'yaml-ts-mode))
-  ;;                       auto-mode-alist)))
-  ;;   (print "yaml-ts-modes:")
-  ;;   (print yaml-ts-modes)
-  ;;   (mapc (lambda (p) (delete p auto-mode-alist)) yaml-ts-modes)
-  ;;   (print "yaml-ts-modes:")
-  ;;   (print yaml-ts-modes))
-  ;; Remove regular Julia mode association even though it doesn't seem to
-  ;; conflict.
-  ;; (let ((julia-modes (seq-filter
-  ;;                     (lambda (p) (eq (cdr p) 'julia-mode))
-  ;;                     auto-mode-alist)))
-  ;;   (print "julia-modes:")
-  ;;   (print julia-modes)
-  ;;   (mapc (lambda (p) (delete p auto-mode-alist)) julia-modes)
-  ;;   (print "julia-modes:")
-  ;;   (print julia-modes)
-  ;;   )
-  )
-#+end_src
 
 #+BEGIN_SRC emacs-lisp
 ;; Local Variables:
