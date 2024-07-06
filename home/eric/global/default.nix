@@ -57,6 +57,10 @@
 
   programs = {
     direnv.enable = true;
+    # emacs = {
+    #   enable = true;
+    #   package = pkgs.emacsGit;
+    # };
     gpg = {
       enable = true;
       mutableKeys = true;
@@ -65,4 +69,10 @@
     home-manager.enable = true;
     less.enable = true;
   };
+
+  # services = {
+  #   emacs = {
+  #     enable = true;
+  #   };
+  # };
 }
