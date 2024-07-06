@@ -629,9 +629,13 @@ with the default ordering Projectile uses.
   :config
   ;; These can't be in :custom because something to do with the existence of
   ;; the variables first.
+  ;;
+  ;; For combined C++ and Python projects, such as those for pybind11 or using
+  ;; scikit-build-base, have the Python part (pyproject.toml) take precedence.
   (setopt projectile-project-root-files-bottom-up
           (ejb/conditional-prepend projectile-project-root-files-bottom-up
-                                   '(".exercism")))
+                                   '("pyproject.toml"
+                                     ".exercism")))
   (setopt projectile-globally-ignored-directories
           (ejb/conditional-prepend projectile-globally-ignored-directories
                                    '("^\\.hypothesis"
@@ -648,6 +652,14 @@ with the default ordering Projectile uses.
           (ejb/conditional-prepend projectile-globally-ignored-file-suffixes
                                    '(".elc"
                                      ".pyc")))
+  ;; (projectile-register-project-type 'python-pyproject '("pyproject.toml")
+  ;;                                   :project-file "pyproject.toml"
+  ;;                                   ;; TODO should be :package instead?
+  ;;                                   :compile "python -m pip wheel"
+  ;;                                   :install "python -m pip install"
+  ;;                                   :test "python -m pytest -v --color=no"
+  ;;                                   :test-prefix "test_"
+  ;;                                   :test-suffix "_test")
   :init
   (projectile-mode 1))
 #+END_SRC
