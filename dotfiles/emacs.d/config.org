@@ -894,6 +894,16 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (setf (alist-get 'custom vdiff-diff-algorithms) "git --no-pager diff --patience --no-index --no-color --word-diff-regex=.")
   ;; (vdiff-diff-algorithm 'custom)
   )
+
+(use-package difftastic
+  :bind (:map magit-blame-read-only-mode-map
+              ("D" . difftastic-magit-diff)
+              ("S" . difftastic-magit-show))
+  :config
+  (eval-after-load 'magit-diff
+    '(transient-append-suffix 'magit-diff '(-1 -1)
+       [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
+        ("S" "Difftastic show" difftastic-magit-show)])))
 #+end_src
 
 * Git/version control
