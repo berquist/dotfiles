@@ -895,7 +895,10 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package git-modes
   :mode (("/\\.containerignore\\'" . gitignore-mode)
          ("/\\.dockerignore\\'" . gitignore-mode)))
+;; https://github.com/progfolio/elpaca/issues/324
+(use-package transient)
 (use-package magit
+  :after (transient)
   :bind (("C-x g" . magit-status)))
 (use-package magit-delta
   :disabled t
