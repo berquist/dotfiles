@@ -5,8 +5,6 @@
 
 (setopt load-prefer-newer t)
 
-(setq ejb/has-treesit (not (version< emacs-version "29.1")))
-
 (defvar elpaca-installer-version 0.7)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
@@ -204,6 +202,18 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; Allow making whole regions uppercase or lowercase.
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
+;; TODO set condition to result of attempting to download language library
+(setq ejb/has-treesit (not (version< emacs-version "29.1")))
+
+(when ejb/has-treesit
+  (use-package treesit-auto
+    :custom
+    (treesit-auto-install t)
+    :config
+    (global-treesit-auto-mode)
+    :init
+    (require 'treesit-auto)))
 
 ;; Silence warnings
 (setopt warning-suppress-types
@@ -705,15 +715,6 @@ Links:
 * Completion and language servers
 
 #+BEGIN_SRC emacs-lisp
-(when ejb/has-treesit
-  (use-package treesit-auto
-    :custom
-    (treesit-auto-install t)
-    :config
-    (global-treesit-auto-mode)
-    :init
-    (require 'treesit-auto)))
-
 (use-package company
   :hook (after-init . global-company-mode)
   :bind
@@ -782,7 +783,14 @@ Links:
   ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
   ;; When using no-littering, `lsp-session-file' is under var/lsp/session.el.
   (advice-add 'lsp :before (lambda (&rest _args)
-                             (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht))))))
+                             (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
+  (when ejb/has-treesit
+    (mapc (lambda (h) (add-hook h #'lsp-deferred))
+          '(bash-ts-mode-hook
+            ;; c-ts-mode-hook
+            ;; c++-ts-mode-hook
+            js-ts-mode-hook
+            python-ts-mode-hook))))
 
 (use-package lsp-ui
   :disabled t
@@ -1153,6 +1161,9 @@ the header, based upon the associated source code file."
         '((java-mode . "java")
           (awk-mode . "awk")
           (other . "ejb")))
+
+;; TODO
+;; (setopt c-ts-mode-indent-offset tab-width)
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
@@ -1414,6 +1425,7 @@ This section needs to come after the Markdown section so that CMake files get re
     (use-package cmake-mode
       :hook (cmake-mode . lsp)
       :custom
+      ;; This isn't working
       (cmake-tab-width tab-width))
   ;; cmake-ts-mode is available
   (progn
@@ -1642,9 +1654,11 @@ TODO disable .m files from loading as Objective-C
     (progn
       ;; So that it remains in the version manifest.
       (use-package yaml-mode)
-      (mapc
-       (lambda (s) (add-to-list 'auto-mode-alist `(,s . yaml-ts-mode)))
-       ejb/yaml-modes))))
+      ;; Don't use yaml-ts-mode until indentation is fixed.
+      ;; (mapc
+      ;;  (lambda (s) (add-to-list 'auto-mode-alist `(,s . yaml-ts-mode)))
+      ;;  ejb/yaml-modes)
+      )))
 #+END_SRC
 
 * JSON
