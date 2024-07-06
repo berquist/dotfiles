@@ -55,6 +55,9 @@
 
 ;; Block until current queue processed.
 (elpaca-wait)
+
+;; default is 1K
+(setopt elpaca-ui-row-limit 10000)
 #+END_SRC
 
 Fundamental third-party packages that don't go anywhere else.
