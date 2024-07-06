@@ -211,6 +211,14 @@ What's the difference between setq and setq-default? See here: http://stackoverf
     :custom
     (treesit-auto-install t)
     :config
+    ;; Don't use yaml-ts-mode until indentation is fixed.
+    (let ((ejb/treesit-modes-to-remove
+           '(yaml)))
+      (setopt treesit-auto-langs
+              (seq-filter
+               (lambda (lang)
+                 (not (member lang ejb/treesit-modes-to-remove)))
+               treesit-auto-langs)))
     (global-treesit-auto-mode)
     :init
     (require 'treesit-auto)))
@@ -1664,26 +1672,13 @@ TODO disable .m files from loading as Objective-C
 - [[https://asdf.readthedocs.io/][Advanced Scientific Data Format]] files are based on YAML.
 
 #+BEGIN_SRC emacs-lisp
-;; The first is a decent assumption for ISI-specific pseudo-YAML files.
-(let ((ejb/yaml-modes '("\\.params\\'"
-                        "\\clang-format\\'"
-                        "\\.asdf\\'"
-                        "CITATION.cff")))
-  (if (not ejb/has-treesit)
-      (progn
-        (use-package yaml-mode)
-        (mapc
-         (lambda (s) (add-to-list 'auto-mode-alist `(,s . yaml-ts-mode)))
-         ejb/yaml-modes))
-    ;; yaml-ts-mode is available
-    (progn
-      ;; So that it remains in the version manifest.
-      (use-package yaml-mode)
-      ;; Don't use yaml-ts-mode until indentation is fixed.
-      ;; (mapc
-      ;;  (lambda (s) (add-to-list 'auto-mode-alist `(,s . yaml-ts-mode)))
-      ;;  ejb/yaml-modes)
-      )))
+(use-package yaml-mode
+  ;; The first is a decent assumption for ISI-specific pseudo-YAML files.
+  :mode
+  (("\\.params\\'" . yaml-mode)
+   ("\\clang-format\\'" . yaml-mode)
+   ("\\.asdf\\'" . yaml-mode)
+   ("CITATION.cff" . yaml-mode)))
 #+END_SRC
 
 * JSON
