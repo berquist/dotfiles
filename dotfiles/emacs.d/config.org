@@ -515,6 +515,11 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (use-package orderless
   :ensure t
   :custom
+  ;; default:
+  ;; (completion-styles '(basic partial-completion emacs22))
+  ;; recommended by orderless:
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion))))
   (orderless-matching-styles '(ejb/orderless-style)))
 
 (use-package marginalia
@@ -525,11 +530,6 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
         completion-ignore-case t
         read-buffer-completion-ignore-case t
         read-file-name-completion-ignore-case t
-        ;; default:
-        ;; completion-styles '(basic partial-completion emacs22)
-        ;; recommended by orderless:
-        completion-styles '(orderless basic)
-        completion-category-overrides '((file (styles basic partial-completion)))
         hippie-expand-try-functions-list '(try-complete-file-name-partially
                                            try-complete-file-name
                                            try-expand-all-abbrevs
