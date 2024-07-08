@@ -204,7 +204,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (put 'upcase-region 'disabled nil)
 
 ;; TODO set condition to result of attempting to download language library
-(setq ejb/has-treesit (not (version< emacs-version "29.1")))
+(setq ejb/has-treesit (boundp 'treesit-extra-load-path))
 
 (when ejb/has-treesit
   (use-package treesit-auto
