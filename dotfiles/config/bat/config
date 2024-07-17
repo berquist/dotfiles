@@ -19,6 +19,7 @@
 --map-syntax='*.rdf:XML'
 --map-syntax='*.qcschema:JSON'
 --map-syntax='*Jenkinsfile*:Groovy'
+--map-syntax='.condarc:YAML'
 --map-syntax='.envrc*:DotENV'
 --map-syntax='flake.lock:JSON'
 --map-syntax='allowed_signers:Authorized Keys'
