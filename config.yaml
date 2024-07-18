@@ -166,6 +166,12 @@ dotfiles:
     src: zshrc
     dst: ~/.zshrc
 profiles:
+  as421mcslx:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_tmux
+    - f_tmux.conf
   cee-compute035:
     dotfiles:
     - d_bat
@@ -238,12 +244,6 @@ profiles:
     # - f_sbclrc
     # - f_xdefaults
   sems-containers-son:
-    dotfiles:
-    - d_bat
-    - d_emacs.d
-    - d_tmux
-    - f_tmux.conf
-  sems-containers-srn:
     dotfiles:
     - d_bat
     - d_emacs.d
