@@ -237,6 +237,18 @@ profiles:
     - f_pip.conf
     # - f_sbclrc
     # - f_xdefaults
+  sems-containers-son:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_tmux
+    - f_tmux.conf
+  sems-containers-srn:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_tmux
+    - f_tmux.conf
   sodium.local:
     variables:
       conda_pkg_dir: /Users/eric/.conda_pkgs
@@ -245,12 +257,6 @@ profiles:
     - f_condarc
     - f_nanorc
     - f_pip.conf
-  srrh8cicd01.sandia.gov:
-    dotfiles:
-    - d_bat
-    - d_emacs.d
-    - d_tmux
-    - f_tmux.conf
   sst-devel-new:
     dotfiles:
     - d_bat
