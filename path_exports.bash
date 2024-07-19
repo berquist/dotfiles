@@ -11,6 +11,7 @@ export LSP_USE_PLISTS=true
 export RIPGREP_CONFIG_PATH="${HOME}"/dotfiles/ripgreprc
 
 source "${HOME}"/dotfiles/path.sh
+try_source "${HOME}"/dotfiles/pyenv.bash
 prepend_to_path "${HOME}"/personal_scripts
 prepend_to_path "${HOME}"/opt/bin
 prepend_to_path "${HOME}"/.local/bin
@@ -19,14 +20,10 @@ prepend_to_path "${HOME}"/opt/bin/scripts
 # prepend_to_path "${HOME}"/.node_modules/bin
 prepend_to_path "${HOME}"/go/bin
 # prepend_to_path "${HOME}/.poetry/bin"
-prepend_to_path "${HOME}/.pyenv/bin"
-# handled by the above
-# prepend_to_path "${PYENV_ROOT}/bin"
+prepend_to_path "${PYENV_ROOT}/bin"
 prepend_to_path "${HOME}/.cargo/bin"
 prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
-
-try_source "${HOME}"/dotfiles/pyenv.bash
 
 export SCRATCH=/tmp
 export scratch="${SCRATCH}"
