@@ -3,26 +3,23 @@
 # disable text selection, unless you press shift.
 #--pager="less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
 --theme='Dracula'
---map-syntax='*.asdf:YAML'
+--map-syntax='*.asdf:YAML'  # Advanced Scientific Data Format
 --map-syntax='*.bats:Bourne Again Shell (bash)'
---map-syntax='*.cff:YAML'
+--map-syntax='*.cff:YAML'  # Citation File Format
 --map-syntax='*.cjson:JSON'
---map-syntax='*.cwl:YAML'
+--map-syntax='*.cwl:YAML'  # Common Workflow Language
 --map-syntax='*.jsonc:JSON'
 --map-syntax='*.jsonld:JSON'
-# not Objective-C
---map-syntax='*.m:MATLAB'
-# They may also be Turtle, not sure
---map-syntax='*.owl:XML'
+--map-syntax='*.m:MATLAB'  # not Objective-C
+--map-syntax='*.owl:XML'  # They may also be Turtle, not sure
 --map-syntax='*.qcjson:JSON'
-# They may also be Turtle, not sure
---map-syntax='*.rdf:XML'
 --map-syntax='*.qcschema:JSON'
+--map-syntax='*.rdf:XML'  # They may also be Turtle, not sure
+--map-syntax='*.xmp:XML'  # https://en.wikipedia.org/wiki/Extensible_Metadata_Platform serialized as RDF/XML
 --map-syntax='*Jenkinsfile*:Groovy'
 --map-syntax='.condarc:YAML'
 --map-syntax='.envrc*:DotENV'
---map-syntax='flake.lock:JSON'
---map-syntax='allowed_signers:Authorized Keys'
-
 --map-syntax='.fdignore:Git Ignore'
 --map-syntax='.ignore:Git Ignore'
+--map-syntax='allowed_signers:Authorized Keys'
+--map-syntax='flake.lock:JSON'
