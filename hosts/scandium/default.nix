@@ -145,5 +145,15 @@
     };
   };
 
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+      dockerCompat = true;
+      enable = true;
+    };
+  };
+
   system.stateVersion = "21.05";
 }
