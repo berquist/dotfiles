@@ -1533,7 +1533,7 @@ current buffer, return its path, otherwise nil."
   ;; :delight '(:eval (ejb/editorconfig-mode-lighter))
   ;; There is a defcustom now.
   ;; :delight
-  )
+  (add-hook 'after-change-major-mode-hook #'editorconfig-mode-apply))
 #+END_SRC
 
 * Conf (builtin)
