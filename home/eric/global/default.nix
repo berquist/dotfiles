@@ -15,8 +15,17 @@
       git
       htop
       neofetch
+      (python3.withPackages (ps: with ps; [
+        editorconfig
+        flake8
+        libxml2
+        mypy
+        pylint
+        yamllint
+      ]))
       ripgrep
       rsync
+      ruff
       tmux
       tree
       wget

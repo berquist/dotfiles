@@ -103,16 +103,12 @@
     exercism
     google-chrome
     imagemagick
-    # broken?
-    # nix-linter
     onefetch
     pinentry-emacs
     subversion
-    texlive.combined.scheme-full
     valgrind
     wakatime
     wezterm
-    yamllint
     zoom-us
   ];
 
