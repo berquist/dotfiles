@@ -15,6 +15,7 @@
       git
       htop
       neofetch
+      nix-prefetch
       nixfmt-rfc-style
       (python3.withPackages (ps: with ps; [
         editorconfig
