@@ -1277,6 +1277,7 @@ users are likely to use them.
   :ensure nil
   :mode (("\\.ipy\\'" . python-mode))
   :hook ((python-base-mode . (lambda ()
+                               (setq tab-width 4)
                                (flycheck-select-checker ejb/flycheck-checker-default-python))))
   :custom
   (python-fill-docstring-style 'pep-257-nn)
