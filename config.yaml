@@ -59,10 +59,6 @@ dotfiles:
   f_gdbinit:
     src: gdbinit
     dst: ~/.gdbinit
-  f_gh_config.yml:
-    src: config/gh/config.yml
-    dst: ~/.config/gh/config.yml
-    chmod: '600'
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig

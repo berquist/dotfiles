@@ -42,7 +42,6 @@
       ".config/bat/config".source = ../../../dotfiles/config/bat/config;
       ".config/direnv/direnvrc".source = ../../../dotfiles/config/direnv/direnvrc;
       ".config/exercism/user.json".source = ../../../dotfiles/config/exercism/user.json;
-      ".config/gh/config.yml".source = ../../../dotfiles/config/gh/config.yml;
       ".config/wezterm/wezterm.lua".source = ../../../dotfiles/config/wezterm/wezterm.lua;
       ".gdbinit".source = ../../../dotfiles/gdbinit;
       ".gitconfig".source = ../../../dotfiles/gitconfig;
