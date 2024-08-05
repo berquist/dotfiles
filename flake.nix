@@ -35,6 +35,11 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./home/eric/osmium.nix ];
       };
+      "eric@s1096537" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./home/eric/s1096537.nix ];
+      };
       # personal laptop
       "eric@scandium" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
