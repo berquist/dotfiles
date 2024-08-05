@@ -1272,6 +1272,22 @@ users are likely to use them.
 * Python
 
 #+begin_src emacs-lisp
+(defun ejb/string-contains (needle haystack)
+  ;; TODO remove guard and error on non-strings?
+  (when (stringp haystack)
+    (string-match-p (regexp-quote needle) haystack)))
+
+(defun ejb/pyenv-executable-find (command &optional remote)
+  "Like `executable-find', but handle pyenv shims."
+  (if (executable-find "pyenv")
+      (let ((command-shim (executable-find command)))
+        ;; Shim exists.  See if command _actually_ exists.
+        ;; TODO OS portable?
+        ;; TODO pyenv present but no shim? wat do?
+        (when (ejb/string-contains "pyenv/shims" command-shim)
+          (call-process "pyenv" nil nil nil "--help")))
+      (executable-find command remote)))
+
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
   :ensure nil
