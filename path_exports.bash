@@ -25,9 +25,6 @@ prepend_to_path "${HOME}/.cargo/bin"
 prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
 
-export SCRATCH=/tmp
-export scratch="${SCRATCH}"
-
 export apps="${HOME}"/opt/apps
 
 hostname="$(hostname)"
