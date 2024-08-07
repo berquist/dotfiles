@@ -10,6 +10,16 @@ svn() {
     fi
 }
 
+buildah_prune() {
+    buildah containers --all
+    buildah rm --all
+    buildah containers --all
+    buildah images --all
+    buildah rmi --prune
+    buildah rmi --all
+    buildah images --all
+}
+
 # Taken from
 # https://github.com/robbyrussell/oh-my-zsh/blob/a4f6a9964ceec3d222a8caa8eb3e5cf6027cfbab/plugins/python/python.plugin.zsh#L6
 pyclean() {
