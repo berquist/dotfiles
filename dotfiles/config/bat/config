@@ -22,4 +22,5 @@
 --map-syntax='.fdignore:Git Ignore'
 --map-syntax='.ignore:Git Ignore'
 --map-syntax='allowed_signers:Authorized Keys'
+--map-syntax='default.lock:Requirements.txt'  # hatch lockfile
 --map-syntax='flake.lock:JSON'
