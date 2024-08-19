@@ -47,6 +47,9 @@ dotfiles:
   f_condarc:
     src: condarc
     dst: ~/.condarc
+  f_config.nix:
+    src: config/nixpkgs/config.nix
+    dst: ~/.config/nixpkgs/config.nix
   f_cuby4:
     src: cuby4
     dst: ~/.cuby4
@@ -197,6 +200,7 @@ profiles:
     - f_bashrc
     - f_clisprc.lisp
     - f_condarc
+    - f_config.nix
     - f_cuby4
     - f_direnvrc
     - f_emacsclient.desktop
