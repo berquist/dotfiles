@@ -19,6 +19,11 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake /path/to/this/dir#your-hostname'
     nixosConfigurations = {
+      # personal desktop
+      osmium = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/osmium ];
+      };
       # personal laptop
       scandium = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
