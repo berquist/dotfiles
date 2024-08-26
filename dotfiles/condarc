@@ -1,9 +1,7 @@
 # -*- mode: yaml -*-
 ---
 channels:
-  - psi4
   - conda-forge
-  - defaults
 changeps1: false
 channel_priority: flexible
 # pip_interop_enabled: true

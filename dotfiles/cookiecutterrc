@@ -1,0 +1,8 @@
+# -*- mode: yaml; -*-
+default_context:
+    author: "Eric Berquist"
+    author_name: "Eric Berquist"
+    full_name: "Eric Berquist"
+    author_email: "eric.berquist@gmail.com"
+    email: "eric.berquist@gmail.com"
+    github_username: "berquist"

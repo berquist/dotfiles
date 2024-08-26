@@ -1,5 +1,5 @@
 {
   allowUnfree = true;
   cudaSupport = true;
-  # cudaCapabilities = [ "7.5" ];
+  cudaCapabilities = [ "7.5" ];
 }

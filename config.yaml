@@ -50,6 +50,9 @@ dotfiles:
   f_config.nix:
     src: config/nixpkgs/config.nix
     dst: ~/.config/nixpkgs/config.nix
+  f_cookiecutterrc:
+    src: cookiecutterrc
+    dst: ~/.cookiecutterrc
   f_cuby4:
     src: cuby4
     dst: ~/.cuby4
@@ -219,6 +222,7 @@ profiles:
     - f_aspell.en.prepl
     - f_aspell.en.pws
     # - f_condarc
+    - f_cookiecutterrc
     - f_direnvrc
     - f_markdownlint.jsonc
     - f_startup.jl
@@ -235,6 +239,7 @@ profiles:
     - d_emacs.d
     - f_ansible.cfg
     - f_condarc
+    - f_cookiecutterrc
     # - f_gpg-agent.conf
     # - f_gpg.conf
     - f_ipython_config.py
@@ -262,4 +267,5 @@ profiles:
     - d_bat
     - d_emacs.d
     - d_tmux
+    - f_cookiecutterrc
     - f_tmux.conf

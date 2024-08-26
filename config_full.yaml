@@ -50,6 +50,9 @@ dotfiles:
   f_config.nix:
     src: config/nixpkgs/config.nix
     dst: ~/.config/nixpkgs/config.nix
+  f_cookiecutterrc:
+    src: cookiecutterrc
+    dst: ~/.cookiecutterrc
   f_cuby4:
     src: cuby4
     dst: ~/.cuby4
@@ -201,6 +204,7 @@ profiles:
     - f_clisprc.lisp
     - f_condarc
     - f_config.nix
+    - f_cookiecutterrc
     - f_cuby4
     - f_direnvrc
     - f_emacsclient.desktop
@@ -241,6 +245,7 @@ profiles:
     - f_aspell.en.prepl
     - f_aspell.en.pws
     # - f_condarc
+    - f_cookiecutterrc
     - f_direnvrc
     - f_markdownlint.jsonc
     - f_startup.jl
@@ -264,6 +269,7 @@ profiles:
     - f_bash_profile
     - f_bashrc
     - f_condarc
+    - f_cookiecutterrc
     - f_direnvrc
     - f_gitconfig
     - f_gitignore
@@ -318,4 +324,5 @@ profiles:
     - d_bat
     - d_emacs.d
     - d_tmux
+    - f_cookiecutterrc
     - f_tmux.conf
