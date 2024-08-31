@@ -12,8 +12,10 @@
       fd
       file
       gh
-      git
+      gitFull
+      glab
       htop
+      just
       neofetch
       nix-prefetch
       nixfmt-rfc-style
