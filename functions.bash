@@ -10,6 +10,11 @@ svn() {
     fi
 }
 
+buildah_print() {
+    buildah containers --all
+    buildah images --all
+}
+
 buildah_prune() {
     buildah containers --all
     buildah rm --all
@@ -18,6 +23,20 @@ buildah_prune() {
     buildah rmi --prune
     buildah rmi --all
     buildah images --all
+}
+
+podman_print() {
+    podman container ls --all
+    podman container ls --external || _=$?
+    podman image ls --all
+}
+
+podman_prune() {
+    podman container prune
+    podman image prune --all
+    podman image prune --external
+    podman system prune --all
+    podman system prune --external
 }
 
 # Taken from
