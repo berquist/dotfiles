@@ -25,6 +25,13 @@ buildah_prune() {
     buildah images --all
 }
 
+docker_prune() {
+    docker container prune
+    docker image prune --all
+    docker container ls --all
+    docker image ls --all
+}
+
 podman_print() {
     podman container ls --all
     podman container ls --external || _=$?
