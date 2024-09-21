@@ -9,6 +9,7 @@
     packages = with pkgs; [
       fluffychat
       plexamp
+      protege-distribution
       spotify
     ];
   };

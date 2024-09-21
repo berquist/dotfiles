@@ -18,6 +18,7 @@
       just
       neofetch
       nix-prefetch
+      nix-search-cli
       nixfmt-rfc-style
       (python3.withPackages (ps: with ps; [
         editorconfig
