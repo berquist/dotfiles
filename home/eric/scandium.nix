@@ -7,6 +7,7 @@
 
   home = {
     packages = with pkgs; [
+      fluffychat
       plexamp
       spotify
     ];
