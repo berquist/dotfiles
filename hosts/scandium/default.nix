@@ -95,6 +95,7 @@
     pop-gtk-theme
     pop-icon-theme
     pptp
+    sshfs
     xdg-desktop-portal
     vlc
     zerotierone
@@ -110,6 +111,7 @@
     google-chrome
     imagemagick
     onefetch
+    picard
     pinentry-emacs
     subversion
     valgrind
