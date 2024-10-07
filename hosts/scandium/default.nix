@@ -96,6 +96,7 @@
     pop-icon-theme
     pptp
     sshfs
+    unzip
     xdg-desktop-portal
     vlc
     zerotierone
@@ -110,6 +111,7 @@
     exercism
     google-chrome
     imagemagick
+    mediainfo
     onefetch
     picard
     pinentry-emacs
