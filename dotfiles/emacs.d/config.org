@@ -1082,7 +1082,33 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                       ("\\subsection{%s}" . "\\subsection*{%s}")
                                       ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
   (load "~/dotfiles/dotfiles-private/org-agenda-files.el")
-  (org-clock-persistence-insinuate))
+  (org-clock-persistence-insinuate)
+  (defun ejb/org-insert-time-stamp (time &optional with-hm inactive pre post extra)
+    "Insert a date stamp for the date given by the internal TIME.
+See `format-time-string' for the format of TIME.
+WITH-HM means use the stamp format that includes the time of the day.
+INACTIVE means use square brackets instead of angular ones, so that the
+stamp will not contribute to the agenda.
+PRE and POST are optional strings to be inserted before and after the
+stamp.
+The command returns the inserted time stamp.
+
+The same as `org-insert-time-stamp', but only returns the time stamp
+rather than also inserting it."
+    (org-fold-core-ignore-modifications
+      (let ((fmt (org-time-stamp-format with-hm inactive)) stamp)
+        (setq stamp (or pre ""))
+        (when (listp extra)
+          (setq extra (car extra))
+          (if (and (stringp extra)
+	               (string-match "\\([0-9]+\\):\\([0-9]+\\)" extra))
+	          (setq extra (format "-%02d:%02d"
+			                      (string-to-number (match-string 1 extra))
+			                      (string-to-number (match-string 2 extra))))
+	        (setq extra nil)))
+        (when extra
+          (setq fmt (concat (substring fmt 0 -1) extra (substring fmt -1))))
+        (setq stamp (concat stamp (format-time-string fmt time) (or post "")))))))
 (use-package htmlize)
 (use-package ox-gfm
   :after org
@@ -1090,9 +1116,6 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 (use-package ox-pandoc
   :after org
   :hook (org-mode . (lambda () (require 'ox-pandoc))))
-(use-package ox-trac
-  :after org
-  :hook (org-mode . (lambda () (require 'ox-trac))))
 #+end_src
 
 From https://emacs.stackexchange.com/questions/20577/org-babel-load-all-languages-on-demand.

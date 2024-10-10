@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: standup
+# key: standup
+# --
+* `(ejb/org-insert-time-stamp (current-time))`
+** What did you complete yesterday?
+*** $1
+** What do you plan to work on today?
+*** $2
+** How long do you think it will take?
+*** $3
+** Any impediments in your way? Are you waiting on anything?
+*** $4
