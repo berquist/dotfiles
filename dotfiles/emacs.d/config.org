@@ -908,6 +908,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   )
 
 (use-package difftastic
+  :after magit
   :bind (:map magit-blame-read-only-mode-map
               ("D" . difftastic-magit-diff)
               ("S" . difftastic-magit-show))
