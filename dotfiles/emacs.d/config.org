@@ -1061,6 +1061,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (org-startup-folded nil)
   ;; http://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
   (org-startup-truncated nil)
+  (org-todo-keywords '((sequence "TODO" "|" "WONTDO" "DONE")))
   ;; http://joat-programmer.blogspot.com/2013/07/org-mode-version-8-and-pdf-export-with.html
   :config
   ;; You need to install pygments to use minted.
