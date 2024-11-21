@@ -42,6 +42,7 @@
       ".bash_profile".source = ../../../dotfiles/bash_profile;
       ".bashrc".source = ../../../dotfiles/bashrc;
       # ".clang-format".source = ../../../dotfiles/clang-format;
+      ".config/alacritty/alacritty.toml".source = ../../../dotfiles/config/alacritty/alacritty.toml;
       ".config/bat/config".source = ../../../dotfiles/config/bat/config;
       ".config/direnv/direnvrc".source = ../../../dotfiles/config/direnv/direnvrc;
       ".config/exercism/user.json".source = ../../../dotfiles/config/exercism/user.json;
