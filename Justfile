@@ -7,4 +7,4 @@ nix-rebuild:
 
 # Run home-manager for the current user and system.
 nix-home-manager:
-    nix run home-manager/release-24.05 -- switch --flake ~/dotfiles#{{ whoami }}@{{ hostname }}
+    nix run home-manager/release-24.11 -- switch --flake ~/dotfiles#{{ whoami }}@{{ hostname }}

@@ -23,7 +23,7 @@
     # '';
     settings = {
       cores = 4;
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [
         "root"
         "eric"
@@ -52,9 +52,7 @@
   };
   console.useXkbConfig = true;
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     # extraPackages = [
     #   intel-compute-runtime
