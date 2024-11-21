@@ -67,7 +67,7 @@
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
       permittedInsecurePackages = [
-        "fluffychat-linux-1.20.0"
+        "fluffychat-linux-1.22.1"
         "olm-3.2.16"
       ];
     };
