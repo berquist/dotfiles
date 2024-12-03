@@ -2054,6 +2054,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :ensure (:host github
            :repo "elken/exercism-modern"
            :files ("*.el" "icons")))
+(use-package gemini-mode)
 (use-package go-mode
   :hook (go-mode . lsp))
 (use-package graphviz-dot-mode)
