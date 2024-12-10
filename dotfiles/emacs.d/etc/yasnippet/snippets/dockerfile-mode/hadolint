@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: hadolint global ignore
-# key: hadolint-global
+# name: hadolint ignore
+# key: hadolint
 # --
-# hadolint global ignore=$0
+# hadolint ignore=$0
