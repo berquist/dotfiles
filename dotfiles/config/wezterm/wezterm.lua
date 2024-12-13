@@ -6,6 +6,8 @@ if wezterm.config_builder then
    config = wezterm.config_builder()
 end
 
+config.front_end = "WebGpu"
+
 config.audible_bell = "Disabled"
 
 config.color_scheme = 'Wombat'
