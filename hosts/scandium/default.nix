@@ -81,6 +81,12 @@
     ];
   };
 
+  documentation = {
+    man = {
+      generateCaches = true;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     cachix
     colordiff
