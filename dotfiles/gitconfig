@@ -122,6 +122,9 @@
 	missingCommitsCheck = warn
 	rebaseMerges = true
 
+[rerere]
+	enabled = true
+
 [stash]
 	showPatch = true
 	# default, but for clarity...
