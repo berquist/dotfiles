@@ -1,0 +1,55 @@
+# -*- mode: snippet -*-
+# name: research summary
+# key: research-summary
+# --
+## [title](url)
+
+### Recommended (yes/no)? Why?
+
+### Quick Summary
+- One-sentence key takeaway:
+- Potential relevance to our objectives (Low/Medium/High):
+- Any additional notes or observations:
+
+
+### Authors
+- NAME, Affiliation,
+
+### Core Research Question
+<!---
+- What problem is this paper trying to solve?
+- What is the main objective of this research?
+- Why is this problem important to address?--->
+
+### Solution/Approach
+<!---
+- What is the main solution proposed?
+- What are the key components of their approach?
+- How does their solution work? (2-3 sentences)
+- What makes their approach unique or innovative?--->
+
+### Performance or Success Measures
+<!---
+- How did the authors evaluate their solution?
+- What metrics or measurements were used?
+- What were the key results?
+- What did they compare against (baselines)? --->
+
+### Required Resources & Implementation
+<!---
+- What technologies or tools were required?
+- What kind of data or inputs were needed?
+- What level of expertise would be needed to implement this?
+- Approximately how complex would implementation be? (Low/Medium/High) --->
+
+## Limitations & Future Work
+<!---
+- What limitations did the authors identify?
+- What limitations do you see that weren't mentioned?
+- What opportunities for improvement exist?
+- Are there any assumptions that might not hold in real-world conditions? --->
+
+### Bibtex
+```bibtex
+
+```
