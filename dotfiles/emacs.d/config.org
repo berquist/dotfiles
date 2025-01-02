@@ -935,16 +935,25 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 - https://www.youtube.com/watch?v=7ywEgcbaiys&list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj&index=18
 
 #+BEGIN_SRC emacs-lisp
-(use-package git-commit
+(use-package git-commit-ts-mode
+  :after (treesit-auto)
+  :custom
+  (git-commit-major-mode #'git-commit-ts-mode)
   :init
-  (require 'git-commit))
+  (add-to-list 'treesit-auto-recipe-list
+               (make-treesit-auto-recipe
+                :lang 'gitcommit
+                :ts-mode 'git-commit-ts-mode
+                :remap 'git-commit-mode
+                :url "https://github.com/gbprod/tree-sitter-gitcommit"
+                :ext "\\COMMIT_EDITMSG\\'")))
 (use-package git-modes
   :mode (("/\\.containerignore\\'" . gitignore-mode)
          ("/\\.dockerignore\\'" . gitignore-mode)))
 ;; https://github.com/progfolio/elpaca/issues/324
 (use-package transient)
 (use-package magit
-  :after (transient)
+  :after (transient git-commit-ts-mode)
   :bind (("C-x g" . magit-status))
   :init
   (let ((exe-git
