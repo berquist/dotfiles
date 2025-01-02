@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, inputs, ...}:
 
 {
   home = {
@@ -71,14 +71,18 @@
         "olm-3.2.16"
       ];
     };
+    overlays = [
+      inputs.emacs-overlay.overlays.emacs
+    ];
   };
 
   programs = {
     direnv.enable = true;
-    # emacs = {
-    #   enable = true;
-    #   package = pkgs.emacsGit;
-    # };
+    emacs = {
+      enable = true;
+      package = pkgs.emacs-unstable;
+      extraPackages = (epkgs: [ epkgs.treesit-grammars.with-all-grammars ]);
+    };
     gpg = {
       enable = true;
       mutableKeys = true;
