@@ -1122,9 +1122,11 @@ rather than also inserting it."
         (setq stamp (concat stamp (format-time-string fmt time) (or post "")))))))
 (use-package htmlize)
 (use-package ox-gfm
+  :disabled t
   :after org
   :hook (org-mode . (lambda () (require 'ox-gfm))))
 (use-package ox-pandoc
+  :disabled t
   :after org
   :hook (org-mode . (lambda () (require 'ox-pandoc))))
 #+end_src
@@ -2058,23 +2060,35 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package cwl-mode)
 (use-package earthfile-mode)
 (use-package elixir-mode)
-(use-package ess)
+(use-package ess
+  :disabled t)
 (use-package exercism-modern
+  :disabled t
   :ensure (:host github
            :repo "elken/exercism-modern"
            :files ("*.el" "icons")))
 (use-package gemini-mode)
 (use-package go-mode
   :hook (go-mode . lsp))
+(use-package graphql-mode)
+;; (when ejb/has-treesit
+;;   (use-package graphql-ts-mode))
 (use-package graphviz-dot-mode)
 (use-package groovy-mode)
 (use-package jenkinsfile-mode)
-(use-package just-mode)
-(use-package lox-mode)
+(if (not ejb/has-treesit)
+    (use-package just-mode)
+  (use-package just-ts-mode))
+(if (not ejb/has-treesit)
+    (use-package lox-mode
+      :disabled t)
+  (use-package lox-ts-mode
+    :disabled t))
 (use-package lua-mode)
 (use-package meson-mode)
 (use-package nix-mode)
-(if ejb/has-treesit
+;; currently "need" both
+(when ejb/has-treesit
     (use-package nix-ts-mode))
 (use-package pacfiles-mode)
 (use-package pdf-tools)
