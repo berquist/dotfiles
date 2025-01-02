@@ -1602,7 +1602,8 @@ current buffer, return its path, otherwise nil."
    (".flake8" . conf-unix-mode)
    (".pylintrc" . conf-unix-mode)
    (".style.yapf" . conf-unix-mode)
-   ("poetry.lock" . conf-toml-mode)))
+   ("poetry.lock" . conf-toml-mode)
+   ("uv.lock" . conf-toml-mode)))
 
 (when ejb/has-treesit
     (setopt toml-ts-mode-indent-offset tab-width))
