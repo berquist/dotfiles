@@ -1112,11 +1112,11 @@ rather than also inserting it."
         (when (listp extra)
           (setq extra (car extra))
           (if (and (stringp extra)
-	               (string-match "\\([0-9]+\\):\\([0-9]+\\)" extra))
-	          (setq extra (format "-%02d:%02d"
-			                      (string-to-number (match-string 1 extra))
-			                      (string-to-number (match-string 2 extra))))
-	        (setq extra nil)))
+                   (string-match "\\([0-9]+\\):\\([0-9]+\\)" extra))
+              (setq extra (format "-%02d:%02d"
+                                  (string-to-number (match-string 1 extra))
+                                  (string-to-number (match-string 2 extra))))
+            (setq extra nil)))
         (when extra
           (setq fmt (concat (substring fmt 0 -1) extra (substring fmt -1))))
         (setq stamp (concat stamp (format-time-string fmt time) (or post "")))))))
