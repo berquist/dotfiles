@@ -1,4 +1,4 @@
-hostname := `hostname`
+hostname := `hostname -s`
 whoami := `whoami`
 
 # Rebuild the current NixOS system.
