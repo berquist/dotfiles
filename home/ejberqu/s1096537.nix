@@ -6,9 +6,8 @@
   ];
 
   home = {
-    username = "ejberqu";
     homeDirectory = "/Users/${config.home.username}";
 
-    stateVersion = "23.11";
+    stateVersion = "24.11";
   };
 }
