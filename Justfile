@@ -5,6 +5,10 @@ whoami := `whoami`
 nix-rebuild:
     sudo nixos-rebuild switch --upgrade --flake ~/dotfiles#{{ hostname }}
 
+# Refresh the nix registry list.
+nix-registry:
+    nix registry list --refresh -L
+
 # Run home-manager for the current user and system.
 nix-home-manager:
     nix run home-manager/release-24.11 -- switch --flake ~/dotfiles#{{ whoami }}@{{ hostname }}
