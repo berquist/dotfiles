@@ -378,9 +378,10 @@ current buffer's, reload dir-locals."
 (use-package abyss-theme)
 (use-package base16-theme)
 (use-package base16-eva-theme
+  :disabled t
   :ensure (:host github
            :repo "kjakapat/eva-theme"
-           :files ("emacs/build/*.el"))
+           :files ("emacs/templates/*.default"))
   ;; :config
   ;; (load-theme 'base16-eva t)
   )
