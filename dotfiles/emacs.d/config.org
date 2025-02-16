@@ -2101,6 +2101,9 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package systemd)
 (use-package tracwiki-mode
   :mode ("\\.trac\\'" . tracwiki-mode))
+(if (not ejb/has-treesit)
+    (use-package zig-mode)
+  (use-package zig-ts-mode))
 #+END_SRC
 
 * External services
