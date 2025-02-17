@@ -839,6 +839,14 @@ Links:
 ** General
 
 #+begin_src emacs-lisp
+;; TODO macro for this idiom
+(setq ejb/pyright
+      (let ((basedpyright (executable-find "basedpyright"))
+            (pyright (executable-find "pyright")))
+        (if basedpyright
+            basedpyright
+          pyright)))
+
 (use-package flycheck
   :hook ((lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'sh-mode)
@@ -861,6 +869,7 @@ Links:
   ; (flycheck-cppcheck-checks '("all"))
   (flycheck-markdown-mdl-style "~/.mdlrc")
   (flycheck-mode-line-prefix "FC")
+  (flycheck-python-pyright-executable ejb/pyright)
   (flycheck-yamllintrc "~/.config/yamllint/config")
   (flycheck-disabled-checkers '(emacs-lisp-checkdoc python-flake8 python-pylint))
   :config
@@ -1392,7 +1401,9 @@ users are likely to use them.
 (use-package lsp-pyright
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
-                         (lsp))))
+                         (lsp)))
+  :custom
+  (lsp-pyright-langserver-command ejb/pyright))
 #+end_src
 
 ** Reformatters
