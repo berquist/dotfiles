@@ -1615,7 +1615,10 @@ current buffer, return its path, otherwise nil."
    (".pylintrc" . conf-unix-mode)
    (".style.yapf" . conf-unix-mode)
    ("poetry.lock" . conf-toml-mode)
-   ("uv.lock" . conf-toml-mode)))
+   ("uv.lock" . conf-toml-mode)
+   ; other tools
+   ("Cargo.lock" . conf-toml-mode)
+   ))
 
 (when ejb/has-treesit
     (setopt toml-ts-mode-indent-offset tab-width))
