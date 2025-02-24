@@ -818,7 +818,8 @@ Links:
             ;; c-ts-mode-hook
             ;; c++-ts-mode-hook
             js-ts-mode-hook
-            python-ts-mode-hook))))
+            python-ts-mode-hook
+            rust-ts-mode-hook))))
 
 (use-package lsp-ui
   :disabled t
