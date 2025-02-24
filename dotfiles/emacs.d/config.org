@@ -888,6 +888,7 @@ Links:
   ;; python-pycompile -> python-ruff -> python-mypy
   (setq ejb/flycheck-checker-default-python 'python-pycompile)
   (flycheck-add-next-checker 'python-pycompile 'python-ruff nil)
+  (flycheck-add-next-checker 'rust-cargo 'rust-clippy)
   :init
   (global-flycheck-mode))
 #+end_src
