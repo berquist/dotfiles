@@ -860,7 +860,10 @@ Links:
                                  (setq my/flycheck-local-cache '((lsp . ((next-checkers . (tex-chktex)))))))))
          (lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'python-mode)
-                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (python-pycompile))))))))))
+                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (python-pycompile)))))))))
+         (lsp-managed-mode . (lambda ()
+                               (when (or (derived-mode-p 'rust-mode) (derived-mode-p 'rust-ts-mode))
+                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (rust-cargo))))))))))
   :bind (("C-c f" . flycheck-mode))
   :custom
   (flycheck-check-syntax-automatically '(mode-enabled save))
