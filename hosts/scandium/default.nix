@@ -47,7 +47,7 @@
     displayManager.gdm.enable = true;
     xkb = {
       layout = "us";
-      options = "ctrl:swapcaps";      
+      options = "ctrl:swapcaps";
     };
   };
   console.useXkbConfig = true;

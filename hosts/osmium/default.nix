@@ -60,7 +60,7 @@
     displayManager.gdm.enable = true;
     xkb = {
       layout = "us";
-      variant = "";      
+      variant = "";
     };
   };
   console.useXkbConfig = true;
