@@ -207,7 +207,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (put 'upcase-region 'disabled nil)
 
 ;; TODO set condition to result of attempting to download language library
-(setq ejb/has-treesit (boundp 'treesit-extra-load-path))
+(defvar ejb/has-treesit (boundp 'treesit-extra-load-path))
 
 (when ejb/has-treesit
   (use-package treesit-auto
@@ -781,10 +781,10 @@ Links:
   ;;
   ;; - For Nim, nimsuggest seems to give much better results than nimlsp. But
   ;;   it times out too much.
-  (setq ejb/company-ordering
-        '(company-capf
-          company-nimsuggest
-          company-anaconda))
+  (defvar ejb/company-ordering
+      '(company-capf
+        company-nimsuggest
+        company-anaconda))
   (defun ejb/fix-company-ordering ()
     (with-eval-after-load 'company
       (setopt company-backends
@@ -843,12 +843,12 @@ Links:
 
 #+begin_src emacs-lisp
 ;; TODO macro for this idiom
-(setq ejb/pyright
-      (let ((basedpyright (executable-find "basedpyright"))
-            (pyright (executable-find "pyright")))
-        (if basedpyright
-            basedpyright
-          pyright)))
+(defvar ejb/pyright
+  (let ((basedpyright (executable-find "basedpyright"))
+        (pyright (executable-find "pyright")))
+    (if basedpyright
+        basedpyright
+      pyright)))
 
 (use-package flycheck
   :hook ((lsp-managed-mode . (lambda ()
@@ -874,7 +874,6 @@ Links:
   (flycheck-mode-line-prefix "FC")
   (flycheck-python-pyright-executable ejb/pyright)
   (flycheck-yamllintrc "~/.config/yamllint/config")
-  (flycheck-disabled-checkers '(emacs-lisp-checkdoc python-flake8 python-pylint))
   :config
   ;; https://github.com/flycheck/flycheck/issues/1762#issuecomment-750458442
   (defvar-local my/flycheck-local-cache nil)
