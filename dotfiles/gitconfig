@@ -198,5 +198,5 @@
 # 	navigate = true
 # 	syntax-theme = Dracula
 [credential "https://gitlab.com"]
-	helper = 
+	helper =
 	helper = !/usr/bin/glab auth git-credential
