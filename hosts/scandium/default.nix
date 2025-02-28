@@ -140,7 +140,7 @@
   services = {
     emacs = {
       enable = true;
-      package = pkgs.emacs29;
+      package = pkgs.emacs30;
     };
     openssh = {
       enable = true;
