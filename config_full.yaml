@@ -177,7 +177,7 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_tmux.conf
-  cee-compute035:
+  cee-build033:
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -240,6 +240,15 @@ profiles:
     - f_zprofile
     - f_zshenv
     - f_zshrc
+  s1072373:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - f_direnvrc
+    - f_tmux.conf
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
   s1096537:
     dotfiles:
     - d_bat
@@ -256,6 +265,15 @@ profiles:
     - f_tmux.conf
     - f_wezterm.lua
     - f_yamllint_config
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
+  s1096642:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - f_direnvrc
+    - f_tmux.conf
     - f_zprofile
     - f_zshenv
     - f_zshrc
