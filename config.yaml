@@ -220,6 +220,7 @@ profiles:
     dotfiles:
     - d_bat
     - d_emacs.d
+    - d_tmux
     - f_direnvrc
     - f_tmux.conf
     - f_zprofile
@@ -248,6 +249,7 @@ profiles:
     dotfiles:
     - d_bat
     - d_emacs.d
+    - d_tmux
     - f_direnvrc
     - f_tmux.conf
     - f_zprofile
