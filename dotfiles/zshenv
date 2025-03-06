@@ -5,4 +5,4 @@ if [ -n "${__SOURCED_ZSHENV}" ]; then return; fi
 export __SOURCED_ZSHENV=1
 
 source "${HOME}"/dotfiles/path_exports.bash
-source "${HOME}"/dotfiles/dotfiles-private/$(hostname)/path_exports.bash
+source "${HOME}"/dotfiles/dotfiles-private/machines/$(hostname)/path_exports.bash
