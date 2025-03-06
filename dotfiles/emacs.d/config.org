@@ -1836,7 +1836,10 @@ Such comments are mostly for module- or crate-level documentation.
 See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more information."
     (interactive)
     (let ((comment-start "//! "))
-      (call-interactively 'comment-dwim))))
+      (call-interactively 'comment-dwim)))
+  (flycheck-add-mode 'rust-cargo 'rustic-mode)
+  (flycheck-add-mode 'rust 'rustic-mode)
+  (flycheck-add-mode 'rust-clippy 'rustic-mode))
 #+END_SRC
 
 * Scheme/Lisp
