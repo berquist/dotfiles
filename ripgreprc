@@ -4,3 +4,4 @@
 #--glob=!build_*
 # Python coverage output
 --glob=!htmlcov
+--hidden
