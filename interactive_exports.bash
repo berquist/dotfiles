@@ -5,7 +5,7 @@ if [ -n "$__SOURCED_INTERACTIVE_EXPORTS" ]; then return; fi
 export __SOURCED_INTERACTIVE_EXPORTS=1
 
 # difftastic: don't show unchanged files
-export DFT_SKIP_UNCHANGED=1
+export DFT_SKIP_UNCHANGED=true
 
 # https://askubuntu.com/a/866376
 export EDITOR="emacsclient -t -a=\"\""
@@ -23,5 +23,5 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
-    source $(command -v virtualenvwrapper_lazy.sh)
+    source "$(command -v virtualenvwrapper_lazy.sh)"
 fi
