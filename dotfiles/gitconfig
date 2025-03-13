@@ -65,7 +65,7 @@
 	verbose = true
 
 [diff]
-	algorithm
+	algorithm = histogram
 	colorMoved = default
 	# mnemonicPrefix = true
 	# https://stackoverflow.com/q/6764953/
