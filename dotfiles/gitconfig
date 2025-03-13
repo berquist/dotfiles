@@ -30,6 +30,9 @@
 	markIgnoredLines = true
 	markUnblamableLines = true
 
+[branch]
+	sort = -committerdate
+
 # Available colors are enumerated in
 # http://stackoverflow.com/questions/15458237/git-pretty-format-colors
 [color]
@@ -54,15 +57,20 @@
 	untracked = cyan
 	unmerged = yellow
 
+[column]
+	ui = auto
+
 [commit]
 	gpgsign = true
+	verbose = true
 
 [diff]
+	algorithm
 	colorMoved = default
+	# mnemonicPrefix = true
 	# https://stackoverflow.com/q/6764953/
 	noprefix = true
-	# TODO Why this number?
-	renameLimit = 1011
+	renames = copy
 	tool = difftastic
 
 [difftool]
@@ -74,6 +82,11 @@
 [difftool.latex]
 	# Needs the `ldiff` script.
 	cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
+
+[fetch]
+	all = true
+	prune = true
+	pruneTags = true
 
 # Where did this come from?
 [filter "lfs"]
@@ -94,11 +107,14 @@
 [gpg "ssh"]
 	allowedSignersFile = /home/eric/.config/git/allowed_signers
 
+[help]
+	autocorrect = prompt
+
 [log]
 	date = "format:%F %r (%a, %d %b %Y %T %z)"
 
 [merge]
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 	verbosity = 3
 
 [pager]
@@ -108,7 +124,9 @@
 	ff = only
 
 [push]
+	autoSetupRemote = true
 	default = simple
+	followTags = true
 
 [pretty]
 	# This is comparable to `--pretty=oneline`, but includes the extra
@@ -118,11 +136,14 @@
 	olfra = %C(auto)%H%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr)%C(reset) %C(blue)<%an>%C(reset)
 
 [rebase]
+	# autoSquash = true
 	autoStash = true
 	missingCommitsCheck = warn
 	rebaseMerges = true
+	updateRefs = true
 
 [rerere]
+	autoupdate = true
 	enabled = true
 
 [stash]
@@ -132,6 +153,7 @@
 
 [tag]
 	gpgsign = true
+	sort = version:refname
 
 [alias]
 	# git git git git git git git git git ...
