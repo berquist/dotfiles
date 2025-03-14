@@ -971,7 +971,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                 :ts-mode 'git-commit-ts-mode
                 :remap 'git-commit-mode
                 :url "https://github.com/gbprod/tree-sitter-gitcommit"
-                :ext "\\COMMIT_EDITMSG\\'")))
+                :ext "\\COMMIT_EDITMSG\\'"))
+  (add-to-list 'treesit-auto-langs 'gitcommit))
 (use-package git-modes
   :mode (("/\\.containerignore\\'" . gitignore-mode)
          ("/\\.dockerignore\\'" . gitignore-mode)))
@@ -2113,7 +2114,17 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package jenkinsfile-mode)
 (use-package just-mode)
 (when ejb/has-treesit
-  (use-package just-ts-mode))
+  (use-package just-ts-mode
+    :init
+    (add-to-list 'treesit-auto-recipe-list
+               (make-treesit-auto-recipe
+                :lang 'just
+                :ts-mode 'just-ts-mode
+                :remap 'just-mode
+                :url "https://github.com/IndianBoy42/tree-sitter-just"
+                :ext "\\(?:\\.\\)?[Jj]ust\\(?:file\\)?\\'"
+                ))
+    (add-to-list 'treesit-auto-langs 'just)))
 (use-package lox-mode
   :disabled t)
 (when ejb/has-treesit
