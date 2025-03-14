@@ -2103,20 +2103,19 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package graphviz-dot-mode)
 (use-package groovy-mode)
 (use-package jenkinsfile-mode)
-(if (not ejb/has-treesit)
-    (use-package just-mode)
+(use-package just-mode)
+(when ejb/has-treesit
   (use-package just-ts-mode))
-(if (not ejb/has-treesit)
-    (use-package lox-mode
-      :disabled t)
+(use-package lox-mode
+  :disabled t)
+(when ejb/has-treesit
   (use-package lox-ts-mode
     :disabled t))
 (use-package lua-mode)
 (use-package meson-mode)
 (use-package nix-mode)
-;; currently "need" both
 (when ejb/has-treesit
-    (use-package nix-ts-mode))
+  (use-package nix-ts-mode))
 (use-package pacfiles-mode)
 (use-package pdf-tools)
 (use-package pkgbuild-mode
@@ -2126,8 +2125,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package systemd)
 (use-package tracwiki-mode
   :mode ("\\.trac\\'" . tracwiki-mode))
-(if (not ejb/has-treesit)
-    (use-package zig-mode)
+(use-package zig-mode)
+(when ejb/has-treesit
   (use-package zig-ts-mode))
 #+END_SRC
 
