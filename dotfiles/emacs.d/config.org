@@ -5,6 +5,13 @@
 
 (setopt load-prefer-newer t)
 
+;; https://github.com/progfolio/elpaca/issues/369#issuecomment-2421062994
+;; (defun +elpaca-replace-gnu-with-mirror (recipe)
+;;   (when-let ((repo (plist-get recipe :repo)))
+;;     (and (or (equal repo "git://git.sv.gnu.org/emacs/elpa")
+;;              (equal (car-safe repo "git://git.sv.gnu.org/emacs/elpa")))
+;;          (list :host 'github :repo (concat "emacsmirror/" (plist-get recipe :package))))))
+
 (defvar elpaca-installer-version 0.10)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
@@ -42,6 +49,7 @@
     (elpaca-generate-autoloads "elpaca" repo)
     (load "./elpaca-autoloads")))
 (add-hook 'after-init-hook #'elpaca-process-queues)
+;; (add-hook 'elpaca-recipe-functions #'+elpaca-replace-gnu-with-mirror)
 (elpaca `(,@elpaca-order))
 
 ;; Uncomment for systems which cannot create symlinks:
