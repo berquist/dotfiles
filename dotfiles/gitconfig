@@ -152,6 +152,7 @@
 	showStat = true
 
 [tag]
+	forceSignAnnotated = true
 	gpgsign = true
 	sort = version:refname
 
