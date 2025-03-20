@@ -1,0 +1,40 @@
+venv_clang_format := "venv_clang_format"
+
+# Create a venv in the working directory with clang-format installed
+[no-cd]
+install-clang-format:
+    rm -r $(pwd)/{{venv_clang_format}} || true
+    python -m venv $(pwd)/{{venv_clang_format}}
+    $(pwd)/{{venv_clang_format}}/bin/python -m pip install -U pip setuptools
+    $(pwd)/{{venv_clang_format}}/bin/python -m pip install 'clang-format>11,<13'
+
+[no-cd]
+sst-call-clang-format:
+    PATH="$(pwd)/{{venv_clang_format}}/bin:${PATH}" $(pwd)/scripts/clang-format-test.sh
+
+venv_cmake_format := "venv_cmake_format"
+
+# Create a venv in the working directory with cmake-format installed
+[no-cd]
+install-cmake-format:
+    rm -r $(pwd)/{{venv_cmake_format}} || true
+    python -m venv $(pwd)/{{venv_cmake_format}}
+    $(pwd)/{{venv_cmake_format}}/bin/python -m pip install -U pip setuptools
+    $(pwd)/{{venv_cmake_format}}/bin/python -m pip install 'cmake-format[yaml]'
+
+[no-cd]
+sst-call-cmake-format:
+    PATH="$(pwd)/{{venv_cmake_format}}/bin:${PATH}" $(pwd)/scripts/cmake-format-test.sh
+
+spack-module-refresh:
+    spack module lmod refresh --yes-to-all --delete-tree
+    spack module tcl refresh --yes-to-all --delete-tree
+
+sst-benchmark-run-all-to-all:
+    sst $(pwd)/src/sst/benchmark/benchmark.py -- 10 all-to-all $PWD/stats_output.csv
+
+sst-benchmark-run-threads:
+    sst $(pwd)/src/sst/benchmark/benchmark.py -- 10 all-to-all $PWD/stats_output.csv -v 2
+
+sst-benchmark-run-processes:
+    sst $(pwd)/src/sst/benchmark/benchmark.py -- 10 all-to-all $PWD/stats_output.csv

@@ -1,7 +1,14 @@
 ---
-
 extends: default
 
 rules:
+  document-start:
+    ignore:
+      - config.yaml
+      - config_full.yaml
+  indentation:
+    ignore:
+      - config.yaml
+      - config_full.yaml
   line-length:
     level: warning
