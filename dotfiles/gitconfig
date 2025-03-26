@@ -212,6 +212,10 @@
 	# Typos
 	checkotu = checkout
 
+	# For when one or more commits in a rebase somehow get a bad (GPG)
+	# signature.
+	resign = "!f() { git rebase --exec 'git commit --amend --no-edit -n -S' -i \"$1\"; }; f"
+
 # [interactive]
 # 	diffFilter = delta --color-only
 
