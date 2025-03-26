@@ -923,6 +923,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
         ;; This is the default, but make it explicit that +/- markers should not
         ;; appear in the fringe.
         diff-font-lock-prettify nil)
+;; Often changed lines in a diff or patch only differ by trailing whitespace.
+(add-hook 'diff-mode-hook #'whitespace-mode)
 
 (use-package vdiff
   :custom
