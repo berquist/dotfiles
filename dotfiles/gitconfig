@@ -160,7 +160,6 @@
 	# git git git git git git git git git ...
 	git = !exec git
 	branches = branch -a -v
-	commit = commit --verbose
 	remotes = remote -v
 	st = status -sb
 	# These do the same thing (--cached and --staged, that is).
