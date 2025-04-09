@@ -64,7 +64,7 @@
   programs = {
     direnv.enable = true;
     emacs = {
-      enable = true;
+      enable = false;
       package = pkgs.emacs-unstable;
       extraPackages = (epkgs: [ epkgs.treesit-grammars.with-all-grammars ]);
     };
