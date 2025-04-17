@@ -8,6 +8,7 @@ install-clang-format:
     $(pwd)/{{venv_clang_format}}/bin/python -m pip install -U pip setuptools
     $(pwd)/{{venv_clang_format}}/bin/python -m pip install 'clang-format>11,<13'
 
+# Call this venv's clang-format via the respective sst-core script
 [no-cd]
 sst-call-clang-format:
     PATH="$(pwd)/{{venv_clang_format}}/bin:${PATH}" $(pwd)/scripts/clang-format-test.sh
@@ -22,19 +23,38 @@ install-cmake-format:
     $(pwd)/{{venv_cmake_format}}/bin/python -m pip install -U pip setuptools
     $(pwd)/{{venv_cmake_format}}/bin/python -m pip install 'cmake-format[yaml]'
 
+# Call this venv's cmake-format via the respective sst-core script
 [no-cd]
 sst-call-cmake-format:
     PATH="$(pwd)/{{venv_cmake_format}}/bin:${PATH}" $(pwd)/scripts/cmake-format-test.sh
 
+# Force complete refresh of all Spack environment modules
 spack-module-refresh:
     spack module lmod refresh --yes-to-all --delete-tree
     spack module tcl refresh --yes-to-all --delete-tree
 
+venv_sst_benchmark := "venv_sst_benchmark"
+
+[no-cd]
+sst-benchmark-create-venv:
+    rm -r $(pwd)/{{venv_sst_benchmark}} || true
+    python -m venv $(pwd)/{{venv_sst_benchmark}}
+    $(pwd)/{{venv_sst_benchmark}}/bin/python -m pip install -U pip setuptools
+    $(pwd)/{{venv_sst_benchmark}}/bin/python -m pip install -r requirements.txt
+
 sst-benchmark-run-all-to-all:
-    sst $(pwd)/src/sst/benchmark/benchmark.py -- 10 all-to-all $PWD/stats_output.csv
+    sst $(pwd)/src/sst/benchmark/benchmark.py -- 12 all-to-all $PWD/stats_output.csv
 
+# Run a full sweep of multithreaded simulations
+[no-cd]
 sst-benchmark-run-threads:
-    sst $(pwd)/src/sst/benchmark/benchmark.py -- 10 all-to-all $PWD/stats_output.csv -v 2
+    # $(pwd)/sweep.py $(pwd)/src/sst/benchmark/benchmark.py -- 10 all-to-all $PWD/stats_output.csv -v 2
+    $(pwd)/sweep.py $(pwd)/src/sst/benchmark/benchmark.py all-to-all threads output1 1 $(nproc) 1 -r 3 -v
 
+[no-cd]
 sst-benchmark-run-processes:
-    sst $(pwd)/src/sst/benchmark/benchmark.py -- 10 all-to-all $PWD/stats_output.csv
+    $(pwd)/sweep.py $(pwd)/src/sst/benchmark/benchmark.py all-to-all processes output2 1 $(nproc) 1 -r 3 -v
+
+[no-cd]
+sst-benchmark-run-processes-run:
+    $(pwd)/sweep.py $(pwd)/src/sst/benchmark/benchmark.py ring processes output3 1 $(nproc) 1 -r 3 -v
