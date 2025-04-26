@@ -38,6 +38,7 @@ alias es='emacs -nw'
 # with it though?
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
+alias it='git'  # typo
 alias julia='julialauncher'
 alias kubectl='minikube kubectl --'
 # If exa is available, set preferred aliases to use it (and its different
@@ -86,10 +87,10 @@ fi
 alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
 alias sd='svn diff --diff-cmd colordiff'
-alias snv='svn'
+alias snv='svn'  # typo
 alias sw='telnet towel.blinkenlights.nl'
 alias t='tail -F -n 100 --sleep-interval=0.1'
-alias whcih='which'
+alias whcih='which'  # typo
 
 # So I don't do stupid things.
 alias cp='cp -i -v'
