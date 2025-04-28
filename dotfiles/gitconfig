@@ -83,6 +83,9 @@
 	# Needs the `ldiff` script.
 	cmd = ldiff "$LOCAL" "$REMOTE" "$MERGED"
 
+[feature]
+	experimental = true
+
 [fetch]
 	all = true
 	prune = true
