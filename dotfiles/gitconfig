@@ -90,6 +90,7 @@
 	all = true
 	prune = true
 	pruneTags = true
+	writeCommitGraph = true
 
 # Where did this come from?
 [filter "lfs"]
