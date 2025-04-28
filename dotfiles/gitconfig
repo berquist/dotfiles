@@ -162,9 +162,7 @@
 	branches = branch -a -v
 	remotes = remote -v
 	st = status -sb
-	# These do the same thing (--cached and --staged, that is).
 	dc = diff --cached
-	ds = diff --staged
 
 	l = log --graph --abbrev-commit
 	# This is comparable to `log --graph --oneline`, but includes the extra
@@ -206,7 +204,6 @@
 	cdiff = diff --color-words --ignore-all-space --word-diff=plain --word-diff-regex=.
 
 	# Difftastic (https://difftastic.wilfred.me.uk/git.html)
-	dft = difftool
 	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
 
 	# Typos
@@ -225,4 +222,4 @@
 # 	syntax-theme = Dracula
 [credential "https://gitlab.com"]
 	helper =
-	helper = !/usr/bin/glab auth git-credential
+	helper = !glab auth git-credential
