@@ -130,7 +130,8 @@
 [push]
 	autoSetupRemote = true
 	default = simple
-	followTags = true
+	# I don't want to push tags when forked.
+	# followTags = true
 
 [pretty]
 	# This is comparable to `--pretty=oneline`, but includes the extra
