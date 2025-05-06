@@ -1,3 +1,9 @@
+# Build and install a minimal Clang within an LLVM checkout or archive unpack.
+build-install-clang:
+    cmake -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -G Ninja -B $(pwd)/build -S $(pwd)/llvm -DCMAKE_INSTALL_PREFIX=$(pwd)/install
+    cmake --build $(pwd)/build
+    cmake --install $(pwd)/build
+
 venv_clang_format := "venv_clang_format"
 
 # Create a venv in the working directory with clang-format installed
