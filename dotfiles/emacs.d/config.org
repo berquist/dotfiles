@@ -1292,6 +1292,20 @@ the header, based upon the associated source code file."
 
 (use-package astyle
   :when (executable-find "astyle"))
+
+(use-package flycheck-clang-tidy
+  :after flycheck
+  :hook ((flycheck-mode . flycheck-clang-tidy-setup)
+         (lsp-managed-mode . (lambda ()
+                               (when (derived-mode-p 'c-ts-base-mode)
+                                 (setq my/flycheck-local-cache
+                                       '((lsp . ((next-checkers . (c/c++-clang-tidy c/c++-clang c/c++-gcc))))))))))
+  :config
+  (when ejb/has-treesit
+    ;; TODO not sure why this doesn't work
+    ;; (flycheck-add-mode 'c/c++-clang-tidy 'c-ts-base-mode)
+    (flycheck-add-mode 'c/c++-clang-tidy 'c-ts-mode)
+    (flycheck-add-mode 'c/c++-clang-tidy 'c++-ts-mode)))
 #+END_SRC
 
 * Java
