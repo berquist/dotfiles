@@ -690,9 +690,17 @@ with the default ordering Projectile uses.
 
 #+BEGIN_SRC emacs-lisp
 (use-package direnv
+  ;; no longer used in favor of envrc-mode
+  :disabled t
   :when (executable-find "direnv")
   :init
   (direnv-mode 1))
+
+(use-package envrc
+  ;; TODO not sure why this doesn't work
+  ;; :hook (after-init . envrc-global-mode)
+  :init
+  (envrc-global-mode))
 
 (use-package dotenv-mode
   :mode (("\\.secrets\\'" . dotenv-mode)))
