@@ -64,6 +64,18 @@
 	gpgsign = true
 	verbose = true
 
+[credential]
+	helper = store
+
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+
+[credential "https://gitst.github.com"]
+	helper = !gh auth git-credential
+
+[credential "https://gitlab.com"]
+	helper = !glab auth git-credential
+
 [diff]
 	algorithm = histogram
 	colorMoved = dimmed-zebra
@@ -225,6 +237,3 @@
 # 	line-numbers = true
 # 	navigate = true
 # 	syntax-theme = Dracula
-[credential "https://gitlab.com"]
-	helper =
-	helper = !glab auth git-credential
