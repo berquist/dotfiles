@@ -12,7 +12,7 @@ install-clang-format:
     rm -r $(pwd)/{{venv_clang_format}} || true
     python -m venv $(pwd)/{{venv_clang_format}}
     $(pwd)/{{venv_clang_format}}/bin/python -m pip install -U pip setuptools
-    $(pwd)/{{venv_clang_format}}/bin/python -m pip install 'clang-format>11,<13'
+    $(pwd)/{{venv_clang_format}}/bin/python -m pip install 'clang-format>19,<21'
 
 # Call this venv's clang-format via the respective sst-core script
 [no-cd]
