@@ -101,7 +101,9 @@
 [fetch]
 	all = true
 	prune = true
-	pruneTags = true
+	# This leads to constant deleting and refetching of tags, even when
+	# push.followTags = false.
+	# pruneTags = true
 	writeCommitGraph = true
 
 # Where did this come from?
