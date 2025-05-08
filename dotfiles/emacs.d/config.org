@@ -1764,6 +1764,7 @@ TODO disable .m files from loading as Objective-C
   :mode
   (("\\.params\\'" . yaml-mode)
    ("\\clang-format\\'" . yaml-mode)
+   ("\\clang-tidy\\'" . yaml-mode)
    ("\\.asdf\\'" . yaml-mode)
    ("CITATION.cff" . yaml-mode)))
 #+END_SRC
