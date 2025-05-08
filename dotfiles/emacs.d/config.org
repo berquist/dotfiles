@@ -1245,7 +1245,11 @@ the header, based upon the associated source code file."
   (cond ((string= major-mode "c-mode")
          (c++-mode))
         ((string= major-mode "c++-mode")
-         (c-mode))))
+         (c-mode))
+        ((string= major-mode "c-ts-mode")
+         (c++-ts-mode))
+        ((string= major-mode "c++-ts-mode")
+         (c-ts-mode))))
 
 (defconst ejb/cc-style
   '("k&r"
