@@ -1259,8 +1259,8 @@ the header, based upon the associated source code file."
           (awk-mode . "awk")
           (other . "ejb")))
 
-;; TODO
-;; (setopt c-ts-mode-indent-offset tab-width)
+(when ejb/has-treesit
+  (setopt c-ts-mode-indent-offset tab-width))
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
