@@ -823,8 +823,7 @@ Links:
   (when ejb/has-treesit
     (mapc (lambda (h) (add-hook h #'lsp-deferred))
           '(bash-ts-mode-hook
-            ;; c-ts-mode-hook
-            ;; c++-ts-mode-hook
+            c-ts-base-mode-hook
             js-ts-mode-hook
             python-ts-mode-hook
             rust-ts-mode-hook))))
