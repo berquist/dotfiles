@@ -802,7 +802,7 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode f90-mode js-mode sh-mode) . lsp)
+  :hook ((c-mode c++-mode fortran-mode f90-mode js-mode sh-mode) . lsp-deferred)
   :custom
   (lsp-keep-workspace-alive nil)
   (lsp-enable-snippet nil)
@@ -1269,7 +1269,7 @@ the header, based upon the associated source code file."
 (use-package ccls
   :disabled t
   :after lsp-mode
-  :hook ((c-mode c++-mode) . lsp))
+  :hook ((c-mode c++-mode) . lsp-deferred))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
@@ -1288,7 +1288,7 @@ the header, based upon the associated source code file."
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
   :disabled t
-  :hook (java-mode . lsp))
+  :hook (java-mode . lsp-deferred))
 #+END_SRC
 
 * FORTRAN (built-in)
@@ -1315,7 +1315,7 @@ users are likely to use them.
 
 #+begin_src emacs-lisp
 (use-package auctex
-  :hook ((latex-mode LaTeX-mode) . lsp)
+  :hook ((latex-mode LaTeX-mode) . lsp-deferred)
   :config
   (add-to-list 'texmathp-tex-commands "dmath" 'env-on)
   (texmathp-compile)
@@ -1540,7 +1540,7 @@ This section needs to come after the Markdown section so that CMake files get re
 
 #+begin_src emacs-lisp
 (use-package cmake-mode
-  :hook (cmake-mode . lsp)
+  :hook (cmake-mode . lsp-deferred)
   :custom
   ;; This isn't working
   (cmake-tab-width tab-width))
@@ -1555,7 +1555,7 @@ This section needs to come after the Markdown section so that CMake files get re
       (mapc
        (lambda (s) (add-to-list 'auto-mode-alist `(,s . cmake-ts-mode)))
        cmake-modes))
-    (add-hook 'cmake-ts-mode-hook #'lsp)))
+    (add-hook 'cmake-ts-mode-hook #'lsp-deferred)))
 #+end_src
 
 * Shell Scripts
@@ -1930,7 +1930,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (use-package clojure-mode
-  :hook (clojure-mode . lsp)
+  :hook (clojure-mode . lsp-deferred)
   :config
   (defun cider-interactive-notify-and-eval (code)
     (interactive)
@@ -2107,7 +2107,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
            :files ("*.el" "icons")))
 (use-package gemini-mode)
 (use-package go-mode
-  :hook (go-mode . lsp))
+  :hook (go-mode . lsp-deferred))
 (use-package graphql-mode)
 ;; (when ejb/has-treesit
 ;;   (use-package graphql-ts-mode))
