@@ -2157,6 +2157,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
     :disabled t))
 (use-package lua-mode)
 (use-package meson-mode)
+(use-package ninja-mode)
 (use-package nix-mode)
 (when ejb/has-treesit
   (use-package nix-ts-mode))
