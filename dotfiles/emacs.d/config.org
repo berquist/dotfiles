@@ -837,11 +837,8 @@ Links:
             rust-ts-mode-hook))))
 
 (use-package lsp-ui
-  :disabled t
-  :commands lsp-ui-mode
   :custom
   (lsp-ui-doc-include-signature t)
-  (lsp-ui-flycheck-enable t)
   (lsp-ui-peek-always-show t))
 #+END_SRC
 
