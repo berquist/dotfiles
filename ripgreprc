@@ -2,6 +2,30 @@
 # Force this to be handled by VCS ignore lists instead, it's bitten me too many times.
 #--glob=!build
 #--glob=!build_*
-# Python coverage output
+# Python coverage output default location
 --glob=!htmlcov
 --hidden
+
+# Searching through hidden files means we need to not search through .git,
+# .svn, ..., and other folders that are part of the VCS' own infrastructure.
+# Taken from
+# https://github.com/bbatsov/projectile/blob/4dd84b02c9cd7b04616dc2d01ba7bc87f0d15be8/projectile.el#L425
+--glob=!.idea
+--glob=!.vscode
+--glob=!.ensime_cache
+--glob=!.eunit
+--glob=!.git
+--glob=!.hg
+--glob=!.fslckout
+--glob=!_FOSSIL_
+--glob=!.bzr
+--glob=!_darcs
+--glob=!.pijul
+--glob=!.tox
+--glob=!.svn
+--glob=!.stack-work
+--glob=!.ccls-cache
+--glob=!.cache
+--glob=!.clangd
+--glob=!.sl
+--glob=!.jj
