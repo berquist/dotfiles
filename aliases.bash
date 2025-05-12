@@ -38,6 +38,7 @@ alias es='emacs -nw'
 # with it though?
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
+alias gi='git'  # typo
 alias it='git'  # typo
 alias julia='julialauncher'
 alias kubectl='minikube kubectl --'
