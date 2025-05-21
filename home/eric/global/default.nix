@@ -67,10 +67,6 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
-      permittedInsecurePackages = [
-        "fluffychat-linux-1.22.1"
-        "olm-3.2.16"
-      ];
     };
     overlays = [
       inputs.emacs-overlay.overlays.emacs
