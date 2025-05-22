@@ -2,10 +2,11 @@
 
 {
   home = {
-    username = "ejberqu";
+    username = lib.mkDefault "ejberqu";
     packages = with pkgs; [
       autoconf
       automake
+      basedpyright
       bat
       bear
       ccache
@@ -27,7 +28,6 @@
       ncurses
       ninja
       pyenv
-      pyright
       (python3.withPackages (ps: with ps; [
         editorconfig
         flake8
@@ -43,6 +43,7 @@
       shellcheck
       tree
       uv
+      vale
       yq
 
       fira-mono

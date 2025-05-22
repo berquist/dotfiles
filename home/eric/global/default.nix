@@ -5,6 +5,7 @@
     username = lib.mkDefault "eric";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     packages = with pkgs; [
+      basedpyright
       bat
       difftastic
       duf
@@ -14,6 +15,7 @@
       gh
       gitFull
       glab
+      hadolint
       htop
       just
       neofetch
@@ -31,8 +33,10 @@
       ripgrep
       rsync
       ruff
+      shellcheck
       tmux
       tree
+      vale
       wget
     ];
     file = {
