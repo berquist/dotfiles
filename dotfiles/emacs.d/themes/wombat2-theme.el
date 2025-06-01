@@ -195,6 +195,21 @@ Basic, Font Lock, Isearch, Gnus, Message, and Ansi-Color faces
    `(diff-refine-removed ((,class (:inherit diff-refine-changed :background ,wombat-red-1))))
    `(diff-refine-added ((,class (:inherit diff-refine-changed :background ,wombat-blue-2))))
 
+   ;;; smerge-mode
+   `(smerge-lower ((,class (:extend t :background ,wombat-blue-3))))
+   `(smerge-upper ((,class (:extend t :background ,wombat-red-2))))
+   `(smerge-refine-removed ((,class (:inherit smerge-refine-changed :background ,wombat-red-1))))
+   `(smerge-refine-added ((,class (:inherit smerge-refine-changed :background ,wombat-blue-2))))
+
+   ;;; magit-diff-mode
+   `(magit-diff-added ((,class (:extend t :background ,wombat-blue-3))))
+   `(magit-diff-removed ((,class (:extend t :background ,wombat-red-2))))
+   ;; Not exactly the same as for {diff,smerge}-mode, but "interesting" for
+   ;; marking the active hunk.
+   `(magit-diff-added-highlight ((,class (:extend t :background ,wombat-blue-2))))
+   `(magit-diff-removed-highlight ((,class (:extend t :background ,wombat-red-1))))
+   `(magit-diffstat-added ((,class (:foreground ,wombat/yellow))))
+   `(magit-diffstat-removed ((,class (:foreground ,wombat-pink))))
    ))
 
 (provide-theme 'wombat2)
