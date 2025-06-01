@@ -31,9 +31,11 @@
 
 (deftheme wombat2
   "Medium-contrast faces with a dark gray background (custom).
-Adapted, with permission, from a Vim color scheme by Lars
-H. Nielsen.  Basic, Font Lock, Isearch, Gnus, Message, and
-Ansi-Color faces are included.")
+Adapted, with permission, from a Vim color scheme by Lars H. Nielsen.
+Basic, Font Lock, Isearch, Gnus, Message, and Ansi-Color faces
+ are included."
+  :background-mode 'dark
+  :kind 'color-scheme)
 
 (let ((class '((class color) (min-colors 89)))
       ;; Variables with '/' correspond to the ANSI spots, *not* the actual
@@ -41,6 +43,7 @@ Ansi-Color faces are included.")
       ;; original Wombat colors.  (That might not be true anymore.)
 
       ;; -x are darker, +x are lighter.
+      (wombat-red-2    "#663636")
       (wombat-red-1    "#b85149")
       (wombat/red      "#e5786d")
       (wombat-orange-1 "#f57900")
@@ -78,7 +81,7 @@ Ansi-Color faces are included.")
   (custom-theme-set-faces
    'wombat2
    `(default ((,class (:background ,wombat/black :foreground ,wombat/white))))
-   `(cursor ((,class (:background ,wombat-blue-1)))) ;; ,wombat-gray; background: #656565 -> #64a8d8
+   `(cursor ((,class (:background ,wombat-blue-2)))) ;; ,wombat-gray; background: #656565 -> #5b98c2
 
    ;;; Highlighting faces
    `(fringe ((,class (:background ,wombat-gray-5))))
@@ -182,7 +185,17 @@ Ansi-Color faces are included.")
    `(ansi-color-bright-blue ((,class (:background ,wombat/blue :foreground ,wombat/blue))))
    `(ansi-color-bright-magenta ((,class (:background ,wombat-pink :foreground ,wombat-pink))))
    `(ansi-color-bright-cyan ((,class (:background ,wombat-cyan+1 :foreground ,wombat-cyan+1))))
-   `(ansi-color-bright-white ((,class (:background ,wombat-white+1 :foreground ,wombat-white+1))))))
+   `(ansi-color-bright-white ((,class (:background ,wombat-white+1 :foreground ,wombat-white+1))))
+
+   ;;; diff-mode
+   `(diff-removed ((,class (:inherit diff-changed :extend t :background ,wombat-red-2))))
+   `(diff-added ((,class (:inherit diff-changed :extend t :background ,wombat-blue-3))))
+   `(diff-indicator-removed ((,class (:inherit diff-removed :foreground ,wombat-pink))))
+   `(diff-indicator-added ((,class (:inherit diff-added :foreground ,wombat/yellow))))
+   `(diff-refine-removed ((,class (:inherit diff-refine-changed :background ,wombat-red-1))))
+   `(diff-refine-added ((,class (:inherit diff-refine-changed :background ,wombat-blue-2))))
+
+   ))
 
 (provide-theme 'wombat2)
 
