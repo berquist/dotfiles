@@ -659,6 +659,7 @@ with the default ordering Projectile uses.
           (ejb/conditional-prepend projectile-project-root-files-bottom-up
                                    '("pyproject.toml"
                                      ".exercism")))
+  ;; not used with (projectile-indexing-method 'alien)
   (setopt projectile-globally-ignored-directories
           (ejb/conditional-prepend projectile-globally-ignored-directories
                                    '("^\\.hypothesis"
@@ -683,6 +684,11 @@ with the default ordering Projectile uses.
   ;;                                   :test "python -m pytest -v --color=no"
   ;;                                   :test-prefix "test_"
   ;;                                   :test-suffix "_test")
+  ;; TODO add to projectile-other-file-alist the mappings
+  ;;  h -> C
+  ;;  C -> h
+  ;;  py -> pyi
+  ;;  pyi -> py
   :init
   (projectile-mode 1))
 #+END_SRC
