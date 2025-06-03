@@ -1302,7 +1302,10 @@ the header, based upon the associated source code file."
          (lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'c-ts-base-mode)
                                  (setq my/flycheck-local-cache
-                                       '((lsp . ((next-checkers . (c/c++-clang-tidy c/c++-clang c/c++-gcc))))))))))
+                                       ;; Don't need (c/c++-clang c/c++-gcc)
+                                       ;; since the language server should
+                                       ;; catch compilation problems
+                                       '((lsp . ((next-checkers . (c/c++-clang-tidy))))))))))
   :config
   (when ejb/has-treesit
     ;; TODO not sure why this doesn't work
