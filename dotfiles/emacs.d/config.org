@@ -604,14 +604,17 @@ appear in LIST."
 
 (defun ejb/vc-svn-url (file-or-dir &optional _remote-name)
   "Get the Subversion URL for FILE-OR-DIR if possible, returning
-nil otherwise."
+nil otherwise.
+
+TODO replace with `'vc-svn-repository-url'."
   (require 'vc-svn)
-  (let ((default-directory (vc-svn-root file-or-dir)))
-    (if default-directory
-        (with-temp-buffer
-          (vc-svn-command (current-buffer) 0 nil
-                          "info" "--show-item" "url")
-          (buffer-substring-no-properties (point-min) (1- (point-max)))))))
+  (when (executable-find vc-svn-program)
+    (let ((default-directory (vc-svn-root file-or-dir)))
+      (if default-directory
+          (with-temp-buffer
+            (vc-svn-command (current-buffer) 0 nil
+                            "info" "--show-item" "url")
+            (buffer-substring-no-properties (point-min) (1- (point-max))))))))
 
 (defun ejb/projectile-root-qchem (dir &optional list)
   "Find the project root of a Q-Chem Subversion repository.
