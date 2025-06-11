@@ -51,7 +51,7 @@
   (unless (require 'elpaca-autoloads nil t)
     (require 'elpaca)
     (elpaca-generate-autoloads "elpaca" repo)
-    (load "./elpaca-autoloads")))
+    (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (add-hook 'elpaca-recipe-functions #'ejb/my-debug-elpaca-recipe-function)
 ;; (add-hook 'elpaca-recipe-functions #'+elpaca-replace-gnu-with-mirror)
