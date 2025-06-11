@@ -1722,6 +1722,7 @@ TODO disable .m files from loading as Objective-C
     :delight "Julia"))
 
 (use-package vterm
+  :disabled t
   :custom
   (vterm-always-compile-module t))
 
@@ -1929,7 +1930,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (put 'ert-deftest 'lisp-indent-function 'defun)
 
 (use-package cask-mode)
-(use-package flycheck-package)
+(use-package flycheck-package
+  :disabled t)
 (add-to-list 'auto-mode-alist '("Eask" . lisp-data-mode))
 #+end_src
 
