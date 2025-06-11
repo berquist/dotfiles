@@ -53,7 +53,7 @@
     (elpaca-generate-autoloads "elpaca" repo)
     (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
 (add-hook 'after-init-hook #'elpaca-process-queues)
-;; (add-hook 'elpaca-recipe-functions #'ejb/my-debug-elpaca-recipe-function)
+(add-hook 'elpaca-recipe-functions #'ejb/my-debug-elpaca-recipe-function)
 ;; (add-hook 'elpaca-recipe-functions #'+elpaca-replace-gnu-with-mirror)
 (elpaca `(,@elpaca-order))
 
@@ -62,7 +62,7 @@
 
 (setopt
  ;; GNU stuff doesn't work at work
- elpaca-menu-elpa-use-mirror nil
+ elpaca-menu-elpa-use-mirror t
  ;; default is 1K
  elpaca-ui-row-limit 10000)
 
@@ -84,11 +84,9 @@ Fundamental third-party packages that don't go anywhere else.
 
 ;; Load this before any other third-party packages.
 (use-package no-littering
-  :ensure (:host github :repo "emacsmirror/no-littering" :inherit nil)
   :demand t)
 
 (use-package dash
-  :ensure (:host github :repo "emacsmirror/dash" :inherit nil)
   :demand t)
 
 ;; Here for early loading.
@@ -100,7 +98,7 @@ Fundamental third-party packages that don't go anywhere else.
 ;; in order to circumvent
 ;; https://emacs.stackexchange.com/questions/27918/why-is-exec-path-different-in-emacsclient-emacsserver-than-in-emacs.
 (use-package exec-path-from-shell
-  :ensure (:wait t :host github :repo "emacsmirror/exec-path-from-shell" :inherit nil)
+  :ensure (:wait t)
   :init
   (exec-path-from-shell-initialize))
 ;; Starting the GUI doesn't know anything about the Keychain:
