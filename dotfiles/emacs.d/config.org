@@ -54,7 +54,7 @@
     (load "./elpaca-autoloads")))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (add-hook 'elpaca-recipe-functions #'ejb/my-debug-elpaca-recipe-function)
-(add-hook 'elpaca-recipe-functions #'+elpaca-replace-gnu-with-mirror)
+;; (add-hook 'elpaca-recipe-functions #'+elpaca-replace-gnu-with-mirror)
 (elpaca `(,@elpaca-order))
 
 ;; Uncomment for systems which cannot create symlinks:
@@ -62,7 +62,7 @@
 
 (setopt
  ;; GNU stuff doesn't work at work
- elpaca-menu-elpa-use-mirror nil
+ elpaca-menu-elpa-use-mirror t
  ;; default is 1K
  elpaca-ui-row-limit 10000)
 
@@ -90,7 +90,8 @@ Fundamental third-party packages that don't go anywhere else.
   :demand t)
 
 ;; Here for early loading.
-(use-package delight)
+(use-package delight
+  :ensure (:host github :repo "emacsmirror/delight" :inherit nil))
 (setopt eldoc-minor-mode-string " ED")
 
 ;; Set the path properly. Don't have a conditional on using the window system
@@ -414,7 +415,8 @@ current buffer's, reload dir-locals."
 (add-to-list 'custom-theme-load-path (expand-file-name "themes/" user-emacs-directory))
 ;; ...but ultimately this is my daily driver.
 (load-theme 'wombat2 t)
-(use-package rainbow-mode)
+(use-package rainbow-mode
+  :ensure (:host github :repo "emacsmirror/rainbow-mode" :inherit nil))
 #+end_src
 
 ** Windows
@@ -1357,6 +1359,7 @@ users are likely to use them.
 
 #+begin_src emacs-lisp
 (use-package auctex
+  :ensure (:host github :repo "emacsmirror/auctex" :inherit nil)
   :hook ((latex-mode LaTeX-mode) . lsp-deferred)
   :config
   (add-to-list 'texmathp-tex-commands "dmath" 'env-on)
