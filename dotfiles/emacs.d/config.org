@@ -6,11 +6,15 @@
 (setopt load-prefer-newer t)
 
 ;; https://github.com/progfolio/elpaca/issues/369#issuecomment-2421062994
-;; (defun +elpaca-replace-gnu-with-mirror (recipe)
-;;   (when-let ((repo (plist-get recipe :repo)))
-;;     (and (or (equal repo "git://git.sv.gnu.org/emacs/elpa")
-;;              (equal (car-safe repo "git://git.sv.gnu.org/emacs/elpa")))
-;;          (list :host 'github :repo (concat "emacsmirror/" (plist-get recipe :package))))))
+(defun +elpaca-replace-gnu-with-mirror (recipe)
+  (when-let ((repo (plist-get recipe :repo)))
+    (and (or (equal repo "git://git.sv.gnu.org/emacs/elpa")
+             (equal (car-safe repo "git://git.sv.gnu.org/emacs/elpa")))
+         (list :host 'github :repo (concat "emacsmirror/" (plist-get recipe :package))))))
+
+(defun ejb/my-debug-elpaca-recipe-function (recipe)
+  (print "ejb/my-debug-elpaca-recipe-function")
+  (print recipe))
 
 (defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
@@ -49,11 +53,18 @@
     (elpaca-generate-autoloads "elpaca" repo)
     (load "./elpaca-autoloads")))
 (add-hook 'after-init-hook #'elpaca-process-queues)
-;; (add-hook 'elpaca-recipe-functions #'+elpaca-replace-gnu-with-mirror)
+(add-hook 'elpaca-recipe-functions #'ejb/my-debug-elpaca-recipe-function)
+(add-hook 'elpaca-recipe-functions #'+elpaca-replace-gnu-with-mirror)
 (elpaca `(,@elpaca-order))
 
 ;; Uncomment for systems which cannot create symlinks:
 ;; (elpaca-no-symlink-mode)
+
+(setopt
+ ;; GNU stuff doesn't work at work
+ elpaca-menu-elpa-use-mirror nil
+ ;; default is 1K
+ elpaca-ui-row-limit 10000)
 
 ;; Install use-package support
 (elpaca elpaca-use-package
@@ -64,12 +75,6 @@
 
 ;; Block until current queue processed.
 (elpaca-wait)
-
-(setopt
- ;; GNU stuff doesn't work at work
- elpaca-menu-elpa-use-mirror t
- ;; default is 1K
- elpaca-ui-row-limit 10000)
 #+END_SRC
 
 Fundamental third-party packages that don't go anywhere else.
