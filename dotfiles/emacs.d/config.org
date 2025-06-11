@@ -1519,6 +1519,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   ;;             (add-hook 'after-save-hook 'pandoc-run-pandoc t :local)))
   :custom
   (markdown-asymmetric-header t)
+  ;; (markdown-code-block-braces t)
   (markdown-content-type "application/xhtml+xml")
   ;; This isn't super necessary since I have pandoc run a similar command
   ;; every time I save with these default arguments, but this always produces
@@ -1526,6 +1527,7 @@ See https://chemistry.meta.stackexchange.com/questions/3540/what-additional-form
   (markdown-command
    (concat "pandoc --from=markdown --to=html5 --highlight-style=pygments --standalone --include-in-header="
            (expand-file-name "mathjax.html" user-emacs-directory)))
+  (markdown-enable-highlighting-syntax t)
   (markdown-enable-math t)
   (markdown-fontify-code-blocks-natively t)
   (markdown-hide-markup nil)
