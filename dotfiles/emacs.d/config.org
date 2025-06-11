@@ -115,7 +115,9 @@ Fundamental third-party packages that don't go anywhere else.
                              "SSH_AUTH_SOCK"
                              "WORKON_HOME")))
   (when (display-graphic-p)
-    (-each ejb/desired-envvars (lambda (envvar) (exec-path-from-shell-copy-env envvar)))))
+    ;; TODO need to specify `-each' dependency beforehand
+    ;; (-each ejb/desired-envvars (lambda (envvar) (exec-path-from-shell-copy-env envvar)))
+    ))
 #+END_SRC
 
 * Functions
