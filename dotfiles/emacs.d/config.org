@@ -65,8 +65,11 @@
 ;; Block until current queue processed.
 (elpaca-wait)
 
-;; default is 1K
-(setopt elpaca-ui-row-limit 10000)
+(setopt
+ ;; GNU stuff doesn't work at work
+ elpaca-menu-elpa-use-mirror t
+ ;; default is 1K
+ elpaca-ui-row-limit 10000)
 #+END_SRC
 
 Fundamental third-party packages that don't go anywhere else.
