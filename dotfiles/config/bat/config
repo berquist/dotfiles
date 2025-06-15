@@ -2,7 +2,7 @@
 # enable mouse scrolling support in `bat` when running inside tmux. This might
 # disable text selection, unless you press shift.
 #--pager="less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
---theme='Dracula'
+--theme-dark='Dracula'
 --map-syntax='*.asdf:YAML'  # Advanced Scientific Data Format
 --map-syntax='*.bats:Bourne Again Shell (bash)'
 --map-syntax='*.cff:YAML'  # Citation File Format
