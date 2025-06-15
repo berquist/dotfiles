@@ -23,4 +23,15 @@ config.font = wezterm.font_with_fallback {
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 -- config.window_background_opacity = 0.75
 
+local session = os.getenv("XDG_SESSION_TYPE")
+
+if session == "wayland" then
+    config.enable_wayland = true
+    local cursor = require 'cursor'
+    config.xcursor_theme = cursor.xcursor_theme
+    config.xcursor_size = cursor.xcursor_size
+else
+    config.enable_wayland = false
+end
+
 return config
