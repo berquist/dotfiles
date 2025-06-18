@@ -92,6 +92,7 @@ alias sd='svn diff --diff-cmd colordiff'
 alias snv='svn'  # typo
 alias sw='telnet towel.blinkenlights.nl'
 alias t='tail -F -n 100 --sleep-interval=0.1'
+alias tree='tree --gitignore'
 alias whcih='which'  # typo
 
 # So I don't do stupid things.
