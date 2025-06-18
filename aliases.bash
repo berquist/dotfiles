@@ -79,13 +79,6 @@ else
     alias lh='l -t | head'
 fi
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
-# Only alias if the command isn't available.
-if ! command -v nusmv >/dev/null 2>&1; then
-    alias nusmv='docker run -it --rm -v $PWD:/input:ro badouralix/nusmv'
-fi
-if ! command -v NuSMV >/dev/null 2>&1; then
-    alias NuSMV='nusmv'
-fi
 alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
 alias sd='svn diff --diff-cmd colordiff'
