@@ -124,6 +124,7 @@
     wakatime
     wezterm
     zoom-us
+    zotero
   ];
 
   programs = {
