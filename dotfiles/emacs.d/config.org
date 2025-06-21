@@ -870,7 +870,27 @@ Links:
 (use-package realgud-ipdb)
 #+END_SRC
 
-* Flycheck
+* Formatting
+
+#+begin_src emacs-lisp
+(use-package apheleia
+  :custom
+  (apheleia-mode-lighter nil)
+  :config
+  ;; TODO how is this different from "isort -"?
+  ;; TODO what about --atomic?
+  (setf (alist-get 'isort apheleia-formatters)
+        '("isort" "--stdout" "-"))
+  ;; TODO ruff-isort instead?
+  (setf (alist-get 'python-mode apheleia-mode-alist)
+        '(isort ruff))
+  (setf (alist-get 'python-ts-mode apheleia-mode-alist)
+        '(isort ruff))
+  :init
+  (apheleia-global-mode +1))
+#+end_src
+
+* Flycheck (linting)
 
 ** General
 
@@ -1471,26 +1491,6 @@ users are likely to use them.
   :custom
   (lsp-pyright-langserver-command ejb/pyright))
 #+end_src
-
-** Reformatters
-
-If ~:after python~ isn't present, the bindings don't get added properly?
-
-There is also the built-in =python-sort-imports= via =C-c C-i s=.
-
-#+BEGIN_SRC emacs-lisp
-(use-package blacken
-  :after python
-  :bind
-  (:map python-mode-map
-        ("C-c C-b" . blacken-buffer)))
-
-(use-package python-isort
-  :after python
-  :bind
-  (:map python-mode-map
-        ("C-c C-a" . python-isort-buffer)))
-#+END_SRC
 
 ** Leftovers
 
