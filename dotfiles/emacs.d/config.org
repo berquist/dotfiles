@@ -875,6 +875,7 @@ Links:
 #+begin_src emacs-lisp
 (use-package apheleia
   :custom
+  (apheleia-log-only-errors nil)
   (apheleia-mode-lighter nil)
   :config
   ;; TODO how is this different from "isort -"?
