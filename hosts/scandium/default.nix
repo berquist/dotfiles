@@ -92,7 +92,7 @@
     colordiff
     dconf2nix
     firefox
-    firefox-devedition-bin
+    firefox-devedition
     gitFull
     home-manager
     mosh
