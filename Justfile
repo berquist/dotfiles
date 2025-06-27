@@ -3,7 +3,7 @@ whoami := `whoami`
 
 # Rebuild the current NixOS system.
 nix-rebuild:
-    sudo nixos-rebuild switch --upgrade --flake ~/dotfiles#{{ hostname }}
+    sudo nixos-rebuild switch --upgrade-all --flake ~/dotfiles#{{ hostname }}
 
 # Refresh the nix registry list.
 nix-registry:
