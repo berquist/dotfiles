@@ -96,9 +96,23 @@
     };
   };
 
-  # services = {
-  #   emacs = {
-  #     enable = true;
-  #   };
-  # };
+  services = {
+    emacs = {
+      enable = false;
+    };
+    gpg-agent = {
+      enable = true;
+      enableSshSupport = true;
+      enableZshIntegration = true;
+      extraConfig = ''
+        allow-emacs-pinentry
+        allow-loopback-pinentry
+      '';
+      pinentry = {
+        # Ensure the Nix-provided pinentry is used; this will set
+        # `pinentry-program /nix/store/...`.
+        package = pkgs.pinentry-all;
+      };
+    };
+  };
 }

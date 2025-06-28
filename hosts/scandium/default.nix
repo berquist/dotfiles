@@ -128,11 +128,6 @@
   ];
 
   programs = {
-    # TODO shouldn't this be per user?
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
     zsh = {
       enable = true;
     };
