@@ -161,6 +161,9 @@ dotfiles:
   f_xinitrc:
     src: xinitrc
     dst: ~/.xinitrc
+  f_yamlfmt.yml:
+    src: config/yamlfmt/yamlfmt.yml
+    dst: ~/.config/yamlfmt/yamlfmt.yml
   f_yamllint_config:
     src: config/yamllint/config
     dst: ~/.config/yamllint/config
@@ -180,18 +183,21 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_tmux.conf
+    - f_yamlfmt.yml
   cee-build033:
     dotfiles:
     - d_bat
     - d_emacs.d
     - d_tmux
     - f_tmux.conf
+    - f_yamlfmt.yml
   gadreel:
     dotfiles:
     - d_bat
     - d_emacs.d
     - d_tmux
     - f_tmux.conf
+    - f_yamlfmt.yml
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
@@ -281,6 +287,7 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_tmux.conf
+    - f_yamlfmt.yml
   sodium.local:
     variables:
       conda_pkg_dir: /Users/eric/.conda_pkgs
@@ -297,3 +304,4 @@ profiles:
     - f_cookiecutterrc
     - f_justfile
     - f_tmux.conf
+    - f_yamlfmt.yml
