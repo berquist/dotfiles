@@ -1329,15 +1329,6 @@ the header, based upon the associated source code file."
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(use-package clang-format+
-  :hook ((c-mode-common c-ts-base-mode) . clang-format+-mode)
-  :custom
-  (clang-format-style "file")
-  (clang-format+-context 'modification))
-
-(use-package astyle
-  :when (executable-find "astyle"))
-
 (use-package flycheck-clang-tidy
   :after flycheck
   :hook ((flycheck-mode . flycheck-clang-tidy-setup)
