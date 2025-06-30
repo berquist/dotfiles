@@ -882,11 +882,17 @@ Links:
   ;; TODO what about --atomic?
   (setf (alist-get 'isort apheleia-formatters)
         '("isort" "--stdout" "-"))
+  (setf (alist-get 'yamlfmt apheleia-formatters)
+        '("yamlfmt" "-in" "-"))
   ;; TODO ruff-isort instead?
   (setf (alist-get 'python-mode apheleia-mode-alist)
         '(isort ruff))
   (setf (alist-get 'python-ts-mode apheleia-mode-alist)
         '(isort ruff))
+  (setf (alist-get 'yaml-mode apheleia-mode-alist)
+        '(yamlfmt))
+  (setf (alist-get 'yaml-ts-mode apheleia-mode-alist)
+        '(yamlfmt))
   :init
   (apheleia-global-mode +1))
 #+end_src
