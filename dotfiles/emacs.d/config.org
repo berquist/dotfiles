@@ -882,8 +882,14 @@ Links:
   ;; TODO what about --atomic?
   (setf (alist-get 'isort apheleia-formatters)
         '("isort" "--stdout" "-"))
+  (setf (alist-get 'runic apheleia-formatters)
+        ("julia" "--project=@runic" "--startup-file=no" "-e" "using Runic; exit(Runic.main(ARGS))" "--"))
   (setf (alist-get 'yamlfmt apheleia-formatters)
         '("yamlfmt" "-in" "-"))
+  (setf (alist-get 'julia-mode apheleia-mode-alist)
+        '(runic))
+  (setf (alist-get 'julia-ts-mode apheleia-mode-alist)
+        '(runic))
   ;; TODO ruff-isort instead?
   (setf (alist-get 'python-mode apheleia-mode-alist)
         '(isort ruff))
@@ -1795,12 +1801,6 @@ TODO disable .m files from loading as Objective-C
   :custom
   (lsp-julia-default-environment "~/.julia/environments/v1.11")
   (lsp-julia-timeout 300))
-
-(use-package julia-formatter
-  ;; Wow, this is really slow.
-  :disabled t
-  :hook ((julia-mode . julia-formatter-mode)
-         (julia-mode . julia-formatter--ensure-server)))
 #+END_SRC
 
 * YAML
