@@ -843,17 +843,17 @@ Links:
   :commands lsp
   :hook ((c-mode c++-mode fortran-mode f90-mode js-mode sh-mode) . lsp-deferred)
   :custom
-  (lsp-keep-workspace-alive nil)
-  (lsp-enable-snippet nil)
   (lsp-auto-guess-root t)
+  (lsp-clients-clangd-args '("--header-insertion-decorators=0" "--header-insertion=never"))
   (lsp-enable-on-type-formatting nil)
+  (lsp-enable-snippet nil)
+  (lsp-enable-suggest-server-download nil)
+  (lsp-file-watch-threshold 500000)
+  (lsp-headerline-breadcrumb-enable nil)
+  (lsp-keep-workspace-alive nil)
+  (lsp-lens-enable nil)
   (lsp-modeline-code-actions-enable nil)
   (lsp-modeline-diagnostics-enable nil)
-  (lsp-headerline-breadcrumb-enable nil)
-  (lsp-lens-enable nil)
-  (lsp-file-watch-threshold 500000)
-  (lsp-enable-suggest-server-download nil)
-  (lsp-clients-clangd-args '("--header-insertion-decorators=0" "--header-insertion=never"))  :config
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
   ;; When using no-littering, `lsp-session-file' is under var/lsp/session.el.
