@@ -1,29 +1,11 @@
 ;; -*- lexical-binding: t; coding: utf-8; -*-
 
-;; (require 'package)
-;; (setq package-enable-at-startup nil)
-;; (setq package-archives '(("melpa" . "http://melpa.org/packages/")
-;;                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-;;                          ("gnu" . "http://elpa.gnu.org/packages/")))
-;; (package-initialize)
-
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
-
-;; (eval-when-compile
-;;   (require 'use-package))
-
-;; (setq use-package-always-defer t
-;;       use-package-always-ensure t
-;;       use-package-verbose t)
-
-(defvar elpaca-installer-version 0.7)
+(defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
 (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                              :ref nil :depth 1
+                              :ref nil :depth 1 :inherit ignore
                               :files (:defaults "elpaca-test.el" (:exclude "extensions"))
                               :build (:not elpaca--activate-package)))
 (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
@@ -33,27 +15,27 @@
   (add-to-list 'load-path (if (file-exists-p build) build repo))
   (unless (file-exists-p repo)
     (make-directory repo t)
-    (when (< emacs-major-version 28) (require 'subr-x))
+    (when (<= emacs-major-version 28) (require 'subr-x))
     (condition-case-unless-debug err
-        (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                 ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
-                                                 ,@(when-let ((depth (plist-get order :depth)))
-                                                     (list (format "--depth=%d" depth) "--no-single-branch"))
-                                                 ,(plist-get order :repo) ,repo))))
-                 ((zerop (call-process "git" nil buffer t "checkout"
-                                       (or (plist-get order :ref) "--"))))
-                 (emacs (concat invocation-directory invocation-name))
-                 ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                       "--eval" "(byte-recompile-directory \".\" 0 'force)")))
-                 ((require 'elpaca))
-                 ((elpaca-generate-autoloads "elpaca" repo)))
+        (if-let* ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
+                  ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
+                                                  ,@(when-let* ((depth (plist-get order :depth)))
+                                                      (list (format "--depth=%d" depth) "--no-single-branch"))
+                                                  ,(plist-get order :repo) ,repo))))
+                  ((zerop (call-process "git" nil buffer t "checkout"
+                                        (or (plist-get order :ref) "--"))))
+                  (emacs (concat invocation-directory invocation-name))
+                  ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+                                        "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+                  ((require 'elpaca))
+                  ((elpaca-generate-autoloads "elpaca" repo)))
             (progn (message "%s" (buffer-string)) (kill-buffer buffer))
           (error "%s" (with-current-buffer buffer (buffer-string))))
       ((error) (warn "%s" err) (delete-directory repo 'recursive))))
   (unless (require 'elpaca-autoloads nil t)
     (require 'elpaca)
     (elpaca-generate-autoloads "elpaca" repo)
-    (load "./elpaca-autoloads")))
+    (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
 
@@ -94,11 +76,11 @@
   :init
   (load-theme 'ef-bio t))
 
-(setq flymake-mode-line-lighter "FM")
+(setopt flymake-mode-line-lighter "FM")
 
 (use-package vertico
-  :config
-  (setq vertico-cycle t)
+  :custom
+  (vertico-cycle t)
   :init
   (vertico-mode))
 
@@ -109,16 +91,18 @@
   :init
   (marginalia-mode))
 
-(setq completions-format 'vertical
-      completion-ignore-case t
-      read-buffer-completion-ignore-case t
-      read-file-name-completion-ignore-case t
-      completion-styles '(orderless basic)
-      completion-category-overrides '((file (styles basic partial-completion))))
+(setopt
+ completions-format 'vertical
+ completion-ignore-case t
+ read-buffer-completion-ignore-case t
+ read-file-name-completion-ignore-case t
+ completion-styles '(orderless basic)
+ completion-category-overrides '((file (styles basic partial-completion))))
 
 (use-package treesit-auto
+  :custom
+  (treesit-auto-install t)
   :config
-  (setq treesit-auto-install t)
   (global-treesit-auto-mode)
   :init
   (require 'treesit-auto))
@@ -132,22 +116,23 @@
 (use-package eglot-jl
   :config
   (when (executable-find "julialauncher")
-    (setq eglot-jl-julia-command "julialauncher"))
+    (setopt eglot-jl-julia-command "julialauncher"))
   :init
   (eglot-jl-init))
 (use-package julia-repl
   :hook (julia-mode . julia-repl-mode)
+  :custom
+  (julia-repl-inferior-buffer-name-base "julia-repl")
+  (julia-repl-set-terminal-backend 'ansi-term)
   :config
   (when (executable-find "julialauncher")
-    (push '(default-juliaup "julialauncher") julia-repl-executable-records))
-  (setq julia-repl-inferior-buffer-name-base "julia-repl")
-  (setq julia-repl-set-terminal-backend 'ansi-term))
+    (push '(default-juliaup "julialauncher") julia-repl-executable-records)))
 
 (use-package rust-mode)
 ;; (use-package rustic
-;;   :config
-;;   (setq rustic-format-trigger 'on-save)
-;;   (setq rustic-indent-method-chain t))
+;;   :custom
+;;   (rustic-format-trigger 'on-save)
+;;   (rustic-indent-method-chain t))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
