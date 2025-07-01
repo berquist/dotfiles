@@ -47,7 +47,6 @@
 
 (bind-key (kbd "C-x C-h") 'replace-string)
 
-(use-package dracula-theme)
 (use-package ef-themes
   :init
   (load-theme 'ef-bio t))
@@ -96,10 +95,6 @@
   :hook (python-mode . lsp)
   :custom
   (lsp-lens-enable nil))
-
-(use-package julia-mode)
-(use-package lsp-julia
-  :hook (julia-mode . lsp))
 
 (use-package rustic
   :custom

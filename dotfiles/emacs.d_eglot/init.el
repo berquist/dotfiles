@@ -42,7 +42,6 @@
 
 (bind-key (kbd "C-x C-h") 'replace-string)
 
-(use-package dracula-theme)
 (use-package ef-themes
   :init
   (load-theme 'ef-bio t))
@@ -81,9 +80,6 @@
 (use-package eglot
   :hook (prog-mode . eglot-ensure))
 
-(use-package julia-ts-mode
-  :mode "\\.jl\\'"
-  :delight "Julia")
 (use-package eglot-jl
   :config
   (when (executable-find "julialauncher")
@@ -99,19 +95,12 @@
   (when (executable-find "julialauncher")
     (push '(default-juliaup "julialauncher") julia-repl-executable-records)))
 
-(use-package rust-mode)
-;; (use-package rustic
-;;   :custom
-;;   (rustic-format-trigger 'on-save)
-;;   (rustic-indent-method-chain t))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(julia-mode eglot-jl ef-themes dracula-theme no-littering use-package)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
