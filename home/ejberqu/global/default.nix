@@ -21,6 +21,7 @@
       git-extras
       glab
       hadolint
+      harper
       htop
       jq
       just

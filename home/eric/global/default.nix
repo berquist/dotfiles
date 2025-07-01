@@ -16,6 +16,7 @@
       gitFull
       glab
       hadolint
+      harper
       htop
       just
       neofetch
