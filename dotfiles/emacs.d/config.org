@@ -753,7 +753,8 @@ Links:
         vc-handled-backends (delq 'Git vc-handled-backends))
 (require 'tramp)
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-(use-package vagrant-tramp)
+(use-package vagrant-tramp
+  :if (executable-find "vagrant"))
 #+END_SRC
 
 * Spelling
