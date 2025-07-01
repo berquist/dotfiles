@@ -53,6 +53,8 @@
       ".config/exercism/user.json".source = ../../../dotfiles/config/exercism/user.json;
       ".config/just/justfile".source = ../../../dotfiles/config/just/justfile;
       ".config/wezterm/wezterm.lua".source = ../../../dotfiles/config/wezterm/wezterm.lua;
+      ".config/yamlfmt/yamlfmt.yml".source = ../../../dotfiles/config/yamlfmt/yamlfmt.yml;
+      ".config/yamllint/config".source = ../../../dotfiles/config/yamllint/config;
       ".gdbinit".source = ../../../dotfiles/gdbinit;
       ".gitconfig".source = ../../../dotfiles/gitconfig;
       ".gitignore".source = ../../../dotfiles/gitignore;
