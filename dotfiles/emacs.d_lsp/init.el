@@ -92,8 +92,9 @@
 (use-package company)
 
 (use-package lsp-mode
-  :hook (python-mode . lsp)
+  :hook (python-mode . lsp-deferred)
   :custom
+  (lsp-headerline-breadcrumb-enable nil)
   (lsp-lens-enable nil))
 
 (use-package rustic
