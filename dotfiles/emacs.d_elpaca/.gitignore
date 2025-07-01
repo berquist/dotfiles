@@ -34,3 +34,5 @@
 /tree-sitter/
 /var/
 /workspace
+tree-sitter/
+flycheck_init.el

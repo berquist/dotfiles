@@ -30,3 +30,5 @@
 /transient
 /var/
 /workspace
+tree-sitter/
+flycheck_init.el
