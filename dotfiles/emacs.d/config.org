@@ -531,7 +531,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 #+BEGIN_SRC emacs-lisp
 (when ejb/has-treesit
   (use-package treesit-fold
-    :ensure (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")))
+    :ensure (treesit-fold :host github :repo "emacs-tree-sitter/treesit-fold")))
 
 (use-package vertico
   :custom
@@ -1744,8 +1744,7 @@ TODO disable .m files from loading as Objective-C
   (vterm-always-compile-module t))
 
 (use-package eat
-  :ensure (eat :type git
-               :host codeberg
+  :ensure (eat :host codeberg
                :repo "akib/emacs-eat"
                :files ("*.el" ("term" "term/*.el") "*.texi"
                        "*.ti" ("terminfo/e" "terminfo/e/*")
@@ -2095,7 +2094,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 ;; TODO company-sparql
 (use-package ttl-mode
   :ensure (ttl-mode
-           :type git
            :host github
            :repo "jeeger/ttl-mode"
            :files ("*.el"))
