@@ -531,7 +531,10 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 #+BEGIN_SRC emacs-lisp
 (when ejb/has-treesit
   (use-package treesit-fold
-    :ensure (treesit-fold :host github :repo "emacs-tree-sitter/treesit-fold")))
+    :ensure (treesit-fold :host github :repo "emacs-tree-sitter/treesit-fold")
+    :delight " TSF"
+    :init
+    (global-treesit-fold-mode)))
 
 (use-package vertico
   :custom
