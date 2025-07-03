@@ -25,9 +25,11 @@
       htop
       jq
       just
-      minikube
       ncurses
       ninja
+      nix-prefetch
+      nix-search-cli
+      nixfmt-rfc-style
       pyenv
       (python3.withPackages (ps: with ps; [
         editorconfig
@@ -43,6 +45,7 @@
       ruff
       shellcheck
       tree
+      ty
       uv
       vale
       yq

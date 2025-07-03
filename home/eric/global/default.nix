@@ -19,7 +19,6 @@
       harper
       htop
       just
-      neofetch
       nix-prefetch
       nix-search-cli
       nixfmt-rfc-style
@@ -37,6 +36,7 @@
       shellcheck
       tmux
       tree
+      ty
       vale
       wget
     ];
