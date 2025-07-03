@@ -932,7 +932,7 @@ Links:
       pyright)))
 
 (use-package flycheck
-  :ensure (:host github :repo "berquist/flycheck" :ref "rust-clippy-args")
+  :ensure (:host github :repo "berquist/flycheck" :branch "rust-clippy-args")
   :hook ((lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'sh-mode)
                                  (setq my/flycheck-local-cache '((lsp . ((next-checkers . (sh-bash)))))))))
