@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   home = {
@@ -22,14 +28,16 @@
       nix-prefetch
       nix-search-cli
       nixfmt-rfc-style
-      (python3.withPackages (ps: with ps; [
-        editorconfig
-        flake8
-        libxml2
-        mypy
-        pylint
-        yamllint
-      ]))
+      (python3.withPackages (
+        ps: with ps; [
+          editorconfig
+          flake8
+          libxml2
+          mypy
+          pylint
+          yamllint
+        ]
+      ))
       ripgrep
       rsync
       ruff
@@ -104,6 +112,8 @@
       enable = false;
     };
     gpg-agent = {
+      defaultCacheTtl = 60480000;
+      defaultCacheTtlSsh = 60480000;
       enable = true;
       enableSshSupport = true;
       enableZshIntegration = true;
@@ -111,6 +121,8 @@
         allow-emacs-pinentry
         allow-loopback-pinentry
       '';
+      maxCacheTtl = 60480000;
+      maxCacheTtlSsh = 60480000;
       pinentry = {
         # Ensure the Nix-provided pinentry is used; this will set
         # `pinentry-program /nix/store/...`.
