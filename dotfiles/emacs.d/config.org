@@ -1359,7 +1359,7 @@ the header, based upon the associated source code file."
   :after flycheck
   :hook ((flycheck-mode . flycheck-clang-tidy-setup)
          (lsp-managed-mode . (lambda ()
-                               (when (derived-mode-p 'c-ts-base-mode)
+                               (when (derived-mode-p '(c-ts-base-mode c-mode c++-mode))
                                  (setq my/flycheck-local-cache
                                        ;; Don't need (c/c++-clang c/c++-gcc)
                                        ;; since the language server should
