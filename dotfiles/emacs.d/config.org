@@ -524,6 +524,9 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 ;; Always place a newline at the end of files, like nano does by
 ;; default.
 (setopt require-final-newline t)
+
+(use-package ws-butler
+  :hook (prog-mode . ws-butler-mode))
 #+end_src
 
 * Narrowing, searching, and projects
