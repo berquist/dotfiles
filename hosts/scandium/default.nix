@@ -92,7 +92,7 @@
     colordiff
     dconf2nix
     firefox
-    firefox-devedition-bin
+    firefox-devedition
     gitFull
     home-manager
     mosh
@@ -128,11 +128,6 @@
   ];
 
   programs = {
-    # TODO shouldn't this be per user?
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
     zsh = {
       enable = true;
     };

@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   home = {
@@ -16,26 +22,29 @@
       gitFull
       glab
       hadolint
+      harper
       htop
       just
-      neofetch
       nix-prefetch
       nix-search-cli
       nixfmt-rfc-style
-      (python3.withPackages (ps: with ps; [
-        editorconfig
-        flake8
-        libxml2
-        mypy
-        pylint
-        yamllint
-      ]))
+      (python3.withPackages (
+        ps: with ps; [
+          editorconfig
+          flake8
+          libxml2
+          mypy
+          pylint
+          yamllint
+        ]
+      ))
       ripgrep
       rsync
       ruff
       shellcheck
       tmux
       tree
+      ty
       vale
       wget
     ];
@@ -52,6 +61,8 @@
       ".config/exercism/user.json".source = ../../../dotfiles/config/exercism/user.json;
       ".config/just/justfile".source = ../../../dotfiles/config/just/justfile;
       ".config/wezterm/wezterm.lua".source = ../../../dotfiles/config/wezterm/wezterm.lua;
+      ".config/yamlfmt/yamlfmt.yml".source = ../../../dotfiles/config/yamlfmt/yamlfmt.yml;
+      ".config/yamllint/config".source = ../../../dotfiles/config/yamllint/config;
       ".gdbinit".source = ../../../dotfiles/gdbinit;
       ".gitconfig".source = ../../../dotfiles/gitconfig;
       ".gitignore".source = ../../../dotfiles/gitignore;
@@ -96,9 +107,27 @@
     };
   };
 
-  # services = {
-  #   emacs = {
-  #     enable = true;
-  #   };
-  # };
+  services = {
+    emacs = {
+      enable = false;
+    };
+    gpg-agent = {
+      defaultCacheTtl = 60480000;
+      defaultCacheTtlSsh = 60480000;
+      enable = true;
+      enableSshSupport = true;
+      enableZshIntegration = true;
+      extraConfig = ''
+        allow-emacs-pinentry
+        allow-loopback-pinentry
+      '';
+      maxCacheTtl = 60480000;
+      maxCacheTtlSsh = 60480000;
+      pinentry = {
+        # Ensure the Nix-provided pinentry is used; this will set
+        # `pinentry-program /nix/store/...`.
+        package = pkgs.pinentry-all;
+      };
+    };
+  };
 }

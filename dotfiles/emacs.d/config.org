@@ -66,6 +66,14 @@
  ;; default is 1K
  elpaca-ui-row-limit 10000)
 
+(defun ejb/is-unix ()
+  "Does the operating system have a Unix-like shell?"
+  (and (not (eq system-type 'windows-nt))
+       (not (eq system-type 'ms-dos))))
+
+(when (not (ejb/is-unix))
+  (setopt elpaca-queue-limit 4))
+
 ;; Install use-package support
 (elpaca elpaca-use-package
   ;; Enable :elpaca use-package keyword.
@@ -93,29 +101,31 @@ Fundamental third-party packages that don't go anywhere else.
 (use-package delight
   :ensure (:host github :repo "emacsmirror/delight" :inherit nil))
 (setopt eldoc-minor-mode-string " ED")
+;; A bunch of stuff needs delight.
+(elpaca-wait)
 
 ;; Set the path properly. Don't have a conditional on using the window system
 ;; in order to circumvent
 ;; https://emacs.stackexchange.com/questions/27918/why-is-exec-path-different-in-emacsclient-emacsserver-than-in-emacs.
 (use-package exec-path-from-shell
   :ensure (:wait t)
+  :when (ejb/is-unix)
   :init
   (exec-path-from-shell-initialize))
-;; Starting the GUI doesn't know anything about the Keychain:
-;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
-;; I'm not sure that all of these are necessary anymore, considering that most
-;; things should be in the correct dotfile.
-(let ((ejb/desired-envvars '("ANACONDA_HOME"
-                             "GIT_AUTHOR_EMAIL"
-                             "GIT_COMMITTER_EMAIL"
-                             "GPG_TTY"
-                             "SSH_AGENT_PID"
-                             "SSH_AUTH_SOCK"
-                             "WORKON_HOME")))
-  (when (display-graphic-p)
-    ;; TODO need to specify `-each' dependency beforehand
-    ;; (-each ejb/desired-envvars (lambda (envvar) (exec-path-from-shell-copy-env envvar)))
-    ))
+(when (ejb/is-unix)
+  ;; Starting the GUI doesn't know anything about the Keychain:
+  ;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
+  ;; I'm not sure that all of these are necessary anymore, considering that most
+  ;; things should be in the correct dotfile.
+  (let ((ejb/desired-envvars '("ANACONDA_HOME"
+                               "GIT_AUTHOR_EMAIL"
+                               "GIT_COMMITTER_EMAIL"
+                               "GPG_TTY"
+                               "SSH_AGENT_PID"
+                               "SSH_AUTH_SOCK"
+                               "WORKON_HOME")))
+    (when (display-graphic-p)
+      (-each ejb/desired-envvars (lambda (envvar) (exec-path-from-shell-copy-env envvar))))))
 #+END_SRC
 
 * Functions
@@ -514,6 +524,9 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 ;; Always place a newline at the end of files, like nano does by
 ;; default.
 (setopt require-final-newline t)
+
+(use-package ws-butler
+  :hook (prog-mode . ws-butler-mode))
 #+end_src
 
 * Narrowing, searching, and projects
@@ -521,7 +534,10 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 #+BEGIN_SRC emacs-lisp
 (when ejb/has-treesit
   (use-package treesit-fold
-    :ensure (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")))
+    :ensure (treesit-fold :host github :repo "emacs-tree-sitter/treesit-fold")
+    :delight " TSF"
+    :init
+    (global-treesit-fold-mode)))
 
 (use-package vertico
   :custom
@@ -743,7 +759,8 @@ Links:
         vc-handled-backends (delq 'Git vc-handled-backends))
 (require 'tramp)
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-(use-package vagrant-tramp)
+(use-package vagrant-tramp
+  :if (executable-find "vagrant"))
 #+END_SRC
 
 * Spelling
@@ -832,17 +849,18 @@ Links:
   :commands lsp
   :hook ((c-mode c++-mode fortran-mode f90-mode js-mode sh-mode) . lsp-deferred)
   :custom
-  (lsp-keep-workspace-alive nil)
-  (lsp-enable-snippet nil)
   (lsp-auto-guess-root t)
+  (lsp-clients-clangd-args '("--header-insertion-decorators=0" "--header-insertion=never"))
   (lsp-enable-on-type-formatting nil)
+  (lsp-enable-snippet nil)
+  (lsp-enable-suggest-server-download nil)
+  (lsp-file-watch-threshold 500000)
+  (lsp-headerline-breadcrumb-enable nil)
+  (lsp-keep-workspace-alive nil)
+  (lsp-lens-enable nil)
   (lsp-modeline-code-actions-enable nil)
   (lsp-modeline-diagnostics-enable nil)
-  (lsp-headerline-breadcrumb-enable nil)
-  (lsp-lens-enable nil)
-  (lsp-file-watch-threshold 500000)
-  (lsp-enable-suggest-server-download nil)
-  (lsp-clients-clangd-args '("--header-insertion-decorators=0" "--header-insertion=never"))  :config
+  (lsp-semantic-tokens-enable t)
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
   ;; When using no-littering, `lsp-session-file' is under var/lsp/session.el.
@@ -870,7 +888,53 @@ Links:
 (use-package realgud-ipdb)
 #+END_SRC
 
-* Flycheck
+* Formatting
+
+#+begin_src emacs-lisp
+(use-package apheleia
+  :custom
+  (apheleia-log-only-errors nil)
+  (apheleia-mode-lighter nil)
+  :config
+  ;; TODO how is this different from "isort -"?
+  ;; TODO what about --atomic?
+  (setf (alist-get 'isort apheleia-formatters)
+        '("isort" "--stdout" "-"))
+  (setf (alist-get 'gersemi apheleia-formatters)
+        '("gersemi" "-"))
+  (setf (alist-get 'runic apheleia-formatters)
+        '("julia" "--project=@runic" "--startup-file=no" "-e" "using Runic; exit(Runic.main(ARGS))" "--"))
+  (setf (alist-get 'yamlfmt apheleia-formatters)
+        '("yamlfmt" "-in" "-"))
+  (setf (alist-get 'cmake-mode apheleia-mode-alist)
+        '(gersemi))
+  (setf (alist-get 'cmake-ts-mode apheleia-mode-alist)
+        '(gersemi))
+  (setf (alist-get 'json-mode apheleia-mode-alist)
+        '(jq))
+  (setf (alist-get 'json-ts-mode apheleia-mode-alist)
+        '(jq))
+  (setf (alist-get 'julia-mode apheleia-mode-alist)
+        '(runic))
+  (setf (alist-get 'julia-ts-mode apheleia-mode-alist)
+        '(runic))
+  ;; TODO ruff-isort instead?
+  (setf (alist-get 'python-mode apheleia-mode-alist)
+        '(isort ruff))
+  (setf (alist-get 'python-ts-mode apheleia-mode-alist)
+        '(isort ruff))
+  ;; TODO be more specific for which shells?
+  (setf (alist-get 'sh-mode apheleia-mode-alist)
+        '(shfmt))
+  (setf (alist-get 'yaml-mode apheleia-mode-alist)
+        '(yamlfmt))
+  (setf (alist-get 'yaml-ts-mode apheleia-mode-alist)
+        '(yamlfmt))
+  :init
+  (apheleia-global-mode +1))
+#+end_src
+
+* Flycheck (linting)
 
 ** General
 
@@ -884,6 +948,7 @@ Links:
       pyright)))
 
 (use-package flycheck
+  :ensure (:host github :repo "berquist/flycheck" :branch "rust-clippy-args")
   :hook ((lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'sh-mode)
                                  (setq my/flycheck-local-cache '((lsp . ((next-checkers . (sh-bash)))))))))
@@ -1302,20 +1367,11 @@ the header, based upon the associated source code file."
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(use-package clang-format+
-  :hook ((c-mode-common c-ts-base-mode) . clang-format+-mode)
-  :custom
-  (clang-format-style "file")
-  (clang-format+-context 'modification))
-
-(use-package astyle
-  :when (executable-find "astyle"))
-
 (use-package flycheck-clang-tidy
   :after flycheck
   :hook ((flycheck-mode . flycheck-clang-tidy-setup)
          (lsp-managed-mode . (lambda ()
-                               (when (derived-mode-p 'c-ts-base-mode)
+                               (when (derived-mode-p '(c-ts-base-mode c-mode c++-mode))
                                  (setq my/flycheck-local-cache
                                        ;; Don't need (c/c++-clang c/c++-gcc)
                                        ;; since the language server should
@@ -1471,26 +1527,6 @@ users are likely to use them.
   :custom
   (lsp-pyright-langserver-command ejb/pyright))
 #+end_src
-
-** Reformatters
-
-If ~:after python~ isn't present, the bindings don't get added properly?
-
-There is also the built-in =python-sort-imports= via =C-c C-i s=.
-
-#+BEGIN_SRC emacs-lisp
-(use-package blacken
-  :after python
-  :bind
-  (:map python-mode-map
-        ("C-c C-b" . blacken-buffer)))
-
-(use-package python-isort
-  :after python
-  :bind
-  (:map python-mode-map
-        ("C-c C-a" . python-isort-buffer)))
-#+END_SRC
 
 ** Leftovers
 
@@ -1727,8 +1763,7 @@ TODO disable .m files from loading as Objective-C
   (vterm-always-compile-module t))
 
 (use-package eat
-  :ensure (eat :type git
-               :host codeberg
+  :ensure (eat :host codeberg
                :repo "akib/emacs-eat"
                :files ("*.el" ("term" "term/*.el") "*.texi"
                        "*.ti" ("terminfo/e" "terminfo/e/*")
@@ -1797,12 +1832,6 @@ TODO disable .m files from loading as Objective-C
   :custom
   (lsp-julia-default-environment "~/.julia/environments/v1.11")
   (lsp-julia-timeout 300))
-
-(use-package julia-formatter
-  ;; Wow, this is really slow.
-  :disabled t
-  :hook ((julia-mode . julia-formatter-mode)
-         (julia-mode . julia-formatter--ensure-server)))
 #+END_SRC
 
 * YAML
@@ -1816,6 +1845,7 @@ TODO disable .m files from loading as Objective-C
   (("\\.params\\'" . yaml-mode)
    ("\\clang-format\\'" . yaml-mode)
    ("\\clang-tidy\\'" . yaml-mode)
+   (".gersemirc\\'" . yaml-mode)
    ("\\.asdf\\'" . yaml-mode)
    ("CITATION.cff" . yaml-mode)))
 #+END_SRC
@@ -2084,7 +2114,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 ;; TODO company-sparql
 (use-package ttl-mode
   :ensure (ttl-mode
-           :type git
            :host github
            :repo "jeeger/ttl-mode"
            :files ("*.el"))
@@ -2195,6 +2224,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package pkgbuild-mode
   :custom
   (pkgbuild-update-sums-on-save nil))
+(use-package powershell)
 (use-package snakemake-mode)
 (use-package systemd)
 (use-package tracwiki-mode
