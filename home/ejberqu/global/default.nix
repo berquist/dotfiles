@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   home = {
@@ -31,15 +37,17 @@
       nix-search-cli
       nixfmt-rfc-style
       pyenv
-      (python3.withPackages (ps: with ps; [
-        editorconfig
-        flake8
-        git-filter-repo
-        libxml2
-        mypy
-        pylint
-        yamllint
-      ]))
+      (python3.withPackages (
+        ps: with ps; [
+          editorconfig
+          flake8
+          git-filter-repo
+          libxml2
+          mypy
+          pylint
+          yamllint
+        ]
+      ))
       ripgrep
       rsync
       ruff

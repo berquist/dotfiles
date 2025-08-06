@@ -6,14 +6,37 @@ with lib.hm.gvariant;
 {
   dconf.settings = {
     "org/gnome/Totem" = {
-      active-plugins = [ "open-directory" "movie-properties" "screenshot" "variable-rate" "autoload-subtitles" "skipto" "recent" "rotation" "save-file" "vimeo" "apple-trailers" "screensaver" "media-player-keys" ];
+      active-plugins = [
+        "open-directory"
+        "movie-properties"
+        "screenshot"
+        "variable-rate"
+        "autoload-subtitles"
+        "skipto"
+        "recent"
+        "rotation"
+        "save-file"
+        "vimeo"
+        "apple-trailers"
+        "screensaver"
+        "media-player-keys"
+      ];
       subtitle-encoding = "UTF-8";
     };
 
     "org/gnome/desktop/input-sources" = {
       per-window = false;
-      sources = [ (mkTuple [ "xkb" "us" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" "lv3:ralt_switch" "caps:ctrl_modifier" ];
+      sources = [
+        (mkTuple [
+          "xkb"
+          "us"
+        ])
+      ];
+      xkb-options = [
+        "terminate:ctrl_alt_bksp"
+        "lv3:ralt_switch"
+        "caps:ctrl_modifier"
+      ];
     };
 
     "org/gnome/desktop/interface" = {
@@ -27,7 +50,14 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "firefox" "gnome-power-panel" "spotify" "slack" "gnome-network-panel" "plexamp" ];
+      application-children = [
+        "firefox"
+        "gnome-power-panel"
+        "spotify"
+        "slack"
+        "gnome-network-panel"
+        "plexamp"
+      ];
       show-banners = true;
     };
 
@@ -154,7 +184,10 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      favorite-apps = [ "org.gnome.Nautilus.desktop" "firefox.desktop" ];
+      favorite-apps = [
+        "org.gnome.Nautilus.desktop"
+        "firefox.desktop"
+      ];
       welcome-dialog-last-shown-version = "40.1";
     };
 
