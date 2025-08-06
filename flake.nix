@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.05";
@@ -16,7 +21,12 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    {
+      nixpkgs,
+      home-manager,
+      lix-module,
+      ...
+    }@inputs:
     {
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake /path/to/this/dir#your-hostname'
@@ -24,12 +34,18 @@
         # personal desktop
         osmium = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/osmium ];
+          modules = [
+            lix-module.nixosModules.default
+            ./hosts/osmium
+          ];
         };
         # personal laptop
         scandium = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/scandium ];
+          modules = [
+            lix-module.nixosModules.default
+            ./hosts/scandium
+          ];
         };
       };
 
