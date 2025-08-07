@@ -57,12 +57,15 @@
 	helper = store
 
 [credential "https://github.com"]
+	helper =
 	helper = !gh auth git-credential
 
-[credential "https://gitst.github.com"]
+[credential "https://gist.github.com"]
+	helper =
 	helper = !gh auth git-credential
 
 [credential "https://gitlab.com"]
+	helper =
 	helper = !glab auth git-credential
 
 [diff]
