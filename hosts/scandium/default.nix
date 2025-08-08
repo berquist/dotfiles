@@ -150,82 +150,12 @@
       enable = false;
       package = pkgs.emacs30;
     };
-    forgejo = {
-      enable = true;
-      settings = {
-        server = {
-          # default is 3000
-          HTTP_PORT = 3003;
-        };
-      };
-    };
-    guix = {
-      enable = true;
-    };
-    jenkins = {
-      enable = true;
-      # default is 8080
-      port = 8082;
-    };
-    jupyterhub = {
-      enable = true;
-      # default is 8000
-      port = 8083;
-    };
-    komga = {
-      enable = true;
-      settings = {
-        server = {
-          # default is 8080
-          port = 8081;
-        };
-      };
-    };
-    lanraragi = {
-      enable = true;
-      # default is 3000
-      port = 3001;
-      # redis = {
-      #   port = 6380;
-      # };
-    };
     openssh = {
       enable = true;
       settings = {
         PasswordAuthentication = false;
         PermitRootLogin = "no";
       };
-    };
-    plex = {
-      enable = true;
-    };
-    slurm = {
-      client = {
-        enable = false;
-      };
-      server = {
-        enable = false;
-      };
-    };
-    suwayomi-server = {
-      enable = true;
-      settings = {
-        server = {
-          autoDownloadNewChapters = true;
-          downloadAsCbz = true;
-          extensionRepos = [
-            "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"
-          ];
-          # default is 8080
-          port = 4567;
-        };
-      };
-    };
-    transmission = {
-      enable = true;
-    };
-    woodpecker-server = {
-      enable = true;
     };
     zerotierone = {
       enable = true;
