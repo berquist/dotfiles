@@ -189,6 +189,9 @@
     plex = {
       enable = true;
     };
+    renovate = {
+      enable = true;
+    };
     slurm = {
       client = {
         enable = false;
