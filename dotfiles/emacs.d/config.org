@@ -243,14 +243,24 @@ What's the difference between setq and setq-default? See here: http://stackoverf
     :custom
     (treesit-auto-install t)
     :config
+    ;; Don't use toml-ts-mode until performance is improved.
     ;; Don't use yaml-ts-mode until indentation is fixed.
     (let ((ejb/treesit-modes-to-remove
-           '(yaml)))
+           '(toml yaml)))
       (setopt treesit-auto-langs
               (seq-filter
                (lambda (lang)
                  (not (member lang ejb/treesit-modes-to-remove)))
                treesit-auto-langs)))
+    ;; However, do keep the TOML recipe up-to-date:
+    ;; https://github.com/renzmann/treesit-auto/pull/113
+    (add-to-list 'treesit-auto-recipe-list
+                 (make-treesit-auto-recipe
+                  :lang 'toml
+                  :ts-mode 'toml-ts-mode
+                  :remap '(conf-toml-mode toml-mode)
+                  :url "https://github.com/tree-sitter-grammars/tree-sitter-toml"
+                  :ext "\\.toml\\'"))
     (global-treesit-auto-mode)
     :init
     (require 'treesit-auto)))
