@@ -56,3 +56,8 @@ else
 fi
 
 [[ -d "${SPACK_ROOT}" ]] && source "${SPACK_ROOT}"/share/spack/setup-env.sh
+
+nix_daemon_path='/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+if [[ ! $(command -v nix) && -e ${nix_daemon_path} ]]; then
+    source ${nix_daemon_path}
+fi
