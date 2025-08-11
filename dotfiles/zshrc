@@ -50,8 +50,6 @@ elif [[ $uname == "Darwin" ]]; then
     source "${HOME}"/dotfiles/aliases_macos.bash
     # Only interactive for now.
     source "${HOME}"/dotfiles/path.sh
-    prepend_to_path /opt/homebrew/opt/ruby/bin
-    prepend_to_path "${HOME}/.gem/ruby/3.2.0/bin"
 fi
 
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
