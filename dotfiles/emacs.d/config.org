@@ -1104,7 +1104,6 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                   "."
                                   (number-to-string counter)
                                   (if extension (concat "." extension) "")))))
-    ;; Read the file line by line
     (with-temp-buffer
       (insert-file-contents input-file)
       (goto-char (point-min))
@@ -1112,45 +1111,35 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
         (let ((line (buffer-substring-no-properties
                      (line-beginning-position) (line-end-position))))
           (cond
-           ;; Start of a conflict
            ((string-match-p "^<<<<<<<" line)
+            (setq current-section 'left)
             (setq left-section "")
             (setq middle-section "")
             (setq right-section "")
-            (setq current-section 'left)
             (setq is-three-way nil))
-           ;; Middle section starts (three-way diff detected)
            ((string-match-p "^|||||||" line)
             (setq current-section 'middle)
             (setq is-three-way t))
-           ;; Right section starts
            ((string-match-p "^=======" line)
             (setq current-section 'right))
-           ;; End of a conflict
            ((string-match-p "^>>>>>>>" line)
             (let ((left-file (funcall file-template "left" conflict-counter))
                   (right-file (funcall file-template "right" conflict-counter)))
-              ;; Write left and right sections to files
               (with-temp-file left-file
                 (insert left-section))
               (with-temp-file right-file
                 (insert right-section))
-              ;; Write middle section if it's a three-way diff
               (when is-three-way
                 (let ((middle-file (funcall file-template "middle" conflict-counter)))
                   (with-temp-file middle-file
                     (insert middle-section))))
-              ;; Increment conflict counter
               (setq conflict-counter (1+ conflict-counter))))
-           ;; Append lines to the current section
            (t
-            (cond
-             ((eq current-section 'left)
-              (setq left-section (concat left-section line "\n")))
-             ((eq current-section 'middle)
-              (setq middle-section (concat middle-section line "\n")))
-             ((eq current-section 'right)
-              (setq right-section (concat right-section line "\n")))))))
+            (pcase current-section
+             ('left (setq left-section (concat left-section line "\n")))
+             ('middle (setq middle-section (concat middle-section line "\n")))
+             ('right (setq right-section (concat right-section line "\n")))
+             (_ nil)))))
         (forward-line 1)))
     (message "Processed %d conflict(s)." conflict-counter)))
 #+END_SRC
