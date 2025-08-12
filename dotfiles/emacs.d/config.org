@@ -766,7 +766,14 @@ Links:
 (setopt auto-revert-remote-files nil
         tramp-default-method "ssh"
         ;; tramp-verbose 8
-        vc-handled-backends (delq 'Git vc-handled-backends))
+        ;;
+        ;; This was present in order to speed up tramp operations, since I
+        ;; suspected I'd never use vc interactively for git when magit exists.
+        ;; The problem is that this breaks `vc-backend' and probably all other
+        ;; functions for files under git, which is still important.
+        ;;
+        ;; vc-handled-backends (delq 'Git vc-handled-backends)
+        )
 (require 'tramp)
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 (use-package vagrant-tramp
@@ -1054,6 +1061,27 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 ;; Even though VC systems (at least git) commit the symbolic link pointer
 ;; itself, and not the file it's pointing to, I want to edit the file.
 (setopt vc-follow-symlinks t)
+
+;; https://emacs.stackexchange.com/a/16470 with additional information in
+;; https://github.com/emacs-mirror/emacs/commit/b5354531bac4ea261d66804ac81be222fdeaaec2
+;; for `vc-git-find-file-hook'.
+(defun my-enable-smerge-maybe ()
+  (when (and buffer-file-name (vc-backend buffer-file-name))
+    (save-excursion
+      (goto-char (point-min))
+      (when (re-search-forward "^<<<<<<< " nil t)
+        ;; The vc code calls `smerge-start-session'.  This original function
+        ;; from Stack Exchange, as well as `sm-try-smerge' in the smerge-mode
+        ;; commentary, calls `smerge-mode' with a positive argument.  Use the
+        ;; former since I am likely to always want the point to go to the
+        ;; first conflict region.
+        (smerge-start-session)))))
+
+;; Originally didn't set DEPTH, but prefer to put it at the end.  The
+;; smerge-mode commentary adds to `find-file-hook'.  The Stack Exchange answer
+;; adds to `buffer-list-update-hook', but I almost certainly only want this
+;; logic associated with files.
+(add-hook 'find-file-hook #'my-enable-smerge-maybe t)
 #+END_SRC
 
 ** Git
