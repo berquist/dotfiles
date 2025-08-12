@@ -1082,6 +1082,77 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 ;; adds to `buffer-list-update-hook', but I almost certainly only want this
 ;; logic associated with files.
 (add-hook 'find-file-hook #'my-enable-smerge-maybe t)
+
+(defun ejb/parse-git-merge-conflicts (input-file)
+  "Parse Git merge conflicts in INPUT-FILE and write sections to separate files."
+  (interactive "fSelect file with merge conflicts: ")
+  (let* ((base-name (file-name-nondirectory input-file))
+         (dir-name (file-name-directory input-file))
+         (extension (file-name-extension base-name))
+         (base-name-without-extension (file-name-sans-extension base-name))
+         (conflict-counter 0)
+         (current-section nil)
+         (left-section "")
+         (middle-section "")
+         (right-section "")
+         (is-three-way nil)
+         (file-template (lambda (section counter)
+                          (concat dir-name
+                                  base-name-without-extension
+                                  "."
+                                  section
+                                  "."
+                                  (number-to-string counter)
+                                  (if extension (concat "." extension) "")))))
+    ;; Read the file line by line
+    (with-temp-buffer
+      (insert-file-contents input-file)
+      (goto-char (point-min))
+      (while (not (eobp))
+        (let ((line (buffer-substring-no-properties
+                     (line-beginning-position) (line-end-position))))
+          (cond
+           ;; Start of a conflict
+           ((string-match-p "^<<<<<<<" line)
+            (setq left-section "")
+            (setq middle-section "")
+            (setq right-section "")
+            (setq current-section 'left)
+            (setq is-three-way nil))
+           ;; Middle section starts (three-way diff detected)
+           ((string-match-p "^|||||||" line)
+            (setq current-section 'middle)
+            (setq is-three-way t))
+           ;; Right section starts
+           ((string-match-p "^=======" line)
+            (setq current-section 'right))
+           ;; End of a conflict
+           ((string-match-p "^>>>>>>>" line)
+            (let ((left-file (funcall file-template "left" conflict-counter))
+                  (right-file (funcall file-template "right" conflict-counter)))
+              ;; Write left and right sections to files
+              (with-temp-file left-file
+                (insert left-section))
+              (with-temp-file right-file
+                (insert right-section))
+              ;; Write middle section if it's a three-way diff
+              (when is-three-way
+                (let ((middle-file (funcall file-template "middle" conflict-counter)))
+                  (with-temp-file middle-file
+                    (insert middle-section))))
+              ;; Increment conflict counter
+              (setq conflict-counter (1+ conflict-counter))))
+           ;; Append lines to the current section
+           (t
+            (cond
+             ((eq current-section 'left)
+              (setq left-section (concat left-section line "\n")))
+             ((eq current-section 'middle)
+              (setq middle-section (concat middle-section line "\n")))
+             ((eq current-section 'right)
+              (setq right-section (concat right-section line "\n")))))))
+        (forward-line 1)))
+    (message "Processed %d conflict(s)." conflict-counter)))
 #+END_SRC
 
 ** Git
