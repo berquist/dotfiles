@@ -1048,14 +1048,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 
 (use-package difftastic
   :after magit
-  :bind (:map magit-blame-read-only-mode-map
-              ("D" . difftastic-magit-diff)
-              ("S" . difftastic-magit-show))
   :config
-  (eval-after-load 'magit-diff
-    '(transient-append-suffix 'magit-diff '(-1 -1)
-       [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
-        ("S" "Difftastic show" difftastic-magit-show)])))
+  (difftastic-bindings-mode))
 #+end_src
 
 * Git/version control
