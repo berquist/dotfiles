@@ -921,6 +921,11 @@ Links:
         '("gersemi" "-"))
   (setf (alist-get 'runic apheleia-formatters)
         '("julia" "--project=@runic" "--startup-file=no" "-e" "using Runic; exit(Runic.main(ARGS))" "--"))
+  (setf (alist-get 'shfmt apheleia-formatters)
+        ;; shfmt will not read an EditorConfig file if any parser or printer
+        ;; flags are specified on the command line.  The default recipe
+        ;; specifies -ln and possibly -i.
+        '("shfmt" "--filename" filepath "-"))
   (setf (alist-get 'yamlfmt apheleia-formatters)
         '("yamlfmt" "-in" "-"))
   (setf (alist-get 'cmake-mode apheleia-mode-alist)
