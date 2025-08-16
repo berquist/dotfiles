@@ -252,6 +252,15 @@ What's the difference between setq and setq-default? See here: http://stackoverf
                (lambda (lang)
                  (not (member lang ejb/treesit-modes-to-remove)))
                treesit-auto-langs)))
+    ;; nim-ts-mode doesn't exist yet
+    ;; (add-to-list 'treesit-auto-recipe-list
+    ;;              (make-treesit-auto-recipe
+    ;;               :lang 'nim
+    ;;               :ts-mode 'nim-ts-mode
+    ;;               :remap '(nim-mode nimscript-mode-maybe)
+    ;;               :url "https://github.com/alaviss/tree-sitter-nim"
+    ;;               ;; combination of "\\.nim\\'" and "\\.nim\\(ble\\|s\\)\\'"
+    ;;               :ext "\\.nim\\(ble\\|s\\)?\\'"))
     ;; However, do keep the TOML recipe up-to-date:
     ;; https://github.com/renzmann/treesit-auto/pull/113
     (add-to-list 'treesit-auto-recipe-list
