@@ -5,6 +5,8 @@
 # Python coverage output default location
 --glob=!htmlcov
 --hidden
+# stupid default
+--no-require-git
 
 # Searching through hidden files means we need to not search through .git,
 # .svn, ..., and other folders that are part of the VCS' own infrastructure.
