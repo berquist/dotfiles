@@ -39,6 +39,7 @@
                           (direnv)
                           (emacs)
                           (lsp-mode)
+                          (native-compiler)
                           (ox-pandoc)))
 
 (bind-key (kbd "C-x C-b") 'switch-to-buffer)

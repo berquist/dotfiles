@@ -60,10 +60,18 @@
               column-number-mode t
               indent-tabs-mode nil
               tab-width 4)
-(setq display-line-numbers-grow-only t)
+(setopt display-line-numbers-grow-only t)
 (global-display-line-numbers-mode 1)
 (global-eldoc-mode 1)
 (electric-pair-mode 1)
+
+(setopt
+ warning-suppress-types '((comp)
+                          (direnv)
+                          (emacs)
+                          (lsp-mode)
+                          (native-compiler)
+                          (ox-pandoc)))
 
 (bind-key (kbd "C-x C-b") 'switch-to-buffer)
 (bind-key (kbd "C-x b") 'ibuffer)
