@@ -269,8 +269,10 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (setopt warning-suppress-types
         '((comp)
           (direnv)
+          (elpaca)
           (emacs)
           (lsp-mode)
+          (native-compiler)
           (ox-pandoc)
           (treesit)))
 #+end_src
