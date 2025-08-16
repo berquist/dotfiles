@@ -857,15 +857,11 @@ Links:
   :init
   ;; Partial ordering of (future) backends from most to least important.
   ;;
-  ;; - For Python, prefer the language server over `anaconda-mode' if
-  ;;   possible.
-  ;;
   ;; - For Nim, nimsuggest seems to give much better results than nimlsp. But
   ;;   it times out too much.
   (defvar ejb/company-ordering
       '(company-capf
-        company-nimsuggest
-        company-anaconda))
+        company-nimsuggest))
   (defun ejb/fix-company-ordering ()
     (with-eval-after-load 'company
       (setopt company-backends
