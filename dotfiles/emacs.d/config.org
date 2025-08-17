@@ -1201,6 +1201,10 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   :disabled t
   :hook magit-mode)
 (use-package git-timemachine)
+(use-package git-link
+  :after git-timemachine
+  :custom
+  (git-link-consider-ssh-config t))
 #+END_SRC
 
 * Pandoc
