@@ -2000,6 +2000,18 @@ TODO disable .m files from loading as Objective-C
 
 #+begin_src emacs-lisp
 (use-package cue-mode)
+(when ejb/has-treesit
+  (use-package cue-ts-mode
+    :ensure (:host github :repo "ZharMeny/cue-ts-mode")
+    :after (treesit-auto)
+    :config
+    (add-to-list 'treesit-auto-recipe-list
+                 (make-treesit-auto-recipe
+                  :lang 'cue
+                  :ts-mode 'cue-ts-mode
+                  :remap 'cue-mode
+                  :url ""
+                  :ext "\\.cue\\'"))))
 (use-package dhall-mode)
 (use-package nickel-mode)
 #+end_src
