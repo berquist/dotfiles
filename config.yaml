@@ -1,3 +1,4 @@
+---
 config:
   banner: false
   dotpath: dotfiles
@@ -68,6 +69,9 @@ dotfiles:
   f_gdbinit:
     src: gdbinit
     dst: ~/.gdbinit
+  f_ghostty_config:
+    src: config/ghostty/config
+    dst: ~/.config/ghostty/config
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
