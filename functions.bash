@@ -2,8 +2,7 @@
 
 # Ensure the pager is used for certain Subversion operations.
 svn() {
-    if [[ "$1" == "diff" ]] || [[ "$1" == "log" ]] || [[ "$1" == "blame" ]]
-    then
+    if [[ "$1" == "diff" ]] || [[ "$1" == "log" ]] || [[ "$1" == "blame" ]]; then
         command svn "$@" | less
     else
         command svn "$@"
@@ -58,6 +57,6 @@ pyclean() {
     find ${PYCLEAN_PLACES} -type d -name "htmlcov" -delete
 }
 
-spack-checksum-add () {
+spack-checksum-add() {
     spack checksum --batch --add-to-package ${1}
 }

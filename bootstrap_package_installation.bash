@@ -27,7 +27,7 @@ case ${base_plat} in
         fi
         /usr/local/bin/brew install ansible
         ;;
-    *)
+    *) ;;
 esac
 
 ansible-galaxy install -r ./ansible/requirements.yaml

@@ -65,11 +65,11 @@ reflector --latest 5 --protocol http --sort rate --save /etc/pacman.d/mirrorlist
 
 # Installing essential base packages
 pacstrap /mnt base linux linux-firmware base-devel \
-         nano \
-         reflector \
-         xorg xorg-apps \
-         zsh \
-         git ansible
+    nano \
+    reflector \
+    xorg xorg-apps \
+    zsh \
+    git ansible
 
 # Fstab
 genfstab -U /mnt >> /mnt/etc/fstab

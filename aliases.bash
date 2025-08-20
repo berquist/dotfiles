@@ -2,13 +2,13 @@
 
 unal() {
     # shellcheck disable=SC2086
-    unalias $1 2>/dev/null
+    unalias $1 2> /dev/null
 }
 
 alias 2to3='2to3 -f all -f buffer -f idioms -f set_literal -f ws_comma'
 # Debian and derivatives
-if command -v batcat >/dev/null 2>&1; then
-    if ! command -v bat >/dev/null 2>&1; then
+if command -v batcat > /dev/null 2>&1; then
+    if ! command -v bat > /dev/null 2>&1; then
         alias bat='batcat'
     fi
 fi
@@ -23,8 +23,8 @@ alias dus='\du -h --max-depth=1'
 alias dus2='du | sort -nr | cut -f2- | xargs du -hs'
 alias f='finger'
 # Debian and derivatives
-if command -v fdfind >/dev/null 2>&1; then
-    if ! command -v fd >/dev/null 2>&1; then
+if command -v fdfind > /dev/null 2>&1; then
+    if ! command -v fd > /dev/null 2>&1; then
         alias fd='fdfind'
     fi
 fi
@@ -39,14 +39,14 @@ alias es='emacs -nw'
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
 alias gi='git'  # typo
-alias gti='git'  # typo
+alias gti='git' # typo
 alias it='git'  # typo
 alias julia='julialauncher'
 alias kubectl='minikube kubectl --'
 # If exa is available, set preferred aliases to use it (and its different
 # flags) rather than ls.
 # eza is the maintained fork of exa.
-if command -v eza >/dev/null 2>&1; then
+if command -v eza > /dev/null 2>&1; then
     unal ls
     unal l
     unal la
@@ -57,7 +57,7 @@ if command -v eza >/dev/null 2>&1; then
     alias la='l -a'
     alias lt='l -s modified -r'
     alias lh='lt | head'
-elif command -v exa >/dev/null 2>&1; then
+elif command -v exa > /dev/null 2>&1; then
     unal ls
     unal l
     unal la
@@ -82,7 +82,7 @@ alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
 alias sd='svn diff --diff-cmd colordiff'
-alias snv='svn'  # typo
+alias snv='svn' # typo
 alias sw='telnet towel.blinkenlights.nl'
 alias t='tail -F -n 100 --sleep-interval=0.1'
 # 1. There are a lot of versions of tree that don't take this argument
@@ -90,7 +90,7 @@ alias t='tail -F -n 100 --sleep-interval=0.1'
 # period
 #
 # alias tree='tree --gitignore'
-alias whcih='which'  # typo
+alias whcih='which' # typo
 
 # So I don't do stupid things.
 alias cp='cp -i -v'

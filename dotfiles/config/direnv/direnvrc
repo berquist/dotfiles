@@ -3,8 +3,8 @@
 # Taken from https://github.com/direnv/direnv/wiki/Python#virtualenvwrapper
 
 layout_virtualenv() {
-  local venv_path="$1"
-  source ${venv_path}/bin/activate
+    local venv_path="$1"
+    source ${venv_path}/bin/activate
 }
 
 layout_virtualenvwrapper() {

@@ -22,6 +22,6 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # disables prompt mangling in virtual_env/bin/activate
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-if command -v virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
+if command -v virtualenvwrapper_lazy.sh > /dev/null 2>&1; then
     source "$(command -v virtualenvwrapper_lazy.sh)"
 fi

@@ -6,8 +6,7 @@ prepend_to_path() {
     candidate="${1}"
     if [ -d "${candidate}" ]; then
         case ":$PATH:" in
-            *:"${candidate}":*)
-                ;;
+            *:"${candidate}":*) ;;
             *)
                 export PATH="${candidate}${PATH:+:${PATH}}"
                 ;;
