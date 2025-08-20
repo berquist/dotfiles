@@ -1,0 +1,3 @@
+{
+  "Exclude": ["dotfiles/emacs.d/etc/yasnippet/snippets"]
+}
