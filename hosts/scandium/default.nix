@@ -105,6 +105,7 @@
     dconf2nix
     firefox
     firefox-devedition
+    ghostty
     gitFull
     home-manager
     mosh

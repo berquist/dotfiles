@@ -95,6 +95,9 @@
       package = pkgs.emacs-unstable;
       extraPackages = (epkgs: [ epkgs.treesit-grammars.with-all-grammars ]);
     };
+    ghostty = {
+      enable = true;
+    };
     gpg = {
       enable = true;
       mutableKeys = true;
