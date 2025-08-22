@@ -641,7 +641,10 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
   (rg-enable-default-bindings))
 (use-package deadgrep
   ;; <f5> is suggested, but that is inconvenient on my keyboards...
-  :bind (("C-c g" . deadgrep)))
+  :bind (("C-c g" . deadgrep))
+  :custom
+  ;; Force using config
+  (deadgrep-extra-arguments '()))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
