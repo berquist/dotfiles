@@ -628,9 +628,11 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 #+BEGIN_SRC emacs-lisp
 ;; This package is needed for projectile-ripgrep to work. Don't disable it.
 (use-package ripgrep
+  :disabled t
   :custom
   (ripgrep-arguments '("--hidden")))
 ;; ...though projectile will try this one if the above isn't available.
+;; Prefer this one since it's maintained.
 (use-package rg
   :custom
   (rg-command-line-flags '("--hidden"))
