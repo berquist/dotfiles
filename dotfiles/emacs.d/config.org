@@ -636,7 +636,9 @@ Some of my computers have [[https://github.com/BurntSushi/ripgrep][ripgrep]] ins
 (use-package rg
   :custom
   (rg-command-line-flags '("--hidden"))
-  (rg-ignore-ripgreprc nil))
+  (rg-ignore-ripgreprc nil)
+  :init
+  (rg-enable-default-bindings))
 (use-package deadgrep
   ;; <f5> is suggested, but that is inconvenient on my keyboards...
   :bind (("C-c g" . deadgrep)))
