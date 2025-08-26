@@ -9,6 +9,7 @@ svn() {
     fi
 }
 
+# Print all containers and images visible to buildah.
 buildah_print() {
     buildah containers --all
     buildah images --all
@@ -31,6 +32,7 @@ docker_prune() {
     docker image ls --all
 }
 
+# Print all containers and images visible to podman.
 podman_print() {
     podman container ls --all
     podman container ls --external || _=$?
@@ -59,4 +61,11 @@ pyclean() {
 
 spack-checksum-add() {
     spack checksum --batch --add-to-package ${1}
+}
+
+# Remove Spack-generated modules from the MODULEPATH (module avail, module
+# load, ...).
+spack_remove_modulepath() {
+    MODULEPATH="$(echo "${MODULEPATH}" | tr ':' '\n' | sed '/spack/d' | tr '\n' ':')"
+    export MODULEPATH
 }
