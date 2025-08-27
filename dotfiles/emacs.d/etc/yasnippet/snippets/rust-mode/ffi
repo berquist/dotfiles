@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: extern "C"
+# key: ffi
+# --
+extern "C" {
+    ${1:`(when (region-active-p) (yas-selected-text))`}
+}
