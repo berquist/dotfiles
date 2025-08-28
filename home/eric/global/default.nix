@@ -44,7 +44,6 @@
       shellcheck
       tmux
       tree
-      ty
       vale
       wget
     ];

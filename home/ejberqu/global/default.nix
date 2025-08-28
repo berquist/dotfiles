@@ -53,7 +53,6 @@
       ruff
       shellcheck
       tree
-      ty
       uv
       vale
       yq
