@@ -15,6 +15,8 @@ if ! command -v eza > /dev/null 2>&1; then
         alias la='l -a'
     fi
 fi
+unal psmem
+alias psmem='ps aux -m'
 unal t
 alias t='tail -F -n 100' # no sleep interval on BSD tail?
 unal top
