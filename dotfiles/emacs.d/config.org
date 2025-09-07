@@ -1806,30 +1806,40 @@ http://editorconfig.org/
 TODO How to make this take precedence over =dtrt-indent=?
 
 #+BEGIN_SRC emacs-lisp
-(use-package editorconfig
-  :when (executable-find "editorconfig")
-  :hook ((prog-mode text-mode) . editorconfig-mode)
-  :custom (editorconfig-mode-lighter "")
-  :config
-  (defun ejb/editorconfig-has-editorconfig ()
-    "If there is an .editorconfig file associated with the
+(defun ejb/has-library (library-name)
+  "Return nil if LIBRARY-NAME does not exist."
+  (when (not (stringp library-name))
+    (error "(has-library) not a string: %s" library-name))
+  (ignore-errors
+    (find-library-name library-name)))
+
+;; If the built-in EditorConfig mode is available, prefer that.
+(if (ejb/has-library "editorconfig")
+    (editorconfig-mode +1)
+  (use-package editorconfig
+    :when (executable-find "editorconfig")
+    :hook ((prog-mode text-mode) . editorconfig-mode)
+    :custom (editorconfig-mode-lighter "")
+    :config
+    (defun ejb/editorconfig-has-editorconfig ()
+      "If there is an .editorconfig file associated with the
 current buffer, return its path, otherwise nil."
-    (if buffer-file-name
-        (let* ((directory (file-name-directory buffer-file-name))
-               (file (editorconfig-core-get-nearest-editorconfig directory)))
-          file)))
-  (defun ejb/editorconfig-mode-lighter ()
-    "Only display the lighter if an .editorconfig file has been found."
-    (if (ejb/editorconfig-has-editorconfig)
-        " EC"
-      ""))
-  ;; TODO This is disabled until it can be integrated with Projectile. Doing
-  ;; the naive search with `editorconfig-core-get-nearest-editorconfig` is
-  ;; death over TRAMP.
-  ;; :delight '(:eval (ejb/editorconfig-mode-lighter))
-  ;; There is a defcustom now.
-  ;; :delight
-  )
+      (if buffer-file-name
+          (let* ((directory (file-name-directory buffer-file-name))
+                 (file (editorconfig-core-get-nearest-editorconfig directory)))
+            file)))
+    (defun ejb/editorconfig-mode-lighter ()
+      "Only display the lighter if an .editorconfig file has been found."
+      (if (ejb/editorconfig-has-editorconfig)
+          " EC"
+        ""))
+    ;; TODO This is disabled until it can be integrated with Projectile. Doing
+    ;; the naive search with `editorconfig-core-get-nearest-editorconfig` is
+    ;; death over TRAMP.
+    ;; :delight '(:eval (ejb/editorconfig-mode-lighter))
+    ;; There is a defcustom now.
+    ;; :delight
+    ))
 #+END_SRC
 
 * Conf (builtin)
