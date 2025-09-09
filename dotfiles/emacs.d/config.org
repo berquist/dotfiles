@@ -408,6 +408,36 @@ current buffer's, reload dir-locals."
 ;;                         'my-reload-dir-locals-for-all-buffer-in-this-directory))))
 #+END_SRC
 
+* Eshell
+
+#+begin_src emacs-lisp
+(defun ejb/eshell (name &optional return-existing)
+  "Create a new Eshell instance with a unique name based on NAME.
+
+NAME can be nil or the empty string, in which case only
+`eshell-buffer-name' is used to determine the buffer name.
+
+If RETURN-EXISTING is non-nil, return the existing buffer if it already
+exists, instead of creating a new one.
+
+This is otherwise similar to `eshell'."
+  (interactive "sEnter buffer name: \nP")
+  (cl-assert eshell-buffer-name)
+  (let* ((base-name (if (or (null name) (string= name ""))
+                        eshell-buffer-name
+                      (format "%s[%s]" eshell-buffer-name name)))
+         (new-name (if return-existing
+                       base-name
+                     (generate-new-buffer-name base-name)))
+         (buf (get-buffer-create new-name)))
+    (cl-assert (and buf (buffer-live-p buf)))
+    (with-suppressed-warnings ((obsolete display-comint-buffer-action))
+      (pop-to-buffer buf display-comint-buffer-action))
+    (unless (derived-mode-p 'eshell-mode)
+      (eshell-mode))
+    buf))
+#+end_src
+
 * Snippets
 
 #+BEGIN_SRC emacs-lisp
