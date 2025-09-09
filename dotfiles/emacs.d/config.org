@@ -1546,8 +1546,8 @@ the header, based upon the associated source code file."
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
-  :disabled t
-  :hook (java-mode . lsp-deferred))
+  :after lsp-mode
+  :hook ((java-mode java-ts-mode) . lsp-deferred))
 #+END_SRC
 
 * FORTRAN (built-in)
