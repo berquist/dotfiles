@@ -4,7 +4,7 @@
 # echo "running path_exports"
 export __SOURCED_PATH_EXPORTS=1
 
-export EXERCISM_WORKSPACE="${HOME}"/development/exercism
+export EXERCISM_WORKSPACE="${HOME}"/development/codeberg/exercism
 export LSP_USE_PLISTS=true
 # This messes with nvm.
 # export npm_config_prefix="${HOME}"/.node_modules
