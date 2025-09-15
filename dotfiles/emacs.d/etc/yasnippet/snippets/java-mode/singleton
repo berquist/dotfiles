@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: singleton
+# key: singleton
+# --
+    private ${1:CurrentClassName}() {}
+
+    private static class SingletonHelper {
+        private static final $1 INSTANCE = new $1();
+    }
+
+    private static $1 getInstance() {
+        return SingletonHelper.INSTANCE;
+    }
