@@ -5,10 +5,8 @@
 --theme-dark='Dracula'
 --map-syntax='*.asdf:YAML'  # Advanced Scientific Data Format
 --map-syntax='*.bats:Bourne Again Shell (bash)'
---map-syntax='*.cff:YAML'  # Citation File Format
+--map-syntax='*.bb:Clojure'  # Babashka
 --map-syntax='*.cjson:JSON'
---map-syntax='*.cwl:YAML'  # Common Workflow Language
---map-syntax='*.jsonc:JSON'
 --map-syntax='*.jsonld:JSON'
 --map-syntax='*.m:MATLAB'  # not Objective-C
 --map-syntax='*.owl:XML'  # They may also be Turtle, not sure
@@ -23,4 +21,3 @@
 --map-syntax='.ignore:Git Ignore'
 --map-syntax='allowed_signers:Authorized Keys'
 --map-syntax='default.lock:Requirements.txt'  # hatch lockfile
---map-syntax='flake.lock:JSON'
