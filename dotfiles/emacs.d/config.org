@@ -411,6 +411,11 @@ current buffer's, reload dir-locals."
 * Eshell
 
 #+begin_src emacs-lisp
+(setopt eshell-history-append t
+        ;; I don't have HISTSIZE defined on Windows
+        eshell-history-size (when (not (ejb/is-unix))
+                              10000))
+
 (defun ejb/eshell (name &optional return-existing)
   "Create a new Eshell instance with a unique name based on NAME.
 
