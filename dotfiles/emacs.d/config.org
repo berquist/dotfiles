@@ -416,6 +416,13 @@ current buffer's, reload dir-locals."
         eshell-history-size (when (not (ejb/is-unix))
                               10000))
 
+(defun my-eshell-set-env-vars ()
+  "Set environment variables for Eshell."
+  ;; For Difftastic
+  (setenv "DFT_COLOR" "always"))
+
+(add-hook 'eshell-mode-hook #'my-eshell-set-env-vars)
+
 (defun ejb/eshell (name &optional return-existing)
   "Create a new Eshell instance with a unique name based on NAME.
 
