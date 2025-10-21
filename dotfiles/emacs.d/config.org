@@ -1090,6 +1090,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
 
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck-vale
+  :disabled t
   :if (executable-find "vale")
   :hook (flycheck-mode . flycheck-vale-setup)
   :config
