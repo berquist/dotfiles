@@ -225,6 +225,10 @@
 	# signature.
 	resign = "!f() { git rebase --exec 'git commit --amend --no-edit -n -S' -i \"$1\"; }; f"
 
+	# authors = "!f() { git log | grep '^Author:' | sort | uniq -c | sort -n; }; f"
+	# TODO Not even this works?
+	# authors = "!f() { git log; }; f"
+
 # [interactive]
 # 	diffFilter = delta --color-only
 
