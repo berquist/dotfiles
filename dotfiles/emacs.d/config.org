@@ -1917,17 +1917,6 @@ current buffer, return its path, otherwise nil."
          ("\\.xmp\\'" . nxml-mode)))
 #+END_SRC
 
-* MATLAB/Octave (builtin)
-
-TODO disable .m files from loading as Objective-C
-
-#+BEGIN_SRC emacs-lisp
-(use-package octave
-  :ensure nil
-  :custom
-  (octave-block-offset 4))
-#+END_SRC
-
 * Julia
 
 #+BEGIN_SRC emacs-lisp
