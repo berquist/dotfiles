@@ -2383,8 +2383,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
                 :ts-mode 'just-ts-mode
                 :remap 'just-mode
                 :url "https://github.com/IndianBoy42/tree-sitter-just"
-                :ext "\\(?:\\.\\)?[Jj]ust\\(?:file\\)?\\'"
-                ))
+                :ext "\\(?:\\.\\)?[Jj]ust\\(?:file\\)?\\'"))
     (add-to-list 'treesit-auto-langs 'just)))
 (use-package lox-mode
   :disabled t)
