@@ -86,6 +86,6 @@
         - ansible_distribution != "NixOS"
         # - has_gsettings.rc == 0
         - gdm_current_sleep_type.stdout != sleep_inactive_ac_type_value
-    # - name: determine if GDM was running
-    # TODO
-    # - name: restart GDM if config changed and it was running
+      # - name: determine if GDM was running
+      # TODO
+      # - name: restart GDM if config changed and it was running

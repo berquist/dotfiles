@@ -21,12 +21,6 @@ repos:
       - id: fix-byte-order-marker
       - id: mixed-line-ending
       - id: trailing-whitespace
-  # - repo: https://github.com/jumanjihouse/pre-commit-hooks
-  #   rev: "2.1.6"
-  #   hooks:
-  #     - id: markdownlint
-  #     - id: script-must-have-extension
-  #     - id: script-must-not-have-extension
   # - repo: https://github.com/shellcheck-py/shellcheck-py
   #   rev: "v0.8.0.4"
   #   hooks:

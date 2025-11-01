@@ -59,12 +59,12 @@
         remote_src: true
       loop:
         # yamllint disable rule:braces
-        - { src: "{{ eza_unpack_dir }}/bin/eza", dest: /usr/local/bin/eza }
-        - { src: "{{ eza_unpack_dir }}/completions/eza.bash", dest: /etc/bash_completion.d/eza.bash }
-        - { src: "{{ eza_unpack_dir }}/completions/eza.fish", dest: /usr/share/fish/vendor_completions.d/eza.fish }
-        - { src: "{{ eza_unpack_dir }}/completions/eza.zsh", dest: /usr/local/share/zsh/site-functions/eza.zsh }
-        - { src: "{{ eza_unpack_dir }}/man/eza.1", dest: /usr/local/man/eza.1 }
-        - { src: "{{ eza_unpack_dir }}/man/eza_colors.5", dest: /usr/local/man/eza_colors.5 }
+        - {src: "{{ eza_unpack_dir }}/bin/eza", dest: /usr/local/bin/eza}
+        - {src: "{{ eza_unpack_dir }}/completions/eza.bash", dest: /etc/bash_completion.d/eza.bash}
+        - {src: "{{ eza_unpack_dir }}/completions/eza.fish", dest: /usr/share/fish/vendor_completions.d/eza.fish}
+        - {src: "{{ eza_unpack_dir }}/completions/eza.zsh", dest: /usr/local/share/zsh/site-functions/eza.zsh}
+        - {src: "{{ eza_unpack_dir }}/man/eza.1", dest: /usr/local/man/eza.1}
+        - {src: "{{ eza_unpack_dir }}/man/eza_colors.5", dest: /usr/local/man/eza_colors.5,}
         # yamllint enable rule:braces
       when: ansible_distribution in ("Ubuntu", "Pop!_OS")
       tags:

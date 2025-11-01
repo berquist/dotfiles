@@ -53,25 +53,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#b85149'
-    green:   '#4bc98a'
-    yellow:  '#cae682'
-    blue:    '#5b98c2'
+    black: '#000000'
+    red: '#b85149'
+    green: '#4bc98a'
+    yellow: '#cae682'
+    blue: '#5b98c2'
     magenta: '#663399'
-    cyan:    '#00b7eb'
-    white:   '#f6f3e8'
+    cyan: '#00b7eb'
+    white: '#f6f3e8'
 
   # Bright colors
   bright:
-    black:   '#b4b4b4'
-    red:     '#e5786d'
-    green:   '#95e454'
-    yellow:  '#e7e784'
-    blue:    '#8ac6f2'
+    black: '#b4b4b4'
+    red: '#e5786d'
+    green: '#95e454'
+    yellow: '#e7e784'
+    blue: '#8ac6f2'
     magenta: '#f6b3df'
-    cyan:    '#70cecc'
-    white:   '#ffffff'
+    cyan: '#70cecc'
+    white: '#ffffff'
 
 window:
   option_as_alt: OnlyLeft

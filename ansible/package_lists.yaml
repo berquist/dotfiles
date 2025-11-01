@@ -104,7 +104,7 @@ default_packages_arch:
   - pandoc
   - parallel
   - pbzip2
-  - perl-term-readkey # git-svn
+  - perl-term-readkey  # git-svn
   - pigz
   - podman
   - proselint
@@ -256,8 +256,9 @@ packages_osmium:
 
   # programming: Ruby
   - ruby
+  -
 
-  - # SLURM
+  # SLURM
   - ipmitool
   - rrdtool
 

@@ -118,5 +118,5 @@
         - current_default_web_browser.stdout != "firefox.desktop"
         - ansible_distribution != "NixOS"
 
-# - name: set keyboard layout
-# TODO localectl --no-convert set-x11-keymap "" "" "" caps:ctrl_modifier
+      # - name: set keyboard layout
+      # TODO localectl --no-convert set-x11-keymap "" "" "" caps:ctrl_modifier
