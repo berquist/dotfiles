@@ -4,3 +4,5 @@
 ce5522f669ed23cf73186c7eb14c2011c93404cd
 # apply EditorConfig
 7fda012cccc51f265f76ae0da57211b3c9c0ea1f
+# run yamlfmt
+f4819ed5c9f491baaaf16bb4f4fe297cd5833923
