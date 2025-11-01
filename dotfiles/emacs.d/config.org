@@ -2059,14 +2059,15 @@ current buffer, return its path, otherwise nil."
   (use-package cue-ts-mode
     :ensure (:host github :repo "ZharMeny/cue-ts-mode")
     :after (treesit-auto)
-    :config
+    :init
     (add-to-list 'treesit-auto-recipe-list
                  (make-treesit-auto-recipe
                   :lang 'cue
                   :ts-mode 'cue-ts-mode
                   :remap 'cue-mode
-                  :url ""
-                  :ext "\\.cue\\'"))))
+                  :url "https://github.com/eonpatapon/tree-sitter-cue"
+                  :ext "\\.cue\\'"))
+    (add-to-list 'treesit-auto-langs 'cue)))
 (use-package dhall-mode)
 (use-package nickel-mode)
 #+end_src
