@@ -53,3 +53,8 @@ repos:
     rev: v3.4.0
     hooks:
       - id: editorconfig-checker
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: "v1.15.2"
+    hooks:
+      - id: zizmor
+        args: [--no-progress, --persona=pedantic, --fix]
