@@ -1931,14 +1931,7 @@ current buffer, return its path, otherwise nil."
   :custom
   (vterm-always-compile-module t))
 
-(use-package eat
-  :ensure (eat :host codeberg
-               :repo "akib/emacs-eat"
-               :files ("*.el" ("term" "term/*.el") "*.texi"
-                       "*.ti" ("terminfo/e" "terminfo/e/*")
-                       ("terminfo/65" "terminfo/65/*")
-                       ("integration" "integration/*")
-                       (:exclude ".dir-locals.el" "*-tests.el"))))
+(use-package eat)
 
 ;; Time to have the Julia REPLs duke it out...
 (use-package julia-snail
