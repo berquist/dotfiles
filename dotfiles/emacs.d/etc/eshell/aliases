@@ -1,0 +1,6 @@
+alias gi git
+alias gti git
+alias it git
+alias l ls -hl
+alias lt ls -hlt
+alias whcih which
