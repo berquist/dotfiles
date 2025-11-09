@@ -92,7 +92,8 @@ Fundamental third-party packages that don't go anywhere else.
 
 ;; Load this before any other third-party packages.
 (use-package no-littering
-  :demand t)
+  :init
+  (no-littering-theme-backups))
 
 (use-package dash
   :demand t)
@@ -289,11 +290,13 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 * Backups/autosaving
 
 #+begin_src emacs-lisp
-;; let's live on the edge and disable backup and autosave
-(setopt backup-inhibited t
-        auto-save-default nil
-        create-lockfiles nil
-        make-backup-files nil)
+;; https://stackoverflow.com/a/151946
+;; Locations are handled by `no-littering-theme-backups'
+(setopt
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)
 #+end_src
 
 * Disable popup boxes
