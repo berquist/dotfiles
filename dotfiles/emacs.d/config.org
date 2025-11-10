@@ -451,6 +451,14 @@ This is otherwise similar to `eshell'."
     (unless (derived-mode-p 'eshell-mode)
       (eshell-mode))
     buf))
+
+(defun eshell/touch (path)
+  "Update PATH last modification date or create if it does not exist."
+  ;; Requires f.el.  For now, this is copied from `f-touch'.
+  (f--destructive path
+    (if (file-regular-p path)
+        (set-file-times path)
+      (f-write-bytes "" path))))
 #+end_src
 
 * Snippets
