@@ -1031,6 +1031,13 @@ Links:
         '(yamlfmt))
   (setf (alist-get 'yaml-ts-mode apheleia-mode-alist)
         '(yamlfmt))
+  (defun ejb/apheleia-skip-dotdrop ()
+    "Skip running apheleia on dotdrop config files."
+    (let ((filename (file-name-nondirectory buffer-file-name)))
+      ;; TODO
+      (or (string= filename "config.yaml")
+          (string= filename "config_full.yaml"))))
+  (add-to-list 'apheleia-skip-functions #'ejb/apheleia-skip-dotdrop)
   :init
   (apheleia-global-mode +1))
 #+end_src
