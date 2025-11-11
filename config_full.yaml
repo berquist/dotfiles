@@ -71,8 +71,8 @@ dotfiles:
   f_ghostty_config:
     src: config/ghostty/config
     dst: ~/.config/ghostty/config
-  f_gitconfig:
-    src: gitconfig
+  f_git_config:
+    src: config/git/config
     dst: ~/.config/git/config
   f_gitignore:
     src: gitignore
@@ -232,7 +232,7 @@ profiles:
     - f_emacsclient.desktop
     - f_gdbinit
     - f_ghostty_config
-    - f_gitconfig
+    - f_git_config
     - f_gitignore
     - f_git_template
     - f_gpg-agent.conf
@@ -328,7 +328,7 @@ profiles:
     - f_cookiecutterrc
     - f_direnvrc
     - f_ghostty_config
-    - f_gitconfig
+    - f_git_config
     - f_gitignore
     - f_git_template
     - f_ipython_config.py
@@ -369,7 +369,7 @@ profiles:
     - f_condarc
     - f_direnvrc
     - f_ghostty_config
-    - f_gitconfig
+    - f_git_config
     - f_gitignore
     - f_git_template
     - f_justfile
