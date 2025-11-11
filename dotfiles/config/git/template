@@ -1,0 +1,43 @@
+
+# -----------------------------------------------|---------------------|
+#           Conventional Commit Format           |  COMMIT MAX LENGTH  |
+#                                                |<- 1st line | body ->|
+# -----------------------------------------------|---------------------|
+# Common commit types:                                                 |
+# feat, fix, docs, test, chore, style, refactor, build, ci, perf, wip  |
+# ---------------------------------------------------------------------|
+# feat     : A new feature (MINOR version)                             |
+# fix      : A bug fix (PATCH VERSION)                                 |
+# docs     : Documentation only changes                                |
+# test     : Add/update tests                                          |
+# chore    : Other changes (no src/test modification)                  |
+# style    : Formatting, whitespace (no change in code meaning)        |
+# refactor : Code change (no bug fix or feature)                       |
+# build    : Changes to build system or dependencies                   |
+# ci       : Changes to CI configuration file/scripts                  |
+# perf     : Performance improvement                                   |
+# revert   : Revert a previous commit                                  |
+# wip      : Work in progress checkpoint (squash before merge)         |
+# ---------------------------------------------------------------------|
+# <type>[(optional scope)][!]: <description>                           |
+# <blank line>                                                         |
+# [optional body - explain *what* and *why*, not *how*]                |
+# <blank line>                                                         |
+# [optional footer(s) - Issues, PR, Jira IDs, etc.]                    |
+# [BREAKING CHANGE: (if applicable)]                                   |
+# ---------------------------------------------------------------------|
+# Example commits:                                                     |
+#   chore: initial commit                                              |
+#   feat(cli): Write initial CLI interface                             |
+#   docs(README): Show CLI help text                                   |
+#   test: Add parsing tests                                            |
+#   feat(cli)!: Reorganize CLI args                                    |
+#   ...                                                                |
+# ---------------------------------------------------------------------|
+# Breaking changes (MAJOR version bump) marked by either:              |
+#   - Footer with "BREAKING CHANGE:"                                   |
+#   - Append "!" after type/scope                                      |
+# NOTE: BREAKING CHANGE can be used on ANY commit type                 |
+# ---------------------------------------------------------------------|
+# Full specification is available at: www.conventionalcommits.org      |
+# ---------------------------------------------------------------------|
