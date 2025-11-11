@@ -51,6 +51,7 @@
 
 [commit]
 	gpgsign = true
+	template = ~/.config/git/template
 	verbose = true
 
 [credential]
