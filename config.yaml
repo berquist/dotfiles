@@ -74,7 +74,7 @@ dotfiles:
     dst: ~/.config/ghostty/config
   f_gitconfig:
     src: gitconfig
-    dst: ~/.gitconfig
+    dst: ~/.config/git/config
   f_gitignore:
     src: gitignore
     dst: ~/.gitignore
