@@ -79,6 +79,9 @@ else
     alias lh='l -t | head'
 fi
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
+if ! command -v pre-commit > /dev/null 2>&1; then
+    alias pre-commit=prek
+fi
 alias psmem='ps aux --sort -rss'
 alias scp='scp -p'
 alias sd='svn diff --diff-cmd colordiff'
