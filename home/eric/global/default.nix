@@ -58,12 +58,13 @@
       ".config/bat/config".source = ../../../dotfiles/config/bat/config;
       ".config/direnv/direnvrc".source = ../../../dotfiles/config/direnv/direnvrc;
       ".config/ghostty/config".source = ../../../dotfiles/config/ghostty/config;
+      ".config/git/config".source = ../../../dotfiles/config/git/config;
+      ".config/git/template".source = ../../../dotfiles/config/git/template;
       ".config/just/justfile".source = ../../../dotfiles/config/just/justfile;
       ".config/wezterm/wezterm.lua".source = ../../../dotfiles/config/wezterm/wezterm.lua;
       ".config/yamlfmt/yamlfmt.yml".source = ../../../dotfiles/config/yamlfmt/yamlfmt.yml;
       ".config/yamllint/config".source = ../../../dotfiles/config/yamllint/config;
       ".gdbinit".source = ../../../dotfiles/gdbinit;
-      ".gitconfig".source = ../../../dotfiles/gitconfig;
       ".gitignore".source = ../../../dotfiles/gitignore;
       ".markdownlint.jsonc".source = ../../../dotfiles/markdownlint.jsonc;
       ".mdlrc".source = ../../../dotfiles/mdlrc;
