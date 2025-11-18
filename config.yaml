@@ -152,9 +152,6 @@ dotfiles:
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
-  f_user.json:
-    src: config/exercism/user.json
-    dst: ~/.config/exercism/user.json
   f_vmdrc:
     src: vmdrc
     dst: ~/.vmdrc

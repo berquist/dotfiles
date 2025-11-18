@@ -57,7 +57,6 @@
       ".config/alacritty/alacritty.toml".source = ../../../dotfiles/config/alacritty/alacritty.toml;
       ".config/bat/config".source = ../../../dotfiles/config/bat/config;
       ".config/direnv/direnvrc".source = ../../../dotfiles/config/direnv/direnvrc;
-      ".config/exercism/user.json".source = ../../../dotfiles/config/exercism/user.json;
       ".config/ghostty/config".source = ../../../dotfiles/config/ghostty/config;
       ".config/just/justfile".source = ../../../dotfiles/config/just/justfile;
       ".config/wezterm/wezterm.lua".source = ../../../dotfiles/config/wezterm/wezterm.lua;
