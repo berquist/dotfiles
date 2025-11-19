@@ -958,6 +958,7 @@ Links:
             rust-ts-mode-hook))))
 
 (use-package lsp-ui
+  :disabled t
   :custom
   (lsp-ui-doc-include-signature t)
   (lsp-ui-peek-always-show t))
