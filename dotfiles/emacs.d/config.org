@@ -118,8 +118,7 @@ Fundamental third-party packages that don't go anywhere else.
   ;; https://emacs.stackexchange.com/questions/41343/magit-asks-for-passphrase-for-ssh-key-every-time
   ;; I'm not sure that all of these are necessary anymore, considering that most
   ;; things should be in the correct dotfile.
-  (let ((ejb/desired-envvars '("ANACONDA_HOME"
-                               "GIT_AUTHOR_EMAIL"
+  (let ((ejb/desired-envvars '("GIT_AUTHOR_EMAIL"
                                "GIT_COMMITTER_EMAIL"
                                "GPG_TTY"
                                "SSH_AGENT_PID"

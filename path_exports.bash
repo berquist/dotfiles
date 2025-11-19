@@ -30,9 +30,7 @@ export apps="${HOME}"/opt/apps
 hostname="$(hostname)"
 
 if [[ "${hostname}" == "osmium" ]]; then
-    # export ANACONDA_HOME="/home/eric/.conda"
     # TODO blergh
-    export ANACONDA_HOME="/home/eric/.pyenv/versions/miniconda3-4.7.12"
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
     export WORKON_HOME="${HOME}"/data/virtualenvs
 
