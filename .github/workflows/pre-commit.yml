@@ -16,7 +16,7 @@ jobs:
     name: Run prek for pre-commit checks
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd  # v5
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3  # v6
         with:
           persist-credentials: false
       - uses: j178/prek-action@91fd7d7cf70ae1dee9f4f44e7dfa5d1073fe6623  # v1.0.11
