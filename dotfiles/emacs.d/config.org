@@ -2417,6 +2417,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package systemd)
 (use-package tracwiki-mode
   :mode ("\\.trac\\'" . tracwiki-mode))
+(when ejb/has-treesit
+  (use-package wat-ts-mode))
 (use-package zig-mode)
 (when ejb/has-treesit
   (use-package zig-ts-mode))
