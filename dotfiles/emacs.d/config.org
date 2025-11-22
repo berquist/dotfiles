@@ -461,22 +461,10 @@ This is otherwise similar to `eshell'."
       (f-write-bytes "" path))))
 
 
-(defun eshell/head (&rest args)
-  "Emulate the Unix `head` command.
-
-ARGS is a list of strings as entered on the Eshell command line.
-Supported forms:
-
-  head              -> first 10 lines of stdin
-  head FILE...      -> first 10 lines of each FILE
-  head -n N FILE... -> first N lines of each FILE
-  head -N FILE...   -> shorthand for '-n N'.
-
-If no file is supplied the function reads from the current pipeline
-using `eshell-get-input'."
-  (let ((num 10)                 ; default number of lines
-        (files '()))             ; list of filenames (nil = stdin)
-
+(defun eshell--parse-count-and-files (args &optional default-count)
+  "Parse arguments of the form useful for head and tail."
+  (let ((num (or default-count 10))  ; default number of lines
+        (files '()))                 ; list of filenames (nil = stdin)
     (while args
       (let ((arg (pop args)))
         (cond
@@ -492,6 +480,25 @@ using `eshell-get-input'."
           (setq num (string-to-number (substring arg 2))))
          ;; any other token is a file name
          (t (push arg files)))))
+    (cons num (nreverse files))))
+
+
+(defun eshell/head (&rest args)
+  "Emulate the Unix `head` command.
+
+ARGS is a list of strings as entered on the Eshell command line.
+Supported forms:
+
+  head              -> first 10 lines of stdin
+  head FILE...      -> first 10 lines of each FILE
+  head -n N FILE... -> first N lines of each FILE
+  head -N FILE...   -> shorthand for '-n N'.
+
+If no file is supplied the function reads from the current pipeline
+using `eshell-get-input'."
+  (let* ((parsed (eshell--parse-count-and-files args))
+         (num (car parsed))
+         (files (cdr parsed)))
 
     ;; No explicit file -> operate on stdin
     (unless files (push nil files))
