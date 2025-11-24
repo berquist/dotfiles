@@ -2483,7 +2483,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package pkgbuild-mode
   :custom
   (pkgbuild-update-sums-on-save nil))
-(use-package powershell)
+(use-package powershell
+  :disabled t)
 (use-package snakemake-mode)
 (use-package systemd)
 (use-package tracwiki-mode
