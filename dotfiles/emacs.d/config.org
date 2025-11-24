@@ -2240,6 +2240,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   (require 'slime-autoloads))
 
 (use-package sly
+  :disabled t
   :custom
   (inferior-lisp-program "sbcl"))
 #+END_SRC
