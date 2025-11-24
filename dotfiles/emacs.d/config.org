@@ -1035,9 +1035,11 @@ Links:
 * Debuggers
 
 #+BEGIN_SRC emacs-lisp
-(use-package realgud)
+(use-package realgud
+  :disabled t)
 ;; TODO load this when in Python and realgud has been loaded
-(use-package realgud-ipdb)
+(use-package realgud-ipdb
+  :disabled t)
 #+END_SRC
 
 * Formatting
