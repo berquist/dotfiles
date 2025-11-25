@@ -17,6 +17,9 @@ dotfiles:
   d_tmux:
     src: tmux
     dst: ~/.tmux
+  d_wezterm:
+    src: config/wezterm
+    dst: ~/.config/wezterm
   f_alacritty.toml:
     src: config/alacritty/alacritty.toml
     dst: ~/.config/alacritty/alacritty.toml
@@ -155,9 +158,6 @@ dotfiles:
   f_vmdrc:
     src: vmdrc
     dst: ~/.vmdrc
-  f_wezterm.lua:
-    src: config/wezterm/wezterm.lua
-    dst: ~/.config/wezterm/wezterm.lua
   f_xdefaults:
     src: Xdefaults
     dst: ~/.Xdefaults
@@ -248,6 +248,7 @@ profiles:
     - d_bat
     - d_emacs.d
     - d_tmux
+    - d_wezterm
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
@@ -258,7 +259,6 @@ profiles:
     - f_markdownlint.jsonc
     - f_startup.jl
     - f_tmux.conf
-    - f_wezterm.lua
     - f_yamllint_config
     - f_zprofile
     - f_zshenv
