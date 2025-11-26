@@ -4,6 +4,7 @@ if [ -n "$__SOURCED_INTERACTIVE_EXPORTS" ]; then return; fi
 # echo "running interactive_exports"
 export __SOURCED_INTERACTIVE_EXPORTS=1
 
+export DFT_OVERRIDE='*.mdxml:XML'
 # difftastic: don't show unchanged files
 export DFT_SKIP_UNCHANGED=true
 
