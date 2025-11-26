@@ -851,9 +851,23 @@ with the default ordering Projectile uses.
   (setopt projectile-globally-ignored-files
           (ejb/conditional-prepend projectile-globally-ignored-files
                                    '("cmake_install.cmake")))
+  (setopt projectile-global-ignore-file-patterns
+          (ejb/conditional-prepend projectile-global-ignore-file-patterns
+                                   '(
+                                     ;; Eclipse workspace; here on the off
+                                     ;; chance that some other program uses
+                                     ;; .metadata for something
+                                     "\.metadata/\.lock"
+                                     "\.metadata/\.lock_info"
+                                     "\.metadata/\.log"
+                                     "\.metadata/\.mylyn"
+                                     "\.metadata/\.plugins"
+                                     "\.metadata/version.ini"
+                                     )))
   (setopt projectile-globally-ignored-file-suffixes
           (ejb/conditional-prepend projectile-globally-ignored-file-suffixes
-                                   '(".elc"
+                                   '(".class"
+                                     ".elc"
                                      ".pyc")))
   ;; (projectile-register-project-type 'python-pyproject '("pyproject.toml")
   ;;                                   :project-file "pyproject.toml"
