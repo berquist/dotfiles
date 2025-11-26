@@ -522,10 +522,8 @@ using `eshell-get-input'."
   (let* ((parsed (eshell--parse-count-and-files args))
          (num (car parsed))
          (files (cdr parsed)))
-
     ;; No explicit file -> operate on stdin
     (unless files (push nil files))
-
     (mapconcat
      #'identity
      (nreverse
