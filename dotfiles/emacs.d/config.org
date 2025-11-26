@@ -811,6 +811,10 @@ with the default ordering Projectile uses.
           (if (string-prefix-p "https://jubilee.q-chem.com/" vc-svn-url)
               root-top-down-recurring)))))
 
+;; The main problem with alien on Windows is Unix programs that require
+;; cygwin, like echo and tr.  An example is the default for
+;; `projectile-git-submodule-command'.
+
 (use-package projectile
   :bind ("C-c p" . projectile-command-map)
   :custom
@@ -838,7 +842,8 @@ with the default ordering Projectile uses.
           (ejb/conditional-prepend projectile-project-root-files-bottom-up
                                    '("pyproject.toml"
                                      ".exercism")))
-  ;; not used with (projectile-indexing-method 'alien)
+  ;; Not used with (projectile-indexing-method 'alien) but *is* used with
+  ;; searching functions (projectile-{grep,ripgrep,...}).
   (setopt projectile-globally-ignored-directories
           (ejb/conditional-prepend projectile-globally-ignored-directories
                                    '("^\\.hypothesis"
