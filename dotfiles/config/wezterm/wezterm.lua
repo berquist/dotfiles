@@ -34,4 +34,23 @@ else
     config.enable_wayland = false
 end
 
+-- References:
+-- https://wezterm.org/shell-integration.html?h=powershell#osc-7-on-windows-with-powershell
+-- https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.1
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+    -- -- Use OSC 7 as per the above example
+    -- config.set_environment_variables['prompt'] =
+    --     '$E]7;file://localhost/$P$E\\$E[32m$T$E[0m $E[35m$P$E[36m$_$G$E[0m '
+    -- -- use a more ls-like output format for dir
+    -- config.set_environment_variables['DIRCMD'] = '/d'
+    -- -- And inject clink into the command prompt
+    -- config.default_prog =
+    --     { 'cmd.exe', '/s', '/k', 'c:/clink/clink_x64.exe', 'inject', '-q' }
+
+    -- old
+    -- config.default_prog = { 'powershell.exe', '-NoLogo' }
+    -- new
+    config.default_prog = { 'pwsh.exe' }
+end
+
 return config
