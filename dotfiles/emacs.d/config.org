@@ -491,6 +491,21 @@ This is otherwise similar to `eshell'."
     (cons num (nreverse files))))
 
 
+(defun eshell--get-buffer-from-spec (spec)
+  "Return a temp buffer containing data from SPEC.
+
+SPEC is either a filename (string) or nil, meaning read from the current
+pipeline/stdin.  Create a temporary buffer, insert the data, then return
+the buffer object."
+  (let ((buf (generate-new-buffer " *eshell-temp*")))
+    (with-current-buffer buf
+      (if spec
+          (insert-file-contents spec)
+        (insert (or (eshell-get-input) "")))
+      (goto-char (point-min)))
+    buf))
+
+
 (defun eshell/head (&rest args)
   "Emulate the Unix `head` command.
 
