@@ -2472,6 +2472,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package just-mode)
 (when ejb/has-treesit
   (use-package just-ts-mode
+    :after (treesit-auto)
     :init
     (add-to-list 'treesit-auto-recipe-list
                (make-treesit-auto-recipe
