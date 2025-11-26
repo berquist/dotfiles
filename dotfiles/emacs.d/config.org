@@ -418,12 +418,20 @@ current buffer's, reload dir-locals."
         eshell-history-size (when (not (ejb/is-unix))
                               10000))
 
-(defun my-eshell-set-env-vars ()
+(defun ejb/eshell-vars ()
   "Set environment variables for Eshell."
-  ;; For Difftastic
-  (setenv "DFT_COLOR" "always"))
+  (let ((vars
+         '(("DFT_COLOR" . "always")  ;; For Difftastic
+           ("DFT_OVERRIDE" . "*.mdxml:XML")
+           ("DFT_SKIP_UNCHANGED" . "true")
+           ("RIPGREP_CONFIG_PATH" . "~/dotfiles/ripgreprc"))))
+    (print "in my-eshell-set-env-vars")
+    (make-local-variable 'process-environment)
+    (dolist (pair vars)
+      (setenv (car pair) (cdr pair)))))
 
-(add-hook 'eshell-mode-hook #'my-eshell-set-env-vars)
+;; eshell-first-time-mode-hook?
+(add-hook 'eshell-mode-hook #'ejb/eshell-vars)
 
 (defun ejb/eshell (name &optional return-existing)
   "Create a new Eshell instance with a unique name based on NAME.
