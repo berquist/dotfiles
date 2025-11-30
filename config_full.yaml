@@ -155,9 +155,6 @@ dotfiles:
   f_vmdrc:
     src: vmdrc
     dst: ~/.vmdrc
-  f_xdefaults:
-    src: Xdefaults
-    dst: ~/.Xdefaults
   f_yamlfmt.yml:
     src: config/yamlfmt/yamlfmt.yml
     dst: ~/.config/yamlfmt/yamlfmt.yml
