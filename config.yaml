@@ -11,9 +11,6 @@ dotfiles:
   d_emacs.d:
     src: emacs.d
     dst: ~/.emacs.d
-  d_idea:
-    src: idea
-    dst: ~/.idea
   d_tmux:
     src: tmux
     dst: ~/.tmux
@@ -209,7 +206,6 @@ profiles:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
     dotfiles:
     # - d_emacs.d
-    - d_idea
     - f_ansible.cfg
     - f_clisprc.lisp
     - f_condarc

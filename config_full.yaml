@@ -11,9 +11,6 @@ dotfiles:
   d_emacs.d:
     src: emacs.d
     dst: ~/.emacs.d
-  d_idea:
-    src: idea
-    dst: ~/.idea
   d_tmux:
     src: tmux
     dst: ~/.tmux
@@ -211,7 +208,6 @@ profiles:
     - d_bat
     # chemacs2 repo
     # - d_emacs.d
-    - d_idea
     - d_tmux
     - d_wezterm
     - f_alacritty.toml
