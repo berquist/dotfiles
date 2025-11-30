@@ -143,12 +143,6 @@ dotfiles:
   f_startup.jl:
     src: julia/config/startup.jl
     dst: ~/.julia/config/startup.jl
-  f_terminalrc:
-    src: config/xfce4/terminal/terminalrc
-    dst: ~/.config/xfce4/terminal/terminalrc
-  f_terminalrc.osmium:
-    src: config/xfce4/terminal/terminalrc.osmium
-    dst: ~/.config/xfce4/terminal/terminalrc.osmium
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
@@ -238,8 +232,6 @@ profiles:
     - f_pip.conf
     - f_sbclrc
     - f_startup.jl
-    - f_terminalrc
-    - f_terminalrc.osmium
     - f_tmux.conf
     - f_vmdrc
     - f_yamlfmt.yml
