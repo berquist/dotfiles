@@ -158,9 +158,6 @@ dotfiles:
   f_xdefaults:
     src: Xdefaults
     dst: ~/.Xdefaults
-  f_xinitrc:
-    src: xinitrc
-    dst: ~/.xinitrc
   f_yamlfmt.yml:
     src: config/yamlfmt/yamlfmt.yml
     dst: ~/.config/yamlfmt/yamlfmt.yml
@@ -227,7 +224,6 @@ profiles:
     - f_startup.jl
     - f_terminalrc
     - f_terminalrc.osmium
-    - f_xinitrc
   s1072373:
     dotfiles:
     - d_bat

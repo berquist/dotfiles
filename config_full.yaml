@@ -158,9 +158,6 @@ dotfiles:
   f_xdefaults:
     src: Xdefaults
     dst: ~/.Xdefaults
-  f_xinitrc:
-    src: xinitrc
-    dst: ~/.xinitrc
   f_yamlfmt.yml:
     src: config/yamlfmt/yamlfmt.yml
     dst: ~/.config/yamlfmt/yamlfmt.yml
@@ -248,7 +245,6 @@ profiles:
     - f_terminalrc.osmium
     - f_tmux.conf
     - f_vmdrc
-    - f_xinitrc
     - f_yamlfmt.yml
     - f_yamllint_config
     - f_zprofile
