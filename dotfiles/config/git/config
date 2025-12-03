@@ -177,6 +177,7 @@
 	st = status -sb
 	dc = diff --cached
 
+	logf = log --show-signature --format=fuller
 	l = log --graph --abbrev-commit
 	# This is comparable to `log --graph --oneline`, but includes the extra
 	# (relative) date and author information at the end.
