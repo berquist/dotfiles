@@ -43,13 +43,10 @@ source "${HOME}"/dotfiles/slurm.bash
 hostname=$(hostname)
 uname=$(uname)
 
-if [[ $hostname == "osmium" ]]; then
-    source /usr/share/lmod/lmod/init/zsh
-    module use "${HOME}/modules/osmium"
-elif [[ $uname == "Darwin" ]]; then
+source "${HOME}"/dotfiles/path.sh
+
+if [[ $uname == "Darwin" ]]; then
     source "${HOME}"/dotfiles/aliases_macos.bash
-    # Only interactive for now.
-    source "${HOME}"/dotfiles/path.sh
 fi
 
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"

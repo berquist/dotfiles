@@ -30,6 +30,9 @@ export apps="${HOME}"/opt/apps
 hostname="$(hostname)"
 
 if [[ "${hostname}" == "osmium" ]]; then
+    source /usr/share/lmod/lmod/init/zsh
+    module use "${HOME}/modules/osmium"
+
     # TODO blergh
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
     export WORKON_HOME="${HOME}"/data/virtualenvs
@@ -50,6 +53,10 @@ else
         # export SPACK_ROOT="${HOME}"/development/forks/spack
     fi
     export VAGRANT_HOME="${HOME}"/.vagrant.d
+fi
+
+if [[ "$(uname)" == "Darwin" ]]; then
+    try_source /opt/homebrew/opt/lmod/init/zsh
 fi
 
 [[ -d "${SPACK_ROOT}" ]] && source "${SPACK_ROOT}"/share/spack/setup-env.sh
