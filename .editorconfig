@@ -13,6 +13,12 @@ indent_size = 4
 space_redirects = true
 switch_case_indent = true
 
+[{zprofile,zshenv,zshrc}]
+indent_size = 4
+# shfmt
+space_redirects = true
+switch_case_indent = true
+
 [direnvrc]
 indent_size = 4
 # shfmt
