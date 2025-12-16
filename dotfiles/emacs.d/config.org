@@ -444,6 +444,8 @@ exists, instead of creating a new one.
 
 This is otherwise similar to `eshell'."
   (interactive "sEnter buffer name: \nP")
+  ;; This was previously done transparently by realgud.
+  (require 'eshell)
   (cl-assert eshell-buffer-name)
   (let* ((base-name (if (or (null name) (string= name ""))
                         eshell-buffer-name
