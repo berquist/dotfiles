@@ -622,6 +622,9 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   (vertico-mode 1))
 
 (defun ejb/orderless-style (component)
+  "Match a component as multiple word prefixes.
+This is similar to `orderless-prefixes' but it splits the component on
+whitespace and the prefixes don't need to match at word boundaries."
   (orderless--separated-by '(zero-or-more nonl)
     ;; "rev buffer" will give both "revert-buffer" and "ibuffer-do-revert"
     (cl-loop for prefix in (split-string component)
