@@ -617,7 +617,6 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (use-package vertico
   :custom
   (vertico-cycle t)
-  (vertico-sort-function 'vertico-sort-history-alpha)
   :init
   (vertico-mode 1))
 
