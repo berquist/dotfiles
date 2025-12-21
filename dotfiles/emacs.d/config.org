@@ -1116,6 +1116,8 @@ Links:
         '("shfmt" "--filename" filepath "-"))
   (setf (alist-get 'yamlfmt apheleia-formatters)
         '("yamlfmt" "-in" "-"))
+  (setf (alist-get 'bash-ts-mode apheleia-mode-alist)
+        '(shfmt))
   (setf (alist-get 'cmake-mode apheleia-mode-alist)
         '(gersemi))
   (setf (alist-get 'cmake-ts-mode apheleia-mode-alist)
