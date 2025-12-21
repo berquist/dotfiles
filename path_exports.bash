@@ -24,6 +24,7 @@ prepend_to_path "${HOME}/.cargo/bin"
 prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
 prepend_to_path "${HOME}/.luarocks/bin"
+prepend_to_path "${HOME}/.pixi/bin"
 
 export apps="${HOME}"/opt/apps
 
