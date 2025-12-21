@@ -1055,7 +1055,8 @@ Links:
   (lsp-lens-enable nil)
   (lsp-modeline-code-actions-enable nil)
   (lsp-modeline-diagnostics-enable nil)
-  (lsp-semantic-tokens-enable t)
+  ;; too buggy
+  ;; (lsp-semantic-tokens-enable t)
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
   ;; When using no-littering, `lsp-session-file' is under var/lsp/session.el.
