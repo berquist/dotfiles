@@ -83,6 +83,11 @@ if ! command -v pre-commit > /dev/null 2>&1; then
     alias pre-commit=prek
 fi
 alias psmem='ps aux --sort -rss'
+if ! command -v pyright > /dev/null 2>&1; then
+    if command -v basedpyright > /dev/null 2>&1; then
+        alias pyright='basedpyright'
+    fi
+fi
 alias scp='scp -p'
 alias sd='svn diff --diff-cmd colordiff'
 alias snv='svn' # typo
