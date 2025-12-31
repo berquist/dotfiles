@@ -1830,6 +1830,12 @@ users are likely to use them.
                          (lsp)))
   :custom
   (lsp-pyright-langserver-command ejb/pyright))
+
+(use-package flycheck-ty
+  :after flycheck
+  :ensure (:host github :repo "oerc0122/flycheck-ty")
+  :config
+  (flycheck-add-next-checker 'python-pycompile 'python-ty nil))
 #+end_src
 
 ** Leftovers
