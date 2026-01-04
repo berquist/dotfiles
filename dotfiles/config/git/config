@@ -222,6 +222,7 @@
 
 	# Typos
 	checkotu = checkout
+	tbranch = branch
 
 	# For when one or more commits in a rebase somehow get a bad (GPG)
 	# signature.
