@@ -2,7 +2,7 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-2.tar.gz";
@@ -11,7 +11,7 @@
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
     };
 
     emacs-overlay = {
