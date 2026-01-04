@@ -2142,7 +2142,8 @@ current buffer, return its path, otherwise nil."
    ("\\clang-tidy\\'" . yaml-mode)
    (".gersemirc\\'" . yaml-mode)
    ("\\.asdf\\'" . yaml-mode)
-   ("CITATION.cff" . yaml-mode)))
+   ("CITATION.cff" . yaml-mode)
+   ("pixi.lock" . yaml-mode)))
 #+END_SRC
 
 * JSON
