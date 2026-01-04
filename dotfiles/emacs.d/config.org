@@ -1817,9 +1817,10 @@ users are likely to use them.
   :after python)
 
 (use-package lsp-pyright
+  :after lsp-mode
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
-                         (lsp)))
+                         (lsp-deferred)))
   :custom
   (lsp-pyright-langserver-command ejb/pyright))
 
