@@ -1210,9 +1210,10 @@ Links:
   (setq ejb/flycheck-checker-default-json 'json-python-json)
   (flycheck-add-next-checker 'json-python-json 'json-jq t)
   (flycheck-add-next-checker 'json-jq 'json-jsonlint t)
-  ;; python-pycompile -> python-ruff -> python-mypy
+  ;; python-pycompile -> python-ruff -> python-ty -> python-pyright -> python-mypy
   (setq ejb/flycheck-checker-default-python 'python-pycompile)
   (flycheck-add-next-checker 'python-pycompile 'python-ruff nil)
+  (flycheck-add-next-checker 'python-ruff 'python-pyright nil)
   (flycheck-add-next-checker 'rust-cargo 'rust-clippy)
   :init
   (global-flycheck-mode))
