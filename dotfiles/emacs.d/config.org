@@ -907,11 +907,10 @@ with the default ordering Projectile uses.
   ;;                                   :test "python -m pytest -v --color=no"
   ;;                                   :test-prefix "test_"
   ;;                                   :test-suffix "_test")
-  ;; TODO add to projectile-other-file-alist the mappings
-  ;;  h -> C
-  ;;  C -> h
-  ;;  py -> pyi
-  ;;  pyi -> py
+  (push "C" (alist-get "h" projectile-other-file-alist nil nil #'string=))
+  (push "h" (alist-get "C" projectile-other-file-alist nil nil #'string=))
+  (push "py" (alist-get "pyi" projectile-other-file-alist nil nil #'string=))
+  (push "pyi" (alist-get "py" projectile-other-file-alist nil nil #'string=))
   :init
   (projectile-mode 1))
 #+END_SRC
