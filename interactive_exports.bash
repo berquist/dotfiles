@@ -5,6 +5,7 @@ if [ -n "$__SOURCED_INTERACTIVE_EXPORTS" ]; then return; fi
 export __SOURCED_INTERACTIVE_EXPORTS=1
 
 export DFT_OVERRIDE='*.mdxml:XML'
+export DFT_OVERRIDE_1='pixi.lock:YAML'
 # difftastic: don't show unchanged files
 export DFT_SKIP_UNCHANGED=true
 
