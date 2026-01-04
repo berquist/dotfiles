@@ -1828,7 +1828,10 @@ users are likely to use them.
   :after flycheck
   :ensure (:host github :repo "oerc0122/flycheck-ty")
   :config
-  (flycheck-add-next-checker 'python-pycompile 'python-ty nil))
+  ;; python-pycompile -> python-ruff -> python-ty -> python-pyright -> python-mypy
+  ;; (lints should come after type checking)
+  (flycheck-remove-next-checker 'python-ty 'python-ruff)
+  (flycheck-add-next-checker 'python-ruff 'python-ty nil))
 #+end_src
 
 ** Leftovers
