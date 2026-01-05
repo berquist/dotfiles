@@ -38,9 +38,10 @@ alias es='emacs -nw'
 # with it though?
 alias gdiff='git wdiff --no-index'
 alias gfr='git fetch --all; git rebase upstream/master'
-alias gi='git'  # typo
-alias gti='git' # typo
-alias it='git'  # typo
+alias ggit='git' # typo
+alias gi='git'   # typo
+alias gti='git'  # typo
+alias it='git'   # typo
 alias julia='julialauncher'
 alias kubectl='minikube kubectl --'
 # If exa is available, set preferred aliases to use it (and its different
