@@ -25,6 +25,7 @@ prepend_to_path "${HOME}/.nimble/bin"
 prepend_to_path "${HOME}/.juliaup/bin"
 prepend_to_path "${HOME}/.luarocks/bin"
 prepend_to_path "${HOME}/.pixi/bin"
+prepend_to_path "${HOME}/.rbenv/bin"
 
 export apps="${HOME}"/opt/apps
 

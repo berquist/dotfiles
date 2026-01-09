@@ -13,3 +13,7 @@ uname=$(uname)
 if [[ $uname == "Darwin" ]]; then
     [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+if command -v rbenv >&/dev/null; then
+    eval "$(rbenv init - --no-rehash zsh)"
+fi
