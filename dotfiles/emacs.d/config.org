@@ -1136,11 +1136,10 @@ Links:
         '(runic))
   (setf (alist-get 'nim-mode apheleia-mode-alist)
         '(nph))
-  ;; TODO ruff-isort instead?
   (setf (alist-get 'python-mode apheleia-mode-alist)
-        '(isort ruff))
+        '(ruff))
   (setf (alist-get 'python-ts-mode apheleia-mode-alist)
-        '(isort ruff))
+        '(ruff))
   ;; TODO be more specific for which shells?
   (setf (alist-get 'sh-mode apheleia-mode-alist)
         '(shfmt))
