@@ -1779,43 +1779,6 @@ users are likely to use them.
   (numpydoc-insertion-style 'nil)
   (numpydoc-insert-examples-block nil))
 
-(use-package virtualenvwrapper
-  :after python)
-
-(use-package conda
-  :disabled t
-  :after delight
-  :hook (after-init . conda-env-initialize-interactive-shells)
-  :commands (conda-env-deactivate
-             conda-env-activate
-             conda-env-activate-path
-             conda-env-list
-             conda-env-initialize-eshell
-             conda-env-activate-for-buffer))
-
-;; TODO store Python version in variable only when conda env changes
-;; (defun ejb/conda-mode-lighter ()
-;;   "Only display the lighter if a conda environment is active."
-;;   (if (equal conda-env-current-name nil)
-;;       ""
-;;     (progn
-;;       (setq current-python-version
-;;             (cadr
-;;              (split-string
-;;               (shell-command-to-string
-;;                (format "%s/bin/python --version" (getenv "CONDA_PREFIX"))))))
-;;       (format "conda[%s:%s]" current-python-version conda-env-current-name))))
-;; (defun ejb/conda-mode-lighter ()
-;;   "Only display the lighter if a conda environment is active."
-;;   (if (equal conda-env-current-name nil)
-;;       ""
-;;     (format " conda[%s]" conda-env-current-name)))
-;; TODO this delight for conda breaks elcord.
-;; (delight 'python-mode '(:eval (format "Python%s" (ejb/conda-mode-lighter))) :major)
-
-(use-package pyenv-mode
-  :after python)
-
 (use-package lsp-pyright
   :after lsp-mode
   :hook (python-mode . (lambda ()
