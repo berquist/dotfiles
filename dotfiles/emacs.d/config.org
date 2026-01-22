@@ -1054,6 +1054,7 @@ Links:
   (lsp-lens-enable nil)
   (lsp-modeline-code-actions-enable nil)
   (lsp-modeline-diagnostics-enable nil)
+  (lsp-ruff-show-notifications "always")
   ;; too buggy
   ;; (lsp-semantic-tokens-enable t)
   :config
