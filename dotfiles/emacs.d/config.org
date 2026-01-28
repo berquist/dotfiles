@@ -1888,6 +1888,15 @@ https://stackoverflow.com/a/35450025/3249688
   (persistent-scratch-setup-default))
 #+end_src
 
+* Make
+
+#+begin_src emacs-lisp
+;; Makefile.inc is the convention for included Makefiles, and appears across
+;; Make implementations, but I most often use GNU Make.  Without this, it
+;; doesn't even register as Makefile, so I need to pick *something*.
+(add-to-list 'auto-mode-alist '("\\(?:^\\|/\\)Makefile\\.inc\\'" . makefile-gmake-mode))
+#+end_src
+
 * CMake
 
 This section needs to come after the Markdown section so that CMake files get recognized properly.
