@@ -117,7 +117,7 @@
 	format = openpgp
 
 [gpg "ssh"]
-	allowedSignersFile = /home/eric/.config/git/allowed_signers
+	allowedSignersFile = ~/.config/git/allowed_signers
 
 [help]
 	autocorrect = prompt
