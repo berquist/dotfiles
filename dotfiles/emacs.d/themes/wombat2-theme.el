@@ -198,8 +198,8 @@ Basic, Font Lock, Isearch, Gnus, Message, and Ansi-Color faces
    ;;; smerge-mode
    `(smerge-lower ((,class (:extend t :background ,wombat-blue-3))))
    `(smerge-upper ((,class (:extend t :background ,wombat-red-2))))
-   `(smerge-refine-removed ((,class (:inherit smerge-refine-changed :background ,wombat-red-1))))
-   `(smerge-refine-added ((,class (:inherit smerge-refine-changed :background ,wombat-blue-2))))
+   `(smerge-refined-removed ((,class (:inherit smerge-refine-changed :background ,wombat-red-1))))
+   `(smerge-refined-added ((,class (:inherit smerge-refine-changed :background ,wombat-blue-2))))
 
    ;;; magit-diff-mode
    `(magit-diff-added ((,class (:extend t :background ,wombat-blue-3))))
