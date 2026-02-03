@@ -1,4 +1,6 @@
 # -*- mode: gitignore -*-
+.dap-breakpoints
+.persistent-scratch
 /*~
 /.cask/
 /.lsp-session*
