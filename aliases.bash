@@ -100,6 +100,7 @@ alias t='tail -F -n 100 --sleep-interval=0.1'
 #
 # alias tree='tree --gitignore'
 alias whcih='which' # typo
+alias whihc='which' # typo
 
 # So I don't do stupid things.
 alias cp='cp -i -v'
