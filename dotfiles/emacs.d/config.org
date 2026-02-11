@@ -843,6 +843,7 @@ with the default ordering Projectile uses.
 (use-package projectile
   :bind ("C-c p" . projectile-command-map)
   :custom
+  (projectile-create-missing-test-files t)
   (projectile-enable-caching t)
   (projectile-mode-line-prefix " P")
   (projectile-require-project-root t)
