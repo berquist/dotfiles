@@ -1,0 +1,29 @@
+# -*- mode: snippet -*-
+# name: JUnit 4 test class
+# key: junit4
+# expand-env: ((yas-indent-line 'fixed))
+# condition: (and (buffer-file-name) (string-match-p "Test\\.java\\'" (buffer-file-name)))
+# --
+${1:`(let* ((file (buffer-file-name))
+            (root (or (locate-dominating-file file "src/test/java")
+                      (locate-dominating-file file "test")
+                      (locate-dominating-file file "src")))
+            (rel-dir (when root
+                       (file-relative-name (file-name-directory file)
+                                           (expand-file-name "src/test/java" root)))))
+       (if (and rel-dir (not (string= rel-dir "")))
+           (concat "package "
+                   (replace-regexp-in-string "/" "." (directory-file-name rel-dir))
+                   ";\n\n")
+         ""))`}
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class ${2:`(file-name-sans-extension (file-name-nondirectory (buffer-file-name)))`} {
+
+    @Test
+    public void ${3:testSomething}() {
+        ${0:// TODO}
+    }
+}
