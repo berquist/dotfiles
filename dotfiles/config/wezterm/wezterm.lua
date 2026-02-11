@@ -13,7 +13,6 @@ config.audible_bell = "Disabled"
 config.color_scheme = 'Wombat'
 
 config.font = wezterm.font_with_fallback {
-    -- { family = 'Comic Mono', weight = 'Regular', stretch = 'Normal', style = 'Normal' },
     { family = 'Panic Sans', weight = 'Regular', stretch = 'Normal', style = 'Normal' },
     { family = 'Fira Mono' },
 }
