@@ -1693,7 +1693,9 @@ the header, based upon the associated source code file."
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
   :after lsp-mode
-  :hook ((java-mode java-ts-mode) . lsp-deferred))
+  :hook ((java-mode java-ts-mode) . lsp-deferred)
+  :custom
+  (lsp-java-jdt-download-url "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.56.0/jdt-language-server-1.56.0-202601291528.tar.gz"))
 #+END_SRC
 
 * FORTRAN (built-in)
