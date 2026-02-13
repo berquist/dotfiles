@@ -83,6 +83,7 @@ alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
 if ! command -v pre-commit > /dev/null 2>&1; then
     alias pre-commit=prek
 fi
+alias prekc='prek util yaml-to-toml .pre-commit-config.yaml'
 alias psmem='ps aux --sort -rss'
 if ! command -v pyright > /dev/null 2>&1; then
     if command -v basedpyright > /dev/null 2>&1; then
