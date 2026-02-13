@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ty ignore
+# key: ty
+# --
+# ty: ignore[$1]
