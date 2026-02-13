@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: prek
+# key: prek
+# --
+[[repos]]
+repo = "${1}"
+rev = ""
+hooks = [
+  { id = "${2}" },
+]
