@@ -1212,10 +1212,9 @@ Links:
     (or (alist-get property (alist-get checker my/flycheck-local-cache))
         (funcall fn checker property)))
   (advice-add 'flycheck-checker-get :around 'my/flycheck-checker-get)
-  ;; json-python-json -> json-jq -> json-jsonlint
+  ;; json-python-json -> json-jq
   (setq ejb/flycheck-checker-default-json 'json-python-json)
   (flycheck-add-next-checker 'json-python-json 'json-jq t)
-  (flycheck-add-next-checker 'json-jq 'json-jsonlint t)
   ;; python-pycompile -> python-ruff -> python-ty -> python-pyright -> python-mypy
   (setq ejb/flycheck-checker-default-python 'python-pycompile)
   (flycheck-add-next-checker 'python-pycompile 'python-ruff nil)
