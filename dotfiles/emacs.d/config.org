@@ -270,9 +270,9 @@ What's the difference between setq and setq-default? See here: http://stackoverf
                   :remap '(conf-toml-mode toml-mode)
                   :url "https://github.com/tree-sitter-grammars/tree-sitter-toml"
                   :ext "\\.toml\\'"))
-    (global-treesit-auto-mode)
     :init
-    (require 'treesit-auto)))
+    (require 'treesit-auto)
+    (global-treesit-auto-mode)))
 
 ;; Silence warnings
 (setopt warning-suppress-types
