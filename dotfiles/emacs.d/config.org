@@ -252,7 +252,16 @@ What's the difference between setq and setq-default? See here: http://stackoverf
                (lambda (lang)
                  (not (member lang ejb/treesit-modes-to-remove)))
                treesit-auto-langs)))
-    ;; nim-ts-mode doesn't exist yet
+    ;; does elisp-ts-mode exist?
+    ;; (add-to-list 'treesit-auto-recipe-list
+    ;;              (make-treesit-auto-recipe
+    ;;               :lang 'elisp
+    ;;               :ts-mode 'elisp-ts-mode
+    ;;               :remap 'elisp-mode
+    ;;               :url "https://github.com/Wilfred/tree-sitter-elisp"
+    ;;               :ext "\\.el'"))
+    ;; (add-to-list 'treesit-auto-langs 'elisp)
+    ;; nim-ts-mode is https://github.com/niontrix/nim-ts-mode
     ;; (add-to-list 'treesit-auto-recipe-list
     ;;              (make-treesit-auto-recipe
     ;;               :lang 'nim
@@ -261,6 +270,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
     ;;               :url "https://github.com/alaviss/tree-sitter-nim"
     ;;               ;; combination of "\\.nim\\'" and "\\.nim\\(ble\\|s\\)\\'"
     ;;               :ext "\\.nim\\(ble\\|s\\)?\\'"))
+    ;; (add-to-list 'treesit-auto-langs 'nim)
     :init
     (require 'treesit-auto)
     (global-treesit-auto-mode)))
