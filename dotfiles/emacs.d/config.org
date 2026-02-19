@@ -261,15 +261,6 @@ What's the difference between setq and setq-default? See here: http://stackoverf
     ;;               :url "https://github.com/alaviss/tree-sitter-nim"
     ;;               ;; combination of "\\.nim\\'" and "\\.nim\\(ble\\|s\\)\\'"
     ;;               :ext "\\.nim\\(ble\\|s\\)?\\'"))
-    ;; However, do keep the TOML recipe up-to-date:
-    ;; https://github.com/renzmann/treesit-auto/pull/113
-    (add-to-list 'treesit-auto-recipe-list
-                 (make-treesit-auto-recipe
-                  :lang 'toml
-                  :ts-mode 'toml-ts-mode
-                  :remap '(conf-toml-mode toml-mode)
-                  :url "https://github.com/tree-sitter-grammars/tree-sitter-toml"
-                  :ext "\\.toml\\'"))
     :init
     (require 'treesit-auto)
     (global-treesit-auto-mode)))
