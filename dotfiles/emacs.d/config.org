@@ -1176,7 +1176,8 @@ Links:
         (pyright (executable-find "pyright")))
     (if basedpyright
         basedpyright
-      pyright)))
+      pyright))
+  "Use basedpyright in place of pyright if available.")
 
 (use-package flycheck
   :hook ((lsp-managed-mode . (lambda ()
