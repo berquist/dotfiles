@@ -1797,7 +1797,7 @@ users are likely to use them.
 
 (use-package flycheck-ty
   :after flycheck
-  :ensure (:host github :repo "oerc0122/flycheck-ty")
+  :ensure (:host github :repo "berquist/flycheck-ty" :branch "config-file")
   :config
   ;; python-pycompile -> python-ruff -> python-ty -> python-pyright -> python-mypy
   ;; (lints should come after type checking)
