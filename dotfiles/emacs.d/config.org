@@ -1179,6 +1179,14 @@ Links:
       pyright))
   "Use basedpyright in place of pyright if available.")
 
+(defun ejb/flycheck-wrapper-debug (command-list)
+  (print "ejb/flycheck-wrapper-debug")
+  (print command-list)
+  command-list)
+
+;; Uncomment to use:
+;; (setopt flycheck-command-wrapper-function #'ejb/flycheck-wrapper-debug)
+
 (use-package flycheck
   :hook ((lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'sh-mode)
