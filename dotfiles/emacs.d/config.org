@@ -1385,7 +1385,7 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                 :ts-mode 'git-commit-ts-mode
                 :remap 'git-commit-mode
                 :url "https://github.com/gbprod/tree-sitter-gitcommit"
-                :ext "\\COMMIT_EDITMSG\\'"))
+                :ext "\\(COMMIT_EDITMSG\\|MERGE_MSG\\)\\'"))
   (add-to-list 'treesit-auto-langs 'gitcommit))
 (use-package git-modes
   :mode (("/\\.containerignore\\'" . gitignore-mode)
