@@ -1043,10 +1043,11 @@ Links:
 
 (use-package lsp-mode
   :commands lsp
-  :hook ((c-mode c++-mode fortran-mode f90-mode js-mode sh-mode) . lsp-deferred)
+  :hook ((c-mode c++-mode fortran-mode f90-mode python-mode js-mode sh-mode) . lsp-deferred)
   :custom
   (lsp-auto-guess-root t)
   (lsp-clients-clangd-args '("--header-insertion-decorators=0" "--header-insertion=never"))
+  (lsp-disabled-clients '())
   (lsp-enable-on-type-formatting nil)
   (lsp-enable-snippet nil)
   (lsp-enable-suggest-server-download nil)
