@@ -1806,6 +1806,7 @@ users are likely to use them.
   (numpydoc-insert-examples-block nil))
 
 (use-package lsp-pyright
+  :disabled t
   :after lsp-mode
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
