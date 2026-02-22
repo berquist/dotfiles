@@ -1812,7 +1812,9 @@ users are likely to use them.
                          (require 'lsp-pyright)
                          (lsp-deferred)))
   :custom
-  (lsp-pyright-langserver-command ejb/pyright))
+  (lsp-pyright-langserver-command ejb/pyright)
+  ;; Only use pyright for navigation
+  (lsp-pyright-type-checking-mode "off"))
 
 (use-package flycheck-ty
   :after flycheck
