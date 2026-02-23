@@ -52,8 +52,6 @@
 
   services.xserver = {
     enable = true;
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
     xkb = {
       layout = "us";
       options = "ctrl:swapcaps";
@@ -123,7 +121,6 @@
     aspell
     aspellDicts.en
     autoconf
-    cask
     delta
     exercism
     google-chrome
@@ -134,7 +131,7 @@
     pinentry-emacs
     subversion
     valgrind
-    wakatime
+    wakatime-cli
     wezterm
     zoom-us
     zotero
@@ -147,6 +144,8 @@
   };
 
   services = {
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
     emacs = {
       enable = false;
       package = pkgs.emacs30;
