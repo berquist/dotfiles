@@ -1575,6 +1575,7 @@ rather than also inserting it."
   :disabled t
   :after org
   :hook (org-mode . (lambda () (require 'ox-pandoc))))
+(use-package ox-jira)
 #+end_src
 
 From https://emacs.stackexchange.com/questions/20577/org-babel-load-all-languages-on-demand.
