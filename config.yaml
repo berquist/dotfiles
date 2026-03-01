@@ -74,9 +74,9 @@ dotfiles:
   f_git_config:
     src: config/git/config
     dst: ~/.config/git/config
-  f_gitignore:
-    src: gitignore
-    dst: ~/.gitignore
+  f_git_ignore:
+    src: config/git/ignore
+    dst: ~/.config/git/ignore
   f_git_template:
     src: config/git/template
     dst: ~/.config/git/template

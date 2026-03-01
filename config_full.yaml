@@ -74,9 +74,9 @@ dotfiles:
   f_git_config:
     src: config/git/config
     dst: ~/.config/git/config
-  f_gitignore:
-    src: gitignore
-    dst: ~/.gitignore
+  f_git_ignore:
+    src: config/git/ignore
+    dst: ~/.config/git/ignore
   f_git_template:
     src: config/git/template
     dst: ~/.config/git/template
@@ -215,7 +215,7 @@ profiles:
     - f_gdbinit
     - f_ghostty_config
     - f_git_config
-    - f_gitignore
+    - f_git_ignore
     - f_git_template
     - f_gpg-agent.conf
     - f_gpg.conf
@@ -307,7 +307,7 @@ profiles:
     - f_direnvrc
     - f_ghostty_config
     - f_git_config
-    - f_gitignore
+    - f_git_ignore
     - f_git_template
     - f_ipython_config.py
     - f_ipython_kernel_config.py
@@ -347,7 +347,7 @@ profiles:
     - f_direnvrc
     - f_ghostty_config
     - f_git_config
-    - f_gitignore
+    - f_git_ignore
     - f_git_template
     - f_justfile
     - f_markdownlint.jsonc
