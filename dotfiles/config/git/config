@@ -25,6 +25,9 @@
 
 [blame]
 	coloring = repeatedLines
+	# not available until 2.53.0
+	# https://stackoverflow.com/a/79824780/
+	# ignoreRevsFile = :(optional).git-blame-ignore-revs
 	markIgnoredLines = true
 	markUnblamableLines = true
 
@@ -226,6 +229,9 @@
 	# For when one or more commits in a rebase somehow get a bad (GPG)
 	# signature.
 	resign = "!f() { git rebase --exec 'git commit --amend --no-edit -n -S' -i \"$1\"; }; f"
+
+	# https://stackoverflow.com/a/72805710/
+	bl = "!git-optional-blame.sh"
 
 	# authors = "!f() { git log | grep '^Author:' | sort | uniq -c | sort -n; }; f"
 	# TODO Not even this works?
