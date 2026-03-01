@@ -114,7 +114,6 @@
     unzip
     xdg-desktop-portal
     vlc
-    zerotierone
 
     # this computer's home-manager
     act
