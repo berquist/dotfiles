@@ -204,6 +204,7 @@
 	# Add more things to the last commit on the current head, with the
 	# ability to rewrite the commit message.
 	amend = commit --amend -c HEAD
+	amendn = !git amend --no-edit
 	# Nicely go back a commit.
 	undo = reset --soft HEAD~1
 
