@@ -79,7 +79,7 @@
   ;; Enable :elpaca use-package keyword.
   (elpaca-use-package-mode)
   ;; Assume :elpaca t unless otherwise specified.
-  (setopt elpaca-use-package-by-default t))
+  (setopt use-package-always-ensure t))
 
 ;; Block until current queue processed.
 (elpaca-wait)
@@ -95,12 +95,11 @@ Fundamental third-party packages that don't go anywhere else.
   :init
   (no-littering-theme-backups))
 
-(use-package dash
-  :demand t)
+(use-package dash)
 
 ;; Here for early loading.
 (use-package delight
-  :ensure (:host github :repo "emacsmirror/delight" :inherit nil))
+  :ensure (:type git :host github :repo "emacsmirror/delight" :inherit nil))
 (setopt eldoc-minor-mode-string " ED")
 ;; A bunch of stuff needs delight.
 (elpaca-wait)
@@ -576,7 +575,8 @@ using `eshell-get-input'."
 (use-package base16-theme)
 (use-package base16-eva-theme
   :disabled t
-  :ensure (:host github
+  :ensure (:type git
+           :host github
            :repo "kjakapat/eva-theme"
            :files ("emacs/templates/*.default"))
   ;; :config
@@ -587,13 +587,12 @@ using `eshell-get-input'."
 (use-package ef-themes)
 (use-package plan9-theme)
 (use-package rebecca-theme)
-(use-package spacegray-theme)
 (use-package tron-legacy-theme)
 (add-to-list 'custom-theme-load-path (expand-file-name "themes/" user-emacs-directory))
 ;; ...but ultimately this is my daily driver.
 (load-theme 'wombat2 t)
 (use-package rainbow-mode
-  :ensure (:host github :repo "emacsmirror/rainbow-mode" :inherit nil))
+  :ensure (:type git :host github :repo "emacsmirror/rainbow-mode" :inherit nil))
 #+end_src
 
 ** Windows
@@ -699,7 +698,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 #+BEGIN_SRC emacs-lisp
 (when ejb/has-treesit
   (use-package treesit-fold
-    :ensure (treesit-fold :host github :repo "emacs-tree-sitter/treesit-fold")
+    :ensure (:type git :host github :repo "emacs-tree-sitter/treesit-fold")
     :delight " TSF"
     :init
     (global-treesit-fold-mode)))
@@ -720,7 +719,6 @@ whitespace and the prefixes don't need to match at word boundaries."
              collect prefix)))
 
 (use-package orderless
-  :ensure t
   :custom
   ;; default:
   ;; (completion-styles '(basic partial-completion emacs22))
@@ -1740,7 +1738,7 @@ users are likely to use them.
 
 #+begin_src emacs-lisp
 (use-package auctex
-  :ensure (:host github :repo "emacsmirror/auctex" :inherit nil)
+  :ensure (:type git :host github :repo "emacsmirror/auctex" :inherit nil)
   :hook ((latex-mode LaTeX-mode) . lsp-deferred)
   :config
   (add-to-list 'texmathp-tex-commands "dmath" 'env-on)
@@ -1819,6 +1817,7 @@ users are likely to use them.
 
 (use-package flycheck-ty
   :after flycheck
+  :ensure (:type git :host github :repo "oerc0122/flycheck-ty")
   :config
   ;; python-pycompile -> python-ruff -> python-ty -> python-pyright -> python-mypy
   ;; (lints should come after type checking)
@@ -2188,7 +2187,7 @@ current buffer, return its path, otherwise nil."
 (use-package cue-mode)
 (when ejb/has-treesit
   (use-package cue-ts-mode
-    :ensure (:host github :repo "ZharMeny/cue-ts-mode")
+    :ensure (:type git :host github :repo "ZharMeny/cue-ts-mode")
     :after (treesit-auto)
     :init
     (add-to-list 'treesit-auto-recipe-list
@@ -2427,7 +2426,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
          ("\\.rq\\'" . sparql-mode)))
 ;; TODO company-sparql
 (use-package ttl-mode
-  :ensure (ttl-mode
+  :ensure (:type git
            :host github
            :repo "jeeger/ttl-mode"
            :files ("*.el"))
@@ -2477,7 +2476,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package apptainer-mode
   :mode ("\\.def\\'" . apptainer-mode)
   ;; not on MELPA yet
-  :ensure (:host github :repo "berquist/apptainer-mode"))
+  :ensure (:type git :host github :repo "berquist/apptainer-mode"))
 #+end_src
 
 * Other languages, modes, and packages
@@ -2485,7 +2484,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 #+BEGIN_SRC emacs-lisp
 (use-package coconut-mode
   :disabled t
-  :ensure (:host github
+  :ensure (:type git
+           :host github
            ;; "main" is NickSeagull, alternate (not working) is "padawanphysicist"
            :repo "NickSeagull/coconut-mode")
   :mode ("\\.coco\\'" . coconut-mode))
@@ -2496,10 +2496,12 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :disabled t)
 (use-package exercism-modern
   :disabled t
-  :ensure (:host github
+  :ensure (:type git
+           :host github
            :repo "elken/exercism-modern"
            :files ("*.el" "icons")))
-(use-package gemini-mode)
+(use-package gemini-mode
+  :disabled t)
 (use-package graphql-mode)
 ;; (when ejb/has-treesit
 ;;   (use-package graphql-ts-mode))
