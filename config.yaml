@@ -213,6 +213,25 @@ profiles:
     - f_pip.conf
     - f_sbclrc
     - f_startup.jl
+  rhodium:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_tmux
+    - d_wezterm
+    - f_alacritty.toml
+    - f_bash_profile
+    - f_bashrc
+    - f_ghostty_config
+    - f_git_config
+    - f_git_ignore
+    - f_git_template
+    - f_tmux.conf
+    - f_yamlfmt.yml
+    - f_yamllint_config
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
   s1072373:
     dotfiles:
     - d_bat

@@ -26,6 +26,7 @@ prepend_to_path "${HOME}/.juliaup/bin"
 prepend_to_path "${HOME}/.luarocks/bin"
 prepend_to_path "${HOME}/.pixi/bin"
 prepend_to_path "${HOME}/.rbenv/bin"
+prepend_to_path "${HOME}/.lmstudio/bin"
 
 export apps="${HOME}"/opt/apps
 
