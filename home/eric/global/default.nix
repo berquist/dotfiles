@@ -62,6 +62,7 @@
       ".config/git/ignore".source = ../../../dotfiles/ignore/git/ignore;
       ".config/git/template".source = ../../../dotfiles/config/git/template;
       ".config/just/justfile".source = ../../../dotfiles/config/just/justfile;
+      ".config/tmux".source = ../../../dotfiles/config/tmux;
       ".config/wezterm/wezterm.lua".source = ../../../dotfiles/config/wezterm/wezterm.lua;
       ".config/yamlfmt/yamlfmt.yml".source = ../../../dotfiles/config/yamlfmt/yamlfmt.yml;
       ".config/yamllint/config".source = ../../../dotfiles/config/yamllint/config;
@@ -69,8 +70,6 @@
       ".markdownlint.jsonc".source = ../../../dotfiles/markdownlint.jsonc;
       ".mdlrc".source = ../../../dotfiles/mdlrc;
       ".pdbrc".source = ../../../dotfiles/pdbrc;
-      ".tmux.conf".source = ../../../dotfiles/tmux.conf;
-      ".tmux/tmux.theme.conf".source = ../../../dotfiles/tmux/tmux.theme.conf;
       ".vmdrc".source = ../../../dotfiles/vmdrc;
       ".zprofile".source = ../../../dotfiles/zprofile;
       ".zshenv".source = ../../../dotfiles/zshenv;

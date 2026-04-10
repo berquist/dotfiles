@@ -12,8 +12,8 @@ dotfiles:
     src: emacs.d
     dst: ~/.emacs.d
   d_tmux:
-    src: tmux
-    dst: ~/.tmux
+    src: config/tmux
+    dst: ~/.config/tmux
   d_wezterm:
     src: config/wezterm
     dst: ~/.config/wezterm
@@ -143,9 +143,6 @@ dotfiles:
   f_startup.jl:
     src: julia/config/startup.jl
     dst: ~/.julia/config/startup.jl
-  f_tmux.conf:
-    src: tmux.conf
-    dst: ~/.tmux.conf
   f_vmdrc:
     src: vmdrc
     dst: ~/.vmdrc
@@ -171,7 +168,6 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_git_template
-    - f_tmux.conf
     - f_yamlfmt.yml
   cee-build033:
     dotfiles:
@@ -179,7 +175,6 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_git_template
-    - f_tmux.conf
     - f_yamlfmt.yml
   gadreel:
     dotfiles:
@@ -187,7 +182,6 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_git_template
-    - f_tmux.conf
     - f_yamlfmt.yml
   osmium:
     variables:
@@ -232,7 +226,6 @@ profiles:
     - f_pip.conf
     - f_sbclrc
     - f_startup.jl
-    - f_tmux.conf
     - f_vmdrc
     - f_yamlfmt.yml
     - f_yamllint_config
@@ -252,7 +245,6 @@ profiles:
     - f_git_config
     - f_git_ignore
     - f_git_template
-    - f_tmux.conf
     - f_yamlfmt.yml
     - f_yamllint_config
     - f_zprofile
@@ -266,7 +258,6 @@ profiles:
     - f_direnvrc
     - f_git_template
     - f_justfile
-    - f_tmux.conf
     - f_yamlfmt.yml
     - f_zprofile
     - f_zshenv
@@ -288,7 +279,6 @@ profiles:
     - f_justfile
     - f_markdownlint.jsonc
     - f_startup.jl
-    - f_tmux.conf
     - f_yamlfmt.yml
     - f_yamllint_config
     - f_zprofile
@@ -302,7 +292,6 @@ profiles:
     - f_direnvrc
     - f_git_template
     - f_justfile
-    - f_tmux.conf
     - f_yamlfmt.yml
     - f_zprofile
     - f_zshenv
@@ -335,7 +324,6 @@ profiles:
     - f_mdlrc
     - f_nanorc
     - f_pip.conf
-    - f_tmux.conf
     - f_yamlfmt.yml
     - f_yamllint_config
     - f_zprofile
@@ -347,7 +335,6 @@ profiles:
     - d_emacs.d
     - d_tmux
     - f_git_template
-    - f_tmux.conf
     - f_yamlfmt.yml
   sodium.local:
     variables:
@@ -373,7 +360,6 @@ profiles:
     - f_mdlrc
     - f_nanorc
     - f_pip.conf
-    - f_tmux.conf
     - f_yamlfmt.yml
     - f_yamllint_config
     - f_zprofile
@@ -387,5 +373,4 @@ profiles:
     - f_cookiecutterrc
     - f_git_template
     - f_justfile
-    - f_tmux.conf
     - f_yamlfmt.yml
