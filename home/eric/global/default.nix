@@ -59,7 +59,7 @@
       ".config/direnv/direnvrc".source = ../../../dotfiles/config/direnv/direnvrc;
       ".config/ghostty/config".source = ../../../dotfiles/config/ghostty/config;
       ".config/git/config".source = ../../../dotfiles/config/git/config;
-      ".config/git/ignore".source = ../../../dotfiles/ignore/git/ignore;
+      ".config/git/ignore".source = ../../../dotfiles/config/git/ignore;
       ".config/git/template".source = ../../../dotfiles/config/git/template;
       ".config/just/justfile".source = ../../../dotfiles/config/just/justfile;
       ".config/tmux".source = ../../../dotfiles/config/tmux;
