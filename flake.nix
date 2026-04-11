@@ -4,11 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-2.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.11";
@@ -24,7 +19,6 @@
     {
       nixpkgs,
       home-manager,
-      lix-module,
       ...
     }@inputs:
     {
@@ -35,7 +29,6 @@
         osmium = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            lix-module.nixosModules.default
             ./hosts/osmium
           ];
         };
@@ -43,7 +36,6 @@
         scandium = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            lix-module.nixosModules.default
             ./hosts/scandium
           ];
         };

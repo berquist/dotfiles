@@ -15,6 +15,8 @@
   ];
 
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
+
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
@@ -88,6 +90,14 @@
     config.allowUnfree = true;
     overlays = [
       inputs.emacs-overlay.overlays.emacs
+      (final: prev: {
+        inherit (prev.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
     ];
   };
 
