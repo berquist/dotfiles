@@ -289,8 +289,9 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 * Backups/autosaving
 
 #+begin_src emacs-lisp
-;; https://stackoverflow.com/a/151946
-;; Locations are handled by `no-littering-theme-backups'
+;; https://stackoverflow.com/a/151946 The locations
+;; `auto-save-file-name-transforms' and `backup-directory-alist' are handled
+;; by `no-littering-theme-backups'.
 (setopt
  delete-old-versions t
  kept-new-versions 6
