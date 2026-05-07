@@ -1537,7 +1537,6 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
                                       ("\\section{%s}" . "\\section*{%s}")
                                       ("\\subsection{%s}" . "\\subsection*{%s}")
                                       ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
-  (load "~/dotfiles/dotfiles-private/org-agenda-files.el")
   (org-clock-persistence-insinuate)
   (defun ejb/org-insert-time-stamp (time &optional with-hm inactive pre post extra)
     "Insert a date stamp for the date given by the internal TIME.
@@ -2559,7 +2558,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 ** Discord
 
 #+BEGIN_SRC emacs-lisp
-(load "~/dotfiles/dotfiles-private/work-hostnames.el")
 (use-package elcord
   :disabled t
   ;; No work machines
@@ -2583,6 +2581,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
+(load "~/dotfiles/dotfiles-private/slop.el")
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; no-native-compile: t
