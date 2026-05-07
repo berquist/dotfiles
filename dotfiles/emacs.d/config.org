@@ -104,6 +104,9 @@ Fundamental third-party packages that don't go anywhere else.
 ;; A bunch of stuff needs delight.
 (elpaca-wait)
 
+(use-package compat
+  :ensure (:type git :host github :repo "emacs-compat/compat"))
+
 ;; Set the path properly. Don't have a conditional on using the window system
 ;; in order to circumvent
 ;; https://emacs.stackexchange.com/questions/27918/why-is-exec-path-different-in-emacsclient-emacsserver-than-in-emacs.
