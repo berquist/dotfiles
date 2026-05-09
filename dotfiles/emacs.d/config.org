@@ -90,6 +90,14 @@ Fundamental third-party packages that don't go anywhere else.
 #+BEGIN_SRC emacs-lisp
 (setopt read-process-output-max (* 1024 1024 5))  ; 5 MB
 
+;; This is for the magit and orderless ecosystems in order to deal
+;; with forwards compatibility
+;; (https://github.com/progfolio/elpaca/issues/538#issuecomment-4375822923),
+;; but needs to be before no-littering, which also requires compat.
+
+(use-package compat
+  :ensure (:type git :host github :repo "emacs-compat/compat" :wait t))
+
 ;; Load this before any other third-party packages.
 (use-package no-littering
   :init
@@ -104,9 +112,7 @@ Fundamental third-party packages that don't go anywhere else.
 ;; A bunch of stuff needs delight.
 (elpaca-wait)
 
-;; These are for the magit and orderless ecosystems.
-(use-package compat
-  :ensure (:type git :host github :repo "emacs-compat/compat"))
+;; This is for the magit and orderless ecosystems.
 (use-package transient)
 
 ;; Set the path properly. Don't have a conditional on using the window system
