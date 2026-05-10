@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source "${HOME}"/dotfiles/path_exports.bash
+try_source /etc/bashrc
 
 # Commands that should be applied only for interactive shells.
 [[ $- == *i* ]] || return
