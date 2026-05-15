@@ -2336,6 +2336,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 #+begin_src emacs-lisp
 (use-package clojure-mode
   :hook (clojure-mode . lsp-deferred)
+  :mode (("\\.bb\\'" . clojure-mode))
   :config
   (defun cider-interactive-notify-and-eval (code)
     (interactive)
