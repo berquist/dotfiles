@@ -226,6 +226,7 @@
 	# Typos
 	checkotu = checkout
 	tbranch = branch
+	tpull = pull
 
 	# For when one or more commits in a rebase somehow get a bad (GPG)
 	# signature.
