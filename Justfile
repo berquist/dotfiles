@@ -3,7 +3,7 @@ whoami := `whoami`
 
 # Rebuild the current NixOS system.
 nix-rebuild:
-    sudo nixos-rebuild switch --upgrade-all --flake ~/dotfiles#{{ hostname }}
+    sudo nixos-rebuild switch --flake ~/dotfiles#{{ hostname }}
 
 # Refresh the nix registry list.
 nix-registry:
@@ -11,4 +11,4 @@ nix-registry:
 
 # Run home-manager for the current user and system.
 nix-home-manager:
-    nix run home-manager/release-25.11 -- switch --flake ~/dotfiles#{{ whoami }}@{{ hostname }}
+    home-manager switch --flake ~/dotfiles#{{ whoami }}@{{ hostname }}

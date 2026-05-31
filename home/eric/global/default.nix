@@ -27,7 +27,7 @@
       just
       nix-prefetch
       nix-search-cli
-      nixfmt-rfc-style
+      nixfmt
       (python3.withPackages (
         ps: with ps; [
           editorconfig

@@ -35,7 +35,7 @@
       ninja
       nix-prefetch
       nix-search-cli
-      nixfmt-rfc-style
+      nixfmt
       pyenv
       (python3.withPackages (
         ps: with ps; [

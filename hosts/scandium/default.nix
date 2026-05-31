@@ -103,7 +103,7 @@
 
   documentation = {
     man = {
-      generateCaches = true;
+      cache.enable = true;
     };
   };
 
