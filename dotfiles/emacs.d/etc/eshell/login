@@ -1,6 +1,22 @@
+# echo "hello from eshell-login-script"
+
 # for difftastic
-export DFT_COLOR=always
+export DFT_COLOR="always"
 export DFT_OVERRIDE="*.mdxml:XML"
-export DFT_SKIP_UNCHANGED=true
+export DFT_SKIP_UNCHANGED="true"
 export GIT_CONFIG_PARAMETERS="'color.ui=always'"
 export RIPGREP_CONFIG_PATH="$HOME/dotfiles/ripgreprc"
+
+# experiments, because none of this is working properly
+
+# (eshell-set-variable "DFT_COLOR" "always")
+# (eshell-set-variable "DFT_OVERRIDE" "*.mdxml:XML")
+# (eshell-set-variable "DFT_SKIP_UNCHANGED" "true")
+# (eshell-set-variable "GIT_CONFIG_PARAMETERS" "'color.ui=always'")
+# (eshell-set-variable "RIGREP_CONFIG_PATH" "$HOME/dotfiles/ripgreprc")
+
+# (setenv "DFT_COLOR" "always")
+# (setenv "DFT_OVERRIDE" "*.mdxml:XML")
+# (setenv "DFT_SKIP_UNCHANGED" "true")
+# (setenv "GIT_CONFIG_PARAMETERS" "'color.ui=always'")
+# (setenv "RIGREP_CONFIG_PATH" "$HOME/dotfiles/ripgreprc")
