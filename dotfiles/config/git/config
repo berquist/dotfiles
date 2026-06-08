@@ -225,6 +225,7 @@
 
 	# Typos
 	checkotu = checkout
+	checout = checkout
 	tbranch = branch
 	tpull = pull
 
