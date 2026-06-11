@@ -41,6 +41,9 @@ dotfiles:
   f_bashrc:
     src: bashrc
     dst: ~/.bashrc
+  f_brew.env:
+    src: config/homebrew/brew.env
+    dst: ~/.config/homebrew/brew.env
   f_clang-format:
     src: clang-format
     dst: ~/.clang-format
@@ -241,6 +244,7 @@ profiles:
     - f_alacritty.toml
     - f_bash_profile
     - f_bashrc
+    - f_brew.env
     - f_ghostty_config
     - f_git_config
     - f_git_ignore
@@ -271,6 +275,7 @@ profiles:
     - f_ansible.cfg
     - f_aspell.en.prepl
     - f_aspell.en.pws
+    - f_brew.env
     # - f_condarc
     - f_cookiecutterrc
     - f_direnvrc
@@ -349,6 +354,7 @@ profiles:
     - f_astylerc
     - f_bash_profile
     - f_bashrc
+    - f_brew.env
     - f_condarc
     - f_direnvrc
     - f_ghostty_config
