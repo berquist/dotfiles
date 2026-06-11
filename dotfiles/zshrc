@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export __SOURCED_ZSHRC=1
+
 # echo "running zshrc"
 
 # autoload -U compinit && compinit
