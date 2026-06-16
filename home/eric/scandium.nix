@@ -7,6 +7,8 @@
 
   home = {
     packages = with pkgs; [
+      gelly
+      nocturne
       plexamp
       protege-distribution
       spotify
