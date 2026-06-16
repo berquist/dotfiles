@@ -132,7 +132,6 @@
     autoconf
     delta
     exercism
-    google-chrome
     imagemagick
     mediainfo
     onefetch
