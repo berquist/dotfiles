@@ -77,7 +77,7 @@
     direnv.enable = true;
     emacs = {
       enable = false;
-      package = pkgs.emacs-unstable;
+      package = pkgs.emacs;
       extraPackages = (epkgs: [ epkgs.treesit-grammars.with-all-grammars ]);
     };
     ghostty = {
