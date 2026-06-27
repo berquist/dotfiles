@@ -15,13 +15,13 @@
 /ede-projects.el
 /eln-cache/
 /elpa/
-/elpaca/builds/
-/elpaca/cache/
-/elpaca/repos/
+/elpaca
 /elpy/
 /eshell
+/etc/racket-mode/
 /ido.last
 /mspyls/
+/org-persist/
 /projectile-bookmarks.eld
 /projectile.cache
 /recentf
@@ -37,5 +37,3 @@
 /tree-sitter/
 /var/
 /workspace
-org-persist/
-elpaca/
