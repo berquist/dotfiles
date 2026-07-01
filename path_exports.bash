@@ -33,7 +33,7 @@ export apps="${HOME}"/opt/apps
 hostname="$(hostname)"
 
 if [[ "${hostname}" == "osmium" ]]; then
-    source /usr/share/lmod/lmod/init/zsh
+    source /usr/share/lmod/lmod/init/profile
     module use "${HOME}/modules/osmium"
 
     # TODO blergh
@@ -59,7 +59,7 @@ else
 fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
-    try_source /opt/homebrew/opt/lmod/init/zsh
+    try_source /opt/homebrew/opt/lmod/init/profile
 fi
 
 [[ -d "${SPACK_ROOT}" ]] && source "${SPACK_ROOT}"/share/spack/setup-env.sh
