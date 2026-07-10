@@ -125,6 +125,9 @@
     xdg-desktop-portal
     vlc
 
+    # fonts
+    fira
+
     # this computer's home-manager
     act
     aspell
