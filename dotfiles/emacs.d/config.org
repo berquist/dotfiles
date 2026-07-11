@@ -856,6 +856,7 @@ with the default ordering Projectile uses.
   :custom
   (projectile-create-missing-test-files t)
   (projectile-enable-caching t)
+  (projectile-indexing-method 'native)
   (projectile-mode-line-prefix " P")
   (projectile-require-project-root t)
   ;; not used with (projectile-indexing-method 'alien)
