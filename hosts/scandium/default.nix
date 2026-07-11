@@ -14,6 +14,13 @@
     ../common/global
   ];
 
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      fira
+    ];
+  };
+
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
 
@@ -124,9 +131,6 @@
     unzip
     xdg-desktop-portal
     vlc
-
-    # fonts
-    fira
 
     # this computer's home-manager
     act
