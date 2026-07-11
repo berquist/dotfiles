@@ -2328,8 +2328,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package scribble-mode
   :disabled t
   :hook (scribble-mode . geiser))
-(use-package racket-mode
-  :disabled t)
+(use-package racket-mode)
 #+END_SRC
 
 ** Clojure
