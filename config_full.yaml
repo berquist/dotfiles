@@ -186,6 +186,18 @@ profiles:
     - d_tmux
     - f_git_template
     - f_yamlfmt.yml
+  neon.local:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_wezterm
+    - f_ghostty_config
+    - f_git_config
+    - f_git_ignore
+    - f_git_template
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
