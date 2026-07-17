@@ -1123,6 +1123,9 @@ Links:
         '("palantir-java-format" "-"))
   (setf (alist-get 'runic apheleia-formatters)
         '("julia" "--project=@runic" "--startup-file=no" "-e" "using Runic; exit(Runic.main(ARGS))" "--"))
+  (setf (alist-get 'rustfmt apheleia-formatters)
+        ;; add filepath
+        '("rustfmt" "--quiet" "--emit" "stdout" filepath))
   (setf (alist-get 'shfmt apheleia-formatters)
         ;; shfmt will not read an EditorConfig file if any parser or printer
         ;; flags are specified on the command line.  The default recipe
@@ -1158,6 +1161,10 @@ Links:
         '(ruff))
   (setf (alist-get 'python-ts-mode apheleia-mode-alist)
         '(ruff))
+  ;; TODO temporarily disable rustfmt
+  (setf (alist-get 'rust-mode apheleia-mode-alist) '())
+  (setf (alist-get 'rust-ts-mode apheleia-mode-alist) '())
+  (setf (alist-get 'rustic-mode apheleia-mode-alist) '())
   ;; TODO be more specific for which shells?
   (setf (alist-get 'sh-mode apheleia-mode-alist)
         '(shfmt))
@@ -2241,6 +2248,7 @@ current buffer, return its path, otherwise nil."
               ("C-c C-c C-d" . rustic-cargo-build-doc))
   :custom
   (rustic-ansi-faces ansi-color-names-vector)
+  (rustic-cargo-clippy-trigger-fix 'on-compile)
   (rustic-format-trigger 'on-save)
   (rustic-indent-method-chain t)
   :config
