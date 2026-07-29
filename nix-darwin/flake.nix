@@ -27,12 +27,15 @@
           emacs
           eza
           fastfetch
+          fd
           gh
           glab
+          htop
           nano
           prek
           racket
           ripgrep
+          rsync
           wezterm
         ];
 
