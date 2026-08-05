@@ -37,6 +37,7 @@
           ripgrep
           rsync
           wezterm
+          wget
         ];
 
         fonts.packages = [
@@ -53,6 +54,7 @@
             "firefox"
             "ghostty"
             "plexamp"
+            "slack"
             "spotify"
             "sshfs-mac"
             "xld"
