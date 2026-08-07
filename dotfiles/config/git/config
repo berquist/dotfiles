@@ -124,6 +124,11 @@
 [help]
 	autocorrect = prompt
 
+[lfs "customtransfer.xet"]
+	path = git-xet
+	args = transfer
+	concurrent = true
+
 [log]
 	date = "format:%F %r (%a, %d %b %Y %T %z)"
 
