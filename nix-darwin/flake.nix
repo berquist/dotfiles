@@ -14,7 +14,14 @@
     my-fonts.url = "path:/Users/eric/development/my-fonts";
   };
 
-  outputs = inputs@{ self, nix-darwin, nix-darwin-emacs, nixpkgs, my-fonts }:
+  outputs =
+    inputs@{
+      self,
+      nix-darwin,
+      nix-darwin-emacs,
+      nixpkgs,
+      my-fonts,
+    }:
     let
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
@@ -33,7 +40,6 @@
           htop
           nano
           prek
-          racket
           ripgrep
           rsync
           wezterm
@@ -54,9 +60,12 @@
             "firefox"
             "ghostty"
             "plexamp"
+            # Racket is packaged for macOS, but the bundled DrRacket doesn't start?
+            "racket"
             "slack"
             "spotify"
             "sshfs-mac"
+            "vlc"
             "xld"
             "zerotier-one"
             "zotero"
@@ -102,20 +111,20 @@
         };
       };
     in
-      {
-        # Build darwin flake using:
-        # $ darwin-rebuild build --flake .#neon
-        darwinConfigurations."neon" = nix-darwin.lib.darwinSystem {
-          modules = [
-            {
-              nixpkgs = {
-                overlays = [
-                  # nix-darwin-emacs.overlays.emacs
-                ];
-              };
-            }
-            configuration
-          ];
-        };
+    {
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#neon
+      darwinConfigurations."neon" = nix-darwin.lib.darwinSystem {
+        modules = [
+          {
+            nixpkgs = {
+              overlays = [
+                # nix-darwin-emacs.overlays.emacs
+              ];
+            };
+          }
+          configuration
+        ];
       };
+    };
 }
