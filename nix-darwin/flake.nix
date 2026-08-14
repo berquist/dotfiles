@@ -66,6 +66,7 @@
             "firefox"
             "ghostty"
             "plexamp"
+            "qobuz"
             # Racket is packaged for macOS, but the bundled DrRacket doesn't start?
             "racket"
             "slack"
