@@ -52,6 +52,12 @@
 
         homebrew = {
           brews = [
+            # Nix unstable version is too old
+            {
+              name = "container";
+              start_service = true;
+              restart_service = "changed";
+            }
             "dotdrop"
             "mas"
           ];
