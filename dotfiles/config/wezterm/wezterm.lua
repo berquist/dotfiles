@@ -22,6 +22,9 @@ config.font = wezterm.font_with_fallback {
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 -- config.window_background_opacity = 0.75
 
+local window_title = require 'window-title'
+window_title.apply_to_config(config)
+
 local session = os.getenv("XDG_SESSION_TYPE")
 
 if session == "wayland" then
