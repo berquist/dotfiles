@@ -1151,6 +1151,9 @@ Links:
         '(jq))
   (setf (alist-get 'json-ts-mode apheleia-mode-alist)
         '(jq))
+  (setf (alist-get 'jsonian-mode apheleia-mode-alist)
+        '(jq))
+  ;; TODO do I need to put jsonian-c-mode here even though it's derived?
   (setf (alist-get 'julia-mode apheleia-mode-alist)
         '(runic))
   (setf (alist-get 'julia-ts-mode apheleia-mode-alist)
@@ -2171,6 +2174,7 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (let ((ejb/json-modes '("\\.cjson\\'"
+                        "\\.jsonl\\'"
                         "\\.jsonld\\'"
                         "\\.qcjson\\'"
                         "\\.qcschema\\'"
@@ -2182,6 +2186,7 @@ current buffer, return its path, otherwise nil."
           :hook ((jsonian-mode . (lambda ()
                                    (flycheck-select-checker ejb/flycheck-checker-default-json)))
                  (jsonian-mode . hs-minor-mode))
+          ;; TODO do I also need to add jsonian-c-mode here?
           :init
           (jsonian-enable-flycheck))
         (mapc
@@ -2192,7 +2197,8 @@ current buffer, return its path, otherwise nil."
       (setopt json-ts-mode-indent-offset tab-width)
       (mapc
        (lambda (s) (add-to-list 'auto-mode-alist `(,s . json-ts-mode)))
-       ejb/json-modes))))
+       ejb/json-modes)
+      (add-to-list 'auto-mode-alist '("\\.jsonc\\'" . json-ts-mode)))))
 
 (use-package jq-format
   :custom
