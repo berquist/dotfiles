@@ -216,7 +216,6 @@ profiles:
     - d_emacs.d
     - d_tmux
     - d_wezterm
-    - f_alacritty.toml
     - f_bash_profile
     - f_bashrc
     - f_brew.env
@@ -312,3 +311,6 @@ profiles:
     - f_git_template
     - f_justfile
     - f_yamlfmt.yml
+  suwayomi-dev:
+    include:
+    - rhodium
