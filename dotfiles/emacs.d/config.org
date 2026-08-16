@@ -306,6 +306,8 @@ What's the difference between setq and setq-default? See here: http://stackoverf
           (native-compiler)
           (ox-pandoc)
           (treesit)))
+
+(setopt epg-pinentry-mode 'loopback)
 #+end_src
 
 * Backups/autosaving
