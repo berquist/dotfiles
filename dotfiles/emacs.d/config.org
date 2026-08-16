@@ -1236,6 +1236,11 @@ Links:
 ;; Uncomment to use:
 ;; (setopt flycheck-command-wrapper-function #'ejb/flycheck-wrapper-debug)
 
+(use-package flymake
+  :disabled t
+  :init
+  (flymake-mode-on))
+
 (use-package flycheck
   :hook ((lsp-managed-mode . (lambda ()
                                (when (derived-mode-p 'sh-mode)
