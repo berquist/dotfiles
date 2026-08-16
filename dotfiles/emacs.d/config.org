@@ -2578,6 +2578,24 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
     :disabled t))
 #+END_SRC
 
+** Chemistry
+
+#+begin_src emacs-lisp
+(when ejb/has-treesit
+  (use-package orca-inp-ts-mode
+    :disabled t
+    :load-path "/home/eric/development/elisp/orca-inp-ts-mode"
+    :after treesit-auto
+    :init
+    (add-to-list 'treesit-auto-recipe-list
+                 (make-treesit-auto-recipe
+                  :lang 'orca
+                  :ts-mode 'orca-inp-ts-mode
+                  :url "https://github.com/kszenes/tree-sitter-orca"
+                  :ext "\\.inp\\'"))
+    (add-to-list 'treesit-auto-langs 'orca)))
+#+end_src
+
 * External services
 
 ** Discord
