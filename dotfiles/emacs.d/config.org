@@ -2183,6 +2183,7 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode
+  :hook (yaml-mode . lsp-deferred)
   ;; The first is a decent assumption for ISI-specific pseudo-YAML files.
   :mode
   (("\\.params\\'" . yaml-mode)
