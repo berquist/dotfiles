@@ -886,11 +886,24 @@ with the default ordering Projectile uses.
           (ejb/conditional-prepend projectile-globally-ignored-directories
                                    '("^\\.hypothesis"
                                      "^\\.mypy_cache"
+                                     "^\\.pixi"
                                      "^\\.pytest_cache"
+                                     "^\\.ruff_cache"
+                                     "^\\.venv"
                                         ; all possible build directories
                                      "build"
                                      "htmlcov"
-                                     "^__pycache__")))
+                                     "^__pycache__")
+                                   ;; TODO figure out whether or not these can/can't be regexg
+                                   ;; '(".hypothesis"
+                                   ;;   ".mypy_cache"
+                                   ;;   ".pixi"
+                                   ;;   ".pytest_cache"
+                                   ;;   ".ruff_cache"
+                                   ;;   ".venv"
+                                   ;;   "htmlcov"
+                                   ;;   "__pycache__")
+                                   ))
   (setopt projectile-globally-ignored-files
           (ejb/conditional-prepend projectile-globally-ignored-files
                                    '("cmake_install.cmake")))
