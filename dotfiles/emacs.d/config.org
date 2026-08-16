@@ -2491,24 +2491,28 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 * Nim
 
-=flycheck-nimsuggest=, despite being "old", is required by =nimsuggest-mode=.
-
 #+BEGIN_SRC emacs-lisp
-(use-package flycheck-nimsuggest)
 (use-package nim-mode
   :bind (:map nim-mode-map ("C-c C-;" . ejb/nim-docstring-dwim))
   ;; We want to be able to "fix" the company backend ordering after
   ;; `nimsuggest-mode' adds `company-nimsuggest' to `company-backends', so the
   ;; hooks need to be in this order.
-  :hook ((nim-mode . ejb/fix-company-ordering)
-         (nim-mode . nimsuggest-mode)
-         (nim-mode . lsp))
+  :hook (
+         ;; (nim-mode . ejb/fix-company-ordering)
+         ;; (nim-mode . nimsuggest-mode)
+         (nim-mode . lsp-deferred)
+         (nim-mode . (lambda () (dtrt-indent-mode -1)))
+         )
   :config
   (defun ejb/nim-docstring-dwim ()
     "Use `comment-dwim' to make a Nim docstring."
     (interactive)
     (let ((comment-start "## "))
       (call-interactively 'comment-dwim))))
+
+(use-package flycheck-nimsuggest
+  :disabled t
+  :after nim-mode)
 #+END_SRC
 
 * HDF5/h5dump
