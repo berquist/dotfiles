@@ -1110,6 +1110,13 @@ Links:
             python-ts-mode-hook
             rust-ts-mode-hook))))
 
+;; TODO
+;;
+;; (defun ejb/lsp-enable-on-type-formatting ()
+;;   "Set `lsp-enable-on-type-formatting' if a relevant formatting config is present within the current scope.
+
+;; At most, the config must be within the project.")
+
 (use-package lsp-ui
   :disabled t
   :custom
@@ -1219,6 +1226,11 @@ Links:
 ** General
 
 #+begin_src emacs-lisp
+(use-package flymake
+  :disabled t
+  :init
+  (flymake-mode-on))
+
 ;; TODO macro for this idiom
 (defvar ejb/pyright
   (let ((basedpyright (executable-find "basedpyright"))
@@ -1236,21 +1248,15 @@ Links:
 ;; Uncomment to use:
 ;; (setopt flycheck-command-wrapper-function #'ejb/flycheck-wrapper-debug)
 
-(use-package flymake
-  :disabled t
-  :init
-  (flymake-mode-on))
+(defmacro ejb/flycheck-add-next-checkers-after-lsp (mode checkers)
+  `(lambda ()
+     (when (derived-mode-p ,mode)
+       (setq my/flycheck-local-cache '((lsp . ((next-checkers . ,checkers))))))))
 
 (use-package flycheck
-  :hook ((lsp-managed-mode . (lambda ()
-                               (when (derived-mode-p 'sh-mode)
-                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (sh-bash)))))))))
-         (lsp-managed-mode . (lambda ()
-                               (when (derived-mode-p 'tex-mode)
-                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (tex-chktex)))))))))
-         (lsp-managed-mode . (lambda ()
-                               (when (derived-mode-p 'python-mode)
-                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (python-pycompile)))))))))
+  :hook ((lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'sh-mode '(sh-shellcheck)))
+         (lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'tex-mode '(tex-chktex)))
+         (lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'python-mode '(python-flake8)))
          (lsp-managed-mode . (lambda ()
                                (when (or (derived-mode-p 'rust-mode) (derived-mode-p 'rust-ts-mode))
                                  (setq my/flycheck-local-cache '((lsp . ((next-checkers . (rust-cargo))))))))))
