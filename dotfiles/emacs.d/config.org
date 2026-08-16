@@ -263,6 +263,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
                  (not (member lang ejb/treesit-modes-to-remove)))
                treesit-auto-langs)))
     ;; does elisp-ts-mode exist?
+    ;; https://github.com/renzmann/treesit-auto/pull/118/
     ;; (add-to-list 'treesit-auto-recipe-list
     ;;              (make-treesit-auto-recipe
     ;;               :lang 'elisp
@@ -281,6 +282,16 @@ What's the difference between setq and setq-default? See here: http://stackoverf
     ;;               ;; combination of "\\.nim\\'" and "\\.nim\\(ble\\|s\\)\\'"
     ;;               :ext "\\.nim\\(ble\\|s\\)?\\'"))
     ;; (add-to-list 'treesit-auto-langs 'nim)
+    ;; However, do keep the TOML recipe up-to-date:
+    ;; https://github.com/renzmann/treesit-auto/pull/113
+    ;; TODO delete existing toml entry
+    (add-to-list 'treesit-auto-recipe-list
+                 (make-treesit-auto-recipe
+                  :lang 'toml
+                  :ts-mode 'toml-ts-mode
+                  :remap '(conf-toml-mode toml-mode)
+                  :url "https://github.com/tree-sitter-grammars/tree-sitter-toml"
+                  :ext "\\.toml\\'"))
     :init
     (require 'treesit-auto)
     (global-treesit-auto-mode)))
