@@ -251,7 +251,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (when ejb/has-treesit
   (use-package treesit-auto
     :custom
-    (treesit-auto-install t)
+    (treesit-auto-install 'prompt)
     :config
     ;; Don't use toml-ts-mode until performance is improved.
     ;; Don't use yaml-ts-mode until indentation is fixed.
