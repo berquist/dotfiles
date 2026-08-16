@@ -2486,7 +2486,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :ensure (:type git
            :host github
            :repo "jeeger/ttl-mode"
-           :files ("*.el"))
+           :files (:defaults))
   :delight "N3/Turtle"
   :mode (("\\.n3\\'" . ttl-mode)    ; Notation3
          ("\\.nt\\'" . ttl-mode)    ; N-Triples
@@ -2495,6 +2495,13 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
          ("\\.turtle\\'" . ttl-mode))
   :custom
   (ttl-indent-on-idle-timer nil))
+;; (when ejb/has-treesit
+;;   (use-package ttl-ts-mode
+;;     :ensure (:repo "~/development/elisp/ttl-ts-mode"
+;;                    :files (:defaults))
+;;     :delight "n3/turtle"))
+;; (add-to-list 'load-path "~/development/elisp/ttl-ts-mode")
+;; (require 'ttl-ts-mode)
 #+END_SRC
 
 * Nim
