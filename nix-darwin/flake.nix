@@ -42,6 +42,7 @@
           prek
           ripgrep
           rsync
+          tree
           wezterm
           wget
         ];
@@ -86,7 +87,7 @@
 
         nix.settings = {
           experimental-features = "nix-command flakes";
-          sanbox = true;
+          sandbox = true;
         };
 
         nixpkgs.hostPlatform = "aarch64-darwin";
