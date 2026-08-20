@@ -1254,12 +1254,13 @@ Links:
        (setq my/flycheck-local-cache '((lsp . ((next-checkers . ,checkers))))))))
 
 (use-package flycheck
-  :hook ((lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'sh-mode '(sh-shellcheck)))
-         (lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'tex-mode '(tex-chktex)))
-         (lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'python-mode '(python-flake8)))
-         (lsp-managed-mode . (lambda ()
-                               (when (or (derived-mode-p 'rust-mode) (derived-mode-p 'rust-ts-mode))
-                                 (setq my/flycheck-local-cache '((lsp . ((next-checkers . (rust-cargo))))))))))
+  ;; TODO debug me
+  ;; :hook ((lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'sh-mode '(sh-shellcheck)))
+  ;;        (lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'tex-mode '(tex-chktex)))
+  ;;        (lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'python-mode '(python-flake8)))
+  ;;        (lsp-managed-mode . (lambda ()
+  ;;                              (when (or (derived-mode-p 'rust-mode) (derived-mode-p 'rust-ts-mode))
+  ;;                                (setq my/flycheck-local-cache '((lsp . ((next-checkers . (rust-cargo))))))))))
   :bind (("C-c f" . flycheck-mode))
   :custom
   (flycheck-check-syntax-automatically '(mode-enabled save))
@@ -2179,6 +2180,7 @@ current buffer, return its path, otherwise nil."
   (julia-repl-inferior-buffer-name-base "julia-repl"))
 
 (use-package lsp-julia
+  :disabled t
   :hook (julia-mode . (lambda ()
                         (require 'lsp-julia)
                         (lsp)))
@@ -2616,6 +2618,8 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 (use-package snakemake-mode)
 (use-package systemd)
 (use-package tracwiki-mode
+  ;; xml-rpc-mode problems
+  :disabled t
   :mode ("\\.trac\\'" . tracwiki-mode))
 (when ejb/has-treesit
   (use-package wat-ts-mode
