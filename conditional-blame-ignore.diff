@@ -1,0 +1,75 @@
+diff --git config.yaml config.yaml
+index bf0dad1..ef3cc8e 100644
+--- config.yaml
++++ config.yaml
+@@ -74,6 +74,9 @@ dotfiles:
+   f_ghostty_config:
+     src: config/ghostty/config
+     dst: ~/.config/ghostty/config
++  f_git_conditional-blame-ignore:
++    src: config/git/conditional-blame-ignore
++    dst: ~/.config/git/conditional-blame-ignore
+   f_git_config:
+     src: config/git/config
+     dst: ~/.config/git/config
+@@ -251,6 +254,7 @@ profiles:
+     # - f_condarc
+     - f_cookiecutterrc
+     - f_direnvrc
++    - f_git_conditional-blame-ignore
+     - f_git_template
+     - f_markdownlint.jsonc
+     - f_startup.jl
+diff --git config_full.yaml config_full.yaml
+index 8bdbc3c..2aa9193 100644
+--- config_full.yaml
++++ config_full.yaml
+@@ -74,6 +74,9 @@ dotfiles:
+   f_ghostty_config:
+     src: config/ghostty/config
+     dst: ~/.config/ghostty/config
++  f_git_conditional-blame-ignore:
++    src: config/git/conditional-blame-ignore
++    dst: ~/.config/git/conditional-blame-ignore
+   f_git_config:
+     src: config/git/config
+     dst: ~/.config/git/config
+@@ -324,6 +327,7 @@ profiles:
+     - f_cookiecutterrc
+     - f_direnvrc
+     - f_ghostty_config
++    - f_git_conditional-blame-ignore
+     - f_git_template
+     - f_justfile
+     - f_markdownlint.jsonc
+diff --git dotfiles/config/git/conditional-blame-ignore dotfiles/config/git/conditional-blame-ignore
+new file mode 100644
+index 0000000..668120d
+--- /dev/null
++++ dotfiles/config/git/conditional-blame-ignore
+@@ -0,0 +1,4 @@
++# -*- mode: gitconfig; -*-
++
++[blame]
++	ignoreRevsFile = .git-blame-ignore-revs
+diff --git dotfiles/config/git/config dotfiles/config/git/config
+index 5d567a5..147c9a3 100644
+--- dotfiles/config/git/config
++++ dotfiles/config/git/config
+@@ -25,9 +25,6 @@
+ 
+ [blame]
+ 	coloring = repeatedLines
+-	# not available until 2.53.0
+-	# https://stackoverflow.com/a/79824780/
+-	# ignoreRevsFile = :(optional).git-blame-ignore-revs
+ 	markIgnoredLines = true
+ 	markUnblamableLines = true
+ 
+@@ -252,3 +249,6 @@
+ # 	line-numbers = true
+ # 	navigate = true
+ # 	syntax-theme = Dracula
++
++# [includeIf "gitdir:**/.git/../.git-blame-ignore-revs"]
++# 	path = ./conditional-blame-ignore
