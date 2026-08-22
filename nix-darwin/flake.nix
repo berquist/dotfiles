@@ -85,12 +85,27 @@
           };
         };
 
-        nix.settings = {
-          experimental-features = "nix-command flakes";
-          sandbox = true;
+        nix = {
+          package = pkgs.lixPackageSets.stable.lix;
+          settings = {
+            experimental-features = "nix-command flakes";
+            sandbox = true;
+          };
         };
 
-        nixpkgs.hostPlatform = "aarch64-darwin";
+        nixpkgs = {
+          hostPlatform = "aarch64-darwin";
+          overlays = [
+            (final: prev: {
+              inherit (prev.lixPackageSets.stable)
+                nixpkgs-review
+                nix-eval-jobs
+                nix-fast-build
+                colmena
+                ;
+            })
+          ];
+        };
 
         programs = {
           direnv = {
