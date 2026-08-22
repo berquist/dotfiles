@@ -15,6 +15,7 @@ fi
 alias bhead='bat -r :10'
 alias cath='tail -n +1'
 alias cfd='/usr/share/clang/clang-format-diff.py'
+alias cls='nix run github:jhhuh/claude-code-nix-sandbox/f6d82e1ea8b0cc5d55efd6958a413533d5f7e9bd#sandbox'
 alias d='df -h'
 # https://hub.docker.com/r/alpine/dfimage
 alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
