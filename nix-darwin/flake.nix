@@ -65,7 +65,7 @@
           casks = [
             "discord"
             "firefox"
-            "ghostty"
+            "ghostty@tip"
             "plexamp"
             "qobuz"
             # Racket is packaged for macOS, but the bundled DrRacket doesn't start?
