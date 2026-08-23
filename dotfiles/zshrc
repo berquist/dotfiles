@@ -42,7 +42,6 @@ source "${HOME}"/dotfiles/aliases.bash
 source "${HOME}"/dotfiles/functions.bash
 source "${HOME}"/dotfiles/slurm.bash
 
-hostname=$(hostname)
 uname=$(uname)
 
 source "${HOME}"/dotfiles/path.sh

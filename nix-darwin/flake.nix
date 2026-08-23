@@ -27,6 +27,7 @@
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
         environment.systemPackages = with pkgs; [
+          # TODO migrate some to home-manager
           bat
           caffeine
           difftastic
@@ -38,6 +39,7 @@
           gh
           glab
           htop
+          just
           nano
           prek
           ripgrep

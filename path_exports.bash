@@ -30,7 +30,12 @@ prepend_to_path "${HOME}/.lmstudio/bin"
 
 export apps="${HOME}"/opt/apps
 
-hostname="$(hostname)"
+uname="$(uname)"
+if [[ "${uname}" == "Darwin" ]]; then
+    hostname="$(scutil --get LocalHostName)"
+else
+    hostname="$(hostname -s)"
+fi
 
 if [[ "${hostname}" == "osmium" ]]; then
     source /usr/share/lmod/lmod/init/profile
@@ -58,7 +63,7 @@ else
     export VAGRANT_HOME="${HOME}"/.vagrant.d
 fi
 
-if [[ "$(uname)" == "Darwin" ]]; then
+if [[ "${uname}" == "Darwin" ]]; then
     try_source /opt/homebrew/opt/lmod/init/profile
 fi
 
