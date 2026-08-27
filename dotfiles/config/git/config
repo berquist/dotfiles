@@ -34,6 +34,9 @@
 [branch]
 	sort = -committerdate
 
+[clone]
+	refFormat = files
+
 # Available colors are enumerated in
 # http://stackoverflow.com/questions/15458237/git-pretty-format-colors
 
