@@ -724,7 +724,8 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setopt require-final-newline t)
 
 (use-package ws-butler
-  :hook (prog-mode . ws-butler-mode))
+  :init
+  (ws-butler-global-mode))
 #+end_src
 
 * Narrowing, searching, and projects
