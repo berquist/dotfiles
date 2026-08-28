@@ -615,7 +615,16 @@ using `eshell-get-input'."
 (use-package tron-legacy-theme)
 (add-to-list 'custom-theme-load-path (expand-file-name "themes/" user-emacs-directory))
 ;; ...but ultimately this is my daily driver.
-(load-theme 'wombat2 t)
+;; (load-theme 'wombat2 t)
+
+(use-package circadian
+  :hook (emacs-startup . circadian-setup)
+  :custom
+  (calendar-latitude 42.34823948453506)
+  (calendar-longitude -71.08868517465712)
+  (circadian-themes '((:sunrise . rebecca)
+                      (:sunset . wombat2))))
+
 (use-package rainbow-mode
   :ensure (:type git :host github :repo "emacsmirror/rainbow-mode" :inherit nil))
 #+end_src
