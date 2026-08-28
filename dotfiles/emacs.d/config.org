@@ -249,6 +249,9 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 (defvar ejb/has-treesit (boundp 'treesit-extra-load-path))
 
 (when ejb/has-treesit
+  ;; default is 40MB
+  (setopt treesit-max-buffer-size (* 1024 1024 400))
+
   (use-package treesit-auto
     :custom
     (treesit-auto-install 'prompt)
