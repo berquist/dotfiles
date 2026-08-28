@@ -1044,7 +1044,6 @@ Links:
 
 #+BEGIN_SRC emacs-lisp
 (use-package company
-  :hook (after-init . global-company-mode)
   :bind
   ("M-]" . company-complete)
   (:map company-active-map
@@ -1074,6 +1073,7 @@ Links:
                (not (member backend ejb/company-backends-to-remove)))
              company-backends)))
   :init
+  (global-company-mode 1)
   ;; Partial ordering of (future) backends from most to least important.
   ;;
   ;; - For Nim, nimsuggest seems to give much better results than nimlsp. But
@@ -1228,7 +1228,7 @@ Links:
           (string= filename "config_full.yaml"))))
   (add-to-list 'apheleia-skip-functions #'ejb/apheleia-skip-dotdrop)
   :init
-  (apheleia-global-mode +1))
+  (apheleia-global-mode 1))
 #+end_src
 
 * Flycheck (linting)
@@ -2063,7 +2063,7 @@ TODO How to make this take precedence over =dtrt-indent=?
 
 ;; If the built-in EditorConfig mode is available, prefer that.
 (if (ejb/has-library "editorconfig")
-    (editorconfig-mode +1)
+    (editorconfig-mode 1)
   (use-package editorconfig
     :when (executable-find "editorconfig")
     :hook ((prog-mode text-mode) . editorconfig-mode)
