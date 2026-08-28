@@ -10,7 +10,8 @@ config.front_end = "WebGpu"
 
 config.audible_bell = "Disabled"
 
-config.color_scheme = 'Wombat'
+local color = require 'color'
+config.color_scheme = color.color_scheme
 
 config.font = wezterm.font_with_fallback {
     { family = 'Panic Sans', weight = 'Regular', stretch = 'Normal', style = 'Normal' },
