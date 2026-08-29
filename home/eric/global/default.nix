@@ -70,6 +70,7 @@ in
       ".config/wezterm/wezterm.lua".source = symlink "${filesPath}/config/wezterm/wezterm.lua";
       ".config/yamlfmt/yamlfmt.yml".source = symlink "${filesPath}/config/yamlfmt/yamlfmt.yml";
       ".config/yamllint/config".source = symlink "${filesPath}/config/yamllint/config";
+      ".emacs.d".source = symlink "${filesPath}/emacs.d";
       ".gdbinit".source = symlink "${filesPath}/gdbinit";
       ".markdownlint.jsonc".source = symlink "${filesPath}/markdownlint.jsonc";
       ".mdlrc".source = symlink "${filesPath}/mdlrc";
@@ -116,7 +117,7 @@ in
 
   services = {
     emacs = {
-      enable = false;
+      enable = true;
     };
     gpg-agent = {
       defaultCacheTtl = 60480000;
