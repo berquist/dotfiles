@@ -280,7 +280,7 @@ profiles:
     - f_zprofile
     - f_zshenv
     - f_zshrc
-  rhodium:
+  sanguinello:
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -288,7 +288,7 @@ profiles:
     - d_wezterm
     - f_bash_profile
     - f_bashrc
-    - f_brew.env
+    - f_gdbinit
     - f_ghostty_config
     - f_git_config
     - f_git_ignore

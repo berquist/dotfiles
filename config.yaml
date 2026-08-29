@@ -186,6 +186,51 @@ profiles:
     - d_tmux
     - f_git_template
     - f_yamlfmt.yml
+  meyeri:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_tmux
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_astylerc
+    - f_bash_profile
+    - f_bashrc
+    - f_git_config
+    - f_git_ignore
+    - f_git_template
+    - f_justfile
+    - f_markdownlint.jsonc
+    - f_mdlrc
+    - f_startup.jl
+    - f_yamlfmt.yml
+    - f_yamllint_config
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
+  neon.local:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_wezterm
+    - f_aspell.en.prepl
+    - f_aspell.en.pws
+    - f_astylerc
+    - f_bash_profile
+    - f_bashrc
+    - f_ghostty_config
+    - f_git_config
+    - f_git_ignore
+    - f_git_template
+    - f_justfile
+    - f_markdownlint.jsonc
+    - f_mdlrc
+    - f_startup.jl
+    - f_yamlfmt.yml
+    - f_yamllint_config
+    - f_zprofile
+    - f_zshenv
+    - f_zshrc
   osmium:
     variables:
       conda_pkg_dir: /home/eric/data/.conda_pkgs
@@ -210,7 +255,7 @@ profiles:
     - f_pip.conf
     - f_sbclrc
     - f_startup.jl
-  rhodium:
+  sanguinello:
     dotfiles:
     - d_bat
     - d_emacs.d
@@ -218,7 +263,7 @@ profiles:
     - d_wezterm
     - f_bash_profile
     - f_bashrc
-    - f_brew.env
+    - f_gdbinit
     - f_ghostty_config
     - f_git_config
     - f_git_ignore
