@@ -139,6 +139,28 @@
     };
   };
 
+  system.fsPackages = [ pkgs.sshfs ];
+  fileSystems."/home/eric/meyeri" = {
+    device = "eric@172.22.207.41:/home/eric";
+    fsType = "sshfs";
+    options = [
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=600"
+      "_netdev"
+      "IdentityFile=/root/.ssh/id_meyeri"
+      "UserKnownHostsFile=/root/.ssh/known_hosts"
+      "StrictHostKeyChecking=accept-new"
+      "allow_other"
+      "idmap=user"
+      "uid=1000"
+      "gid=100"
+      "reconnect"
+      "ServerAliveInterval=15"
+      "ServerAliveCountMax=3"
+    ];
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -152,5 +174,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "26.05"; # Did you read the comment?
-
 }
