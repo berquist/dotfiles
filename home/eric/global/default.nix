@@ -6,6 +6,10 @@
   ...
 }:
 
+let
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+  filesPath = "${config.home.homeDirectory}/dotfiles/dotfiles";
+in
 {
   home = {
     username = lib.mkDefault "eric";
@@ -48,32 +52,32 @@
       wget
     ];
     file = {
-      ".aspell.en.prepl".source = ../../../dotfiles/aspell.en.prepl;
-      ".aspell.en.pws".source = ../../../dotfiles/aspell.en.pws;
-      ".astylerc".source = ../../../dotfiles/astylerc;
-      ".bash_profile".source = ../../../dotfiles/bash_profile;
-      ".bashrc".source = ../../../dotfiles/bashrc;
-      # ".clang-format".source = ../../../dotfiles/clang-format;
-      ".config/alacritty/alacritty.toml".source = ../../../dotfiles/config/alacritty/alacritty.toml;
-      ".config/bat/config".source = ../../../dotfiles/config/bat/config;
-      ".config/direnv/direnvrc".source = ../../../dotfiles/config/direnv/direnvrc;
-      ".config/ghostty/config".source = ../../../dotfiles/config/ghostty/config;
-      ".config/git/config".source = ../../../dotfiles/config/git/config;
-      ".config/git/ignore".source = ../../../dotfiles/config/git/ignore;
-      ".config/git/template".source = ../../../dotfiles/config/git/template;
-      ".config/just/justfile".source = ../../../dotfiles/config/just/justfile;
-      ".config/tmux".source = ../../../dotfiles/config/tmux;
-      ".config/wezterm/wezterm.lua".source = ../../../dotfiles/config/wezterm/wezterm.lua;
-      ".config/yamlfmt/yamlfmt.yml".source = ../../../dotfiles/config/yamlfmt/yamlfmt.yml;
-      ".config/yamllint/config".source = ../../../dotfiles/config/yamllint/config;
-      ".gdbinit".source = ../../../dotfiles/gdbinit;
-      ".markdownlint.jsonc".source = ../../../dotfiles/markdownlint.jsonc;
-      ".mdlrc".source = ../../../dotfiles/mdlrc;
-      ".pdbrc".source = ../../../dotfiles/pdbrc;
-      ".vmdrc".source = ../../../dotfiles/vmdrc;
-      ".zprofile".source = ../../../dotfiles/zprofile;
-      ".zshenv".source = ../../../dotfiles/zshenv;
-      ".zshrc".source = ../../../dotfiles/zshrc;
+      ".aspell.en.prepl".source = symlink "${filesPath}/aspell.en.prepl";
+      ".aspell.en.pws".source = symlink "${filesPath}/aspell.en.pws";
+      ".astylerc".source = symlink "${filesPath}/astylerc";
+      ".bash_profile".source = symlink "${filesPath}/bash_profile";
+      ".bashrc".source = symlink "${filesPath}/bashrc";
+      # ".clang-format".source = symlink "${filesPath}/clang-format";
+      ".config/alacritty/alacritty.toml".source = symlink "${filesPath}/config/alacritty/alacritty.toml";
+      ".config/bat/config".source = symlink "${filesPath}/config/bat/config";
+      ".config/direnv/direnvrc".source = symlink "${filesPath}/config/direnv/direnvrc";
+      ".config/ghostty/config".source = symlink "${filesPath}/config/ghostty/config";
+      ".config/git/config".source = symlink "${filesPath}/config/git/config";
+      ".config/git/ignore".source = symlink "${filesPath}/config/git/ignore";
+      ".config/git/template".source = symlink "${filesPath}/config/git/template";
+      ".config/just/justfile".source = symlink "${filesPath}/config/just/justfile";
+      ".config/tmux".source = symlink "${filesPath}/config/tmux";
+      ".config/wezterm/wezterm.lua".source = symlink "${filesPath}/config/wezterm/wezterm.lua";
+      ".config/yamlfmt/yamlfmt.yml".source = symlink "${filesPath}/config/yamlfmt/yamlfmt.yml";
+      ".config/yamllint/config".source = symlink "${filesPath}/config/yamllint/config";
+      ".gdbinit".source = symlink "${filesPath}/gdbinit";
+      ".markdownlint.jsonc".source = symlink "${filesPath}/markdownlint.jsonc";
+      ".mdlrc".source = symlink "${filesPath}/mdlrc";
+      ".pdbrc".source = symlink "${filesPath}/pdbrc";
+      ".vmdrc".source = symlink "${filesPath}/vmdrc";
+      ".zprofile".source = symlink "${filesPath}/zprofile";
+      ".zshenv".source = symlink "${filesPath}/zshenv";
+      ".zshrc".source = symlink "${filesPath}/zshrc";
     };
   };
 
