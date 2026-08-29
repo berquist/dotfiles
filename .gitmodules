@@ -2,6 +2,3 @@
 	path = dotfiles-private
 	url = https://github.com/berquist/dotfiles-private.git
 	branch = main
-[submodule "dotdrop"]
-	path = dotdrop
-	url = https://github.com/deadc0de6/dotdrop.git
