@@ -35,7 +35,6 @@
     firefox
     ghostty
     gitFull
-    home-manager
     mosh
     pop-gtk-theme
     pop-icon-theme
