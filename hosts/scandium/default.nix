@@ -36,8 +36,6 @@
     ghostty
     gitFull
     mosh
-    pop-gtk-theme
-    pop-icon-theme
     pptp
     sshfs
     unzip

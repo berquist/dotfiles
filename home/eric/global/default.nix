@@ -139,7 +139,7 @@ in
       pinentry = {
         # Ensure the Nix-provided pinentry is used; this will set
         # `pinentry-program /nix/store/...`.
-        package = pkgs.pinentry-all;
+        package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-all;
       };
     };
   };

@@ -8,11 +8,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1788061608,
-        "narHash": "sha256-/WA9pt0XQ6e1JNZbLRJOi3LNm1brNp0u0FxW7BayNj8=",
+        "lastModified": 1788064660,
+        "narHash": "sha256-BBONY2CDWe81hs7fcRg6mxO4D49/rGeUVpi2J+qoUPw=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "62709d0dc2eb817041d49f6156dcfafb715c7c48",
+        "rev": "d8c4d9394a300c80b1eb49dfc4cfe2c5a91b1170",
         "type": "github"
       },
       "original": {
@@ -25,6 +25,27 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787797243,
+        "narHash": "sha256-8+Q7NOB7RPajRjA4pbCDLzqH+MTjnG9x6LUPLfL2joA=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "99c9ec63390f1d8c14d95d9e8b17cc29cfbd4e11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "master",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager-x86_64-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-x86_64-darwin"
         ]
       },
       "locked": {
@@ -44,16 +65,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1787848966,
-        "narHash": "sha256-7gDpu5hpq0rOYnYMcOWqSzquK4HA/xU8Xf3CjUBOOJA=",
+        "lastModified": 1787900134,
+        "narHash": "sha256-VYXO0XZlgj06dxJZRhrD3WoSsvq/c7+/Akyoa22pefw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d57af924f160a5084293c71c2043f058bd1cdb60",
+        "rev": "83199d0d373dd3ac2b9a1996b1d0263f76ab7a4c",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-26.05",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -74,11 +95,29 @@
         "type": "github"
       }
     },
+    "nixpkgs-x86_64-darwin": {
+      "locked": {
+        "lastModified": 1787940818,
+        "narHash": "sha256-vFzVv78WlyEbTyV5BbrnicnV159wC0YPOcBe3QagyBI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f6107e546a5012172d93e79f1f7950da02ad798f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-26.05-darwin",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "home-manager-x86_64-darwin": "home-manager-x86_64-darwin",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-x86_64-darwin": "nixpkgs-x86_64-darwin"
       }
     }
   },

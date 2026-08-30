@@ -2,10 +2,17 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager/master";
+    };
+
+    nixpkgs-x86_64-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
+
+    home-manager-x86_64-darwin = {
+      inputs.nixpkgs.follows = "nixpkgs-x86_64-darwin";
       url = "github:nix-community/home-manager/release-26.05";
     };
 
@@ -18,7 +25,9 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-x86_64-darwin,
       home-manager,
+      home-manager-x86_64-darwin,
       ...
     }@inputs:
     {
@@ -32,13 +41,13 @@
             ./hosts/osmium
           ];
         };
-	# personal desktop (new)
-	sanguinello = nixpkgs.lib.nixosSystem {
-	  specialArgs = { inherit inputs; };
-	  modules = [
-	    ./hosts/sanguinello
-	  ];
-	};
+        # personal desktop (new)
+        sanguinello = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/sanguinello
+          ];
+        };
         # personal laptop
         scandium = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
@@ -58,7 +67,7 @@
           modules = [ ./home/eric/osmium.nix ];
         };
         "ejberqu@s1096537" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home/ejberqu/s1096537.nix ];
         };
@@ -68,15 +77,15 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home/eric/scandium.nix ];
         };
-	# personal desktop (new)
-	"eric@sanguinello" = home-manager.lib.homeManagerConfiguration {
+        # personal desktop (new)
+        "eric@sanguinello" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home/eric/sanguinello.nix ];
-	};
+        };
         # personal laptop
-        "eric@sodium" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+        "eric@sodium" = home-manager-x86_64-darwin.lib.homeManagerConfiguration {
+          pkgs = nixpkgs-x86_64-darwin.legacyPackages.x86_64-darwin;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home/eric/sodium.nix ];
         };
