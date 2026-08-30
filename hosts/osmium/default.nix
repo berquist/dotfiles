@@ -13,39 +13,28 @@
     ../common/global
   ];
 
-  nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
-    settings = {
-      cores = 16;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      trusted-users = [
-        "root"
-        "eric"
-      ];
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  console.useXkbConfig = true;
 
-  time.timeZone = "America/New_York";
-
-  networking = {
-    hostName = "osmium";
-    networkmanager = {
-      enable = true;
+  documentation = {
+    man = {
+      cache.enable = true;
     };
   };
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    ghostty
+  ];
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -62,16 +51,60 @@
     };
   };
 
-  services.xserver = {
-    enable = true;
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
-    xkb = {
-      layout = "us";
-      variant = "";
+  networking = {
+    hostName = "osmium";
+    networkmanager = {
+      enable = true;
     };
   };
-  console.useXkbConfig = true;
+
+  nix = {
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+
+    package = pkgs.lixPackageSets.stable.lix;
+
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+    settings = {
+      cores = 16;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "eric"
+      ];
+    };
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      inputs.emacs-overlay.overlays.emacs
+      (final: prev: {
+        inherit (prev.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
+    ];
+  };
+
+  programs = {
+    firefox = {
+      enable = true;
+    };
+    zsh = {
+      enable = true;
+    };
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -89,7 +122,37 @@
     #media-session.enable = true;
   };
 
-  users.users.eric = {
+  # valid for 60 minutes instead of the default 5
+  security.sudo.extraConfig = ''
+    Defaults        timestamp_timeout=60
+  '';
+
+  services = {
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = "no";
+      };
+    };
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
+    zerotierone = {
+      enable = true;
+      joinNetworks = [ "abfd31bd47409170" ];
+    };
+  };
+
+  time.timeZone = "America/New_York";
+
+  users.users."eric" = {
     description = "Eric Berquist";
     extraGroups = [
       "networkmanager"
@@ -102,131 +165,6 @@
     shell = pkgs.zsh;
   };
 
-  # valid for 60 minutes instead of the default 5
-  security.sudo.extraConfig = ''
-    Defaults        timestamp_timeout=60
-  '';
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      inputs.emacs-overlay.overlays.emacs
-    ];
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    ghostty
-  ];
-
-  programs = {
-    # TODO shouldn't this be per user?
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
-    zsh = {
-      enable = true;
-    };
-  };
-
-  services = {
-    emacs = {
-      enable = true;
-      package = pkgs.emacs30;
-    };
-    forgejo = {
-      enable = true;
-      settings = {
-        server = {
-          # default is 3000
-          HTTP_PORT = 3003;
-        };
-      };
-    };
-    guix = {
-      enable = true;
-    };
-    jenkins = {
-      enable = true;
-      # default is 8080
-      port = 8082;
-    };
-    jupyterhub = {
-      enable = true;
-      # default is 8000
-      port = 8083;
-    };
-    komga = {
-      enable = true;
-      settings = {
-        server = {
-          # default is 8080
-          port = 8081;
-        };
-      };
-    };
-    lanraragi = {
-      enable = true;
-      # default is 3000
-      port = 3001;
-      # redis = {
-      #   port = 6380;
-      # };
-    };
-    openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = false;
-        PermitRootLogin = "no";
-      };
-    };
-    plex = {
-      enable = true;
-    };
-    renovate = {
-      enable = true;
-    };
-    slurm = {
-      client = {
-        enable = false;
-      };
-      server = {
-        enable = false;
-      };
-    };
-    suwayomi-server = {
-      enable = true;
-      settings = {
-        server = {
-          autoDownloadNewChapters = true;
-          downloadAsCbz = true;
-          extensionRepos = [
-            "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"
-          ];
-          # default is 8080
-          port = 4567;
-        };
-      };
-    };
-    transmission = {
-      enable = true;
-    };
-    woodpecker-server = {
-      enable = true;
-    };
-    zerotierone = {
-      enable = true;
-      joinNetworks = [ "abfd31bd47409170" ];
-    };
-  };
-
   virtualisation = {
     containers.enable = true;
     podman = {
@@ -237,11 +175,5 @@
     };
   };
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 }
