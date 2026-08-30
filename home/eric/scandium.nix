@@ -8,6 +8,7 @@
   home = {
     packages = with pkgs; [
       # cli/tui
+      dconf2nix
       mediainfo
 
       # gui

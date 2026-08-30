@@ -31,7 +31,6 @@
   environment.systemPackages = with pkgs; [
     cachix
     colordiff
-    dconf2nix
     firefox
     ghostty
     gitFull

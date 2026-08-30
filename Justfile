@@ -1,8 +1,4 @@
-[linux]
 hostname := `hostname -s`
-
-[macos]
-hostname := `scutil --get LocalHostName`
 
 whoami := `whoami`
 
