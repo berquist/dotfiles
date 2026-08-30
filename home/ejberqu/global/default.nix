@@ -6,10 +6,15 @@
   ...
 }:
 
+let
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+  filesPath = "${config.home.homeDirectory}/dotfiles/dotfiles";
+in
 {
   home = {
     username = lib.mkDefault "ejberqu";
     packages = with pkgs; [
+      # cli/tui
       autoconf
       automake
       basedpyright
@@ -36,6 +41,7 @@
       nix-prefetch
       nix-search-cli
       nixfmt
+      prek
       pyenv
       (python3.withPackages (
         ps: with ps; [
@@ -54,11 +60,12 @@
       shellcheck
       tree
       uv
-      vale
+      wget
       yq
 
       fira-mono
 
+      # gui
       wezterm
     ];
   };
@@ -77,11 +84,11 @@
     direnv.enable = true;
     emacs = {
       enable = false;
-      package = pkgs.emacs;
       extraPackages = (epkgs: [ epkgs.treesit-grammars.with-all-grammars ]);
     };
     ghostty = {
       enable = true;
+      package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
     };
     gpg = {
       enable = true;

@@ -53,16 +53,10 @@
     delta
     exercism
     imagemagick
-    mediainfo
-    onefetch
-    picard
     pinentry-emacs
     subversion
     valgrind
     wakatime-cli
-    wezterm
-    zoom-us
-    zotero
   ];
 
   fonts = {

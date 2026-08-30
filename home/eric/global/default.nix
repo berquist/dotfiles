@@ -15,11 +15,13 @@ in
     username = lib.mkDefault "eric";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     packages = with pkgs; [
+      # cli/tui
       basedpyright
       bat
       difftastic
       duf
       eza
+      fastfetch
       fd
       file
       gh
@@ -32,10 +34,13 @@ in
       nix-prefetch
       nix-search-cli
       nixfmt
+      onefetch
+      prek
       (python3.withPackages (
         ps: with ps; [
           editorconfig
           flake8
+          git-filter-repo
           libxml2
           mypy
           pylint
@@ -48,8 +53,9 @@ in
       shellcheck
       tmux
       tree
-      vale
+      uv
       wget
+      yq
     ];
     file = {
       ".aspell.en.prepl".source = symlink "${filesPath}/aspell.en.prepl";
@@ -96,7 +102,6 @@ in
     direnv.enable = true;
     emacs = {
       enable = true;
-      package = pkgs.emacs;
       extraPackages = (epkgs: [ epkgs.treesit-grammars.with-all-grammars ]);
     };
     ghostty = {

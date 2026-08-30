@@ -1,9 +1,22 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ./global
   ];
 
-  home.stateVersion = "26.05";
+  home = {
+    packages = with pkgs; [
+      # cli/tui
+      mediainfo
+
+      # gui
+      picard
+      plexamp
+      protege-distribution
+      spotify
+      wezterm
+    ];
+    stateVersion = "26.05";
+  };
 }

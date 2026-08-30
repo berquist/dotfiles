@@ -85,7 +85,6 @@
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      inputs.emacs-overlay.overlays.emacs
       (final: prev: {
         inherit (prev.lixPackageSets.stable)
           nixpkgs-review
