@@ -2,13 +2,13 @@
   description = "Example nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nix-darwin = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
       url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     };
     nix-darwin-emacs = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
       url = "github:nix-giant/nix-darwin-emacs";
     };
     my-fonts.url = "path:/Users/eric/development/my-fonts";
@@ -19,7 +19,7 @@
       self,
       nix-darwin,
       nix-darwin-emacs,
-      nixpkgs,
+      nixpkgs-darwin,
       my-fonts,
     }:
     let

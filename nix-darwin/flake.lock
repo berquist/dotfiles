@@ -55,7 +55,7 @@
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-darwin"
         ]
       },
       "locked": {
@@ -77,7 +77,7 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-darwin"
         ]
       },
       "locked": {
@@ -110,7 +110,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs-darwin": {
       "locked": {
         "lastModified": 1786444855,
         "narHash": "sha256-Uu0Qa0gg5Ztgl7EYhAEIDy0jJioPPP43zLqSNoMlAV4=",
@@ -131,7 +131,7 @@
         "my-fonts": "my-fonts",
         "nix-darwin": "nix-darwin",
         "nix-darwin-emacs": "nix-darwin-emacs",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs-darwin": "nixpkgs-darwin"
       }
     },
     "systems": {
