@@ -43,13 +43,12 @@
         start_service = true;
         restart_service = "changed";
       }
-      "dotdrop"
       "mas"
     ];
     casks = [
       "discord"
       "firefox"
-      "ghostty@tip"
+      "ghostty"
       "plexamp"
       "qobuz"
       # Racket is packaged for macOS, but the bundled DrRacket doesn't start?
