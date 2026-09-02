@@ -88,7 +88,7 @@
               ];
             };
           }
-          ./nix-darwin/neon.nix
+          ./hosts/neon
         ];
       };
 
