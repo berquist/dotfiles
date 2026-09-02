@@ -21,15 +21,16 @@
       url = "github:nix-community/emacs-overlay";
     };
 
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin = {
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-darwin/nix-darwin/master";
     };
+
     nix-darwin-emacs = {
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-giant/nix-darwin-emacs";
     };
+
     my-fonts.url = "path:/Users/eric/development/my-fonts";
   };
 
@@ -42,7 +43,6 @@
       self,
       nix-darwin,
       nix-darwin-emacs,
-      nixpkgs-darwin,
       my-fonts,
       ...
     }@inputs:
