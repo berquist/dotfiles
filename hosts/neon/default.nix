@@ -19,6 +19,7 @@
     fd
     gh
     glab
+    home-manager
     htop
     just
     nano

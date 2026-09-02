@@ -41,6 +41,8 @@
     xdg-desktop-portal
     vlc
 
+    home-manager
+
     # this computer's home-manager
     act
     aspell
