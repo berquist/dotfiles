@@ -1,5 +1,5 @@
 {
-  description = "My NixOS configuration";
+  description = "My NixOS/nix-darwin configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -20,6 +20,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/emacs-overlay";
     };
+
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-darwin = {
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      url = "github:nix-darwin/nix-darwin/master";
+    };
+    nix-darwin-emacs = {
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      url = "github:nix-giant/nix-darwin-emacs";
+    };
+    my-fonts.url = "path:/Users/eric/development/my-fonts";
   };
 
   outputs =
@@ -28,6 +39,11 @@
       nixpkgs-x86_64-darwin,
       home-manager,
       home-manager-x86_64-darwin,
+      self,
+      nix-darwin,
+      nix-darwin-emacs,
+      nixpkgs-darwin,
+      my-fonts,
       ...
     }@inputs:
     {
@@ -55,6 +71,25 @@
             ./hosts/scandium
           ];
         };
+      };
+
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#neon
+      darwinConfigurations."neon" = nix-darwin.lib.darwinSystem {
+        specialArgs = {
+          inherit self;
+          inherit my-fonts;
+        };
+        modules = [
+          {
+            nixpkgs = {
+              overlays = [
+                # nix-darwin-emacs.overlays.emacs
+              ];
+            };
+          }
+          ./nix-darwin/neon.nix
+        ];
       };
 
       # Standalone home-manager configuration entrypoint
