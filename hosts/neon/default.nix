@@ -5,30 +5,11 @@
   ...
 }:
 {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    # TODO migrate some to home-manager
-    bat
-    caffeine
-    difftastic
-    duf
-    emacs
-    eza
-    fastfetch
-    fd
-    gh
-    glab
+    # cli/tui
     home-manager
-    htop
-    just
     nano
-    prek
-    ripgrep
-    rsync
-    tree
-    wezterm
-    wget
+    # gui
   ];
 
   fonts.packages = [
@@ -55,7 +36,6 @@
       "racket"
       "slack"
       "spotify"
-      "sshfs-mac"
       "vlc"
       "xld"
       "zerotier-one"
@@ -99,18 +79,15 @@
     gnupg.agent.enable = true;
   };
 
-  services = {
-    emacs = {
-      enable = true;
-    };
-  };
-
   system = {
     # Set Git commit hash for darwin-version.
     configurationRevision = self.rev or self.dirtyRev or null;
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToControl = true;
+      # This is uncommented because it affects all keyboards, not just the
+      # built-in one.
+      #
       # swapLeftCommandAndLeftAlt = true;
     };
     primaryUser = "eric";
