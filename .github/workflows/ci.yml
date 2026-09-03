@@ -14,7 +14,7 @@ permissions: {}
 
 jobs:
   prechecks:
-    uses: ./.github/workflows/pre-commit.yml
+    uses: $/.github/workflows/pre-commit.yml
   all:
     name: CI success
     needs: [prechecks]
