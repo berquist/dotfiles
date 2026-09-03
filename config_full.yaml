@@ -179,6 +179,14 @@ profiles:
     - d_tmux
     - f_git_template
     - f_yamlfmt.yml
+  en272:
+    dotfiles:
+    - d_bat
+    - d_emacs.d
+    - d_tmux
+    - f_git_config
+    - f_git_ignore
+    - f_git_template
   gadreel:
     dotfiles:
     - d_bat
