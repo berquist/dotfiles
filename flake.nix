@@ -31,6 +31,11 @@
       url = "github:nix-giant/nix-darwin-emacs";
     };
 
+    nur-berquist = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:berquist/nur";
+    };
+
     my-fonts.url = "path:/Users/eric/development/my-fonts";
   };
 

@@ -1,8 +1,14 @@
-{ config, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     ./global
+    inputs.nur-berquist.homeModules.hydrus-client
   ];
 
   dconf = {
@@ -57,6 +63,11 @@
         # { package = pkgs.gnomeExtensions.night-theme-switcher; }
         { package = pkgs.gnomeExtensions.random-wallpaper; }
       ];
+    };
+    hydrus-client = {
+      enable = true;
+      host = "172.22.207.41";
+      passwordFile = "${config.home.homeDirectory}/.config/xpra/hydrus-password";
     };
   };
 }
