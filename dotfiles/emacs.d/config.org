@@ -2328,6 +2328,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (use-package paredit
+  :ensure (:type git :host github :repo "emacsmirror/paredit")
   :hook (((emacs-lisp-mode inferior-emacs-lisp-mode lisp-mode scheme-mode cider-repl-mode clojure-mode hy-mode racket-mode slime-mode) . paredit-mode)
          ;; TODO I dont't think this works?
          ;; (paredit-mode . (lambda () (electric-indent-local-mode -1)))
