@@ -73,6 +73,15 @@
         "flakes"
         "nix-command"
       ];
+      max-jobs = 1;
+      substituters = [
+        "https://nix-qchem.cachix.org"
+        "https://nur-berquist.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-qchem.cachix.org-1:ZjRh1PosWRj7qf3eukj4IxjhyXx6ZwJbXvvFk3o3Eos="
+        "nur-berquist.cachix.org-1:Hoz7CuoAaFYOUxiy5zcrHEM82xJKjilI24ly0W+1kq4="
+      ];
       trusted-users = [ "eric" ];
     };
   };
