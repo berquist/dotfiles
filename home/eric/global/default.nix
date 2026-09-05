@@ -112,6 +112,9 @@ in
       enable = true;
       mutableKeys = true;
       mutableTrust = true;
+      settings = {
+        pinentry-mode = "loopback";
+      };
     };
     home-manager.enable = true;
     less.enable = true;
@@ -128,6 +131,7 @@ in
       defaultCacheTtl = 60480000;
       defaultCacheTtlSsh = 60480000;
       enable = true;
+      enableBashIntegration = false;
       enableSshSupport = true;
       enableZshIntegration = true;
       extraConfig = ''
