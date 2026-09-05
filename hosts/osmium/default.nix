@@ -73,8 +73,8 @@
     settings = {
       cores = 16;
       experimental-features = [
-        "nix-command"
         "flakes"
+        "nix-command"
       ];
       trusted-users = [
         "root"

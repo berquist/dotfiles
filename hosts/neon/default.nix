@@ -51,7 +51,10 @@
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
     settings = {
-      experimental-features = "nix-command flakes";
+      experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
       sandbox = true;
     };
   };
