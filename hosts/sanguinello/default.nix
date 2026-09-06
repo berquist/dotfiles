@@ -1,8 +1,14 @@
-{ config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.nix-amd-ai.nixosModules.default
   ];
 
   boot = {
@@ -20,6 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    amdtop
     home-manager
   ];
 
@@ -43,6 +50,21 @@
       "ServerAliveInterval=15"
       "ServerAliveCountMax=3"
     ];
+  };
+
+  hardware.amd-npu = {
+    ds4.enable = false;
+    enable = true;
+    enableFastFlowLM = true;
+    enableImageGen = true;
+    enableLemonade = true;
+    enableNPU = true;
+    enableROCm = true;
+    enableVulkan = true;
+    gpuTarget = "gfx1151";
+    lemonade = {
+      user = "eric";
+    };
   };
 
   i18n = {
@@ -144,6 +166,18 @@
   services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
+    # use noamsto/nix-amd-ai instead
+    # llama-cpp = {
+    #   enable = true;
+    #   openFirewall = true;
+    #   package = (
+    #     pkgs.llama-cpp.override {
+    #       blasSupport = true;
+    #       rocmSupport = true;
+    #       vulkanSupport = true;
+    #     }
+    #   );
+    # };
     openssh = {
       enable = true;
     };
@@ -166,6 +200,8 @@
     description = "Eric Berquist";
     extraGroups = [
       "networkmanager"
+      "render" # nix-amd-ai
+      "video" # nix-amd-ai
       "wheel"
     ];
     isNormalUser = true;

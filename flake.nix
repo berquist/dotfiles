@@ -37,6 +37,8 @@
     };
 
     my-fonts.url = "path:/Users/eric/development/my-fonts";
+
+    nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };
 
   outputs =
