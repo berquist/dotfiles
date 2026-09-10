@@ -28,6 +28,7 @@
     ];
     casks = [
       "discord"
+      "domzilla-caffeine"
       "firefox"
       "ghostty"
       "plexamp"
