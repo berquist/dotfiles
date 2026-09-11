@@ -613,8 +613,10 @@ using `eshell-get-input'."
 (use-package colonoscopy-theme)
 (use-package dracula-theme)
 (use-package ef-themes)
-(use-package plan9-theme)
-(use-package rebecca-theme)
+(use-package plan9-theme
+  :ensure (:type git :host github :repo "berquist/plan9-theme.el" :branch "elisp-enable-lexical-binding"))
+(use-package rebecca-theme
+  :ensure (:type git :host github :repo "berquist/rebecca-theme" :branch "consistency"))
 (use-package tron-legacy-theme)
 (add-to-list 'custom-theme-load-path (expand-file-name "themes/" user-emacs-directory))
 ;; ...but ultimately this is my daily driver.
