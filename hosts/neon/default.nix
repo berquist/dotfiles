@@ -27,6 +27,7 @@
       "mas"
     ];
     casks = [
+      "avogadro"
       "discord"
       "domzilla-caffeine"
       "firefox"
@@ -35,12 +36,8 @@
       "qobuz"
       # Racket is packaged for macOS, but the bundled DrRacket doesn't start?
       "racket"
-      "slack"
-      "spotify"
       "vlc"
-      "xld"
       "zerotier-one"
-      "zotero"
     ];
     enable = true;
     enableZshIntegration = true;

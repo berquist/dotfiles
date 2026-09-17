@@ -10,7 +10,15 @@
     packages = with pkgs; [
       # cli/tui
       # gui
+      # TODO avogadrolibs not available on aarch64-darwin
+      # avogadro2
+      # TODO broken?
+      # discord
+      slack
+      spotify
       wezterm
+      xld
+      zotero
     ];
     # Home Manager can also manage your environment variables through
     # 'home.sessionVariables'. These will be explicitly sourced when using a
