@@ -229,7 +229,7 @@ Basic, Font Lock, Isearch, Gnus, Message, and Ansi-Color faces
    ;; `(org-agenda-structure ((,class (:inherit ))))
    `(org-agenda-date ((,class (:inherit org-agenda-structure))))
    `(org-block ((,class (:inherit shadow
-			                      ,@(and (>= emacs-major-version 27) '(:extend t))))))
+                                  ,@(and (>= emacs-major-version 27) '(:extend t))))))
    `(org-code ((,class (:inherit shadow))))
    ;; `(org-column ((,class (:inherit ))))
    ;; `(org-column-title ((,class (:inherit ))))
@@ -298,3 +298,7 @@ Basic, Font Lock, Isearch, Gnus, Message, and Ansi-Color faces
 ;;     magenta: '#e5bdff'
 ;;     cyan:    '#c2fefa'
 ;;     white:   '#ffffff'
+
+;; Local Variables:
+;; indent-tabs-mode: nil
+;; End:
