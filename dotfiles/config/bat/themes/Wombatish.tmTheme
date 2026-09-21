@@ -23,13 +23,10 @@
                 <string>#2D2D2D</string>
                 <key>selection</key>
                 <string>#444444</string>
-
                 <key>gutter</key>
                 <string>#181818</string>
                 <key>gutterForeground</key>
                 <string>#888</string>
-
-
                 <key>findHighlight</key>
                 <string>#FFE792</string>
                 <key>findHighlightForeground</key>
@@ -38,20 +35,16 @@
                 <string>#222218</string>
                 <key>activeGuide</key>
                 <string>#9D550FB0</string>
-
                 <key>bracketsForeground</key>
                 <string>#F8F8F2A5</string>
                 <key>bracketsOptions</key>
                 <string>underline</string>
-
                 <key>bracketContentsForeground</key>
                 <string>#F8F8F2A5</string>
                 <key>bracketContentsOptions</key>
                 <string>underline</string>
-
                 <key>tagsOptions</key>
                 <string>underline</string>
-
             </dict>
         </dict>
         <dict>
@@ -102,10 +95,6 @@
                 <string>#95E454</string>
             </dict>
         </dict>
-
-
-
-
         <!-- html attribute value, css import url -->
         <dict>
             <key>name</key>
@@ -120,7 +109,6 @@
                 <string>#C7D485</string>
             </dict>
         </dict>
-
         <!-- css numberic value -->
         <dict>
             <key>name</key>
@@ -133,7 +121,6 @@
                 <string>#65D9DB</string>
             </dict>
         </dict>
-
         <dict>
             <key>name</key>
             <string>Built-in constant</string>
@@ -145,8 +132,6 @@
                 <string>#E5786D</string>
             </dict>
         </dict>
-
-
         <!-- css unit for numberic value -->
         <dict>
             <key>name</key>
@@ -159,8 +144,6 @@
                 <string>#65D9DB</string>
             </dict>
         </dict>
-
-
         <!-- css variable -->
         <dict>
             <key>name</key>
@@ -173,11 +156,6 @@
                 <string>#B282FA</string>
             </dict>
         </dict>
-
-
-
-
-
         <!-- css media query, element selector -->
         <dict>
             <key>name</key>
@@ -190,7 +168,6 @@
                 <string>#44BCFC</string>
             </dict>
         </dict>
-
         <dict>
             <key>name</key>
             <string>Language Keyword</string>
@@ -202,8 +179,6 @@
                 <string>#44BCFC</string>
             </dict>
         </dict>
-
-
         <dict>
             <key>name</key>
             <string>Module Keyword</string>
@@ -217,7 +192,6 @@
                 <string>#8AC6F2</string>
             </dict>
         </dict>
-
         <!-- operators: +, -, *, /, = -->
         <dict>
             <key>name</key>
@@ -230,10 +204,6 @@
                 <string>#44BCFC</string>
             </dict>
         </dict>
-
-
-
-
         <dict>
             <key>name</key>
             <string>Floating-point infix operators</string>
@@ -359,9 +329,6 @@
                 <string>italic</string>
             </dict>
         </dict>
-
-
-
         <!-- diff settings -->
         <dict>
             <key>name</key>
@@ -407,12 +374,6 @@
                 <string>#E6DB74</string>
             </dict>
         </dict>
-
-
-
-
-
-
         <!-- html tag -->
         <dict>
             <key>name</key>
@@ -425,7 +386,6 @@
                 <string>#82CFFF</string>
             </dict>
         </dict>
-
         <!-- html tag brackets -->
         <dict>
             <key>name</key>
@@ -438,7 +398,6 @@
                 <string>#6B9FBF</string>
             </dict>
         </dict>
-
         <!-- css class, html attribute name -->
         <dict>
             <key>name</key>
@@ -451,8 +410,6 @@
                 <string>#99FF00</string>
             </dict>
         </dict>
-
-
         <dict>
             <key>name</key>
             <string>Library function</string>
@@ -464,8 +421,6 @@
                 <string>#CAE682</string>
             </dict>
         </dict>
-
-
         <!-- css property string value -->
         <dict>
             <key>name</key>
@@ -478,7 +433,6 @@
                 <string>#FF5C64</string>
             </dict>
         </dict>
-
         <!-- css property, atribute name -->
         <dict>
             <key>name</key>
@@ -491,8 +445,6 @@
                 <string>#82E699</string>
             </dict>
         </dict>
-
-
         <dict>
             <key>name</key>
             <string>Library variable</string>
@@ -515,8 +467,6 @@
                 <string>#E62424</string>
             </dict>
         </dict>
-
-
         <!-- css specific -->
 
     <!--    <dict>
@@ -532,8 +482,6 @@
                 <string>#268BD2</string>
             </dict>
         </dict> -->
-
-
         <!-- js specific -->
         <dict>
             <key>name</key>
@@ -559,8 +507,6 @@
                 <string>#FFCE4D</string>
             </dict>
         </dict>
-
-
         <dict>
             <key>name</key>
             <string>JS: Function</string>
@@ -627,8 +573,6 @@
                 <string>#A6E22E</string>
             </dict>
         </dict>
-
-
         <!-- search result: line without match -->
         <dict>
             <key>scope</key>
@@ -639,7 +583,6 @@
                 <string>#65D9DBA0</string>
             </dict>
         </dict>
-
         <!-- search result: match url -->
         <dict>
             <key>scope</key>
@@ -650,9 +593,6 @@
                 <string>#A6E22E</string>
             </dict>
         </dict>
-
-
-
     </array>
     <key>uuid</key>
     <string>5498E367-2B43-4A31-9746-7CE8B09D4929</string>
