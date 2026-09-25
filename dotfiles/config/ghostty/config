@@ -44,8 +44,7 @@
 
 font-family = Panic Sans
 cursor-style = block_hollow
+shell-integration-features = no-cursor,sudo,title,ssh-env,ssh-terminfo,path
 theme = dark:Wombat,light:Rebecca
 window-padding-x = 4
 window-padding-y = 2,4
-
-term = xterm-256color
