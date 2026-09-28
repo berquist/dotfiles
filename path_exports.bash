@@ -28,6 +28,12 @@ prepend_to_path "${HOME}/.pixi/bin"
 prepend_to_path "${HOME}/.rbenv/bin"
 prepend_to_path "${HOME}/.lmstudio/bin"
 
+NVM_DIR="$HOME/.nvm"
+if [ -d "${NVM_DIR}" ]; then
+    export NVM_DIR
+    source "${NVM_DIR}"/nvm.sh
+fi
+
 export apps="${HOME}"/opt/apps
 
 uname="$(uname)"

@@ -25,3 +25,7 @@ if [ -n "$GUIX_ENVIRONMENT" ]; then
         PS1="${BASH_REMATCH[1]} [env]\\\$ "
     fi
 fi
+
+if [ -d "${NVM_DIR}" ]; then
+    source "${NVM_DIR}"/bash_completion
+fi
