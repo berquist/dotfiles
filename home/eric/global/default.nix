@@ -24,6 +24,7 @@ in
       fastfetch
       fd
       file
+      forgejo-cli
       gh
       gitFull
       glab
