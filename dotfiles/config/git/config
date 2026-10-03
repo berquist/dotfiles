@@ -252,3 +252,6 @@
 # 	line-numbers = true
 # 	navigate = true
 # 	syntax-theme = Dracula
+
+[include]
+	path = ~/dotfiles/dotfiles-private/gitconfig
