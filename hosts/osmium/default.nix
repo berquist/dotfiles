@@ -37,6 +37,14 @@
     home-manager
   ];
 
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      fira
+      noto-fonts
+    ];
+  };
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {

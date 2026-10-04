@@ -61,6 +61,7 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       fira
+      noto-fonts
     ];
   };
 

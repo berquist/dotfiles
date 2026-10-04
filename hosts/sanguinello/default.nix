@@ -30,6 +30,14 @@
     home-manager
   ];
 
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      fira
+      noto-fonts
+    ];
+  };
+
   system.fsPackages = [ pkgs.sshfs ];
   fileSystems."/home/eric/meyeri" = {
     device = "eric@172.22.207.41:/home/eric";
