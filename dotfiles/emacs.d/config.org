@@ -598,29 +598,13 @@ using `eshell-get-input'."
 ** Themes
 
 #+begin_src emacs-lisp
-;; These are nice when I'm bored...
-(use-package abyss-theme)
-(use-package base16-theme)
-(use-package base16-eva-theme
-  :disabled t
-  :ensure (:type git
-           :host github
-           :repo "kjakapat/eva-theme"
-           :files ("emacs/templates/*.default"))
-  ;; :config
-  ;; (load-theme 'base16-eva t)
-  )
-(use-package colonoscopy-theme)
-(use-package dracula-theme)
-(use-package ef-themes)
 (use-package plan9-theme
   :ensure (:type git :host github :repo "berquist/plan9-theme.el" :branch "elisp-enable-lexical-binding"))
 (use-package rebecca-theme
   :ensure (:type git :host github :repo "berquist/rebecca-theme" :branch "consistency"))
-(use-package tron-legacy-theme)
 (add-to-list 'custom-theme-load-path (expand-file-name "themes/" user-emacs-directory))
-;; ...but ultimately this is my daily driver.
 ;; (load-theme 'wombat2 t)
+(use-package kusanagi-theme)
 
 (use-package circadian
   :hook (emacs-startup . circadian-setup)
