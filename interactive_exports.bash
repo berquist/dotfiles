@@ -30,3 +30,7 @@ fi
 
 GPG_TTY="$(tty)"
 export GPG_TTY
+
+if [[ -t 0 ]]; then
+    stty -ixon
+fi

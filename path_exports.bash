@@ -11,6 +11,7 @@ export RIPGREP_CONFIG_PATH="${HOME}"/dotfiles/ripgreprc
 
 source "${HOME}"/dotfiles/path.sh
 try_source "${HOME}"/dotfiles/pyenv.bash
+try_source "${HOME}"/dotfiles/rbenv.bash
 prepend_to_path "${HOME}"/personal_scripts
 prepend_to_path "${HOME}"/opt/bin
 prepend_to_path "${HOME}"/.local/bin
