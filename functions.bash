@@ -15,6 +15,7 @@ buildah_print() {
     buildah images --all
 }
 
+# Prune everything related to buildah.
 buildah_prune() {
     buildah containers --all
     buildah rm --all
@@ -25,6 +26,7 @@ buildah_prune() {
     buildah images --all
 }
 
+# Prune everything related to Docker.
 docker_prune() {
     docker container prune
     docker image prune --all
@@ -39,6 +41,7 @@ podman_print() {
     podman image ls --all
 }
 
+# Prune everything related to podman.
 podman_prune() {
     podman container prune
     podman image prune --all
@@ -68,4 +71,13 @@ spack-checksum-add() {
 spack_remove_modulepath() {
     MODULEPATH="$(echo "${MODULEPATH}" | tr ':' '\n' | sed '/spack/d' | tr '\n' ':')"
     export MODULEPATH
+}
+
+# Attach to a tmux server if one is running, otherwise start it under systemd.
+tmux-attach-or-new() {
+    if tmux has-session 2>/dev/null; then
+        tmux attach-session
+    else
+        systemd-run --user --scope --quiet --collect --unit=tmux-server -- tmux new-session
+    fi
 }
