@@ -77,7 +77,9 @@ spack_remove_modulepath() {
 tmux-attach-or-new() {
     if tmux has-session 2>/dev/null; then
         tmux attach-session
-    else
+    elif command -v systemd-run >/dev/null 2>&1; then
         systemd-run --user --scope --quiet --collect --unit=tmux-server -- tmux new-session
+    else
+        tmux new-session
     fi
 }
