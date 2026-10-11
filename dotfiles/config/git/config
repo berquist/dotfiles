@@ -111,6 +111,8 @@
 
 [init]
 	defaultBranch = main
+	defaultObjectFormat = sha256
+	defaultRefFormat = reftable
 
 [github]
 	user = berquist
