@@ -111,7 +111,11 @@
 
 [init]
 	defaultBranch = main
-	defaultObjectFormat = sha256
+	# This is hard blocked until there's a Lix release that fully supports it
+	# (https://git.lix.systems/lix-project/lix/issues/619).  A soft blocker is
+	# CppNix (https://github.com/NixOS/nix/issues/9980).
+	#
+	# defaultObjectFormat = sha256
 	defaultRefFormat = reftable
 
 [github]
