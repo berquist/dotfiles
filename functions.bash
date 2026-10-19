@@ -75,9 +75,9 @@ spack_remove_modulepath() {
 
 # Attach to a tmux server if one is running, otherwise start it under systemd.
 tmux-attach-or-new() {
-    if tmux has-session 2>/dev/null; then
+    if tmux has-session 2> /dev/null; then
         tmux attach-session
-    elif command -v systemd-run >/dev/null 2>&1; then
+    elif command -v systemd-run > /dev/null 2>&1; then
         systemd-run --user --scope --quiet --collect --unit=tmux-server -- tmux new-session
     else
         tmux new-session
