@@ -2597,6 +2597,12 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
                 :url "https://github.com/IndianBoy42/tree-sitter-just"
                 :ext "\\(?:\\.\\)?[Jj]ust\\(?:file\\)?\\'"))
     (add-to-list 'treesit-auto-langs 'just)))
+(use-package lean4-mode
+  :commands lean4-mode
+  :ensure (:type git
+                 :host github
+                 :repo "leanprover-community/lean4-mode"
+                 :files ("*.el" "data")))
 (use-package lox-mode
   :disabled t)
 (when ejb/has-treesit
