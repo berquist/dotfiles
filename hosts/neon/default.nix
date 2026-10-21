@@ -53,7 +53,8 @@
         "flakes"
         "nix-command"
       ];
-      sandbox = true;
+      # Too many silent problems
+      sandbox = false;
     };
   };
 
