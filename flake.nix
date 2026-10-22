@@ -36,7 +36,7 @@
       url = "github:berquist/nur";
     };
 
-    my-fonts.url = "path:/Users/eric/development/my-fonts";
+    my-fonts.url = "git+https://codeberg.org/berquist/my-fonts.nix";
 
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };

@@ -240,14 +240,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1783174426,
-        "narHash": "sha256-yLQWGRa5ohXXlYAtwIrJfel8wvLkF+FBHK86LMKuoQ8=",
-        "path": "/Users/eric/development/my-fonts",
-        "type": "path"
+        "lastModified": 1792642030,
+        "narHash": "sha256-rELNP3TyeZqqEHOVGLMS14pZWLYugbzIUgj2ZoWt23g=",
+        "ref": "refs/heads/main",
+        "rev": "c61a1faa3c04797c6f9a5149e2dea8b2387de836",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://codeberg.org/berquist/my-fonts.nix"
       },
       "original": {
-        "path": "/Users/eric/development/my-fonts",
-        "type": "path"
+        "type": "git",
+        "url": "https://codeberg.org/berquist/my-fonts.nix"
       }
     },
     "nix-amd-ai": {
