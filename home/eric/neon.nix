@@ -18,7 +18,8 @@
       spotify
       wezterm
       xld
-      zotero
+      # Nix package has insecure dependency
+      # zotero
     ];
     # Home Manager can also manage your environment variables through
     # 'home.sessionVariables'. These will be explicitly sourced when using a

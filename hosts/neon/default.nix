@@ -38,6 +38,8 @@
       "racket"
       "vlc"
       "zerotier-one"
+      # Nix package has insecure dependency
+      "zotero"
     ];
     enable = true;
     enableZshIntegration = true;
