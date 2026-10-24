@@ -1077,7 +1077,8 @@ Links:
                      company-backends)))))
 
 (use-package eglot
-  :hook (prog-mode . eglot-ensure)
+  :hook ((prog-mode . eglot-ensure)
+         (text-mode . eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
                ;; Additional clangd arguments
@@ -1086,7 +1087,9 @@ Links:
                     "--header-insertion-decorators=0"
                     "--header-insertion=never")))
   (add-to-list 'eglot-server-programs
-               '((nim-mode) . ("nimlangserver" "nimlsp"))))
+               '(text-mode . ("harper-ls" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               '(nim-mode . ("nimlangserver" "nimlsp"))))
 #+END_SRC
 
 * Debuggers
