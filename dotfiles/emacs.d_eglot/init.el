@@ -85,6 +85,10 @@
   :init
   (require 'treesit-auto))
 
+(use-package envrc
+  :init
+  (envrc-global-mode))
+
 (use-package eglot
   :hook (prog-mode . eglot-ensure))
 
@@ -108,7 +112,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages nil)
+ '(safe-local-variable-directories '("/Users/eric/development/github/rust/boys/")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

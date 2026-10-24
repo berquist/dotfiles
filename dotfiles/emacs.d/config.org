@@ -1077,7 +1077,11 @@ Links:
                         (funcall (-rpartial 'ejb/comparator ejb/company-ordering) e1 e2))
                      company-backends)))))
 
+(use-package eglot
+  :hook (prog-mode . eglot-ensure))
+
 (use-package lsp-mode
+  :disabled t
   :commands lsp
   :hook ((c-mode c++-mode fortran-mode f90-mode python-mode js-mode sh-mode) . lsp-deferred)
   :custom
@@ -1225,6 +1229,8 @@ Links:
 ** General
 
 #+begin_src emacs-lisp
+(setopt flymake-mode-line-lighter "FM")
+
 (use-package flymake
   :disabled t
   :init
@@ -1765,6 +1771,7 @@ the header, based upon the associated source code file."
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-java
+  :disabled t
   :after lsp-mode
   :hook ((java-mode java-ts-mode) . lsp-deferred)
   :custom
@@ -1796,7 +1803,7 @@ users are likely to use them.
 #+begin_src emacs-lisp
 (use-package auctex
   :ensure (:type git :host github :repo "emacsmirror/auctex" :inherit nil)
-  :hook ((latex-mode LaTeX-mode) . lsp-deferred)
+  ;; :hook ((latex-mode LaTeX-mode) . lsp-deferred)
   ;; TODO this doesn't work anymore
   ;; :config
   ;; (add-to-list 'texmathp-tex-commands "dmath" 'env-on)
@@ -1989,7 +1996,7 @@ This section needs to come after the Markdown section so that CMake files get re
 
 #+begin_src emacs-lisp
 (use-package cmake-mode
-  :hook (cmake-mode . lsp-deferred)
+  ;; :hook (cmake-mode . lsp-deferred)
   :custom
   ;; This isn't working
   (cmake-tab-width tab-width))
@@ -2004,7 +2011,8 @@ This section needs to come after the Markdown section so that CMake files get re
       (mapc
        (lambda (s) (add-to-list 'auto-mode-alist `(,s . cmake-ts-mode)))
        cmake-modes))
-    (add-hook 'cmake-ts-mode-hook #'lsp-deferred)))
+    ;; (add-hook 'cmake-ts-mode-hook #'lsp-deferred)
+    ))
 #+end_src
 
 * Shell Scripts
@@ -2197,7 +2205,7 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode
-  :hook (yaml-mode . lsp-deferred)
+  ;; :hook (yaml-mode . lsp-deferred)
   ;; The first is a decent assumption for ISI-specific pseudo-YAML files.
   :mode
   (("\\.params\\'" . yaml-mode)
@@ -2296,6 +2304,7 @@ current buffer, return its path, otherwise nil."
   (rustic-cargo-clippy-trigger-fix 'on-compile)
   (rustic-format-trigger 'on-save)
   (rustic-indent-method-chain t)
+  (rustic-lsp-client 'eglot)
   :config
   (defun rustic-docstring-around-dwim ()
     "Use `comment-dwim' to make a Rust docstring for the thing surrounding the comment.
@@ -2389,7 +2398,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (use-package clojure-mode
-  :hook (clojure-mode . lsp-deferred)
+  ;; :hook (clojure-mode . lsp-deferred)
   :mode (("\\.bb\\'" . clojure-mode))
   :config
   (defun cider-interactive-notify-and-eval (code)
@@ -2523,7 +2532,7 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :hook (
          ;; (nim-mode . ejb/fix-company-ordering)
          ;; (nim-mode . nimsuggest-mode)
-         (nim-mode . lsp-deferred)
+         ;; (nim-mode . lsp-deferred)
          (nim-mode . (lambda () (dtrt-indent-mode -1)))
          )
   :config
