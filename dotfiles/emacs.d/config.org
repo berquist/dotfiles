@@ -305,7 +305,6 @@ What's the difference between setq and setq-default? See here: http://stackoverf
           (direnv)
           (elpaca)
           (emacs)
-          (lsp-mode)
           (native-compiler)
           (ox-pandoc)
           (treesit)))
@@ -1078,53 +1077,16 @@ Links:
                      company-backends)))))
 
 (use-package eglot
-  :hook (prog-mode . eglot-ensure))
-
-(use-package lsp-mode
-  :disabled t
-  :commands lsp
-  :hook ((c-mode c++-mode fortran-mode f90-mode python-mode js-mode sh-mode) . lsp-deferred)
-  :custom
-  (lsp-auto-guess-root t)
-  (lsp-clients-clangd-args '("--header-insertion-decorators=0" "--header-insertion=never"))
-  (lsp-disabled-clients '())
-  (lsp-enable-on-type-formatting nil)
-  (lsp-enable-snippet nil)
-  (lsp-enable-suggest-server-download nil)
-  (lsp-file-watch-threshold 500000)
-  (lsp-headerline-breadcrumb-enable nil)
-  (lsp-keep-workspace-alive nil)
-  (lsp-lens-enable nil)
-  (lsp-modeline-code-actions-enable nil)
-  (lsp-modeline-diagnostics-enable nil)
-  (lsp-ruff-show-notifications "always")
-  ;; too buggy
-  ;; (lsp-semantic-tokens-enable t)
+  :hook (prog-mode . eglot-ensure)
   :config
-  ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
-  ;; When using no-littering, `lsp-session-file' is under var/lsp/session.el.
-  (advice-add 'lsp :before (lambda (&rest _args)
-                             (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
-  (when ejb/has-treesit
-    (mapc (lambda (h) (add-hook h #'lsp-deferred))
-          '(bash-ts-mode-hook
-            c-ts-base-mode-hook
-            js-ts-mode-hook
-            python-ts-mode-hook
-            rust-ts-mode-hook))))
-
-;; TODO
-;;
-;; (defun ejb/lsp-enable-on-type-formatting ()
-;;   "Set `lsp-enable-on-type-formatting' if a relevant formatting config is present within the current scope.
-
-;; At most, the config must be within the project.")
-
-(use-package lsp-ui
-  :disabled t
-  :custom
-  (lsp-ui-doc-include-signature t)
-  (lsp-ui-peek-always-show t))
+  (add-to-list 'eglot-server-programs
+               ;; Additional clangd arguments
+               '((c-mode c-ts-mode c++-mode c++-ts-mode objc-mode)
+                 . ("clangd"
+                    "--header-insertion-decorators=0"
+                    "--header-insertion=never")))
+  (add-to-list 'eglot-server-programs
+               '((nim-mode) . ("nimlangserver" "nimlsp"))))
 #+END_SRC
 
 * Debuggers
@@ -1253,19 +1215,7 @@ Links:
 ;; Uncomment to use:
 ;; (setopt flycheck-command-wrapper-function #'ejb/flycheck-wrapper-debug)
 
-(defmacro ejb/flycheck-add-next-checkers-after-lsp (mode checkers)
-  `(lambda ()
-     (when (derived-mode-p ,mode)
-       (setq my/flycheck-local-cache '((lsp . ((next-checkers . ,checkers))))))))
-
 (use-package flycheck
-  ;; TODO debug me
-  ;; :hook ((lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'sh-mode '(sh-shellcheck)))
-  ;;        (lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'tex-mode '(tex-chktex)))
-  ;;        (lsp-managed-mode . (ejb/flycheck-add-next-checkers-after-lsp 'python-mode '(python-flake8)))
-  ;;        (lsp-managed-mode . (lambda ()
-  ;;                              (when (or (derived-mode-p 'rust-mode) (derived-mode-p 'rust-ts-mode))
-  ;;                                (setq my/flycheck-local-cache '((lsp . ((next-checkers . (rust-cargo))))))))))
   :bind (("C-c f" . flycheck-mode))
   :custom
   (flycheck-check-syntax-automatically '(mode-enabled save))
@@ -1751,14 +1701,7 @@ the header, based upon the associated source code file."
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck-clang-tidy
   :after flycheck
-  :hook ((flycheck-mode . flycheck-clang-tidy-setup)
-         (lsp-managed-mode . (lambda ()
-                               (when (derived-mode-p '(c-ts-base-mode c-mode c++-mode))
-                                 (setq my/flycheck-local-cache
-                                       ;; Don't need (c/c++-clang c/c++-gcc)
-                                       ;; since the language server should
-                                       ;; catch compilation problems
-                                       '((lsp . ((next-checkers . (c/c++-clang-tidy))))))))))
+  :hook ((flycheck-mode . flycheck-clang-tidy-setup))
   :config
   (when ejb/has-treesit
     ;; TODO not sure why this doesn't work
@@ -1768,15 +1711,6 @@ the header, based upon the associated source code file."
 #+END_SRC
 
 * Java
-
-#+BEGIN_SRC emacs-lisp
-(use-package lsp-java
-  :disabled t
-  :after lsp-mode
-  :hook ((java-mode java-ts-mode) . lsp-deferred)
-  :custom
-  (lsp-java-jdt-download-url "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.56.0/jdt-language-server-1.56.0-202601291528.tar.gz"))
-#+END_SRC
 
 * FORTRAN (built-in)
 
@@ -1803,7 +1737,6 @@ users are likely to use them.
 #+begin_src emacs-lisp
 (use-package auctex
   :ensure (:type git :host github :repo "emacsmirror/auctex" :inherit nil)
-  ;; :hook ((latex-mode LaTeX-mode) . lsp-deferred)
   ;; TODO this doesn't work anymore
   ;; :config
   ;; (add-to-list 'texmathp-tex-commands "dmath" 'env-on)
@@ -1868,17 +1801,6 @@ users are likely to use them.
   :custom
   (numpydoc-insertion-style 'nil)
   (numpydoc-insert-examples-block nil))
-
-(use-package lsp-pyright
-  :disabled t
-  :after lsp-mode
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp-deferred)))
-  :custom
-  (lsp-pyright-langserver-command ejb/pyright)
-  ;; Only use pyright for navigation
-  (lsp-pyright-type-checking-mode "off"))
 
 (use-package flycheck-ty
   :after flycheck
@@ -1996,7 +1918,6 @@ This section needs to come after the Markdown section so that CMake files get re
 
 #+begin_src emacs-lisp
 (use-package cmake-mode
-  ;; :hook (cmake-mode . lsp-deferred)
   :custom
   ;; This isn't working
   (cmake-tab-width tab-width))
@@ -2010,9 +1931,7 @@ This section needs to come after the Markdown section so that CMake files get re
     (let ((cmake-modes '("\\.cmake\\'" "CMakeLists\\.txt\\'")))
       (mapc
        (lambda (s) (add-to-list 'auto-mode-alist `(,s . cmake-ts-mode)))
-       cmake-modes))
-    ;; (add-hook 'cmake-ts-mode-hook #'lsp-deferred)
-    ))
+       cmake-modes))))
 #+end_src
 
 * Shell Scripts
@@ -2186,17 +2105,12 @@ current buffer, return its path, otherwise nil."
   :custom
   (julia-repl-inferior-buffer-name-base "julia-repl"))
 
-(use-package lsp-julia
-  :disabled t
-  :hook (julia-mode . (lambda ()
-                        (require 'lsp-julia)
-                        (lsp)))
+(use-package eglot-jl
   :config
   (when (executable-find "julialauncher")
-    (setopt lsp-julia-command "julialauncher"))
-  :custom
-  (lsp-julia-default-environment "~/.julia/environments/v1.11")
-  (lsp-julia-timeout 300))
+    (setopt eglot-jl-julia-command "julialauncher"))
+  :init
+  (eglot-jl-init))
 #+END_SRC
 
 * YAML
@@ -2205,7 +2119,6 @@ current buffer, return its path, otherwise nil."
 
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode
-  ;; :hook (yaml-mode . lsp-deferred)
   ;; The first is a decent assumption for ISI-specific pseudo-YAML files.
   :mode
   (("\\.params\\'" . yaml-mode)
@@ -2398,7 +2311,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
 
 #+begin_src emacs-lisp
 (use-package clojure-mode
-  ;; :hook (clojure-mode . lsp-deferred)
   :mode (("\\.bb\\'" . clojure-mode))
   :config
   (defun cider-interactive-notify-and-eval (code)
@@ -2532,7 +2444,6 @@ See https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html for more i
   :hook (
          ;; (nim-mode . ejb/fix-company-ordering)
          ;; (nim-mode . nimsuggest-mode)
-         ;; (nim-mode . lsp-deferred)
          (nim-mode . (lambda () (dtrt-indent-mode -1)))
          )
   :config
