@@ -9,8 +9,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    # ./cachix.nix
-
     ../common/global
   ];
 
@@ -29,6 +27,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # cli/tui
+    # gui
+
     cachix
     colordiff
     firefox
@@ -40,8 +41,6 @@
     unzip
     xdg-desktop-portal
     vlc
-
-    home-manager
 
     # this computer's home-manager
     act

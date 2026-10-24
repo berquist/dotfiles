@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     inputs.nix-amd-ai.nixosModules.default
+    ../common/global
   ];
 
   boot = {
@@ -26,8 +27,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # cli/tui
     amdtop
-    home-manager
+    # gui
   ];
 
   fonts = {
