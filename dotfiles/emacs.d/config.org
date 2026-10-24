@@ -1004,16 +1004,9 @@ Links:
 - TODO ensure backend is =aspell=?
 
 #+BEGIN_SRC emacs-lisp
-(use-package langtool
+(use-package languagetool
   :custom
-  (langtool-default-language "en-US")
-  (langtool-mother-tongue "en")
-  :config
-  ;; Arch Linux
-  (if (eq system-type 'gnu/linux)
-      (setopt ; langtool-language-tool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"
-            langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar"
-            langtool-java-classpath "/usr/share/languagetool:/usr/share/java/languagetool/*")))
+  (languagetool-mother-tongue "en"))
 
 ;; built-in
 (use-package flyspell
