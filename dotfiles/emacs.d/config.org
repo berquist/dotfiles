@@ -1066,7 +1066,8 @@ Links:
 
 (use-package eglot
   :hook ((prog-mode . eglot-ensure)
-         (text-mode . eglot-ensure))
+         (text-mode . eglot-ensure)
+         (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode -1))))
   :custom
   (eglot-autoshutdown t)
   :config
