@@ -1072,6 +1072,8 @@ Links:
 (use-package eglot
   :hook ((prog-mode . eglot-ensure)
          (text-mode . eglot-ensure))
+  :custom
+  (eglot-autoshutdown t)
   :config
   (add-to-list 'eglot-server-programs
                ;; Additional clangd arguments
