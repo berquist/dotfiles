@@ -963,6 +963,8 @@ with the default ordering Projectile uses.
 (use-package envrc
   ;; TODO not sure why this doesn't work
   ;; :hook (after-init . envrc-global-mode)
+  :custom
+  (envrc-lighter nil)
   :init
   (envrc-global-mode))
 
