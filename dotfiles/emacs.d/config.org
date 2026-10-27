@@ -1066,7 +1066,8 @@ Links:
 
 (use-package eglot
   :hook ((prog-mode . eglot-ensure)
-         (text-mode . eglot-ensure)
+         ;; TODO too annoying
+         ;; (text-mode . eglot-ensure)
          (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode -1))))
   :custom
   (eglot-autoshutdown t)
@@ -1077,8 +1078,9 @@ Links:
                  . ("clangd"
                     "--header-insertion-decorators=0"
                     "--header-insertion=never")))
-  (add-to-list 'eglot-server-programs
-               '(text-mode . ("harper-ls" "--stdio")))
+  ;; TODO too annoying
+  ;; (add-to-list 'eglot-server-programs
+  ;;              '(text-mode . ("harper-ls" "--stdio")))
   (add-to-list 'eglot-server-programs
                '(nim-mode . ("nimlangserver" "nimlsp"))))
 #+END_SRC
