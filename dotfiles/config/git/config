@@ -166,7 +166,10 @@
 	autoStash = true
 	missingCommitsCheck = warn
 	rebaseMerges = true
-	updateRefs = true
+	# This is the default but was set to "true" here for a while, not sure
+	# why.  It's pretty annoying when it updates a local branch that shouldn't
+	# move.
+	updateRefs = false
 
 [rerere]
 	autoupdate = true
