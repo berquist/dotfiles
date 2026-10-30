@@ -1071,6 +1071,8 @@ Links:
          (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode -1))))
   :custom
   (eglot-autoshutdown t)
+  ;; default is '(eldoc-hint left-fringe margin)
+  (eglot-code-action-indications '(eldoc-hint))
   :config
   (add-to-list 'eglot-server-programs
                ;; Additional clangd arguments
