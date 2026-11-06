@@ -108,7 +108,7 @@ Fundamental third-party packages that don't go anywhere else.
 ;; Here for early loading.
 (use-package delight
   :ensure (:type git :host github :repo "emacsmirror/delight" :inherit nil))
-(setopt eldoc-minor-mode-string " ED")
+(setopt eldoc-minor-mode-string nil)
 ;; A bunch of stuff needs delight.
 (elpaca-wait)
 
@@ -198,7 +198,7 @@ What's the difference between setq and setq-default? See here: http://stackoverf
 ;; http://stackoverflow.com/questions/12989072/showing-continuation-lines-in-emacs-in-a-text-terminal
 (setopt transient-mark-mode t
         visual-line-mode t)
-(delight 'visual-line-mode " W" t)
+(delight 'visual-line-mode nil t)
 ;; Never truncate lines, even in partial width windows.
 (setopt truncate-lines nil
         truncate-partial-width-windows nil
@@ -700,7 +700,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
   (setq global-whitespace-mode nil))
 
 (use-package dtrt-indent
-  :delight " dtrt"
+  :delight
   :init
   (dtrt-indent-global-mode 1))
 
@@ -712,6 +712,7 @@ TODO set fallback fonts, see http://ergoemacs.org/emacs/emacs_list_and_set_font.
 (setopt require-final-newline t)
 
 (use-package ws-butler
+  :delight
   :init
   (ws-butler-global-mode))
 #+end_src
@@ -1013,7 +1014,7 @@ Links:
   :custom
   (ispell-silently-savep t)
   (flyspell-issue-welcome-flag nil)
-  (flyspell-mode-line-string " FlyS"))
+  (flyspell-mode-line-string nil))
 #+end_src
 
 * Completion and language servers
