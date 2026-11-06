@@ -582,7 +582,7 @@ using `eshell-get-input'."
 
 #+BEGIN_SRC emacs-lisp
 (use-package yasnippet
-  :delight
+  :delight yas-minor-mode
   ;; TODO
   ;; :bind (:map yas-minor-mode-map
   ;;             ("C-M-/" . yas-expand)
