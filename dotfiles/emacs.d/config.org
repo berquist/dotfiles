@@ -1469,6 +1469,8 @@ Integration with [[https://github.com/errata-ai/vale][vale]].
   (org-edit-src-content-indentation 0)
   (org-export-backends '(ascii html icalendar latex md))
   (org-export-dispatch-use-expert-ui t)
+  ;; match HTML
+  (org-export-headline-levels 6)
   (org-export-with-smart-quotes t)
   ;; http://stackoverflow.com/questions/17239273/org-mode-buffer-latex-syntax-highlighting
   (org-highlight-latex-and-relatex '(latex script entities))
