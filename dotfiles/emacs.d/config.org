@@ -1074,6 +1074,7 @@ Links:
   (eglot-autoshutdown t)
   ;; default is '(eldoc-hint left-fringe margin)
   (eglot-code-action-indications '(eldoc-hint))
+  (eglot-report-progress 'messages)
   :config
   (add-to-list 'eglot-server-programs
                ;; Additional clangd arguments
