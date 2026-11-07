@@ -1069,11 +1069,12 @@ Links:
   :hook ((prog-mode . eglot-ensure)
          ;; TODO too annoying
          ;; (text-mode . eglot-ensure)
-         (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode -1))))
+         )
   :custom
   (eglot-autoshutdown t)
   ;; default is '(eldoc-hint left-fringe margin)
   (eglot-code-action-indications '(eldoc-hint))
+  (eglot-ignored-server-capabilities '(:inlayHintProvider))
   (eglot-report-progress 'messages)
   :config
   (add-to-list 'eglot-server-programs
