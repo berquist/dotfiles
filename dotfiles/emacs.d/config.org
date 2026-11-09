@@ -1249,7 +1249,9 @@ Links:
   (flycheck-add-next-checker 'python-ruff 'python-pyright nil)
   (flycheck-add-next-checker 'rust-cargo 'rust-clippy)
   :init
-  (global-flycheck-mode))
+  (global-flycheck-mode)
+  (when (featurep 'eglot)
+    (global-flycheck-eglot-mode)))
 #+end_src
 
 ** Prose
