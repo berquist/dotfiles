@@ -1250,8 +1250,7 @@ Links:
   (flycheck-add-next-checker 'rust-cargo 'rust-clippy)
   :init
   (global-flycheck-mode)
-  (when (featurep 'eglot)
-    (global-flycheck-eglot-mode)))
+  (global-flycheck-eglot-mode))
 #+end_src
 
 ** Prose
