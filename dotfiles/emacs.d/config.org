@@ -1072,10 +1072,10 @@ Links:
          )
   :custom
   (eglot-autoshutdown t)
-  ;; default is '(eldoc-hint left-fringe margin)
-  (eglot-code-action-indications '(eldoc-hint))
+  (eglot-code-action-indications nil)
+  (eglot-events-buffer-config '(:size 0 :format short))
   (eglot-ignored-server-capabilities '(:inlayHintProvider))
-  (eglot-report-progress 'messages)
+  (eglot-report-progress nil)
   :config
   (add-to-list 'eglot-server-programs
                ;; Additional clangd arguments
