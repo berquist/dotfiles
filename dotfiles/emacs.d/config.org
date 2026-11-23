@@ -1176,10 +1176,6 @@ Links:
         '(ruff-check ruff))
   (setf (alist-get 'python-ts-mode apheleia-mode-alist)
         '(ruff-check ruff))
-  ;; TODO temporarily disable rustfmt
-  (setf (alist-get 'rust-mode apheleia-mode-alist) '())
-  (setf (alist-get 'rust-ts-mode apheleia-mode-alist) '())
-  (setf (alist-get 'rustic-mode apheleia-mode-alist) '())
   ;; TODO be more specific for which shells?
   (setf (alist-get 'sh-mode apheleia-mode-alist)
         '(shfmt))
