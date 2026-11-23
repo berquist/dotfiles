@@ -1129,6 +1129,7 @@ Links:
         ;; add filepath
         '("rustfmt" "--quiet" "--emit" "stdout" filepath))
   (setf (alist-get 'tombi apheleia-formatters)
+        ;; add filepath
         '("tombi" "format" "--stdin-filename" filepath "-"))
   (setf (alist-get 'yamlfmt apheleia-formatters)
         '("yamlfmt" "-in" "-"))
