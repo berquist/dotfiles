@@ -4,7 +4,7 @@
 #
 # See: http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#ss3.1
 # Fully supports screen, iterm, and probably most modern xterm and rxvt
-# (In screen, only short_tab_title is used)
+# (In screen and tmux, only long_window_title is used, as the pane title)
 function title {
     setopt localoptions nopromptsubst
 
@@ -21,7 +21,7 @@ function title {
             print -Pn "\e]1;${1:q}\a" # set tab name
             ;;
         screen*|tmux*)
-            print -Pn "\ek${1:q}\e\\" # set screen hardstatus
+            print -Pn "\e]2;${2:q}\a" # set pane title
         ;;
     *)
         # Try to use terminfo to set the title if the feature is available
