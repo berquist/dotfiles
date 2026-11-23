@@ -1103,6 +1103,14 @@ Links:
 * Formatting
 
 #+begin_src emacs-lisp
+(defconst ejb/do-unsafe-ruff-fixes-p t
+  "Using Apheleia, should the 'ruff check --fix' call include unsafe fixes?")
+
+(defun ejb/make-unsafe-ruff-fixes-flag ()
+  "Print the 'ruff check' unsafe fixes flag if enabled."
+  (when ejb/do-unsafe-ruff-fixes-p
+    "--unsafe-fixes"))
+
 (use-package apheleia
   :custom
   (apheleia-log-only-errors nil)
@@ -1123,6 +1131,10 @@ Links:
   (setf (alist-get 'ruff apheleia-formatters)
         ;; removed --silent
         '("ruff" "format" (apheleia-formatters-fill-column "--line-length") "--stdin-filename" filepath "-"))
+  ;; This is a generalization of ruff-isort to fix all possible problems via
+  ;; "ruff check", with an option to perform unsafe fixes (on by default).
+  (setf (alist-get 'ruff-check apheleia-formatters)
+        '("ruff" "check" "-n" "--fix" "--fix-only" (ejb/unsafe-ruff-fixes) "--stdin-filename" filepath "-"))
   (setf (alist-get 'runic apheleia-formatters)
         '("julia" "--project=@runic" "--startup-file=no" "-e" "using Runic; exit(Runic.main(ARGS))" "--"))
   (setf (alist-get 'rustfmt apheleia-formatters)
@@ -1158,10 +1170,12 @@ Links:
         '(runic))
   (setf (alist-get 'nim-mode apheleia-mode-alist)
         '(nph))
+  ;; Ruff linter fixes should appear before reformatting
+  ;; (https://github.com/astral-sh/ruff-pre-commit#using-ruff-with-pre-commit).
   (setf (alist-get 'python-mode apheleia-mode-alist)
-        '(ruff))
+        '(ruff-check ruff))
   (setf (alist-get 'python-ts-mode apheleia-mode-alist)
-        '(ruff))
+        '(ruff-check ruff))
   ;; TODO temporarily disable rustfmt
   (setf (alist-get 'rust-mode apheleia-mode-alist) '())
   (setf (alist-get 'rust-ts-mode apheleia-mode-alist) '())
