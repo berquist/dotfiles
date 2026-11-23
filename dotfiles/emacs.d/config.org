@@ -1120,6 +1120,9 @@ Links:
         '("nph" "-"))
   (setf (alist-get 'palantir-java-format apheleia-formatters)
         '("palantir-java-format" "-"))
+  (setf (alist-get 'ruff apheleia-formatters)
+        ;; removed --silent
+        '("ruff" "format" (apheleia-formatters-fill-column "--line-length") "--stdin-filename" filepath "-"))
   (setf (alist-get 'runic apheleia-formatters)
         '("julia" "--project=@runic" "--startup-file=no" "-e" "using Runic; exit(Runic.main(ARGS))" "--"))
   (setf (alist-get 'rustfmt apheleia-formatters)
