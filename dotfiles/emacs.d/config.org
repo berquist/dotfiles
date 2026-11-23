@@ -1128,11 +1128,6 @@ Links:
   (setf (alist-get 'rustfmt apheleia-formatters)
         ;; add filepath
         '("rustfmt" "--quiet" "--emit" "stdout" filepath))
-  (setf (alist-get 'shfmt apheleia-formatters)
-        ;; shfmt will not read an EditorConfig file if any parser or printer
-        ;; flags are specified on the command line.  The default recipe
-        ;; specifies -ln and possibly -i.
-        '("shfmt" "--filename" filepath "-"))
   (setf (alist-get 'tombi apheleia-formatters)
         '("tombi" "format" "--stdin-filename" filepath "-"))
   (setf (alist-get 'yamlfmt apheleia-formatters)
