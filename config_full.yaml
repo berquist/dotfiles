@@ -179,7 +179,7 @@ profiles:
     - d_tmux
     - f_git_template
     - f_yamlfmt.yml
-  en272:
+  en62:
     dotfiles:
     - d_bat
     - d_emacs.d
